@@ -1,0 +1,39 @@
+### Wordpress template
+*.log
+.htaccess
+config.codekit
+wp/wp-content/index.php
+wp/wp-content/plugins/index.php
+wp/wp-content/upgrade/
+wp/wp-content/themes/index.php
+wp/wp-includes/**
+wp/wp-admin/**
+wp/index.php
+wp/wp-activate.php
+wp/wp-blog-header.php
+wp/wp-comments-post.php
+wp/wp-config-sample.php
+wp/wp-cron.php
+wp/wp-links-opml.php
+wp/wp-load.php
+wp/wp-login.php
+wp/wp-mail.php
+wp/wp-settings.php
+wp/wp-signup.php
+wp/wp-trackback.php
+wp/wp-xmlrpc.php
+wp/license.txt
+
+### SublimeText template
+# cache files for sublime text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# workspace files are user-specific
+*.sublime-workspace
+
+# project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using SublimeText
+# *.sublime-project
+
