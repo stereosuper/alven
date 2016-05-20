@@ -21,7 +21,7 @@ wp/wp-mail.php
 wp/wp-settings.php
 wp/wp-signup.php
 wp/wp-trackback.php
-wp/wp-xmlrpc.php
+wp/xmlrpc.php
 wp/license.txt
 
 ### SublimeText template
