@@ -36,10 +36,10 @@
 
 
 @font-face{
-   font-family: 'source-black';
-   src: url('../fonts/sourcesanspro-black.woff2') format('woff2'),
-        url('../fonts/sourcesanspro-black.woff') format('woff'),
-        url('../fonts/sourcesanspro-black.ttf') format('truetype');
+   font-family: 'source';
+   src: url('../fonts/sourcesanspro-regular.woff2') format('woff2'),
+        url('../fonts/sourcesanspro-regular.woff') format('woff'),
+        url('../fonts/sourcesanspro-regular.ttf') format('truetype');
    font-weight: 400;
    font-style: normal;
 }
@@ -54,6 +54,15 @@
 }
 
 @font-face{
+   font-family: 'source-light';
+   src: url('../fonts/sourcesanspro-light.woff2') format('woff2'),
+        url('../fonts/sourcesanspro-light.woff') format('woff'),
+        url('../fonts/sourcesanspro-light.ttf') format('truetype');
+   font-weight: 400;
+   font-style: normal;
+}
+
+@font-face{
    font-family: 'source-semi-bold';
    src: url('../fonts/sourcesanspro-semibold.woff2') format('woff2'),
         url('../fonts/sourcesanspro-semibold.woff') format('woff'),
@@ -62,13 +71,33 @@
    font-style: normal;
 }
 
+@font-face{
+   font-family: 'source-black';
+   src: url('../fonts/sourcesanspro-black.woff2') format('woff2'),
+        url('../fonts/sourcesanspro-black.woff') format('woff'),
+        url('../fonts/sourcesanspro-black.ttf') format('truetype');
+   font-weight: 400;
+   font-style: normal;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.woff2?dkab2t') format('woff2'),
+         url('../fonts/icomoon.ttf?dkab2t') format('truetype'),
+         url('../fonts/icomoon.woff?dkab2t') format('woff'),
+         url('../fonts/icomoon.svg?dkab2t#icomoon') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
 
 [class^='icon-'], [class*=' icon-']{
-    //@include font-icon;
+    @include fontIcon;
 }
 
 $icons: (
-    icon: '\e900'
+    arrow-body: '\e900',
+    arrow-tip:  '\e901'
 );
 @each $name, $icon in $icons {
     .icon-#{$name}::before {

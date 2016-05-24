@@ -17,19 +17,23 @@
 		<header id='header'>
 			<div class='container'>
 				<a id='logo' href='#'>AlvenCapital</a>
-				<nav role='navigation'>
+				<nav role='navigation' id='menu-main'>
 					<ul>
-						<li><a href='#'>Magazine</a></li>
-						<li><a href='#'>Portfolio</a></li>
-						<li><a href='#'>Who we are</a></li>
+						<li>
+							<a href='#' class='btn-arrow'>Magazine</a>
+						</li><li>
+							<a href='#' class='btn-arrow'>Portfolio</a>
+						</li><li>
+							<a href='#' class='btn-arrow'>Who we are</a>
+						</li>
 					</ul>
 				</nav>
-				<a id='search' href='#'>Explore Alven</a>
+				<a id='searchBtn' class='search-btn' href='#'>Explore Alven</a>
 				<!--<button id='burger'></button>-->
 			</div>
 		</header>
 
-		<main class='wrapper' role='main'>
+		<main role='main' id='main'>
 
 			<header>
 				<div class='container'>
@@ -37,7 +41,7 @@
 				</div>
 			</header>
 
-			<section class='container'>
+			<section class='container' id='articleContent'>
 
 				<!--<aside>
 					<a href='#'>News</a> -
@@ -56,7 +60,7 @@
 
 					<div class='grid'>
 
-						<article class='col-8'>
+						<article class='col-8 content-default'>
 
 							<p>Alven Capital is proud to announce the successful acquisition of one its portfolio companies, Captain Train. The French upstart and its British heavyweight counterpart Trainline have agreed to join forces to offer train tickets across most of Europe. The transaction rewards 5 years of steady growth for Captain Train who has risen to become the go-to alternative to the massive incumbent <a href='#'>Voyage SNCF</a> in France and had expanded to offer fares in Germany, Italy and 13 other countries. The service was opened to the public in 2011 after two years in private beta and quickly grew a loyal audience thanks to a streamlined UX and ticket prices free of any booking fees.</p>
 
@@ -76,9 +80,11 @@
 							<p>The strategic value of such a deep expertise and integrated systems with partnerships across all of Europe wasn’t lost on Trainline, whose own operations will benefit from Captain Train’s innovative backend to cut on third-party expenses and save years of business development.</p>
 
 							<blockquote>
-								« We share the same ambition, and it was a natural step for us to decide to work with Trainline. The complementary nature of our offerings and the scope of the markets that we will cover will enable us to reach our shared objective of making rail travel in Europe easier. »
-								- Jean-Daniel Guyot
-								Captain Train founder
+								<p>We share the same ambition, and it was a natural step for us to decide to work with Trainline. The complementary nature of our offerings and the scope of the markets that we will cover will enable us to reach our shared objective of making rail travel in Europe easier.</p>
+								<footer>
+									- Jean-Daniel Guyot
+									<span>Captain Train founder</span>
+								</footer>
 							</blockquote>
 
 							<p>Captain Train currently has 1.4 million registered users and sells 5,000 tickets daily, for $80 million in transactions processed in 2015. Trainline boasts 4.7 million customers and 21 million monthly visitors leading to $2.3 billion ticket transactions processed in 2015.The new company will cement its position of European leader and keep working on offering travelers the best booking experience across all networks. The teams and founders will remain with Captain Train and work out of their Paris offices for the foreseeable future.</p>
@@ -98,7 +104,9 @@
 
 							<p>Captain Train currently has 1.4 million registered users and sells 5,000 tickets daily, for $80 million in transactions processed in 2015. Trainline boasts 4.7 million customers and 21 million monthly visitors leading to $2.3 billion ticket transactions processed in 2015.The new company will cement its position of European leader and keep working on offering travelers the best booking experience across all networks. The teams and founders will remain with Captain Train and work out of their Paris offices for the foreseeable future.</p>
 
-							<a href='#' class='btn'>www.captaintrain.com</a>
+							<p class='align-center'>
+								<a href='#' class='btn'>www.captaintrain.com</a>
+							</p>
 
 						</article><aside class='col-2'>
 
@@ -151,16 +159,16 @@
 	  		<div class='container'>
 	  			<div class='container-small'>
 			  		<div class='grid'>
-			  			<div class='col-3'>
-			  				<span>Think, read, exchange</span>
+			  			<div class='col-3 menu-footer'>
+			  				<span class='menu-footer-title'>Think, read, exchange</span>
 			  				<span>alven online magazine</span>
 			  				<ul>
 			  					<li><a href='#'>About us</a></li>
 			  					<li><a href='#'>Our investment thesis</a></li>
 			  					<li><a href='#'>The process to pitch us</a></li>
 			  				</ul>
-			  			</div><div class='col-3'>
-			  				<span>Who we are</span>
+			  			</div><div class='col-3 menu-footer'>
+			  				<span class='menu-footer-title'>Who we are</span>
 			  				<span>a stichy & professionnal team</span>
 			  				<ul>
 			  					<li><a href='#'>Who we are</a></li>
@@ -168,8 +176,8 @@
 			  					<li><a href='#'>Our investment thesis</a></li>
 			  					<li><a href='#'>The process to pitch us</a></li>
 			  				</ul>
-			  			</div><div class='col-2'>
-			  				<span>Portfolio</span>
+			  			</div><div class='col-2 menu-footer'>
+			  				<span class='menu-footer-title'>Portfolio</span>
 			  				<span>what we fund, what we funded</span>
 			  				<ul>
 			  					<li>
@@ -180,8 +188,8 @@
 			  						</ul>
 			  					</li>
 			  				</ul>
-			  			</div><div class='col-2'>
-			  				<span>Contact us</span>
+			  			</div><div class='col-2 menu-footer'>
+			  				<span class='menu-footer-title'>Contact us</span>
 			  				<span>get in touch with us</span>
 			  				<ul>
 			  					<li><a href='#'>Send us your pitch</a></li>

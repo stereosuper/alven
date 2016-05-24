@@ -1,13 +1,15 @@
 /******* GÉNÉRAL *******/
 
 ::-moz-selection{
-    background: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
+    @include themeBg($txt);
+
+    color: #fff;
     text-shadow: none;
 }
 ::selection{
-    background: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
+    @include themeBg($txt);
+
+    color: #fff;
     text-shadow: none;
 }
 
@@ -31,7 +33,7 @@ h1, h3, h4, h5, h6{
 
 h1{
     width: $col*6;
-    margin: .67em auto;
+    margin: 2.5em auto;
     font-size: 6rem;
     letter-spacing: -0.04em;
     line-height: 1;
@@ -41,7 +43,7 @@ h2{
     width: $col*8;
     padding: 0 $innerGutter;
     margin: 0 auto 2.75em;
-    @include merriweatherBoldIt(2rem);
+    @include merriweatherBoldIt(2.2rem);
     line-height: 1.2;
     text-align: center;
     color: $chapo;
@@ -50,7 +52,7 @@ h2{
 h3{
     font-size: 2.4rem;
     line-height: 1;
-    margin: 1em 0;
+    margin: 2.1em 0 1.6em;
 }
 
 h4{
@@ -81,12 +83,70 @@ i, em{
 }
 
 blockquote{
-    margin: 1em 40px;
+    padding: 0 50px;
+    margin: 3.5em $colSmall*2 4em;
+    p{
+        @include themeColor;
+
+        margin-top: 0;
+        font-family: $sourceBold;
+        font-size: 2rem;
+        text-align: center;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        &:before{
+            content: '« ';
+        }
+        &:after{
+            content: ' »';
+        }
+    }
+    footer{
+        text-align: right;
+        span{
+            display: block;
+            font-family: $merriweatherIt;
+            font-size: 1.4rem;
+        }
+    }
 }
 
 ol, ul{
-    margin: 1em 0;
-    padding: 0 0 0 40px;
+    padding: 0 0 0 30px;
+    margin: 1.9em 0 2.5em;
+    list-style: none;
+    li{
+        &:before{
+            content: '';
+            display: inline-block;
+            margin: 0 5px 0 0;
+        }
+    }
+}
+ul{
+    li{
+        &:before{
+            @include themeBg;
+
+            width: 3px;
+            height: 3px;
+            vertical-align: middle;
+            border-radius: 50%;
+        }
+    }
+}
+ol{
+    counter-reset: counter;
+    li{
+        counter-increment: counter;
+        &:before{
+            @include themeColor;
+
+            content: counter(counter)'.';
+            font-family: $merriweatherBold;
+            font-size: 12px;
+        }
+    }
 }
 
 img{
@@ -110,13 +170,15 @@ a{
     text-decoration: none;
     transition: $transition;
     &:focus, &:hover{
-        opacity: 0.7;
+        opacity: 0.6;
     }
     &:focus{
         outline: 0;
     }
     &:active{
-        color: #000;
+        @include themeColor(#000);
+
+        opacity: 1;
     }
 }
 

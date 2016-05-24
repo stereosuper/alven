@@ -1,5 +1,9 @@
 /* Grid */
 
+#main{
+    padding: 110px 0 0; // header height
+}
+
 .container{
     max-width: 1420px;
     padding: 0 $outterGutter;
@@ -83,4 +87,17 @@
 }
 .col-11{
     width: $col*11;
+}
+
+
+.content-default{
+    padding-bottom: 50px;
+    > p, > h3, > h4, > h5, > h6, > ul, > ol{
+        padding: 0 $outterGutter;
+        margin-left: $colSmall;
+        margin-right: $colSmall;
+    }
+    .btn{
+        margin: 3.3em 0 0;
+    }
 }

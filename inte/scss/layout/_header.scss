@@ -1,1 +1,55 @@
 /* Header */
+
+#header{
+    @include clearfix;
+
+    width: 100%;
+    padding: 40px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    font-family: $sourceBold;
+    font-size: 1.8rem;
+    letter-spacing: -0.04em;
+    .search-btn{
+        float: right;
+        margin: 2px 0;
+        box-shadow: none;
+    }
+    &.fixed{
+        background: #fff;
+    }
+}
+
+#logo{
+    display: inline-block;
+    width: $col*2;
+    height: 31px;
+    vertical-align: middle;
+    background: url(../layoutImg/alven-grey.png) no-repeat;
+    text-indent: -99em;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+#menu-main{
+    display: inline-block;
+    width: $col*6;
+    vertical-align: middle;
+    margin: 0 $col;
+    box-sizing: content-box;
+    ul{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    li{
+        display: inline-block;
+        padding: 0 $innerGutter;
+        width: 33.333%;
+        &:before{
+            display: none;
+        }
+    }
+}
