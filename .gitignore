@@ -1,7 +1,18 @@
+*.codekit
+config.codekit
+
+.DS_Store
+*.DS_Store
+**/.DS_Store
+
+.sass-cache
+.sass-cache/*
+
+
+
 ### Wordpress template
 *.log
 .htaccess
-config.codekit
 wp/wp-content/index.php
 wp/wp-content/plugins/index.php
 wp/wp-content/upgrade/
