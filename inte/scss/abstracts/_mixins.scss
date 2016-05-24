@@ -62,7 +62,51 @@
 }
 
 // Fonts
-@mixin font($size){
-   font-family: $font;
-   font-size: $size;
+@mixin merriweather($size){
+  font-family: $merriweather;
+  font-size: $size;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin merriweatherBold($size){
+  font-family: $merriweatherBold;
+  font-size: $size;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin merriweatherIt($size){
+  font-family: $merriweatherIt;
+  font-size: $size;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin merriweatherBoldIt($size){
+  font-family: $merriweatherBoldIt;
+  font-size: $size;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin sourceSemiBold($size){
+  font-family: $sourceSemiBold;
+  font-size: $size;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin sourceBold($size){
+  font-family: $sourceBold;
+  font-size: $size;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin sourceBlack($size){
+  font-family: $sourceBlack;
+  font-size: $size;
+  font-weight: 400;
+  font-style: normal;
 }

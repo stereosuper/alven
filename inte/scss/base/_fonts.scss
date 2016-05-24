@@ -1,14 +1,70 @@
 @font-face{
-   font-family: 'font';
-   src: url('../fonts/font.woff2') format('woff2'),
-        url('../fonts/font.woff') format('woff'),
-        url('../fonts/font.ttf') format('truetype');
+   font-family: 'merriweather';
+   src: url('../fonts/merriweather-regular.woff2') format('woff2'),
+        url('../fonts/merriweather-regular.woff') format('woff'),
+        url('../fonts/merriweather-regular.ttf') format('truetype');
    font-weight: 400;
    font-style: normal;
 }
 
+@font-face{
+   font-family: 'merriweather-bold';
+   src: url('../fonts/merriweather-bold.woff2') format('woff2'),
+        url('../fonts/merriweather-bold.woff') format('woff'),
+        url('../fonts/merriweather-bold.ttf') format('truetype');
+   font-weight: 400;
+   font-style: normal;
+}
+
+@font-face{
+   font-family: 'merriweather-italic';
+   src: url('../fonts/merriweather-italic.woff2') format('woff2'),
+        url('../fonts/merriweather-italic.woff') format('woff'),
+        url('../fonts/merriweather-italic.ttf') format('truetype');
+   font-weight: 400;
+   font-style: normal;
+}
+
+@font-face{
+   font-family: 'merriweather-bolditalic';
+   src: url('../fonts/merriweather-bolditalic.woff2') format('woff2'),
+        url('../fonts/merriweather-bolditalic.woff') format('woff'),
+        url('../fonts/merriweather-bolditalic.ttf') format('truetype');
+   font-weight: 400;
+   font-style: normal;
+}
+
+
+@font-face{
+   font-family: 'source-black';
+   src: url('../fonts/sourcesanspro-black.woff2') format('woff2'),
+        url('../fonts/sourcesanspro-black.woff') format('woff'),
+        url('../fonts/sourcesanspro-black.ttf') format('truetype');
+   font-weight: 400;
+   font-style: normal;
+}
+
+@font-face{
+   font-family: 'source-bold';
+   src: url('../fonts/sourcesanspro-bold.woff2') format('woff2'),
+        url('../fonts/sourcesanspro-bold.woff') format('woff'),
+        url('../fonts/sourcesanspro-bold.ttf') format('truetype');
+   font-weight: 400;
+   font-style: normal;
+}
+
+@font-face{
+   font-family: 'source-semi-bold';
+   src: url('../fonts/sourcesanspro-semibold.woff2') format('woff2'),
+        url('../fonts/sourcesanspro-semibold.woff') format('woff'),
+        url('../fonts/sourcesanspro-semibold.ttf') format('truetype');
+   font-weight: 400;
+   font-style: normal;
+}
+
+
 [class^='icon-'], [class*=' icon-']{
-    @include font-icon;
+    //@include font-icon;
 }
 
 $icons: (

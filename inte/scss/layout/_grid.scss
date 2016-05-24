@@ -1,7 +1,86 @@
 /* Grid */
 
 .container{
-    max-width: 1200px;
-    padding: 0 20px;
+    max-width: 1420px;
+    padding: 0 $outterGutter;
     margin: 0 auto;
+}
+
+.container-small{
+    margin: 0 $col;
+    padding: 0 $innerGutter;
+}
+
+.grid{
+    margin: 0 $innerGutter*-1;
+}
+
+[class*='col-']{
+    display: inline-block;
+    padding: 0 $innerGutter;
+    vertical-align: top;
+}
+
+.col-1{
+    width: $col;
+    .container-small &{
+        width: $colSmall;
+    }
+}
+.col-2{
+    width: $col*2;
+    .container-small &{
+        width: $colSmall*2;
+    }
+}
+.col-3{
+    width: $col*3;
+    .container-small &{
+        width: $colSmall*3;
+    }
+}
+.col-4{
+    width: $col*4;
+    .container-small &{
+        width: $colSmall*4;
+    }
+}
+.col-5{
+    width: $col*5;
+    .container-small &{
+        width: $colSmall*5;
+    }
+}
+.col-6{
+    width: $col*6;
+    .container-small &{
+        width: $colSmall*6;
+    }
+}
+.col-7{
+    width: $col*7;
+    .container-small &{
+        width: $colSmall*7;
+    }
+}
+.col-8{
+    width: $col*8;
+    .container-small &{
+        width: $colSmall*8;
+    }
+}
+.col-9{
+    width: $col*9;
+    .container-small &{
+        width: $colSmall*9;
+    }
+}
+.col-10{
+    width: $col*10;
+    .container-small &{
+        width: $colSmall*10;
+    }
+}
+.col-11{
+    width: $col*11;
 }
