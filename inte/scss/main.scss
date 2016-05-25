@@ -20,10 +20,12 @@
   'layout/grid',
   'layout/forms',
   'layout/header',
-  'layout/footer';
+  'layout/footer',
+  'layout/header-content';
 
 @import
-  'components/buttons';
+  'components/buttons',
+  'components/spotlight-post';
 
 @import
   'pages/home';

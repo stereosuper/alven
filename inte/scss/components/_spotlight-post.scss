@@ -1,0 +1,28 @@
+/* Spotlight posts */
+
+.spotlight-posts{
+    padding: 0 0 80px;
+    background: $greyMedium;
+}
+
+.spotlight-post{
+    > div{
+        padding: 0 20px 20px;
+        background: #fff;
+    }
+    h4{
+        @include themeColor;
+
+        margin: 0 0 10px;
+        font-size: 2.4rem;
+    }
+    p{
+        font-size: 1.4rem;
+        line-height: 1.2;
+    }
+    ul{
+        padding: 0;
+        margin: 0;
+        font-size: 1.4rem;
+    }
+}

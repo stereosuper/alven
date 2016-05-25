@@ -4,7 +4,8 @@
     @include clearfix;
 
     width: 100%;
-    padding: 40px 0;
+    padding: 35px 0 30px;
+    border-bottom: 3px solid transparent;
     position: fixed;
     top: 0;
     left: 0;
@@ -12,14 +13,38 @@
     font-family: $sourceBold;
     font-size: 1.8rem;
     letter-spacing: -0.04em;
+    color: #fff;
+    transform: translateY(10px);
+    transition: $transition;
+    a{
+        transition: opacity $transition;
+    }
     .search-btn{
         float: right;
         margin: 2px 0;
         box-shadow: none;
     }
     &.fixed{
+        border-color: $greyLight;
         background: #fff;
+        color: $title;
+        transform: translateY(0);
+        #logo{
+            background: url(../layoutImg/alven-grey.png) no-repeat;
+        }
     }
+}
+
+.read-indicator{
+    @include themeBg;
+
+    height: 3px;
+    position: absolute;
+    top: 97px;
+    left: 0;
+    right: 0;
+    transform-origin: 0 0;
+    transform: scaleX(0);
 }
 
 #logo{
@@ -27,7 +52,7 @@
     width: $col*2;
     height: 31px;
     vertical-align: middle;
-    background: url(../layoutImg/alven-grey.png) no-repeat;
+    background: url(../layoutImg/alven.png) no-repeat;
     text-indent: -99em;
     overflow: hidden;
     box-shadow: none;
@@ -48,8 +73,62 @@
         display: inline-block;
         padding: 0 $innerGutter;
         width: 33.333%;
+        position: relative;
         &:before{
-            display: none;
+            width: 1px;
+            height: 16px;
+            border-radius: 0;
+            left: -18px;
+        }
+        &:after{
+            content: '';
+            width: 16px;
+            height: 1px;
+            left: -25px;
+        }
+        &:before, &:after{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        &:nth-child(1){
+            &:before, &:after{
+                background: $magazine;
+            }
+        }
+        &:nth-child(2){
+            &:before, &:after{
+                background: $portfolio;
+            }
+        }
+        &:nth-child(3){
+            &:before, &:after{
+                background: $we;
+            }
+        }
+        &.active{
+            a{
+                box-shadow: none;
+                &:before, &:after{
+                    display: none;
+                }
+            }
+            &:before{
+                display: none;
+            }
+            &:after{
+                width: 30px;
+            }
+            &:nth-child(1){
+                color: $magazine;
+            }
+            &:nth-child(2){
+                color: $portfolio;
+            }
+            &:nth-child(3){
+                color: $we;
+            }
         }
     }
 }

@@ -90,6 +90,19 @@
   }
 }
 
+@mixin themeBorder($default : $grey){
+  border-color: $default;
+  .theme-magazine &{
+      border-color: $magazine;
+  }
+  .theme-portfolio &{
+      border-color: $portfolio;
+  }
+  .theme-we &{
+      border-color: $we;
+  }
+}
+
 
 // Fonts
 @mixin fontIcon(){

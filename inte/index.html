@@ -31,28 +31,18 @@
 				<a id='searchBtn' class='search-btn' href='#'>Explore Alven</a>
 				<!--<button id='burger'></button>-->
 			</div>
+			<div id='readIndicator' class='read-indicator'></div>
 		</header>
 
 		<main role='main' id='main'>
 
-			<header>
+			<header class='content-header'>
 				<div class='container'>
 					<h1>Captain Train and Trainline combine strength</h1>
 				</div>
 			</header>
 
-			<section class='container' id='articleContent'>
-
-				<!--<aside>
-					<a href='#'>News</a> -
-					<time datetime='2016-05-04'>May 4th 2016</time>
-					<span>Share</span>
-					<ul>
-						<li><a href='#' rel='nofollow' target='_blank'>Linkedin</a></li>
-						<li><a href='#' rel='nofollow' target='_blank'>Twitter</a></li>
-						<li><a href='#' rel='nofollow' target='_blank'>Medium</a></li>
-					</ul>
-				</aside>-->
+			<section class='container' id='mainContent'>
 
 				<h2>Alven Capital is proud to announce the successful acquisition of one its portfolio companies, Captain Train. The French upstart and its British heavy weight counterpart Trainline have agreed to join forces to offer train tickets across most of Europe.</h2>
 
@@ -108,25 +98,7 @@
 								<a href='#' class='btn'>www.captaintrain.com</a>
 							</p>
 
-						</article><aside class='col-2'>
-
-							<ul>
-								<li>
-									<img src='' alt=''>
-									<h4><a href='#'>Drivy continues its unstoppable rise with a $35M round</a></h4>
-									<a href='#'>News</a> -
-									<time datetime='2016-05-04'>May 4th 2016</time>
-									<a href='#'>Read</a>
-								</li>
-								<li>
-									<img src='' alt=''>
-									<h4><a href='#'>Getting 100+ pitch emails a day : how not to miss the hidden gem?</a></h4>
-									<a href='#'>Thoughts</a> -
-									<time datetime='2016-05-04'>May 4th 2016</time>
-									<a href='#'>Read</a>
-								</li>
-							</ul>
-						</aside>
+						</article>
 
 					</div>
 
@@ -134,26 +106,74 @@
 
 			</section>
 
-			<footer class='container'>
-				<div class='col-4'>
-					<h4><a href='#'>Drivy continues its unstoppable rise with a $35M round</a></h4>
-					<a href='#'>News</a> -
-					<time datetime='2016-05-04'>May 4th 2016</time>
-					<a href='#'>Read</a>
-				</div><div class='col-4'>
-					<h4><a href='#'>Drivy continues its unstoppable rise with a $35M round</a></h4>
-					<a href='#'>News</a> -
-					<time datetime='2016-05-04'>May 4th 2016</time>
-					<a href='#'>Read</a>
-				</div><div class='col-4'>
-					<h4><a href='#'>Drivy continues its unstoppable rise with a $35M round</a></h4>
-					<a href='#'>News</a> -
-					<time datetime='2016-05-04'>May 4th 2016</time>
-					<a href='#'>Read</a>
-				</div>
-			</footer>
-
 		</main>
+
+		<section class='spotlight-posts'>
+			<div class='container'>
+				<div class='grid'>
+					<div class='col-2 spotlight-post'>
+						<div>
+							<h4>Android Dev</h4>
+							<p>
+								{<br>
+								var:= your.Java Skill;<br>
+								if Years.worked > 3<br>
+								then Apply here<br>
+								else<br> ...
+							</p>
+							<a href='#' class='btn-caps-arrow'>Let's start coding</a>
+						</div>
+					</div><div class='col-2 spotlight-post'>
+						<div>
+							<h4>COO wanted</h4>
+							<p>
+								<strong>You are a humble yet efficient executive leading by example?</strong><br><br>
+								You have nurtured teams and grown company 2-5x in a few years?
+							</p>
+							<a href='#' class='btn-caps-arrow'>You're the one</a>
+						</div>
+					</div><div class='col-2 spotlight-post'>
+						<div>
+							<h4>Growth vs. profits</h4>
+							<p>
+								n.m.: An exit is the way a successful company is sold to a third party by its initial team of founders and ...
+							</p>
+							<a href='#' class='btn-caps-arrow'>Full definition</a>
+						</div>
+					</div><div class='col-2 spotlight-post'>
+						<div>
+							<h4>Reading list March 2016</h4>
+							<p>
+								Articles from around the web that smart people should read:
+							</p>
+							<ul>
+								<li><a href='#'>Feeds vs. Streams</a></li>
+								<li><a href='#'>How to create a culture of growth</a></li>
+							</ul>
+							<p>...</p>
+							<a href='#' class='btn-caps-arrow'>The entire list</a>
+						</div>
+					</div><div class='col-2 spotlight-post'>
+						<div>
+							<h4>Demo Day July 17th - 7pm Paris</h4>
+							<p>
+								15 startups are pitching and networking.<br><br>
+								In Paris, 15 rue des 4 vents ...
+							</p>
+							<a href='#' class='btn-caps-arrow'>Details</a>
+						</div>
+					</div><div class='col-2 spotlight-post'>
+						<div>
+							<h4>Innov&Connect Forum 2016 - May 15th</h4>
+							<p>
+								You have nurtured teams and grown company 2-5x in a few years?
+							</p>
+							<a href='#' class='btn-caps-arrow'>Details</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
 	  	<footer role='contentinfo' id='footer'>
 	  		<div class='container'>
@@ -202,6 +222,7 @@
 	  	</footer>
 
 	  	<script src='js/jquery-1.11.2.min.js'></script>
+	  	<script src='js/TweenMax.min.js'></script>
 	  	<script src='js/script.js'></script>
 
 	</body>
