@@ -21,11 +21,12 @@
   'layout/forms',
   'layout/header',
   'layout/footer',
-  'layout/header-content';
+  'layout/content',
+  'layout/post';
 
 @import
   'components/buttons',
-  'components/spotlight-post';
+  'components/share';
 
 @import
   'pages/home';

@@ -16,13 +16,23 @@
     color: #fff;
     transform: translateY(10px);
     transition: $transition;
+    .container{
+        position: relative;
+    }
     a{
         transition: opacity $transition;
     }
-    .search-btn{
+    .btn-search{
         float: right;
         margin: 2px 0;
-        box-shadow: none;
+    }
+    .post-title{
+        position: absolute;
+        top: 25px;
+        left: $col*3;
+        margin: 0 0 0 -12px;
+        opacity: 0;
+        transition: $transition;
     }
     &.fixed{
         border-color: $greyLight;
@@ -32,6 +42,23 @@
         #logo{
             background: url(../layoutImg/alven-grey.png) no-repeat;
         }
+        .read-indicator{
+            opacity: 1;
+        }
+        &.on{
+            .single &{
+                .post-title{
+                    opacity: 1;
+                    transform: translate3d(0, -25px, 0);
+                }
+                #menu-main{
+                    transform: translate3d(0, -25px, 0);
+                    li:not(.active){
+                        opacity: 0;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -40,11 +67,13 @@
 
     height: 3px;
     position: absolute;
-    top: 97px;
+    bottom: -3px;
     left: 0;
     right: 0;
     transform-origin: 0 0;
     transform: scaleX(0);
+    transition: opacity $transition;
+    opacity: 0;
 }
 
 #logo{
@@ -64,6 +93,8 @@
     vertical-align: middle;
     margin: 0 $col;
     box-sizing: content-box;
+    transform: translate3d(0, 0, 0);
+    transition: transform $transition;
     ul{
         padding: 0;
         margin: 0;
@@ -74,6 +105,7 @@
         padding: 0 $innerGutter;
         width: 33.333%;
         position: relative;
+        transition: opacity $transition;
         &:before{
             width: 1px;
             height: 16px;

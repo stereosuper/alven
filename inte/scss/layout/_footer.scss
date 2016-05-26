@@ -2,6 +2,7 @@
 
 #footer{
     padding: 70px 0 95px;
+    position: relative; // to stay above content-header
     background: $chapo;
 }
 

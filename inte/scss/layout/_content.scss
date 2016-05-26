@@ -1,0 +1,78 @@
+/* Content */
+
+.content-default{
+    padding-bottom: 50px;
+    position: relative;
+    > p, > h3, > h4, > h5, > h6, > ul, > ol{
+        padding: 0 $outterGutter;
+        margin-left: $colSmall;
+        margin-right: $colSmall;
+    }
+    .btn{
+        margin: 3.3em 0 0;
+    }
+    &:before, &:after{
+        @include themeBg;
+
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    &:before{
+        width: 1px;
+        height: 16px;
+        bottom: -8px;
+    }
+    &:after{
+        width: 36px;
+        height: 1px;
+        border-left: 10px solid #fff;
+        border-right: 10px solid #fff;
+        bottom: -1px;
+    }
+}
+
+.content-main{
+    border-bottom: 1px solid $greyBorder;
+    margin: 0 0 70px;
+}
+
+.content-header{
+    width: 100%;
+    padding: 100px 0 5px; // header height
+    top: 0;
+    background: $title;
+    .js &{
+        position: fixed;
+    }
+    &.has-img{
+        padding: 145px 0 130px;
+        background: #000;
+    }
+    .container{
+        position: relative;
+        z-index: 10;
+    }
+    .img{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0.6;
+        background-size: cover;
+        background-position: 50% 50%;
+        img{
+            opacity: 0;
+        }
+    }
+}
+
+
+.content-footer{
+    padding: 0 0 60px;
+    border-bottom: 1px solid $greyBorder;
+    margin: 0 0 80px;
+}

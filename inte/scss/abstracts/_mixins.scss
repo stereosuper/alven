@@ -103,6 +103,18 @@
   }
 }
 
+@mixin btnNoTextBefore(){
+    white-space: nowrap;
+    overflow: hidden;
+    text-indent: 99em;
+    line-height: 0;
+    &:before{
+      float: left;
+      margin: 0;
+      text-indent: 0;
+    }
+}
+
 
 // Fonts
 @mixin fontIcon(){

@@ -92,12 +92,18 @@
 
 
 [class^='icon-'], [class*=' icon-']{
-    @include fontIcon;
+    &:before{
+        @include fontIcon;
+    }
 }
 
 $icons: (
     arrow-body: '\e900',
-    arrow-tip:  '\e901'
+    arrow-tip:  '\e901',
+    search:     '\e902',
+    linkedin:   '\e903',
+    medium:     '\e904',
+    twitter:    '\e905'
 );
 @each $name, $icon in $icons {
     .icon-#{$name}::before {
