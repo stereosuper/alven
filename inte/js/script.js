@@ -44,6 +44,9 @@ $(function(){
             for(j; j<nbLetter; j++){
                 delay += 0.014;
                 delay = Math.round(delay*1000) / 1000;
+                if(letterArray[j] === ' '){
+                    letterArray[j] = '&nbsp;';
+                }
                 newHtmlBtn += '<span style="transition-delay:'+delay+'s">'+letterArray[j]+'</span>';
             }
             buttons.eq(i).html('<span class="before">'+newHtmlBtn+'</span><span class="after">'+textBtn+'</span>');
@@ -80,6 +83,10 @@ $(function(){
     if(buttons.length){
         setButtons();
     }
+
+    $('input').on('change', function(){
+        $(this).val() ? $(this).addClass('filled') : $(this).removeClass('filled');
+    });
 
 
     $(document).scroll(function(){

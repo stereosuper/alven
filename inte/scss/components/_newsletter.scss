@@ -1,0 +1,33 @@
+/* Newsletter */
+
+.newsletter{
+    padding: 60px 0 55px;
+    background: $gold;
+    color: $greyBlue;
+    h3, p, form{
+        vertical-align: middle;
+    }
+    h3, p{
+        margin: 0 $col 0 0;
+    }
+    h3{
+        font-family: $sourceBlack;
+        color: inherit;
+    }
+    p{
+        font-size: 1.4rem;
+        color: #626262;
+    }
+    fieldset{
+        width: 73%;
+    }
+    .btn-invert{
+        color: inherit;
+        border-color: currentColor;
+        &:hover, &:focus{
+            background: $greyBlue;
+            color: $gold;
+            border-color: $greyBlue;
+        }
+    }
+}

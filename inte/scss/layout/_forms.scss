@@ -7,8 +7,29 @@
 :-ms-input-placeholder{
 }
 
-fieldset{
+form{
 
+}
+
+fieldset{
+    display: inline-block;
+    padding: 0 $outterGutter 0 0;
+    position: relative;
+    vertical-align: bottom;
+}
+
+label{
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    font-family: $merriweatherIt;
+    font-size: 1.4rem;
+    cursor: text;
+    transform: translate3d(0, 0, 0);
+    transition: $transition;
+    .no-js &{
+        top: -30px;
+    }
 }
 
 input, textarea, select, button{
@@ -19,9 +40,49 @@ input, textarea, select, button{
 }
 
 input, textarea{
-  	&::-webkit-autofill{
-      	box-shadow: 0 0 0 1000px rgb(255, 255, 255) inset;
+    width: 100%;
+    padding: 5px 15px;
+    border: 0;
+    border-bottom: 2px solid $greyBlue;
+    font-size: 16px;
+    color: $greyBlue;
+  	&:-webkit-autofill{
+      	box-shadow: 0 0 0 1000px $gold inset;
   	}
+    &:hover{
+        opacity: 0.7;
+        + label{
+            opacity: 0.7;
+        }
+    }
+    &:focus{
+        border-color: $we;
+        opacity: 1;
+        + label{
+            color: $we;
+            opacity: 1;
+            transform: translate3d(0, -30px, 0);
+        }
+    }
+    &.filled{
+        + label{
+            transform: translate3d(0, -30px, 0);
+        }
+        &:invalid{
+            border-color: $magazine;
+            + label{
+                color: $magazine;
+            }
+        }
+    }
+    &:focus, &.filled{
+        &:valid{
+            border-color: $portfolio;
+            + label{
+                color: $portfolio;
+            }
+        }
+    }
 }
 
 select{

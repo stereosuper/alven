@@ -1,7 +1,7 @@
 /* Grid */
 
 #main{
-    padding: 20px 0 5px;
+    padding: 15px 0 5px;
     position: relative; // to stay above content-header
     background: #fff;
     .js &{
@@ -28,6 +28,9 @@
     display: inline-block;
     padding: 0 $innerGutter;
     vertical-align: top;
+    &.centered{
+        margin: 0 auto;
+    }
 }
 
 .col-1{

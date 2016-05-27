@@ -22,11 +22,13 @@
   'layout/header',
   'layout/footer',
   'layout/content',
-  'layout/post';
+  'layout/post',
+  'layout/section';
 
 @import
   'components/buttons',
-  'components/share';
+  'components/share',
+  'components/newsletter';
 
 @import
   'pages/home';

@@ -53,6 +53,10 @@ h3{
     font-size: 2.4rem;
     line-height: 1;
     margin: 2.1em 0 1.6em;
+    a{
+        box-shadow: none;
+        color: $chapo;
+    }
 }
 
 h4{
@@ -91,6 +95,7 @@ i, em{
 blockquote{
     padding: 0 50px;
     margin: 3.5em $colSmall*2 4em;
+    text-align: right;
     p{
         @include themeColor;
 
@@ -108,7 +113,10 @@ blockquote{
         }
     }
     footer{
-        text-align: right;
+        display: inline-block;
+        &:before{
+            content: '- ';
+        }
         span{
             display: block;
             font-family: $merriweatherIt;
@@ -193,12 +201,13 @@ code, pre{
     background: $grey;
 }
 
-time{
+time, .subtitle{
     @include themeColor;
 
-    font-family: $source;
-    font-size: 1.2rem;
+    font-family: $sourceLight;
+    font-size: 1.8rem;
     text-transform: uppercase;
+    letter-spacing: -0.04em;
 }
 
 
@@ -230,29 +239,8 @@ a{
     display: none !important;
 }
 
-.wrapper-alignment{
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-    box-sizing: border-box;
-}
-
-.content-align-middle{
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.content-align-top{
-    display: table-cell;
-    vertical-align: top;
-}
-
 .clearfix{
     @include clearfix;
-}
-
-.position-relative{
-    position: relative;
 }
 
 .align-center{
@@ -263,29 +251,4 @@ a{
 }
 .align-right{
     text-align: right;
-}
-
-.inline-b{
-    display: inline-block;
-    vertical-align: middle;
-    transform: translateY(-.1em);
-}
-
-.full-width{
-    width: 100%;
-}
-
-.wrapper-overflow-hidden{
-    position: relative;
-    overflow: hidden;
-}
-
-.img-fit{
-    &.compat-object-fit {
-        background-size: cover;
-        background-position: 50% 50%;
-        img { // hide image if object fit is not supported - opacity to 0 for the link area
-            opacity: 0;
-        }
-    }
 }
