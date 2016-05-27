@@ -60,19 +60,20 @@
                 bottom: -1px;
             }
             .img{
-                height: 0;
+                padding: 0;
                 &.on{
-                    height: 155px;
+                    padding: 0 0 74%;
                 }
             }
         }
     }
     .img{
-        height: 155px;
+        height: 0;
+        padding: 0 0 74%;
         overflow: hidden;
         transition: $transition;
         &.off{
-            height: 0;
+            padding: 0;
         }
     }
     h4{
@@ -96,12 +97,12 @@
     color: $title;
 }
 
+
 .spotlight-posts{
     padding: 0 0 80px;
     position: relative; // to stay above content-header
     background: $greyMedium;
 }
-
 .spotlight-post{
     position: relative;
     &:before{
@@ -135,6 +136,9 @@
         margin: 0 0 10px;
         font-size: 1.4rem;
         line-height: 1.2;
+        &:last-of-type{
+            margin-bottom: 15px;
+        }
     }
     ul{
         padding: 0;
@@ -148,9 +152,6 @@
             }
         }
     }
-    .btn-caps-arrow{
-        margin: 10px 0 0;
-    }
 }
 
 
@@ -162,7 +163,6 @@
         font-size: 3.2rem;
     }
 }
-
 .read-also-post{
     position: relative;
     time, .btn-cat{

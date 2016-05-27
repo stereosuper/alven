@@ -1,6 +1,9 @@
 /* Responsive horizontal */
-@media (max-width: 1024px){
-
+@media (max-width: 1150px){
+    .container-small{
+        padding: 0;
+        margin: 0;
+    }
 }
 
 @media (max-width: 979px){
@@ -8,7 +11,13 @@
 }
 
 @media (max-width: 767px){
+    body{
+        font-size: 1.4em;
+    }
 
+    h1{
+        font-size: 3.6rem;
+    }
 }
 
 @media (max-width: 480px){

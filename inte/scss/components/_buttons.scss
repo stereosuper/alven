@@ -1,7 +1,6 @@
 /* Buttons */
 
 .btn, .btn-arrow, .btn-caps-arrow{
-    display: inline-block;
     position: relative;
     line-height: 1;
     &:before, &:after{
@@ -16,7 +15,7 @@
     &:before{
         content: '\e900';
         height: 16px;
-        top: 0;
+        bottom: 2px;
         right: -25px;
         font-size: 16px;
         transform-origin: 100% 50%;
@@ -25,8 +24,8 @@
         content: '\e901';
         height: 9px;
         font-size: 9px;
-        top: 1px;
         right: -28px;
+        bottom: 5px;
     }
     &:hover, &:focus{
         &:after{
@@ -50,6 +49,7 @@
     @include themeBg;
     @include themeBorder;
 
+    display: inline-block;
     padding: 21px 47px 19px 17px;
     border: 3px solid;
     box-shadow: none;
@@ -57,9 +57,13 @@
     color: #fff;
     overflow: hidden;
     &:before{
+        top: 0;
+        bottom: 0;
         right: 20px;
     }
     &:after{
+        top: 1px;
+        bottom: 0;
         right: 17px;
     }
     .before{

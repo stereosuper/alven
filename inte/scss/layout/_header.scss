@@ -20,6 +20,7 @@
         position: relative;
     }
     a{
+        display: inline-block;
         transition: opacity $transition;
     }
     .btn-search{

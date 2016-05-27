@@ -51,15 +51,15 @@ $(function(){
     }
 
     function setSidebarScroll(){
-        var sidebarMargin = 50, sidebarHeight = postSidebar.innerHeight(),
+        var sidebarMargin = 20, sidebarHeight = postSidebar.innerHeight(),
             contentTop = mainContent.offset().top, contentHeight = mainContent.innerHeight();
 
-        if(sidebarHeight < contentHeight + sidebarMargin*2){
+        if(sidebarHeight < contentHeight + sidebarMargin*2 && sidebarHeight + headerHeight + sidebarMargin < windowHeight){
             if(myScroll >= postSidebarTop - headerHeight - sidebarMargin){
-                postSidebar.css({top: headerHeight + sidebarMargin, width: postSidebar.innerWidth()}).removeClass('fixedBot').addClass('fixed');
-
                 if(myScroll + sidebarHeight + headerHeight + sidebarMargin > contentTop + contentHeight - sidebarMargin){
                     postSidebar.css({top: contentHeight - sidebarMargin - sidebarHeight + 20}).removeClass('fixed').addClass('fixedBot');
+                }else{
+                    postSidebar.css({top: headerHeight + sidebarMargin, width: postSidebar.innerWidth()}).removeClass('fixedBot').addClass('fixed');
                 }
 
                 if(myScroll > (contentHeight+contentTop)/2){
@@ -72,6 +72,8 @@ $(function(){
             }else{
                 postSidebar.css({top: 0}).removeClass('fixed fixedBot');
             }
+        }else{
+            postSidebar.css({top: 0}).removeClass('fixed fixedBot');
         }
     }
 
