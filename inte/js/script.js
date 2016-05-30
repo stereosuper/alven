@@ -48,6 +48,11 @@ $(function(){
         }
     }
 
+    function animTxt(splitText){
+        splitText.split({type:'words'});
+        TweenMax.staggerFrom(splitText.words, 0.3, {ease:Expo.easeInOut, opacity:0, y:100}, 0.03);
+    }
+
     function setSidebarScroll(){
         var sidebarMargin = 20, sidebarHeight = postSidebar.innerHeight(),
             contentTop = mainContent.offset().top, contentHeight = mainContent.innerHeight();
@@ -116,6 +121,13 @@ $(function(){
             }
         }
 
+        if(contentHeader.length){
+            if(contentHeader.find('.img').length){
+                TweenMax.set(contentHeader.find('.img'), {y: '-'+myScroll/40+'%'});
+                TweenMax.set(contentHeader.find('h1'), {y: '-'+myScroll/4+'%'});
+            }
+        }
+
         if(postSidebar.length && mainContent.length){
             setSidebarScroll();
         }
@@ -137,8 +149,15 @@ $(function(){
 	$(window).load(function(){
         docHeight = $(document).height();
 
-        if(main.length && contentHeader.length){
-            main.css('marginTop', contentHeader.innerHeight());
+        if(contentHeader.length){
+            if(main.length){
+                main.css('marginTop', contentHeader.innerHeight());
+            }
+            if(contentHeader.find('h1').length){
+                var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
+                contentHeader.find('h1').css('opacity', 1);
+                animTxt(splitText);
+            }
         }
 
         if(postSidebar.length){

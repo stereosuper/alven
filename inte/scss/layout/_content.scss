@@ -50,6 +50,9 @@
     background: $title;
     .js &{
         position: fixed;
+        h1{
+            opacity: 0;
+        }
     }
     &.has-img{
         padding: 145px 0 130px;
