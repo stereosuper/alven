@@ -7,10 +7,11 @@ $(function(){
         docHeight = $(document).height(),
         windowHeight = $(window).height(),
         buttons = $('.btn'),
+        buttonsInvert = $('.btn-invert'),
         main = $('#main'),
         contentHeader = $('#contentHeader'),
         postSidebar = $('#postSidebar'),
-        postSidebarTop = 0;
+        postSidebarTop = 0 /*postSidebarPos = 0,*/;
 
     /**** VARIABLES ****/
 
@@ -18,19 +19,13 @@ $(function(){
     /**** INIT ****/
 
     function detectScrollDir(){
-        if(myScroll > lastScrollTop){
-            scrollDir = -1;
-        }else if(myScroll < lastScrollTop){
-            scrollDir = 1;
-        }else{
-            scrollDir = 0;
-        }
+        scrollDir = myScroll > lastScrollTop ? -1 : 1;
         lastScrollTop = myScroll;
     }
 
 
 
-    function setButtons(){
+    function setButtons(buttons){
         var i = 0, nbButtons = buttons.length, letterArray = [],
             textBtn = '', j = 0, nbLetter = 0, newHtmlBtn = '',
             delay = 0;
@@ -42,14 +37,14 @@ $(function(){
             newHtmlBtn = '';
             delay = 0;
             for(j; j<nbLetter; j++){
-                delay += 0.014;
+                delay += 0.013;
                 delay = Math.round(delay*1000) / 1000;
                 if(letterArray[j] === ' '){
                     letterArray[j] = '&nbsp;';
                 }
                 newHtmlBtn += '<span style="transition-delay:'+delay+'s">'+letterArray[j]+'</span>';
             }
-            buttons.eq(i).html('<span class="before">'+newHtmlBtn+'</span><span class="after">'+textBtn+'</span>');
+            buttons.eq(i).html('<span class="bg"></span><span class="before">'+newHtmlBtn+'</span><span class="after">'+newHtmlBtn+'</span>');
         }
     }
 
@@ -75,13 +70,27 @@ $(function(){
             }else{
                 postSidebar.css({top: 0}).removeClass('fixed fixedBot');
             }
+            /*if(windowHeight >= sidebarHeight*2 + headerHeight){
+                if(myScroll >= contentTop && myScroll >= windowHeight/2 - sidebarHeight/2){
+                    if(myScroll + sidebarHeight + headerHeight + sidebarMargin > contentTop + contentHeight - sidebarHeight/2 - sidebarMargin){
+                        postSidebar.css({top: contentHeight - sidebarMargin - sidebarHeight + 20}).removeClass('fixed').addClass('fixedBot');
+                    }else{
+                        postSidebar.css({top: windowHeight/2 - sidebarHeight/2 + headerHeight - sidebarMargin, width: postSidebar.innerWidth()}).removeClass('fixedBot').addClass('fixed');
+                    }
+                }else{
+                    postSidebar.css({top: 0}).removeClass('fixed fixedBot');
+                }
+            }*/
         }else{
             postSidebar.css({top: 0}).removeClass('fixed fixedBot');
         }
     }
 
     if(buttons.length){
-        setButtons();
+        setButtons(buttons);
+    }
+    if(buttonsInvert.length){
+        setButtons(buttonsInvert);
     }
 
     $('input').on('change', function(){
@@ -101,8 +110,10 @@ $(function(){
         }
 
         if(readIndicator.length){
-            var readingPercent = myScroll/(docHeight-windowHeight);
-            TweenMax.set(readIndicator, {scaleX: readingPercent});
+            var readingPercent = (myScroll-mainContent.offset().top)/(mainContent.innerHeight()-windowHeight);
+            if(myScroll > mainContent.offset().top){
+                TweenMax.set(readIndicator, {scaleX: readingPercent});
+            }
         }
 
         if(postSidebar.length && mainContent.length){
@@ -117,6 +128,10 @@ $(function(){
         if(main.length && contentHeader.length){
             main.css('marginTop', contentHeader.innerHeight());
         }
+
+        if(postSidebar.length){
+            postSidebar.css({top: 0, width: '20%'}).removeClass('fixed fixedBot');
+        }
 	});
 
 	$(window).load(function(){
@@ -128,6 +143,7 @@ $(function(){
 
         if(postSidebar.length){
             postSidebarTop = postSidebar.offset().top;
+            //postSidebarPos = postSidebar.position().top;
         }
 	});
 

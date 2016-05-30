@@ -64,7 +64,7 @@
 
 // Theme
 
-@mixin themeBg($default : $grey){
+@mixin themeBg($default : $greyBlue){
   background: $default;
   .theme-magazine &{
       background: $magazine;
@@ -77,7 +77,7 @@
   }
 }
 
-@mixin themeColor($default : $grey){
+@mixin themeColor($default : $greyBlue){
   color: $default;
   .theme-magazine &{
       color: $magazine;
@@ -90,7 +90,7 @@
   }
 }
 
-@mixin themeBorder($default : $grey){
+@mixin themeBorder($default : $greyBlue){
   border-color: $default;
   .theme-magazine &{
       border-color: $magazine;

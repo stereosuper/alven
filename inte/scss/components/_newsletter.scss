@@ -18,16 +18,24 @@
         font-size: 1.4rem;
         color: #626262;
     }
+    form{
+        padding-left: $outterGutter;
+    }
     fieldset{
-        width: 73%;
+        width: 62.35%;
     }
     .btn-invert{
         color: inherit;
-        border-color: currentColor;
-        &:hover, &:focus{
+        border-color: $greyBlue;
+        .bg{
             background: $greyBlue;
-            color: $gold;
+        }
+        &:hover, &:focus{
             border-color: $greyBlue;
+            color: $gold;
+            .no-js &{
+                background: $greyBlue;
+            }
         }
     }
 }

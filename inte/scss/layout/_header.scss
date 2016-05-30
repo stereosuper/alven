@@ -4,7 +4,7 @@
     @include clearfix;
 
     width: 100%;
-    padding: 35px 0 30px;
+    padding: 45px 0 30px;
     border-bottom: 3px solid transparent;
     position: fixed;
     top: 0;
@@ -14,18 +14,28 @@
     font-size: 1.8rem;
     letter-spacing: -0.04em;
     color: #fff;
-    transform: translateY(10px);
+    transform: translate3d(0, 0, 0);
     transition: $transition;
     .container{
         position: relative;
     }
     a{
         display: inline-block;
+        color: inherit;
         transition: opacity $transition;
+    }
+    .btn-arrow{
+        &:after{
+            bottom: 2px;
+        }
+        &:before{
+            bottom: -1px;
+        }
     }
     .btn-search{
         float: right;
-        margin: 2px 0;
+        margin-top: 9px;
+        margin-bottom: 9px;
     }
     .post-title{
         position: absolute;
@@ -33,13 +43,13 @@
         left: $col*3;
         margin: 0 0 0 -12px;
         opacity: 0;
-        transition: $transition;
+        transition: $transition, background .2s ease;
     }
     &.fixed{
         border-color: $greyLight;
         background: #fff;
         color: $title;
-        transform: translateY(0);
+        transform: translate3d(0, -10px, 0);
         #logo{
             background: url(../layoutImg/alven-grey.png) no-repeat;
         }

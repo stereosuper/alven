@@ -32,7 +32,8 @@ $focus: #28626F;
 
 // Transitions
 
-$transition: .3s ease-in-out;
+$transitionFunction: cubic-bezier(0.75, 0, 0.125, 1);
+$transition: .25s $transitionFunction;
 
 
 // Fonts

@@ -8,6 +8,9 @@
         margin-left: $colSmall;
         margin-right: $colSmall;
     }
+    a:not(.btn):not(.btn-invert){
+        @include themeColor;
+    }
     .btn{
         margin: 3.3em 0 0;
     }
@@ -23,14 +26,14 @@
     &:before{
         width: 1px;
         height: 16px;
-        bottom: -8px;
+        bottom: -13px;
     }
     &:after{
         width: 36px;
         height: 1px;
         border-left: 10px solid #fff;
         border-right: 10px solid #fff;
-        bottom: -1px;
+        bottom: -6px;
     }
 }
 

@@ -1,8 +1,13 @@
 /* Buttons */
 
-.btn, .btn-invert, .btn-arrow, .btn-caps-arrow{
+.btn, .btn-invert, .btn-arrow{
     position: relative;
+    font-family: $sourceBlack;
+    font-size: 1.375rem;
     line-height: 1;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: $title;
     &:before, &:after{
         @include fontIcon();
 
@@ -37,16 +42,8 @@
     }
 }
 
-.btn, .btn-invert, .btn-caps-arrow{
-    font-family: $sourceBlack;
-    font-size: 1.375rem;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: $title;
-}
-
 .btn, .btn-invert{
-    @include themeBorder;
+    @include themeBorder($gold);
 
     display: inline-block;
     border: 3px solid;
@@ -56,6 +53,7 @@
     &:before{
         top: 0;
         bottom: 0;
+        z-index: 1;
     }
     &:after{
         top: 1px;
@@ -65,7 +63,7 @@
         span{
             display: inline-block;
             transform: translate3d(0, 0, 0);
-            transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1), transform 0.15s cubic-bezier(0.75, 0, 0.125, 1);
+            transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.1s cubic-bezier(0.75, 0, 0.125, 1);
         }
     }
     .after{
@@ -74,21 +72,38 @@
         left: 17px;
         opacity: 0;
         transform: translate3d(0, 40px, 0);
-        transition: opacity 0.3s cubic-bezier(0.75, 0, 0.125, 1), transform 0.3s cubic-bezier(0.75, 0, 0.125, 1);
+        transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+    }
+    .bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        transform-origin: 100% 0;
+        transform: translate3d(0, 100%, 0) scale(5);
+        backface-visibility: hidden;
+        transform-style: perserve-3d;
+        transition: .25s ease-in;
     }
     &:hover, &:focus{
         opacity: 1;
+        .bg{
+            transform: translate3d(0, 100%, 0) scale(5) rotate(90deg);
+            transition-delay: 0.15s;
+        }
         .before{
             span{
                 opacity: 0;
                 transform: translate3d(0, -40px, 0) scale(0.9);
-                transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1), transform 0.3s cubic-bezier(0.75, 0, 0.125, 1);
+                transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
             }
         }
         .after{
             opacity: 1;
             transform: translate3d(0, 0, 0);
-            transition: opacity 0.3s cubic-bezier(0.75, 0, 0.125, 1) 0.2s, transform 0.3s cubic-bezier(0.75, 0, 0.125, 1) 0.2s;
+            transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s, transform 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s;
         }
     }
     &:active{
@@ -96,10 +111,14 @@
     }
 }
 .btn{
-    @include themeBg;
+    @include themeBg($gold);
+    @include themeBorder($gold);
 
     padding: 21px 47px 19px 17px;
-    color: #fff;
+    color: $greyBlue;
+    .theme-magazine &, .theme-portfolio &, .theme-we &{
+        color: #fff;
+    }
     &:before{
         right: 20px;
     }
@@ -108,8 +127,11 @@
     }
     &:hover, &:focus{
         @include themeColor;
+        @include themeBorder;
 
-        background: transparent;
+        .no-js &{
+            background: transparent;
+        }
     }
 }
 .btn-invert{
@@ -123,23 +145,36 @@
     &:after{
         right: 7px;
     }
+    .after{
+        top: 13px;
+    }
     &:hover, &:focus{
-        @include themeBg;
         @include themeBorder;
 
         color: #fff;
+        .no-js &{
+            @include themeBg;
+        }
     }
 }
 
 .btn-search{
-    box-shadow: none;
+    margin: 0 38px 0 0;
+    font-family: $sourceBlack;
+    font-size: 1.375rem;
+    line-height: 1;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
     &:after{
         @include fontIcon;
 
         content: '\e902';
-        display: inline-block;
-        vertical-align: middle;
-        margin: 0 0 0 17px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 18px;
+        margin: auto;
         font-size: 20px;
         transform: translate3d(0, 0, 0);
         transition: transform $transition;

@@ -26,7 +26,7 @@ label{
     font-size: 1.4rem;
     cursor: text;
     transform: translate3d(0, 0, 0);
-    transition: $transition;
+    transition: .1s $transitionFunction;
     .no-js &{
         top: -30px;
     }

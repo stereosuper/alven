@@ -137,10 +137,10 @@
         transition: $transition;
     }
     h4{
-        @include themeColor;
-
         margin: 0 0 10px;
         font-size: 2.4rem;
+        word-wrap: break-word;
+        color: $magazine;
     }
     p{
         margin: 0 0 10px;
