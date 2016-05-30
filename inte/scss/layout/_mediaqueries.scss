@@ -20,7 +20,22 @@
 
     .read-also-posts{
         h4{
+            max-width: 90%;
             font-size: 2.8rem;
+        }
+    }
+}
+
+@media (max-width: 1225px){
+    #logo{
+        height: 0;
+        padding: 0 0 2.5%;
+        background-size: 100%;
+    }
+
+    .spotlight-post{
+        h4{
+            font-size: 1.8rem;
         }
     }
 }
@@ -35,6 +50,14 @@
         padding: 0;
         margin: 0;
     }
+
+    .spotlight-posts{
+        overflow-x: scroll;
+        cursor: move;
+        .container{
+            width: 1150px;
+        }
+    }
 }
 
 @media (max-width: 979px){
@@ -44,6 +67,13 @@
 
     h2{
         width: $col*10;
+    }
+
+    .menu-footer{
+        &.col-2, &.col-3{
+            width: $col*4;
+            margin: 0 $col 80px;
+        }
     }
 
     .post-sidebar{
@@ -69,16 +99,43 @@
     }
 
     h1{
+        width: $col*10;
         font-size: 3.6rem;
     }
 
     h2{
         font-size: 1.8rem;
     }
+
+    .read-also-post{
+        width: 50%;
+        &:first-of-type{
+            &:before, &:after{
+                display: none;
+            }
+        }
+        &:last-of-type{
+            display: none;
+        }
+    }
 }
 
-@media (max-width: 480px){
+@media (max-width: 540px){
+    h1{
+        width: 100%;
+    }
 
+    blockquote{
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .content-default{
+        > p, > h3, > h4, > h5, > h6, > ul, > ol{
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
 }
 
 /* retina */

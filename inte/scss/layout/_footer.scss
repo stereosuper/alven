@@ -16,8 +16,9 @@
         letter-spacing: -0.04em;
         + span{
             font-family: $sourceLight;
-            //text-transform: uppercase;
-            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            font-size: 1.35rem;
+            letter-spacing: -0.02em;
             line-height: 1;
         }
     }
@@ -25,10 +26,11 @@
         margin: 0;
         font-family: $source;
         color: #fff;
-        li{
-            &:before{
-                display: none;
-            }
+    }
+    li{
+        padding: 0;
+        &:before{
+            display: none;
         }
     }
     > ul{

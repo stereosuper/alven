@@ -38,6 +38,9 @@
         margin-bottom: 9px;
     }
     .post-title{
+        @include ellipsis;
+
+        max-width: 50%;
         position: absolute;
         top: 25px;
         left: $col*3;
@@ -51,7 +54,7 @@
         color: $title;
         transform: translate3d(0, -10px, 0);
         #logo{
-            background: url(../layoutImg/alven-grey.png) no-repeat;
+            background-image: url(../layoutImg/alven-grey.png);
         }
         .read-indicator{
             opacity: 1;

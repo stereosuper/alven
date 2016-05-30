@@ -159,6 +159,7 @@
 }
 
 .btn-search{
+    position: relative;
     margin: 0 38px 0 0;
     font-family: $sourceBlack;
     font-size: 1.375rem;
@@ -173,7 +174,7 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        right: 18px;
+        right: -38px;
         margin: auto;
         font-size: 20px;
         transform: translate3d(0, 0, 0);
