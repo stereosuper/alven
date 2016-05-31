@@ -33,11 +33,13 @@
         bottom: 5px;
     }
     &:hover, &:focus{
-        &:after{
-            transform: translate3d(0, 0, 0) translateX(7px);
-        }
-        &:before{
-            transform: translate3d(0, 0, 0) translateX(7px) scaleX(0.85);
+        .no-js &, .is-desktop &{
+            &:after{
+                transform: translate3d(0, 0, 0) translateX(7px);
+            }
+            &:before{
+                transform: translate3d(0, 0, 0) translateX(7px) scaleX(0.85);
+            }
         }
     }
 }
@@ -88,22 +90,24 @@
         transition: .25s ease-in;
     }
     &:hover, &:focus{
-        opacity: 1;
-        .bg{
-            transform: translate3d(0, 100%, 0) scale(5) rotate(90deg);
-            transition-delay: 0.15s;
-        }
-        .before{
-            span{
-                opacity: 0;
-                transform: translate3d(0, -40px, 0) scale(0.9);
-                transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-            }
-        }
-        .after{
+        .no-js &, .is-desktop &{
             opacity: 1;
-            transform: translate3d(0, 0, 0);
-            transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s, transform 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s;
+            .bg{
+                transform: translate3d(0, 100%, 0) scale(5) rotate(90deg);
+                transition-delay: 0.15s;
+            }
+            .before{
+                span{
+                    opacity: 0;
+                    transform: translate3d(0, -40px, 0) scale(0.9);
+                    transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+                }
+            }
+            .after{
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+                transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s, transform 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s;
+            }
         }
     }
     &:active{
@@ -126,12 +130,14 @@
         right: 17px;
     }
     &:hover, &:focus{
-        @include themeColor;
-        @include themeBorder;
-
+        @include themeColorHover;
+        @include themeBorderHover;
         .no-js &{
             background: transparent;
         }
+    }
+    &:active{
+        color: #fff;
     }
 }
 .btn-invert{
@@ -149,9 +155,10 @@
         top: 13px;
     }
     &:hover, &:focus{
-        @include themeBorder;
-
-        color: #fff;
+        @include themeBorderHover;
+        .no-js &, .is-desktop &{
+            color: #fff;
+        }
         .no-js &{
             @include themeBg;
         }
@@ -181,8 +188,10 @@
         transition: transform $transition;
     }
     &:hover, &:focus{
-        &:after{
-            transform: translate3d(0, 0, 0) rotate(-70deg) scale(1.1);
+        .no-js &, .is-desktop &{
+            &:after{
+                transform: translate3d(0, 0, 0) rotate(-70deg) scale(1.1);
+            }
         }
     }
 }

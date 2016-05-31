@@ -80,21 +80,42 @@
             line-height: 32px;
         }
         &:focus, &:hover{
-            opacity: 1;
+            .no-js &, .is-desktop &{
+                opacity: 1;
+            }
+        }
+        &:active{
+            color: inherit;
+            opacity: 0.7;
         }
     }
     .icon-twitter{
         &:hover, &:focus{
+            .no-js &, .is-desktop &{
+                background: #1da1f2;
+            }
+        }
+        &:active{
             background: #1da1f2;
         }
     }
     .icon-medium{
         &:hover, &:focus{
+            .no-js &, .is-desktop &{
+                background: #00ab6c;
+            }
+        }
+        &:active{
             background: #00ab6c;
         }
     }
     .icon-linkedin{
         &:hover, &:focus{
+            .no-js &, .is-desktop &{
+                background: #2672ae;
+            }
+        }
+        &:active{
             background: #2672ae;
         }
     }

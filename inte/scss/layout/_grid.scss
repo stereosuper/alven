@@ -3,6 +3,7 @@
 #main{
     padding: 15px 0 5px;
     position: relative; // to stay above content-header
+    z-index: 10;
     background: #fff;
     .js &{
         margin: 495px 0 0; // height of content-header

@@ -76,6 +76,18 @@
       background: $we;
   }
 }
+@mixin themeBgHover($default : $greyBlue){
+    background: $default;
+    .no-js .theme-magazine &, .is-desktop .theme-magazine &{
+        background: $magazine;
+    }
+    .no-js .theme-portfolio &, .is-desktop .theme-portfolio &{
+        background: $portfolio;
+    }
+    .no-js .theme-we &, .is-desktop .theme-we &{
+        background: $we;
+    }
+}
 
 @mixin themeColor($default : $greyBlue){
   color: $default;
@@ -89,6 +101,18 @@
       color: $we;
   }
 }
+@mixin themeColorHover($default : $greyBlue){
+    color: $default;
+    .no-js .theme-magazine &, .is-desktop .theme-magazine &{
+        color: $magazine;
+    }
+    .no-js .theme-portfolio &, .is-desktop .theme-portfolio &{
+        color: $portfolio;
+    }
+    .no-js .theme-we &, .is-desktop .theme-we &{
+        color: $we;
+    }
+}
 
 @mixin themeBorder($default : $greyBlue){
   border-color: $default;
@@ -101,6 +125,18 @@
   .theme-we &{
       border-color: $we;
   }
+}
+@mixin themeBorderHover($default : $greyBlue){
+    border-color: $default;
+    .no-js .theme-magazine &, .is-desktop .theme-magazine &{
+        border-color: $magazine;
+    }
+    .no-js .theme-portfolio &, .is-desktop .theme-portfolio &{
+        border-color: $portfolio;
+    }
+    .no-js .theme-we &, .is-desktop .theme-we &{
+        border-color: $we;
+    }
 }
 
 @mixin btnNoTextBefore(){

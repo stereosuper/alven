@@ -31,10 +31,12 @@
             background: $greyBlue;
         }
         &:hover, &:focus{
-            border-color: $greyBlue;
-            color: $gold;
-            .no-js &{
-                background: $greyBlue;
+            .no-js &, .is-desktop &{
+                border-color: $greyBlue;
+                color: $gold;
+                .no-js &{
+                    background: $greyBlue;
+                }
             }
         }
     }

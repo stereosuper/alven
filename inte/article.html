@@ -194,67 +194,79 @@
 
         </main>
 
-        <section class='spotlight-posts'>
-            <div class='container'>
+        <section class='spotlight-posts' id='spotlightPost'>
+            <div class='container' id='spotlightDrag'>
                 <div class='grid'>
                     <div class='col-2 spotlight-post'>
                         <div>
-                            <h4><a href='#'>Android Dev</a></h4>
-                            <p>
-                                {<br>
-                                var:= your.Java Skill;<br>
-                                if Years.worked > 3<br>
-                                then Apply here<br>
-                                else<br> ...
-                            </p>
-                            <a href='#' class='btn-arrow'>Let's start coding</a>
+                            <div class='content'>
+                                <h4><a href='#'>Android Dev</a></h4>
+                                <p>
+                                    {<br>
+                                    var:= your.Java Skill;<br>
+                                    if Years.worked > 3<br>
+                                    then Apply here<br>
+                                    else<br> ...
+                                </p>
+                                <a href='#' class='btn-arrow'>Let's start coding</a>
+                            </div>
                         </div>
                     </div><div class='col-2 spotlight-post'>
                         <div>
-                            <h4><a href='#'>COO wanted</a></h4>
-                            <p>
-                                <strong>You are a humble yet efficient executive leading by example?</strong><br><br>
-                                You have nurtured teams and grown company 2-5x in a few years?
-                            </p>
-                            <a href='#' class='btn-arrow'>You're the one</a>
+                            <div class='content'>
+                                <h4><a href='#'>COO wanted</a></h4>
+                                <p>
+                                    <strong>You are a humble yet efficient executive leading by example?</strong><br><br>
+                                    You have nurtured teams and grown company 2-5x in a few years?
+                                </p>
+                                <a href='#' class='btn-arrow'>You're the one</a>
+                            </div>
                         </div>
                     </div><div class='col-2 spotlight-post'>
                         <div>
-                            <h4><a href='#'>Growth vs. profits</a></h4>
-                            <p>
-                                n.m.: An exit is the way a successful company is sold to a third party by its initial team of founders and ...
-                            </p>
-                            <a href='#' class='btn-arrow'>Full definition</a>
+                            <div class='content'>
+                                <h4><a href='#'>Growth vs. profits</a></h4>
+                                <p>
+                                    n.m.: An exit is the way a successful company is sold to a third party by its initial team of founders and ...
+                                </p>
+                                <a href='#' class='btn-arrow'>Full definition</a>
+                            </div>
                         </div>
                     </div><div class='col-2 spotlight-post'>
                         <div>
-                            <h4><a href='#'>Reading list March 2016</a></h4>
-                            <p>
-                                Articles from around the web that smart people should read:
-                            </p>
-                            <ul>
-                                <li><a href='#'>Feeds vs. Streams</a></li>
-                                <li><a href='#'>How to create a culture of growth</a></li>
-                            </ul>
-                            <p>...</p>
-                            <a href='#' class='btn-arrow'>The entire list</a>
+                            <div class='content'>
+                                <h4><a href='#'>Reading list March 2016</a></h4>
+                                <p>
+                                    Articles from around the web that smart people should read:
+                                </p>
+                                <ul>
+                                    <li><a href='#'>Feeds vs. Streams</a></li>
+                                    <li><a href='#'>How to create a culture of growth</a></li>
+                                </ul>
+                                <p>...</p>
+                                <a href='#' class='btn-arrow'>The entire list</a>
+                            </div>
                         </div>
                     </div><div class='col-2 spotlight-post'>
                         <div>
-                            <h4><a href='#'>Demo Day July 17th - 7pm Paris</a></h4>
-                            <p>
-                                15 startups are pitching and networking.<br><br>
-                                In Paris, 15 rue des 4 vents ...
-                            </p>
-                            <a href='#' class='btn-arrow'>Details</a>
+                            <div class='content'>
+                                <h4><a href='#'>Demo Day July 17th - 7pm Paris</a></h4>
+                                <p>
+                                    15 startups are pitching and networking.<br><br>
+                                    In Paris, 15 rue des 4 vents ...
+                                </p>
+                                <a href='#' class='btn-arrow'>Details</a>
+                            </div>
                         </div>
                     </div><div class='col-2 spotlight-post'>
                         <div>
-                            <h4><a href='#'>Innov&Connect Forum 2016 - May 15th</a></h4>
-                            <p>
-                                You have nurtured teams and grown company 2-5x in a few years?
-                            </p>
-                            <a href='#' class='btn-arrow'>Details</a>
+                            <div class='content'>
+                                <h4><a href='#'>Innov&Connect Forum 2016 - May 15th</a></h4>
+                                <p>
+                                    You have nurtured teams and grown company 2-5x in a few years?
+                                </p>
+                                <a href='#' class='btn-arrow'>Details</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -307,9 +319,11 @@
             </div>
         </footer>
 
+        <script src='js/isMobile.min.js'></script>
         <script src='js/jquery-1.11.2.min.js'></script>
         <script src='js/TweenMax.min.js'></script>
         <script src='js/splitText.min.js'></script>
+        <script src='js/draggable.min.js'></script>
         <script src='js/script.js'></script>
 
     </body>

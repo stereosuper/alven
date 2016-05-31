@@ -9,12 +9,29 @@
         margin-right: $colSmall;
     }
 
-    .spotlight-post{
-        h4{
-            font-size: 2.1rem;
+    #menu-main{
+        width: auto;
+        li{
+            width: auto;
+            margin: 0 120px 0 0;
         }
-        > div{
-            padding: 0 15px 20px;
+    }
+
+    .spotlight-posts{
+        overflow: hidden;
+        .container{
+            width: 1420px;
+        }
+        .no-js &{
+            overflow-x: scroll;
+        }
+        .js &{
+            .container{
+                cursor: grab;
+                &.grabbing{
+                    cursor: grabbing;
+                }
+            }
         }
     }
 
@@ -27,16 +44,46 @@
 }
 
 @media (max-width: 1225px){
+    .post-title{
+        font-size: 2.4rem;
+    }
+
+    #header{
+        .post-title{
+            top: 30px;
+        }
+        &.fixed{
+            &.on{
+                .single &{
+                    #menu-main{
+                        transform: translate3d(0, -20px, 0);
+                    }
+                }
+            }
+        }
+    }
+
+    #menu-main{
+        li{
+            margin: 0 70px 0 0;
+            &:before{
+                left: -5px;
+            }
+            &:after{
+                left: -13px;
+            }
+            &.active{
+                &:after{
+                    width: 20px;
+                }
+            }
+        }
+    }
+
     #logo{
         height: 0;
         padding: 0 0 2.5%;
         background-size: 100%;
-    }
-
-    .spotlight-post{
-        h4{
-            font-size: 1.8rem;
-        }
     }
 }
 
@@ -50,14 +97,6 @@
         padding: 0;
         margin: 0;
     }
-
-    .spotlight-posts{
-        overflow-x: scroll;
-        cursor: move;
-        .container{
-            width: 1150px;
-        }
-    }
 }
 
 @media (max-width: 979px){
@@ -69,6 +108,38 @@
         width: $col*10;
     }
 
+    .post-title{
+        font-size: 2rem;
+    }
+
+    #header{
+        .btn-search, .post-title{
+            display: none;
+        }
+        /*&.fixed{
+            &.on{
+                .single &{
+                    #menu-main{
+                        transform: translate3d(0, -15px, 0);
+                    }
+                }
+            }
+        }*/
+    }
+
+    #menu-main{
+        display: none;
+    }
+
+    #logo{
+        width: 170px;
+        height: 27px;
+        padding: 0;
+    }
+
+    #footer{
+        padding-bottom: 0;
+    }
     .menu-footer{
         &.col-2, &.col-3{
             width: $col*4;
@@ -107,6 +178,15 @@
         font-size: 1.8rem;
     }
 
+    .spotlight-post{
+        h4{
+            font-size: 2rem;
+        }
+        p, ul{
+            font-size: 1.2rem;
+        }
+    }
+
     .read-also-post{
         width: 50%;
         &:first-of-type{
@@ -136,7 +216,97 @@
             margin-right: 0;
         }
     }
+
+    #footer{
+        padding: 35px 0 45px;
+    }
+    .menu-footer{
+        &.col-2, &.col-3{
+            width: 100%;
+            margin-right: 0;
+            margin-left: 0;
+        }
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+
+    .read-also-post{
+        width: auto;
+        &:nth-child(2){
+            display: none;
+        }
+    }
 }
+
+@media (max-width: 420px){
+    h2{
+        width: auto;
+        padding: 0 20px;
+    }
+
+    blockquote{
+        padding: 0 20px;
+    }
+
+    .content-default{
+        > p, > h3, > h4, > h5, > h6, > ul, > ol{
+            padding: 0;
+        }
+    }
+
+    .spotlight-posts{
+        .container{
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+    }
+    .spotlight-post{
+        transition: $transition;
+        > div{
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
+        &.off{
+            opacity: 0.4;
+            .content{
+                opacity: 1;
+            }
+        }
+        &:hover{
+            > div{
+                transform: translate3d(0, 0, 0);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+@media (max-height: 1000px){
+    h1{
+        margin: 8vh auto;
+    }
+}
+
+@media (max-height: 850px){
+    h1{
+        margin: 6vh auto 4vh;
+    }
+
+    .post-meta-header{
+        .share{
+            margin: 3em 0 0;
+        }
+    }
+}
+
+
+
+
 
 /* retina */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
