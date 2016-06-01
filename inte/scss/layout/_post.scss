@@ -110,6 +110,7 @@
 
 .spotlight-posts{
     position: relative; // to stay above content-header
+    overflow: hidden;
     z-index: 10;
     background: $greyMedium;
     .container{

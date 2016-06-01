@@ -1,0 +1,44 @@
+.menu-small{
+    font-size: 1.4rem;
+    ul{
+        margin: 0;
+        font-family: $source;
+        color: #fff;
+    }
+    li{
+        padding: 0;
+        &:before{
+            display: none;
+        }
+    }
+    > ul{
+        padding: 20px 0 0;
+        line-height: 1.8;
+        ul{
+            padding: 10px 0 0 15px;
+            line-height: 1.2;
+        }
+    }
+    a{
+        box-shadow: none;
+        &:active{
+            color: $gold;
+        }
+    }
+}
+
+.menu-title{
+    display: block;
+    font-family: $sourceBold;
+    font-size: 2.2rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+.menu-subtitle{
+    display: inline-block;
+    font-family: $sourceLight;
+    text-transform: uppercase;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+}

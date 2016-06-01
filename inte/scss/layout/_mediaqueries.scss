@@ -27,9 +27,14 @@
         }
         .js &{
             .container{
+                cursor: move;
                 cursor: grab;
+                cursor: -moz-grab;
+                cursor: -webkit-grab;
                 &.grabbing{
                     cursor: grabbing;
+                    cursor: -moz-grabbing;
+                    cursor: -webkit-grabbing;
                 }
             }
         }
@@ -113,8 +118,13 @@
     }
 
     #header{
-        .btn-search, .post-title{
+        .post-title{
             display: none;
+        }
+        .btn-search{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-right: 95px;
         }
         /*&.fixed{
             &.on{
@@ -131,6 +141,14 @@
         display: none;
     }
 
+    #menu-responsive{
+        display: block;
+    }
+
+    #burger{
+        display: block;
+    }
+
     #logo{
         width: 170px;
         height: 27px;
@@ -140,7 +158,7 @@
     #footer{
         padding-bottom: 0;
     }
-    .menu-footer{
+    .menu-small{
         &.col-2, &.col-3{
             width: $col*4;
             margin: 0 $col 80px;
@@ -217,10 +235,40 @@
         }
     }
 
+    #header{
+        .btn-search{
+            width: 21px;
+            margin-right: 50px;
+            text-indent: -99em;
+            box-shadow: none;
+            &:after{
+                text-indent: 0;
+                right: 0;
+            }
+        }
+    }
+
+    #menu-responsive{
+        > div{
+            position: relative;
+            top: 50px;
+            transform: none;
+        }
+        .menu-small{
+            display: block;
+            max-width: 240px;
+            margin-left: auto;
+            margin-right: auto;
+            &:nth-child(3){
+                margin-bottom: 80px;
+            }
+        }
+    }
+
     #footer{
         padding: 35px 0 45px;
     }
-    .menu-footer{
+    .menu-small{
         &.col-2, &.col-3{
             width: 100%;
             margin-right: 0;
@@ -300,6 +348,16 @@
     .post-meta-header{
         .share{
             margin: 3em 0 0;
+        }
+    }
+}
+
+@media (max-height: 610px){
+    #menu-responsive{
+        > div{
+            position: relative;
+            top: 50px;
+            transform: none;
         }
     }
 }

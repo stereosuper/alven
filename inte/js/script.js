@@ -15,7 +15,10 @@ $(function(){
         postSidebar = $('#postSidebar'),
         postSidebarTop = 0 /*postSidebarPos = 0,*/, postSidebarWidth = 0,
         spotlightPost = $('#spotlightPost'),
-        spotlightDrag = false;
+        spotlightDrag = false,
+        related = $('#related'),
+        menu = $('#menu-responsive'),
+        controller = new ScrollMagic.Controller();
 
     /**** VARIABLES ****/
 
@@ -137,19 +140,93 @@ $(function(){
         }
     }
 
+    function setScrollElmts(elmts){
+        var nbElmts = elmts.length, i = 0;
+
+        TweenMax.set(elmts, {opacity: 0});
+
+        for(i; i<nbElmts; i++){
+            new ScrollMagic.Scene({ triggerElement: elmts[i] })
+                .triggerHook(0.7)
+                .setTween( TweenMax.to(elmts.eq(i), 0.25, {opacity: 1}) )
+                //.addIndicators()
+                .addTo(controller);
+        }
+    }
+
+    function setMenuElmts(){
+        TweenMax.set(menu.find('.menu-title'), {y: '-100%', opacity: 0});
+        TweenMax.set(menu.find('.menu-subtitle'), {y: '-100%', opacity: 0});
+        TweenMax.set(menu.find('li'), {y: '-120%', opacity: 0});
+    }
+
 
 
     isMobile.any ? htmlTag.addClass('is-mobile') : htmlTag.addClass('is-desktop');
 
     if(buttons.length){
         setButtons(buttons);
+        setScrollElmts(buttons);
     }
     if(buttonsInvert.length){
         setButtons(buttonsInvert);
+        setScrollElmts(buttonsInvert);
     }
+
     if(spotlightPost.length){
         setSpotlightPost();
+
+        TweenMax.set(spotlightPost.find('.spotlight-post'), {y: '-100%'});
+
+        new ScrollMagic.Scene({ triggerElement: '#spotlightPost' })
+            .triggerHook(0.9)
+            .setTween( TweenMax.staggerTo(spotlightPost.find('.spotlight-post'), 0.25, {y: '0%'}, 0.1) )
+            //.addIndicators()
+            .addTo(controller);
     }
+
+    if(related.length){
+        var relatedPosts = related.find('.read-also-post'), nbRePosts = relatedPosts.length, i = 0;
+        TweenMax.set(relatedPosts, {opacity: 0});
+
+        for(i; i<nbRePosts; i++){
+            new ScrollMagic.Scene({ triggerElement: '#related' })
+                .triggerHook(0.7)
+                .setTween( TweenMax.staggerTo(relatedPosts, 0.25, {opacity: 1}, 0.1) )
+                //.addIndicators()
+                .addTo(controller);
+        }
+    }
+
+    if(mainContent.length){
+        if(mainContent.find('img').length){
+            var imgs = mainContent.find('img').not('.no-scroll');
+            setScrollElmts(imgs);
+        }
+    }
+
+    if(menu.length){
+        setMenuElmts();
+    }
+
+
+    $('#burger').on('click', function(e){
+        e.preventDefault();
+        htmlTag.toggleClass('menu-open');
+        if(htmlTag.hasClass('menu-open')){
+            setTimeout(function(){
+                var i = 0, nbMenu = menu.find('.menu-small').length;
+
+                for(i; i<nbMenu; i++){
+                    TweenMax.to(menu.find('.menu-title').eq(i), 0.25, {y: '0%', opacity: 1});
+                    TweenMax.to(menu.find('.menu-subtitle').eq(i), 0.25, {y: '0%', opacity: 1}).delay(0.05);
+                    TweenMax.staggerTo(menu.find('.menu-small').eq(i).find('li'), 0.25, {y: '0%', opacity: 1}, 0.08);
+                }
+            }, 380);
+        }else{
+            setMenuElmts();
+        }
+    });
 
     $('input').on('change', function(){
         $(this).val() ? $(this).addClass('filled') : $(this).removeClass('filled');
@@ -160,10 +237,10 @@ $(function(){
         myScroll = $(document).scrollTop();
         detectScrollDir();
 
-        if(mainContent.length){
+        if(mainContent.length && !htmlTag.hasClass('menu-open')){
             myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
             if(header.hasClass('fixed')){
-                scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
+                scrollDir < 0 ? header.addClass('on@') : header.removeClass('on');
             }
         }
 
@@ -175,9 +252,9 @@ $(function(){
         }
 
         if(contentHeader.length && !isMobile.any){
+            TweenMax.set(contentHeader.find('h1'), {y: '-'+myScroll/4+'%'});
             if(contentHeader.find('.img').length){
                 TweenMax.set(contentHeader.find('.img'), {y: '-'+myScroll/40+'%'});
-                TweenMax.set(contentHeader.find('h1'), {y: '-'+myScroll/4+'%'});
             }
         }
 
@@ -191,12 +268,17 @@ $(function(){
         windowHeight = $(window).height();
         windowWidth = $(window).width();
 
+        if(windowWidth > 979){
+            htmlTag.removeClass('menu-open');
+        }
+
         if(main.length && contentHeader.length){
             main.css('marginTop', contentHeader.innerHeight());
         }
 
         if(postSidebar.length){
             postSidebar.css({top: 0, width: '20%'}).removeClass('fixed fixedBot');
+            postSidebarTop = postSidebar.offset().top;
             postSidebarWidth = postSidebar.innerWidth() - 1;
         }
 

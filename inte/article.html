@@ -30,7 +30,50 @@
                 </nav>
                 <span class='post-title'>Captain Train and Trainline combine strength</span>
                 <a id='searchBtn' class='btn-search' href='#'>Explore Alven</a>
-                <!--<button id='burger'></button>-->
+                <button id='burger'>
+                    <span>Menu</span>
+                </button>
+                <nav role='navigation' id='menu-responsive'>
+                    <div>
+                        <div class='col-3 menu-small'>
+                            <span class='menu-title'>Think, read, exchange</span>
+                            <span class='menu-subtitle'>alven online magazine</span>
+                            <ul>
+                                <li><a href='#'>About us</a></li>
+                                <li><a href='#'>Our investment thesis</a></li>
+                                <li><a href='#'>The process to pitch us</a></li>
+                            </ul>
+                        </div><div class='col-3 menu-small'>
+                            <span class='menu-title'>Who we are</span>
+                            <span class='menu-subtitle'>a stichy & professionnal team</span>
+                            <ul>
+                                <li><a href='#'>Who we are</a></li>
+                                <li><a href='#'>About us</a></li>
+                                <li><a href='#'>Our investment thesis</a></li>
+                                <li><a href='#'>The process to pitch us</a></li>
+                            </ul>
+                        </div><div class='col-2 menu-small'>
+                            <span class='menu-title'>Portfolio</span>
+                            <span class='menu-subtitle'>what we fund, what we funded</span>
+                            <ul>
+                                <li>
+                                    <a href='#'>Portfolio</a>
+                                    <ul>
+                                        <li><a href='#'>Actual investments</a></li>
+                                        <li><a href='#'>Past investments</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><div class='col-2 menu-small'>
+                            <span class='menu-title'>Contact us</span>
+                            <span class='menu-subtitle'>get in touch with us</span>
+                            <ul>
+                                <li><a href='#'>Send us your pitch</a></li>
+                                <li><a href='#'>General questions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
             <div id='readIndicator' class='read-indicator'></div>
         </header>
@@ -136,7 +179,7 @@
 
                                 <ul>
                                     <li>
-                                        <div class='img'><img src='img/drivy.jpg' alt=''></div>
+                                        <div class='img'><img src='img/drivy.jpg' alt='' class='no-scroll'></div>
                                         <h4><a href='#'>Drivy continues its unstoppable rise with a $35M round</a></h4>
                                         <div class='post-meta'>
                                             <a href='#' class='btn-cat'>News</a> -
@@ -145,7 +188,7 @@
                                         <a href='#' class='btn-arrow'>Read</a>
                                     </li>
                                     <li>
-                                        <div class='img'><img src='img/emails.jpg' alt=''></div>
+                                        <div class='img'><img src='img/emails.jpg' alt='' class='no-scroll'></div>
                                         <h4><a href='#'>Getting 100+ pitch emails a day : how not to miss the hidden gem?</a></h4>
                                         <div class='post-meta'>
                                             <a href='#' class='btn-cat'>News</a> -
@@ -163,7 +206,7 @@
 
             </section>
 
-            <footer class='content-footer read-also-posts'>
+            <footer class='content-footer read-also-posts' id='related'>
                 <div class='container'>
                     <div class='grid'>
                         <div class='col-4 read-also-post'>
@@ -277,26 +320,26 @@
             <div class='container'>
                 <div class='container-small'>
                     <div class='grid'>
-                        <div class='col-3 menu-footer'>
-                            <span class='menu-footer-title'>Think, read, exchange</span>
-                            <span>alven online magazine</span>
+                        <div class='col-3 menu-small'>
+                            <span class='menu-title'>Think, read, exchange</span>
+                            <span class='menu-subtitle'>alven online magazine</span>
                             <ul>
                                 <li><a href='#'>About us</a></li>
                                 <li><a href='#'>Our investment thesis</a></li>
                                 <li><a href='#'>The process to pitch us</a></li>
                             </ul>
-                        </div><div class='col-3 menu-footer'>
-                            <span class='menu-footer-title'>Who we are</span>
-                            <span>a stichy & professionnal team</span>
+                        </div><div class='col-3 menu-small'>
+                            <span class='menu-title'>Who we are</span>
+                            <span class='menu-subtitle'>a stichy & professionnal team</span>
                             <ul>
                                 <li><a href='#'>Who we are</a></li>
                                 <li><a href='#'>About us</a></li>
                                 <li><a href='#'>Our investment thesis</a></li>
                                 <li><a href='#'>The process to pitch us</a></li>
                             </ul>
-                        </div><div class='col-2 menu-footer'>
-                            <span class='menu-footer-title'>Portfolio</span>
-                            <span>what we fund, what we funded</span>
+                        </div><div class='col-2 menu-small'>
+                            <span class='menu-title'>Portfolio</span>
+                            <span class='menu-subtitle'>what we fund, what we funded</span>
                             <ul>
                                 <li>
                                     <a href='#'>Portfolio</a>
@@ -306,9 +349,9 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </div><div class='col-2 menu-footer'>
-                            <span class='menu-footer-title'>Contact us</span>
-                            <span>get in touch with us</span>
+                        </div><div class='col-2 menu-small'>
+                            <span class='menu-title'>Contact us</span>
+                            <span class='menu-subtitle'>get in touch with us</span>
                             <ul>
                                 <li><a href='#'>Send us your pitch</a></li>
                                 <li><a href='#'>General questions</a></li>
@@ -321,9 +364,15 @@
 
         <script src='js/isMobile.min.js'></script>
         <script src='js/jquery-1.11.2.min.js'></script>
+
         <script src='js/TweenMax.min.js'></script>
         <script src='js/splitText.min.js'></script>
         <script src='js/draggable.min.js'></script>
+
+        <script src='js/ScrollMagic.min.js'></script>
+        <script src='js/animation.gsap.js'></script>
+        <!--<script src='js/scrollmagic-debug.js'></script>-->
+
         <script src='js/script.js'></script>
 
     </body>
