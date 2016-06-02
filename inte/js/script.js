@@ -93,6 +93,7 @@ $(function(){
         }else{
             if(spotlightDrag){
                 spotlightDrag[0].disable();
+                TweenMax.set(spotlightDrag, {x: '0px'});
             }
         }
     }
@@ -186,16 +187,14 @@ $(function(){
     }
 
     if(related.length){
-        var relatedPosts = related.find('.read-also-post'), nbRePosts = relatedPosts.length, i = 0;
+        var relatedPosts = related.find('.read-also-post');
         TweenMax.set(relatedPosts, {opacity: 0});
 
-        for(i; i<nbRePosts; i++){
-            new ScrollMagic.Scene({ triggerElement: '#related' })
-                .triggerHook(0.7)
-                .setTween( TweenMax.staggerTo(relatedPosts, 0.25, {opacity: 1}, 0.1) )
-                //.addIndicators()
-                .addTo(controller);
-        }
+        new ScrollMagic.Scene({ triggerElement: '#related' })
+            .triggerHook(0.7)
+            .setTween( TweenMax.staggerTo(relatedPosts, 0.25, {opacity: 1}, 0.1) )
+            //.addIndicators()
+            .addTo(controller);
     }
 
     if(mainContent.length){
@@ -240,7 +239,7 @@ $(function(){
         if(mainContent.length && !htmlTag.hasClass('menu-open')){
             myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
             if(header.hasClass('fixed')){
-                scrollDir < 0 ? header.addClass('on@') : header.removeClass('on');
+                scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
             }
         }
 
