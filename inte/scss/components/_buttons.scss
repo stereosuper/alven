@@ -64,8 +64,12 @@
     .before{
         span{
             display: inline-block;
-            transform: translate3d(0, 0, 0);
-            transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.1s cubic-bezier(0.75, 0, 0.125, 1);
+        }
+        .word{
+            span{
+                transform: translate3d(0, 0, 0);
+                transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.1s cubic-bezier(0.75, 0, 0.125, 1);
+            }
         }
     }
     .after{
@@ -75,6 +79,9 @@
         opacity: 0;
         transform: translate3d(0, 40px, 0);
         transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+        span{
+            display: inline-block;
+        }
     }
     .bg{
         position: absolute;
@@ -82,7 +89,6 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: #fff;
         transform-origin: 100% 0;
         transform: translate3d(0, 100%, 0) scale(5);
         backface-visibility: hidden;
@@ -97,10 +103,12 @@
                 transition-delay: 0.15s;
             }
             .before{
-                span{
-                    opacity: 0;
-                    transform: translate3d(0, -40px, 0) scale(0.9);
-                    transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+                .word{
+                    span{
+                        opacity: 0;
+                        transform: translate3d(0, -40px, 0) scale(0.9);
+                        transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+                    }
                 }
             }
             .after{
@@ -129,6 +137,12 @@
     &:after{
         right: 17px;
     }
+    .after{
+        right: 47px;
+    }
+    .bg{
+        background: #fff;
+    }
     &:hover, &:focus{
         @include themeColorHover;
         @include themeBorderHover;
@@ -153,6 +167,10 @@
     }
     .after{
         top: 13px;
+        right: 35px;
+    }
+    .bg{
+        @include themeBg;
     }
     &:hover, &:focus{
         @include themeBorderHover;

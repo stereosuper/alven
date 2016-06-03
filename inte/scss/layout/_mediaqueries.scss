@@ -46,6 +46,26 @@
             font-size: 2.8rem;
         }
     }
+
+    .portfolio-list{
+        img{
+            max-width: 80%;
+        }
+        .hover, .txt{
+            bottom: 20px;
+        }
+        .po-item, li{
+            a{
+                &.transfered{
+                    &:hover, &:focus, &.on{
+                        > img{
+                            transform: translate3d(0, -40px, 0);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 1225px){
@@ -90,6 +110,17 @@
         padding: 0 0 2.5%;
         background-size: 100%;
     }
+
+    .portfolio-list{
+        img{
+            max-width: 70%;
+        }
+        .hover{
+            img{
+                max-width: 65%;
+            }
+        }
+    }
 }
 
 
@@ -101,6 +132,45 @@
     .container-small{
         padding: 0;
         margin: 0;
+    }
+
+    .portfolio-list{
+        .hover, .txt{
+            bottom: 10px;
+        }
+        .hover{
+            img{
+                margin-top: 2px;
+            }
+        }
+        .po-item, li{
+            font-size: 1.2rem;
+            a{
+                &.transfered{
+                    &:hover, &:focus, &.on{
+                        > img{
+                            transform: translate3d(0, -30px, 0);
+                        }
+                    }
+                }
+            }
+        }
+        .po-item{
+            &.cta{
+                font-size: 1.6rem;
+                .btn-invert{
+                    padding-top: 7px;
+                    padding-bottom: 5px;
+                    margin-top: 10px;
+                    font-size: 1.1rem;
+                }
+                a{
+                    > span{
+                        max-width: 95%;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -214,6 +284,12 @@
         }
         &:last-of-type{
             display: none;
+        }
+    }
+
+    .portfolio-list{
+        .po-item-col{
+            width: $col*4;
         }
     }
 }
@@ -343,6 +419,9 @@
 @media (max-height: 850px){
     h1{
         margin: 6vh auto 4vh;
+        .home &{
+            margin: 5vh 0;
+        }
     }
 
     .post-meta-header{

@@ -1,0 +1,180 @@
+/* Portfolio */
+
+.portfolio-list{
+    position: relative;
+    z-index: 1;
+    background: $chapo;
+    transform: translate3d(0, 15%, 0);
+    &:before{
+        content: '';
+        height: 33%;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        background: #fff;
+    }
+    &:after{
+        content: '';
+        display: block;
+        padding: 0 0 10%;
+    }
+    .grid{
+        padding: $innerGutter 0;
+    }
+    ul{
+        .js &{
+            display: none;
+        }
+    }
+    li, .po-item{
+        padding: $innerGutter;
+        font-family: $sourceLight;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        color: $chapo;
+        text-align: center;
+        &:before{
+            display: block;
+            width: auto;
+            height: auto;
+            padding: 100% 0 0;
+            position: static;
+            background: none !important;
+        }
+        a{
+            position: absolute;
+            top: $innerGutter;
+            left: $innerGutter;
+            right: $innerGutter;
+            bottom: $innerGutter;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: none;
+            &:before{
+                content: '';
+                display: inline-block;
+                width: 0;
+                height: 100%;
+                vertical-align: middle;
+            }
+            &.transfered{
+                &:after{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba($we, 0.15);
+                }
+            }
+            &:hover, &:focus, &.on{
+                opacity: 1;
+                > img{
+                    opacity: 0.3;
+                }
+                .txt{
+                    opacity: 0;
+                }
+                .hover{
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+                &.transfered{
+                    > img{
+                        transform: translate3d(0, -50px, 0);
+                    }
+                }
+            }
+        }
+    }
+    .po-item{
+        padding: $innerGutter 0;
+        position: relative;
+        &:before{
+            content: '';
+        }
+        &.cta{
+            font-family: $sourceSemiBold;
+            font-size: 2rem;
+            line-height: 1;
+            text-transform: none;
+            color: #fff;
+            a{
+                background: none;
+                box-shadow: none;
+                > span{
+                    display: inline-block;
+                    vertical-align: middle;
+                    max-width: 97%;
+                }
+            }
+            .btn-invert{
+                margin-top: 15px;
+                opacity: 1 !important;
+                transition: 0.45s $transitionFunction;
+            }
+        }
+        a{
+            left: 0;
+            right: 0;
+        }
+    }
+    img{
+        display: inline-block;
+        max-width: 90%;
+        transition: 0.45s $transitionFunction;
+    }
+    .txt{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 30px;
+        transition: 0.45s $transitionFunction;
+    }
+    .hover{
+        display: block;
+        position: absolute;
+        bottom: 30px;
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+        transition: 0.45s $transitionFunction;
+        img{
+            display: block;
+            max-width: 70%;
+            margin: 5px auto 0;
+        }
+    }
+    .po-item-col{
+        &:first-child{
+            transform: translate3d(0, 17%, 0);
+        }
+        &:nth-child(2){
+            transform: translate3d(0, -10%, 0);
+        }
+        &:nth-child(3){
+            transform: translate3d(0, -14%, 0);
+        }
+        &:nth-child(4){
+            transform: translate3d(0, -4.5%, 0);
+        }
+        &:nth-child(5){
+            transform: translate3d(0, 4%, 0);
+        }
+        &:nth-child(6){
+            transform: translate3d(0, -10%, 0);
+        }
+    }
+    + .container{
+        position: relative;
+        z-index: 1;
+    }
+}
+
+#ctaPortfolio{
+    .js &{
+        display: none;
+    }
+}

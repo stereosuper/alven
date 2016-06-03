@@ -1,13 +1,13 @@
 /******* GÉNÉRAL *******/
 
 ::-moz-selection{
-    @include themeBg($txt);
+    @include themeBg();
 
     color: #fff;
     text-shadow: none;
 }
 ::selection{
-    @include themeBg($txt);
+    @include themeBg();
 
     color: #fff;
     text-shadow: none;

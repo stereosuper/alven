@@ -1,6 +1,6 @@
 $(function(){
 
-    var htmlTag = $('html'),
+    var htmlTag = $('html'), body = $('body'),
         myScroll = 0, scrollDir = 0, lastScrollTop = 0,
         header = $('#header'), headerHeight = header.innerHeight(),
         mainContent = $('#mainContent'),
@@ -18,6 +18,7 @@ $(function(){
         spotlightDrag = false,
         related = $('#related'),
         menu = $('#menu-responsive'),
+        portfolio = $('#portfolio'),
         controller = new ScrollMagic.Controller();
 
     /**** VARIABLES ****/
@@ -48,10 +49,11 @@ $(function(){
                 delay = Math.round(delay*1000) / 1000;
                 if(letterArray[j] === ' '){
                     letterArray[j] = '&nbsp;';
+                    newHtmlBtn += '</span><span class="word">';
                 }
                 newHtmlBtn += '<span style="transition-delay:'+delay+'s">'+letterArray[j]+'</span>';
             }
-            buttons.eq(i).html('<span class="bg"></span><span class="before">'+newHtmlBtn+'</span><span class="after">'+newHtmlBtn+'</span>');
+            buttons.eq(i).html('<span class="bg"></span><span class="before"><span class="word">'+newHtmlBtn+'</span></span><span class="after"><span class="word">'+newHtmlBtn+'</span></span>');
         }
     }
 
@@ -162,6 +164,82 @@ $(function(){
     }
 
 
+    function setPortfolio(poItem, nbPoItem, nbCol){
+        var portfolioContent = '<div class="grid">', poItemIndex = 0,
+            total = 0, i = 0, j = 0, ratio1 = 0.1, ratio2 = 0.4,
+            transfered, nbTrItem = 0;
+
+        function lightTransfered(x){
+            if(x === nbTrItem){
+                x = 0;
+            }
+            transfered.removeClass('on');
+            setTimeout(function(){
+                transfered.eq(x).addClass('on');
+            }, 1500);
+            setTimeout(lightTransfered, 3500, x+1);
+        }
+
+        if(nbPoItem > 37){
+            ratio1 += 0.02;
+            ratio2 -= 0.02;
+        }
+        if(nbPoItem > 60){
+            ratio1 += 0.05;
+            ratio2 -= 0.05;
+        }
+
+        var firstNbItem = Math.ceil(ratio1*nbPoItem),
+            secondNbItem = Math.ceil(ratio2*nbPoItem),
+            lastNbItem = nbPoItem - (firstNbItem + secondNbItem),
+            arrayCols = [
+                firstNbItem,
+                Math.floor(secondNbItem/2),
+                Math.ceil(secondNbItem/2),
+                Math.ceil(lastNbItem/3),
+                Math.ceil(lastNbItem/3),
+                Math.floor(lastNbItem/3)
+            ];
+
+        for(i; i<nbCol; i++){
+            total += arrayCols[i];
+        }
+        if(total > nbPoItem){
+            arrayCols[4] -= 1;
+        }
+
+        i = 0;
+        for(i; i<nbCol; i++){
+            portfolioContent += '<div class="po-item-col col-2">';
+            j = 0;
+            for(j; j<arrayCols[i]; j++){
+                if(i === 3 && j === arrayCols[i]-1){
+                    portfolioContent += '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
+                }
+                portfolioContent += '<div class="po-item">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
+            }
+            poItemIndex += j;
+            portfolioContent += '</div>';
+        }
+        portfolioContent += '</div>';
+        portfolio.find('.container').append(portfolioContent);
+
+        TweenMax.set(portfolio.find('.po-item'), {opacity: 0, y: '30%', scale: 0.8});
+        i = 0;
+        for(i; i<nbPoItem+1; i++){
+            new ScrollMagic.Scene({ triggerElement: portfolio.find('.po-item')[i] })
+                .triggerHook(0.9)
+                .setTween( TweenMax.to(portfolio.find('.po-item').eq(i), 0.25, {opacity: 1, y: '0%', scale: 1}) )
+                //.addIndicators()
+                .addTo(controller);
+        }
+
+        transfered = portfolio.find('div.grid').find('.transfered');
+        nbTrItem = transfered.length;
+        lightTransfered(0);
+    }
+
+
 
     isMobile.any ? htmlTag.addClass('is-mobile') : htmlTag.addClass('is-desktop');
 
@@ -204,6 +282,14 @@ $(function(){
         }
     }
 
+    if(portfolio.length){
+        var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = 6;
+
+        if(nbPoItem > nbCol){
+            setPortfolio(poItem, nbPoItem, nbCol);
+        }
+    }
+
     if(menu.length){
         setMenuElmts();
     }
@@ -243,7 +329,7 @@ $(function(){
             }
         }
 
-        if(readIndicator.length){
+        if(readIndicator.length && (body.hasClass('single') || body.hasClass('page-template-default'))){
             var readingPercent = (myScroll-mainContent.offset().top)/(mainContent.innerHeight()-windowHeight);
             if(myScroll > mainContent.offset().top){
                 TweenMax.set(readIndicator, {scaleX: readingPercent});
@@ -251,9 +337,12 @@ $(function(){
         }
 
         if(contentHeader.length && !isMobile.any){
-            TweenMax.set(contentHeader.find('h1'), {y: '-'+myScroll/4+'%'});
+            TweenMax.set(contentHeader.find('h1'), {y: '-'+myScroll/4+'px'});
             if(contentHeader.find('.img').length){
                 TweenMax.set(contentHeader.find('.img'), {y: '-'+myScroll/40+'%'});
+            }
+            if(contentHeader.find('.menu-home').length){
+                TweenMax.set(contentHeader.find('.menu-home'), {y: '-'+myScroll/4+'px'});
             }
         }
 

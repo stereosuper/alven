@@ -29,7 +29,50 @@
                     </ul>
                 </nav>
                 <a id='searchBtn' class='btn-search' href='#'>Explore Alven</a>
-                <!--<button id='burger'></button>-->
+                <button id='burger'>
+                    <span>Menu</span>
+                </button>
+                <nav role='navigation' id='menu-responsive'>
+                    <div>
+                        <div class='col-3 menu-small'>
+                            <span class='menu-title'>Think, read, exchange</span>
+                            <span class='menu-subtitle'>alven online magazine</span>
+                            <ul>
+                                <li><a href='#'>About us</a></li>
+                                <li><a href='#'>Our investment thesis</a></li>
+                                <li><a href='#'>The process to pitch us</a></li>
+                            </ul>
+                        </div><div class='col-3 menu-small'>
+                            <span class='menu-title'>Who we are</span>
+                            <span class='menu-subtitle'>a stichy & professionnal team</span>
+                            <ul>
+                                <li><a href='#'>Who we are</a></li>
+                                <li><a href='#'>About us</a></li>
+                                <li><a href='#'>Our investment thesis</a></li>
+                                <li><a href='#'>The process to pitch us</a></li>
+                            </ul>
+                        </div><div class='col-2 menu-small'>
+                            <span class='menu-title'>Portfolio</span>
+                            <span class='menu-subtitle'>what we fund, what we funded</span>
+                            <ul>
+                                <li>
+                                    <a href='#'>Portfolio</a>
+                                    <ul>
+                                        <li><a href='#'>Actual investments</a></li>
+                                        <li><a href='#'>Past investments</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><div class='col-2 menu-small'>
+                            <span class='menu-title'>Contact us</span>
+                            <span class='menu-subtitle'>get in touch with us</span>
+                            <ul>
+                                <li><a href='#'>Send us your pitch</a></li>
+                                <li><a href='#'>General questions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
             <div id='readIndicator' class='read-indicator'></div>
         </header>
@@ -84,14 +127,14 @@
                                     <time datetime='2016-05-04'>May 4th 2016</time>
                                 </div>
                                 <p>
-                                    <strong>Train to the Moon!</strong> Alven Capital is proud to announce the successful acquisition of one its portfolio companies, Captain Train. The transaction rewards 5 years of steady growth for Captain Train who has risen to become the go-to alternative in France
+                                    <strong>Train to the Moon!</strong> Alven Capital is proud to announce the successful acquisition of one its portfolio companies, Captain Train. The transaction rewards 5 years of steady growth for Captain Train who has risen to become the go-to alternative in France...
                                 </p>
                                 <a href='#' class='btn-arrow'>Read</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class='content-footer read-also-posts'>
+                    <div class='content-footer read-also-posts' id='related'>
                         <div class='container'>
                             <div class='grid'>
                                 <div class='col-4 read-also-post'>
@@ -120,8 +163,8 @@
                         </div>
                     </div>
 
-                    <div class='spotlight-posts'>
-                        <div class='container'>
+                    <div class='spotlight-posts' id='spotlightPost'>
+                        <div class='container' id='spotlightDrag'>
                             <div class='grid'>
                                 <div class='col-2 spotlight-post'>
                                     <div>
@@ -212,8 +255,121 @@
                     <div class='container'>
                         <div class='section-header'>
                             <p>Alven Capital has backed more than 80 companies during the last 15 years, and currently owns active investments in the Internet, media and IT sectors.</p>
-                            <a href='#' class='btn'>Browse all companies</a>
                         </div>
+                    </div>
+                    <div class='portfolio-list' id='portfolio'>
+                        <div class='container'>
+                            <ul class='grid'>
+                                <li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/op-classroom.png' alt='OpenClassRooms' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#' class='transfered'>
+                                        <img src='img/bime.png' alt='Bime' class='no-scroll'>
+                                        <span class='txt'>Transfered</span>
+                                        <span class='hover'>
+                                            Acquired by
+                                            <img src='img/zendesk.jpg' alt='Zendesk' class='no-scroll'>
+                                        </span>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/stripe.png' alt='Stripe' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#' class='transfered'>
+                                        <img src='img/captainlogo.png' alt='CaptainTrain' class='no-scroll'>
+                                        <span class='txt'>Transfered</span>
+                                        <span class='hover'>
+                                            Acquired by
+                                            <img src='img/trainline.jpg' alt='Trainline' class='no-scroll'>
+                                        </span>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/frichti.png' alt='Frichti' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/startingdot.png' alt='Startingdot' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/algolia.png' alt='Algolia' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/iadvize.png' alt='iAdvize' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/mailjet.png' alt='Mailjet' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#' class='transfered'>
+                                        <img src='img/captainlogo.png' alt='CaptainTrain' class='no-scroll'>
+                                        <span class='txt'>Transfered</span>
+                                        <span class='hover'>
+                                            Acquired by
+                                            <img src='img/trainline.jpg' alt='Trainline' class='no-scroll'>
+                                        </span>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/akeneo.png' alt='Akeneo' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/drivy.png' alt='Drivy' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#' class='transfered'>
+                                        <img src='img/liligo.png' alt='Liligo' class='no-scroll'>
+                                        <span class='txt'>Transfered</span>
+                                        <span class='hover'>
+                                            Acquired by
+                                            <img src='img/odego.png' alt='Odigeo' class='no-scroll'>
+                                        </span>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/dataaiku.png' alt='Dataiku' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/lengow.png' alt='Lengow' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/antvoice.png' alt='AntVoice' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/happn.png' alt='Happn' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/birchbox.png' alt='Birchbox' class='no-scroll'>
+                                    </a>
+                                </li><li class='col-2'>
+                                    <a href='#'>
+                                        <img src='img/socloz.png' alt='So Cloz' class='no-scroll'>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class='container align-center'>
+                        <div id='ctaPortfolio'>
+                            <a href='#'>
+                                <span>
+                                    Could this be you&nbsp;?
+                                    <span class='btn-invert'>Send your pitch</span>
+                                </span>
+                            </a>
+                        </div>
+                        <a href='#' class='btn'>Browse all companies</a>
                     </div>
                 </section>
 
@@ -263,16 +419,16 @@
                 <div class='container-small'>
                     <div class='grid'>
                         <div class='col-3 menu-small'>
-                            <span class='menu-small-title'>Think, read, exchange</span>
-                            <span>alven online magazine</span>
+                            <span class='menu-title'>Think, read, exchange</span>
+                            <span class='menu-subtitle'>alven online magazine</span>
                             <ul>
                                 <li><a href='#'>About us</a></li>
                                 <li><a href='#'>Our investment thesis</a></li>
                                 <li><a href='#'>The process to pitch us</a></li>
                             </ul>
                         </div><div class='col-3 menu-small'>
-                            <span class='menu-small-title'>Who we are</span>
-                            <span>a stichy & professionnal team</span>
+                            <span class='menu-title'>Who we are</span>
+                            <span class='menu-subtitle'>a stichy & professionnal team</span>
                             <ul>
                                 <li><a href='#'>Who we are</a></li>
                                 <li><a href='#'>About us</a></li>
@@ -280,8 +436,8 @@
                                 <li><a href='#'>The process to pitch us</a></li>
                             </ul>
                         </div><div class='col-2 menu-small'>
-                            <span class='menu-small-title'>Portfolio</span>
-                            <span>what we fund, what we funded</span>
+                            <span class='menu-title'>Portfolio</span>
+                            <span class='menu-subtitle'>what we fund, what we funded</span>
                             <ul>
                                 <li>
                                     <a href='#'>Portfolio</a>
@@ -292,8 +448,8 @@
                                 </li>
                             </ul>
                         </div><div class='col-2 menu-small'>
-                            <span class='menu-small-title'>Contact us</span>
-                            <span>get in touch with us</span>
+                            <span class='menu-title'>Contact us</span>
+                            <span class='menu-subtitle'>get in touch with us</span>
                             <ul>
                                 <li><a href='#'>Send us your pitch</a></li>
                                 <li><a href='#'>General questions</a></li>
@@ -306,9 +462,15 @@
 
         <script src='js/isMobile.min.js'></script>
         <script src='js/jquery-1.11.2.min.js'></script>
+
         <script src='js/TweenMax.min.js'></script>
         <script src='js/splitText.min.js'></script>
         <script src='js/draggable.min.js'></script>
+
+        <script src='js/ScrollMagic.min.js'></script>
+        <script src='js/animation.gsap.js'></script>
+        <!--<script src='js/scrollmagic-debug.js'></script>-->
+
         <script src='js/script.js'></script>
 
     </body>

@@ -26,7 +26,7 @@ label{
     font-size: 1.4rem;
     cursor: text;
     transform: translate3d(0, 0, 0);
-    transition: .1s $transitionFunction;
+    transition: $transition;
     .no-js &{
         top: -30px;
     }
@@ -56,10 +56,8 @@ input, textarea{
         }
     }
     &:focus{
-        border-color: $we;
         opacity: 1;
         + label{
-            color: $we;
             opacity: 1;
             transform: translate3d(0, -30px, 0);
         }
