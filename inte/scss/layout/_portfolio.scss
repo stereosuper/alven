@@ -52,6 +52,7 @@
             overflow: hidden;
             background: #fff;
             box-shadow: none;
+            border: 1px solid $greyBorder;
             &:before{
                 content: '';
                 display: inline-block;
@@ -60,6 +61,7 @@
                 vertical-align: middle;
             }
             &.transfered{
+                border: none;
                 &:after{
                     content: '';
                     position: absolute;
@@ -68,6 +70,7 @@
                     right: 0;
                     bottom: 0;
                     background: rgba($we, 0.15);
+                    border: 1px solid $greyBorder;
                 }
             }
             &:hover, &:focus, &.on{
@@ -105,6 +108,7 @@
             a{
                 background: none;
                 box-shadow: none;
+                border: none;
                 > span{
                     display: inline-block;
                     vertical-align: middle;

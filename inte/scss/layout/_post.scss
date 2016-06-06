@@ -112,9 +112,10 @@
     position: relative; // to stay above content-header
     overflow: hidden;
     z-index: 10;
-    background: $greyMedium;
+    padding: 10px 0 0 0;
     .container{
         padding-bottom: 80px;
+        background: $greyMedium;
     }
 }
 .spotlight-post{
@@ -133,6 +134,7 @@
         background: #fff;
         transform: translate3d(0, 0, 0);
         transition: $transition;
+        border: 1px solid $greyBorder;
     }
     h4{
         margin: 0 0 10px;
