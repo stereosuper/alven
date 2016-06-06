@@ -1071,7 +1071,8 @@ select::-ms-expand {
   position: relative;
   overflow: hidden;
   z-index: 10;
-  padding: 10px 0 0 0; }
+  padding: 10px 0 0 0;
+  background-color: #fff; }
   .spotlight-posts:before {
     content: '';
     display: block;
