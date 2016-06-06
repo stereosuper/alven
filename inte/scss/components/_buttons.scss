@@ -48,7 +48,7 @@
     @include themeBorder($gold);
 
     display: inline-block;
-    border: 3px solid;
+    border: 1px solid;
     box-shadow: none;
     letter-spacing: 0.08em;
     overflow: hidden;
@@ -76,11 +76,15 @@
         position: absolute;
         top: 21px;
         left: 17px;
-        opacity: 0;
-        transform: translate3d(0, 40px, 0);
-        transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
         span{
             display: inline-block;
+        }
+        .word{
+            span{
+                opacity: 0;
+                transform: translate3d(0, 40px, 0);
+                transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.1s cubic-bezier(0.75, 0, 0.125, 1);
+            }
         }
     }
     .bg{
@@ -90,7 +94,8 @@
         right: 0;
         bottom: 0;
         transform-origin: 100% 0;
-        transform: translate3d(0, 100%, 0) scale(5);
+        //transform: translate3d(0, 100%, 0) scale(5);
+        transform: translate3d(0, 100%, 0);
         backface-visibility: hidden;
         transform-style: perserve-3d;
         transition: .25s ease-in;
@@ -99,7 +104,8 @@
         .no-js &, .is-desktop &{
             opacity: 1;
             .bg{
-                transform: translate3d(0, 100%, 0) scale(5) rotate(90deg);
+                //transform: translate3d(0, 100%, 0) scale(5) rotate(90deg);
+                transform: translate3d(0, 0, 0);
                 transition-delay: 0.15s;
             }
             .before{
@@ -112,9 +118,13 @@
                 }
             }
             .after{
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-                transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s, transform 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s;
+                .word{
+                    span{
+                        opacity: 1;
+                        transform: translate3d(0, 0, 0);
+                        transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s, transform 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s;
+                    }
+                }
             }
         }
     }

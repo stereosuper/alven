@@ -35,7 +35,7 @@ $(function(){
 
     function setButtons(buttons){
         var i = 0, nbButtons = buttons.length, letterArray = [],
-            textBtn = '', j = 0, nbLetter = 0, newHtmlBtn = '',
+            textBtn = '', j = 0, nbLetter = 0, newHtmlBtn = '', newHtmlBtnAfter = '',
             delay = 0;
         for(i; i<nbButtons; i++){
             textBtn = buttons.eq(i).html();
@@ -43,6 +43,7 @@ $(function(){
             j = 0;
             nbLetter = letterArray.length;
             newHtmlBtn = '';
+            newHtmlBtnAfter = '';
             delay = 0;
             for(j; j<nbLetter; j++){
                 delay += 0.013;
@@ -50,10 +51,12 @@ $(function(){
                 if(letterArray[j] === ' '){
                     letterArray[j] = '&nbsp;';
                     newHtmlBtn += '</span><span class="word">';
+                    newHtmlBtnAfter += '</span><span class="word">';
                 }
                 newHtmlBtn += '<span style="transition-delay:'+delay+'s">'+letterArray[j]+'</span>';
+                newHtmlBtnAfter += '<span style="transition-delay:'+(delay+0.15)+'s">'+letterArray[j]+'</span>';
             }
-            buttons.eq(i).html('<span class="bg"></span><span class="before"><span class="word">'+newHtmlBtn+'</span></span><span class="after"><span class="word">'+newHtmlBtn+'</span></span>');
+            buttons.eq(i).html('<span class="bg"></span><span class="before"><span class="word">'+newHtmlBtn+'</span></span><span class="after"><span class="word">'+newHtmlBtnAfter+'</span></span>');
         }
     }
 

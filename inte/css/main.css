@@ -1338,7 +1338,7 @@ select::-ms-expand {
       display: block;
       width: auto;
       height: auto;
-      padding: 100% 0 0;
+      padding: 75% 0 0;
       position: static;
       background: none !important; }
     .portfolio-list li a, .portfolio-list .po-item a {
@@ -1488,7 +1488,7 @@ select::-ms-expand {
 .btn, .btn-invert {
   border-color: #d3ceaa;
   display: inline-block;
-  border: 3px solid;
+  border: 1px solid;
   box-shadow: none;
   letter-spacing: 0.08em;
   overflow: hidden; }
@@ -1513,12 +1513,13 @@ select::-ms-expand {
   .btn .after, .btn-invert .after {
     position: absolute;
     top: 21px;
-    left: 17px;
-    opacity: 0;
-    transform: translate3d(0, 40px, 0);
-    transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
+    left: 17px; }
     .btn .after span, .btn-invert .after span {
       display: inline-block; }
+    .btn .after .word span, .btn-invert .after .word span {
+      opacity: 0;
+      transform: translate3d(0, 40px, 0);
+      transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.1s cubic-bezier(0.75, 0, 0.125, 1); }
   .btn .bg, .btn-invert .bg {
     position: absolute;
     top: 0;
@@ -1526,20 +1527,20 @@ select::-ms-expand {
     right: 0;
     bottom: 0;
     transform-origin: 100% 0;
-    transform: translate3d(0, 100%, 0) scale(5);
+    transform: translate3d(0, 100%, 0);
     backface-visibility: hidden;
     transform-style: perserve-3d;
     transition: .25s ease-in; }
   .no-js .btn:hover, .is-desktop .btn:hover, .no-js .btn:focus, .is-desktop .btn:focus, .no-js .btn-invert:hover, .is-desktop .btn-invert:hover, .no-js .btn-invert:focus, .is-desktop .btn-invert:focus {
     opacity: 1; }
     .no-js .btn:hover .bg, .is-desktop .btn:hover .bg, .no-js .btn:focus .bg, .is-desktop .btn:focus .bg, .no-js .btn-invert:hover .bg, .is-desktop .btn-invert:hover .bg, .no-js .btn-invert:focus .bg, .is-desktop .btn-invert:focus .bg {
-      transform: translate3d(0, 100%, 0) scale(5) rotate(90deg);
+      transform: translate3d(0, 0, 0);
       transition-delay: 0.15s; }
     .no-js .btn:hover .before .word span, .is-desktop .btn:hover .before .word span, .no-js .btn:focus .before .word span, .is-desktop .btn:focus .before .word span, .no-js .btn-invert:hover .before .word span, .is-desktop .btn-invert:hover .before .word span, .no-js .btn-invert:focus .before .word span, .is-desktop .btn-invert:focus .before .word span {
       opacity: 0;
       transform: translate3d(0, -40px, 0) scale(0.9);
       transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
-    .no-js .btn:hover .after, .is-desktop .btn:hover .after, .no-js .btn:focus .after, .is-desktop .btn:focus .after, .no-js .btn-invert:hover .after, .is-desktop .btn-invert:hover .after, .no-js .btn-invert:focus .after, .is-desktop .btn-invert:focus .after {
+    .no-js .btn:hover .after .word span, .is-desktop .btn:hover .after .word span, .no-js .btn:focus .after .word span, .is-desktop .btn:focus .after .word span, .no-js .btn-invert:hover .after .word span, .is-desktop .btn-invert:hover .after .word span, .no-js .btn-invert:focus .after .word span, .is-desktop .btn-invert:focus .after .word span {
       opacity: 1;
       transform: translate3d(0, 0, 0);
       transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s, transform 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s; }
