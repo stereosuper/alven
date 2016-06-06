@@ -39,7 +39,7 @@
             display: block;
             width: auto;
             height: auto;
-            padding: 100% 0 0;
+            padding: 75% 0 0;
             position: static;
             background: none !important;
         }
@@ -72,6 +72,19 @@
                     background: rgba($we, 0.15);
                     border: 1px solid $greyBorder;
                 }
+                > img{
+                    transform: translate3d(-50%, 0, 0);
+                    position: absolute;
+                    top: 16px;
+                    left: 50%;
+                }
+                .hover{
+                    opacity: 1;
+                    transform: translate3d(0, 0, 0);
+                }
+                .txt{
+                    opacity: 0;
+                }
             }
             &:hover, &:focus, &.on{
                 opacity: 1;
@@ -81,7 +94,7 @@
                 .txt{
                     opacity: 0;
                 }
-                .hover{
+                /*.hover{
                     opacity: 1;
                     transform: translate3d(0, 0, 0);
                 }
@@ -89,7 +102,7 @@
                     > img{
                         transform: translate3d(0, -50px, 0);
                     }
-                }
+                }*/
             }
         }
     }
@@ -128,7 +141,7 @@
     }
     img{
         display: inline-block;
-        max-width: 90%;
+        max-width: 65%;
         transition: 0.45s $transitionFunction;
     }
     .txt{
@@ -141,7 +154,8 @@
     .hover{
         display: block;
         position: absolute;
-        bottom: 30px;
+        //bottom: 30px;
+        bottom: 16px;
         opacity: 0;
         transform: translate3d(0, 100%, 0);
         transition: 0.45s $transitionFunction;

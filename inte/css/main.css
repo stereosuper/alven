@@ -1368,17 +1368,31 @@ select::-ms-expand {
           bottom: 0;
           background: rgba(51, 164, 223, 0.15);
           border: 1px solid #e5e8e8; }
+        .portfolio-list li a.transfered > img, .portfolio-list .po-item a.transfered > img {
+          transform: translate3d(-50%, 0, 0);
+          position: absolute;
+          top: 16px;
+          left: 50%; }
+        .portfolio-list li a.transfered .hover, .portfolio-list .po-item a.transfered .hover {
+          opacity: 1;
+          transform: translate3d(0, 0, 0); }
+        .portfolio-list li a.transfered .txt, .portfolio-list .po-item a.transfered .txt {
+          opacity: 0; }
       .portfolio-list li a:hover, .portfolio-list li a:focus, .portfolio-list li a.on, .portfolio-list .po-item a:hover, .portfolio-list .po-item a:focus, .portfolio-list .po-item a.on {
-        opacity: 1; }
+        opacity: 1;
+        /*.hover{
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+        &.transfered{
+            > img{
+                transform: translate3d(0, -50px, 0);
+            }
+        }*/ }
         .portfolio-list li a:hover > img, .portfolio-list li a:focus > img, .portfolio-list li a.on > img, .portfolio-list .po-item a:hover > img, .portfolio-list .po-item a:focus > img, .portfolio-list .po-item a.on > img {
           opacity: 0.3; }
         .portfolio-list li a:hover .txt, .portfolio-list li a:focus .txt, .portfolio-list li a.on .txt, .portfolio-list .po-item a:hover .txt, .portfolio-list .po-item a:focus .txt, .portfolio-list .po-item a.on .txt {
           opacity: 0; }
-        .portfolio-list li a:hover .hover, .portfolio-list li a:focus .hover, .portfolio-list li a.on .hover, .portfolio-list .po-item a:hover .hover, .portfolio-list .po-item a:focus .hover, .portfolio-list .po-item a.on .hover {
-          opacity: 1;
-          transform: translate3d(0, 0, 0); }
-        .portfolio-list li a:hover.transfered > img, .portfolio-list li a:focus.transfered > img, .portfolio-list li a.on.transfered > img, .portfolio-list .po-item a:hover.transfered > img, .portfolio-list .po-item a:focus.transfered > img, .portfolio-list .po-item a.on.transfered > img {
-          transform: translate3d(0, -50px, 0); }
   .portfolio-list .po-item {
     padding: 10px 0;
     position: relative; }
@@ -1407,7 +1421,7 @@ select::-ms-expand {
       right: 0; }
   .portfolio-list img {
     display: inline-block;
-    max-width: 90%;
+    max-width: 65%;
     transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1); }
   .portfolio-list .txt {
     position: absolute;
@@ -1418,7 +1432,7 @@ select::-ms-expand {
   .portfolio-list .hover {
     display: block;
     position: absolute;
-    bottom: 30px;
+    bottom: 16px;
     opacity: 0;
     transform: translate3d(0, 100%, 0);
     transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1); }

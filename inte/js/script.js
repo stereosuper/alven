@@ -239,7 +239,7 @@ $(function(){
 
         transfered = portfolio.find('div.grid').find('.transfered');
         nbTrItem = transfered.length;
-        lightTransfered(0);
+        //lightTransfered(0);
     }
 
 
