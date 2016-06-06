@@ -34,6 +34,7 @@
     font-family: $sourceLight;
     color: #fff;
     li{
+        margin: 0;
         padding: 0 0 25px;
         &:before{
             display: none;

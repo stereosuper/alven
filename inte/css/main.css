@@ -407,7 +407,8 @@ ol, ul {
   list-style: none; }
 
 li {
-  position: relative; }
+  position: relative;
+  margin: 0 20px; }
   li:before {
     content: '';
     position: absolute;
@@ -854,6 +855,7 @@ select::-ms-expand {
     box-sizing: border-box; }
   #menu-main li {
     display: inline-block;
+    margin: 0;
     padding: 0 10px;
     width: 33.333%;
     position: relative;
@@ -1271,6 +1273,7 @@ select::-ms-expand {
     font-family: "source", "merriweather", sans-serif;
     color: #fff; }
   .menu-small li {
+    margin: 0;
     padding: 0; }
     .menu-small li:before {
       display: none; }
@@ -1830,6 +1833,7 @@ select::-ms-expand {
   font-family: "source-light", "merriweather", sans-serif;
   color: #fff; }
   .menu-home li {
+    margin: 0;
     padding: 0 0 25px; }
     .menu-home li:before {
       display: none; }
