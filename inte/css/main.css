@@ -1372,7 +1372,7 @@ select::-ms-expand {
           bottom: 0;
           background: rgba(51, 164, 223, 0.15);
           border: 1px solid #e5e8e8; }
-        .portfolio-list li a.transfered > img, .portfolio-list .po-item a.transfered > img {
+        .portfolio-list li a.transfered > img, .portfolio-list li a.transfered > svg, .portfolio-list .po-item a.transfered > img, .portfolio-list .po-item a.transfered > svg {
           transform: translate3d(-50%, 0, 0);
           position: absolute;
           top: 16px;
@@ -1380,6 +1380,11 @@ select::-ms-expand {
         .portfolio-list li a.transfered .hover, .portfolio-list .po-item a.transfered .hover {
           opacity: 1;
           transform: translate3d(0, 0, 0); }
+          .portfolio-list li a.transfered .hover svg, .portfolio-list .po-item a.transfered .hover svg {
+            position: relative;
+            transform: translate3d(0, 0, 0);
+            top: auto;
+            left: auto; }
         .portfolio-list li a.transfered .txt, .portfolio-list .po-item a.transfered .txt {
           opacity: 0; }
       .portfolio-list li a:hover, .portfolio-list li a:focus, .portfolio-list li a.on, .portfolio-list .po-item a:hover, .portfolio-list .po-item a:focus, .portfolio-list .po-item a.on {
@@ -1397,6 +1402,54 @@ select::-ms-expand {
           opacity: 0.3; }
         .portfolio-list li a:hover .txt, .portfolio-list li a:focus .txt, .portfolio-list li a.on .txt, .portfolio-list .po-item a:hover .txt, .portfolio-list .po-item a:focus .txt, .portfolio-list .po-item a.on .txt {
           opacity: 0; }
+        .portfolio-list li a:hover svg, .portfolio-list li a:focus svg, .portfolio-list li a.on svg, .portfolio-list .po-item a:hover svg, .portfolio-list .po-item a:focus svg, .portfolio-list .po-item a.on svg {
+          transform: translate3d(-50%, -50%, 0) scale(1.02); }
+          .portfolio-list li a:hover svg .st0, .portfolio-list li a:focus svg .st0, .portfolio-list li a.on svg .st0, .portfolio-list .po-item a:hover svg .st0, .portfolio-list .po-item a:focus svg .st0, .portfolio-list .po-item a.on svg .st0 {
+            fill: #1F1F1D; }
+          .portfolio-list li a:hover svg .st1, .portfolio-list li a:focus svg .st1, .portfolio-list li a.on svg .st1, .portfolio-list .po-item a:hover svg .st1, .portfolio-list .po-item a:focus svg .st1, .portfolio-list .po-item a.on svg .st1 {
+            fill: #C51632; }
+          .portfolio-list li a:hover svg .st2, .portfolio-list li a:focus svg .st2, .portfolio-list li a.on svg .st2, .portfolio-list .po-item a:hover svg .st2, .portfolio-list .po-item a:focus svg .st2, .portfolio-list .po-item a.on svg .st2 {
+            fill: #F49A4C; }
+          .portfolio-list li a:hover svg .st3, .portfolio-list li a:focus svg .st3, .portfolio-list li a.on svg .st3, .portfolio-list .po-item a:hover svg .st3, .portfolio-list .po-item a:focus svg .st3, .portfolio-list .po-item a.on svg .st3 {
+            fill: #E95427; }
+          .portfolio-list li a:hover svg .st4, .portfolio-list li a:focus svg .st4, .portfolio-list li a.on svg .st4, .portfolio-list .po-item a:hover svg .st4, .portfolio-list .po-item a:focus svg .st4, .portfolio-list .po-item a.on svg .st4 {
+            fill: #C41531; }
+          .portfolio-list li a:hover svg .st5, .portfolio-list li a:focus svg .st5, .portfolio-list li a.on svg .st5, .portfolio-list .po-item a:hover svg .st5, .portfolio-list .po-item a:focus svg .st5, .portfolio-list .po-item a.on svg .st5 {
+            fill: #7C1C16; }
+          .portfolio-list li a:hover svg .st6, .portfolio-list li a:focus svg .st6, .portfolio-list li a.on svg .st6, .portfolio-list .po-item a:hover svg .st6, .portfolio-list .po-item a:focus svg .st6, .portfolio-list .po-item a.on svg .st6 {
+            fill: #FCE16D; }
+          .portfolio-list li a:hover svg .st7, .portfolio-list li a:focus svg .st7, .portfolio-list li a.on svg .st7, .portfolio-list .po-item a:hover svg .st7, .portfolio-list .po-item a:focus svg .st7, .portfolio-list .po-item a.on svg .st7 {
+            fill: #E95326; }
+          .portfolio-list li a:hover svg .st8, .portfolio-list li a:focus svg .st8, .portfolio-list li a.on svg .st8, .portfolio-list .po-item a:hover svg .st8, .portfolio-list .po-item a:focus svg .st8, .portfolio-list .po-item a.on svg .st8 {
+            fill: #C41632; }
+          .portfolio-list li a:hover svg .st9, .portfolio-list li a:focus svg .st9, .portfolio-list li a.on svg .st9, .portfolio-list .po-item a:hover svg .st9, .portfolio-list .po-item a:focus svg .st9, .portfolio-list .po-item a.on svg .st9 {
+            fill: #7C1B15; }
+          .portfolio-list li a:hover svg .st10, .portfolio-list li a:focus svg .st10, .portfolio-list li a.on svg .st10, .portfolio-list .po-item a:hover svg .st10, .portfolio-list .po-item a:focus svg .st10, .portfolio-list .po-item a.on svg .st10 {
+            fill: #F49A4B; }
+          .portfolio-list li a:hover svg .cls-1, .portfolio-list li a:focus svg .cls-1, .portfolio-list li a.on svg .cls-1, .portfolio-list .po-item a:hover svg .cls-1, .portfolio-list .po-item a:focus svg .cls-1, .portfolio-list .po-item a.on svg .cls-1 {
+            fill: #282c38; }
+          .portfolio-list li a:hover svg .cls-1, .portfolio-list li a:hover svg .cls-2, .portfolio-list li a:focus svg .cls-1, .portfolio-list li a:focus svg .cls-2, .portfolio-list li a.on svg .cls-1, .portfolio-list li a.on svg .cls-2, .portfolio-list .po-item a:hover svg .cls-1, .portfolio-list .po-item a:hover svg .cls-2, .portfolio-list .po-item a:focus svg .cls-1, .portfolio-list .po-item a:focus svg .cls-2, .portfolio-list .po-item a.on svg .cls-1, .portfolio-list .po-item a.on svg .cls-2 {
+            fill-rule: evenodd; }
+          .portfolio-list li a:hover svg .cls-2, .portfolio-list li a:focus svg .cls-2, .portfolio-list li a.on svg .cls-2, .portfolio-list .po-item a:hover svg .cls-2, .portfolio-list .po-item a:focus svg .cls-2, .portfolio-list .po-item a.on svg .cls-2 {
+            fill: #00cb3e; }
+          .portfolio-list li a:hover svg .algo-1, .portfolio-list li a:hover svg .algo-2, .portfolio-list li a:focus svg .algo-1, .portfolio-list li a:focus svg .algo-2, .portfolio-list li a.on svg .algo-1, .portfolio-list li a.on svg .algo-2, .portfolio-list .po-item a:hover svg .algo-1, .portfolio-list .po-item a:hover svg .algo-2, .portfolio-list .po-item a:focus svg .algo-1, .portfolio-list .po-item a:focus svg .algo-2, .portfolio-list .po-item a.on svg .algo-1, .portfolio-list .po-item a.on svg .algo-2 {
+            fill-rule: evenodd; }
+          .portfolio-list li a:hover svg .algo-2, .portfolio-list li a:focus svg .algo-2, .portfolio-list li a.on svg .algo-2, .portfolio-list .po-item a:hover svg .algo-2, .portfolio-list .po-item a:focus svg .algo-2, .portfolio-list .po-item a.on svg .algo-2 {
+            fill: #4dafd8; }
+          .portfolio-list li a:hover svg .ct-1, .portfolio-list li a:focus svg .ct-1, .portfolio-list li a.on svg .ct-1, .portfolio-list .po-item a:hover svg .ct-1, .portfolio-list .po-item a:focus svg .ct-1, .portfolio-list .po-item a.on svg .ct-1 {
+            fill: #1a2327; }
+          .portfolio-list li a:hover svg .ct-2, .portfolio-list li a:focus svg .ct-2, .portfolio-list li a.on svg .ct-2, .portfolio-list .po-item a:hover svg .ct-2, .portfolio-list .po-item a:focus svg .ct-2, .portfolio-list .po-item a.on svg .ct-2 {
+            fill: #a0a0a0; }
+          .portfolio-list li a:hover svg .ct-3, .portfolio-list li a:focus svg .ct-3, .portfolio-list li a.on svg .ct-3, .portfolio-list .po-item a:hover svg .ct-3, .portfolio-list .po-item a:focus svg .ct-3, .portfolio-list .po-item a.on svg .ct-3 {
+            fill: #4db04f; }
+          .portfolio-list li a:hover svg .ct-4, .portfolio-list li a:focus svg .ct-4, .portfolio-list li a.on svg .ct-4, .portfolio-list .po-item a:hover svg .ct-4, .portfolio-list .po-item a:focus svg .ct-4, .portfolio-list .po-item a.on svg .ct-4 {
+            fill: #1b1c1f; }
+          .portfolio-list li a:hover svg .tl-1, .portfolio-list li a:focus svg .tl-1, .portfolio-list li a.on svg .tl-1, .portfolio-list .po-item a:hover svg .tl-1, .portfolio-list .po-item a:focus svg .tl-1, .portfolio-list .po-item a.on svg .tl-1 {
+            fill: #00b0ad; }
+        .portfolio-list li a:hover.transfered svg, .portfolio-list li a:focus.transfered svg, .portfolio-list li a.on.transfered svg, .portfolio-list .po-item a:hover.transfered svg, .portfolio-list .po-item a:focus.transfered svg, .portfolio-list .po-item a.on.transfered svg {
+          transform: translate3d(-50%, 0, 0) scale(1); }
+        .portfolio-list li a:hover.transfered .hover svg, .portfolio-list li a:focus.transfered .hover svg, .portfolio-list li a.on.transfered .hover svg, .portfolio-list .po-item a:hover.transfered .hover svg, .portfolio-list .po-item a:focus.transfered .hover svg, .portfolio-list .po-item a.on.transfered .hover svg {
+          transform: translate3d(0, 0, 0); }
   .portfolio-list .po-item {
     padding: 10px 0;
     position: relative; }
@@ -1427,6 +1480,17 @@ select::-ms-expand {
     display: inline-block;
     max-width: 65%;
     transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1); }
+  .portfolio-list svg {
+    display: inline-block;
+    max-width: 58%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+    transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1); }
+    .portfolio-list svg .zone-svg {
+      transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1);
+      fill: #303b3d; }
   .portfolio-list .txt {
     position: absolute;
     left: 0;
@@ -1437,6 +1501,8 @@ select::-ms-expand {
     display: block;
     position: absolute;
     bottom: 16px;
+    left: 0;
+    right: 0;
     opacity: 0;
     transform: translate3d(0, 100%, 0);
     transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1); }

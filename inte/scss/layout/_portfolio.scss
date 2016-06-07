@@ -72,7 +72,7 @@
                     background: rgba($we, 0.15);
                     border: 1px solid $greyBorder;
                 }
-                > img{
+                > img, > svg{
                     transform: translate3d(-50%, 0, 0);
                     position: absolute;
                     top: 16px;
@@ -81,6 +81,12 @@
                 .hover{
                     opacity: 1;
                     transform: translate3d(0, 0, 0);
+                    svg{
+                        position: relative;
+                        transform: translate3d(0, 0, 0);
+                        top: auto;
+                        left: auto;
+                    }
                 }
                 .txt{
                     opacity: 0;
@@ -93,6 +99,40 @@
                 }
                 .txt{
                     opacity: 0;
+                }
+                svg{
+                    transform: translate3d(-50%, -50%, 0) scale(1.02);
+                    .st0{fill:#1F1F1D;}
+                    .st1{fill:#C51632;}
+                    .st2{fill:#F49A4C;}
+                    .st3{fill:#E95427;}
+                    .st4{fill:#C41531;}
+                    .st5{fill:#7C1C16;}
+                    .st6{fill:#FCE16D;}
+                    .st7{fill:#E95326;}
+                    .st8{fill:#C41632;}
+                    .st9{fill:#7C1B15;}
+                    .st10{fill:#F49A4B;}
+                    .cls-1{fill:#282c38;}
+                    .cls-1,.cls-2{fill-rule:evenodd;}
+                    .cls-2{fill:#00cb3e;}
+                    .algo-1,.algo-2{fill-rule: evenodd;}
+                    .algo-2{fill: #4dafd8;}
+                    .ct-1{fill:#1a2327;}.ct-2{fill:#a0a0a0;}.ct-3{fill:#4db04f;}.ct-4{fill:#1b1c1f;}
+                    .tl-1{fill:#00b0ad;}
+                }
+                &.transfered{
+                    svg{
+                        transform: translate3d(-50%, 0, 0) scale(1);
+                        .zone-svg{
+                            //fill: #fff;
+                        }
+                    }
+                    .hover{
+                        svg{
+                            transform: translate3d(0, 0, 0);
+                        }
+                    }
                 }
                 /*.hover{
                     opacity: 1;
@@ -144,6 +184,19 @@
         max-width: 65%;
         transition: 0.45s $transitionFunction;
     }
+    svg{
+        display: inline-block;
+        max-width: 58%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0) scale(1);
+        transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1);
+        .zone-svg{
+            transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1);
+            fill: $chapo;
+        }
+    }
     .txt{
         position: absolute;
         left: 0;
@@ -156,6 +209,8 @@
         position: absolute;
         //bottom: 30px;
         bottom: 16px;
+        left: 0;
+        right: 0;
         opacity: 0;
         transform: translate3d(0, 100%, 0);
         transition: 0.45s $transitionFunction;
