@@ -170,7 +170,7 @@ $(function(){
     function setPortfolio(poItem, nbPoItem, nbCol){
         var portfolioContent = '<div class="grid">', poItemIndex = 0,
             total = 0, i = 0, j = 0, ratio1 = 0.1, ratio2 = 0.4,
-            transfered, nbTrItem = 0;
+            transfered, nbTrItem = 0, poItems;
 
         function lightTransfered(x){
             if(x === nbTrItem){
@@ -181,6 +181,16 @@ $(function(){
                 transfered.eq(x).addClass('on');
             }, 1500);
             setTimeout(lightTransfered, 3500, x+1);
+        }
+
+        function lightTransferedPoItems(y){
+            $('a', poItems).removeClass('on');
+            setTimeout(function(){
+                var aze = poItems.eq(y);
+                $('a', aze).addClass('on');
+            }, 1500);
+            var newElemNumber = Math.floor(Math.random() * nbPoItem);
+            setTimeout(lightTransferedPoItems, 3500, newElemNumber);
         }
 
         if(nbPoItem > 37){
@@ -240,6 +250,9 @@ $(function(){
         transfered = portfolio.find('div.grid').find('.transfered');
         nbTrItem = transfered.length;
         //lightTransfered(0);
+
+        poItems = portfolio.find('.po-item');
+        lightTransferedPoItems(0);
     }
 
 
