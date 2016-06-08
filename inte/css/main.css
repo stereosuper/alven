@@ -1768,21 +1768,10 @@ select::-ms-expand {
   .btn:after, .btn-invert:after {
     top: 1px;
     bottom: 0; }
-  .btn .before span, .btn-invert .before span {
-    display: inline-block; }
-  .btn .before .word span, .btn-invert .before .word span {
-    transform: translate3d(0, 0, 0);
-    transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.1s cubic-bezier(0.75, 0, 0.125, 1); }
   .btn .after, .btn-invert .after {
     position: absolute;
     top: 21px;
     left: 17px; }
-    .btn .after span, .btn-invert .after span {
-      display: inline-block; }
-    .btn .after .word span, .btn-invert .after .word span {
-      opacity: 0;
-      transform: translate3d(0, 40px, 0);
-      transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.1s cubic-bezier(0.75, 0, 0.125, 1); }
   .btn .bg, .btn-invert .bg {
     position: absolute;
     top: 0;
@@ -1799,14 +1788,6 @@ select::-ms-expand {
     .no-js .btn:hover .bg, .is-desktop .btn:hover .bg, .no-js .btn:focus .bg, .is-desktop .btn:focus .bg, .no-js .btn-invert:hover .bg, .is-desktop .btn-invert:hover .bg, .no-js .btn-invert:focus .bg, .is-desktop .btn-invert:focus .bg {
       opacity: 1;
       transition-delay: 0.15s; }
-    .no-js .btn:hover .before .word span, .is-desktop .btn:hover .before .word span, .no-js .btn:focus .before .word span, .is-desktop .btn:focus .before .word span, .no-js .btn-invert:hover .before .word span, .is-desktop .btn-invert:hover .before .word span, .no-js .btn-invert:focus .before .word span, .is-desktop .btn-invert:focus .before .word span {
-      opacity: 0;
-      transform: translate3d(0, -40px, 0) scale(0.9);
-      transition: opacity 0.2s cubic-bezier(0.75, 0, 0.125, 1), transform 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
-    .no-js .btn:hover .after .word span, .is-desktop .btn:hover .after .word span, .no-js .btn:focus .after .word span, .is-desktop .btn:focus .after .word span, .no-js .btn-invert:hover .after .word span, .is-desktop .btn-invert:hover .after .word span, .no-js .btn-invert:focus .after .word span, .is-desktop .btn-invert:focus .after .word span {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-      transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s, transform 0.25s cubic-bezier(0.75, 0, 0.125, 1) 0.2s; }
   .btn:active, .btn-invert:active {
     opacity: 0.7; }
 

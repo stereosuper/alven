@@ -33,7 +33,7 @@ $(function(){
 
 
 
-    function setButtons(buttons){
+    /*function setButtons(buttons){
         var i = 0, nbButtons = buttons.length, letterArray = [],
             textBtn = '', j = 0, nbLetter = 0, newHtmlBtn = '', newHtmlBtnAfter = '',
             delay = 0;
@@ -58,6 +58,32 @@ $(function(){
             }
             buttons.eq(i).html('<span class="bg"></span><span class="before"><span class="word">'+newHtmlBtn+'</span></span><span class="after"><span class="word">'+newHtmlBtnAfter+'</span></span>');
         }
+    }*/
+    function setButtons(buttons){
+        var i = 0, tlBeforeButtons = [], tlAfterButtons = [], mySplitTextBeforeButtons = [], mySplitTextAfterButtons = [], charsBeforeButtons = [], charsAfterButtons = [], nbButtons = buttons.length;
+        for(i; i<nbButtons; i++){
+            textBtn = buttons.eq(i).html();
+            buttons.eq(i).html('<span class="bg"></span><span class="before">'+textBtn+'</span><span class="after">'+textBtn+'</span>');
+            tlBeforeButtons[i] = new TimelineMax, 
+                mySplitTextBeforeButtons[i] = new SplitText($('.before', buttons.eq(i)), {type:'words,chars'}), 
+                charsBeforeButtons[i] = mySplitTextBeforeButtons[i].chars;
+            tlAfterButtons[i] = new TimelineMax, 
+                mySplitTextAfterButtons[i] = new SplitText($('.after', buttons.eq(i)), {type:'words,chars'}), 
+                charsAfterButtons[i] = mySplitTextAfterButtons[i].chars;
+            TweenMax.set(charsAfterButtons[i], {y:40, opacity: 0});
+        }
+
+        buttons.hover(
+            function(){
+                var indexButtonHovered = buttons.index(this);
+                tlBeforeButtons[indexButtonHovered].staggerTo(charsBeforeButtons[indexButtonHovered], 0.2, {y:-40, opacity: 0, ease:Cubic.easeIn}, 0.013);
+                tlAfterButtons[indexButtonHovered].staggerTo(charsAfterButtons[indexButtonHovered], 0.2, {y:0, opacity: 1, delay: 0.1, ease:Cubic.easeIn}, 0.013);
+            }, function(){
+                var indexButtonHovered = buttons.index(this);
+                tlBeforeButtons[indexButtonHovered].staggerTo(charsBeforeButtons[indexButtonHovered], 0.2, {y:0, opacity: 1, delay: 0.1, ease:Cubic.easeOut}, 0.013);
+                tlAfterButtons[indexButtonHovered].staggerTo(charsAfterButtons[indexButtonHovered], 0.2, {y:40, opacity: 0, ease:Cubic.easeIn}, 0.013);
+            }
+        );
     }
 
     function setSpotlightPost(){
