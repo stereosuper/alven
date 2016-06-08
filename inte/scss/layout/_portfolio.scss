@@ -61,7 +61,7 @@
                 vertical-align: middle;
             }
             &.transfered{
-                border: none;
+                //border: none;
                 > img{
                     transform: translate3d(-50%, 0, 0);
                     position: absolute;
@@ -155,6 +155,7 @@
                 }
                 &.transfered{
                     background-color: #34b6b8;
+                    border-color: #34b6b8;
                     svg{
                         transform: translate3d(0, 0, 0) scale(1);
                         .zone-svg{
