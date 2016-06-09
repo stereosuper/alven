@@ -112,13 +112,14 @@
     position: relative; // to stay above content-header
     overflow: hidden;
     z-index: 10;
-    padding: 20px 0 0 0;
+    padding: 32px 0 0 0;
     background-color: #fff;
     &:before{
         content: '';
         display: block;
         position: absolute;
-        top: 20px;
+        //top: 20px;
+        top: 32px;
         right: 0;
         bottom: 0;
         left: 0;
@@ -133,14 +134,16 @@
     &:hover{
         .no-js &, .is-desktop &{
             > div{
-                transform: translate3d(0, 20px, 0);
+                //transform: translate3d(0, 20px, 0);
+                transform: translate3d(0, 32px, 0);
             }
         }
     }
     > div{
         padding: 20px 30px 20px 20px;
         position: relative;
-        margin: -20px 0 0;
+        //margin: -20px 0 0;
+        margin: -32px 0 0;
         background: #fff;
         transform: translate3d(0, 0, 0);
         transition: $transition;

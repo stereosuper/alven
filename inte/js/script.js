@@ -272,7 +272,7 @@ $(function(){
     if(spotlightPost.length){
         setSpotlightPost();
 
-        TweenMax.set(spotlightPost.find('.spotlight-post'), {y: '-100%'});
+        TweenMax.set(spotlightPost.find('.spotlight-post'), {y: '-120%'});
 
         new ScrollMagic.Scene({ triggerElement: '#spotlightPost' })
             .triggerHook(0.9)

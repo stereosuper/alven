@@ -1075,13 +1075,13 @@ select::-ms-expand {
   position: relative;
   overflow: hidden;
   z-index: 10;
-  padding: 20px 0 0 0;
+  padding: 32px 0 0 0;
   background-color: #fff; }
   .spotlight-posts:before {
     content: '';
     display: block;
     position: absolute;
-    top: 20px;
+    top: 32px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -1092,11 +1092,11 @@ select::-ms-expand {
 .spotlight-post {
   position: relative; }
   .no-js .spotlight-post:hover > div, .is-desktop .spotlight-post:hover > div {
-    transform: translate3d(0, 20px, 0); }
+    transform: translate3d(0, 32px, 0); }
   .spotlight-post > div {
     padding: 20px 30px 20px 20px;
     position: relative;
-    margin: -20px 0 0;
+    margin: -32px 0 0;
     background: #fff;
     transform: translate3d(0, 0, 0);
     transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
