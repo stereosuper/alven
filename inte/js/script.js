@@ -19,7 +19,8 @@ $(function(){
         related = $('#related'),
         menu = $('#menu-responsive'),
         portfolio = $('#portfolio'),
-        controller = new ScrollMagic.Controller();
+        controller = new ScrollMagic.Controller(),
+        team = $('.team');
 
     /**** VARIABLES ****/
 
@@ -31,34 +32,6 @@ $(function(){
         lastScrollTop = myScroll;
     }
 
-
-
-    /*function setButtons(buttons){
-        var i = 0, nbButtons = buttons.length, letterArray = [],
-            textBtn = '', j = 0, nbLetter = 0, newHtmlBtn = '', newHtmlBtnAfter = '',
-            delay = 0;
-        for(i; i<nbButtons; i++){
-            textBtn = buttons.eq(i).html();
-            letterArray = textBtn.split('');
-            j = 0;
-            nbLetter = letterArray.length;
-            newHtmlBtn = '';
-            newHtmlBtnAfter = '';
-            delay = 0;
-            for(j; j<nbLetter; j++){
-                delay += 0.013;
-                delay = Math.round(delay*1000) / 1000;
-                if(letterArray[j] === ' '){
-                    letterArray[j] = '&nbsp;';
-                    newHtmlBtn += '</span><span class="word">';
-                    newHtmlBtnAfter += '</span><span class="word">';
-                }
-                newHtmlBtn += '<span style="transition-delay:'+delay+'s">'+letterArray[j]+'</span>';
-                newHtmlBtnAfter += '<span style="transition-delay:'+(delay+0.15)+'s">'+letterArray[j]+'</span>';
-            }
-            buttons.eq(i).html('<span class="bg"></span><span class="before"><span class="word">'+newHtmlBtn+'</span></span><span class="after"><span class="word">'+newHtmlBtnAfter+'</span></span>');
-        }
-    }*/
     function setButtons(buttons){
         var i = 0, tlBeforeButtons = [], tlAfterButtons = [], mySplitTextBeforeButtons = [], mySplitTextAfterButtons = [], charsBeforeButtons = [], charsAfterButtons = [], nbButtons = buttons.length;
         for(i; i<nbButtons; i++){
@@ -330,6 +303,32 @@ $(function(){
         if(nbPoItem > nbCol){
             setPortfolio(poItem, nbPoItem, nbCol);
         }
+    }
+
+    if(team.length){
+        var teamMember = team.find('.team-member');
+        teamMember.on('click', function(e){
+            e.preventDefault();
+            var desc, heightDesc, liParent, tlTeam;
+            liParent = $(this).closest('li');
+            desc = $('.desc', liParent);
+            heightDesc = desc.outerHeight();
+            if(!team.hasClass('member-open')){
+                TweenMax.set(team, {className:'+=member-open'});
+                // open new
+            }else{
+                if(liParent.hasClass('open')){
+                    // close current
+                }else{
+                    // close already open and open new
+                }
+            }
+
+            tlTeam = new TimelineMax();
+            TweenMax.set(liParent, {className:'+=open'});
+            tlTeam.to(liParent, 0.25, {paddingBottom: heightDesc+'px'});
+            tlTeam.to(desc, 0.25, {opacity: 1});
+        });
     }
 
     if(menu.length){
