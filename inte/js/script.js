@@ -1,27 +1,26 @@
+'use strict';
+
 $(function(){
 
-    var htmlTag = $('html'), body = $('body'),
-        myScroll = 0, scrollDir = 0, lastScrollTop = 0,
-        header = $('#header'), headerHeight = header.innerHeight(),
-        mainContent = $('#mainContent'),
-        readIndicator = $('#readIndicator'),
-        docHeight = $(document).height(),
-        windowHeight = $(window).height(),
-        windowWidth = $(window).width(),
-        buttons = $('.btn'),
-        buttonsInvert = $('.btn-invert'),
-        main = $('#main'),
-        contentHeader = $('#contentHeader'),
-        postSidebar = $('#postSidebar'),
-        postSidebarTop = 0 /*postSidebarPos = 0,*/, postSidebarWidth = 0,
-        spotlightPost = $('#spotlightPost'),
-        spotlightDrag = false,
-        related = $('#related'),
-        menu = $('#menu-responsive'),
-        portfolio = $('#portfolio'),
-        controller = new ScrollMagic.Controller();
-
     /**** VARIABLES ****/
+
+    var docHeight = $(document).height(), windowHeight = $(window).height(), windowWidth = $(window).width();
+
+    var controller = new ScrollMagic.Controller();
+    var myScroll = 0, scrollDir = 0, lastScrollTop = 0;
+
+    var htmlTag = $('html'), body = $('body');
+    var header = $('#header'), headerHeight = header.innerHeight();
+    var mainContent = $('#mainContent'), main = $('#main');
+    var readIndicator = $('#readIndicator');
+    var buttons = $('.btn'), buttonsInvert = $('.btn-invert');
+    var contentHeader = $('#contentHeader');
+    var postSidebar = $('#postSidebar'), postSidebarTop = 0 /*postSidebarPos = 0,*/, postSidebarWidth = 0;
+    var spotlightPost = $('#spotlightPost'), spotlightDrag = false;
+    var related = $('#related');
+    var menu = $('#menu-responsive');
+    var portfolio = $('#portfolio');
+
 
 
     /**** INIT ****/
@@ -60,15 +59,18 @@ $(function(){
         }
     }*/
     function setButtons(buttons){
-        var i = 0, tlBeforeButtons = [], tlAfterButtons = [], mySplitTextBeforeButtons = [], mySplitTextAfterButtons = [], charsBeforeButtons = [], charsAfterButtons = [], nbButtons = buttons.length;
+        var i = 0, tlBeforeButtons = [], tlAfterButtons = [],
+            mySplitTextBeforeButtons = [], mySplitTextAfterButtons = [],
+            charsBeforeButtons = [], charsAfterButtons = [], nbButtons = buttons.length,
+            textBtn;
         for(i; i<nbButtons; i++){
             textBtn = buttons.eq(i).html();
             buttons.eq(i).html('<span class="bg"></span><span class="before">'+textBtn+'</span><span class="after">'+textBtn+'</span>');
-            tlBeforeButtons[i] = new TimelineMax, 
-                mySplitTextBeforeButtons[i] = new SplitText($('.before', buttons.eq(i)), {type:'words,chars'}), 
+            tlBeforeButtons[i] = new TimelineMax,
+                mySplitTextBeforeButtons[i] = new SplitText($('.before', buttons.eq(i)), {type:'words,chars'}),
                 charsBeforeButtons[i] = mySplitTextBeforeButtons[i].chars;
-            tlAfterButtons[i] = new TimelineMax, 
-                mySplitTextAfterButtons[i] = new SplitText($('.after', buttons.eq(i)), {type:'words,chars'}), 
+            tlAfterButtons[i] = new TimelineMax,
+                mySplitTextAfterButtons[i] = new SplitText($('.after', buttons.eq(i)), {type:'words,chars'}),
                 charsAfterButtons[i] = mySplitTextAfterButtons[i].chars;
             TweenMax.set(charsAfterButtons[i], {y:40, opacity: 0});
         }
