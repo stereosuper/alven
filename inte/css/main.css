@@ -1092,7 +1092,7 @@ select::-ms-expand {
 .spotlight-post {
   position: relative; }
   .no-js .spotlight-post:hover > div, .is-desktop .spotlight-post:hover > div {
-    transform: translate3d(0, 32px, 0); }
+    transform: translate3d(0, 12px, 0); }
   .spotlight-post > div {
     padding: 20px 30px 20px 20px;
     position: relative;

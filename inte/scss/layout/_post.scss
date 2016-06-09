@@ -118,7 +118,6 @@
         content: '';
         display: block;
         position: absolute;
-        //top: 20px;
         top: 32px;
         right: 0;
         bottom: 0;
@@ -134,15 +133,13 @@
     &:hover{
         .no-js &, .is-desktop &{
             > div{
-                //transform: translate3d(0, 20px, 0);
-                transform: translate3d(0, 32px, 0);
+                transform: translate3d(0, 12px, 0);
             }
         }
     }
     > div{
         padding: 20px 30px 20px 20px;
         position: relative;
-        //margin: -20px 0 0;
         margin: -32px 0 0;
         background: #fff;
         transform: translate3d(0, 0, 0);
