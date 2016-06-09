@@ -189,8 +189,7 @@ $(function(){
     }
 
     function setMenuElmts(){
-        TweenMax.set(menu.find('.menu-title'), {y: '-100%', opacity: 0});
-        TweenMax.set(menu.find('.menu-subtitle'), {y: '-100%', opacity: 0});
+        TweenMax.set([menu.find('.menu-title'), menu.find('.menu-subtitle')], {y: '-100%', opacity: 0});
         TweenMax.set(menu.find('li'), {y: '-120%', opacity: 0});
     }
 
