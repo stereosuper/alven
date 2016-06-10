@@ -1,6 +1,5 @@
 'use strict';
 
-
 $(function(){
 
     /**** VARIABLES ****/
@@ -103,11 +102,6 @@ $(function(){
                 TweenMax.set(spotlightDrag, {x: '0px'});
             }
         }
-    }
-
-    function animTxt(splitText){
-        splitText.split({type:'words'});
-        TweenMax.staggerFrom(splitText.words, 0.3, {ease:Expo.easeInOut, opacity:0, y:100}, 0.03);
     }
 
     function setSidebarScroll(){
@@ -361,7 +355,7 @@ $(function(){
     });
 
 
-    $(document).scroll(function(){
+    $(document).on('scroll', function(){
         myScroll = $(document).scrollTop();
         detectScrollDir();
 
@@ -394,7 +388,7 @@ $(function(){
         }
     });
 
-    $(window).resize(function(){
+    $(window).on('resize', function(){
         docHeight = $(document).height();
         windowHeight = $(window).height();
         windowWidth = $(window).width();
@@ -418,25 +412,35 @@ $(function(){
         }
 	});
 
-	$(window).load(function(){
-        docHeight = $(document).height();
+});
 
-        if(contentHeader.length){
-            if(main.length){
-                main.css('marginTop', contentHeader.innerHeight());
-            }
-            if(contentHeader.find('h1').length){
-                var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
-                contentHeader.find('h1').css('opacity', 1);
-                animTxt(splitText);
-            }
+$(window).on('load', function(){
+    var docHeight = $(document).height();
+
+    var mainContent = $('#mainContent'), main = $('#main');
+    var contentHeader = $('#contentHeader');
+    var postSidebar = $('#postSidebar'), postSidebarTop = 0, postSidebarWidth = 0;
+
+    function animTxt(splitText){
+        splitText.split({type:'words'});
+        TweenMax.staggerFrom(splitText.words, 0.3, {ease:Expo.easeInOut, opacity:0, y:100}, 0.03);
+    }
+
+
+    if(contentHeader.length){
+        if(main.length){
+            main.css('marginTop', contentHeader.innerHeight());
         }
-
-        if(postSidebar.length){
-            postSidebarTop = postSidebar.offset().top;
-            postSidebarWidth = postSidebar.innerWidth() - 1;
-            //postSidebarPos = postSidebar.position().top;
+        if(contentHeader.find('h1').length){
+            var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
+            contentHeader.find('h1').css('opacity', 1);
+            animTxt(splitText);
         }
-	});
+    }
 
+    if(postSidebar.length){
+        postSidebarTop = postSidebar.offset().top;
+        postSidebarWidth = postSidebar.innerWidth() - 1;
+        //postSidebarPos = postSidebar.position().top;
+    }
 });
