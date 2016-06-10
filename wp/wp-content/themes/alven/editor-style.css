@@ -1,0 +1,19 @@
+/** Ici les tyles appliqués dans l'éditeur ! **/
+
+.btn{
+    display: inline-block;
+    padding: 21px 17px 19px;
+    border: 1px solid #333;
+    box-shadow: none;
+    letter-spacing: 0.08em;
+    overflow: hidden;
+    position: relative;
+    line-height: 1;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+    background: #333;
+    color: #fff;
+}

@@ -15,8 +15,26 @@
 		<?php wp_head(); ?>
 	</head>
 
+	<?php
+		global $post;
+		$currentPage = get_queried_object_id();
 
-	<body <?php body_class(); ?>>
+		$theme = '';
+		$themePortfolio = url_to_postid(get_field('pagePortfolio', 'options'));
+		$themeMagazine = intval(get_option( 'page_for_posts' ));
+		$themeWe = url_to_postid(get_field('pageWe', 'options'));
+
+		if($currentPage === $themePortfolio || $currentPage->post_parent === $themePortfolio){
+			$theme = 'theme-portfolio';
+		}else if($currentPage === $themeMagazine || is_singular('post')){
+			$theme = 'theme-magazine';
+			echo 'aye!';
+		}else if($currentPage === $themeWe || $currentPage->post_parent === $themeWe){
+			$theme = 'theme-we';
+		}
+	?>
+
+	<body <?php body_class($theme); ?>>
 
 		<header role='banner' id='header'>
 			<div class='container'>
@@ -24,6 +42,7 @@
 				<nav role='navigation' id='menu-main'>
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => '' ) ); ?>
 				</nav>
+				<span class='post-title'><?php the_title(); ?></span>
 				<a id='searchBtn' class='btn-search' href='#'>Explore Alven</a>
 				<button id='burger'><span>Menu</span></button>
 				<nav role='navigation' id='menu-responsive'>

@@ -8,7 +8,7 @@ define( 'ALVEN_VERSION', 1.0 );
 add_filter( 'auto_update_plugin', '__return_true' );
 
 // Theme support
-add_theme_support( 'html5' );
+add_theme_support( 'html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'widgets') );
 add_theme_support( 'post-thumbnails' );
 
 // Admin bar
@@ -47,6 +47,22 @@ add_filter('login_errors', create_function('$a', "return null;"));
 /*-----------------------------------------------------------------------------------*/
 /* Admin
 /*-----------------------------------------------------------------------------------*/
+// Remove some useless admin stuff
+function alven_remove_menus(){
+    remove_menu_page( 'edit-comments.php' );
+}
+add_action( 'admin_menu', 'alven_remove_menus' );
+
+function alven_remove_submenus() {
+  $page = remove_submenu_page( 'themes.php', 'themes.php' );
+}
+add_action( 'admin_menu', 'alven_remove_submenus', 999 );
+
+function alven_remove_top_menus( $wp_admin_bar ){
+    $wp_admin_bar->remove_node( 'wp-logo' );
+    $wp_admin_bar->remove_node( 'comments' );
+}
+add_action( 'admin_bar_menu', 'alven_remove_top_menus', 999 );
 
 // Enlever le lien par défaut autour des images
 function alven_imagelink_setup(){
@@ -71,8 +87,29 @@ function alven_right_now_custom_post() {
 }
 add_action('dashboard_glance_items', 'alven_right_now_custom_post');
 
+// New button wysiwyg
+function alven_button( $buttons ){
+    array_unshift( $buttons, 'styleselect' );
+    return $buttons;
+}
+add_filter( 'mce_buttons_2', 'alven_button' );
+
+function alven_init_editor_styles(){
+    add_editor_style();
+}
+add_action( 'after_setup_theme', 'alven_init_editor_styles' );
+
 // Customize a bit the wysiwyg editor
 function alven_mce_before_init( $styles ){
+    // Add btn
+    $style_formats = array (
+        array(
+            'title' => 'Button',
+            'selector' => 'a',
+            'classes' => 'btn'
+        )
+    );
+    $styles['style_formats'] = json_encode( $style_formats );
     // Remove h1 and code
     $styles['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
     // Let only the colors you want
@@ -81,10 +118,18 @@ function alven_mce_before_init( $styles ){
 }
 add_filter('tiny_mce_before_init', 'alven_mce_before_init');
 
+// Page d'options
+function alven_menu_order( $menu_ord ){
+    if(!$menu_ord) return true;
+    $menu_ord = array_diff($menu_ord, array( 'acf-options' ));
+    array_splice( $menu_ord, 1, 0, array( 'acf-options' ) );
+    return $menu_ord;
+}
+add_filter('custom_menu_order', 'alven_menu_order');
+add_filter('menu_order', 'alven_menu_order');
 /*-----------------------------------------------------------------------------------*/
 /* Menus
 /*-----------------------------------------------------------------------------------*/
-
 register_nav_menus(
 	array(
 		'primary' => 'Primary Menu'
@@ -115,26 +160,136 @@ function alven_register_sidebars(){
 }
 add_action( 'widgets_init', 'alven_register_sidebars' );
 
-function alven_add_field_menu_widget($widget, $return, $instance){
-    if('nav_menu' == $widget->id_base){
-        $subTitle = isset( $instance['sub_title'] ) ? $instance['sub_title'] : '';
-    ?>
-        <p>
-            <label for="<?php echo $widget->get_field_id('sub_title'); ?>">Subtitle:</label>
-            <input type="text" class="widefat" id="<?php echo $widget->get_field_id('sub_title'); ?>" name="<?php echo $widget->get_field_name('sub_title'); ?>" value="<?php echo $subTitle; ?>">
+// Deregister default widgets
+function alven_unregister_default_widgets(){
+    unregister_widget('WP_Widget_Pages');
+    unregister_widget('WP_Widget_Calendar');
+    unregister_widget('WP_Widget_Archives');
+    unregister_widget('WP_Widget_Links');
+    unregister_widget('WP_Widget_Meta');
+    unregister_widget('WP_Widget_Search');
+    unregister_widget('WP_Widget_Text');
+    unregister_widget('WP_Widget_Categories');
+    unregister_widget('WP_Widget_Recent_Posts');
+    unregister_widget('WP_Widget_Recent_Comments');
+    unregister_widget('WP_Widget_RSS');
+    unregister_widget('WP_Widget_Tag_Cloud');
+    unregister_widget('WP_Nav_Menu_Widget');
+    unregister_widget('Twenty_Eleven_Ephemera_Widget');
+}
+add_action('widgets_init', 'alven_unregister_default_widgets', 11);
+
+
+// Custom Menu Widget
+class Menu_Widget extends WP_Widget{
+    function __construct(){
+        parent::__construct( 'Menu_Widget', 'Alven Menu Widget', array( 'description' => 'Menu widget with title and subtitle' ) );
+    }
+    public function widget( $args, $instance ) {
+        $nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
+        if ( !$nav_menu ) return;
+
+       $instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
+       $instance['sub_title'] = apply_filters( 'widget_title', empty( $instance['sub_title'] ) ? '' : $instance['sub_title'], $instance, $this->id_base );
+
+       echo "<div class='". $instance['css_class'] ." menu-small'>";
+
+        if ( !empty($instance['title']) ){
+            echo "<span class='menu-title'>" . $instance['title'] . "</span>";
+        }
+        if ( !empty($instance['sub_title']) ){
+            echo "<span class='menu-subtitle'>" . $instance['sub_title'] . "</span>";
+        }
+
+        $nav_menu_args = array(
+            'fallback_cb' => '',
+            'menu'        => $nav_menu
+        );
+
+        //wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $args, $instance ), array('menu_class' => 'yolo') );
+        wp_nav_menu( array('menu' => $instance['nav_menu'], 'container' => false, 'menu_class' => '') );
+
+        echo "</div>";
+    }
+    public function form( $instance ){
+        $title = isset( $instance['title'] ) ? $instance['title'] : '';
+        $sub_title = isset( $instance['sub_title'] ) ? $instance['sub_title'] : '';
+        $nav_menu = isset( $instance['nav_menu'] ) ? $instance['nav_menu'] : '';
+        $css_class = isset( $instance['css_class'] ) ? $instance['css_class'] : '';
+
+        $menus = wp_get_nav_menus();
+
+        ?>
+        <p class="nav-menu-widget-no-menus-message" <?php if ( ! empty( $menus ) ) { echo ' style="display:none" '; } ?>>
+            <?php
+            if ( isset( $GLOBALS['wp_customize'] ) && $GLOBALS['wp_customize'] instanceof WP_Customize_Manager ) {
+                $url = 'javascript: wp.customize.panel( "nav_menus" ).focus();';
+            } else {
+                $url = admin_url( 'nav-menus.php' );
+            }
+            ?>
+            <?php echo sprintf( __( 'No menus have been created yet. <a href="%s">Create some</a>.' ), esc_attr( $url ) ); ?>
         </p>
-    <?php
+        <div class="nav-menu-widget-form-controls" <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ) ?></label>
+                <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>"/>
+            </p>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'sub_title' ); ?>"><?php _e( 'Subtitle:' ) ?></label>
+                <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'sub_title' ); ?>" name="<?php echo $this->get_field_name( 'sub_title' ); ?>" value="<?php echo esc_attr( $sub_title ); ?>"/>
+            </p>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php _e( 'Select Menu:' ); ?></label>
+                <select id="<?php echo $this->get_field_id( 'nav_menu' ); ?>" name="<?php echo $this->get_field_name( 'nav_menu' ); ?>">
+                    <option value="0"><?php _e( '&mdash; Select &mdash;' ); ?></option>
+                    <?php foreach ( $menus as $menu ) : ?>
+                        <option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $nav_menu, $menu->term_id ); ?>>
+                            <?php echo esc_html( $menu->name ); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </p>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'css_class' ); ?>"><?php _e( 'CSS class:' ) ?></label>
+                <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'css_class' ); ?>" name="<?php echo $this->get_field_name( 'css_class' ); ?>" value="<?php echo esc_attr( $css_class ); ?>"/>
+            </p>
+        </div>
+        <?php
+    }
+    public function update( $new_instance, $old_instance ) {
+        $instance = array();
+        if ( ! empty( $new_instance['title'] ) ) {
+            $instance['title'] = sanitize_text_field( $new_instance['title'] );
+        }
+        if ( ! empty( $new_instance['sub_title'] ) ) {
+            $instance['sub_title'] = sanitize_text_field( $new_instance['sub_title'] );
+        }
+        if ( ! empty( $new_instance['nav_menu'] ) ) {
+            $instance['nav_menu'] = (int) $new_instance['nav_menu'];
+        }
+        if ( ! empty( $new_instance['css_class'] ) ) {
+            $instance['css_class'] = sanitize_text_field( $new_instance['css_class'] );
+        }
+        return $instance;
     }
 }
-add_filter( 'in_widget_form', 'alven_add_field_menu_widget', 10, 3 );
 
-function alven_save_field_menu_widget($instance, $new_instance){
-    /*if(isset( $new_instance['nav_menu'] ) && !empty( $new_instance['sub_title'] )){
-        $new_instance['sub_title'] = $new_instance['sub_title'];
-    }*/
-    return $new_instance;
+// Register new custom widgets
+function alven_load_widget(){
+    register_widget( 'Menu_Widget' );
 }
-add_filter( 'widget_update_callback', 'alven_save_field_menu_widget', 10, 2 );
+add_action( 'widgets_init', 'alven_load_widget' );
+
+
+/*-----------------------------------------------------------------------------------*/
+/* Posts
+/*-----------------------------------------------------------------------------------*/
+function alven_add_class_to_category($thelist){
+    $class = 'btn-cat';
+    return str_replace('<a href="', '<a class="'. $class. '" href="', $thelist);
+}
+add_filter( 'the_category', 'alven_add_class_to_category' );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -149,7 +304,7 @@ function alven_scripts(){
 		// footer
         wp_enqueue_script( 'isMobile', get_template_directory_uri() . '/js/isMobile.min.js', array(), null, true );
 	    wp_deregister_script('jquery');
-		wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-1.11.2.min.js', array(), null, true );
+		wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.0.0.min.js', array(), null, true );
 
         wp_enqueue_script( 'tweenmax', get_template_directory_uri() . '/js/TweenMax.min.js', array(), null, true );
         wp_enqueue_script( 'splittext', get_template_directory_uri() . '/js/splitText.min.js', array(), null, true );

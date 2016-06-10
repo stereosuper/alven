@@ -20,6 +20,7 @@ $(function(){
     var related = $('#related');
     var menu = $('#menu-responsive');
     var portfolio = $('#portfolio');
+    var team = $('.team');
 
 
 
@@ -30,34 +31,6 @@ $(function(){
         lastScrollTop = myScroll;
     }
 
-
-
-    /*function setButtons(buttons){
-        var i = 0, nbButtons = buttons.length, letterArray = [],
-            textBtn = '', j = 0, nbLetter = 0, newHtmlBtn = '', newHtmlBtnAfter = '',
-            delay = 0;
-        for(i; i<nbButtons; i++){
-            textBtn = buttons.eq(i).html();
-            letterArray = textBtn.split('');
-            j = 0;
-            nbLetter = letterArray.length;
-            newHtmlBtn = '';
-            newHtmlBtnAfter = '';
-            delay = 0;
-            for(j; j<nbLetter; j++){
-                delay += 0.013;
-                delay = Math.round(delay*1000) / 1000;
-                if(letterArray[j] === ' '){
-                    letterArray[j] = '&nbsp;';
-                    newHtmlBtn += '</span><span class="word">';
-                    newHtmlBtnAfter += '</span><span class="word">';
-                }
-                newHtmlBtn += '<span style="transition-delay:'+delay+'s">'+letterArray[j]+'</span>';
-                newHtmlBtnAfter += '<span style="transition-delay:'+(delay+0.15)+'s">'+letterArray[j]+'</span>';
-            }
-            buttons.eq(i).html('<span class="bg"></span><span class="before"><span class="word">'+newHtmlBtn+'</span></span><span class="after"><span class="word">'+newHtmlBtnAfter+'</span></span>');
-        }
-    }*/
     function setButtons(buttons){
         var i = 0, tlBeforeButtons = [], tlAfterButtons = [],
             mySplitTextBeforeButtons = [], mySplitTextAfterButtons = [],
@@ -129,11 +102,6 @@ $(function(){
                 TweenMax.set(spotlightDrag, {x: '0px'});
             }
         }
-    }
-
-    function animTxt(splitText){
-        splitText.split({type:'words'});
-        TweenMax.staggerFrom(splitText.words, 0.3, {ease:Expo.easeInOut, opacity:0, y:100}, 0.03);
     }
 
     function setSidebarScroll(){
@@ -298,7 +266,7 @@ $(function(){
     if(spotlightPost.length){
         setSpotlightPost();
 
-        TweenMax.set(spotlightPost.find('.spotlight-post'), {y: '-100%'});
+        TweenMax.set(spotlightPost.find('.spotlight-post'), {y: '-120%'});
 
         new ScrollMagic.Scene({ triggerElement: '#spotlightPost' })
             .triggerHook(0.9)
@@ -333,6 +301,32 @@ $(function(){
         }
     }
 
+    if(team.length){
+        var teamMember = team.find('.team-member');
+        teamMember.on('click', function(e){
+            e.preventDefault();
+            var desc, heightDesc, liParent, tlTeam;
+            liParent = $(this).closest('li');
+            desc = $('.desc', liParent);
+            heightDesc = desc.outerHeight();
+            if(!team.hasClass('member-open')){
+                TweenMax.set(team, {className:'+=member-open'});
+                // open new
+            }else{
+                if(liParent.hasClass('open')){
+                    // close current
+                }else{
+                    // close already open and open new
+                }
+            }
+
+            tlTeam = new TimelineMax();
+            TweenMax.set(liParent, {className:'+=open'});
+            tlTeam.to(liParent, 0.25, {paddingBottom: heightDesc+'px'});
+            tlTeam.to(desc, 0.25, {opacity: 1});
+        });
+    }
+
     if(menu.length){
         setMenuElmts();
     }
@@ -361,7 +355,7 @@ $(function(){
     });
 
 
-    $(document).scroll(function(){
+    $(document).on('scroll', function(){
         myScroll = $(document).scrollTop();
         detectScrollDir();
 
@@ -394,7 +388,7 @@ $(function(){
         }
     });
 
-    $(window).resize(function(){
+    $(window).on('resize', function(){
         docHeight = $(document).height();
         windowHeight = $(window).height();
         windowWidth = $(window).width();
@@ -410,7 +404,7 @@ $(function(){
         if(postSidebar.length){
             postSidebar.css({top: 0, width: '20%'}).removeClass('fixed fixedBot');
             postSidebarTop = postSidebar.offset().top;
-            postSidebarWidth = postSidebar.innerWidth() - 1;
+            postSidebarWidth = postSidebar.innerWidth();
         }
 
         if(spotlightPost.length){
@@ -418,25 +412,33 @@ $(function(){
         }
 	});
 
-	$(window).load(function(){
-        docHeight = $(document).height();
+});
 
-        if(contentHeader.length){
-            if(main.length){
-                main.css('marginTop', contentHeader.innerHeight());
-            }
-            if(contentHeader.find('h1').length){
-                var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
-                contentHeader.find('h1').css('opacity', 1);
-                animTxt(splitText);
-            }
+$(window).on('load', function(){
+    var main = $('#main');
+    var contentHeader = $('#contentHeader');
+    var postSidebar = $('#postSidebar'), postSidebarTop = 0, postSidebarWidth = 0;
+
+    function animTxt(splitText){
+        splitText.split({type:'words'});
+        TweenMax.staggerFrom(splitText.words, 0.3, {ease:Expo.easeInOut, opacity:0, y:100}, 0.03);
+    }
+
+
+    if(contentHeader.length){
+        if(main.length){
+            main.css('marginTop', contentHeader.innerHeight());
         }
-
-        if(postSidebar.length){
-            postSidebarTop = postSidebar.offset().top;
-            postSidebarWidth = postSidebar.innerWidth() - 1;
-            //postSidebarPos = postSidebar.position().top;
+        if(contentHeader.find('h1').length){
+            var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
+            contentHeader.find('h1').css('opacity', 1);
+            animTxt(splitText);
         }
-	});
+    }
 
+    if(postSidebar.length){
+        postSidebarTop = postSidebar.offset().top;
+        postSidebarWidth = postSidebar.innerWidth() - 1;
+        //postSidebarPos = postSidebar.position().top;
+    }
 });
