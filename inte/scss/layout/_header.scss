@@ -94,7 +94,7 @@
                 }
                 #menu-main{
                     transform: translate3d(0, -25px, 0);
-                    li:not(.active){
+                    li:not(.current-menu-item){
                         opacity: 0;
                     }
                 }
@@ -231,6 +231,7 @@
     margin: 0 0 0 $col;
     z-index: 1;
     box-sizing: content-box;
+    white-space: nowrap;
     transform: translate3d(0, 0, 0);
     transition: transform $transition;
     ul{
@@ -278,7 +279,7 @@
                 background: $we;
             }
         }
-        &.active{
+        &.current-menu-item{
             a{
                 box-shadow: none;
                 &:before, &:after{
