@@ -192,6 +192,9 @@ img{
 figure{
     margin: 2.5em 0;
     text-align: center;
+    &.aligncenter{
+        margin: 2.5em auto;
+    }
 }
 figcaption{
     margin: 10px 0 0;

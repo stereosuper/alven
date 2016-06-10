@@ -97,7 +97,7 @@
             &:after{
                 left: -13px;
             }
-            &.current-menu-item{
+            &.current-menu-item, &.current_page_parent{
                 &:after{
                     width: 20px;
                 }

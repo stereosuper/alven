@@ -94,7 +94,7 @@
                 }
                 #menu-main{
                     transform: translate3d(0, -25px, 0);
-                    li:not(.current-menu-item){
+                    li:not(.current-menu-item):not(.current_page_parent){
                         opacity: 0;
                     }
                 }
@@ -279,7 +279,7 @@
                 background: $we;
             }
         }
-        &.current-menu-item{
+        &.current-menu-item, &.current_page_parent{
             a{
                 box-shadow: none;
                 &:before, &:after{

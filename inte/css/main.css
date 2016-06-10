@@ -587,6 +587,9 @@ figure {
   margin: 2.5em 0;
   text-align: center;
 }
+figure.aligncenter {
+  margin: 2.5em auto;
+}
 
 figcaption {
   margin: 10px 0 0;
@@ -958,7 +961,7 @@ select::-ms-expand {
   -webkit-transform: translate3d(0, -25px, 0);
           transform: translate3d(0, -25px, 0);
 }
-.single #header.fixed.on #menu-main li:not(.current-menu-item) {
+.single #header.fixed.on #menu-main li:not(.current-menu-item):not(.current_page_parent) {
   opacity: 0;
 }
 .menu-open #header.fixed {
@@ -1153,25 +1156,25 @@ select::-ms-expand {
 #menu-main li:nth-child(3):before, #menu-main li:nth-child(3):after {
   background: #33a4df;
 }
-#menu-main li.current-menu-item a {
+#menu-main li.current-menu-item a, #menu-main li.current_page_parent a {
   box-shadow: none;
 }
-#menu-main li.current-menu-item a:before, #menu-main li.current-menu-item a:after {
+#menu-main li.current-menu-item a:before, #menu-main li.current-menu-item a:after, #menu-main li.current_page_parent a:before, #menu-main li.current_page_parent a:after {
   display: none;
 }
-#menu-main li.current-menu-item:before {
+#menu-main li.current-menu-item:before, #menu-main li.current_page_parent:before {
   display: none;
 }
-#menu-main li.current-menu-item:after {
+#menu-main li.current-menu-item:after, #menu-main li.current_page_parent:after {
   width: 30px;
 }
-#menu-main li.current-menu-item:nth-child(1) {
+#menu-main li.current-menu-item:nth-child(1), #menu-main li.current_page_parent:nth-child(1) {
   color: #f06850;
 }
-#menu-main li.current-menu-item:nth-child(2) {
+#menu-main li.current-menu-item:nth-child(2), #menu-main li.current_page_parent:nth-child(2) {
   color: #01a2a6;
 }
-#menu-main li.current-menu-item:nth-child(3) {
+#menu-main li.current-menu-item:nth-child(3), #menu-main li.current_page_parent:nth-child(3) {
   color: #33a4df;
 }
 
@@ -2843,7 +2846,7 @@ select::-ms-expand {
   #menu-main li:after {
     left: -13px;
   }
-  #menu-main li.current-menu-item:after {
+  #menu-main li.current-menu-item:after, #menu-main li.current_page_parent:after {
     width: 20px;
   }
 
