@@ -404,7 +404,7 @@ $(function(){
         if(postSidebar.length){
             postSidebar.css({top: 0, width: '20%'}).removeClass('fixed fixedBot');
             postSidebarTop = postSidebar.offset().top;
-            postSidebarWidth = postSidebar.innerWidth() - 1;
+            postSidebarWidth = postSidebar.innerWidth();
         }
 
         if(spotlightPost.length){
@@ -415,9 +415,7 @@ $(function(){
 });
 
 $(window).on('load', function(){
-    var docHeight = $(document).height();
-
-    var mainContent = $('#mainContent'), main = $('#main');
+    var main = $('#main');
     var contentHeader = $('#contentHeader');
     var postSidebar = $('#postSidebar'), postSidebarTop = 0, postSidebarWidth = 0;
 
