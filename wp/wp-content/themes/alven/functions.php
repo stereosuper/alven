@@ -1,5 +1,7 @@
 <?php
 define( 'ALVEN_VERSION', 1.0 );
+define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );
+define( 'WE_ID', url_to_postid(get_field('pageWe', 'options')) );
 
 /*-----------------------------------------------------------------------------------*/
 /* General
@@ -18,17 +20,17 @@ show_admin_bar(false);
 /*-----------------------------------------------------------------------------------*/
 /* Clean WordPress head and remove some stuff for security
 /*-----------------------------------------------------------------------------------*/
-remove_action('wp_head', 'wp_generator');
-remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
-remove_action('wp_head', 'rsd_link');
-remove_action('wp_head', 'wlwmanifest_link');
-remove_action('wp_head', 'print_emoji_detection_script', 7);
-remove_action('wp_print_styles', 'print_emoji_styles');
-remove_action('admin_print_scripts', 'print_emoji_detection_script');
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
+remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 
 // remove api rest links
-remove_action('wp_head', 'rest_output_link_wp_head');
-remove_action('wp_head', 'wp_oembed_add_discovery_links');
+remove_action( 'wp_head', 'rest_output_link_wp_head' );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 
 // remove comment author class
 function remove_comment_author_class( $classes ){
@@ -41,7 +43,7 @@ function remove_comment_author_class( $classes ){
 add_filter( 'comment_class' , 'remove_comment_author_class' );
 
 // remove login errors
-add_filter('login_errors', create_function('$a', "return null;"));
+add_filter( 'login_errors', create_function('$a', "return null;") );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -52,12 +54,10 @@ function alven_remove_menus(){
     remove_menu_page( 'edit-comments.php' );
 }
 add_action( 'admin_menu', 'alven_remove_menus' );
-
 function alven_remove_submenus() {
   $page = remove_submenu_page( 'themes.php', 'themes.php' );
 }
 add_action( 'admin_menu', 'alven_remove_submenus', 999 );
-
 function alven_remove_top_menus( $wp_admin_bar ){
     $wp_admin_bar->remove_node( 'wp-logo' );
     $wp_admin_bar->remove_node( 'comments' );
@@ -72,9 +72,22 @@ function alven_imagelink_setup(){
 }
 add_action('admin_init', 'alven_imagelink_setup');
 
+// Enlever les <p> autour des images
+function filter_ptags_on_images($content){
+   return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
+}
+add_filter('the_content', 'filter_ptags_on_images');
+
+// Allow svg in media library
+function akn_mime_types($mimes){
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter('upload_mimes', 'akn_mime_types');
+
 // Custom posts in the dashboard
 function alven_right_now_custom_post() {
-    $post_types = get_post_types(array( '_builtin' => false ) , 'objects' , 'and');
+    $post_types = get_post_types(array( '_builtin' => false ), 'objects', 'and');
     foreach($post_types as $post_type){
         $cpt_name = $post_type->name;
         if($cpt_name != 'acf'){
@@ -127,6 +140,8 @@ function alven_menu_order( $menu_ord ){
 }
 add_filter('custom_menu_order', 'alven_menu_order');
 add_filter('menu_order', 'alven_menu_order');
+
+
 /*-----------------------------------------------------------------------------------*/
 /* Menus
 /*-----------------------------------------------------------------------------------*/
@@ -293,9 +308,70 @@ add_filter( 'the_category', 'alven_add_class_to_category' );
 
 
 /*-----------------------------------------------------------------------------------*/
+/* Custom Post Types
+/*-----------------------------------------------------------------------------------*/
+// Create post type
+function alven_post_type(){
+    register_post_type('startup', array(
+        'label' => 'Startups',
+        'labels' => array(
+            'singular_name' => 'Startup',
+            'menu_name' => 'Portfolio'
+        ),
+        'public' => true,
+        'menu_icon' => 'dashicons-portfolio',
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
+        'taxonomies' => array('post_tag')
+    ));
+}
+add_action( 'init', 'alven_post_type' );
+
+// Create taxonomies
+function alven_taxonomy(){
+    register_taxonomy('field', array('startup'), array(
+        'hierarchical' => true,
+        'label' => 'Fields',
+        'singular_label' => 'Field'
+    ));
+    register_taxonomy('footprint', array('startup'), array(
+        'hierarchical' => true,
+        'label' => 'Footprints',
+        'singular_label' => 'Footprint'
+    ));
+}
+add_action( 'init', 'alven_taxonomy' );
+
+// Define a page as the parent of post type
+function alven_save_custom_post_parent($data, $postarr){
+    global $post;
+    if( $post->post_type === 'startup' ){
+        $data['post_parent'] = PORTFOLIO_ID;
+    }else if( $post->post_type === 'team' ){
+        $data['post_parent'] = WE_ID;
+    }
+
+    return $data;
+}
+add_action( 'wp_insert_post_data', 'alven_save_custom_post_parent', '99', 2 );
+
+// Define a page as the parent of post type in the menu
+function alven_correct_menu_parent_class($classes, $item){
+    global $post;
+    if(!$post) return $classes;
+
+    $postType = get_post_type();
+    if($postType == 'startup' || $postType == 'team'){
+        $item->object_id == $post->post_parent ? $classes[] = 'current_page_parent' : $classes = [];
+    }
+
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'alven_correct_menu_parent_class', 10, 2 );
+
+
+/*-----------------------------------------------------------------------------------*/
 /* Enqueue Styles and Scripts
 /*-----------------------------------------------------------------------------------*/
-
 function alven_scripts(){
 		// header
 		wp_enqueue_style( 'alven-style', get_template_directory_uri() . '/css/main.css', array(), ALVEN_VERSION );
@@ -315,5 +391,6 @@ function alven_scripts(){
 
         wp_enqueue_script( 'alven-script', get_template_directory_uri() . '/js/script.min.js', array(), null, true );
 
+        wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_enqueue_scripts', 'alven_scripts' );
