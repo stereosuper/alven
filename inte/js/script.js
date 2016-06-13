@@ -6,7 +6,7 @@ $(function(){
 
     var docHeight = $(document).height(), windowHeight = $(window).height(), windowWidth = $(window).width();
 
-    var controller = new ScrollMagic.Controller(), lastScrollTop = 0;
+    var controller = new ScrollMagic.Controller(), lastScrollTop = 0, myScroll = $(document).scrollTop(), scrollDir = 0;
 
     var htmlTag = $('html'), body = $('body');
     var header = $('#header'), headerHeight = header.innerHeight();
@@ -62,6 +62,22 @@ $(function(){
                 tlAfterButtons[indexButtonHovered].staggerTo(charsAfterButtons[indexButtonHovered], 0.2, {y:40, opacity: 0, ease:Cubic.easeIn}, 0.013);
             }
         );
+    }
+
+    function setHeaderScroll(myScroll, scrollDir){
+        if(mainContent.length && !htmlTag.hasClass('menu-open')){
+            myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
+            if(header.hasClass('fixed')){
+                scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
+            }
+        }
+
+        if(readIndicator.length && (body.hasClass('single-post') || body.hasClass('page-template-default'))){
+            var readingPercent = (myScroll-mainContent.offset().top)/(mainContent.innerHeight()-windowHeight);
+            if(myScroll > mainContent.offset().top){
+                TweenMax.set(readIndicator, {scaleX: readingPercent});
+            }
+        }
     }
 
     function setSpotlightPost(){
@@ -246,6 +262,8 @@ $(function(){
 
     isMobile.any ? htmlTag.addClass('is-mobile') : htmlTag.addClass('is-desktop');
 
+    setHeaderScroll(myScroll, scrollDir);
+
     if(buttons.length){
         setButtons(buttons);
         setScrollElmts(buttons);
@@ -352,19 +370,7 @@ $(function(){
     $(document).on('scroll', function(){
         var myScroll = $(document).scrollTop(), scrollDir = detectScrollDir(myScroll);
 
-        if(mainContent.length && !htmlTag.hasClass('menu-open')){
-            myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
-            if(header.hasClass('fixed')){
-                scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
-            }
-        }
-
-        if(readIndicator.length && (body.hasClass('single-post') || body.hasClass('page-template-default'))){
-            var readingPercent = (myScroll-mainContent.offset().top)/(mainContent.innerHeight()-windowHeight);
-            if(myScroll > mainContent.offset().top){
-                TweenMax.set(readIndicator, {scaleX: readingPercent});
-            }
-        }
+        setHeaderScroll(myScroll, scrollDir);
 
         if(contentHeader.length && !isMobile.any){
             TweenMax.set(contentHeader.find('h1'), {y: '-'+myScroll/4+'px'});
@@ -415,7 +421,6 @@ $(window).on('load', function(){
         splitText.split({type:'words'});
         TweenMax.staggerFrom(splitText.words, 0.3, {ease:Expo.easeInOut, opacity:0, y:100}, 0.03);
     }
-
 
     if(contentHeader.length){
         if(main.length){
