@@ -1238,7 +1238,7 @@ select::-ms-expand {
   height: 1px;
   border-left: 10px solid #fff;
   border-right: 10px solid #fff;
-  bottom: -6px;
+  bottom: -5px;
 }
 
 .content-main {
