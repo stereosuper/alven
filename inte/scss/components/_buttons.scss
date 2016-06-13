@@ -61,29 +61,26 @@
         top: 1px;
         bottom: 0;
     }
+    span{
+        display: block;
+        transition: $transition;
+    }
     .after{
         position: absolute;
-        top: 21px;
+        top: 42px;
         left: 17px;
-    }
-    .bg{
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        transform-origin: 100% 0;
         opacity: 0;
-        backface-visibility: hidden;
-        transform-style: perserve-3d;
-        transition: .25s ease-in;
     }
     &:hover, &:focus{
         .no-js &, .is-desktop &{
             opacity: 1;
-            .bg{
+        }
+        .is-desktop &{
+            .after{
                 opacity: 1;
-                transition-delay: 0.15s;
+            }
+            .before{
+                opacity: 0;
             }
         }
     }
@@ -106,17 +103,28 @@
     &:after{
         right: 17px;
     }
+    .before{
+        color: $greyBlue;
+        .theme-magazine &, .theme-portfolio &, .theme-we &{
+            color: #fff;
+        }
+    }
     .after{
         right: 47px;
-    }
-    .bg{
-        background: #fff;
+        @include themeColor($greyBlue);
     }
     &:hover, &:focus{
         @include themeColorHover;
         @include themeBorderHover;
+        .no-js &, .is-desktop &{
+            background: #fff;
+        }
+        span{
+            transform: translate3d(0, -21px, 0);
+        }
         .no-js &{
-            background: transparent;
+            @include themeColor;
+            @include themeBorder;
         }
     }
     &:active{
@@ -134,20 +142,24 @@
     &:after{
         right: 7px;
     }
-    .after{
-        top: 13px;
-        right: 35px;
+    .before{
+        @include themeColor;
     }
-    .bg{
-        @include themeBg;
+    .after{
+        top: 26px;
+        right: 35px;
+        color: #fff;
     }
     &:hover, &:focus{
         @include themeBorderHover;
+        @include themeBgHover;
         .no-js &, .is-desktop &{
             color: #fff;
         }
-        .no-js &{
-            @include themeBg;
+        .is-desktop &{
+            span{
+                transform: translate3d(0, -13px, 0);
+            }
         }
     }
 }

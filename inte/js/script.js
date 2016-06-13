@@ -31,7 +31,7 @@ $(function(){
         return scrollDir;
     }
 
-    function setButtons(buttons){
+    /*function setButtons(buttons){
         var i = 0, tlBeforeButtons = [], tlAfterButtons = [],
             mySplitTextBeforeButtons = [], mySplitTextAfterButtons = [],
             charsBeforeButtons = [], charsAfterButtons = [], nbButtons = buttons.length,
@@ -62,6 +62,11 @@ $(function(){
                 tlAfterButtons[indexButtonHovered].staggerTo(charsAfterButtons[indexButtonHovered], 0.2, {y:40, opacity: 0, ease:Cubic.easeIn}, 0.013);
             }
         );
+    }*/
+
+    function setBtn(btn){
+        var txt = btn.html();
+        return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
     }
 
     function setHeaderScroll(myScroll, scrollDir){
@@ -265,12 +270,16 @@ $(function(){
     setHeaderScroll(myScroll, scrollDir);
 
     if(buttons.length){
-        setButtons(buttons);
-        setScrollElmts(buttons);
+        //setButtons(buttons);
+        buttons.each(function(i){
+            buttons.eq(i).html(setBtn(buttons.eq(i)));
+        });
     }
     if(buttonsInvert.length){
-        setButtons(buttonsInvert);
-        setScrollElmts(buttonsInvert);
+        //setButtons(buttonsInvert);
+        buttonsInvert.each(function(i){
+            buttonsInvert.eq(i).html(setBtn(buttonsInvert.eq(i)));
+        });
     }
 
     if(mainContent.length && mainContent.find('img').length){
@@ -397,7 +406,7 @@ $(function(){
         }
 
         if(main.length && contentHeader.length){
-            main.css('marginTop', contentHeader.innerHeight());
+            main.css('marginTop', Math.floor(contentHeader.innerHeight()));
         }
 
         if(postSidebar.length){
@@ -424,7 +433,7 @@ $(window).on('load', function(){
 
     if(contentHeader.length){
         if(main.length){
-            main.css('marginTop', contentHeader.innerHeight());
+            main.css('marginTop', Math.floor(contentHeader.innerHeight()));
         }
         if(contentHeader.find('h1').length){
             var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});

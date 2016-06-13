@@ -67,7 +67,7 @@
         opacity: 0;
         transition: $transition, background .2s ease;
     }
-    &.fixed{
+    &.fixed, .no-js &{
         border-color: $greyLight;
         background: #fff;
         color: $title;

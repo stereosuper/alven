@@ -25,18 +25,22 @@
         width: 62.35%;
     }
     .btn-invert{
-        color: inherit;
+        color: $greyBlue;
         border-color: $greyBlue;
-        .bg{
-            background: $greyBlue;
+        .before{
+            color: $greyBlue;
+        }
+        .after{
+            color: $gold;
         }
         &:hover, &:focus{
             .no-js &, .is-desktop &{
+                background: $greyBlue;
                 border-color: $greyBlue;
                 color: $gold;
-                .no-js &{
-                    background: $greyBlue;
-                }
+            }
+            .no-js &{
+                background: $greyBlue;
             }
         }
     }

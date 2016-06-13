@@ -12,7 +12,7 @@
         opacity: 0;
     }
     #header{
-        &.fixed{
+        &.fixed, .no-js &{
             #menu-main{
                 opacity: 1;
             }
