@@ -41,11 +41,11 @@ $(function(){
             textBtn = buttons.eq(i).html();
             buttons.eq(i).html('<span class="bg"></span><span class="before">'+textBtn+'</span><span class="after">'+textBtn+'</span>');
 
-            tlBeforeButtons[i] = new TimelineMax;
+            tlBeforeButtons[i] = new TimelineMax();
             mySplitTextBeforeButtons[i] = new SplitText($('.before', buttons.eq(i)), {type:'words,chars'});
             charsBeforeButtons[i] = mySplitTextBeforeButtons[i].chars;
 
-            tlAfterButtons[i] = new TimelineMax;
+            tlAfterButtons[i] = new TimelineMax();
             mySplitTextAfterButtons[i] = new SplitText($('.after', buttons.eq(i)), {type:'words,chars'});
             charsAfterButtons[i] = mySplitTextAfterButtons[i].chars;
             TweenMax.set(charsAfterButtons[i], {y:40, opacity: 0});
@@ -159,7 +159,7 @@ $(function(){
             total = 0, i = 0, j = 0, ratio1 = 0.1, ratio2 = 0.4,
             transfered, nbTrItem = 0, poItems;
 
-        function lightTransfered(x){
+        /*function lightTransfered(x){
             if(x === nbTrItem){
                 x = 0;
             }
@@ -168,7 +168,7 @@ $(function(){
                 transfered.eq(x).addClass('on');
             }, 1500);
             setTimeout(lightTransfered, 3500, x+1);
-        }
+        }*/
 
         function lightTransferedPoItems(y){
             var newElemNumber = Math.floor(Math.random() * nbPoItem);
