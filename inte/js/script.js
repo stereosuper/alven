@@ -359,7 +359,7 @@ $(function(){
             }
         }
 
-        if(readIndicator.length && (body.hasClass('single') || body.hasClass('page-template-default'))){
+        if(readIndicator.length && (body.hasClass('single-post') || body.hasClass('page-template-default'))){
             var readingPercent = (myScroll-mainContent.offset().top)/(mainContent.innerHeight()-windowHeight);
             if(myScroll > mainContent.offset().top){
                 TweenMax.set(readIndicator, {scaleX: readingPercent});
