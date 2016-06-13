@@ -16,27 +16,25 @@
 	</head>
 
 	<?php
-		global $post;
-		$currentPage = get_queried_object_id();
+		$currentPage = get_queried_object();
+		$currentPageId = $currentPage->ID;
+		$currentPageParent = $currentPage->post_parent;
 
 		$theme = '';
-		$themePortfolio = url_to_postid(get_field('pagePortfolio', 'options'));
 		$themeMagazine = intval(get_option( 'page_for_posts' ));
-		$themeWe = url_to_postid(get_field('pageWe', 'options'));
 
-		if($currentPage === $themePortfolio || $currentPage->post_parent === $themePortfolio){
+		if($currentPageId === PORTFOLIO_ID || $currentPageParent === PORTFOLIO_ID){
 			$theme = 'theme-portfolio';
-		}else if($currentPage === $themeMagazine || is_singular('post')){
+		}else if($currentPageId === $themeMagazine || $currentPage->post_type === 'post'){
 			$theme = 'theme-magazine';
-			echo 'aye!';
-		}else if($currentPage === $themeWe || $currentPage->post_parent === $themeWe){
+		}else if($currentPageId === WE_ID || $currentPageParent === WE_ID){
 			$theme = 'theme-we';
 		}
 	?>
 
 	<body <?php body_class($theme); ?>>
 
-		<header role='banner' id='header'>
+		<header role='banner' id='header' <?php if($currentPage->post_type == 'startup'){ echo "class='fixed'"; } ?>>
 			<div class='container'>
 				<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home' id='logo'><?php bloginfo( 'name' ); ?></a>
 				<nav role='navigation' id='menu-main'>
