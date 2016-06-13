@@ -6,8 +6,7 @@ $(function(){
 
     var docHeight = $(document).height(), windowHeight = $(window).height(), windowWidth = $(window).width();
 
-    var controller = new ScrollMagic.Controller();
-    var myScroll = 0, scrollDir = 0, lastScrollTop = 0;
+    var controller = new ScrollMagic.Controller(), lastScrollTop = 0;
 
     var htmlTag = $('html'), body = $('body');
     var header = $('#header'), headerHeight = header.innerHeight();
@@ -26,9 +25,10 @@ $(function(){
 
     /**** INIT ****/
 
-    function detectScrollDir(){
-        scrollDir = myScroll > lastScrollTop ? -1 : 1;
+    function detectScrollDir(myScroll){
+        var scrollDir = myScroll > lastScrollTop ? -1 : 1;
         lastScrollTop = myScroll;
+        return scrollDir;
     }
 
     function setButtons(buttons){
@@ -36,15 +36,18 @@ $(function(){
             mySplitTextBeforeButtons = [], mySplitTextAfterButtons = [],
             charsBeforeButtons = [], charsAfterButtons = [], nbButtons = buttons.length,
             textBtn;
+
         for(i; i<nbButtons; i++){
             textBtn = buttons.eq(i).html();
             buttons.eq(i).html('<span class="bg"></span><span class="before">'+textBtn+'</span><span class="after">'+textBtn+'</span>');
-            tlBeforeButtons[i] = new TimelineMax,
-                mySplitTextBeforeButtons[i] = new SplitText($('.before', buttons.eq(i)), {type:'words,chars'}),
-                charsBeforeButtons[i] = mySplitTextBeforeButtons[i].chars;
-            tlAfterButtons[i] = new TimelineMax,
-                mySplitTextAfterButtons[i] = new SplitText($('.after', buttons.eq(i)), {type:'words,chars'}),
-                charsAfterButtons[i] = mySplitTextAfterButtons[i].chars;
+
+            tlBeforeButtons[i] = new TimelineMax;
+            mySplitTextBeforeButtons[i] = new SplitText($('.before', buttons.eq(i)), {type:'words,chars'});
+            charsBeforeButtons[i] = mySplitTextBeforeButtons[i].chars;
+
+            tlAfterButtons[i] = new TimelineMax;
+            mySplitTextAfterButtons[i] = new SplitText($('.after', buttons.eq(i)), {type:'words,chars'});
+            charsAfterButtons[i] = mySplitTextAfterButtons[i].chars;
             TweenMax.set(charsAfterButtons[i], {y:40, opacity: 0});
         }
 
@@ -104,7 +107,7 @@ $(function(){
         }
     }
 
-    function setSidebarScroll(){
+    function setSidebarScroll(myScroll){
         var sidebarMargin = 20, sidebarHeight = postSidebar.innerHeight(),
             contentTop = mainContent.offset().top, contentHeight = mainContent.innerHeight();
 
@@ -126,17 +129,6 @@ $(function(){
             }else{
                 postSidebar.css({top: 0, width: postSidebarWidth}).removeClass('fixed fixedBot');
             }
-            /*if(windowHeight >= sidebarHeight*2 + headerHeight){
-                if(myScroll >= contentTop && myScroll >= windowHeight/2 - sidebarHeight/2){
-                    if(myScroll + sidebarHeight + headerHeight + sidebarMargin > contentTop + contentHeight - sidebarHeight/2 - sidebarMargin){
-                        postSidebar.css({top: contentHeight - sidebarMargin - sidebarHeight + 20}).removeClass('fixed').addClass('fixedBot');
-                    }else{
-                        postSidebar.css({top: windowHeight/2 - sidebarHeight/2 + headerHeight - sidebarMargin, width: postSidebar.innerWidth()}).removeClass('fixedBot').addClass('fixed');
-                    }
-                }else{
-                    postSidebar.css({top: 0}).removeClass('fixed fixedBot');
-                }
-            }*/
         }else{
             postSidebar.css({top: 0}).removeClass('fixed fixedBot');
         }
@@ -179,12 +171,12 @@ $(function(){
         }
 
         function lightTransferedPoItems(y){
+            var newElemNumber = Math.floor(Math.random() * nbPoItem);
             $('a', poItems).removeClass('on');
             setTimeout(function(){
                 var aze = poItems.eq(y);
                 $('a', aze).addClass('on');
             }, 1500);
-            var newElemNumber = Math.floor(Math.random() * nbPoItem);
             setTimeout(lightTransferedPoItems, 3500, newElemNumber);
         }
 
@@ -263,6 +255,16 @@ $(function(){
         setScrollElmts(buttonsInvert);
     }
 
+    if(mainContent.length && mainContent.find('img').length){
+        var imgs = mainContent.find('img').not('.no-scroll');
+        setScrollElmts(imgs);
+    }
+
+    if(postSidebar.length){
+        postSidebarTop = postSidebar.offset().top;
+        postSidebarWidth = postSidebar.innerWidth();
+    }
+
     if(spotlightPost.length){
         setSpotlightPost();
 
@@ -284,13 +286,6 @@ $(function(){
             .setTween( TweenMax.staggerTo(relatedPosts, 0.25, {opacity: 1}, 0.1) )
             //.addIndicators()
             .addTo(controller);
-    }
-
-    if(mainContent.length){
-        if(mainContent.find('img').length){
-            var imgs = mainContent.find('img').not('.no-scroll');
-            setScrollElmts(imgs);
-        }
     }
 
     if(portfolio.length){
@@ -331,7 +326,6 @@ $(function(){
         setMenuElmts();
     }
 
-
     $('#burger').on('click', function(e){
         e.preventDefault();
         htmlTag.toggleClass('menu-open');
@@ -356,8 +350,7 @@ $(function(){
 
 
     $(document).on('scroll', function(){
-        myScroll = $(document).scrollTop();
-        detectScrollDir();
+        var myScroll = $(document).scrollTop(), scrollDir = detectScrollDir(myScroll);
 
         if(mainContent.length && !htmlTag.hasClass('menu-open')){
             myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
@@ -384,7 +377,7 @@ $(function(){
         }
 
         if(postSidebar.length && mainContent.length && !isMobile.any){
-            setSidebarScroll();
+            setSidebarScroll(myScroll);
         }
     });
 
@@ -417,7 +410,6 @@ $(function(){
 $(window).on('load', function(){
     var main = $('#main');
     var contentHeader = $('#contentHeader');
-    var postSidebar = $('#postSidebar'), postSidebarTop = 0, postSidebarWidth = 0;
 
     function animTxt(splitText){
         splitText.split({type:'words'});
@@ -434,11 +426,5 @@ $(window).on('load', function(){
             contentHeader.find('h1').css('opacity', 1);
             animTxt(splitText);
         }
-    }
-
-    if(postSidebar.length){
-        postSidebarTop = postSidebar.offset().top;
-        postSidebarWidth = postSidebar.innerWidth() - 1;
-        //postSidebarPos = postSidebar.position().top;
     }
 });
