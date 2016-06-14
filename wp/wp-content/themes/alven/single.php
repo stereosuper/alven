@@ -30,7 +30,7 @@
                             <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
                         </div>
                         <div class='share'>
-                            <span>Share</span>
+                            <span class='title-small'>Share</span>
                             <ul>
                                 <li>
                                     <a href='#' class='icon-linkedin' rel='nofollow' target='_blank'>Linkedin</a>
@@ -120,23 +120,24 @@
 
                             $relatedPosts = getRelatedPosts($post->ID);
                             if($relatedPosts){ ?><aside class='col-2 post-sidebar' id='postSidebar'>
-                                    <ul>
-                                    <?php foreach($relatedPosts as $post){ setup_postdata($post); ?>
-                                        <li>
-                                            <?php if(has_post_thumbnail()){ ?>
-                                                <div class='img'>
-                                                    <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
-                                                </div>
-                                            <?php } ?>
-                                            <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
-                                            <div class='post-meta'>
-                                                <?php the_category( ', ' ); ?> -
-                                                <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
+                                <span class='title-small'>Related articles</span>
+                                <ul>
+                                <?php foreach($relatedPosts as $post){ setup_postdata($post); ?>
+                                    <li>
+                                        <?php if(has_post_thumbnail()){ ?>
+                                            <div class='img'>
+                                                <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
                                             </div>
-                                            <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
-                                        </li><?php
-                                    } wp_reset_postdata(); ?>
-                                    </ul>
+                                        <?php } ?>
+                                        <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
+                                        <div class='post-meta'>
+                                            <?php the_category( ', ' ); ?> -
+                                            <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
+                                        </div>
+                                        <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
+                                    </li><?php
+                                } wp_reset_postdata(); ?>
+                                </ul>
                             </aside><?php } ?>
                         </div>
                     </div>
