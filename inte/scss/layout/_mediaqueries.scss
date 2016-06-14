@@ -257,7 +257,7 @@
     }
     .team{
         > li{
-            margin: 0 0 20px 0;
+            margin: 0;
         }
     }
     .social{
@@ -317,6 +317,22 @@
 
     .content-desc-responsive{
         text-align: left;
+    }
+
+    .team{
+        .name{
+            font-size: 1.8rem;
+            letter-spacing: 0;
+        }
+        .function{
+            font-size: 1.2rem;
+        }
+    }
+    .social{
+        display: none;
+    }
+    .content-desc-responsive{
+        margin: 0;
     }
 }
 
@@ -385,6 +401,18 @@
         width: auto;
         &:nth-child(2){
             display: none;
+        }
+    }
+}
+
+@media (max-width: 480px){
+    .team{
+        .name{
+            font-size: 1.3rem;
+            letter-spacing: 0;
+        }
+        .function{
+            font-size: 1.1rem;
         }
     }
 }

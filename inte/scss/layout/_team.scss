@@ -196,12 +196,12 @@
 	top: 0;
 	max-width: 20%;
 	height: 100%;
+	z-index: 10000;
+	background-color: #fff;
+	//opacity: 0;
+	//visibility: hidden;
 	a{
-		display: block;
-		@include btnNoTextBefore();
-		
-		background-color: red;
-		
+
 	}
 	&.prev{
 		left: 0;
@@ -283,6 +283,7 @@
 	opacity: 0;
 	visibility: hidden;
 	text-align: center;
+	margin: -20px 0 20px 0;
 	.btn-desc{
 		display: none;
 	}

@@ -396,7 +396,7 @@ $(function(){
         var desc, heightDesc, liParent, tlTeam, 
             currentLi, currentDesc, tlTeamCurrent,
             newLi, newDesc, heightNewDesc,
-            liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive');
+            liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive'), heightDescResponsive;
         
         teamPosition();
 
@@ -418,7 +418,10 @@ $(function(){
                         }});
                     }else{
                         descResponsive.html(desc.html());
-                        tlTeam.to(descResponsive, 0.5, {height: heightDesc+'px', ease:Cubic.easeInOut});
+                        TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
+                        heightDescResponsive = descResponsive.outerHeight();
+                        TweenMax.set(descResponsive, {height: '0', position: 'relative'});
+                        tlTeam.to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut});
                         tlTeam.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
                             $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
                         }});
@@ -460,9 +463,13 @@ $(function(){
 
                             tlTeamCurrent.set(liParent, {className:'+=open', onComplete: function(){
                                 descResponsive.html(desc.html());
+
+                                TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
+                                heightDescResponsive = descResponsive.outerHeight();
+                                TweenMax.set(descResponsive, {height: '0', position: 'relative'});
                             }});
-                            
-                            tlTeamCurrent.to(descResponsive, 0.5, {height: heightDesc+'px', ease:Cubic.easeInOut});
+
+                            tlTeamCurrent.to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut});
                             tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
                                 $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
                             }});
@@ -595,6 +602,7 @@ $(function(){
                 if(team.hasClass('member-open')){
                     TweenMax.set($('.team.member-open > li.open .desc'), {clearProps:'all'});
                     TweenMax.set($('.team.member-open > li.open'), {className:'-=open', clearProps:'all'});
+                    TweenMax.set($('.content-desc-responsive'), {clearProps:'all'});
                     TweenMax.set(team, {className:'-=member-open'});
                 }
             }
