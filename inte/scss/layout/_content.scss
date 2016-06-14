@@ -43,9 +43,11 @@
     margin: 0 0 70px;
 }
 
+.content-header-transparent, .content-header{
+    padding: 100px 0 5px; // header height
+}
 .content-header{
     width: 100%;
-    padding: 100px 0 5px; // header height
     top: 0;
     background: $title;
     .js &{

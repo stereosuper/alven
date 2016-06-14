@@ -1260,9 +1260,12 @@ select::-ms-expand {
   margin: 0 0 70px;
 }
 
+.content-header-transparent, .content-header {
+  padding: 100px 0 5px;
+}
+
 .content-header {
   width: 100%;
-  padding: 100px 0 5px;
   top: 0;
   background: #404040;
 }
