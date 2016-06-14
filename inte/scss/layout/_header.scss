@@ -41,14 +41,6 @@
         color: inherit;
         transition: opacity $transition;
     }
-    .btn-arrow{
-        &:after{
-            bottom: 2px;
-        }
-        &:before{
-            bottom: -1px;
-        }
-    }
     .btn-search{
         position: relative;
         float: right;
@@ -251,13 +243,13 @@
         transition: opacity $transition;
         &:before{
             width: 1px;
-            height: 16px;
+            height: 15px;
             border-radius: 0;
             left: -18px;
         }
         &:after{
             content: '';
-            width: 16px;
+            width: 15px;
             height: 1px;
             left: -25px;
         }
@@ -305,5 +297,17 @@
                 color: $we;
             }
         }
+        > a{
+            color: inherit;
+            &:after{
+                bottom: 2px;
+            }
+            &:before{
+                bottom: -1px;
+            }
+        }
+    }
+    a{
+        @extend .btn-arrow;
     }
 }

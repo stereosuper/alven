@@ -1554,6 +1554,12 @@ select::-ms-expand {
   margin: 10px 0 30px;
 }
 
+.read-also-posts .grid {
+  display: table;
+  width: 100%;
+  width: calc(100% + 20px);
+  table-layout: fixed;
+}
 .read-also-posts h4 {
   max-width: 78%;
   margin: 0;

@@ -34,9 +34,33 @@
 
 .post-sidebar{
     margin: 0 0 50px;
+    .title-small{
+        padding: 0 0 0 12px;
+    }
     ul{
-        padding: 0;
-        margin: 0;
+        padding: 12px 0 0;
+        margin: 6px 0 0;
+        border-top: 1px solid $greyBorder;
+        position: relative;
+        &:before, &:after{
+            @include themeBg;
+            content: '';
+            position: absolute;
+        }
+        &:before{
+            width: 1px;
+            height: 15px;
+            top: -8px;
+            left: -6px;
+        }
+        &:after{
+            width: 35px;
+            height: 1px;
+            border-left: 10px solid #fff;
+            border-right: 10px solid #fff;
+            left: -23px;
+            top: -1px;
+        }
     }
     li{
         padding: 0 0 20px;
@@ -56,17 +80,17 @@
             &:before{
                 display: block;
                 width: 1px;
-                height: 16px;
+                height: 15px;
                 top: auto;
                 bottom: -8px;
                 border-radius: 0;
             }
             &:after{
-                width: 36px;
+                width: 35px;
                 height: 1px;
                 border-left: 10px solid #fff;
                 border-right: 10px solid #fff;
-                left: -18px;
+                left: -17px;
                 bottom: -1px;
             }
             .img{
@@ -225,15 +249,15 @@
         }
         &:before{
             width: 1px;
-            height: 16px;
+            height: 15px;
             bottom: -67px;
         }
         &:after{
-            width: 36px;
+            width: 35px;
             height: 1px;
             border-left: 10px solid #fff;
             border-right: 10px solid #fff;
-            left: -8px;
+            left: -7px;
             bottom: -60px;
         }
     }
@@ -255,6 +279,12 @@
 
 
 .read-also-posts{
+    .grid{
+        display: table;
+        width: 100%;
+        width: calc(100% + 20px);
+        table-layout: fixed;
+    }
     h4{
         max-width: 78%;
         margin: 0;
@@ -276,15 +306,15 @@
     }
     &:before{
         width: 1px;
-        height: 16px;
+        height: 15px;
         bottom: -68px;
     }
     &:after{
-        width: 36px;
+        width: 35px;
         height: 1px;
         border-left: 10px solid #fff;
         border-right: 10px solid #fff;
-        left: -8px;
+        left: -7px;
         bottom: -61px;
     }
 }

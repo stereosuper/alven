@@ -262,6 +262,13 @@ a{
     text-align: right;
 }
 
+.title-small{
+    font-family: $sourceBlack;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: $greyLight;
+}
+
 .overflow-hidden{
     overflow: hidden;
     position: relative;
