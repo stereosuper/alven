@@ -19,7 +19,8 @@ $(function(){
     var related = $('#related');
     var menu = $('#menu-responsive');
     var portfolio = $('#portfolio');
-    var team = $('.team');
+    var team = $('.team'), teamDrag = false, teamMemberWidth, teamWidth, gridWidth;
+    var h = $(window).height(), w = $(window).width(), nh = $(window).height(), nw = $(window).width();
 
 
 
@@ -109,6 +110,8 @@ $(function(){
                     type: 'x',
                     bounds: spotlightPost,
                     cursor: 'grab',
+                    throwProps: true,
+                    edgeResistance:0.65,
                     onDrag: detectVisiblePosts,
                     onDragStart: function(){
                         spotlightPost.find('.container').addClass('grabbing');
@@ -322,13 +325,81 @@ $(function(){
             setPortfolio(poItem, nbPoItem, nbCol);
         }
     }
+    function teamPosition(){
+        if($(window).width() <= 979){
+            if(!teamDrag){
+                if($(window).width() <= 767){
+                    teamMemberWidth = $('.container-team').width()/3;
+                }else{
+                    teamMemberWidth = $('.container-team').width()/5;
+                }
+                TweenMax.set($('.team > li'), {width: teamMemberWidth+'px'});
 
+                teamWidth = 0;
+                $('.team > li').each(function() {
+                    teamWidth += $(this).outerWidth();
+                });
+                TweenMax.set(team, {width: teamWidth+'px'});
+
+                gridWidth = teamMemberWidth;
+                teamDrag = Draggable.create( '.team', {
+                    type: 'x',
+                    bounds: $('.container-team'),
+                    cursor: 'grab',
+                    throwProps: true,
+                    edgeResistance: 0.65,
+                    dragClickables: true,
+                    snap: {
+                        x: function(endValue) {
+                            return Math.round(endValue / gridWidth) * gridWidth;
+                        }
+                    }
+                });
+            }else{
+                if($(window).width() <= 767){
+                    teamMemberWidth = $('.container-team').width()/3;
+                }else{
+                    teamMemberWidth = $('.container-team').width()/5;
+                }
+                TweenMax.set($('.team > li'), {width: teamMemberWidth+'px'});
+                teamWidth = 0;
+                $('.team > li').each(function() {
+                    teamWidth += $(this).outerWidth();
+                });
+                TweenMax.set(team, {width: teamWidth+'px'});
+
+                gridWidth = teamMemberWidth;
+                teamDrag = Draggable.create( '.team', {
+                    type: 'x',
+                    bounds: $('.container-team'),
+                    cursor: 'grab',
+                    throwProps: true,
+                    edgeResistance: 0.65,
+                    dragClickables: true,
+                    snap: {
+                        x: function(endValue) {
+                            return Math.round(endValue / gridWidth) * gridWidth;
+                        }
+                    }
+                });
+            }
+        }else{
+            if(teamDrag){
+                TweenMax.set($('.team'), {clearProps:'all'});
+                TweenMax.set($('.team > li'), {clearProps:'width'});
+                teamDrag[0].disable();
+            }
+        }
+    }
     if(team.length){
         var teamMember = team.find('.team-member');
         var desc, heightDesc, liParent, tlTeam, 
             currentLi, currentDesc, tlTeamCurrent,
             newLi, newDesc, heightNewDesc,
-            liTeamOpen, descOpen, heightDescOpen;
+            liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive');
+        
+        teamPosition();
+
         teamMember.on('click', function(e){
             e.preventDefault();
             liParent = $(this).closest('li');
@@ -340,18 +411,31 @@ $(function(){
                     // open new
                     tlTeam = new TimelineMax();
                     tlTeam.set(liParent, {className:'+=open'});
-                    tlTeam.to(liParent, 0.25, {paddingBottom: heightDesc+'px'});
-                    tlTeam.to(desc, 0.25, {opacity: 1, onComplete: function(){
-                        $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
-                    }});
+                    if($(window).width() > 979){
+                        tlTeam.to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeInOut});
+                        tlTeam.to(desc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
+                            $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                        }});
+                    }else{
+                        descResponsive.html(desc.html());
+                        tlTeam.to(descResponsive, 0.5, {height: heightDesc+'px', ease:Cubic.easeInOut});
+                        tlTeam.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
+                            $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                        }});
+                    }
                 }else{
                     if(liParent.hasClass('open')){
                         // close current
                         var currentLi = $('.team.member-open > li.open');
                         currentDesc = $('.desc', currentLi);
                         tlTeamCurrent = new TimelineMax();
-                        tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0});
-                        tlTeamCurrent.to(currentLi, 0.25, {paddingBottom: '0'});
+                        if($(window).width() > 979){
+                            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
+                            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
+                        }else{
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0});
+                            tlTeamCurrent.to(descResponsive, 0.5, {height: '0', visibility: 'hidden', ease:Cubic.easeInOut});
+                        }
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
                         tlTeamCurrent.set(team, {className:'-=member-open'});
                     }else{
@@ -359,19 +443,36 @@ $(function(){
                         var currentLi = $('.team.member-open > li.open');
                         currentDesc = $('.desc', currentLi);
                         tlTeamCurrent = new TimelineMax();
-                        tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0});
-                        tlTeamCurrent.to(currentLi, 0.25, {paddingBottom: '0'});
-                        tlTeamCurrent.set(currentLi, {className:'-=open'});
 
-                        tlTeamCurrent.set(liParent, {className:'+=open'});
-                        tlTeamCurrent.to(liParent, 0.25, {paddingBottom: heightDesc+'px'});
-                        tlTeamCurrent.to(desc, 0.25, {opacity: 1, onComplete: function(){
-                            $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
-                        }});
+                        if($(window).width() > 979){
+                            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
+                            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
+                            tlTeamCurrent.set(currentLi, {className:'-=open'});
+
+                            tlTeamCurrent.set(liParent, {className:'+=open'});
+                            tlTeamCurrent.to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeInOut});
+                            tlTeamCurrent.to(desc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
+                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                            }});
+                        }else{
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'});
+                            tlTeamCurrent.set(currentLi, {className:'-=open'});
+
+                            tlTeamCurrent.set(liParent, {className:'+=open', onComplete: function(){
+                                descResponsive.html(desc.html());
+                            }});
+                            
+                            tlTeamCurrent.to(descResponsive, 0.5, {height: heightDesc+'px', ease:Cubic.easeInOut});
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
+                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                            }});
+                        }
                     }
                 }
             }
         });
+
+
         $('.btn-desc > li a').on('click', function(e){
             e.preventDefault();
             if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc'))){
@@ -379,8 +480,8 @@ $(function(){
                 var currentLi = $('.team.member-open > li.open');
                 currentDesc = $('.desc', currentLi);
                 tlTeamCurrent = new TimelineMax();
-                tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0});
-                tlTeamCurrent.to(currentLi, 0.25, {paddingBottom: '0'});
+                tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
+                tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
                 tlTeamCurrent.set(currentLi, {className:'-=open'});
                 if($(this).hasClass('btn-prev-desc')){
                     if (currentLi.prev().length){
@@ -398,8 +499,8 @@ $(function(){
                 newDesc = $('.desc', newLi);
                 heightNewDesc = newDesc.outerHeight();
                 tlTeamCurrent.set(newLi, {className:'+=open'});
-                tlTeamCurrent.to(newLi, 0.25, {paddingBottom: heightNewDesc+'px'});
-                tlTeamCurrent.to(newDesc, 0.25, {opacity: 1, onComplete: function(){
+                tlTeamCurrent.to(newLi, 0.5, {paddingBottom: heightNewDesc+'px', ease:Cubic.easeInOut});
+                tlTeamCurrent.to(newDesc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
                     $('html, body').animate( { scrollTop: newLi.offset().top-120 }, 200 );
                 }});
             }
@@ -481,7 +582,21 @@ $(function(){
                 liTeamOpen = $('.team.member-open > li.open');
                 descOpen = $('.desc', liTeamOpen);
                 heightDescOpen = descOpen.outerHeight();
-                TweenMax.set(liTeamOpen, {paddingBottom: heightDescOpen+'px'});
+                TweenMax.set(liTeamOpen, {paddingBottom: heightDescOpen+'px', ease:Cubic.easeInOut});
+            }
+            teamPosition();
+        }
+
+        nh = $(window).height();
+        nw = $(window).width();
+        if (nw != w){
+            // Le resize se fait au moins sur la largeur, p-e sur la largeur et la hauteur
+            if(team.length){
+                if(team.hasClass('member-open')){
+                    TweenMax.set($('.team.member-open > li.open .desc'), {clearProps:'all'});
+                    TweenMax.set($('.team.member-open > li.open'), {className:'-=open', clearProps:'all'});
+                    TweenMax.set(team, {className:'-=member-open'});
+                }
             }
         }
 	});

@@ -250,6 +250,28 @@
             font-size: 2.2rem;
         }
     }
+
+    .container-team{
+        overflow: hidden;
+        position: relative;
+    }
+    .team{
+        > li{
+            margin: 0 0 20px 0;
+        }
+    }
+    .social{
+        margin: 12px 0 0 0;
+        &:not(.social-desc){
+            a{
+                @include size(32px);
+                font-size: 18px;
+                &:before{
+                    line-height: 32px;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 767px){
@@ -291,6 +313,10 @@
         .po-item-col{
             width: $col*4;
         }
+    }
+
+    .content-desc-responsive{
+        text-align: left;
     }
 }
 

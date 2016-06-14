@@ -111,6 +111,7 @@
 		right: 20%;
 		opacity: 0;
 		padding: 0 $innerGutter;
+		visibility: hidden;
 	}
 }
 
@@ -174,6 +175,39 @@
 				}
 			}
 		}
+	}
+}
+
+.btn-left-desc-glob{
+	margin: 0;
+	> li{
+		&:before{
+			display: none;
+		}
+	}
+	a{
+		display: block;
+		@include btnNoTextBefore();
+	}
+}
+
+.wrapper-btn-glob{
+	position: absolute;
+	top: 0;
+	max-width: 20%;
+	height: 100%;
+	a{
+		display: block;
+		@include btnNoTextBefore();
+		
+		background-color: red;
+		
+	}
+	&.prev{
+		left: 0;
+	}
+	&.next{
+		right: 0;
 	}
 }
 
@@ -241,5 +275,18 @@
 			margin: -4px 0 0 0;
 			transform-origin: 50% 50%;
 		}
+	}
+}
+
+.content-desc-responsive{
+	height: 0;
+	opacity: 0;
+	visibility: hidden;
+	text-align: center;
+	.btn-desc{
+		display: none;
+	}
+	.social{
+		display: none;
 	}
 }
