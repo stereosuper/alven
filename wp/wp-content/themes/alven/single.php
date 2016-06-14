@@ -50,17 +50,7 @@
                         <div class='grid'>
                             <article class='col-8 content-default'>
                                 <?php the_content(); ?>
-                            </article><aside class='col-2 post-sidebar' id='postSidebar'>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <footer class='content-footer read-also-posts' id='related'>
-                <div class='container'>
-                    <div class='grid'>
-                        <?php
+                            </article><?php
                             function getRelatedPosts($currentId){
                                 $relatedPosts = array();
                                 $countPosts = 0;
@@ -77,12 +67,12 @@
                                         'post_type' => 'post',
                                         'tag__in' => $tagIds,
                                         'post__not_in' => $notInIds,
-                                        'posts_per_page'=> 3
+                                        'posts_per_page'=> 2
                                     ) );
                                     $countPosts = count($relatedPosts);
                                 }
 
-                                if($countPosts < 3){
+                                if($countPosts < 2){
                                     foreach($relatedPosts as $related){
                                         $notInIds[] = $related->ID;
                                     }
@@ -97,7 +87,7 @@
                                                 'terms' => $cats->slug
                                             ) ),
                                             'post__not_in' => $notInIds,
-                                            'posts_per_page' => 3 - $countPosts
+                                            'posts_per_page' => 2 - $countPosts
                                         ) );
 
                                         if(count($catsPosts) > 0){
@@ -109,7 +99,7 @@
                                         }
                                     }
 
-                                    if($countPosts < 3){
+                                    if($countPosts < 2){
                                         $otherPosts = get_posts( array(
                                             'post_type' => 'post',
                                             'post__not_in' => $notInIds,
@@ -129,19 +119,55 @@
                             }
 
                             $relatedPosts = getRelatedPosts($post->ID);
-                            foreach($relatedPosts as $post){ ?><div class='col-4 read-also-post'>
-                                <?php setup_postdata($post); ?>
-                                <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
-                                <div class='post-meta'>
-                                    <?php the_category( ', ' ); ?> -
-                                    <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
-                                </div>
-                                <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
-                            </div><?php } wp_reset_postdata();
-                        ?>
+                            if($relatedPosts){ ?><aside class='col-2 post-sidebar' id='postSidebar'>
+                                    <ul>
+                                    <?php foreach($relatedPosts as $post){ setup_postdata($post); ?>
+                                        <li>
+                                            <?php if(has_post_thumbnail()){ ?>
+                                                <div class='img'>
+                                                    <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
+                                                </div>
+                                            <?php } ?>
+                                            <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
+                                            <div class='post-meta'>
+                                                <?php the_category( ', ' ); ?> -
+                                                <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
+                                            </div>
+                                            <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
+                                        </li><?php
+                                    } wp_reset_postdata(); ?>
+                                    </ul>
+                            </aside><?php } ?>
+                        </div>
                     </div>
                 </div>
-            </footer>
+            </section>
+
+            <?php
+                $lastPosts = new WP_Query(array(
+                    'post_type' => 'post',
+                    'post__not_in' => array($post->ID),
+                    'posts_per_page'=> 3
+                ));
+                if($lastPosts->have_posts()):
+            ?>
+                <footer class='content-footer read-also-posts' id='related'>
+                    <div class='container'>
+                        <div class='grid'>
+                            <?php while($lastPosts->have_posts()): $lastPosts->the_post(); ?>
+                                <div class='col-4 read-also-post'>
+                                    <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
+                                    <div class='post-meta'>
+                                        <?php the_category( ', ' ); ?> -
+                                        <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
+                                    </div>
+                                    <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
+                                </div>
+                            <?php endwhile; wp_reset_query(); ?>
+                        </div>
+                    </div>
+                </footer>
+            <?php endif; ?>
         </main>
 
 	<?php else : ?>
