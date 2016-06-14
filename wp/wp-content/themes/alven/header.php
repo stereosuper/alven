@@ -15,6 +15,7 @@
 	<?php
 		$currentPage = get_queried_object();
 		$theme = '';
+		$headerFixed = true;
 
 		if($currentPage){
 			$currentPageId = $currentPage->ID;
@@ -29,12 +30,21 @@
 			}else if($currentPageId === WE_ID || $currentPageParent === WE_ID){
 				$theme = 'theme-we';
 			}
+
+			if($currentPage->post_type === 'post' || !$theme){
+				// d'une page sans theme (donc default template ou home) ou d'un single post
+				// on ajoute la classe fixed au header car il n'y a pas de fond en haut de page
+				// et donc le header nécessite un fond
+
+				// en js la fonction n'est déclenchée que si la div #contentHeader est présente
+				$headerFixed = false;
+			}
 		}
 	?>
 
 	<body <?php body_class($theme); ?>>
 
-		<header role='banner' id='header' <?php if($currentPage->post_type == 'startup'){ echo "class='fixed'"; } ?>>
+		<header role='banner' id='header' <?php if($headerFixed){ echo "class='fixed'"; } ?>>
 			<div class='container'>
 				<a href='<?php echo home_url( '/' ); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home' id='logo'><?php bloginfo( 'name' ); ?></a>
 				<nav role='navigation' id='menu-main'>

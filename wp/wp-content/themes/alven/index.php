@@ -2,11 +2,18 @@
 
 	<?php if ( have_posts() ) : ?>
 
-        <div class='content-header' id='contentHeader'>
+        <section class='content-header-transparent'>
+            <h2 class='section-title'>Think, read, exchange</h2>
+            <strong class='subtitle'>Alven online magazine</strong>
             <div class='container'>
-                <h1><?php the_title(); ?></h1>
+                <div class='section-header'>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id sodales mauris. Mauris et aliqae lacus aliquet mattis. Sed mi arcu, tristique id ex ut, facilisis accumsan sapien.
+                    </p>
+
+                    <a href='#' class='btn'>Read Alven magazine</a>
+                </div>
             </div>
-        </div>
 
         <main role='main' id='main'>
             <article class='content-main' id='mainContent'>

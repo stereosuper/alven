@@ -70,7 +70,7 @@ $(function(){
     }
 
     function setHeaderScroll(myScroll, scrollDir){
-        if(mainContent.length && !htmlTag.hasClass('menu-open')){
+        if(mainContent.length && contentHeader.length && !htmlTag.hasClass('menu-open')){
             myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
             if(header.hasClass('fixed')){
                 scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
@@ -325,7 +325,7 @@ $(function(){
 
     if(team.length){
         var teamMember = team.find('.team-member');
-        var desc, heightDesc, liParent, tlTeam, 
+        var desc, heightDesc, liParent, tlTeam,
             currentLi, currentDesc, tlTeamCurrent,
             newLi, newDesc, heightNewDesc,
             liTeamOpen, descOpen, heightDescOpen;
