@@ -17,18 +17,21 @@
 
 	<?php
 		$currentPage = get_queried_object();
-		$currentPageId = $currentPage->ID;
-		$currentPageParent = $currentPage->post_parent;
-
 		$theme = '';
-		$themeMagazine = intval(get_option( 'page_for_posts' ));
 
-		if($currentPageId === PORTFOLIO_ID || $currentPageParent === PORTFOLIO_ID){
-			$theme = 'theme-portfolio';
-		}else if($currentPageId === $themeMagazine || $currentPage->post_type === 'post'){
-			$theme = 'theme-magazine';
-		}else if($currentPageId === WE_ID || $currentPageParent === WE_ID){
-			$theme = 'theme-we';
+		if($currentPage){
+			$currentPageId = $currentPage->ID;
+			$currentPageParent = $currentPage->post_parent;
+
+			$themeMagazine = intval(get_option( 'page_for_posts' ));
+
+			if($currentPageId === PORTFOLIO_ID || $currentPageParent === PORTFOLIO_ID){
+				$theme = 'theme-portfolio';
+			}else if($currentPageId === $themeMagazine || $currentPage->post_type === 'post'){
+				$theme = 'theme-magazine';
+			}else if($currentPageId === WE_ID || $currentPageParent === WE_ID){
+				$theme = 'theme-we';
+			}
 		}
 	?>
 

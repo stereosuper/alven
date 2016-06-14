@@ -1,7 +1,10 @@
 <?php
+
 define( 'ALVEN_VERSION', 1.0 );
+
 define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );
 define( 'WE_ID', url_to_postid(get_field('pageWe', 'options')) );
+
 
 /*-----------------------------------------------------------------------------------*/
 /* General
@@ -145,15 +148,11 @@ add_filter('menu_order', 'alven_menu_order');
 /*-----------------------------------------------------------------------------------*/
 /* Menus
 /*-----------------------------------------------------------------------------------*/
-register_nav_menus(
-	array(
-		'primary' => 'Primary Menu'
-	)
-);
+register_nav_menus( array('primary' => 'Primary Menu') );
 
 // Cleanup WP Menu html
-function css_attributes_filter($var){
-     return is_array($var) ? array_intersect($var, array('current-menu-item', 'current_page_parent')) : '';
+function css_attributes_filter($classes){
+     return is_array($classes) ? array_intersect($classes, array('current-menu-item', 'current_page_parent')) : '';
 }
 add_filter('nav_menu_css_class', 'css_attributes_filter');
 
@@ -190,9 +189,8 @@ function alven_unregister_default_widgets(){
     unregister_widget('WP_Widget_RSS');
     unregister_widget('WP_Widget_Tag_Cloud');
     unregister_widget('WP_Nav_Menu_Widget');
-    unregister_widget('Twenty_Eleven_Ephemera_Widget');
 }
-add_action('widgets_init', 'alven_unregister_default_widgets', 11);
+add_action( 'widgets_init', 'alven_unregister_default_widgets' );
 
 
 // Custom Menu Widget
@@ -301,8 +299,7 @@ add_action( 'widgets_init', 'alven_load_widget' );
 /* Posts
 /*-----------------------------------------------------------------------------------*/
 function alven_add_class_to_category($thelist){
-    $class = 'btn-cat';
-    return str_replace('<a href="', '<a class="'. $class. '" href="', $thelist);
+    return str_replace('<a href="', '<a class="btn-cat" href="', $thelist);
 }
 add_filter( 'the_category', 'alven_add_class_to_category' );
 
@@ -322,6 +319,16 @@ function alven_post_type(){
         'menu_icon' => 'dashicons-portfolio',
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
         'taxonomies' => array('post_tag')
+    ));
+    register_post_type('team', array(
+        'label' => 'Team members',
+        'labels' => array(
+            'singular_name' => 'Team member',
+            'menu_name' => 'Team'
+        ),
+        'public' => true,
+        'menu_icon' => 'dashicons-groups',
+        'supports' => array('title', 'editor', 'thumbnail', 'revisions')
     ));
 }
 add_action( 'init', 'alven_post_type' );
@@ -343,10 +350,9 @@ add_action( 'init', 'alven_taxonomy' );
 
 // Define a page as the parent of post type
 function alven_save_custom_post_parent($data, $postarr){
-    global $post;
-    if( $post->post_type === 'startup' ){
+    if( $postarr['post_type'] === 'startup' ){
         $data['post_parent'] = PORTFOLIO_ID;
-    }else if( $post->post_type === 'team' ){
+    }else if( $postarr['post_type'] === 'team' ){
         $data['post_parent'] = WE_ID;
     }
 
@@ -394,3 +400,5 @@ function alven_scripts(){
         wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_enqueue_scripts', 'alven_scripts' );
+
+?>

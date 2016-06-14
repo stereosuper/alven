@@ -22,7 +22,7 @@
         </div>
 
         <main role='main' id='main'>
-            <article class='content-main' id='mainContent'>
+            <section class='content-main' id='mainContent'>
                 <div class='container'>
                     <aside class='post-meta-header'>
                         <div>
@@ -48,13 +48,100 @@
 
                     <div class='container-small'>
                         <div class='grid'>
-                            <div class='col-8 content-default'>
+                            <article class='col-8 content-default'>
                                 <?php the_content(); ?>
-                            </div>
+                            </article><aside class='col-2 post-sidebar' id='postSidebar'>
+                            </aside>
                         </div>
                     </div>
                 </div>
-            </article>
+            </section>
+
+            <footer class='content-footer read-also-posts' id='related'>
+                <div class='container'>
+                    <div class='grid'>
+                        <?php
+                            function getRelatedPosts($currentId){
+                                $relatedPosts = array();
+                                $countPosts = 0;
+                                $notInIds = array($currentId);
+
+                                $tags = wp_get_post_tags($currentId);
+                                if($tags){
+                                    $tagIds = array();
+                                    foreach($tags as $tag){
+                                        $tagIds[] = $tag->term_id;
+                                    }
+
+                                    $relatedPosts = get_posts( array(
+                                        'post_type' => 'post',
+                                        'tag__in' => $tagIds,
+                                        'post__not_in' => $notInIds,
+                                        'posts_per_page'=> 3
+                                    ) );
+                                    $countPosts = count($relatedPosts);
+                                }
+
+                                if($countPosts < 3){
+                                    foreach($relatedPosts as $related){
+                                        $notInIds[] = $related->ID;
+                                    }
+
+                                    $cats = get_the_category($currentId)[0];
+                                    if($cats){
+                                        $catsPosts = get_posts( array(
+                                            'post_type' => 'post',
+                                            'tax_query' => array( array(
+                                                'taxonomy' => 'category',
+                                                'field' => 'slug',
+                                                'terms' => $cats->slug
+                                            ) ),
+                                            'post__not_in' => $notInIds,
+                                            'posts_per_page' => 3 - $countPosts
+                                        ) );
+
+                                        if(count($catsPosts) > 0){
+                                            foreach($catsPosts as $catsPost){
+                                                $notInIds[] = $catsPost->ID;
+                                            }
+                                            $relatedPosts[] = $catsPosts[0];
+                                            $countPosts = count($relatedPosts);
+                                        }
+                                    }
+
+                                    if($countPosts < 3){
+                                        $otherPosts = get_posts( array(
+                                            'post_type' => 'post',
+                                            'post__not_in' => $notInIds,
+                                            'posts_per_page'=> 3 - $countPosts
+                                        ) );
+
+                                        if(count($otherPosts) > 0){
+                                            foreach($otherPosts as $prev){
+                                                $notInIds[] = $prev->ID;
+                                            }
+                                            $relatedPosts[] = $otherPosts[0];
+                                        }
+                                    }
+                                }
+
+                                return $relatedPosts;
+                            }
+
+                            $relatedPosts = getRelatedPosts($post->ID);
+                            foreach($relatedPosts as $post){ ?><div class='col-4 read-also-post'>
+                                <?php setup_postdata($post); ?>
+                                <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
+                                <div class='post-meta'>
+                                    <?php the_category( ', ' ); ?> -
+                                    <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
+                                </div>
+                                <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
+                            </div><?php } wp_reset_postdata();
+                        ?>
+                    </div>
+                </div>
+            </footer>
         </main>
 
 	<?php else : ?>

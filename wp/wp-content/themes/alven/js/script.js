@@ -325,27 +325,84 @@ $(function(){
 
     if(team.length){
         var teamMember = team.find('.team-member');
+        var desc, heightDesc, liParent, tlTeam, 
+            currentLi, currentDesc, tlTeamCurrent,
+            newLi, newDesc, heightNewDesc,
+            liTeamOpen, descOpen, heightDescOpen;
         teamMember.on('click', function(e){
             e.preventDefault();
-            var desc, heightDesc, liParent, tlTeam;
             liParent = $(this).closest('li');
             desc = $('.desc', liParent);
             heightDesc = desc.outerHeight();
-            if(!team.hasClass('member-open')){
-                TweenMax.set(team, {className:'+=member-open'});
-                // open new
-            }else{
-                if(liParent.hasClass('open')){
-                    // close current
+            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc'))){
+                if(!team.hasClass('member-open')){
+                    TweenMax.set(team, {className:'+=member-open'});
+                    // open new
+                    tlTeam = new TimelineMax();
+                    tlTeam.set(liParent, {className:'+=open'});
+                    tlTeam.to(liParent, 0.25, {paddingBottom: heightDesc+'px'});
+                    tlTeam.to(desc, 0.25, {opacity: 1, onComplete: function(){
+                        $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                    }});
                 }else{
-                    // close already open and open new
+                    if(liParent.hasClass('open')){
+                        // close current
+                        var currentLi = $('.team.member-open > li.open');
+                        currentDesc = $('.desc', currentLi);
+                        tlTeamCurrent = new TimelineMax();
+                        tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0});
+                        tlTeamCurrent.to(currentLi, 0.25, {paddingBottom: '0'});
+                        tlTeamCurrent.set(currentLi, {className:'-=open'});
+                        tlTeamCurrent.set(team, {className:'-=member-open'});
+                    }else{
+                        // close already open and open new
+                        var currentLi = $('.team.member-open > li.open');
+                        currentDesc = $('.desc', currentLi);
+                        tlTeamCurrent = new TimelineMax();
+                        tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0});
+                        tlTeamCurrent.to(currentLi, 0.25, {paddingBottom: '0'});
+                        tlTeamCurrent.set(currentLi, {className:'-=open'});
+
+                        tlTeamCurrent.set(liParent, {className:'+=open'});
+                        tlTeamCurrent.to(liParent, 0.25, {paddingBottom: heightDesc+'px'});
+                        tlTeamCurrent.to(desc, 0.25, {opacity: 1, onComplete: function(){
+                            $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                        }});
+                    }
                 }
             }
-
-            tlTeam = new TimelineMax();
-            TweenMax.set(liParent, {className:'+=open'});
-            tlTeam.to(liParent, 0.25, {paddingBottom: heightDesc+'px'});
-            tlTeam.to(desc, 0.25, {opacity: 1});
+        });
+        $('.btn-desc > li a').on('click', function(e){
+            e.preventDefault();
+            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc'))){
+                // close already open and open new
+                var currentLi = $('.team.member-open > li.open');
+                currentDesc = $('.desc', currentLi);
+                tlTeamCurrent = new TimelineMax();
+                tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0});
+                tlTeamCurrent.to(currentLi, 0.25, {paddingBottom: '0'});
+                tlTeamCurrent.set(currentLi, {className:'-=open'});
+                if($(this).hasClass('btn-prev-desc')){
+                    if (currentLi.prev().length){
+                        newLi = currentLi.prev();
+                    }else{
+                        newLi = team.find('> li').last();
+                    }
+                }else if($(this).hasClass('btn-next-desc')){
+                    if (currentLi.next().length){
+                        newLi = currentLi.next();
+                    }else{
+                        newLi = team.find('> li').first();
+                    }
+                }
+                newDesc = $('.desc', newLi);
+                heightNewDesc = newDesc.outerHeight();
+                tlTeamCurrent.set(newLi, {className:'+=open'});
+                tlTeamCurrent.to(newLi, 0.25, {paddingBottom: heightNewDesc+'px'});
+                tlTeamCurrent.to(newDesc, 0.25, {opacity: 1, onComplete: function(){
+                    $('html, body').animate( { scrollTop: newLi.offset().top-120 }, 200 );
+                }});
+            }
         });
     }
 
@@ -406,7 +463,7 @@ $(function(){
         }
 
         if(main.length && contentHeader.length){
-            main.css('marginTop', contentHeader.innerHeight());
+            main.css('marginTop', Math.floor(contentHeader.innerHeight()));
         }
 
         if(postSidebar.length){
@@ -417,6 +474,15 @@ $(function(){
 
         if(spotlightPost.length){
             setSpotlightPost();
+        }
+
+        if(team.length){
+            if(team.hasClass('member-open')){
+                liTeamOpen = $('.team.member-open > li.open');
+                descOpen = $('.desc', liTeamOpen);
+                heightDescOpen = descOpen.outerHeight();
+                TweenMax.set(liTeamOpen, {paddingBottom: heightDescOpen+'px'});
+            }
         }
 	});
 
@@ -433,7 +499,7 @@ $(window).on('load', function(){
 
     if(contentHeader.length){
         if(main.length){
-            main.css('marginTop', contentHeader.innerHeight());
+            main.css('marginTop', Math.floor(contentHeader.innerHeight()));
         }
         if(contentHeader.find('h1').length){
             var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
