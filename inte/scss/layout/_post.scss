@@ -255,6 +255,12 @@
 
 
 .read-also-posts{
+    .grid{
+        display: table;
+        width: 100%;
+        width: calc(100% + 20px);
+        table-layout: fixed;
+    }
     h4{
         max-width: 78%;
         margin: 0;
