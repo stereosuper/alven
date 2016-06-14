@@ -251,13 +251,13 @@
         transition: opacity $transition;
         &:before{
             width: 1px;
-            height: 16px;
+            height: 15px;
             border-radius: 0;
             left: -18px;
         }
         &:after{
             content: '';
-            width: 16px;
+            width: 15px;
             height: 1px;
             left: -25px;
         }
