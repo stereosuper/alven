@@ -539,8 +539,9 @@ a {
   position: relative;
   z-index: 10;
   background: #fff; }
-  .js #main {
-    margin: 495px 0 0; }
+
+.js #contentHeader + #main {
+  margin: 495px 0 0; }
 
 .container {
   max-width: 1420px;
@@ -967,9 +968,11 @@ select::-ms-expand {
   border-bottom: 1px solid #e5e8e8;
   margin: 0 0 70px; }
 
+.content-header-transparent, .content-header {
+  padding: 100px 0 5px; }
+
 .content-header {
   width: 100%;
-  padding: 100px 0 5px;
   top: 0;
   background: #404040; }
   .js .content-header {
@@ -1814,7 +1817,9 @@ select::-ms-expand {
   max-width: 20%;
   height: 100%;
   z-index: 10000;
-  background-color: #fff; }
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden; }
   .wrapper-btn-glob.prev {
     left: 0; }
   .wrapper-btn-glob.next {
@@ -2148,7 +2153,8 @@ select::-ms-expand {
   white-space: nowrap;
   overflow: hidden;
   text-indent: 99em;
-  line-height: 0; }
+  line-height: 0;
+  box-shadow: none; }
   .btn-arrow-only:before {
     float: left;
     margin: 0;
@@ -2169,19 +2175,19 @@ select::-ms-expand {
   .btn-arrow-only:before {
     content: '\e900';
     height: 16px;
-    left: 27px;
+    left: 18px;
     font-size: 16px;
     margin: -8px 0 0 0; }
   .btn-arrow-only:after {
     content: '\e901';
     height: 9px;
-    left: 37px;
+    left: 28px;
     font-size: 9px;
     margin: -4px 0 0 0;
     transform-origin: 50% 50%; }
   .btn-arrow-only.left:after {
     transform: rotate(-180deg);
-    left: 24px;
+    left: 15px;
     margin-top: -5px; }
 
 /* Share */

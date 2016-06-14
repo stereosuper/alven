@@ -490,13 +490,13 @@ $(function(){
                 tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
                 tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
                 tlTeamCurrent.set(currentLi, {className:'-=open'});
-                if($(this).hasClass('btn-prev-desc')){
+                if($(this).hasClass('left')){
                     if (currentLi.prev().length){
                         newLi = currentLi.prev();
                     }else{
                         newLi = team.find('> li').last();
                     }
-                }else if($(this).hasClass('btn-next-desc')){
+                }else{
                     if (currentLi.next().length){
                         newLi = currentLi.next();
                     }else{
