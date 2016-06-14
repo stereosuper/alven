@@ -914,12 +914,6 @@ select::-ms-expand {
   -webkit-transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
-#header .btn-arrow:after {
-  bottom: 2px;
-}
-#header .btn-arrow:before {
-  bottom: -1px;
-}
 #header .btn-search {
   position: relative;
   float: right;
@@ -1186,6 +1180,15 @@ select::-ms-expand {
 }
 #menu-main li.current-menu-item:nth-child(3), #menu-main li.current_page_parent:nth-child(3) {
   color: #33a4df;
+}
+#menu-main li > a {
+  color: inherit;
+}
+#menu-main li > a:after {
+  bottom: 2px;
+}
+#menu-main li > a:before {
+  bottom: -1px;
 }
 
 /* Footer */
@@ -2419,7 +2422,7 @@ select::-ms-expand {
 }
 
 /* Buttons */
-.btn, .btn-invert, .btn-arrow {
+.btn, .btn-invert, .btn-arrow, #menu-main a {
   position: relative;
   font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
   font-size: 1.375rem;
@@ -2428,7 +2431,7 @@ select::-ms-expand {
   text-transform: uppercase;
   color: #404040;
 }
-.btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, .btn-arrow:after {
+.btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, #menu-main a:before, .btn-arrow:after, #menu-main a:after {
   font-family: 'icomoon' !important;
   speak: none;
   font-style: normal;
@@ -2446,7 +2449,7 @@ select::-ms-expand {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
-.btn:before, .btn-invert:before, .btn-arrow:before {
+.btn:before, .btn-invert:before, .btn-arrow:before, #menu-main a:before {
   content: '\e900';
   height: 16px;
   bottom: 2px;
@@ -2455,18 +2458,18 @@ select::-ms-expand {
   -webkit-transform-origin: 100% 50%;
           transform-origin: 100% 50%;
 }
-.btn:after, .btn-invert:after, .btn-arrow:after {
+.btn:after, .btn-invert:after, .btn-arrow:after, #menu-main a:after {
   content: '\e901';
   height: 9px;
   font-size: 9px;
   right: -28px;
   bottom: 5px;
 }
-.no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .is-desktop .btn-arrow:hover:after, .no-js .btn-arrow:focus:after, .is-desktop .btn-arrow:focus:after {
+.no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .no-js #menu-main a:hover:after, #menu-main .no-js a:hover:after, .is-desktop .btn-arrow:hover:after, .is-desktop #menu-main a:hover:after, #menu-main .is-desktop a:hover:after, .no-js .btn-arrow:focus:after, .no-js #menu-main a:focus:after, #menu-main .no-js a:focus:after, .is-desktop .btn-arrow:focus:after, .is-desktop #menu-main a:focus:after, #menu-main .is-desktop a:focus:after {
   -webkit-transform: translate3d(0, 0, 0) translateX(7px);
           transform: translate3d(0, 0, 0) translateX(7px);
 }
-.no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .is-desktop .btn-arrow:hover:before, .no-js .btn-arrow:focus:before, .is-desktop .btn-arrow:focus:before {
+.no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .no-js #menu-main a:hover:before, #menu-main .no-js a:hover:before, .is-desktop .btn-arrow:hover:before, .is-desktop #menu-main a:hover:before, #menu-main .is-desktop a:hover:before, .no-js .btn-arrow:focus:before, .no-js #menu-main a:focus:before, #menu-main .no-js a:focus:before, .is-desktop .btn-arrow:focus:before, .is-desktop #menu-main a:focus:before, #menu-main .is-desktop a:focus:before {
   -webkit-transform: translate3d(0, 0, 0) translateX(7px) scaleX(0.85);
           transform: translate3d(0, 0, 0) translateX(7px) scaleX(0.85);
 }
