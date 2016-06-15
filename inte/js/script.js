@@ -198,8 +198,10 @@ $(function(){
             var newElemNumber = Math.floor(Math.random() * nbPoItem);
             $('a', poItems).removeClass('on');
             setTimeout(function(){
-                var aze = poItems.eq(y);
-                $('a', aze).addClass('on');
+                if(!$('.grid').hasClass('is-hovered')){
+                    var aze = poItems.eq(y);
+                    $('a', aze).addClass('on');
+                }
             }, 1500);
             setTimeout(lightTransferedPoItems, 3500, newElemNumber);
         }
@@ -324,6 +326,17 @@ $(function(){
         if(nbPoItem > nbCol){
             setPortfolio(poItem, nbPoItem, nbCol);
         }
+
+        portfolio.find('.po-item a').hover(
+            function(){
+                $(this).closest('.grid').addClass('is-hovered');
+                $(this).addClass('link-hovered');
+                portfolio.find('.po-item a').removeClass('on');
+            }, function(){
+                $(this).closest('.grid').removeClass('is-hovered');
+                $(this).removeClass('link-hovered');
+            }
+        );
     }
     
     if(team.length){

@@ -1376,6 +1376,10 @@ select::-ms-expand {
     padding: 0 0 10%; }
   .portfolio-list .grid {
     padding: 10px 0; }
+    .portfolio-list .grid.is-hovered .po-item a {
+      opacity: 0.5; }
+      .portfolio-list .grid.is-hovered .po-item a.link-hovered {
+        opacity: 1; }
   .js .portfolio-list ul {
     display: none; }
   .portfolio-list li, .portfolio-list .po-item {

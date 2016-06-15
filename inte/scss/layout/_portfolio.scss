@@ -22,6 +22,16 @@
     }
     .grid{
         padding: $innerGutter 0;
+        &.is-hovered{
+            .po-item{
+                a{
+                    opacity: 0.5;
+                    &.link-hovered{
+                        opacity: 1;
+                    }
+                }
+            }
+        }
     }
     ul{
         .js &{
