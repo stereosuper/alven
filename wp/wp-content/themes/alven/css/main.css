@@ -683,7 +683,8 @@ a:active {
   z-index: 10;
   background: #fff;
 }
-.js #main {
+
+.js #contentHeader + #main {
   margin: 495px 0 0;
 }
 
@@ -2273,6 +2274,7 @@ select::-ms-expand {
   right: 20%;
   opacity: 0;
   padding: 0 10px;
+  visibility: hidden;
 }
 
 .social {
@@ -2343,6 +2345,51 @@ select::-ms-expand {
 }
 .social.social-desc a span:before {
   line-height: 32px;
+}
+
+.btn-left-desc-glob {
+  margin: 0;
+}
+.btn-left-desc-glob > li:before {
+  display: none;
+}
+.btn-left-desc-glob a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-indent: 99em;
+  line-height: 0;
+}
+.btn-left-desc-glob a:before {
+  float: left;
+  margin: 0;
+  text-indent: 0;
+}
+
+.wrapper-btn-glob {
+  position: absolute;
+  top: 0;
+  max-width: 20%;
+  height: 100%;
+}
+.wrapper-btn-glob a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-indent: 99em;
+  line-height: 0;
+  background-color: red;
+}
+.wrapper-btn-glob a:before {
+  float: left;
+  margin: 0;
+  text-indent: 0;
+}
+.wrapper-btn-glob.prev {
+  left: 0;
+}
+.wrapper-btn-glob.next {
+  right: 0;
 }
 
 .btn-desc {
@@ -2422,6 +2469,19 @@ select::-ms-expand {
   margin: -4px 0 0 0;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
+}
+
+.content-desc-responsive {
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  text-align: center;
+}
+.content-desc-responsive .btn-desc {
+  display: none;
+}
+.content-desc-responsive .social {
+  display: none;
 }
 
 /* Buttons */
@@ -3173,6 +3233,27 @@ select::-ms-expand {
   .read-also-posts h4 {
     font-size: 2.2rem;
   }
+
+  .container-team {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .team > li {
+    margin: 0 0 20px 0;
+  }
+
+  .social {
+    margin: 12px 0 0 0;
+  }
+  .social:not(.social-desc) a {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+  .social:not(.social-desc) a:before {
+    line-height: 32px;
+  }
 }
 @media (max-width: 767px) {
   body {
@@ -3207,6 +3288,10 @@ select::-ms-expand {
 
   .portfolio-list .po-item-col {
     width: 32%;
+  }
+
+  .content-desc-responsive {
+    text-align: left;
   }
 }
 @media (max-width: 540px) {
