@@ -19,7 +19,7 @@ $(function(){
     var related = $('#related');
     var menu = $('#menu-responsive');
     var portfolio = $('#portfolio');
-    var team = $('.team'), teamDrag = false, teamMemberWidth, teamWidth, gridWidth;
+    var team = $('.team'), teamDrag = false, teamMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight;
     var h = $(window).height(), w = $(window).width(), nh = $(window).height(), nw = $(window).width();
 
 
@@ -325,72 +325,7 @@ $(function(){
             setPortfolio(poItem, nbPoItem, nbCol);
         }
     }
-    function teamPosition(){
-        if($(window).width() <= 979){
-            if(!teamDrag){
-                if($(window).width() <= 767){
-                    teamMemberWidth = $('.container-team').width()/3;
-                }else{
-                    teamMemberWidth = $('.container-team').width()/5;
-                }
-                TweenMax.set($('.team > li'), {width: teamMemberWidth+'px'});
-
-                teamWidth = 0;
-                $('.team > li').each(function() {
-                    teamWidth += $(this).outerWidth();
-                });
-                TweenMax.set(team, {width: teamWidth+'px'});
-
-                gridWidth = teamMemberWidth;
-                teamDrag = Draggable.create( '.team', {
-                    type: 'x',
-                    bounds: $('.container-team'),
-                    cursor: 'grab',
-                    throwProps: true,
-                    edgeResistance: 0.65,
-                    dragClickables: true,
-                    snap: {
-                        x: function(endValue) {
-                            return Math.round(endValue / gridWidth) * gridWidth;
-                        }
-                    }
-                });
-            }else{
-                if($(window).width() <= 767){
-                    teamMemberWidth = $('.container-team').width()/3;
-                }else{
-                    teamMemberWidth = $('.container-team').width()/5;
-                }
-                TweenMax.set($('.team > li'), {width: teamMemberWidth+'px'});
-                teamWidth = 0;
-                $('.team > li').each(function() {
-                    teamWidth += $(this).outerWidth();
-                });
-                TweenMax.set(team, {width: teamWidth+'px'});
-
-                gridWidth = teamMemberWidth;
-                teamDrag = Draggable.create( '.team', {
-                    type: 'x',
-                    bounds: $('.container-team'),
-                    cursor: 'grab',
-                    throwProps: true,
-                    edgeResistance: 0.65,
-                    dragClickables: true,
-                    snap: {
-                        x: function(endValue) {
-                            return Math.round(endValue / gridWidth) * gridWidth;
-                        }
-                    }
-                });
-            }
-        }else{
-            if(teamDrag){
-                TweenMax.set($('.team'), {clearProps:'all'});
-                TweenMax.set($('.team > li'), {clearProps:'width'});
-                teamDrag[0].disable();
-            }
-        }
-    }
+    
     if(team.length){
         var teamMember = team.find('.team-member');
         var desc, heightDesc, liParent, tlTeam,
@@ -399,13 +334,14 @@ $(function(){
             liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive'), heightDescResponsive;
         
         teamPosition();
+        updateBtnGlob();
 
         teamMember.on('click', function(e){
             e.preventDefault();
             liParent = $(this).closest('li');
             desc = $('.desc', liParent);
             heightDesc = desc.outerHeight();
-            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc'))){
+            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
                 if(!team.hasClass('member-open')){
                     TweenMax.set(team, {className:'+=member-open'});
                     // open new
@@ -425,6 +361,12 @@ $(function(){
                         tlTeam.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
                             $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
                         }});
+
+                        var teamMemberHeight = Math.max.apply(null, team.find('.team-member').map(function ()
+                        {
+                            return $(this).height();
+                        }).get());
+                        TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: teamMemberHeight+10+'px', ease:Cubic.easeInOut});
                     }
                 }else{
                     if(liParent.hasClass('open')){
@@ -441,6 +383,8 @@ $(function(){
                         }
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
                         tlTeamCurrent.set(team, {className:'-=member-open'});
+                        //TweenMax.set($('.wrapper-btn-glob'), {clearProps:'height'});
+                        TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
                     }else{
                         // close already open and open new
                         var currentLi = $('.team.member-open > li.open');
@@ -482,7 +426,7 @@ $(function(){
 
         $('.btn-desc > li a').on('click', function(e){
             e.preventDefault();
-            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc'))){
+            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
                 // close already open and open new
                 var currentLi = $('.team.member-open > li.open');
                 currentDesc = $('.desc', currentLi);
@@ -512,6 +456,158 @@ $(function(){
                 }});
             }
         });
+
+        $('.container-team .wrapper-btn-glob a').on('click', function(e){
+            e.preventDefault();
+            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
+                if($(this).hasClass('left')){
+                    TweenMax.to(team, 0.25, {x: '+='+teamMemberWidth, ease:Cubic.easeInOut, onComplete: updateBtnGlob});
+                }else{
+                    TweenMax.to(team, 0.25, {x: '-='+teamMemberWidth, ease:Cubic.easeInOut, onComplete: updateBtnGlob});
+                }
+            }
+        });
+        
+    }
+
+    function updateBtnGlob(){
+        if($(window).width() <= 979){
+            var nbTeamMembers = $('.team > li').length;
+            var teamLeft = team.offset().left-20;
+            var teamRight = teamLeft+team.width();
+            var containerTeamWidth = $('.container-team').width();
+            if(nbTeamMembers > 5){
+                TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
+                TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
+                if(teamLeft < 0){
+                    TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
+                }
+                if(teamRight > containerTeamWidth){
+                    TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
+                }
+            }else if(($(window).width() <= 767) && (nbTeamMembers > 3)){
+                TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
+                TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
+                if(teamLeft < 0){
+                    TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
+                }
+                if(teamRight > containerTeamWidth){
+                    TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
+                }
+            }
+        }else{
+            TweenMax.set($('.wrapper-btn-glob'), {className:'-=open'});
+        }
+    }
+
+    function teamPosition(){
+        if($(window).width() <= 979){
+            imgTeamHeight = team.find('.team-member img').eq(0).outerHeight();
+            TweenMax.set($('.wrapper-btn-glob a'), {top: (imgTeamHeight/2)+'px'});
+
+            if(!teamDrag){
+                if($(window).width() <= 767){
+                    teamMemberWidth = $('.container-team').width()/3;
+                }else{
+                    teamMemberWidth = $('.container-team').width()/5;
+                }
+                TweenMax.set($('.team > li'), {width: teamMemberWidth+'px'});
+
+                teamWidth = 0;
+                $('.team > li').each(function() {
+                    teamWidth += $(this).outerWidth();
+                });
+                TweenMax.set(team, {width: teamWidth+'px'});
+
+                gridWidth = teamMemberWidth;
+                teamDrag = Draggable.create( '.team', {
+                    type: 'x',
+                    bounds: $('.container-team'),
+                    cursor: 'grab',
+                    throwProps: true,
+                    edgeResistance: 0.65,
+                    dragClickables: true,
+                    snap: {
+                        x: function(endValue) {
+                            return Math.round(endValue / gridWidth) * gridWidth;
+                        }
+                    },
+                    onThrowComplete: function(){
+                        updateBtnGlob();
+                    },
+                    onDragStart: function(){
+                        // close current
+                        var currentLi = $('.team.member-open > li.open');
+                        currentDesc = $('.desc', currentLi);
+                        tlTeamCurrent = new TimelineMax();
+                        if($(window).width() > 979){
+                            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
+                            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
+                        }else{
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0});
+                            tlTeamCurrent.to(descResponsive, 0.5, {height: '0', visibility: 'hidden', ease:Cubic.easeInOut});
+                        }
+                        tlTeamCurrent.set(currentLi, {className:'-=open'});
+                        tlTeamCurrent.set(team, {className:'-=member-open'});
+                        //TweenMax.set($('.wrapper-btn-glob'), {clearProps:'height'});
+                        TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
+                    }
+                });
+            }else{
+                if($(window).width() <= 767){
+                    teamMemberWidth = $('.container-team').width()/3;
+                }else{
+                    teamMemberWidth = $('.container-team').width()/5;
+                }
+                TweenMax.set($('.team > li'), {width: teamMemberWidth+'px'});
+                teamWidth = 0;
+                $('.team > li').each(function() {
+                    teamWidth += $(this).outerWidth();
+                });
+                TweenMax.set(team, {width: teamWidth+'px'});
+
+                gridWidth = teamMemberWidth;
+                teamDrag = Draggable.create( '.team', {
+                    type: 'x',
+                    bounds: $('.container-team'),
+                    cursor: 'grab',
+                    throwProps: true,
+                    edgeResistance: 0.65,
+                    dragClickables: true,
+                    snap: {
+                        x: function(endValue) {
+                            return Math.round(endValue / gridWidth) * gridWidth;
+                        }
+                    },
+                    onThrowComplete: function(){
+                        updateBtnGlob();
+                    },
+                    onDragStart: function(){
+                        // close current
+                        var currentLi = $('.team.member-open > li.open');
+                        currentDesc = $('.desc', currentLi);
+                        tlTeamCurrent = new TimelineMax();
+                        if($(window).width() > 979){
+                            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
+                            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
+                        }else{
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0});
+                            tlTeamCurrent.to(descResponsive, 0.5, {height: '0', visibility: 'hidden', ease:Cubic.easeInOut});
+                        }
+                        tlTeamCurrent.set(currentLi, {className:'-=open'});
+                        tlTeamCurrent.set(team, {className:'-=member-open'});
+                        //TweenMax.set($('.wrapper-btn-glob'), {clearProps:'height'});
+                        TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
+                    }
+                });
+            }
+        }else{
+            if(teamDrag){
+                TweenMax.set($('.team'), {clearProps:'all'});
+                TweenMax.set($('.team > li'), {clearProps:'width'});
+                teamDrag[0].disable();
+            }
+        }
     }
 
     if(menu.length){
@@ -592,6 +688,7 @@ $(function(){
                 TweenMax.set(liTeamOpen, {paddingBottom: heightDescOpen+'px', ease:Cubic.easeInOut});
             }
             teamPosition();
+            updateBtnGlob();
         }
 
         nh = $(window).height();
