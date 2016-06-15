@@ -19,7 +19,7 @@ $(function(){
     var related = $('#related');
     var menu = $('#menu-responsive');
     var portfolio = $('#portfolio');
-    var team = $('.team'), teamDrag = false, teamMemberWidth, teamWidth, gridWidth;
+    var team = $('.team'), teamDrag = false, teamMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight;
     var h = $(window).height(), w = $(window).width(), nh = $(window).height(), nw = $(window).width();
 
 
@@ -325,8 +325,186 @@ $(function(){
             setPortfolio(poItem, nbPoItem, nbCol);
         }
     }
+    
+    if(team.length){
+        var teamMember = team.find('.team-member');
+        var desc, heightDesc, liParent, tlTeam,
+            currentLi, currentDesc, tlTeamCurrent,
+            newLi, newDesc, heightNewDesc,
+            liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive'), heightDescResponsive;
+        
+        teamPosition();
+        updateBtnGlob();
+
+        teamMember.on('click', function(e){
+            e.preventDefault();
+            liParent = $(this).closest('li');
+            desc = $('.desc', liParent);
+            heightDesc = desc.outerHeight();
+            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
+                if(!team.hasClass('member-open')){
+                    TweenMax.set(team, {className:'+=member-open'});
+                    // open new
+                    tlTeam = new TimelineMax();
+                    tlTeam.set(liParent, {className:'+=open'});
+                    if($(window).width() > 979){
+                        tlTeam.to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeInOut});
+                        tlTeam.to(desc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
+                            $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                        }});
+                    }else{
+                        descResponsive.html(desc.html());
+                        TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
+                        heightDescResponsive = descResponsive.outerHeight();
+                        TweenMax.set(descResponsive, {height: '0', position: 'relative'});
+                        tlTeam.to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut});
+                        tlTeam.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
+                            $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                        }});
+
+                        var teamMemberHeight = Math.max.apply(null, team.find('.team-member').map(function ()
+                        {
+                            return $(this).height();
+                        }).get());
+                        TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: teamMemberHeight+10+'px', ease:Cubic.easeInOut});
+                    }
+                }else{
+                    if(liParent.hasClass('open')){
+                        // close current
+                        var currentLi = $('.team.member-open > li.open');
+                        currentDesc = $('.desc', currentLi);
+                        tlTeamCurrent = new TimelineMax();
+                        if($(window).width() > 979){
+                            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
+                            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
+                        }else{
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0});
+                            tlTeamCurrent.to(descResponsive, 0.5, {height: '0', visibility: 'hidden', ease:Cubic.easeInOut});
+                        }
+                        tlTeamCurrent.set(currentLi, {className:'-=open'});
+                        tlTeamCurrent.set(team, {className:'-=member-open'});
+                        //TweenMax.set($('.wrapper-btn-glob'), {clearProps:'height'});
+                        TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
+                    }else{
+                        // close already open and open new
+                        var currentLi = $('.team.member-open > li.open');
+                        currentDesc = $('.desc', currentLi);
+                        tlTeamCurrent = new TimelineMax();
+
+                        if($(window).width() > 979){
+                            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
+                            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
+                            tlTeamCurrent.set(currentLi, {className:'-=open'});
+
+                            tlTeamCurrent.set(liParent, {className:'+=open'});
+                            tlTeamCurrent.to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeInOut});
+                            tlTeamCurrent.to(desc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
+                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                            }});
+                        }else{
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'});
+                            tlTeamCurrent.set(currentLi, {className:'-=open'});
+
+                            tlTeamCurrent.set(liParent, {className:'+=open', onComplete: function(){
+                                descResponsive.html(desc.html());
+
+                                TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
+                                heightDescResponsive = descResponsive.outerHeight();
+                                TweenMax.set(descResponsive, {height: '0', position: 'relative'});
+                            }});
+
+                            tlTeamCurrent.to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut});
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
+                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                            }});
+                        }
+                    }
+                }
+            }
+        });
+
+
+        $('.btn-desc > li a').on('click', function(e){
+            e.preventDefault();
+            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
+                // close already open and open new
+                var currentLi = $('.team.member-open > li.open');
+                currentDesc = $('.desc', currentLi);
+                tlTeamCurrent = new TimelineMax();
+                tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
+                tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
+                tlTeamCurrent.set(currentLi, {className:'-=open'});
+                if($(this).hasClass('left')){
+                    if (currentLi.prev().length){
+                        newLi = currentLi.prev();
+                    }else{
+                        newLi = team.find('> li').last();
+                    }
+                }else{
+                    if (currentLi.next().length){
+                        newLi = currentLi.next();
+                    }else{
+                        newLi = team.find('> li').first();
+                    }
+                }
+                newDesc = $('.desc', newLi);
+                heightNewDesc = newDesc.outerHeight();
+                tlTeamCurrent.set(newLi, {className:'+=open'});
+                tlTeamCurrent.to(newLi, 0.5, {paddingBottom: heightNewDesc+'px', ease:Cubic.easeInOut});
+                tlTeamCurrent.to(newDesc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
+                    $('html, body').animate( { scrollTop: newLi.offset().top-120 }, 200 );
+                }});
+            }
+        });
+
+        $('.container-team .wrapper-btn-glob a').on('click', function(e){
+            e.preventDefault();
+            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
+                if($(this).hasClass('left')){
+                    TweenMax.to(team, 0.25, {x: '+='+teamMemberWidth, ease:Cubic.easeInOut, onComplete: updateBtnGlob});
+                }else{
+                    TweenMax.to(team, 0.25, {x: '-='+teamMemberWidth, ease:Cubic.easeInOut, onComplete: updateBtnGlob});
+                }
+            }
+        });
+        
+    }
+
+    function updateBtnGlob(){
+        if($(window).width() <= 979){
+            var nbTeamMembers = $('.team > li').length;
+            var teamLeft = team.offset().left-20;
+            var teamRight = teamLeft+team.width();
+            var containerTeamWidth = $('.container-team').width();
+            if(nbTeamMembers > 5){
+                TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
+                TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
+                if(teamLeft < 0){
+                    TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
+                }
+                if(teamRight > containerTeamWidth){
+                    TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
+                }
+            }else if(($(window).width() <= 767) && (nbTeamMembers > 3)){
+                TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
+                TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
+                if(teamLeft < 0){
+                    TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
+                }
+                if(teamRight > containerTeamWidth){
+                    TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
+                }
+            }
+        }else{
+            TweenMax.set($('.wrapper-btn-glob'), {className:'-=open'});
+        }
+    }
+
     function teamPosition(){
         if($(window).width() <= 979){
+            imgTeamHeight = team.find('.team-member img').eq(0).outerHeight();
+            TweenMax.set($('.wrapper-btn-glob a'), {top: (imgTeamHeight/2)+'px'});
+
             if(!teamDrag){
                 if($(window).width() <= 767){
                     teamMemberWidth = $('.container-team').width()/3;
@@ -353,6 +531,26 @@ $(function(){
                         x: function(endValue) {
                             return Math.round(endValue / gridWidth) * gridWidth;
                         }
+                    },
+                    onThrowComplete: function(){
+                        updateBtnGlob();
+                    },
+                    onDragStart: function(){
+                        // close current
+                        var currentLi = $('.team.member-open > li.open');
+                        currentDesc = $('.desc', currentLi);
+                        tlTeamCurrent = new TimelineMax();
+                        if($(window).width() > 979){
+                            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
+                            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
+                        }else{
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0});
+                            tlTeamCurrent.to(descResponsive, 0.5, {height: '0', visibility: 'hidden', ease:Cubic.easeInOut});
+                        }
+                        tlTeamCurrent.set(currentLi, {className:'-=open'});
+                        tlTeamCurrent.set(team, {className:'-=member-open'});
+                        //TweenMax.set($('.wrapper-btn-glob'), {clearProps:'height'});
+                        TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
                     }
                 });
             }else{
@@ -380,51 +578,11 @@ $(function(){
                         x: function(endValue) {
                             return Math.round(endValue / gridWidth) * gridWidth;
                         }
-                    }
-                });
-            }
-        }else{
-            if(teamDrag){
-                TweenMax.set($('.team'), {clearProps:'all'});
-                TweenMax.set($('.team > li'), {clearProps:'width'});
-                teamDrag[0].disable();
-            }
-        }
-    }
-    if(team.length){
-        var teamMember = team.find('.team-member');
-        var desc, heightDesc, liParent, tlTeam,
-            currentLi, currentDesc, tlTeamCurrent,
-            newLi, newDesc, heightNewDesc,
-            liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive');
-        
-        teamPosition();
-
-        teamMember.on('click', function(e){
-            e.preventDefault();
-            liParent = $(this).closest('li');
-            desc = $('.desc', liParent);
-            heightDesc = desc.outerHeight();
-            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc'))){
-                if(!team.hasClass('member-open')){
-                    TweenMax.set(team, {className:'+=member-open'});
-                    // open new
-                    tlTeam = new TimelineMax();
-                    tlTeam.set(liParent, {className:'+=open'});
-                    if($(window).width() > 979){
-                        tlTeam.to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeInOut});
-                        tlTeam.to(desc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                            $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
-                        }});
-                    }else{
-                        descResponsive.html(desc.html());
-                        tlTeam.to(descResponsive, 0.5, {height: heightDesc+'px', ease:Cubic.easeInOut});
-                        tlTeam.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                            $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
-                        }});
-                    }
-                }else{
-                    if(liParent.hasClass('open')){
+                    },
+                    onThrowComplete: function(){
+                        updateBtnGlob();
+                    },
+                    onDragStart: function(){
                         // close current
                         var currentLi = $('.team.member-open > li.open');
                         currentDesc = $('.desc', currentLi);
@@ -438,73 +596,18 @@ $(function(){
                         }
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
                         tlTeamCurrent.set(team, {className:'-=member-open'});
-                    }else{
-                        // close already open and open new
-                        var currentLi = $('.team.member-open > li.open');
-                        currentDesc = $('.desc', currentLi);
-                        tlTeamCurrent = new TimelineMax();
-
-                        if($(window).width() > 979){
-                            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
-                            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
-                            tlTeamCurrent.set(currentLi, {className:'-=open'});
-
-                            tlTeamCurrent.set(liParent, {className:'+=open'});
-                            tlTeamCurrent.to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeInOut});
-                            tlTeamCurrent.to(desc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
-                            }});
-                        }else{
-                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'});
-                            tlTeamCurrent.set(currentLi, {className:'-=open'});
-
-                            tlTeamCurrent.set(liParent, {className:'+=open', onComplete: function(){
-                                descResponsive.html(desc.html());
-                            }});
-                            
-                            tlTeamCurrent.to(descResponsive, 0.5, {height: heightDesc+'px', ease:Cubic.easeInOut});
-                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
-                            }});
-                        }
+                        //TweenMax.set($('.wrapper-btn-glob'), {clearProps:'height'});
+                        TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
                     }
-                }
+                });
             }
-        });
-
-
-        $('.btn-desc > li a').on('click', function(e){
-            e.preventDefault();
-            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc'))){
-                // close already open and open new
-                var currentLi = $('.team.member-open > li.open');
-                currentDesc = $('.desc', currentLi);
-                tlTeamCurrent = new TimelineMax();
-                tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
-                tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
-                tlTeamCurrent.set(currentLi, {className:'-=open'});
-                if($(this).hasClass('btn-prev-desc')){
-                    if (currentLi.prev().length){
-                        newLi = currentLi.prev();
-                    }else{
-                        newLi = team.find('> li').last();
-                    }
-                }else if($(this).hasClass('btn-next-desc')){
-                    if (currentLi.next().length){
-                        newLi = currentLi.next();
-                    }else{
-                        newLi = team.find('> li').first();
-                    }
-                }
-                newDesc = $('.desc', newLi);
-                heightNewDesc = newDesc.outerHeight();
-                tlTeamCurrent.set(newLi, {className:'+=open'});
-                tlTeamCurrent.to(newLi, 0.5, {paddingBottom: heightNewDesc+'px', ease:Cubic.easeInOut});
-                tlTeamCurrent.to(newDesc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                    $('html, body').animate( { scrollTop: newLi.offset().top-120 }, 200 );
-                }});
+        }else{
+            if(teamDrag){
+                TweenMax.set($('.team'), {clearProps:'all'});
+                TweenMax.set($('.team > li'), {clearProps:'width'});
+                teamDrag[0].disable();
             }
-        });
+        }
     }
 
     if(menu.length){
@@ -585,6 +688,7 @@ $(function(){
                 TweenMax.set(liTeamOpen, {paddingBottom: heightDescOpen+'px', ease:Cubic.easeInOut});
             }
             teamPosition();
+            updateBtnGlob();
         }
 
         nh = $(window).height();
@@ -595,6 +699,7 @@ $(function(){
                 if(team.hasClass('member-open')){
                     TweenMax.set($('.team.member-open > li.open .desc'), {clearProps:'all'});
                     TweenMax.set($('.team.member-open > li.open'), {className:'-=open', clearProps:'all'});
+                    TweenMax.set($('.content-desc-responsive'), {clearProps:'all'});
                     TweenMax.set(team, {className:'-=member-open'});
                 }
             }
