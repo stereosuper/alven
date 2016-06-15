@@ -252,12 +252,18 @@
     }
 
     .container-team{
-        overflow: hidden;
+        //overflow: hidden;
         position: relative;
     }
     .team{
         > li{
             margin: 0;
+            position: relative;
+        }
+        .name{
+            &:before{
+                display: none;
+            }
         }
     }
     .social{
@@ -272,6 +278,7 @@
             }
         }
     }
+
 }
 
 @media (max-width: 767px){

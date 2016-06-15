@@ -197,7 +197,7 @@
 	width: 20%;
 	height: 100%;
 	z-index: 10000;
-	background-color: #fff;
+	//background-color: #fff;
 	opacity: 0;
 	visibility: hidden;
 	transition: opacity 0.2s ease-in-out;
@@ -206,11 +206,29 @@
 		left: 50%;
 		margin: -22px 0 0 -28px;
 	}
+	&:before{
+		content: '';
+		display: block;
+		position: absolute;
+		width: auto;
+		height: auto;
+		top: 0;
+		bottom: 0;
+		background-color: #fff;
+	}
 	&.prev{
 		left: 0;
+		&:before{
+			left: -20px;
+			right: 8px;
+		}
 	}
 	&.next{
 		right: 0;
+		&:before{
+			left: 8px;
+			right: -20px;
+		}
 	}
 	&.open{
 		opacity: 1;

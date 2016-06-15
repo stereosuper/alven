@@ -1817,7 +1817,6 @@ select::-ms-expand {
   width: 20%;
   height: 100%;
   z-index: 10000;
-  background-color: #fff;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease-in-out; }
@@ -1825,10 +1824,25 @@ select::-ms-expand {
     top: 50%;
     left: 50%;
     margin: -22px 0 0 -28px; }
+  .wrapper-btn-glob:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    background-color: #fff; }
   .wrapper-btn-glob.prev {
     left: 0; }
+    .wrapper-btn-glob.prev:before {
+      left: -20px;
+      right: 8px; }
   .wrapper-btn-glob.next {
     right: 0; }
+    .wrapper-btn-glob.next:before {
+      left: 8px;
+      right: -20px; }
   .wrapper-btn-glob.open {
     opacity: 1;
     visibility: visible; }
@@ -2466,11 +2480,13 @@ select::-ms-expand {
     font-size: 2.2rem; }
 
   .container-team {
-    overflow: hidden;
     position: relative; }
 
   .team > li {
-    margin: 0; }
+    margin: 0;
+    position: relative; }
+  .team .name:before {
+    display: none; }
 
   .social {
     margin: 12px 0 0 0; }
