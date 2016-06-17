@@ -475,10 +475,12 @@ $(function(){
         $('.container-team .wrapper-btn-glob a').on('click', function(e){
             e.preventDefault();
             if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
-                if($(this).hasClass('left')){
-                    TweenMax.to(team, 0.25, {x: '+='+teamMemberWidth, ease:Cubic.easeInOut, onComplete: updateBtnGlob});
-                }else{
-                    TweenMax.to(team, 0.25, {x: '-='+teamMemberWidth, ease:Cubic.easeInOut, onComplete: updateBtnGlob});
+                if($(this).closest('.wrapper-btn-glob').hasClass('open')){
+                    if($(this).hasClass('left')){
+                        TweenMax.to(team, 0.25, {x: '+='+teamMemberWidth, ease:Cubic.easeInOut, onComplete: updateBtnGlob});
+                    }else{
+                        TweenMax.to(team, 0.25, {x: '-='+teamMemberWidth, ease:Cubic.easeInOut, onComplete: updateBtnGlob});
+                    }
                 }
             }
         });
