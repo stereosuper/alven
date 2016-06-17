@@ -330,11 +330,11 @@ $(function(){
         portfolio.find('.po-item a').hover(
             function(){
                 $(this).closest('.grid').addClass('is-hovered');
-                $(this).addClass('link-hovered');
+                $(this).closest('.po-item').addClass('link-hovered');
                 portfolio.find('.po-item a').removeClass('on');
             }, function(){
                 $(this).closest('.grid').removeClass('is-hovered');
-                $(this).removeClass('link-hovered');
+                $(this).closest('.po-item').removeClass('link-hovered');
             }
         );
     }

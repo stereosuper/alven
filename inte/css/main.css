@@ -1376,16 +1376,15 @@ select::-ms-expand {
     padding: 0 0 10%; }
   .portfolio-list .grid {
     padding: 10px 0; }
-    .portfolio-list .grid.is-hovered .po-item a:after {
+    .portfolio-list .grid.is-hovered .po-item:after {
       opacity: 0.5;
       visibility: visible; }
-    .portfolio-list .grid.is-hovered .po-item a.link-hovered:after {
+    .portfolio-list .grid.is-hovered .po-item.link-hovered:after {
       opacity: 0;
       visibility: hidden; }
-    .portfolio-list .grid.is-hovered .po-item.cta a {
-      opacity: 0.5; }
-      .portfolio-list .grid.is-hovered .po-item.cta a.link-hovered {
-        opacity: 1; }
+    .portfolio-list .grid.is-hovered .po-item.cta:after {
+      opacity: 0;
+      visibility: hidden; }
   .js .portfolio-list ul {
     display: none; }
   .portfolio-list li, .portfolio-list .po-item {
@@ -1402,6 +1401,22 @@ select::-ms-expand {
       padding: 75% 0 0;
       position: static;
       background: none !important; }
+    .portfolio-list li:after, .portfolio-list .po-item:after {
+      content: '';
+      display: block;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 10px;
+      right: 0;
+      bottom: 10px;
+      left: 0;
+      background-color: #fff;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s cubic-bezier(0.75, 0, 0.125, 1);
+      pointer-events: none;
+      will-change: opacity; }
     .portfolio-list li a, .portfolio-list .po-item a {
       position: absolute;
       top: 10px;
@@ -1418,20 +1433,6 @@ select::-ms-expand {
         width: 0;
         height: 100%;
         vertical-align: middle; }
-      .portfolio-list li a:after, .portfolio-list .po-item a:after {
-        content: '';
-        display: block;
-        width: auto;
-        height: auto;
-        position: absolute;
-        top: -2px;
-        right: -2px;
-        bottom: -2px;
-        left: -2px;
-        background-color: #fff;
-        opacity: 0;
-        visibility: hidden;
-        transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
       .portfolio-list li a.transfered, .portfolio-list .po-item a.transfered {
         background-color: #34b6b8;
         border-color: #34b6b8;
