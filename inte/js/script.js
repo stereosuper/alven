@@ -412,7 +412,7 @@ $(function(){
                             tlTeamCurrent.set(liParent, {className:'+=open'});
                             tlTeamCurrent.to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeInOut});
                             tlTeamCurrent.to(desc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 700);
                             }});
                         }else{
                             tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'});
@@ -428,7 +428,7 @@ $(function(){
 
                             tlTeamCurrent.to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut});
                             tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
+                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 700);
                             }});
                         }
                     }
