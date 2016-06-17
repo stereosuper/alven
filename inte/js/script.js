@@ -406,11 +406,12 @@ $(function(){
 
                         if($(window).width() > 979){
                             tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
-                            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
                             tlTeamCurrent.set(currentLi, {className:'-=open'});
 
                             tlTeamCurrent.set(liParent, {className:'+=open'});
-                            tlTeamCurrent.to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeInOut});
+                            tlTeamCurrent.add('paddingAnimation')
+                            .to(liParent, 0.25, {paddingBottom: heightDesc+'px', ease:Cubic.easeInOut}, 'paddingAnimation')
+                            .to(currentLi, 0.25, {paddingBottom: '0', ease:Cubic.easeInOut}, 'paddingAnimation');
                             tlTeamCurrent.to(desc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
                                 $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 700);
                             }});
@@ -445,7 +446,6 @@ $(function(){
                 currentDesc = $('.desc', currentLi);
                 tlTeamCurrent = new TimelineMax();
                 tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
-                tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
                 tlTeamCurrent.set(currentLi, {className:'-=open'});
                 if($(this).hasClass('left')){
                     if (currentLi.prev().length){
@@ -463,7 +463,9 @@ $(function(){
                 newDesc = $('.desc', newLi);
                 heightNewDesc = newDesc.outerHeight();
                 tlTeamCurrent.set(newLi, {className:'+=open'});
-                tlTeamCurrent.to(newLi, 0.5, {paddingBottom: heightNewDesc+'px', ease:Cubic.easeInOut});
+                tlTeamCurrent.add('paddingAnimation')
+                .to(newLi, 0.25, {paddingBottom: heightNewDesc+'px', ease:Cubic.easeInOut}, 'paddingAnimation')
+                .to(currentLi, 0.25, {paddingBottom: '0', ease:Cubic.easeInOut}, 'paddingAnimation');
                 tlTeamCurrent.to(newDesc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
                     $('html, body').animate( { scrollTop: newLi.offset().top-120 }, 200 );
                 }});
