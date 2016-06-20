@@ -19,7 +19,7 @@ $(function(){
     var related = $('#related');
     var menu = $('#menu-responsive');
     var portfolio = $('#portfolio');
-    var team = $('.team'), teamDrag = false, teamMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight;
+    var team = $('.team'), teamDrag = false, teamMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
     var h = $(window).height(), w = $(window).width(), nh = $(window).height(), nw = $(window).width();
 
 
@@ -358,24 +358,26 @@ $(function(){
             heightDesc = desc.outerHeight();
             if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
                 if(!team.hasClass('member-open')){
+                    offsetYtoScroll = liParent.offset().top-120;                    
                     TweenMax.set(team, {className:'+=member-open'});
                     // open new
                     tlTeam = new TimelineMax();
                     tlTeam.set(liParent, {className:'+=open'});
                     if($(window).width() > 979){
-                        tlTeam.to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeInOut});
-                        tlTeam.to(desc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                            $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
-                        }});
+                        tlTeam.add('paddingAnimation')
+                        .to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeOut}, 'paddingAnimation')
+                        .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
+                        tlTeam.to(desc, 0.25, {opacity: 1, visibility: 'visible'});
                     }else{
                         descResponsive.html(desc.html());
                         TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
                         heightDescResponsive = descResponsive.outerHeight();
                         TweenMax.set(descResponsive, {height: '0', position: 'relative'});
-                        tlTeam.to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut});
-                        tlTeam.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                            $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 200 );
-                        }});
+
+                        tlTeam.add('heightAnimation')
+                        .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
+                        .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation');
+                        tlTeam.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible'});
 
                         var teamMemberHeight = Math.max.apply(null, team.find('.team-member').map(function ()
                         {
@@ -398,7 +400,6 @@ $(function(){
                         }
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
                         tlTeamCurrent.set(team, {className:'-=member-open'});
-                        //TweenMax.set($('.wrapper-btn-glob'), {clearProps:'height'});
                         TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
                     }else{
                         // close already open and open new
@@ -407,6 +408,11 @@ $(function(){
                         tlTeamCurrent = new TimelineMax();
 
                         if($(window).width() > 979){
+                            if(currentLi.offset().top < liParent.offset().top){
+                                offsetYtoScroll = team.offset().top+liParent.position().top-parseFloat(currentLi.css('paddingBottom'))-120;
+                            }else{
+                                offsetYtoScroll = team.offset().top+liParent.position().top-120;
+                            }
 
                             tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
                             tlTeamCurrent.set(currentLi, {className:'-=open'});
@@ -415,11 +421,13 @@ $(function(){
                             tlTeamCurrent.set(liParent, {className:'+=open'});
                             tlTeamCurrent.add('paddingAnimation')
                             .to(currentLi, 0.25, {paddingBottom: '0', ease:Cubic.easeInOut}, 'paddingAnimation')
-                            .to(liParent, 0.25, {paddingBottom: heightDesc+'px', ease:Cubic.easeIn}, 'paddingAnimation');
+                            .to(liParent, 0.25, {paddingBottom: heightDesc+'px', ease:Cubic.easeIn}, 'paddingAnimation')
+                            .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
                             
-                            tlTeamCurrent.to(desc, 0.25, {opacity: 1, visibility: 'visible', onComplete: completeScrollTeam, onCompleteParams: [liParent]});
-                            //tlTeamCurrent.to(window, 0.5, {scrollTo:{y:offsetYtoScrollAze}, ease:Cubic.easeOut});
+                            tlTeamCurrent.to(desc, 0.25, {opacity: 1, visibility: 'visible'});
                         }else{
+                            offsetYtoScroll = liParent.offset().top-120;
+
                             tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'});
                             tlTeamCurrent.set(currentLi, {className:'-=open'});
 
@@ -430,21 +438,15 @@ $(function(){
                                 heightDescResponsive = descResponsive.outerHeight();
                                 TweenMax.set(descResponsive, {height: '0', position: 'relative'});
                             }});
-
-                            tlTeamCurrent.to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut});
-                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                                $('html, body').animate( { scrollTop: liParent.offset().top-120 }, 700);
-                            }});
+                            tlTeamCurrent.add('heightAnimation')
+                            .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
+                            .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation');
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible'});
                         }
                     }
                 }
             }
         });
-
-        function completeScrollTeam(liParent){
-            var offsetYtoScroll = liParent.offset().top-120;
-            TweenMax.to(window, 0.25, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut});
-        }
 
 
         $('.btn-desc > li a').on('click', function(e){
@@ -469,15 +471,19 @@ $(function(){
                         newLi = team.find('> li').first();
                     }
                 }
+                if(currentLi.offset().top < newLi.offset().top){
+                    offsetYtoScroll = team.offset().top+newLi.position().top-parseFloat(currentLi.css('paddingBottom'))-120;
+                }else{
+                   offsetYtoScroll = newLi.offset().top-120;
+                }
                 newDesc = $('.desc', newLi);
                 heightNewDesc = newDesc.outerHeight();
                 tlTeamCurrent.set(newLi, {className:'+=open'});
                 tlTeamCurrent.add('paddingAnimation')
                 .to(newLi, 0.25, {paddingBottom: heightNewDesc+'px', ease:Cubic.easeInOut}, 'paddingAnimation')
-                .to(currentLi, 0.25, {paddingBottom: '0', ease:Cubic.easeInOut}, 'paddingAnimation');
-                tlTeamCurrent.to(newDesc, 0.25, {opacity: 1, visibility: 'visible', onComplete: function(){
-                    $('html, body').animate( { scrollTop: newLi.offset().top-120 }, 200 );
-                }});
+                .to(currentLi, 0.25, {paddingBottom: '0', ease:Cubic.easeInOut}, 'paddingAnimation')
+                .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
+                tlTeamCurrent.to(newDesc, 0.25, {opacity: 1, visibility: 'visible'});
             }
         });
 
