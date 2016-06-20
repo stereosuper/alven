@@ -19,7 +19,7 @@ $(function(){
     var related = $('#related');
     var menu = $('#menu-responsive');
     var portfolio = $('#portfolio');
-    var team = $('.team'), teamDrag = false, teamMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
+    var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
     var h = $(window).height(), w = $(window).width(), nh = $(window).height(), nw = $(window).width();
 
 
@@ -244,8 +244,6 @@ $(function(){
                 if(i === 3 && j === arrayCols[i]-1){
                     portfolioContent += '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
                 }
-                console.log('i : '+i+' j : '+j);
-                console.log('currentNb : '+currentNb);
                 if($('ul.grid > li').eq(currentNb).hasClass('transfered')){
                     portfolioContent += '<div class="po-item transfered">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
                 }else{
@@ -355,7 +353,7 @@ $(function(){
         var desc, heightDesc, liParent, tlTeam,
             currentLi, currentDesc, tlTeamCurrent,
             newLi, newDesc, heightNewDesc,
-            liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive'), heightDescResponsive;
+            liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive'), heightDescResponsive, posiLiClique, containerTeamWidth, posiToGo;
         
         teamPosition();
         updateBtnGlob();
@@ -394,6 +392,12 @@ $(function(){
                             return $(this).height();
                         }).get());
                         TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: teamMemberHeight+10+'px', ease:Cubic.easeInOut});
+
+                        // Centrer cliqué
+                        posiLiClique = liParent.position().left;
+                        containerTeamWidth = $('.container-team').width();
+                        posiToGo = posiLiClique-containerTeamWidth/2+liParent.outerWidth()/2;
+                        TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut});
                     }
                 }else{
                     if(liParent.hasClass('open')){
@@ -453,6 +457,12 @@ $(function(){
                             .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
                             .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation');
                             tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible'});
+
+                            // Centrer cliqué
+                            posiLiClique = liParent.position().left;
+                            containerTeamWidth = $('.container-team').width();
+                            posiToGo = posiLiClique-containerTeamWidth/2+liParent.outerWidth()/2;
+                            TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut});
                         }
                     }
                 }
@@ -591,8 +601,10 @@ $(function(){
             if(!teamDrag){
                 if($(window).width() <= 767){
                     teamMemberWidth = $('.container-team').width()/3;
+                    decalageMemberWidth = teamMemberWidth;
                 }else{
                     teamMemberWidth = $('.container-team').width()/5;
+                    decalageMemberWidth = teamMemberWidth*2;
                 }
                 TweenMax.set($('.team > li'), {width: teamMemberWidth+'px'});
 
@@ -600,7 +612,8 @@ $(function(){
                 $('.team > li').each(function() {
                     teamWidth += $(this).outerWidth();
                 });
-                TweenMax.set(team, {width: teamWidth+'px'});
+                teamWidth += (decalageMemberWidth*2);
+                TweenMax.set(team, {width: teamWidth+'px', padding: '0 '+decalageMemberWidth+'px', x: -decalageMemberWidth});
 
                 gridWidth = teamMemberWidth;
                 teamDrag = Draggable.create( '.team', {
@@ -636,15 +649,18 @@ $(function(){
             }else{
                 if($(window).width() <= 767){
                     teamMemberWidth = $('.container-team').width()/3;
+                    decalageMemberWidth = teamMemberWidth;
                 }else{
                     teamMemberWidth = $('.container-team').width()/5;
+                    decalageMemberWidth = teamMemberWidth*2;
                 }
                 TweenMax.set($('.team > li'), {width: teamMemberWidth+'px'});
                 teamWidth = 0;
                 $('.team > li').each(function() {
                     teamWidth += $(this).outerWidth();
                 });
-                TweenMax.set(team, {width: teamWidth+'px'});
+                teamWidth += (decalageMemberWidth*2);
+                TweenMax.set(team, {width: teamWidth+'px', padding: '0 '+decalageMemberWidth+'px', x: -decalageMemberWidth});
 
                 gridWidth = teamMemberWidth;
                 teamDrag = Draggable.create( '.team', {
