@@ -1417,6 +1417,51 @@ select::-ms-expand {
       transition: 0.3s cubic-bezier(0.75, 0, 0.125, 1);
       pointer-events: none;
       will-change: opacity; }
+    .portfolio-list li.transfered:after, .portfolio-list .po-item.transfered:after {
+      background-color: #303b3d; }
+    .portfolio-list li.transfered a, .portfolio-list .po-item.transfered a {
+      background-color: #34b6b8;
+      border-color: #34b6b8;
+      color: #fff; }
+      .portfolio-list li.transfered a > img, .portfolio-list .po-item.transfered a > img {
+        transform: translate3d(-50%, 0, 0);
+        position: absolute;
+        top: 16px;
+        left: 50%; }
+      .portfolio-list li.transfered a .content-transfered, .portfolio-list .po-item.transfered a .content-transfered {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate3d(0, -50%, 0);
+        width: 100%; }
+        .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
+          display: block;
+          margin: 10px 0; }
+      .portfolio-list li.transfered a svg, .portfolio-list .po-item.transfered a svg {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+        top: auto;
+        left: auto;
+        padding-bottom: 2px;
+        backface-visibility: hidden; }
+        .portfolio-list li.transfered a svg .zone-svg, .portfolio-list .po-item.transfered a svg .zone-svg {
+          fill: #fff; }
+      .portfolio-list li.transfered a .hover, .portfolio-list .po-item.transfered a .hover {
+        opacity: 1;
+        transform: translate3d(0, 0, 0); }
+        .portfolio-list li.transfered a .hover svg, .portfolio-list .po-item.transfered a .hover svg {
+          position: relative;
+          transform: translate3d(0, 0, 0);
+          top: auto;
+          left: auto; }
+      .portfolio-list li.transfered a .txt, .portfolio-list .po-item.transfered a .txt {
+        opacity: 0; }
+      .portfolio-list li.transfered a:hover, .portfolio-list li.transfered a:focus, .portfolio-list li.transfered a.on, .portfolio-list .po-item.transfered a:hover, .portfolio-list .po-item.transfered a:focus, .portfolio-list .po-item.transfered a.on {
+        border: 1px solid #e5e8e8;
+        background: #fff;
+        color: #303b3d; }
+        .portfolio-list li.transfered a:hover svg, .portfolio-list li.transfered a:focus svg, .portfolio-list li.transfered a.on svg, .portfolio-list .po-item.transfered a:hover svg, .portfolio-list .po-item.transfered a:focus svg, .portfolio-list .po-item.transfered a.on svg {
+          transform: translate3d(0, 0, 0) scale(1); }
     .portfolio-list li a, .portfolio-list .po-item a {
       position: absolute;
       top: 10px;
@@ -1433,43 +1478,6 @@ select::-ms-expand {
         width: 0;
         height: 100%;
         vertical-align: middle; }
-      .portfolio-list li a.transfered, .portfolio-list .po-item a.transfered {
-        background-color: #34b6b8;
-        border-color: #34b6b8;
-        color: #fff; }
-        .portfolio-list li a.transfered > img, .portfolio-list .po-item a.transfered > img {
-          transform: translate3d(-50%, 0, 0);
-          position: absolute;
-          top: 16px;
-          left: 50%; }
-        .portfolio-list li a.transfered .content-transfered, .portfolio-list .po-item a.transfered .content-transfered {
-          position: absolute;
-          top: 50%;
-          left: 0;
-          transform: translate3d(0, -50%, 0);
-          width: 100%; }
-          .portfolio-list li a.transfered .content-transfered > span, .portfolio-list .po-item a.transfered .content-transfered > span {
-            display: block;
-            margin: 10px 0; }
-        .portfolio-list li a.transfered svg, .portfolio-list .po-item a.transfered svg {
-          position: relative;
-          transform: translate3d(0, 0, 0);
-          top: auto;
-          left: auto;
-          padding-bottom: 2px;
-          backface-visibility: hidden; }
-          .portfolio-list li a.transfered svg .zone-svg, .portfolio-list .po-item a.transfered svg .zone-svg {
-            fill: #fff; }
-        .portfolio-list li a.transfered .hover, .portfolio-list .po-item a.transfered .hover {
-          opacity: 1;
-          transform: translate3d(0, 0, 0); }
-          .portfolio-list li a.transfered .hover svg, .portfolio-list .po-item a.transfered .hover svg {
-            position: relative;
-            transform: translate3d(0, 0, 0);
-            top: auto;
-            left: auto; }
-        .portfolio-list li a.transfered .txt, .portfolio-list .po-item a.transfered .txt {
-          opacity: 0; }
       .portfolio-list li a:hover, .portfolio-list li a:focus, .portfolio-list li a.on, .portfolio-list .po-item a:hover, .portfolio-list .po-item a:focus, .portfolio-list .po-item a.on {
         opacity: 1;
         border-color: #34b6b8; }
@@ -1534,12 +1542,6 @@ select::-ms-expand {
             fill: url(#Dégradé_sans_nom_5); }
           .portfolio-list li a:hover svg .dv-1, .portfolio-list li a:focus svg .dv-1, .portfolio-list li a.on svg .dv-1, .portfolio-list .po-item a:hover svg .dv-1, .portfolio-list .po-item a:focus svg .dv-1, .portfolio-list .po-item a.on svg .dv-1 {
             fill: #3c465a; }
-        .portfolio-list li a:hover.transfered, .portfolio-list li a:focus.transfered, .portfolio-list li a.on.transfered, .portfolio-list .po-item a:hover.transfered, .portfolio-list .po-item a:focus.transfered, .portfolio-list .po-item a.on.transfered {
-          border: 1px solid #e5e8e8;
-          background: #fff;
-          color: #303b3d; }
-          .portfolio-list li a:hover.transfered svg, .portfolio-list li a:focus.transfered svg, .portfolio-list li a.on.transfered svg, .portfolio-list .po-item a:hover.transfered svg, .portfolio-list .po-item a:focus.transfered svg, .portfolio-list .po-item a.on.transfered svg {
-            transform: translate3d(0, 0, 0) scale(1); }
       .portfolio-list li a.on svg .st0, .portfolio-list .po-item a.on svg .st0 {
         fill: #1F1F1D; }
       .portfolio-list li a.on svg .st1, .portfolio-list .po-item a.on svg .st1 {
@@ -2562,7 +2564,7 @@ select::-ms-expand {
     display: none; }
 
   .content-desc-responsive {
-    margin: 0; }
+    margin: 20px 0 0 0; }
 
   .wrapper-btn-glob {
     width: 33.3333%; } }

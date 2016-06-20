@@ -215,7 +215,8 @@ $(function(){
             ratio2 -= 0.05;
         }
 
-        var firstNbItem = Math.ceil(ratio1*nbPoItem),
+        var currentNb,
+            firstNbItem = Math.ceil(ratio1*nbPoItem),
             secondNbItem = Math.ceil(ratio2*nbPoItem),
             lastNbItem = nbPoItem - (firstNbItem + secondNbItem),
             arrayCols = [
@@ -234,6 +235,7 @@ $(function(){
             arrayCols[4] -= 1;
         }
 
+        currentNb = 0;
         i = 0;
         for(i; i<nbCol; i++){
             portfolioContent += '<div class="po-item-col col-2">';
@@ -242,7 +244,14 @@ $(function(){
                 if(i === 3 && j === arrayCols[i]-1){
                     portfolioContent += '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
                 }
-                portfolioContent += '<div class="po-item">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
+                console.log('i : '+i+' j : '+j);
+                console.log('currentNb : '+currentNb);
+                if($('ul.grid > li').eq(currentNb).hasClass('transfered')){
+                    portfolioContent += '<div class="po-item transfered">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
+                }else{
+                    portfolioContent += '<div class="po-item">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
+                }
+                currentNb++;
             }
             poItemIndex += j;
             portfolioContent += '</div>';
@@ -422,7 +431,7 @@ $(function(){
                             
                             tlTeamCurrent.set(liParent, {className:'+=open'});
                             tlTeamCurrent.add('paddingAnimation')
-                            .to(currentLi, 0.25, {paddingBottom: '0', ease:Cubic.easeInOut}, 'paddingAnimation')
+                            .to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut}, 'paddingAnimation')
                             .to(liParent, 0.25, {paddingBottom: heightDesc+'px', ease:Cubic.easeIn}, 'paddingAnimation')
                             .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
                             
@@ -483,7 +492,7 @@ $(function(){
                 tlTeamCurrent.set(newLi, {className:'+=open'});
                 tlTeamCurrent.add('paddingAnimation')
                 .to(newLi, 0.25, {paddingBottom: heightNewDesc+'px', ease:Cubic.easeIn}, 'paddingAnimation')
-                .to(currentLi, 0.25, {paddingBottom: '0', ease:Cubic.easeOut}, 'paddingAnimation')
+                .to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeOut}, 'paddingAnimation')
                 .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
                 tlTeamCurrent.to(newDesc, 0.25, {opacity: 1, visibility: 'visible'});
             }
@@ -491,7 +500,7 @@ $(function(){
 
         $('.container-team .wrapper-btn-glob a').on('click', function(e){
             e.preventDefault();
-            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
+            if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob')) && !TweenMax.isTweening(team)){
                 if($(this).closest('.wrapper-btn-glob').hasClass('open')){
                     if($(this).hasClass('left')){
                         TweenMax.to(team, 0.25, {x: '+='+teamMemberWidth, ease:Cubic.easeInOut});
@@ -505,8 +514,8 @@ $(function(){
                     var currentLi = $('.team.member-open > li.open');
                     currentDesc = $('.desc', currentLi);
                     tlTeamCurrent = new TimelineMax();
-                    tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
-                    tlTeamCurrent.set(currentLi, {className:'-=open'});
+                    tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'});
+                    tlTeamCurrent.set(currentLi, {className:'-=open'})
                     if($(this).hasClass('left')){
                         newLi = currentLi.prev();
                     }else{
@@ -539,22 +548,30 @@ $(function(){
             var teamLeft = team.offset().left-20;
             var teamRight = teamLeft+team.width();
             var containerTeamWidth = $('.container-team').width();
+            var posiLiOpen = 0;
+            var offsetLiOpen = 0;
+            
+            if(team.find('li').hasClass('open')){
+                posiLiOpen = team.find('> li.open').position().left;
+                offsetLiOpen = team.find('> li.open').offset().left;
+            }
+
             if(nbTeamMembers > 5){
                 TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
                 TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
-                if(teamLeft < 0){
+                if(teamLeft < 0 && (offsetLiOpen > teamMemberWidth)){
                     TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
                 }
-                if(teamRight > containerTeamWidth){
+                if(teamRight > containerTeamWidth && ((offsetLiOpen+teamMemberWidth) < ($(window).width()-teamMemberWidth))){
                     TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
                 }
             }else if(($(window).width() <= 767) && (nbTeamMembers > 3)){
                 TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
                 TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
-                if(teamLeft < 0){
+                if(teamLeft < 0 && (offsetLiOpen > teamMemberWidth)){
                     TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
                 }
-                if(teamRight > containerTeamWidth){
+                if(teamRight > containerTeamWidth && ((offsetLiOpen+teamMemberWidth) < ($(window).width()-teamMemberWidth))){
                     TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
                 }
             }
@@ -571,7 +588,6 @@ $(function(){
         if($(window).width() <= 979){
             imgTeamHeight = team.find('.team-member img').eq(0).outerHeight();
             TweenMax.set($('.wrapper-btn-glob a'), {top: (imgTeamHeight/2)+'px'});
-
             if(!teamDrag){
                 if($(window).width() <= 767){
                     teamMemberWidth = $('.container-team').width()/3;
@@ -614,7 +630,6 @@ $(function(){
                         }
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
                         tlTeamCurrent.set(team, {className:'-=member-open'});
-                        //TweenMax.set($('.wrapper-btn-glob'), {clearProps:'height'});
                         TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
                     }
                 });
@@ -659,7 +674,6 @@ $(function(){
                         }
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
                         tlTeamCurrent.set(team, {className:'-=member-open'});
-                        //TweenMax.set($('.wrapper-btn-glob'), {clearProps:'height'});
                         TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
                     }
                 });
@@ -774,6 +788,7 @@ $(function(){
 $(window).on('load', function(){
     var main = $('#main');
     var contentHeader = $('#contentHeader');
+    var team = $('.team');
 
     function animTxt(splitText){
         splitText.split({type:'words'});
@@ -791,3 +806,12 @@ $(window).on('load', function(){
         }
     }
 });
+
+/*$('.team-member img').one('load', function() {
+    var team = $('.team');
+    var imgTeamHeight = team.find('.team-member img').eq(0).outerHeight();
+    TweenMax.set($('.wrapper-btn-glob a'), {top: (imgTeamHeight/2)+'px'});
+    console.log(imgTeamHeight);
+}).each(function() {
+    if(this.complete) $(this).load();
+});*/

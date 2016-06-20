@@ -82,24 +82,11 @@
             pointer-events: none;
             will-change: opacity;
         }
-        a{
-            position: absolute;
-            top: $innerGutter;
-            left: $innerGutter;
-            right: $innerGutter;
-            bottom: $innerGutter;
-            overflow: hidden;
-            background: #fff;
-            box-shadow: none;
-            border: 1px solid $greyBorder;
-            &:before{
-                content: '';
-                display: inline-block;
-                width: 0;
-                height: 100%;
-                vertical-align: middle;
+        &.transfered{
+            &:after{
+                background-color: $chapo;
             }
-            &.transfered{
+            a{
                 background-color: #34b6b8;
                 border-color: #34b6b8;
                 color: #fff;
@@ -145,6 +132,32 @@
                 .txt{
                     opacity: 0;
                 }
+                &:hover, &:focus, &.on{
+                    border: 1px solid $greyBorder;
+                    background: #fff;
+                    color: $chapo;
+                    svg{
+                        transform: translate3d(0, 0, 0) scale(1);
+                    }
+                }
+            }
+        }
+        a{
+            position: absolute;
+            top: $innerGutter;
+            left: $innerGutter;
+            right: $innerGutter;
+            bottom: $innerGutter;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: none;
+            border: 1px solid $greyBorder;
+            &:before{
+                content: '';
+                display: inline-block;
+                width: 0;
+                height: 100%;
+                vertical-align: middle;
             }
             &:hover, &:focus, &.on{
                 opacity: 1;
@@ -179,14 +192,6 @@
                     .tl-1{fill:#00b0ad;}
                     .ak-1{fill:url(#Dégradé_sans_nom);}.ak-2{fill:url(#Dégradé_sans_nom_2);}.ak-3{fill:url(#Dégradé_sans_nom_3);}.ak-4{fill:url(#Dégradé_sans_nom_4);}.ak-5{fill:url(#Dégradé_sans_nom_5);}
                     .dv-1{fill:#3c465a;}
-                }
-                &.transfered{
-                    border: 1px solid $greyBorder;
-                    background: #fff;
-                    color: $chapo;
-                    svg{
-                        transform: translate3d(0, 0, 0) scale(1);
-                    }
                 }
             }
             &.on{
