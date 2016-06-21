@@ -3360,8 +3360,27 @@ select::-ms-expand {
     display: none;
   }
 
+  .portfolio-list {
+    -webkit-transform: translate3d(0, 6%, 0);
+            transform: translate3d(0, 6%, 0);
+  }
+  .portfolio-list:before {
+    height: 18%;
+  }
   .portfolio-list .po-item-col {
     width: 33.3333333333%;
+  }
+  .portfolio-list .po-item-col:first-child {
+    -webkit-transform: none;
+            transform: none;
+  }
+  .portfolio-list .po-item-col:nth-child(2) {
+    -webkit-transform: translate3d(0, -7%, 0);
+            transform: translate3d(0, -7%, 0);
+  }
+  .portfolio-list .po-item-col:nth-child(3) {
+    -webkit-transform: translate3d(0, 4%, 0);
+            transform: translate3d(0, 4%, 0);
   }
 
   .content-desc-responsive {
@@ -3381,7 +3400,7 @@ select::-ms-expand {
   }
 
   .content-desc-responsive {
-    margin: 20px 0 0 0;
+    margin: 20px 0 0;
   }
 
   .wrapper-btn-glob {

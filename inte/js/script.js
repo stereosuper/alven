@@ -180,7 +180,7 @@ $(function(){
     function setPortfolio(poItem, nbPoItem, nbCol){
         var portfolioContent = '<div class="grid">', poItemIndex = 0,
             total = 0, i = 0, j = 0, ratio1 = 0.1, ratio2 = 0.4,
-            transfered, nbTrItem = 0, poItems;
+            transfered, nbTrItem = 0, poItems, colCta = 3, posCta;
 
         function lightTransferedPoItems(y){
             var newElemNumber = Math.floor(Math.random() * nbPoItem);
@@ -215,11 +215,20 @@ $(function(){
                 Math.floor(lastNbItem/3)
             ];
 
+        if(nbCol === 3){
+            arrayCols = [
+                firstNbItem + Math.floor(secondNbItem/2),
+                Math.ceil(secondNbItem/2) + Math.ceil(lastNbItem/3),
+                Math.ceil(lastNbItem/3) + Math.floor(lastNbItem/3)
+            ];
+            colCta = 1;
+        }
+
         for(i; i<nbCol; i++){
             total += arrayCols[i];
         }
         if(total > nbPoItem){
-            arrayCols[4] -= 1;
+            arrayCols[nbCol-2] -= 1;
         }
 
         currentNb = 0;
@@ -227,8 +236,9 @@ $(function(){
         for(i; i<nbCol; i++){
             portfolioContent += '<div class="po-item-col col-2">';
             j = 0;
+            posCta = colCta === 1 ? Math.floor(arrayCols[i]/2) : arrayCols[i]-1;
             for(j; j<arrayCols[i]; j++){
-                if(i === 3 && j === arrayCols[i]-1){
+                if(i === colCta && j === posCta){
                     portfolioContent += '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
                 }
                 if($('ul.grid > li').eq(currentNb).hasClass('transfered')){
@@ -663,7 +673,7 @@ $(function(){
     }
 
     if(portfolio.length){
-        var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = 6;
+        var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3;
 
         if(nbPoItem > nbCol){
             setPortfolio(poItem, nbPoItem, nbCol);
@@ -766,6 +776,16 @@ $(function(){
 
         if(spotlightPost.length){
             setSpotlightPost();
+        }
+
+        if(portfolio.length){
+            var newNbCol = windowWidth > 767 ? 6 : 3;
+
+            if(newNbCol !== nbCol && portfolio.find('div.grid')){
+                portfolio.find('div.grid').remove();
+                nbCol = newNbCol;
+                setPortfolio(poItem, nbPoItem, nbCol);
+            }
         }
 
         if(team.length){
