@@ -329,8 +329,21 @@
     }
 
     .portfolio-list{
+        transform: translate3d(0, 6%, 0);
+        &:before{
+            height: 18%;
+        }
         .po-item-col{
             width: $col*4;
+            &:first-child{
+                transform: none;
+            }
+            &:nth-child(2){
+                transform: translate3d(0, -7%, 0);
+            }
+            &:nth-child(3){
+                transform: translate3d(0, 4%, 0);
+            }
         }
     }
 
@@ -351,7 +364,7 @@
         display: none;
     }
     .content-desc-responsive{
-        margin: 20px 0 0 0;
+        margin: 20px 0 0;
     }
     .wrapper-btn-glob{
         width: 33.3333%;
