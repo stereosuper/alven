@@ -390,7 +390,7 @@ $(function(){
                         posiLiClique = liParent.position().left;
                         containerTeamWidth = $('.container-team').width();
                         posiToGo = posiLiClique-containerTeamWidth/2+liParent.outerWidth()/2;
-                        TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut});
+                        TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut, onComplete: updateBtnGlob});
                     }
                 }else{
                     if(liParent.hasClass('open')){
@@ -455,7 +455,7 @@ $(function(){
                             posiLiClique = liParent.position().left;
                             containerTeamWidth = $('.container-team').width();
                             posiToGo = posiLiClique-containerTeamWidth/2+liParent.outerWidth()/2;
-                            TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut});
+                            TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut, onComplete: updateBtnGlob});
                         }
                     }
                 }
@@ -504,6 +504,7 @@ $(function(){
         $('.container-team .wrapper-btn-glob a').on('click', function(e){
             e.preventDefault();
             if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob')) && !TweenMax.isTweening(team)){
+                updateBtnGlob();
                 if($(this).closest('.wrapper-btn-glob').hasClass('open')){
                     if($(this).hasClass('left')){
                         TweenMax.to(team, 0.25, {x: '+='+teamMemberWidth, ease:Cubic.easeInOut});
@@ -512,7 +513,7 @@ $(function(){
                     }
                 }
 
-                if(($(window).width() <= 979) && (team.hasClass('member-open'))){
+                if(($(window).width() <= 979) && (team.hasClass('member-open')) && $(this).closest('.wrapper-btn-glob').hasClass('open')){
                     // On passe au suivant ou au précédent
                     var currentLi = $('.team.member-open > li.open');
                     currentDesc = $('.desc', currentLi);
@@ -559,22 +560,22 @@ $(function(){
                 offsetLiOpen = team.find('> li.open').offset().left;
             }
 
-            if(nbTeamMembers > 5){
+            if(($(window).width() > 767) && (nbTeamMembers > 5)){
                 TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
                 TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
-                if(teamLeft < 0 && (offsetLiOpen > teamMemberWidth)){
+                if(teamLeft < -Math.ceil(teamMemberWidth*2)){
                     TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
                 }
-                if(teamRight > containerTeamWidth && ((offsetLiOpen+teamMemberWidth) < ($(window).width()-teamMemberWidth))){
+                if(Math.ceil(teamRight+teamMemberWidth*2) > containerTeamWidth){
                     TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
                 }
             }else if(($(window).width() <= 767) && (nbTeamMembers > 3)){
                 TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
                 TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
-                if(teamLeft < 0 && (offsetLiOpen > teamMemberWidth)){
+                if(teamLeft < -Math.ceil(teamMemberWidth)){
                     TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
                 }
-                if(teamRight > containerTeamWidth && ((offsetLiOpen+teamMemberWidth) < ($(window).width()-teamMemberWidth))){
+                if(Math.ceil(teamRight+teamMemberWidth) > containerTeamWidth){
                     TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
                 }
             }
@@ -791,7 +792,7 @@ $(function(){
                 }
             }
         }
-	});
+    });
 
 });
 
