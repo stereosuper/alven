@@ -64,7 +64,7 @@
             position: static;
             background: none !important;
         }
-        &:after{
+        /*&:after{
             content: '';
             display: block;
             width: auto;
@@ -81,7 +81,7 @@
             transition: 0.3s cubic-bezier(0.75, 0, 0.125, 1);
             pointer-events: none;
             will-change: opacity;
-        }
+        }*/
         &.transfered{
             &:after{
                 background-color: $chapo;
@@ -90,6 +90,9 @@
                 background-color: #34b6b8;
                 border-color: #34b6b8;
                 color: #fff;
+                &:after{
+                    display: none;
+                }
                 > img{
                     transform: translate3d(-50%, 0, 0);
                     position: absolute;
@@ -148,7 +151,7 @@
             left: $innerGutter;
             right: $innerGutter;
             bottom: $innerGutter;
-            overflow: hidden;
+            //overflow: hidden;
             background: #fff;
             box-shadow: none;
             border: 1px solid $greyBorder;
@@ -159,9 +162,30 @@
                 height: 100%;
                 vertical-align: middle;
             }
+            &:after{
+                content: '';
+                display: block;
+                width: auto;
+                height: auto;
+                position: absolute;
+                top: -1px;
+                right: -1px;
+                bottom: -1px;
+                left: -1px;
+                opacity: 0;
+                visibility: hidden;
+                transition: 0.3s cubic-bezier(0.75, 0, 0.125, 1);
+                pointer-events: none;
+                will-change: opacity;
+                border: 4px solid #34b6b8;
+            }
             &:hover, &:focus, &.on{
                 opacity: 1;
                 border-color: #34b6b8;
+                &:after{
+                    visibility: visible;
+                    opacity: 1;
+                }
                 > img{
                     opacity: 0.3;
                 }
@@ -169,7 +193,8 @@
                     opacity: 0;
                 }
                 svg{
-                    transform: translate3d(-50%, -50%, 0) scale(1.1);
+                    //transform: translate3d(-50%, -50%, 0) scale(1.1);
+                    transform: translate3d(-50%, -50%, 0) scale(1);
                     transition: 6s cubic-bezier(0.325, 0.710, 0.000, 1.010);
 
                     .st0{fill:#1F1F1D;}
