@@ -2471,7 +2471,13 @@ select::-ms-expand {
   opacity: 0;
   visibility: hidden;
   text-align: center;
-  margin: -20px 0 20px 0;
+  margin: 0 0 20px 0;
+  padding: 30px 0 0 0;
+}
+.content-desc-responsive .btn-cross {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .content-desc-responsive .btn-desc {
   display: none;
@@ -2882,6 +2888,41 @@ select::-ms-expand {
           transform: rotate(-180deg);
   left: 15px;
   margin-top: -5px;
+}
+
+.btn-cross {
+  display: block;
+  position: relative;
+  width: 22px;
+  height: 22px;
+  box-shadow: none;
+}
+.btn-cross:before, .btn-cross:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: #26393d;
+  top: 50%;
+  left: 0;
+}
+.theme-magazine .btn-cross:before, .theme-magazine .btn-cross:after {
+  background: #f06850;
+}
+.theme-portfolio .btn-cross:before, .theme-portfolio .btn-cross:after {
+  background: #01a2a6;
+}
+.theme-we .btn-cross:before, .theme-we .btn-cross:after {
+  background: #33a4df;
+}
+.btn-cross:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.btn-cross:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 /* Share */
