@@ -2613,18 +2613,31 @@ select::-ms-expand {
   h2 {
     font-size: 1.8rem; }
 
-  .btn:before, .btn-invert:before, .btn-arrow:before, #menu-main a:before {
-    height: 13px;
-    font-size: 14px; }
-  .btn:after, .btn-invert:after, .btn-arrow:after, #menu-main a:after {
-    height: 7px;
-    font-size: 7px;
-    bottom: 1px; }
-
-  .btn-arrow:before, #menu-main a:before {
-    bottom: 3px; }
-  .btn-arrow:after, #menu-main a:after {
-    bottom: 6px; }
+  /*.btn, .btn-invert, .btn-arrow{
+      &:before{
+          height: 14px;
+          font-size: 14px;
+          bottom: -1px;
+      }
+      &:after{
+          height: 7px;
+          font-size: 7px;
+      }
+  }
+  .btn-arrow{
+      &:before{
+          bottom: 3px;
+      }
+      &:after{
+          bottom: 7px;
+      }
+  }*/
+  .btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, #menu-main a:before, .btn-arrow:after, #menu-main a:after {
+    transform: translate3d(0, 0, 0) scale(0.85); }
+  .no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .no-js #menu-main a:hover:after, #menu-main .no-js a:hover:after, .is-desktop .btn-arrow:hover:after, .is-desktop #menu-main a:hover:after, #menu-main .is-desktop a:hover:after, .no-js .btn-arrow:focus:after, .no-js #menu-main a:focus:after, #menu-main .no-js a:focus:after, .is-desktop .btn-arrow:focus:after, .is-desktop #menu-main a:focus:after, #menu-main .is-desktop a:focus:after {
+    transform: translate3d(0, 0, 0) scale(0.85) translateX(7px); }
+  .no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .no-js #menu-main a:hover:before, #menu-main .no-js a:hover:before, .is-desktop .btn-arrow:hover:before, .is-desktop #menu-main a:hover:before, #menu-main .is-desktop a:hover:before, .no-js .btn-arrow:focus:before, .no-js #menu-main a:focus:before, #menu-main .no-js a:focus:before, .is-desktop .btn-arrow:focus:before, .is-desktop #menu-main a:focus:before, #menu-main .is-desktop a:focus:before {
+    transform: translate3d(0, 0, 0) scale(0.6, 0.85) translateX(7px); }
 
   .btn-invert {
     padding: 13px 30px 11px 8px; }
