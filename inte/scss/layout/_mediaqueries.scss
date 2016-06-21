@@ -211,11 +211,7 @@
         display: none;
     }
 
-    #menu-responsive{
-        display: block;
-    }
-
-    #burger{
+    #menu-responsive, #burger{
         display: block;
     }
 
@@ -267,7 +263,7 @@
         }
     }
     .social{
-        margin: 12px 0 0 0;
+        margin: 12px 0 0;
         &:not(.social-desc){
             a{
                 @include size(32px);
@@ -275,6 +271,22 @@
                 &:before{
                     line-height: 32px;
                 }
+            }
+        }
+    }
+
+    .portfolio-list{
+        .grid{
+            margin: 0 -5px;
+        }
+        .po-item-col{
+            padding: 0 5px;
+        }
+        .po-item, li{
+            padding: 5px 0;
+            a, &:after{
+                top: 5px;
+                bottom: 5px;
             }
         }
     }
