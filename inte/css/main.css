@@ -2865,7 +2865,7 @@ select::-ms-expand {
   position: relative;
   width: 57px;
   height: 45px;
-  border: 3px solid #33a4df;
+  border: 1px solid #33a4df;
   line-height: 45px;
   text-align: center;
   color: #33a4df;
