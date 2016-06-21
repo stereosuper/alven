@@ -12,7 +12,6 @@
         @include fontIcon();
 
         position: absolute;
-        bottom: 0;
         margin: auto;
         transition: transform $transition;
         transform: translate3d(0, 0, 0);

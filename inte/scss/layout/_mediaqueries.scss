@@ -311,22 +311,25 @@
         font-size: 1.8rem;
     }
 
-    /*.btn, .btn-invert, .btn-arrow{
+    .btn, .btn-invert, .btn-arrow{
         &:before{
             height: 12px;
             font-size: 12px;
-            bottom: 0px;
         }
         &:after{
             height: 7px;
             font-size: 7px;
+            bottom: 1px;
         }
     }
     .btn-arrow{
         &:before{
             bottom: 3px;
         }
-    }*/
+        &:after{
+            bottom: 6px;
+        }
+    }
 
     .btn-invert{
         padding: 13px 30px 11px 8px
