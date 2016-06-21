@@ -289,8 +289,12 @@
                 bottom: 5px;
             }
         }
+        .po-item{
+            &.cta{
+                font-size: 1.4rem;
+            }
+        }
     }
-
 }
 
 @media (max-width: 767px){
@@ -305,6 +309,27 @@
 
     h2{
         font-size: 1.8rem;
+    }
+
+    /*.btn, .btn-invert, .btn-arrow{
+        &:before{
+            height: 12px;
+            font-size: 12px;
+            bottom: 0px;
+        }
+        &:after{
+            height: 7px;
+            font-size: 7px;
+        }
+    }
+    .btn-arrow{
+        &:before{
+            bottom: 3px;
+        }
+    }*/
+
+    .btn-invert{
+        padding: 13px 30px 11px 8px
     }
 
     .spotlight-post{
@@ -343,6 +368,22 @@
             }
             &:nth-child(3){
                 transform: translate3d(0, 4%, 0);
+            }
+        }
+        .po-item{
+            &.cta{
+                font-size: 2rem;
+            }
+        }
+        li, .po-item{
+            &.transfered{
+                a{
+                    .content-transfered{
+                        > span{
+                            margin: 5px 0;
+                        }
+                    }
+                }
             }
         }
     }
@@ -438,6 +479,14 @@
             display: none;
         }
     }
+
+    .portfolio-list{
+        .po-item{
+            &.cta{
+                font-size: 1.6rem;
+            }
+        }
+    }
 }
 
 @media (max-width: 480px){
@@ -448,6 +497,19 @@
         }
         .function{
             font-size: 1.1rem;
+        }
+    }
+    .portfolio-list{
+        li, .po-item{
+            font-size: 1rem;
+        }
+        .po-item{
+            &.cta{
+                font-size: 1.2rem;
+                .btn-invert{
+                    font-size: 0.8rem;
+                }
+            }
         }
     }
 }
@@ -489,6 +551,16 @@
         &:hover{
             > div{
                 transform: translate3d(0, 0, 0);
+            }
+        }
+    }
+    .portfolio-list{
+        .po-item{
+            &.cta{
+                font-size: 1.2rem;
+                .btn-invert{
+                    font-size: 0.7rem;
+                }
             }
         }
     }
