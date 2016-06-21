@@ -511,6 +511,7 @@ $(function(){
         $('.container-team .wrapper-btn-glob a').on('click', function(e){
             e.preventDefault();
             if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob')) && !TweenMax.isTweening(team)){
+                updateBtnGlob();
                 if($(this).closest('.wrapper-btn-glob').hasClass('open')){
                     if($(this).hasClass('left')){
                         TweenMax.to(team, 0.25, {x: '+='+teamMemberWidth, ease:Cubic.easeInOut});
@@ -519,7 +520,7 @@ $(function(){
                     }
                 }
 
-                if(($(window).width() <= 979) && (team.hasClass('member-open'))){
+                if(($(window).width() <= 979) && (team.hasClass('member-open')) && $(this).closest('.wrapper-btn-glob').hasClass('open')){
                     // On passe au suivant ou au précédent
                     var currentLi = $('.team.member-open > li.open');
                     currentDesc = $('.desc', currentLi);
