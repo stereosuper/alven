@@ -449,7 +449,7 @@ $(function(){
                     .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
                     tlTeam.to(desc, 0.25, {opacity: 1, visibility: 'visible'});
                 }else{
-                    descResponsive.html('<a class="btn-cross" id="btnCloseDescResponsive" href=""></a>'+desc.html());
+                    descResponsive.html(desc.html());
                     TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
                     heightDescResponsive = descResponsive.outerHeight();
                     TweenMax.set(descResponsive, {height: '0', position: 'relative'});
@@ -506,7 +506,7 @@ $(function(){
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
 
                         tlTeamCurrent.set(liParent, {className:'+=open', onComplete: function(){
-                            descResponsive.html('<a class="btn-cross" id="btnCloseDescResponsive" href=""></a>'+desc.html());
+                            descResponsive.html(desc.html());
 
                             TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
                             heightDescResponsive = descResponsive.outerHeight();
@@ -611,7 +611,7 @@ $(function(){
                 newDesc = $('.desc', newLi);
 
                 tlTeamCurrent.set(newLi, {className:'+=open', onComplete: function(){
-                    descResponsive.html('<a class="btn-cross" id="btnCloseDescResponsive" href=""></a>'+newDesc.html());
+                    descResponsive.html(desc.html());
 
                     TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
                     heightDescResponsive = descResponsive.outerHeight();
@@ -713,7 +713,7 @@ $(function(){
             btnGlobTeam($(this));
         });
 
-        $('.content-desc-responsive').on('click', '#btnCloseDescResponsive', function(e){
+        $('.container-team').on('click', '.btn-cross', function(e){
             e.preventDefault();
             closeCurrentTeamMember();
         });

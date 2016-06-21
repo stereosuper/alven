@@ -2390,8 +2390,13 @@ select::-ms-expand {
   left: 20%;
   right: 20%;
   opacity: 0;
-  padding: 0 10px;
+  padding: 30px 10px 0 10px;
   visibility: hidden;
+}
+.team .desc .btn-cross {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .social {
@@ -2968,6 +2973,22 @@ select::-ms-expand {
           transform: rotate(-180deg);
   left: 15px;
   margin-top: -5px;
+}
+.btn-arrow-only:hover {
+  background-color: #33a4df;
+  color: #fff;
+}
+.btn-arrow-only:hover:before, .btn-arrow-only:hover:after {
+  -webkit-transform: translate3d(7px, 0, 0);
+          transform: translate3d(7px, 0, 0);
+}
+.btn-arrow-only:hover.left:before {
+  -webkit-transform: translate3d(-7px, 0, 0);
+          transform: translate3d(-7px, 0, 0);
+}
+.btn-arrow-only:hover.left:after {
+  -webkit-transform: translate3d(-7px, 0, 0) rotate(-180deg);
+          transform: translate3d(-7px, 0, 0) rotate(-180deg);
 }
 
 .btn-cross {
