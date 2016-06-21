@@ -505,7 +505,7 @@ $(function(){
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
 
                         tlTeamCurrent.set(liParent, {className:'+=open', onComplete: function(){
-                            descResponsive.html(desc.html());
+                            descResponsive.html('<a class="btn-cross" id="btnCloseDescResponsive" href=""></a>'+desc.html());
 
                             TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
                             heightDescResponsive = descResponsive.outerHeight();
@@ -610,7 +610,7 @@ $(function(){
                 newDesc = $('.desc', newLi);
 
                 tlTeamCurrent.set(newLi, {className:'+=open', onComplete: function(){
-                    descResponsive.html(newDesc.html());
+                    descResponsive.html('<a class="btn-cross" id="btnCloseDescResponsive" href=""></a>'+newDesc.html());
 
                     TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
                     heightDescResponsive = descResponsive.outerHeight();
