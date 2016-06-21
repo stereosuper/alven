@@ -347,14 +347,14 @@ $(function(){
             }
         );
     }
-    
+
     if(team.length){
         var teamMember = team.find('.team-member');
         var desc, heightDesc, liParent, tlTeam,
             currentLi, currentDesc, tlTeamCurrent,
             newLi, newDesc, heightNewDesc,
             liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive'), heightDescResponsive, posiLiClique, containerTeamWidth, posiToGo;
-        
+
         teamPosition();
         updateBtnGlob();
 
@@ -365,7 +365,7 @@ $(function(){
             heightDesc = desc.outerHeight();
             if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
                 if(!team.hasClass('member-open')){
-                    offsetYtoScroll = liParent.offset().top-120;                    
+                    offsetYtoScroll = liParent.offset().top-120;
                     TweenMax.set(team, {className:'+=member-open'});
                     // open new
                     tlTeam = new TimelineMax();
@@ -432,13 +432,13 @@ $(function(){
                             tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
                             tlTeamCurrent.set(currentLi, {className:'-=open'});
 
-                            
+
                             tlTeamCurrent.set(liParent, {className:'+=open'});
                             tlTeamCurrent.add('paddingAnimation')
                             .to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut}, 'paddingAnimation')
                             .to(liParent, 0.25, {paddingBottom: heightDesc+'px', ease:Cubic.easeIn}, 'paddingAnimation')
                             .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
-                            
+
                             tlTeamCurrent.to(desc, 0.25, {opacity: 1, visibility: 'visible'});
                         }else{
                             offsetYtoScroll = liParent.offset().top-120;
@@ -533,7 +533,7 @@ $(function(){
                     }
                     offsetYtoScroll = newLi.offset().top-120;
                     newDesc = $('.desc', newLi);
-                    
+
                     tlTeamCurrent.set(newLi, {className:'+=open', onComplete: function(){
                         descResponsive.html(newDesc.html());
 
@@ -560,7 +560,7 @@ $(function(){
             var containerTeamWidth = $('.container-team').width();
             var posiLiOpen = 0;
             var offsetLiOpen = 0;
-            
+
             if(team.find('li').hasClass('open')){
                 posiLiOpen = team.find('> li.open').position().left;
                 offsetLiOpen = team.find('> li.open').offset().left;
@@ -736,7 +736,8 @@ $(function(){
         setHeaderScroll(myScroll, scrollDir);
 
         if(contentHeader.length && !isMobile.any){
-            TweenMax.set(contentHeader.find('h1'), {y: '-'+myScroll/4+'px'});
+            //TweenMax.set(contentHeader.find('h1'), {y: '-'+myScroll/4+'px'});
+            myScroll > 20 ? TweenMax.to(contentHeader.find('h1'), 0.2, {y: '-50px', opacity: 0}) : TweenMax.to(contentHeader.find('h1'), 0.2, {y: '0px', opacity: 1});
             if(contentHeader.find('.img').length){
                 TweenMax.set(contentHeader.find('.img'), {y: '-'+myScroll/40+'%'});
             }
