@@ -311,15 +311,15 @@
         font-size: 1.8rem;
     }
 
-    .btn, .btn-invert, .btn-arrow{
+    /*.btn, .btn-invert, .btn-arrow{
         &:before{
-            height: 13px;
+            height: 14px;
             font-size: 14px;
+            bottom: -1px;
         }
         &:after{
             height: 7px;
             font-size: 7px;
-            bottom: 1px;
         }
     }
     .btn-arrow{
@@ -327,7 +327,23 @@
             bottom: 3px;
         }
         &:after{
-            bottom: 6px;
+            bottom: 7px;
+        }
+    }*/
+
+    .btn, .btn-invert, .btn-arrow{
+        &:before, &:after{
+            transform: translate3d(0, 0, 0) scale(0.85);
+        }
+        &:hover, &:focus{
+            .no-js &, .is-desktop &{
+                &:after{
+                    transform: translate3d(0, 0, 0) scale(0.85) translateX(7px);
+                }
+                &:before{
+                    transform: translate3d(0, 0, 0) scale(0.6, 0.85) translateX(7px);
+                }
+            }
         }
     }
 
