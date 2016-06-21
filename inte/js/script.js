@@ -787,7 +787,7 @@ $(function(){
         }
 
         if(main.length && contentHeader.length){
-            main.css('marginTop', Math.floor(contentHeader.innerHeight()));
+            main.css('marginTop', Math.floor(contentHeader.outerHeight()));
         }
 
         if(postSidebar.length){
@@ -847,13 +847,16 @@ $(window).on('load', function(){
     }
 
     if(contentHeader.length){
-        if(main.length){
-            main.css('marginTop', Math.floor(contentHeader.innerHeight()));
-        }
         if(contentHeader.find('h1').length){
             var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
             contentHeader.find('h1').css('opacity', 1);
             animTxt(splitText);
+        }
+        if(main.length){
+            setTimeout(function(){
+                main.css('marginTop', Math.floor(contentHeader.outerHeight()));
+                console.log(contentHeader.outerHeight());
+            }, 10);
         }
     }
 });
