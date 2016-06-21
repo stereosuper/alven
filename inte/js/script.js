@@ -299,7 +299,7 @@ $(function(){
                     .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
                     tlTeam.to(desc, 0.25, {opacity: 1, visibility: 'visible'});
                 }else{
-                    descResponsive.html(desc.html());
+                    descResponsive.html('<a class="btn-cross" id="btnCloseDescResponsive" href=""></a>'+desc.html());
                     TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
                     heightDescResponsive = descResponsive.outerHeight();
                     TweenMax.set(descResponsive, {height: '0', position: 'relative'});
@@ -389,6 +389,23 @@ $(function(){
                 }
             }
         }
+    }
+
+    function closeCurrentTeamMember(){
+        closeBtnGlob();
+        var currentLi = $('.team.member-open > li.open');
+        currentDesc = $('.desc', currentLi);
+        tlTeamCurrent = new TimelineMax();
+        if($(window).width() > 979){
+            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
+            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
+        }else{
+            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0});
+            tlTeamCurrent.to(descResponsive, 0.5, {height: '0', visibility: 'hidden', ease:Cubic.easeInOut});
+        }
+        tlTeamCurrent.set(currentLi, {className:'-=open'});
+        tlTeamCurrent.set(team, {className:'-=member-open'});
+        TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
     }
 
     function btnDescTeam(){
@@ -555,6 +572,11 @@ $(function(){
         $('.container-team .wrapper-btn-glob a').on('click', function(e){
             e.preventDefault();
             btnGlobTeam($(this));
+        });
+
+        $('.content-desc-responsive').on('click', '#btnCloseDescResponsive', function(e){
+            e.preventDefault();
+            closeCurrentTeamMember();
         });
     }
 
