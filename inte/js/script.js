@@ -183,11 +183,12 @@ $(function(){
             transfered, nbTrItem = 0, poItems, colCta = 3, posCta;
 
         function lightTransferedPoItems(y){
-            var newElemNumber = Math.floor(Math.random() * nbPoItem);
+            var poItemsNotTransfered = portfolio.find('.po-item:not(.transfered)'), poItemNotTransfered = portfolio.find('li:not(.transfered)'), nbPoItemNotTransfered = poItemNotTransfered.length;
+            var newElemNumber = Math.floor(Math.random() * nbPoItemNotTransfered);
             poItems.find('a').removeClass('on');
             setTimeout(function(){
-                if(!portfolio.find('div.grid').hasClass('is-hovered') && !poItems.eq(y).hasClass('cta')){
-                    poItems.eq(y).find('a').addClass('on');
+                if(!portfolio.find('div.grid').hasClass('is-hovered') && !poItemsNotTransfered.eq(y).hasClass('cta')){
+                    poItemsNotTransfered.eq(y).find('a').addClass('on');
                 }
             }, 1500);
             setTimeout(lightTransferedPoItems, 3500, newElemNumber);
