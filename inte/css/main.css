@@ -2584,7 +2584,9 @@ select::-ms-expand {
     padding: 5px 0; }
     .portfolio-list .po-item a, .portfolio-list .po-item:after, .portfolio-list li a, .portfolio-list li:after {
       top: 5px;
-      bottom: 5px; } }
+      bottom: 5px; }
+  .portfolio-list .po-item.cta {
+    font-size: 1.4rem; } }
 @media (max-width: 767px) {
   body {
     font-size: 1.4em; }
@@ -2595,6 +2597,25 @@ select::-ms-expand {
 
   h2 {
     font-size: 1.8rem; }
+
+  /*.btn, .btn-invert, .btn-arrow{
+      &:before{
+          height: 12px;
+          font-size: 12px;
+          bottom: 0px;
+      }
+      &:after{
+          height: 7px;
+          font-size: 7px;
+      }
+  }
+  .btn-arrow{
+      &:before{
+          bottom: 3px;
+      }
+  }*/
+  .btn-invert {
+    padding: 13px 30px 11px 8px; }
 
   .spotlight-post h4 {
     font-size: 2rem; }
@@ -2620,6 +2641,10 @@ select::-ms-expand {
         transform: translate3d(0, -7%, 0); }
       .portfolio-list .po-item-col:nth-child(3) {
         transform: translate3d(0, 4%, 0); }
+    .portfolio-list .po-item.cta {
+      font-size: 2rem; }
+    .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
+      margin: 5px 0; }
 
   .content-desc-responsive {
     text-align: left; }
@@ -2684,13 +2709,23 @@ select::-ms-expand {
   .read-also-post {
     width: auto; }
     .read-also-post:nth-child(2) {
-      display: none; } }
+      display: none; }
+
+  .portfolio-list .po-item.cta {
+    font-size: 1.6rem; } }
 @media (max-width: 480px) {
   .team .name {
     font-size: 1.3rem;
     letter-spacing: 0; }
   .team .function {
-    font-size: 1.1rem; } }
+    font-size: 1.1rem; }
+
+  .portfolio-list li, .portfolio-list .po-item {
+    font-size: 1rem; }
+  .portfolio-list .po-item.cta {
+    font-size: 1.2rem; }
+    .portfolio-list .po-item.cta .btn-invert {
+      font-size: 0.8rem; } }
 @media (max-width: 420px) {
   h2 {
     width: auto;
@@ -2716,7 +2751,12 @@ select::-ms-expand {
       .spotlight-post.off .content {
         opacity: 1; }
     .spotlight-post:hover > div {
-      transform: translate3d(0, 0, 0); } }
+      transform: translate3d(0, 0, 0); }
+
+  .portfolio-list .po-item.cta {
+    font-size: 1.2rem; }
+    .portfolio-list .po-item.cta .btn-invert {
+      font-size: 0.7rem; } }
 @media (max-height: 1000px) {
   h1 {
     margin: 8vh auto; } }
