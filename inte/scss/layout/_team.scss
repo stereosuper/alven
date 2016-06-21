@@ -110,8 +110,13 @@
 		left: 20%;
 		right: 20%;
 		opacity: 0;
-		padding: 0 $innerGutter;
+		padding: 30px $innerGutter 0 $innerGutter;
 		visibility: hidden;
+		.btn-cross{
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
 	}
 }
 

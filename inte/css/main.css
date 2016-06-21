@@ -1793,8 +1793,12 @@ select::-ms-expand {
     left: 20%;
     right: 20%;
     opacity: 0;
-    padding: 0 10px;
+    padding: 30px 10px 0 10px;
     visibility: hidden; }
+    .team .desc .btn-cross {
+      position: absolute;
+      top: 0;
+      right: 0; }
 
 .social {
   margin: 8px 0 0 0;
