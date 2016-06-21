@@ -145,10 +145,19 @@
             </section>
 
             <?php
+                $specialCats = array(get_field('catJob', 'options'), get_field('catDef', 'options'), get_field('catRead', 'options'), get_field('catEvent', 'options'));
                 $lastPosts = new WP_Query(array(
                     'post_type' => 'post',
                     'post__not_in' => array($post->ID),
-                    'posts_per_page'=> 3
+                    'posts_per_page'=> 3,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'category',
+                            'field'    => 'term_id',
+                            'terms'    => $specialCats,
+                            'operator' => 'NOT IN'
+                        ),
+                    )
                 ));
                 if($lastPosts->have_posts()):
             ?>
@@ -170,6 +179,55 @@
                 </footer>
             <?php endif; ?>
         </main>
+
+        <?php
+            $spotlightPosts = new WP_Query(array(
+                'post_type' => 'post',
+                'post__not_in' => array($post->ID),
+                'posts_per_page'=> 6,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'category',
+                        'field'    => 'term_id',
+                        'terms'    => $specialCats
+                    ),
+                )
+            ));
+
+            function cutContent($text){
+                $length = 100;
+                if(strlen($text) < $length+10){
+                    return $text;
+                }
+                $visible = substr($text, 0, strpos($text, ' ', $length)) . ' …';
+                return balanceTags($visible, true);
+            }
+
+            if($spotlightPosts->have_posts()):
+        ?>
+
+            <section class='spotlight-posts' id='spotlightPost'>
+                <div class='container' id='spotlightDrag'>
+                    <div class='grid'>
+                        <?php while($spotlightPosts->have_posts()): $spotlightPosts->the_post(); ?>
+                            <div class='col-2 spotlight-post'>
+                                <div>
+                                    <div class='content'>
+                                        <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
+                                        <?php
+                                            echo cutContent(wpautop(get_the_content()));
+                                            $btn = get_field('readMoreLink') ? get_field('readMoreLink') : 'Read more';
+                                        ?>
+                                        <a href='<?php the_permalink(); ?>' class='btn-arrow'><?php echo $btn; ?></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                </div>
+            </section>
+
+        <?php endif; ?>
 
 	<?php else : ?>
 
