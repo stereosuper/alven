@@ -397,7 +397,7 @@ $(function(){
                         posiLiClique = liParent.position().left;
                         containerTeamWidth = $('.container-team').width();
                         posiToGo = posiLiClique-containerTeamWidth/2+liParent.outerWidth()/2;
-                        TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut});
+                        TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut, onComplete: updateBtnGlob});
                     }
                 }else{
                     if(liParent.hasClass('open')){
@@ -462,7 +462,7 @@ $(function(){
                             posiLiClique = liParent.position().left;
                             containerTeamWidth = $('.container-team').width();
                             posiToGo = posiLiClique-containerTeamWidth/2+liParent.outerWidth()/2;
-                            TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut});
+                            TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut, onComplete: updateBtnGlob});
                         }
                     }
                 }
@@ -566,22 +566,22 @@ $(function(){
                 offsetLiOpen = team.find('> li.open').offset().left;
             }
 
-            if(nbTeamMembers > 5){
+            if(($(window).width() > 767) && (nbTeamMembers > 5)){
                 TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
                 TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
-                if(teamLeft < 0 && (offsetLiOpen > teamMemberWidth)){
+                if(teamLeft < -Math.ceil(teamMemberWidth*2)){
                     TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
                 }
-                if(teamRight > containerTeamWidth && ((offsetLiOpen+teamMemberWidth) < ($(window).width()-teamMemberWidth))){
+                if(Math.ceil(teamRight+teamMemberWidth*2) > containerTeamWidth){
                     TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
                 }
             }else if(($(window).width() <= 767) && (nbTeamMembers > 3)){
                 TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
                 TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
-                if(teamLeft < 0 && (offsetLiOpen > teamMemberWidth)){
+                if(teamLeft < -Math.ceil(teamMemberWidth)){
                     TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
                 }
-                if(teamRight > containerTeamWidth && ((offsetLiOpen+teamMemberWidth) < ($(window).width()-teamMemberWidth))){
+                if(Math.ceil(teamRight+teamMemberWidth) > containerTeamWidth){
                     TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
                 }
             }
@@ -797,7 +797,7 @@ $(function(){
                 }
             }
         }
-	});
+    });
 
 });
 
