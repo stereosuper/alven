@@ -3419,8 +3419,8 @@ select::-ms-expand {
   }
 
   .btn:before, .btn-invert:before, .btn-arrow:before, #menu-main a:before {
-    height: 12px;
-    font-size: 12px;
+    height: 13px;
+    font-size: 14px;
   }
   .btn:after, .btn-invert:after, .btn-arrow:after, #menu-main a:after {
     height: 7px;
