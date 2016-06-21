@@ -218,6 +218,14 @@ time, .subtitle{
     letter-spacing: -0.04em;
 }
 
+hr{
+    border: 0;
+    height: 1px;
+    max-width: 250px;
+    margin: 3em auto 2em;
+    background: $greyBorder;
+}
+
 
 /******* LIENS / BOUTONS *******/
 

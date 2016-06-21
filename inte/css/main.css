@@ -621,6 +621,14 @@ time, .subtitle {
   color: #33a4df;
 }
 
+hr {
+  border: 0;
+  height: 1px;
+  max-width: 250px;
+  margin: 3em auto 2em;
+  background: #e5e8e8;
+}
+
 /******* LIENS / BOUTONS *******/
 a {
   box-shadow: 0 1px 0 0 currentColor;
