@@ -196,11 +196,10 @@ $(function(){
 
         function lightTransferedPoItems(y){
             var newElemNumber = Math.floor(Math.random() * nbPoItem);
-            $('a', poItems).removeClass('on');
+            poItems.find('a').removeClass('on');
             setTimeout(function(){
-                if(!$('.grid').hasClass('is-hovered')){
-                    var aze = poItems.eq(y);
-                    $('a', aze).addClass('on');
+                if(!portfolio.find('div.grid').hasClass('is-hovered')){
+                    poItems.eq(y).find('a').addClass('on');
                 }
             }, 1500);
             setTimeout(lightTransferedPoItems, 3500, newElemNumber);
@@ -269,10 +268,17 @@ $(function(){
 
         transfered = portfolio.find('div.grid').find('.transfered');
         nbTrItem = transfered.length;
-        //lightTransfered(0);
-
         poItems = portfolio.find('.po-item');
         lightTransferedPoItems(0);
+
+        poItems.find('a').on('mouseenter', function(){
+            if(!$(this).closest('.po-item').hasClass('cta')){
+                $(this).closest('.po-item').addClass('link-hovered').closest('.grid').addClass('is-hovered');
+                poItems.find('a').removeClass('on');
+            }
+        }).on('mouseleave', function(){
+            $(this).closest('.po-item').removeClass('link-hovered').closest('.grid').removeClass('is-hovered');
+        });
     }
 
 
@@ -333,19 +339,6 @@ $(function(){
         if(nbPoItem > nbCol){
             setPortfolio(poItem, nbPoItem, nbCol);
         }
-
-        portfolio.find('.po-item a').hover(
-            function(){
-                if(!$(this).closest('.po-item').hasClass('cta')){
-                    $(this).closest('.grid').addClass('is-hovered');
-                    $(this).closest('.po-item').addClass('link-hovered');
-                    portfolio.find('.po-item a').removeClass('on');
-                }
-            }, function(){
-                $(this).closest('.grid').removeClass('is-hovered');
-                $(this).closest('.po-item').removeClass('link-hovered');
-            }
-        );
     }
 
     if(team.length){
