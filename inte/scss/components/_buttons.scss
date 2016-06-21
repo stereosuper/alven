@@ -253,6 +253,21 @@
             margin-top: -5px;
         }
     }
+    &:hover{
+        background-color: $we;
+        color: #fff;
+        &:before, &:after{
+            transform: translate3d(7px, 0, 0);
+        }
+        &.left{
+            &:before{
+                transform: translate3d(-7px, 0, 0);
+            }
+            &:after{
+                transform: translate3d(-7px, 0, 0) rotate(-180deg);
+            }
+        }
+    }
 }
 
 .btn-cross{

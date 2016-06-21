@@ -2229,6 +2229,15 @@ select::-ms-expand {
     transform: rotate(-180deg);
     left: 15px;
     margin-top: -5px; }
+  .btn-arrow-only:hover {
+    background-color: #33a4df;
+    color: #fff; }
+    .btn-arrow-only:hover:before, .btn-arrow-only:hover:after {
+      transform: translate3d(7px, 0, 0); }
+    .btn-arrow-only:hover.left:before {
+      transform: translate3d(-7px, 0, 0); }
+    .btn-arrow-only:hover.left:after {
+      transform: translate3d(-7px, 0, 0) rotate(-180deg); }
 
 .btn-cross {
   display: block;
@@ -2605,8 +2614,8 @@ select::-ms-expand {
     font-size: 1.8rem; }
 
   .btn:before, .btn-invert:before, .btn-arrow:before, #menu-main a:before {
-    height: 12px;
-    font-size: 12px; }
+    height: 13px;
+    font-size: 14px; }
   .btn:after, .btn-invert:after, .btn-arrow:after, #menu-main a:after {
     height: 7px;
     font-size: 7px;
