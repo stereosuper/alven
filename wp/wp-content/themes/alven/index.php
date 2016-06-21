@@ -23,9 +23,12 @@
                 <?php
                     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
-                    $sticky = array_reverse(get_option( 'sticky_posts' ))[0];
-                    $post = $sticky;
-                    if($post && $paged === 1): setup_postdata($post);
+                    $stickies = array_reverse(get_option( 'sticky_posts' ));
+                    $sticky = array();
+                    if($stickies && $paged === 1):
+                        $sticky = $stickies[0];
+                        $post = $sticky;
+                        setup_postdata($post);
                 ?>
                     <div class='main-spotlight-post'>
                         <div class='container'>
