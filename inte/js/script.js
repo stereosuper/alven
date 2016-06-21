@@ -463,20 +463,7 @@ $(function(){
             }else{
                 if(liParent.hasClass('open')){
                     // close current
-                    closeBtnGlob();
-                    var currentLi = $('.team.member-open > li.open');
-                    currentDesc = $('.desc', currentLi);
-                    tlTeamCurrent = new TimelineMax();
-                    if($(window).width() > 979){
-                        tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
-                        tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
-                    }else{
-                        tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0});
-                        tlTeamCurrent.to(descResponsive, 0.5, {height: '0', visibility: 'hidden', ease:Cubic.easeInOut});
-                    }
-                    tlTeamCurrent.set(currentLi, {className:'-=open'});
-                    tlTeamCurrent.set(team, {className:'-=member-open'});
-                    TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
+                    closeCurrentTeamMember();
                 }else{
                     // close already open and open new
                     var currentLi = $('.team.member-open > li.open');
@@ -513,17 +500,19 @@ $(function(){
                             TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
                             heightDescResponsive = descResponsive.outerHeight();
                             TweenMax.set(descResponsive, {height: '0', position: 'relative'});
-                        }});
-                        tlTeamCurrent.add('heightAnimation')
-                        .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
-                        .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation');
-                        tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible'});
 
-                        // Centrer cliqué
-                        posiLiClique = liParent.position().left;
-                        containerTeamWidth = $('.container-team').width();
-                        posiToGo = posiLiClique-containerTeamWidth/2+liParent.outerWidth()/2;
-                        TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut, onComplete: updateBtnGlob});
+                            tlTeamCurrent.add('heightAnimation')
+                            .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
+                            .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation');
+                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible'});
+
+                            // Centrer cliqué
+                            posiLiClique = liParent.position().left;
+                            containerTeamWidth = $('.container-team').width();
+                            posiToGo = posiLiClique-containerTeamWidth/2+liParent.outerWidth()/2;
+                            TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut, onComplete: updateBtnGlob});
+                        }});
+                        
                     }
                 }
             }
@@ -616,11 +605,11 @@ $(function(){
                     TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
                     heightDescResponsive = descResponsive.outerHeight();
                     TweenMax.set(descResponsive, {height: '0', position: 'relative'});
+                    tlTeamCurrent.add('heightAnimation')
+                    .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
+                    .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation');
+                    tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: updateBtnGlob});
                 }});
-                tlTeamCurrent.add('heightAnimation')
-                .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
-                .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation');
-                tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: updateBtnGlob});
             }else{
                 closeBtnGlob();
             }
