@@ -7,7 +7,7 @@
 		<title><?php wp_title(''); ?></title>
 		<meta name='viewport' content='width=device-width,initial-scale=1'>
 
-		<link rel='alternate' type='application/rss+xml' title='Alven Capital RSS Feed' href='<?php echo get_bloginfo('rss2_url') ?>'>
+		<link rel='alternate' type='application/rss+xml' title='Alven Capital RSS Feed' href='<?php echo get_bloginfo('rss2_url'); ?>'>
 
 		<?php wp_head(); ?>
 	</head>
@@ -25,14 +25,14 @@
 
 			if($currentPageId === PORTFOLIO_ID || $currentPageParent === PORTFOLIO_ID){
 				$theme = 'theme-portfolio';
-			}else if($currentPageId === $themeMagazine || $currentPage->post_type === 'post'){
+			}else if($currentPageId === $themeMagazine || $currentPage->post_type === 'post' || is_archive()){
 				$theme = 'theme-magazine';
 			}else if($currentPageId === WE_ID || $currentPageParent === WE_ID){
 				$theme = 'theme-we';
 			}
 
 			if($currentPage->post_type === 'post' || !$theme){
-				// d'une page sans theme (donc default template ou home) ou d'un single post
+				// une page sans theme (donc default template ou home) ou un single post
 				// on ajoute la classe fixed au header car il n'y a pas de fond en haut de page
 				// et donc le header nécessite un fond
 
@@ -40,6 +40,9 @@
 				$headerFixed = false;
 			}
 		}
+
+		global $specialCats;
+		$specialCats = array(get_field('catJob', 'options'), get_field('catDef', 'options'), get_field('catRead', 'options'), get_field('catEvent', 'options'));
 	?>
 
 	<body <?php body_class($theme); ?>>
@@ -53,7 +56,7 @@
 				<span class='post-title'><?php the_title(); ?></span>
 				<a id='searchBtn' class='btn-search' href='#'>Explore Alven</a>
 				<button id='burger'><span>Menu</span></button>
-				<nav role='navigation' id='menu-responsive'><?php dynamic_sidebar( 'menu-responsive' ); ?></nav>
+				<nav role='navigation' id='menu-responsive'><div><?php dynamic_sidebar( 'menu-responsive' ); ?></div></nav>
 			</div>
 			<div id='readIndicator' class='read-indicator'></div>
 		</header>
