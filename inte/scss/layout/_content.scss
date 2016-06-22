@@ -64,6 +64,11 @@
         padding: 145px 0 14vh;
         background: #000;
     }
+    &.has-video{
+        .img{
+            display: none;
+        }
+    }
     .container{
         position: relative;
         z-index: 10;
@@ -79,6 +84,28 @@
         background-position: 50%;
         img{
             opacity: 0;
+        }
+    }
+    .wrapper-video{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        opacity: 0.6;
+        .video{
+            min-width: 100%; 
+            min-height: 100%; 
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-position: 50% 50%;
+            background-size: auto 100%;
+            background-size: cover;
         }
     }
 }
