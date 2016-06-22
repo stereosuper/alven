@@ -2718,7 +2718,12 @@ select::-ms-expand {
       top: 5px;
       bottom: 5px; }
   .portfolio-list .po-item.cta {
-    font-size: 1.4rem; } }
+    font-size: 1.4rem; }
+
+  .content-header.has-video .img {
+    display: block; }
+  .content-header .wrapper-video {
+    display: none; } }
 @media (max-width: 767px) {
   body {
     font-size: 1.4em; }
@@ -2804,12 +2809,7 @@ select::-ms-expand {
     margin: 20px 0 0; }
 
   .wrapper-btn-glob {
-    width: 33.3333%; }
-
-  .content-header.has-video .img {
-    display: block; }
-  .content-header .wrapper-video {
-    display: none; } }
+    width: 33.3333%; } }
 @media (max-width: 540px) {
   h1 {
     width: 100%; }

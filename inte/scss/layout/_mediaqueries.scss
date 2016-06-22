@@ -290,6 +290,17 @@
             }
         }
     }
+
+    .content-header{
+        &.has-video{
+            .img{
+                display: block;
+            }
+        }
+        .wrapper-video{
+            display: none;
+        }
+    }
 }
 
 @media (max-width: 767px){
@@ -423,17 +434,6 @@
     }
     .wrapper-btn-glob{
         width: 33.3333%;
-    }
-
-    .content-header{
-        &.has-video{
-            .img{
-                display: block;
-            }
-        }
-        .wrapper-video{
-            display: none;
-        }
     }
 }
 
