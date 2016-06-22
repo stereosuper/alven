@@ -210,8 +210,11 @@
     padding: 0 0 10px;
     border-top: 1px solid $greyBorder;
     position: relative;
-    margin: 0 0 70px;
+    margin: 0 0 45px;
     overflow: hidden;
+    .home &{
+        margin: 0 0 70px;
+    }
     &:after{
         content: '';
         height: 10px;
@@ -316,6 +319,43 @@
         border-right: 10px solid #fff;
         left: -7px;
         bottom: -61px;
+    }
+}
+
+.post{
+    padding: 0 0 45px;
+    border-bottom: 1px solid $greyBorder;
+    position: relative;
+    margin-bottom: 45px;
+    &:before, &:after{
+        @include themeBg;
+        content: '';
+        position: absolute;
+    }
+    &:before{
+        width: 1px;
+        height: 15px;
+        bottom: -8px;
+        left: $col;
+        margin: 0 0 0 -1px;
+    }
+    &:after{
+        width: 35px;
+        height: 1px;
+        border-left: 10px solid #fff;
+        border-right: 10px solid #fff;
+        left: $col;
+        bottom: -1px;
+        margin: 0 0 0 -18px;
+    }
+    .img{
+        padding: 0 $col;
+    }
+    h3, .post-meta{
+        margin: 0 0 8px;
+    }
+    p{
+        margin: 0 0 4px;
     }
 }
 
