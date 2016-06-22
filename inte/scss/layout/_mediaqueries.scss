@@ -290,6 +290,17 @@
             }
         }
     }
+
+    .content-header{
+        &.has-video{
+            .img{
+                display: block;
+            }
+        }
+        .wrapper-video{
+            display: none;
+        }
+    }
 }
 
 @media (max-width: 767px){
