@@ -18,7 +18,7 @@ $(function(){
     var spotlightPost = $('#spotlightPost'), spotlightDrag = false;
     var related = $('#related');
     var menu = $('#menu-responsive');
-    var portfolio = $('#portfolio');
+    var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2;
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
 
 
@@ -186,12 +186,12 @@ $(function(){
             var poItemsNotTransfered = portfolio.find('.po-item:not(.transfered)'), poItemNotTransfered = portfolio.find('li:not(.transfered)'), nbPoItemNotTransfered = poItemNotTransfered.length;
             var newElemNumber = Math.floor(Math.random() * nbPoItemNotTransfered);
             poItems.find('a').removeClass('on');
-            setTimeout(function(){
+            animPortfolio1 = setTimeout(function(){
                 if(!portfolio.find('div.grid').hasClass('is-hovered') && !poItemsNotTransfered.eq(y).hasClass('cta')){
                     poItemsNotTransfered.eq(y).find('a').addClass('on');
                 }
             }, 1500);
-            setTimeout(lightTransferedPoItems, 3500, newElemNumber);
+            animPortfolio2 = setTimeout(lightTransferedPoItems, 3500, newElemNumber);
         }
 
         if(nbPoItem > 37){
@@ -215,6 +215,9 @@ $(function(){
                 Math.ceil(lastNbItem/3),
                 Math.floor(lastNbItem/3)
             ];
+
+        clearTimeout(animPortfolio1);
+        clearTimeout(animPortfolio2);
 
         if(nbCol === 3){
             arrayCols = [
