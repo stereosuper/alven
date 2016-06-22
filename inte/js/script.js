@@ -523,7 +523,7 @@ $(function(){
                             posiToGo = posiLiClique-containerTeamWidth/2+liParent.outerWidth()/2;
                             TweenMax.to(team, 0.5, {x:-posiToGo, ease:Cubic.easeOut, onComplete: updateBtnGlob});
                         }});
-                        
+
                     }
                 }
             }
@@ -843,10 +843,7 @@ $(window).on('load', function(){
             animTxt(splitText);
         }
         if(main.length){
-            setTimeout(function(){
-                main.css('marginTop', Math.floor(contentHeader.outerHeight()));
-                console.log(contentHeader.outerHeight());
-            }, 10);
+            main.css('marginTop', Math.floor(contentHeader.outerHeight()));
         }
     }
 });
