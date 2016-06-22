@@ -2583,8 +2583,6 @@ select::-ms-expand {
   .team > li {
     margin: 0;
     position: relative; }
-  .team .name:before {
-    display: none; }
 
   .social {
     margin: 12px 0 0; }
