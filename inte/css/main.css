@@ -2507,7 +2507,17 @@ select::-ms-expand {
     color: #636a6b;
     pointer-events: none; }
 
+/* Quotes */
+.quote {
+  position: relative; }
+  .quote img {
+    position: absolute;
+    bottom: 0;
+    right: 0; }
+
 /* Home */
+.home #main {
+  padding: 15px 0 0; }
 .home h1 {
   display: inline-block;
   padding: 0 10px 0 8.3333333333%;
