@@ -2589,6 +2589,13 @@ select::-ms-expand {
   padding-bottom: 80px !important;
 }
 
+.interactive-block {
+  margin: 0 0 0 8.3333333333%;
+}
+.interactive-block.align-right {
+  margin: 0 8.3333333333% 0 0;
+}
+
 /* Buttons */
 .btn, .btn-invert, .btn-arrow, #menu-main a {
   position: relative;
@@ -2598,6 +2605,18 @@ select::-ms-expand {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #404040;
+}
+.btn.btn-left:after, .btn-invert.btn-left:after, .btn-arrow.btn-left:after, #menu-main a.btn-left:after {
+  -webkit-transform: translate3d(0, -1px, 0) rotate(180deg);
+          transform: translate3d(0, -1px, 0) rotate(180deg);
+}
+.no-js .btn.btn-left:hover:after, .is-desktop .btn.btn-left:hover:after, .no-js .btn.btn-left:focus:after, .is-desktop .btn.btn-left:focus:after, .no-js .btn-invert.btn-left:hover:after, .is-desktop .btn-invert.btn-left:hover:after, .no-js .btn-invert.btn-left:focus:after, .is-desktop .btn-invert.btn-left:focus:after, .no-js .btn-arrow.btn-left:hover:after, .no-js #menu-main a.btn-left:hover:after, #menu-main .no-js a.btn-left:hover:after, .is-desktop .btn-arrow.btn-left:hover:after, .is-desktop #menu-main a.btn-left:hover:after, #menu-main .is-desktop a.btn-left:hover:after, .no-js .btn-arrow.btn-left:focus:after, .no-js #menu-main a.btn-left:focus:after, #menu-main .no-js a.btn-left:focus:after, .is-desktop .btn-arrow.btn-left:focus:after, .is-desktop #menu-main a.btn-left:focus:after, #menu-main .is-desktop a.btn-left:focus:after {
+  -webkit-transform: translate3d(-7px, -1px, 0) rotate(180deg);
+          transform: translate3d(-7px, -1px, 0) rotate(180deg);
+}
+.no-js .btn.btn-left:hover:before, .is-desktop .btn.btn-left:hover:before, .no-js .btn.btn-left:focus:before, .is-desktop .btn.btn-left:focus:before, .no-js .btn-invert.btn-left:hover:before, .is-desktop .btn-invert.btn-left:hover:before, .no-js .btn-invert.btn-left:focus:before, .is-desktop .btn-invert.btn-left:focus:before, .no-js .btn-arrow.btn-left:hover:before, .no-js #menu-main a.btn-left:hover:before, #menu-main .no-js a.btn-left:hover:before, .is-desktop .btn-arrow.btn-left:hover:before, .is-desktop #menu-main a.btn-left:hover:before, #menu-main .is-desktop a.btn-left:hover:before, .no-js .btn-arrow.btn-left:focus:before, .no-js #menu-main a.btn-left:focus:before, #menu-main .no-js a.btn-left:focus:before, .is-desktop .btn-arrow.btn-left:focus:before, .is-desktop #menu-main a.btn-left:focus:before, #menu-main .is-desktop a.btn-left:focus:before {
+  -webkit-transform: translate3d(-7px, 0, 0) scaleX(0.85);
+          transform: translate3d(-7px, 0, 0) scaleX(0.85);
 }
 .btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, #menu-main a:before, .btn-arrow:after, #menu-main a:after {
   font-family: 'icomoon' !important;
@@ -2633,12 +2652,12 @@ select::-ms-expand {
   bottom: 5px;
 }
 .no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .no-js #menu-main a:hover:after, #menu-main .no-js a:hover:after, .is-desktop .btn-arrow:hover:after, .is-desktop #menu-main a:hover:after, #menu-main .is-desktop a:hover:after, .no-js .btn-arrow:focus:after, .no-js #menu-main a:focus:after, #menu-main .no-js a:focus:after, .is-desktop .btn-arrow:focus:after, .is-desktop #menu-main a:focus:after, #menu-main .is-desktop a:focus:after {
-  -webkit-transform: translate3d(0, 0, 0) translateX(7px);
-          transform: translate3d(0, 0, 0) translateX(7px);
+  -webkit-transform: translate3d(7px, 0, 0);
+          transform: translate3d(7px, 0, 0);
 }
 .no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .no-js #menu-main a:hover:before, #menu-main .no-js a:hover:before, .is-desktop .btn-arrow:hover:before, .is-desktop #menu-main a:hover:before, #menu-main .is-desktop a:hover:before, .no-js .btn-arrow:focus:before, .no-js #menu-main a:focus:before, #menu-main .no-js a:focus:before, .is-desktop .btn-arrow:focus:before, .is-desktop #menu-main a:focus:before, #menu-main .is-desktop a:focus:before {
-  -webkit-transform: translate3d(0, 0, 0) translateX(7px) scaleX(0.85);
-          transform: translate3d(0, 0, 0) translateX(7px) scaleX(0.85);
+  -webkit-transform: translate3d(7px, 0, 0) scaleX(0.85);
+          transform: translate3d(7px, 0, 0) scaleX(0.85);
 }
 
 .btn, .btn-invert {
@@ -2714,6 +2733,21 @@ select::-ms-expand {
 }
 .theme-we .btn {
   border-color: #33a4df;
+}
+.btn.btn-left {
+  padding: 21px 17px 19px 47px;
+}
+.btn.btn-left:before {
+  right: auto;
+  left: 20px;
+}
+.btn.btn-left:after {
+  right: auto;
+  left: 17px;
+}
+.btn.btn-left .after {
+  right: auto;
+  left: 47px;
 }
 .theme-magazine .btn, .theme-portfolio .btn, .theme-we .btn {
   color: #fff;
@@ -3482,9 +3516,6 @@ select::-ms-expand {
   .team > li {
     margin: 0;
     position: relative;
-  }
-  .team .name:before {
-    display: none;
   }
 
   .social {
