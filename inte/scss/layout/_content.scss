@@ -35,6 +35,11 @@
         border-right: 10px solid #fff;
         bottom: -6px;
     }
+    .single-startup &{
+        &:before, &:after{
+            display: none;
+        }
+    }
 }
 
 .content-main{

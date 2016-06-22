@@ -1262,6 +1262,9 @@ select::-ms-expand {
   border-right: 10px solid #fff;
   bottom: -6px;
 }
+.single-startup .content-default:before, .single-startup .content-default:after {
+  display: none;
+}
 
 .content-main {
   padding: 5px 0 5px;
@@ -1386,14 +1389,6 @@ select::-ms-expand {
   left: -23px;
   top: -1px;
 }
-.post-sidebar li {
-  padding: 0 0 20px;
-  border-bottom: 1px solid #e5e8e8;
-  margin: 0 0 20px;
-}
-.post-sidebar li:before {
-  display: none;
-}
 .post-sidebar li:last-child:before, .post-sidebar li:last-child:after {
   background: #26393d;
   content: '';
@@ -1441,19 +1436,31 @@ select::-ms-expand {
 .post-sidebar .img.off {
   padding: 0;
 }
-.post-sidebar h4 {
-  margin: 0;
-  font-size: 1.8rem;
-  line-height: 1.2;
-}
-.post-sidebar .post-meta {
-  margin: 3px 0 5px;
-}
 .post-sidebar.fixed {
   position: fixed;
 }
 .post-sidebar.fixedBot {
   position: absolute;
+}
+
+.post-small {
+  padding: 0 0 20px;
+  border-bottom: 1px solid #e5e8e8;
+  margin: 0 0 20px;
+}
+.post-small:before {
+  display: none;
+}
+.post-small h4 {
+  margin: 0;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+.post-small time {
+  color: #f06850;
+}
+.post-small .post-meta {
+  margin: 3px 0 5px;
 }
 
 .post-title {
@@ -2278,6 +2285,65 @@ select::-ms-expand {
 
 .js #ctaPortfolio {
   display: none;
+}
+
+.portfolio-header {
+  padding: 140px 0 30px;
+  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: -webkit-linear-gradient(top, #303c3e, #4b5d60);
+  background: linear-gradient(to bottom, #303c3e, #4b5d60);
+  color: #fff;
+}
+.portfolio-header h1 {
+  height: 0;
+  padding-bottom: 25%;
+  position: relative;
+  margin: 10px;
+  background: #fff;
+}
+.portfolio-header h1 img {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.portfolio-header div.col-3 {
+  margin-left: 8.3333333333%;
+}
+.portfolio-header .title-small {
+  display: block;
+  margin: 0 0 10px;
+}
+.portfolio-header .header-block-term {
+  min-height: 105px;
+  margin: 10px 0 0;
+}
+.portfolio-header .header-block-history, .portfolio-header .header-block-keywords {
+  min-height: 160px;
+}
+.portfolio-header .header-block-keywords {
+  margin: 110px 0 0;
+  font-family: "merriweather-italic", "merriweather", sans-serif;
+  font-size: 1.4rem;
+  text-transform: none;
+}
+.portfolio-header .header-block-btn {
+  min-height: 85px;
+}
+.portfolio-header .header-block-btn .title-small {
+  margin: 0 0 25px;
+}
+
+.related-portfolio .container-small {
+  position: relative;
+}
+.related-portfolio .title-small {
+  position: absolute;
 }
 
 .team {

@@ -352,3 +352,65 @@
         display: none;
     }
 }
+
+.portfolio-header{
+    padding: 140px 0 30px;
+    font-family: $sourceBlack;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    background: linear-gradient(to bottom, #303c3e, #4b5d60);
+    color: #fff;
+    h1{
+        height: 0;
+        padding-bottom: 25%;
+        position: relative;
+        margin: 10px;
+        background: #fff;
+        img{
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+    div{
+        &.col-3{
+            margin-left: $col;
+        }
+    }
+    .title-small{
+        display: block;
+        margin: 0 0 10px;
+    }
+    .header-block-term{
+        min-height: 105px;
+        margin: 10px 0 0;
+    }
+    .header-block-history, .header-block-keywords{
+        min-height: 160px;
+    }
+    .header-block-keywords{
+        margin: 110px 0 0;
+        font-family: $merriweatherIt;
+        font-size: 1.4rem;
+        text-transform: none;
+    }
+    .header-block-btn{
+        min-height: 85px;
+        .title-small{
+            margin: 0 0 25px;
+        }
+    }
+}
+
+.related-portfolio{
+    .container-small{
+        position: relative;
+    }
+    .title-small{
+        position: absolute;
+    }
+}

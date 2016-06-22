@@ -11,6 +11,9 @@
    ☐ load
    ☐ special cats visual
    ☐ share links single.php
+   ☐ suppr post medium pour enlever le publish on medium
+   ☐ share en bas, remplacer text meidum
+   ☐ cookie video
 
  Divers:
    ☐ favicon
@@ -21,8 +24,11 @@
 
  A checker avec JF:
    ☐ responsive page blog
-   ☐ search
+       ☐ burger -> article du haut img au dessus, articles en dessous deux par deux (img rognée en haut et en bas comme cover)
+       ☐ phone -> un par un
+   ☐ search (ouvre un input puis page search)
    ☐ pagination
 
 Bugs:
-   ✔ resize portfolio cleartimeout @done (16-06-22 13:43)
+   ✔ resize portfolio cleartimeout @done (16-06-22 14:05)
+   ☐  cover android
