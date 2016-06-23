@@ -168,6 +168,29 @@
     }
 }
 
+@mixin pseudoCross($color: 'theme'){
+    &:before, &:after{
+        @if $color != 'theme'{
+            background: $color;
+        }@else{
+            @include themeBg;
+        }
+
+        content: '';
+        position: absolute;
+    }
+    &:before{
+        width: 1px;
+        height: 15px;
+    }
+    &:after{
+        width: 35px;
+        height: 1px;
+        border-left: 10px solid #fff;
+        border-right: 10px solid #fff;
+    }
+}
+
 
 // Fonts
 @mixin fontIcon(){
