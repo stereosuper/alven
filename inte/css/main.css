@@ -2387,19 +2387,23 @@ select::-ms-expand {
   width: 100%;
   padding: 30px 0 25px;
   border-bottom: 1px solid #ccd1d2;
-  position: fixed;
-  top: -2px;
   z-index: 15;
   background: #fff;
   text-align: center;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1), -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
-.portfolio-filters.on {
-  -webkit-transform: translate3d(0, 99px, 0);
-          transform: translate3d(0, 99px, 0);
+.portfolio-filters.fixed {
+  position: fixed;
+  top: 97px;
+}
+.portfolio-filters.fixed.on {
+  -webkit-transform: translate3d(0, -99px, 0);
+          transform: translate3d(0, -99px, 0);
 }
 
 .portfolio-header {
@@ -2466,12 +2470,12 @@ select::-ms-expand {
   color: #fff;
 }
 .portfolio-header .header-block-btn .btn-invert .after {
-  color: #01a2a6;
+  color: #4b5d60;
 }
 .is-desktop .portfolio-header .header-block-btn .btn-invert:hover, .is-desktop .portfolio-header .header-block-btn .btn-invert:focus, .no-js .portfolio-header .header-block-btn .btn-invert:hover, .no-js .portfolio-header .header-block-btn .btn-invert:focus {
   background: #fff;
   border-color: #fff;
-  color: #01a2a6;
+  color: #4b5d60;
 }
 .portfolio-header .btn-store {
   margin: 0 5px 0 0;
