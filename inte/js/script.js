@@ -18,7 +18,7 @@ $(function(){
     var spotlightPost = $('#spotlightPost'), spotlightDrag = false;
     var related = $('#related');
     var menu = $('#menu-responsive');
-    var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioFilters = $('#portfolioFilters');
+    var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioFilters = $('#portfolioFilters'), portfolioItemScroll = [];
     var dropdowns = $('.dropdown');
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
 
@@ -227,6 +227,11 @@ $(function(){
 
         clearTimeout(animPortfolio1);
         clearTimeout(animPortfolio2);
+        if(portfolioItemScroll.length){
+            for(i; i<portfolioItemScroll.length; i++){
+                portfolioItemScroll[i].destroy(true);
+            }
+        }
 
         if(nbCol === 3){
             arrayCols = [
@@ -237,6 +242,7 @@ $(function(){
             colCta = 1;
         }
 
+        i = 0;
         for(i; i<nbCol; i++){
             total += arrayCols[i];
         }
@@ -270,7 +276,7 @@ $(function(){
         TweenMax.set(portfolio.find('.po-item'), {opacity: 0, y: '30%', scale: 0.8});
         i = 0;
         for(i; i<nbPoItem+1; i++){
-            new ScrollMagic.Scene({ triggerElement: portfolio.find('.po-item')[i] })
+            portfolioItemScroll[i] = new ScrollMagic.Scene({ triggerElement: portfolio.find('.po-item')[i] })
                 .triggerHook(0.9)
                 .setTween( TweenMax.to(portfolio.find('.po-item').eq(i), 0.25, {opacity: 1, y: '0%', scale: 1}) )
                 //.addIndicators()
