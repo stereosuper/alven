@@ -414,7 +414,9 @@
     }
 
     .content-desc-responsive{
-        text-align: left;
+        p{
+           text-align: left; 
+       }
     }
 
     .team{
