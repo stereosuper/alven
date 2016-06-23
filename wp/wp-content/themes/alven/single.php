@@ -5,7 +5,7 @@
         <?php
             $hasImg = false;
             if(has_post_thumbnail()){
-                $hasImg = !$hasImg;
+                $hasImg = true;
                 $imgUrl = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0];
             }
         ?>
@@ -50,80 +50,12 @@
                         <div class='grid'>
                             <article class='col-8 content-default'>
                                 <?php the_content(); ?>
-                            </article><?php
-                            function getRelatedPosts($currentId){
-                                $relatedPosts = array();
-                                $countPosts = 0;
-                                $notInIds = array($currentId);
-
-                                $tags = wp_get_post_tags($currentId);
-                                if($tags){
-                                    $tagIds = array();
-                                    foreach($tags as $tag){
-                                        $tagIds[] = $tag->term_id;
-                                    }
-
-                                    $relatedPosts = get_posts( array(
-                                        'post_type' => 'post',
-                                        'tag__in' => $tagIds,
-                                        'post__not_in' => $notInIds,
-                                        'posts_per_page'=> 2
-                                    ) );
-                                    $countPosts = count($relatedPosts);
-                                }
-
-                                if($countPosts < 2){
-                                    foreach($relatedPosts as $related){
-                                        $notInIds[] = $related->ID;
-                                    }
-
-                                    $cats = get_the_category($currentId)[0];
-                                    if($cats){
-                                        $catsPosts = get_posts( array(
-                                            'post_type' => 'post',
-                                            'tax_query' => array( array(
-                                                'taxonomy' => 'category',
-                                                'field' => 'slug',
-                                                'terms' => $cats->slug
-                                            ) ),
-                                            'post__not_in' => $notInIds,
-                                            'posts_per_page' => 2 - $countPosts
-                                        ) );
-
-                                        if(count($catsPosts) > 0){
-                                            foreach($catsPosts as $catsPost){
-                                                $notInIds[] = $catsPost->ID;
-                                            }
-                                            $relatedPosts[] = $catsPosts[0];
-                                            $countPosts = count($relatedPosts);
-                                        }
-                                    }
-
-                                    if($countPosts < 2){
-                                        $otherPosts = get_posts( array(
-                                            'post_type' => 'post',
-                                            'post__not_in' => $notInIds,
-                                            'posts_per_page'=> 3 - $countPosts
-                                        ) );
-
-                                        if(count($otherPosts) > 0){
-                                            foreach($otherPosts as $prev){
-                                                $notInIds[] = $prev->ID;
-                                            }
-                                            $relatedPosts[] = $otherPosts[0];
-                                        }
-                                    }
-                                }
-
-                                return $relatedPosts;
-                            }
-
-                            $relatedPosts = getRelatedPosts($post->ID);
+                            </article><?php $relatedPosts = alven_related_posts($post->ID);
                             if($relatedPosts){ ?><aside class='col-2 post-sidebar' id='postSidebar'>
                                 <span class='title-small'>Related articles</span>
                                 <ul>
                                 <?php foreach($relatedPosts as $post){ setup_postdata($post); ?>
-                                    <li>
+                                    <li class='post-small'>
                                         <?php if(has_post_thumbnail()){ ?>
                                             <div class='img'>
                                                 <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
@@ -145,7 +77,7 @@
             </section>
 
             <?php
-                $specialCats = array(get_field('catJob', 'options'), get_field('catDef', 'options'), get_field('catRead', 'options'), get_field('catEvent', 'options'));
+
                 $lastPosts = new WP_Query(array(
                     'post_type' => 'post',
                     'post__not_in' => array($post->ID),
@@ -194,15 +126,6 @@
                 )
             ));
 
-            function cutContent($text){
-                $length = 100;
-                if(strlen($text) < $length+10){
-                    return $text;
-                }
-                $visible = substr($text, 0, strpos($text, ' ', $length)) . ' …';
-                return balanceTags($visible, true);
-            }
-
             if($spotlightPosts->have_posts()):
         ?>
 
@@ -215,7 +138,7 @@
                                     <div class='content'>
                                         <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
                                         <?php
-                                            echo cutContent(wpautop(get_the_content()));
+                                            echo alven_cut_content(get_the_content());
                                             $btn = get_field('readMoreLink') ? get_field('readMoreLink') : 'Read more';
                                         ?>
                                         <a href='<?php the_permalink(); ?>' class='btn-arrow'><?php echo $btn; ?></a>

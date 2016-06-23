@@ -57,11 +57,11 @@ function alven_remove_menus(){
     remove_menu_page( 'edit-comments.php' );
 }
 add_action( 'admin_menu', 'alven_remove_menus' );
-function alven_remove_submenus() {
-  $page = remove_submenu_page( 'themes.php', 'themes.php' );
+function alven_remove_submenus(){
+    remove_submenu_page( 'themes.php', 'themes.php' );
 }
-add_action( 'admin_menu', 'alven_remove_submenus', 999 );
-function alven_remove_top_menus( $wp_admin_bar ){
+add_action( 'admin_menu', 'alven_remove_submenus' );
+function alven_remove_top_menus($wp_admin_bar){
     $wp_admin_bar->remove_node( 'wp-logo' );
     $wp_admin_bar->remove_node( 'comments' );
 }
@@ -77,7 +77,7 @@ add_action( 'admin_init', 'alven_imagelink_setup' );
 
 // Enlever les <p> autour des images
 function alven_remove_p_around_images($content){
-   return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
+    return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
 add_filter( 'the_content', 'alven_remove_p_around_images' );
 
@@ -104,7 +104,7 @@ function alven_right_now_custom_post() {
 add_action( 'dashboard_glance_items', 'alven_right_now_custom_post' );
 
 // New button wysiwyg
-function alven_button( $buttons ){
+function alven_button($buttons){
     array_unshift( $buttons, 'styleselect' );
     return $buttons;
 }
@@ -116,7 +116,7 @@ function alven_init_editor_styles(){
 add_action( 'after_setup_theme', 'alven_init_editor_styles' );
 
 // Customize a bit the wysiwyg editor
-function alven_mce_before_init( $styles ){
+function alven_mce_before_init($styles){
     // Add btn
     $style_formats = array (
         array(
@@ -135,7 +135,7 @@ function alven_mce_before_init( $styles ){
 add_filter( 'tiny_mce_before_init', 'alven_mce_before_init' );
 
 // Page d'options
-function alven_menu_order( $menu_ord ){
+function alven_menu_order($menu_ord){
     if(!$menu_ord) return true;
     $menu_ord = array_diff($menu_ord, array( 'acf-options' ));
     array_splice( $menu_ord, 1, 0, array( 'acf-options' ) );
@@ -198,7 +198,7 @@ class Menu_Widget extends WP_Widget{
     function __construct(){
         parent::__construct( 'Menu_Widget', 'Alven Menu Widget', array( 'description' => 'Menu widget with title and subtitle' ) );
     }
-    public function widget( $args, $instance ) {
+    public function widget($args, $instance){
         $nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
         if ( !$nav_menu ) return;
 
@@ -207,24 +207,21 @@ class Menu_Widget extends WP_Widget{
 
        echo "<div class='". $instance['css_class'] ." menu-small'>";
 
-        if ( !empty($instance['title']) ){
+        if(!empty($instance['title'])){
             echo "<span class='menu-title'>" . $instance['title'] . "</span>";
         }
-        if ( !empty($instance['sub_title']) ){
+        if(!empty($instance['sub_title'])){
             echo "<span class='menu-subtitle'>" . $instance['sub_title'] . "</span>";
         }
 
-        $nav_menu_args = array(
-            'fallback_cb' => '',
-            'menu'        => $nav_menu
-        );
+        $nav_menu_args = array( 'fallback_cb' => '', 'menu' => $nav_menu );
 
         //wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $nav_menu, $args, $instance ), array('menu_class' => 'yolo') );
         wp_nav_menu( array('menu' => $instance['nav_menu'], 'container' => false, 'menu_class' => '') );
 
         echo "</div>";
     }
-    public function form( $instance ){
+    public function form($instance){
         $title = isset( $instance['title'] ) ? $instance['title'] : '';
         $sub_title = isset( $instance['sub_title'] ) ? $instance['sub_title'] : '';
         $nav_menu = isset( $instance['nav_menu'] ) ? $instance['nav_menu'] : '';
@@ -270,18 +267,18 @@ class Menu_Widget extends WP_Widget{
         </div>
         <?php
     }
-    public function update( $new_instance, $old_instance ) {
+    public function update($new_instance, $old_instance){
         $instance = array();
-        if ( ! empty( $new_instance['title'] ) ) {
+        if(!empty($new_instance['title'])){
             $instance['title'] = sanitize_text_field( $new_instance['title'] );
         }
-        if ( ! empty( $new_instance['sub_title'] ) ) {
+        if(!empty($new_instance['sub_title'])){
             $instance['sub_title'] = sanitize_text_field( $new_instance['sub_title'] );
         }
-        if ( ! empty( $new_instance['nav_menu'] ) ) {
+        if(!empty($new_instance['nav_menu'])){
             $instance['nav_menu'] = (int) $new_instance['nav_menu'];
         }
-        if ( ! empty( $new_instance['css_class'] ) ) {
+        if(!empty($new_instance['css_class'])){
             $instance['css_class'] = sanitize_text_field( $new_instance['css_class'] );
         }
         return $instance;
@@ -298,10 +295,101 @@ add_action( 'widgets_init', 'alven_load_widget' );
 /*-----------------------------------------------------------------------------------*/
 /* Posts
 /*-----------------------------------------------------------------------------------*/
-function alven_add_class_to_category($thelist){
-    return str_replace('<a href="', '<a class="btn-cat" href="', $thelist);
+// add class to cat buttons when using the "the_category" function
+function alven_add_class_to_category($list){
+    return str_replace('<a href="', '<a class="btn-cat" href="', $list);
 }
 add_filter( 'the_category', 'alven_add_class_to_category' );
+
+// custom excerpt
+function alven_custom_excerpt_length($length){
+    return 35;
+}
+add_filter( 'excerpt_length', 'alven_custom_excerpt_length', 999 );
+
+function alven_excerpt_more($more){
+    return '...';
+}
+add_filter( 'excerpt_more', 'alven_excerpt_more' );
+
+// cut get_the_content
+function alven_cut_content($text){
+    $text = wpautop($text);
+    $length = 100;
+    if(strlen($text) < $length+10){
+        return $text;
+    }
+    $visible = substr($text, 0, strpos($text, ' ', $length)) . ' …';
+    return balanceTags($visible, true);
+}
+
+// related posts
+function alven_related_posts($currentId){
+    $relatedPosts = array();
+    $countPosts = 0;
+    $notInIds = array($currentId);
+
+    $tags = wp_get_post_tags($currentId);
+    if($tags){
+        $tagIds = array();
+        foreach($tags as $tag){
+            $tagIds[] = $tag->term_id;
+        }
+
+        $relatedPosts = get_posts( array(
+            'post_type' => 'post',
+            'tag__in' => $tagIds,
+            'post__not_in' => $notInIds,
+            'posts_per_page'=> 2
+        ) );
+        $countPosts = count($relatedPosts);
+    }
+
+    if($countPosts < 2){
+        foreach($relatedPosts as $related){
+            $notInIds[] = $related->ID;
+        }
+
+        $cats = get_the_category($currentId)[0];
+        if($cats){
+            $catsPosts = get_posts( array(
+                'post_type' => 'post',
+                'tax_query' => array( array(
+                    'taxonomy' => 'category',
+                    'field' => 'slug',
+                    'terms' => $cats->slug
+                ) ),
+                'post__not_in' => $notInIds,
+                'posts_per_page' => 2 - $countPosts
+            ) );
+
+            if(count($catsPosts) > 0){
+                foreach($catsPosts as $catsPost){
+                    $notInIds[] = $catsPost->ID;
+                }
+                $relatedPosts[] = $catsPosts[0];
+                $countPosts = count($relatedPosts);
+            }
+        }
+
+        if($countPosts < 2){
+            $otherPosts = get_posts( array(
+                'post_type' => 'post',
+                'post__not_in' => $notInIds,
+                'posts_per_page'=> 3 - $countPosts
+            ) );
+
+            if(count($otherPosts) > 0){
+                foreach($otherPosts as $prev){
+                    $notInIds[] = $prev->ID;
+                }
+                $relatedPosts[] = $otherPosts[0];
+            }
+        }
+    }
+
+    return $relatedPosts;
+}
 
 
 /*-----------------------------------------------------------------------------------*/
