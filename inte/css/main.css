@@ -1891,25 +1891,24 @@ select::-ms-expand {
 /* Portfolio */
 .portfolio-list {
   position: relative;
+  margin: 185px 0 0;
   z-index: 1;
   background: #303b3d;
-  -webkit-transform: translate3d(0, 12%, 0);
-          transform: translate3d(0, 12%, 0);
+  /*&:after{
+      content: '';
+      display: block;
+      padding: 0 0 10%;
+  }*/
 }
 .portfolio-list:before {
   content: '';
-  height: 33%;
+  height: 150px;
   position: absolute;
   bottom: -1px;
   left: 0;
   right: 0;
   z-index: -1;
   background: #fff;
-}
-.portfolio-list:after {
-  content: '';
-  display: block;
-  padding: 0 0 10%;
 }
 .portfolio-list .grid {
   padding: 10px 0;
@@ -2352,28 +2351,28 @@ select::-ms-expand {
   margin: 5px auto 0;
 }
 .portfolio-list .po-item-col:first-child {
-  -webkit-transform: translate3d(0, 17%, 0);
-          transform: translate3d(0, 17%, 0);
+  -webkit-transform: translate3d(0, 55px, 0);
+          transform: translate3d(0, 55px, 0);
 }
 .portfolio-list .po-item-col:nth-child(2) {
-  -webkit-transform: translate3d(0, -10%, 0);
-          transform: translate3d(0, -10%, 0);
+  -webkit-transform: translate3d(0, -70px, 0);
+          transform: translate3d(0, -70px, 0);
 }
 .portfolio-list .po-item-col:nth-child(3) {
-  -webkit-transform: translate3d(0, -14%, 0);
-          transform: translate3d(0, -14%, 0);
+  -webkit-transform: translate3d(0, -100px, 0);
+          transform: translate3d(0, -100px, 0);
 }
 .portfolio-list .po-item-col:nth-child(4) {
-  -webkit-transform: translate3d(0, -4.5%, 0);
-          transform: translate3d(0, -4.5%, 0);
+  -webkit-transform: translate3d(0, -35px, 0);
+          transform: translate3d(0, -35px, 0);
 }
 .portfolio-list .po-item-col:nth-child(5) {
-  -webkit-transform: translate3d(0, 4%, 0);
-          transform: translate3d(0, 4%, 0);
+  -webkit-transform: translate3d(0, 20px, 0);
+          transform: translate3d(0, 20px, 0);
 }
 .portfolio-list .po-item-col:nth-child(6) {
-  -webkit-transform: translate3d(0, -10%, 0);
-          transform: translate3d(0, -10%, 0);
+  -webkit-transform: translate3d(0, -55px, 0);
+          transform: translate3d(0, -55px, 0);
 }
 .portfolio-list + .container {
   position: relative;
@@ -2529,7 +2528,8 @@ select::-ms-expand {
 .related-portfolio .post-small {
   display: inline-block;
   width: 25%;
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   vertical-align: top;
 }
 
@@ -3350,14 +3350,12 @@ select::-ms-expand {
 .btn-close {
   position: relative;
   margin: 0 34px 0 0;
-  border: 0;
   font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
   font-size: 1.375rem;
   line-height: 1;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #fff;
-  box-shadow: 0 1px 0 0 currentColor;
 }
 .btn-close:before, .btn-close:after {
   content: '';
@@ -3655,39 +3653,9 @@ select::-ms-expand {
 .theme-we .dropdown {
   border-color: #33a4df;
 }
-.dropdown:after {
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: 400;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  content: '\e906';
-  position: absolute;
-  top: 16px;
-  right: 10px;
-  font-size: 10px;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  color: #26393d;
-  pointer-events: none;
-}
-.theme-magazine .dropdown:after {
-  color: #f06850;
-}
-.theme-portfolio .dropdown:after {
-  color: #01a2a6;
-}
-.theme-we .dropdown:after {
-  color: #33a4df;
-}
-.dropdown.on:after {
-  -webkit-transform: translate3d(0, 0, 0) rotate(180deg);
-          transform: translate3d(0, 0, 0) rotate(180deg);
-}
-.no-js .dropdown:hover:after, .is-desktop .dropdown:hover:after {
-  color: #fff;
+.dropdown.on li:first-child:after {
+  -webkit-transform: translate3d(0, 0, 0) rotate(-180deg);
+          transform: translate3d(0, 0, 0) rotate(-180deg);
 }
 .dropdown li {
   padding: 15px 15px 13px;
@@ -3697,7 +3665,6 @@ select::-ms-expand {
   line-height: 1;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  text-indent: -10px;
   color: #26393d;
   -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
@@ -3728,6 +3695,42 @@ select::-ms-expand {
 }
 .dropdown li:before {
   display: none;
+}
+.dropdown li:first-child {
+  text-indent: -10px;
+}
+.dropdown li:first-child:after {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  content: '\e906';
+  position: absolute;
+  top: 16px;
+  right: 10px;
+  font-size: 10px;
+  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  color: #26393d;
+  pointer-events: none;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  text-indent: 0;
+}
+.theme-magazine .dropdown li:first-child:after {
+  color: #f06850;
+}
+.theme-portfolio .dropdown li:first-child:after {
+  color: #01a2a6;
+}
+.theme-we .dropdown li:first-child:after {
+  color: #33a4df;
+}
+.no-js .dropdown li:first-child:hover:after, .is-desktop .dropdown li:first-child:hover:after {
+  color: #fff;
 }
 .dropdown button {
   border: 0;
@@ -4102,26 +4105,24 @@ select::-ms-expand {
   }
 
   .portfolio-list {
-    -webkit-transform: translate3d(0, 6%, 0);
-            transform: translate3d(0, 6%, 0);
-  }
-  .portfolio-list:before {
-    height: 18%;
+    /*&:before{
+        height: 18%;
+    }*/
+    margin-top: 140px;
   }
   .portfolio-list .po-item-col {
     width: 33.3333333333%;
+    /*&:nth-child(2){
+        transform: translate3d(0, -7%, 0);
+    }*/
   }
   .portfolio-list .po-item-col:first-child {
     -webkit-transform: none;
             transform: none;
   }
-  .portfolio-list .po-item-col:nth-child(2) {
-    -webkit-transform: translate3d(0, -7%, 0);
-            transform: translate3d(0, -7%, 0);
-  }
   .portfolio-list .po-item-col:nth-child(3) {
-    -webkit-transform: translate3d(0, 4%, 0);
-            transform: translate3d(0, 4%, 0);
+    -webkit-transform: translate3d(0, 35px, 0);
+            transform: translate3d(0, 35px, 0);
   }
   .portfolio-list .po-item.cta {
     font-size: 2rem;

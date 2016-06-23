@@ -379,20 +379,22 @@
     }
 
     .portfolio-list{
-        transform: translate3d(0, 6%, 0);
-        &:before{
+        //transform: translate3d(0, 6%, 0);
+        /*&:before{
             height: 18%;
-        }
+        }*/
+        margin-top: 140px;
         .po-item-col{
             width: $col*4;
             &:first-child{
                 transform: none;
             }
-            &:nth-child(2){
+            /*&:nth-child(2){
                 transform: translate3d(0, -7%, 0);
-            }
+            }*/
             &:nth-child(3){
-                transform: translate3d(0, 4%, 0);
+                //transform: translate3d(0, 4%, 0);
+                transform: translate3d(0, 35px, 0);
             }
         }
         .po-item{
@@ -415,7 +417,7 @@
 
     .content-desc-responsive{
         p{
-           text-align: left; 
+           text-align: left;
        }
     }
 
