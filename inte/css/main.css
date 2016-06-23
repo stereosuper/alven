@@ -4103,6 +4103,35 @@ select::-ms-expand {
   .quote blockquote p {
     font-size: 1.8rem;
   }
+
+  .post-meta-spotlight {
+    margin: 5px 0 10px 0;
+  }
+
+  .post-meta-header .btn-cat, .post-meta-spotlight .btn-cat {
+    font-size: 1.6rem;
+    margin-right: 3px;
+    padding: 4px 4px 2px;
+  }
+  .post-meta-header time, .post-meta-spotlight time {
+    margin-left: 3px;
+  }
+
+  time, .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .main-spotlight-post .txt {
+    margin: 10px 0 60px 0;
+  }
+  .main-spotlight-post h3 {
+    font-size: 2.8rem;
+    line-height: 1.1;
+  }
+  .main-spotlight-post p {
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
 }
 @media (max-width: 767px) {
   body {
@@ -4237,6 +4266,52 @@ select::-ms-expand {
   }
   .quote .img-quote {
     width: 50%;
+  }
+
+  .post-meta-header .btn-cat, .post-meta-spotlight .btn-cat {
+    font-size: 1.4rem;
+    margin-right: 1px;
+    padding: 4px 4px 2px;
+  }
+  .post-meta-header time, .post-meta-spotlight time {
+    margin-left: 1px;
+  }
+
+  time, .subtitle {
+    font-size: 1.4rem;
+  }
+
+  .main-spotlight-post .img, .main-spotlight-post .txt {
+    width: 100%;
+  }
+  .main-spotlight-post .txt {
+    margin: 10px 0 35px 0;
+  }
+  .main-spotlight-post .txt:before {
+    bottom: -43px;
+  }
+  .main-spotlight-post .txt:after {
+    bottom: -36px;
+  }
+  .main-spotlight-post .img {
+    padding: 0;
+    margin: 0;
+  }
+  .main-spotlight-post .img img {
+    max-width: none;
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    width: 100%;
+    width: calc(100% + 40px);
+    margin: 0 0 0 -20px;
+  }
+  .main-spotlight-post h3 {
+    font-size: 2.2rem;
+  }
+  .main-spotlight-post p {
+    margin-bottom: 15px;
   }
 }
 @media (max-width: 540px) {
