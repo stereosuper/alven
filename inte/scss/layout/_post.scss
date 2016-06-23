@@ -35,55 +35,38 @@
 .post-sidebar{
     margin: 0 0 50px;
     .title-small{
-        padding: 0 0 0 12px;
+        padding: 0 0 0 16px;
     }
     ul{
         padding: 12px 0 0;
         margin: 6px 0 0;
         border-top: 1px solid $greyBorder;
         position: relative;
-        &:before, &:after{
-            @include themeBg;
-            content: '';
-            position: absolute;
-        }
+
+        @include pseudoCross;
         &:before{
-            width: 1px;
-            height: 15px;
             top: -8px;
-            left: -6px;
+            left: -1px;
         }
         &:after{
-            width: 35px;
-            height: 1px;
-            border-left: 10px solid #fff;
-            border-right: 10px solid #fff;
-            left: -23px;
+            left: -18px;
             top: -1px;
         }
     }
     li{
+        padding-left: 0;
         &:last-child{
+            @include pseudoCross;
             &:before, &:after{
-                @include themeBg;
-
-                content: '';
-                position: absolute;
                 left: 0;
             }
             &:before{
                 display: block;
-                width: 1px;
-                height: 15px;
                 top: auto;
                 bottom: -8px;
                 border-radius: 0;
             }
             &:after{
-                width: 35px;
-                height: 1px;
-                border-left: 10px solid #fff;
-                border-right: 10px solid #fff;
                 left: -17px;
                 bottom: -1px;
             }
@@ -113,7 +96,7 @@
 }
 
 .post-small{
-    padding: 0 0 20px;
+    padding-bottom: 20px;
     border-bottom: 1px solid $greyBorder;
     margin: 0 0 20px;
     &:before{
@@ -249,25 +232,17 @@
         vertical-align: middle;
         margin: 4.4em 0 60px;
         z-index: 1;
-        &:before, &:after{
-            @include themeBg;
 
-            content: '';
-            position: absolute;
+        @include pseudoCross;
+        &:before, &:after{
             left: 10px;
         }
         &:before{
-            width: 1px;
-            height: 15px;
-            bottom: -67px;
+            bottom: -68px;
         }
         &:after{
-            width: 35px;
-            height: 1px;
-            border-left: 10px solid #fff;
-            border-right: 10px solid #fff;
             left: -7px;
-            bottom: -60px;
+            bottom: -61px;
         }
     }
     h3{
@@ -306,23 +281,15 @@
     /*time, .btn-cat{
         text-transform: none;
     }*/
-    &:before, &:after{
-        @include themeBg;
 
-        content: '';
-        position: absolute;
+    @include pseudoCross;
+    &:before, &:after{
         left: 10px;
     }
     &:before{
-        width: 1px;
-        height: 15px;
         bottom: -68px;
     }
     &:after{
-        width: 35px;
-        height: 1px;
-        border-left: 10px solid #fff;
-        border-right: 10px solid #fff;
         left: -7px;
         bottom: -61px;
     }
@@ -338,23 +305,14 @@
     .grid{
         padding: 0 0 45px;
         position: relative;
-        &:before, &:after{
-            @include themeBg;
-            content: '';
-            position: absolute;
-        }
+
+        @include pseudoCross;
         &:before{
-            width: 1px;
-            height: 15px;
             bottom: -8px;
             left: $col;
             margin: 0 0 0 -1px;
         }
         &:after{
-            width: 35px;
-            height: 1px;
-            border-left: 10px solid #fff;
-            border-right: 10px solid #fff;
             left: $col;
             bottom: -1px;
             margin: 0 0 0 -18px;

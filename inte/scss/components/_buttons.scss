@@ -195,7 +195,7 @@
 
 .btn-search{
     position: relative;
-    margin: 0 38px 0 0;
+    margin: 0 34px 0 0;
     font-family: $sourceBlack;
     font-size: 1.375rem;
     line-height: 1;
@@ -328,5 +328,62 @@
     }
     &:after{
         transform: rotate(-45deg);
+    }
+}
+
+.btn-store, .btn-play{
+    display: inline-block;
+    width: 134px;
+    height: 40px;
+    text-indent: -99em;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    box-shadow: none;
+    overflow: hidden;
+}
+.btn-store{
+    background-image: url(../layoutImg/app-store.png);
+}
+.btn-play{
+    background-image: url(../layoutImg/google-play.png);
+}
+
+.btn-close{
+    position: relative;
+    margin: 0 34px 0 0;
+    border: 0;
+    font-family: $sourceBlack;
+    font-size: 1.375rem;
+    line-height: 1;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #fff;
+    box-shadow: 0 1px 0 0 currentColor;
+    &:before, &:after{
+        content: '';
+        position: absolute;
+        width: 22px;
+        height: 1px;
+        top: 50%;
+        right: -34px;
+        background: #fff;
+        transition: $transition;
+    }
+    &:before{
+        transform: translate3d(0, 0, 0) rotate(45deg);
+    }
+    &:after{
+        transform: translate3d(0, 0, 0) rotate(-45deg);
+    }
+    &:hover, &:focus{
+        .no-js &, .is-desktop &{
+            opacity: 0.6;
+            &:before{
+                transform: translate3d(0, 0, 0) rotate(135deg) scale(1.1);
+            }
+            &:after{
+                transform: translate3d(0, 0, 0) rotate(45deg) scale(1.1);
+            }
+        }
     }
 }
