@@ -18,7 +18,8 @@ $(function(){
     var spotlightPost = $('#spotlightPost'), spotlightDrag = false;
     var related = $('#related');
     var menu = $('#menu-responsive');
-    var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioFilters = $('#portfolioFilters');
+    var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioFilters = $('#portfolioFilters'), portfolioItemScroll = [];
+    var dropdowns = $('.dropdown');
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
 
 
@@ -67,6 +68,10 @@ $(function(){
     function setBtn(btn){
         var txt = btn.html();
         return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
+    }
+
+    function closeDropdown(dropdown){
+        dropdown.css('height', dropdown.data('height')).removeClass('on');
     }
 
     function setHeaderScroll(myScroll, scrollDir){
@@ -222,6 +227,11 @@ $(function(){
 
         clearTimeout(animPortfolio1);
         clearTimeout(animPortfolio2);
+        if(portfolioItemScroll.length){
+            for(i; i<portfolioItemScroll.length; i++){
+                portfolioItemScroll[i].destroy(true);
+            }
+        }
 
         if(nbCol === 3){
             arrayCols = [
@@ -232,6 +242,7 @@ $(function(){
             colCta = 1;
         }
 
+        i = 0;
         for(i; i<nbCol; i++){
             total += arrayCols[i];
         }
@@ -265,7 +276,7 @@ $(function(){
         TweenMax.set(portfolio.find('.po-item'), {opacity: 0, y: '30%', scale: 0.8});
         i = 0;
         for(i; i<nbPoItem+1; i++){
-            new ScrollMagic.Scene({ triggerElement: portfolio.find('.po-item')[i] })
+            portfolioItemScroll[i] = new ScrollMagic.Scene({ triggerElement: portfolio.find('.po-item')[i] })
                 .triggerHook(0.9)
                 .setTween( TweenMax.to(portfolio.find('.po-item').eq(i), 0.25, {opacity: 1, y: '0%', scale: 1}) )
                 //.addIndicators()
@@ -730,12 +741,8 @@ $(function(){
         setMenuElmts();
     }
 
-    function closeDropdown(dropdown){
-        dropdown.css('height', dropdown.data('height')).removeClass('on');
-    }
-
-    $('.dropdown').on('click', function(e){
-        var dropdown = $(this), height = 2, siblings = $('.dropdown').not(dropdown);
+    dropdowns.on('click', function(e){
+        var dropdown = $(this), height = 2, siblings = dropdowns.not(dropdown);
         if(dropdown.hasClass('on')){
             closeDropdown(dropdown);
         }else{
@@ -788,6 +795,10 @@ $(function(){
 
         if(postSidebar.length && mainContent.length && !isMobile.any){
             setSidebarScroll(myScroll);
+        }
+
+        if(dropdowns.length){
+            dropdowns.each(function(){ closeDropdown($(this)); });
         }
     });
 

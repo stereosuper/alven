@@ -10,26 +10,10 @@
     @include themeBorder;
     transition: $transition;
     cursor: pointer;
-    &:after{
-        @include fontIcon;
-        content: '\e906'; // arrow down
-        position: absolute;
-        top: 16px;
-        right: 10px;
-        font-size: 10px;
-        transition: $transition;
-        @include themeColor;
-        pointer-events: none;
-    }
     &.on{
-        &:after{
-            transform: translate3d(0, 0, 0) rotate(180deg);
-        }
-    }
-    &:hover{
-        .no-js &, .is-desktop &{
+        li:first-child{
             &:after{
-                color: #fff;
+                transform: translate3d(0, 0, 0) rotate(-180deg);
             }
         }
     }
@@ -41,7 +25,6 @@
         line-height: 1;
         letter-spacing: 0.07em;
         text-transform: uppercase;
-        text-indent: -10px; // leave space for arrow
         @include themeColor;
         transition: $transition;
         &:hover{
@@ -52,6 +35,29 @@
         }
         &:before{
             display: none;
+        }
+        &:first-child{
+            text-indent: -10px; // leave space for arrow
+            &:after{
+                @include fontIcon;
+                content: '\e906'; // arrow down
+                position: absolute;
+                top: 16px;
+                right: 10px;
+                font-size: 10px;
+                transition: $transition;
+                @include themeColor;
+                pointer-events: none;
+                transform: translate3d(0, 0, 0);
+                text-indent: 0;
+            }
+            &:hover{
+                .no-js &, .is-desktop &{
+                    &:after{
+                        color: #fff;
+                    }
+                }
+            }
         }
     }
     button{
