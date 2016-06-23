@@ -19,6 +19,7 @@ $(function(){
     var related = $('#related');
     var menu = $('#menu-responsive');
     var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioFilters = $('#portfolioFilters');
+    var dropdowns = $('.dropdown');
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
 
 
@@ -67,6 +68,10 @@ $(function(){
     function setBtn(btn){
         var txt = btn.html();
         return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
+    }
+
+    function closeDropdown(dropdown){
+        dropdown.css('height', dropdown.data('height')).removeClass('on');
     }
 
     function setHeaderScroll(myScroll, scrollDir){
@@ -730,12 +735,8 @@ $(function(){
         setMenuElmts();
     }
 
-    function closeDropdown(dropdown){
-        dropdown.css('height', dropdown.data('height')).removeClass('on');
-    }
-
-    $('.dropdown').on('click', function(e){
-        var dropdown = $(this), height = 2, siblings = $('.dropdown').not(dropdown);
+    dropdowns.on('click', function(e){
+        var dropdown = $(this), height = 2, siblings = dropdowns.not(dropdown);
         if(dropdown.hasClass('on')){
             closeDropdown(dropdown);
         }else{
@@ -788,6 +789,10 @@ $(function(){
 
         if(postSidebar.length && mainContent.length && !isMobile.any){
             setSidebarScroll(myScroll);
+        }
+
+        if(dropdowns.length){
+            dropdowns.each(function(){ closeDropdown($(this)); });
         }
     });
 
