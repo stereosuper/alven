@@ -311,7 +311,7 @@
     letter-spacing: 0.07em;
     text-transform: uppercase;
     @include themeColor;
-    padding: 0 25px 0 0;
+    padding: 1px 25px 1px 0;
     &:before, &:after{
         content: '';
         display: block;

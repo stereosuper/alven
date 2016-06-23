@@ -110,7 +110,7 @@
 		left: 20%;
 		right: 20%;
 		opacity: 0;
-		padding: 30px $innerGutter 0 $innerGutter;
+		padding: 0 $innerGutter 0 $innerGutter;
 		visibility: hidden;
 		.btn-cross{
 			/*position: absolute;
@@ -118,6 +118,7 @@
 			right: 0;*/
 			display: inline-block;
 			vertical-align: top;
+			margin: 0 0 30px 0;
 		}
 	}
 }
@@ -267,12 +268,15 @@
 	visibility: hidden;
 	text-align: center;
 	margin: 0 0 20px 0;
-	padding: 30px 0 0 0;
+	padding: 0;
 	.btn-desc{
 		display: none;
 	}
 	.social{
 		display: none;
+	}
+	.btn-cross{
+		margin: 0 0 30px 0;
 	}
 }
 

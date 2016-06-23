@@ -1917,14 +1917,15 @@ select::-ms-expand {
     left: 20%;
     right: 20%;
     opacity: 0;
-    padding: 30px 10px 0 10px;
+    padding: 0 10px 0 10px;
     visibility: hidden; }
     .team .desc .btn-cross {
       /*position: absolute;
       top: 0;
       right: 0;*/
       display: inline-block;
-      vertical-align: top; }
+      vertical-align: top;
+      margin: 0 0 30px 0; }
 
 .social {
   margin: 8px 0 0 0;
@@ -2054,11 +2055,13 @@ select::-ms-expand {
   visibility: hidden;
   text-align: center;
   margin: 0 0 20px 0;
-  padding: 30px 0 0 0; }
+  padding: 0; }
   .content-desc-responsive .btn-desc {
     display: none; }
   .content-desc-responsive .social {
     display: none; }
+  .content-desc-responsive .btn-cross {
+    margin: 0 0 30px 0; }
 
 .container-team {
   padding-bottom: 80px !important; }
@@ -2401,7 +2404,7 @@ select::-ms-expand {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #26393d;
-  padding: 0 25px 0 0; }
+  padding: 1px 25px 1px 0; }
   .theme-magazine .btn-cross {
     color: #f06850; }
   .theme-portfolio .btn-cross {
@@ -2901,9 +2904,6 @@ select::-ms-expand {
 
   .social {
     display: none; }
-
-  .content-desc-responsive {
-    margin: 20px 0 0; }
 
   .wrapper-btn-glob {
     width: 33.3333%; } }
