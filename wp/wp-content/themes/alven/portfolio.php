@@ -17,10 +17,84 @@ get_header(); ?>
             </div>
         </section>
 
+        <div class='portfolio-filters' id='portfolioFilters'>
+            <div class='container'>
+                <div class='col-2'>
+                    <ul class='dropdown'>
+                        <li>All investments</li>
+                        <li><button>Present</button></li>
+                        <li><button>Past</button></li>
+                    </ul>
+                </div><div class='col-2'>
+                    <ul class='dropdown'>
+                        <li>Fields of activity</li>
+                        <?php
+                            $fields = get_terms(array('taxonomy' => 'field'));
+                            foreach($fields as $field){
+                                echo '<li><button>'.$field->name.'</button></li>';
+                            }
+                        ?>
+                    </ul>
+                </div><div class='col-2'>
+                    <ul class='dropdown'>
+                        <li>Global footprint</li>
+                        <?php
+                            $footprints = get_terms(array('taxonomy' => 'footprint'));
+                            foreach($footprints as $footprint){
+                                echo '<li><button>'.$footprint->name.'</button></li>';
+                            }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <main role='main' id='main'>
             <article class='content-main' id='mainContent'>
-                <div class='container'>
-
+                <?php
+                    $startups = new WP_Query(array('post_type' => 'startup', 'posts_per_page' => -1));
+                    if($startups->have_posts()):
+                ?>
+                    <div class='portfolio-list' id='portfolio'>
+                        <div class='container'>
+                            <ul class='grid'>
+                                <?php while($startups->have_posts()): $startups->the_post(); ?>
+                                    <?php if(get_field('investment') !== 'past'){ ?><li class='col-2'>
+                                        <a href='<?php the_permalink(); ?>'>
+                                            <?php the_post_thumbnail('full'); ?>
+                                            <?php
+                                                if( has_post_thumbnail() ){
+                                                    $icon = wp_get_attachment_thumb_url(get_post_thumbnail_id());
+                                                    if(strpos( $icon, '.svg' )){
+                                                        $icon = str_replace( site_url(), '', $icon);
+                                                        echo file_get_contents(ABSPATH . $icon);
+                                                    }
+                                                }
+                                            ?>
+                                        </a>
+                                    </li><?php } else{ ?><li class='col-2 transfered'>
+                                        <a href='<?php the_permalink(); ?>'>
+                                            <span class='content-transfered captain-train-trainline'>
+                                                <span><?php the_post_thumbnail('full'); ?></span>
+                                                <span>Acquired by</span>
+                                                <span></span>
+                                            </span>
+                                        </a>
+                                    </li><?php } ?>
+                                <?php endwhile; ?>
+                            </ul>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <div class='container align-center'>
+                    <div id='ctaPortfolio'>
+                        <a href='#contact'>
+                            <span>
+                                Could this be you&nbsp;?
+                                <span class='btn-invert'>Send your pitch</span>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </article>
         </main>

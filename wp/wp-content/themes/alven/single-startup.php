@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 
 	<?php if ( have_posts() ) : the_post(); ?>
-
         <div class='portfolio-header'>
             <div class='container'>
                 <div class='grid'>
@@ -39,15 +38,16 @@
                             <div class='header-block-btn'>
                                 <span class='title-small'>App</span>
                                 <?php if(get_field('appStoreLink')){ ?>
-                                    <a href='<?php the_field('appStoreLink'); ?>' target='_blank'>AppStore</a>
+                                    <a href='<?php the_field('appStoreLink'); ?>' target='_blank' class='btn-store'>AppStore</a>
                                 <?php }
                                 if(get_field('googlePlayLink')){ ?>
-                                    <a href='<?php the_field('googlePlayLink'); ?>' target='_blank'>Google play</a>
+                                    <a href='<?php the_field('googlePlayLink'); ?>' target='_blank' class='btn-play'>Google play</a>
                                 <?php } ?>
                             </div>
                         <?php } ?>
                     </div>
                 </div>
+                <a href='#' id='closePortfolio' class='btn-close'>Close</a>
             </div>
         </div>
 
@@ -82,22 +82,28 @@
                     <div class='related-portfolio'>
                         <div class='container'>
                             <div class='container-small'>
-                                <span class='title-small'>Related articles</span>
-                                <?php foreach($related as $post){ setup_postdata($post); ?>
-                                    <div class='post-small col-2'>
-                                        <?php if(has_post_thumbnail()){ ?>
-                                            <div class='img'>
-                                                <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
+                                <div class='grid'>
+                                    <div class='related-portfolio-list'>
+                                        <span class='title-small'>Related articles</span>
+                                        <?php foreach($related as $post){ setup_postdata($post); ?>
+                                            <div class='post-small'>
+                                                <?php if(has_post_thumbnail()){ ?>
+                                                    <div class='img'>
+                                                        <a href='<?php the_permalink(); ?>'>
+                                                            <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
+                                                <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
+                                                <div class='post-meta'>
+                                                    <?php the_category( ', ' ); ?> -
+                                                    <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
+                                                </div>
+                                                <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
                                             </div>
                                         <?php } ?>
-                                        <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
-                                        <div class='post-meta'>
-                                            <?php the_category( ', ' ); ?> -
-                                            <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
-                                        </div>
-                                        <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
                                     </div>
-                                <?php } ?>
+                                </div>
                             </div>
                         </div>
                     </div>

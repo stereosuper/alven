@@ -18,7 +18,9 @@ $(function(){
     var spotlightPost = $('#spotlightPost'), spotlightDrag = false;
     var related = $('#related');
     var menu = $('#menu-responsive');
-    var portfolio = $('#portfolio');
+    var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioItemScroll = [],
+        portfolioFilters = $('#portfolioFilters'), portfolioFiltersTop = portfolioFilters.length ? portfolioFilters.offset().top : 0;
+    var dropdowns = $('.dropdown');
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
 
 
@@ -69,11 +71,22 @@ $(function(){
         return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
     }
 
+    function closeDropdown(dropdown){
+        dropdown.css('height', dropdown.data('height')).removeClass('on');
+    }
+
     function setHeaderScroll(myScroll, scrollDir){
         if(mainContent.length && contentHeader.length && !htmlTag.hasClass('menu-open')){
             myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
             if(header.hasClass('fixed')){
                 scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
+            }
+        }
+
+        if(portfolioFilters.length){
+            myScroll > portfolioFiltersTop - headerHeight ? portfolioFilters.addClass('fixed') : portfolioFilters.removeClass('fixed');
+            if(myScroll > portfolioFiltersTop - headerHeight + 200){
+                scrollDir < 0 ? portfolioFilters.addClass('on') : portfolioFilters.removeClass('on');
             }
         }
 
@@ -186,12 +199,12 @@ $(function(){
             var poItemsNotTransfered = portfolio.find('.po-item:not(.transfered)'), poItemNotTransfered = portfolio.find('li:not(.transfered)'), nbPoItemNotTransfered = poItemNotTransfered.length;
             var newElemNumber = Math.floor(Math.random() * nbPoItemNotTransfered);
             poItems.find('a').removeClass('on');
-            setTimeout(function(){
+            animPortfolio1 = setTimeout(function(){
                 if(!portfolio.find('div.grid').hasClass('is-hovered') && !poItemsNotTransfered.eq(y).hasClass('cta')){
                     poItemsNotTransfered.eq(y).find('a').addClass('on');
                 }
             }, 1500);
-            setTimeout(lightTransferedPoItems, 3500, newElemNumber);
+            animPortfolio2 = setTimeout(lightTransferedPoItems, 3500, newElemNumber);
         }
 
         if(nbPoItem > 37){
@@ -216,6 +229,14 @@ $(function(){
                 Math.floor(lastNbItem/3)
             ];
 
+        clearTimeout(animPortfolio1);
+        clearTimeout(animPortfolio2);
+        if(portfolioItemScroll.length){
+            for(i; i<portfolioItemScroll.length; i++){
+                portfolioItemScroll[i].destroy(true);
+            }
+        }
+
         if(nbCol === 3){
             arrayCols = [
                 firstNbItem + Math.floor(secondNbItem/2),
@@ -225,6 +246,7 @@ $(function(){
             colCta = 1;
         }
 
+        i = 0;
         for(i; i<nbCol; i++){
             total += arrayCols[i];
         }
@@ -237,7 +259,7 @@ $(function(){
         for(i; i<nbCol; i++){
             portfolioContent += '<div class="po-item-col col-2">';
             j = 0;
-            posCta = colCta === 1 ? Math.floor(arrayCols[i]/2) : arrayCols[i]-1;
+            posCta = colCta === 1 ? 3 : 2;
             for(j; j<arrayCols[i]; j++){
                 if(i === colCta && j === posCta){
                     portfolioContent += '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
@@ -258,7 +280,7 @@ $(function(){
         TweenMax.set(portfolio.find('.po-item'), {opacity: 0, y: '30%', scale: 0.8});
         i = 0;
         for(i; i<nbPoItem+1; i++){
-            new ScrollMagic.Scene({ triggerElement: portfolio.find('.po-item')[i] })
+            portfolioItemScroll[i] = new ScrollMagic.Scene({ triggerElement: portfolio.find('.po-item')[i] })
                 .triggerHook(0.9)
                 .setTween( TweenMax.to(portfolio.find('.po-item').eq(i), 0.25, {opacity: 1, y: '0%', scale: 1}) )
                 //.addIndicators()
@@ -723,6 +745,19 @@ $(function(){
         setMenuElmts();
     }
 
+    dropdowns.on('click', function(e){
+        var dropdown = $(this), height = 2, siblings = dropdowns.not(dropdown);
+        if(dropdown.hasClass('on')){
+            closeDropdown(dropdown);
+        }else{
+            dropdown.data('height', dropdown.css('height')).find('li').each(function(){
+                height += $(this).outerHeight();
+            });
+            dropdown.css('height', height).addClass('on');
+        }
+        siblings.each(function(){ closeDropdown($(this)); });
+    });
+
     $('#burger').on('click', function(e){
         e.preventDefault();
         htmlTag.toggleClass('menu-open');
@@ -764,6 +799,10 @@ $(function(){
 
         if(postSidebar.length && mainContent.length && !isMobile.any){
             setSidebarScroll(myScroll);
+        }
+
+        if(dropdowns.length){
+            dropdowns.each(function(){ closeDropdown($(this)); });
         }
     });
 
