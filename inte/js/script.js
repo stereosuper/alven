@@ -18,7 +18,7 @@ $(function(){
     var spotlightPost = $('#spotlightPost'), spotlightDrag = false;
     var related = $('#related');
     var menu = $('#menu-responsive');
-    var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2;
+    var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioFilters = $('#portfolioFilters');
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
 
 
@@ -75,6 +75,10 @@ $(function(){
             if(header.hasClass('fixed')){
                 scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
             }
+        }
+
+        if(portfolioFilters.length && myScroll > 80){
+            scrollDir > 0 ? portfolioFilters.addClass('on') : portfolioFilters.removeClass('on');
         }
 
         if(readIndicator.length && (body.hasClass('single-post') || body.hasClass('page-template-default'))){
@@ -725,6 +729,23 @@ $(function(){
     if(menu.length){
         setMenuElmts();
     }
+
+    function closeDropdown(dropdown){
+        dropdown.css('height', dropdown.data('height')).removeClass('on');
+    }
+
+    $('.dropdown').on('click', function(e){
+        var dropdown = $(this), height = 2, siblings = $('.dropdown').not(dropdown);
+        if(dropdown.hasClass('on')){
+            closeDropdown(dropdown);
+        }else{
+            dropdown.data('height', dropdown.css('height')).find('li').each(function(){
+                height += $(this).outerHeight();
+            });
+            dropdown.css('height', height).addClass('on');
+        }
+        siblings.each(function(){ closeDropdown($(this)); });
+    });
 
     $('#burger').on('click', function(e){
         e.preventDefault();
