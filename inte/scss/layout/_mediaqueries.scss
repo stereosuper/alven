@@ -559,6 +559,20 @@
             margin-bottom: 15px;
         }
     }
+
+    .post-medium{
+        float: none;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+    .share{
+        .content-default &{
+            float: none;
+            display: block;
+            width: 195px;
+            margin: 0 auto;
+        }
+    }
 }
 
 @media (max-width: 540px){
