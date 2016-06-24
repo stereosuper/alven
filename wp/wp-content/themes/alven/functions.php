@@ -495,6 +495,7 @@ function alven_scripts(){
         wp_enqueue_script( 'gsap', get_template_directory_uri() . '/js/animation.gsap.js', array(), null, true );
 
         wp_enqueue_script( 'alven-script', get_template_directory_uri() . '/js/script.min.js', array(), null, true );
+        wp_enqueue_script( 'goliath-script', get_template_directory_uri() . '/js/goliath.js', array(), null, true );
 
         wp_deregister_script( 'wp-embed' );
 }

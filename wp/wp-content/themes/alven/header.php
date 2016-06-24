@@ -60,3 +60,5 @@
             </div>
             <div id='readIndicator' class='read-indicator'></div>
         </header>
+
+        <div id="ajaxContainer"></div>

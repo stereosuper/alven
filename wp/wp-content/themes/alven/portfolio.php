@@ -60,7 +60,7 @@ get_header(); ?>
                             <ul class='grid'>
                                 <?php while($startups->have_posts()): $startups->the_post(); ?>
                                     <?php if(get_field('investment') !== 'past'){ ?><li class='col-2'>
-                                        <a href='<?php the_permalink(); ?>'>
+                                        <a href='<?php the_permalink(); ?>' class='ajax-load'>
                                             <?php the_post_thumbnail('full'); ?>
                                             <?php
                                                 if( has_post_thumbnail() ){
@@ -73,7 +73,7 @@ get_header(); ?>
                                             ?>
                                         </a>
                                     </li><?php } else{ ?><li class='col-2 transfered'>
-                                        <a href='<?php the_permalink(); ?>'>
+                                        <a href='<?php the_permalink(); ?>' class='ajax-load'>
                                             <span class='content-transfered captain-train-trainline'>
                                                 <span><?php the_post_thumbnail('full'); ?></span>
                                                 <span>Acquired by</span>
