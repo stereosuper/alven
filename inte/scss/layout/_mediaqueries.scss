@@ -231,15 +231,6 @@
             margin-bottom: 5px;
             margin-right: 95px;
         }
-        /*&.fixed{
-            &.on{
-                .single &{
-                    #menu-main{
-                        transform: translate3d(0, -15px, 0);
-                    }
-                }
-            }
-        }*/
     }
 
     #menu-main{
@@ -283,7 +274,6 @@
     }
 
     .container-team{
-        //overflow: hidden;
         position: relative;
     }
     .team{
@@ -406,6 +396,21 @@
     .newsletter-title{
         width: $col*4;
         margin: 0 $col;
+    }
+    .wrapper-interactive-blocks{
+        padding: 0 0 54px 0;
+        .interactive-block{
+            width: 50%;
+            margin: 0;
+            padding: 0 20px;
+            text-align: center;
+            &.align-right{
+                margin: 0;
+            }
+            h3{
+                font-size: 2.8rem;
+            }
+        }
     }
 }
 
@@ -625,6 +630,46 @@
             margin: 0 auto;
         }
     }
+
+    .wrapper-interactive-blocks{
+        padding: 0 0 20px;
+        .interactive-block{
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px $col;
+            &.align-right{
+                margin: 0 auto;
+            }
+            .btn{
+                &.btn-left{
+                    padding: 21px 47px 19px 17px;
+                    &:before{
+                        left: auto;
+                        right: 20px;
+                    }
+                    &:after{
+                        left: auto;
+                        right: 17px;
+                        transform: translate3d(0, 0, 0) rotate(0);
+                    }
+                    .after{
+                        right: 47px;
+                        left: auto;
+                    }
+                    &:hover{
+                        &:before{
+                            transform: translate3d(7px, 0, 0) scale(0.6, 0.85);
+                        }
+                        &:after{
+                            transform: translate3d(7px, 0, 0) scale(0.85);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 540px){
@@ -720,6 +765,14 @@
             width: 100%;
             padding: 0;
             text-align: center;
+        }
+    }
+
+    .wrapper-interactive-blocks{
+        .interactive-block{
+            h3{
+                font-size: 1.8rem;
+            }
         }
     }
 }

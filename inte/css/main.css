@@ -497,7 +497,7 @@ hr {
   border: 0;
   height: 1px;
   max-width: 250px;
-  margin: 3em auto 2em;
+  margin: 3em auto 5em;
   background: #e5e8e8; }
 
 /******* LIENS / BOUTONS *******/
@@ -1048,9 +1048,10 @@ select::-ms-expand {
     padding-bottom: 3px; }
 
 .post-meta-header {
-  text-align: center; }
-  .post-meta-header .share {
-    margin: 4.5em 0 0; }
+  text-align: center;
+  /*.share{
+      margin: 4.5em 0 0;
+  }*/ }
 
 .post-meta-header .btn-cat, .post-meta-spotlight .btn-cat {
   padding-bottom: 0;
@@ -1507,14 +1508,15 @@ select::-ms-expand {
       background-color: #34b6b8;
       border-color: #34b6b8;
       color: #fff;
-      transition: fill 0.4s linear; }
+      transition: fill 0.4s linear;
+      /*> img{
+          transform: translate3d(-50%, 0, 0);
+          position: absolute;
+          top: 16px;
+          left: 50%;
+      }*/ }
       .portfolio-list li.transfered a:after, .portfolio-list .po-item.transfered a:after {
         display: none; }
-      .portfolio-list li.transfered a > img, .portfolio-list .po-item.transfered a > img {
-        transform: translate3d(-50%, 0, 0);
-        position: absolute;
-        top: 16px;
-        left: 50%; }
       .portfolio-list li.transfered a .content-transfered, .portfolio-list .po-item.transfered a .content-transfered {
         position: absolute;
         top: 50%;
@@ -1524,7 +1526,7 @@ select::-ms-expand {
         .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
           display: block;
           margin: 10px 0; }
-      .portfolio-list li.transfered a svg, .portfolio-list .po-item.transfered a svg {
+      .portfolio-list li.transfered a svg, .portfolio-list li.transfered a img, .portfolio-list .po-item.transfered a svg, .portfolio-list .po-item.transfered a img {
         position: relative;
         transform: translate3d(0, 0, 0);
         top: auto;
@@ -1532,19 +1534,19 @@ select::-ms-expand {
         padding-bottom: 2px;
         backface-visibility: hidden;
         transition-delay: 0s; }
-        .portfolio-list li.transfered a svg .zone-svg, .portfolio-list .po-item.transfered a svg .zone-svg {
-          fill: #fff; }
+      .portfolio-list li.transfered a svg .zone-svg, .portfolio-list .po-item.transfered a svg .zone-svg {
+        fill: #fff; }
       .portfolio-list li.transfered a .hover, .portfolio-list .po-item.transfered a .hover {
         opacity: 1;
         transform: translate3d(0, 0, 0); }
-        .portfolio-list li.transfered a .hover svg, .portfolio-list .po-item.transfered a .hover svg {
+        .portfolio-list li.transfered a .hover svg, .portfolio-list li.transfered a .hover img, .portfolio-list .po-item.transfered a .hover svg, .portfolio-list .po-item.transfered a .hover img {
           position: relative;
           transform: translate3d(0, 0, 0);
           top: auto;
           left: auto;
           transition-delay: 0s; }
-          .portfolio-list li.transfered a .hover svg .zone-svg, .portfolio-list .po-item.transfered a .hover svg .zone-svg {
-            transition-delay: 0s; }
+        .portfolio-list li.transfered a .hover svg .zone-svg, .portfolio-list .po-item.transfered a .hover svg .zone-svg {
+          transition-delay: 0s; }
       .portfolio-list li.transfered a .txt, .portfolio-list .po-item.transfered a .txt {
         opacity: 0; }
       .portfolio-list li.transfered a:hover, .portfolio-list li.transfered a:focus, .portfolio-list li.transfered a.on, .portfolio-list .po-item.transfered a:hover, .portfolio-list .po-item.transfered a:focus, .portfolio-list .po-item.transfered a.on {
@@ -1552,10 +1554,10 @@ select::-ms-expand {
         background: #fff;
         color: #303b3d;
         transition: fill 0.4s linear; }
-        .portfolio-list li.transfered a:hover svg, .portfolio-list li.transfered a:focus svg, .portfolio-list li.transfered a.on svg, .portfolio-list .po-item.transfered a:hover svg, .portfolio-list .po-item.transfered a:focus svg, .portfolio-list .po-item.transfered a.on svg {
+        .portfolio-list li.transfered a:hover svg, .portfolio-list li.transfered a:hover img, .portfolio-list li.transfered a:focus svg, .portfolio-list li.transfered a:focus img, .portfolio-list li.transfered a.on svg, .portfolio-list li.transfered a.on img, .portfolio-list .po-item.transfered a:hover svg, .portfolio-list .po-item.transfered a:hover img, .portfolio-list .po-item.transfered a:focus svg, .portfolio-list .po-item.transfered a:focus img, .portfolio-list .po-item.transfered a.on svg, .portfolio-list .po-item.transfered a.on img {
           transform: translate3d(0, 0, 0) scale(1); }
-          .portfolio-list li.transfered a:hover svg .zone-svg, .portfolio-list li.transfered a:focus svg .zone-svg, .portfolio-list li.transfered a.on svg .zone-svg, .portfolio-list .po-item.transfered a:hover svg .zone-svg, .portfolio-list .po-item.transfered a:focus svg .zone-svg, .portfolio-list .po-item.transfered a.on svg .zone-svg {
-            transition-delay: 0s; }
+        .portfolio-list li.transfered a:hover svg .zone-svg, .portfolio-list li.transfered a:focus svg .zone-svg, .portfolio-list li.transfered a.on svg .zone-svg, .portfolio-list .po-item.transfered a:hover svg .zone-svg, .portfolio-list .po-item.transfered a:focus svg .zone-svg, .portfolio-list .po-item.transfered a.on svg .zone-svg {
+          transition-delay: 0s; }
     .portfolio-list li a, .portfolio-list .po-item a {
       position: absolute;
       top: 10px;
@@ -1591,122 +1593,123 @@ select::-ms-expand {
       .portfolio-list li a:hover, .portfolio-list li a:focus, .portfolio-list li a.on, .portfolio-list .po-item a:hover, .portfolio-list .po-item a:focus, .portfolio-list .po-item a.on {
         opacity: 1;
         border-color: #34b6b8;
-        transition: border-color 0s cubic-bezier(0.42, 0, 0.58, 1); }
+        transition: border-color 0s cubic-bezier(0.42, 0, 0.58, 1);
+        /*> img{
+            opacity: 0.3;
+        }*/ }
         .portfolio-list li a:hover:after, .portfolio-list li a:focus:after, .portfolio-list li a.on:after, .portfolio-list .po-item a:hover:after, .portfolio-list .po-item a:focus:after, .portfolio-list .po-item a.on:after {
           transform: scale(0.96, 0.94);
           transition: transform 0.65s cubic-bezier(0, 0.855, 0.345, 1);
           transition-delay: 0s; }
-        .portfolio-list li a:hover > img, .portfolio-list li a:focus > img, .portfolio-list li a.on > img, .portfolio-list .po-item a:hover > img, .portfolio-list .po-item a:focus > img, .portfolio-list .po-item a.on > img {
-          opacity: 0.3; }
         .portfolio-list li a:hover .txt, .portfolio-list li a:focus .txt, .portfolio-list li a.on .txt, .portfolio-list .po-item a:hover .txt, .portfolio-list .po-item a:focus .txt, .portfolio-list .po-item a.on .txt {
           opacity: 0; }
-        .portfolio-list li a:hover svg, .portfolio-list li a:focus svg, .portfolio-list li a.on svg, .portfolio-list .po-item a:hover svg, .portfolio-list .po-item a:focus svg, .portfolio-list .po-item a.on svg {
+        .portfolio-list li a:hover svg, .portfolio-list li a:hover img, .portfolio-list li a:focus svg, .portfolio-list li a:focus img, .portfolio-list li a.on svg, .portfolio-list li a.on img, .portfolio-list .po-item a:hover svg, .portfolio-list .po-item a:hover img, .portfolio-list .po-item a:focus svg, .portfolio-list .po-item a:focus img, .portfolio-list .po-item a.on svg, .portfolio-list .po-item a.on img {
           transform: translate3d(-50%, -50%, 0) scale(1);
           transition: transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
           transition-delay: 0.10s; }
-          .portfolio-list li a:hover svg .st0, .portfolio-list li a:focus svg .st0, .portfolio-list li a.on svg .st0, .portfolio-list .po-item a:hover svg .st0, .portfolio-list .po-item a:focus svg .st0, .portfolio-list .po-item a.on svg .st0 {
-            fill: #1F1F1D; }
-          .portfolio-list li a:hover svg .st1, .portfolio-list li a:focus svg .st1, .portfolio-list li a.on svg .st1, .portfolio-list .po-item a:hover svg .st1, .portfolio-list .po-item a:focus svg .st1, .portfolio-list .po-item a.on svg .st1 {
-            fill: #C51632; }
-          .portfolio-list li a:hover svg .st2, .portfolio-list li a:focus svg .st2, .portfolio-list li a.on svg .st2, .portfolio-list .po-item a:hover svg .st2, .portfolio-list .po-item a:focus svg .st2, .portfolio-list .po-item a.on svg .st2 {
-            fill: #F49A4C; }
-          .portfolio-list li a:hover svg .st3, .portfolio-list li a:focus svg .st3, .portfolio-list li a.on svg .st3, .portfolio-list .po-item a:hover svg .st3, .portfolio-list .po-item a:focus svg .st3, .portfolio-list .po-item a.on svg .st3 {
-            fill: #E95427; }
-          .portfolio-list li a:hover svg .st4, .portfolio-list li a:focus svg .st4, .portfolio-list li a.on svg .st4, .portfolio-list .po-item a:hover svg .st4, .portfolio-list .po-item a:focus svg .st4, .portfolio-list .po-item a.on svg .st4 {
-            fill: #C41531; }
-          .portfolio-list li a:hover svg .st5, .portfolio-list li a:focus svg .st5, .portfolio-list li a.on svg .st5, .portfolio-list .po-item a:hover svg .st5, .portfolio-list .po-item a:focus svg .st5, .portfolio-list .po-item a.on svg .st5 {
-            fill: #7C1C16; }
-          .portfolio-list li a:hover svg .st6, .portfolio-list li a:focus svg .st6, .portfolio-list li a.on svg .st6, .portfolio-list .po-item a:hover svg .st6, .portfolio-list .po-item a:focus svg .st6, .portfolio-list .po-item a.on svg .st6 {
-            fill: #FCE16D; }
-          .portfolio-list li a:hover svg .st7, .portfolio-list li a:focus svg .st7, .portfolio-list li a.on svg .st7, .portfolio-list .po-item a:hover svg .st7, .portfolio-list .po-item a:focus svg .st7, .portfolio-list .po-item a.on svg .st7 {
-            fill: #E95326; }
-          .portfolio-list li a:hover svg .st8, .portfolio-list li a:focus svg .st8, .portfolio-list li a.on svg .st8, .portfolio-list .po-item a:hover svg .st8, .portfolio-list .po-item a:focus svg .st8, .portfolio-list .po-item a.on svg .st8 {
-            fill: #C41632; }
-          .portfolio-list li a:hover svg .st9, .portfolio-list li a:focus svg .st9, .portfolio-list li a.on svg .st9, .portfolio-list .po-item a:hover svg .st9, .portfolio-list .po-item a:focus svg .st9, .portfolio-list .po-item a.on svg .st9 {
-            fill: #7C1B15; }
-          .portfolio-list li a:hover svg .st10, .portfolio-list li a:focus svg .st10, .portfolio-list li a.on svg .st10, .portfolio-list .po-item a:hover svg .st10, .portfolio-list .po-item a:focus svg .st10, .portfolio-list .po-item a.on svg .st10 {
-            fill: #F49A4B; }
-          .portfolio-list li a:hover svg .cls-1, .portfolio-list li a:focus svg .cls-1, .portfolio-list li a.on svg .cls-1, .portfolio-list .po-item a:hover svg .cls-1, .portfolio-list .po-item a:focus svg .cls-1, .portfolio-list .po-item a.on svg .cls-1 {
-            fill: #282c38; }
-          .portfolio-list li a:hover svg .cls-1, .portfolio-list li a:hover svg .cls-2, .portfolio-list li a:focus svg .cls-1, .portfolio-list li a:focus svg .cls-2, .portfolio-list li a.on svg .cls-1, .portfolio-list li a.on svg .cls-2, .portfolio-list .po-item a:hover svg .cls-1, .portfolio-list .po-item a:hover svg .cls-2, .portfolio-list .po-item a:focus svg .cls-1, .portfolio-list .po-item a:focus svg .cls-2, .portfolio-list .po-item a.on svg .cls-1, .portfolio-list .po-item a.on svg .cls-2 {
-            fill-rule: evenodd; }
-          .portfolio-list li a:hover svg .cls-2, .portfolio-list li a:focus svg .cls-2, .portfolio-list li a.on svg .cls-2, .portfolio-list .po-item a:hover svg .cls-2, .portfolio-list .po-item a:focus svg .cls-2, .portfolio-list .po-item a.on svg .cls-2 {
-            fill: #00cb3e; }
-          .portfolio-list li a:hover svg .algo-1, .portfolio-list li a:hover svg .algo-2, .portfolio-list li a:focus svg .algo-1, .portfolio-list li a:focus svg .algo-2, .portfolio-list li a.on svg .algo-1, .portfolio-list li a.on svg .algo-2, .portfolio-list .po-item a:hover svg .algo-1, .portfolio-list .po-item a:hover svg .algo-2, .portfolio-list .po-item a:focus svg .algo-1, .portfolio-list .po-item a:focus svg .algo-2, .portfolio-list .po-item a.on svg .algo-1, .portfolio-list .po-item a.on svg .algo-2 {
-            fill-rule: evenodd; }
-          .portfolio-list li a:hover svg .algo-2, .portfolio-list li a:focus svg .algo-2, .portfolio-list li a.on svg .algo-2, .portfolio-list .po-item a:hover svg .algo-2, .portfolio-list .po-item a:focus svg .algo-2, .portfolio-list .po-item a.on svg .algo-2 {
-            fill: #4dafd8; }
-          .portfolio-list li a:hover svg .ct-1, .portfolio-list li a:focus svg .ct-1, .portfolio-list li a.on svg .ct-1, .portfolio-list .po-item a:hover svg .ct-1, .portfolio-list .po-item a:focus svg .ct-1, .portfolio-list .po-item a.on svg .ct-1 {
-            fill: #1a2327; }
-          .portfolio-list li a:hover svg .ct-2, .portfolio-list li a:focus svg .ct-2, .portfolio-list li a.on svg .ct-2, .portfolio-list .po-item a:hover svg .ct-2, .portfolio-list .po-item a:focus svg .ct-2, .portfolio-list .po-item a.on svg .ct-2 {
-            fill: #a0a0a0; }
-          .portfolio-list li a:hover svg .ct-3, .portfolio-list li a:focus svg .ct-3, .portfolio-list li a.on svg .ct-3, .portfolio-list .po-item a:hover svg .ct-3, .portfolio-list .po-item a:focus svg .ct-3, .portfolio-list .po-item a.on svg .ct-3 {
-            fill: #4db04f; }
-          .portfolio-list li a:hover svg .ct-4, .portfolio-list li a:focus svg .ct-4, .portfolio-list li a.on svg .ct-4, .portfolio-list .po-item a:hover svg .ct-4, .portfolio-list .po-item a:focus svg .ct-4, .portfolio-list .po-item a.on svg .ct-4 {
-            fill: #1b1c1f; }
-          .portfolio-list li a:hover svg .tl-1, .portfolio-list li a:focus svg .tl-1, .portfolio-list li a.on svg .tl-1, .portfolio-list .po-item a:hover svg .tl-1, .portfolio-list .po-item a:focus svg .tl-1, .portfolio-list .po-item a.on svg .tl-1 {
-            fill: #00b0ad; }
-          .portfolio-list li a:hover svg .ak-1, .portfolio-list li a:focus svg .ak-1, .portfolio-list li a.on svg .ak-1, .portfolio-list .po-item a:hover svg .ak-1, .portfolio-list .po-item a:focus svg .ak-1, .portfolio-list .po-item a.on svg .ak-1 {
-            fill: url(#Dégradé_sans_nom); }
-          .portfolio-list li a:hover svg .ak-2, .portfolio-list li a:focus svg .ak-2, .portfolio-list li a.on svg .ak-2, .portfolio-list .po-item a:hover svg .ak-2, .portfolio-list .po-item a:focus svg .ak-2, .portfolio-list .po-item a.on svg .ak-2 {
-            fill: url(#Dégradé_sans_nom_2); }
-          .portfolio-list li a:hover svg .ak-3, .portfolio-list li a:focus svg .ak-3, .portfolio-list li a.on svg .ak-3, .portfolio-list .po-item a:hover svg .ak-3, .portfolio-list .po-item a:focus svg .ak-3, .portfolio-list .po-item a.on svg .ak-3 {
-            fill: url(#Dégradé_sans_nom_3); }
-          .portfolio-list li a:hover svg .ak-4, .portfolio-list li a:focus svg .ak-4, .portfolio-list li a.on svg .ak-4, .portfolio-list .po-item a:hover svg .ak-4, .portfolio-list .po-item a:focus svg .ak-4, .portfolio-list .po-item a.on svg .ak-4 {
-            fill: url(#Dégradé_sans_nom_4); }
-          .portfolio-list li a:hover svg .ak-5, .portfolio-list li a:focus svg .ak-5, .portfolio-list li a.on svg .ak-5, .portfolio-list .po-item a:hover svg .ak-5, .portfolio-list .po-item a:focus svg .ak-5, .portfolio-list .po-item a.on svg .ak-5 {
-            fill: url(#Dégradé_sans_nom_5); }
-          .portfolio-list li a:hover svg .dv-1, .portfolio-list li a:focus svg .dv-1, .portfolio-list li a.on svg .dv-1, .portfolio-list .po-item a:hover svg .dv-1, .portfolio-list .po-item a:focus svg .dv-1, .portfolio-list .po-item a.on svg .dv-1 {
-            fill: #3c465a; }
-          .portfolio-list li a:hover svg .zone-svg, .portfolio-list li a:focus svg .zone-svg, .portfolio-list li a.on svg .zone-svg, .portfolio-list .po-item a:hover svg .zone-svg, .portfolio-list .po-item a:focus svg .zone-svg, .portfolio-list .po-item a.on svg .zone-svg {
-            transition: fill 0.4s linear;
-            transition-delay: 0.25s; }
-      .portfolio-list li a.on svg, .portfolio-list .po-item a.on svg {
-        transform: translate3d(-50%, -50%, 0) scale(0.95); }
-        .portfolio-list li a.on svg .st0, .portfolio-list .po-item a.on svg .st0 {
+        .portfolio-list li a:hover svg .st0, .portfolio-list li a:focus svg .st0, .portfolio-list li a.on svg .st0, .portfolio-list .po-item a:hover svg .st0, .portfolio-list .po-item a:focus svg .st0, .portfolio-list .po-item a.on svg .st0 {
           fill: #1F1F1D; }
-        .portfolio-list li a.on svg .st1, .portfolio-list .po-item a.on svg .st1 {
+        .portfolio-list li a:hover svg .st1, .portfolio-list li a:focus svg .st1, .portfolio-list li a.on svg .st1, .portfolio-list .po-item a:hover svg .st1, .portfolio-list .po-item a:focus svg .st1, .portfolio-list .po-item a.on svg .st1 {
           fill: #C51632; }
-        .portfolio-list li a.on svg .st2, .portfolio-list .po-item a.on svg .st2 {
+        .portfolio-list li a:hover svg .st2, .portfolio-list li a:focus svg .st2, .portfolio-list li a.on svg .st2, .portfolio-list .po-item a:hover svg .st2, .portfolio-list .po-item a:focus svg .st2, .portfolio-list .po-item a.on svg .st2 {
           fill: #F49A4C; }
-        .portfolio-list li a.on svg .st3, .portfolio-list .po-item a.on svg .st3 {
+        .portfolio-list li a:hover svg .st3, .portfolio-list li a:focus svg .st3, .portfolio-list li a.on svg .st3, .portfolio-list .po-item a:hover svg .st3, .portfolio-list .po-item a:focus svg .st3, .portfolio-list .po-item a.on svg .st3 {
           fill: #E95427; }
-        .portfolio-list li a.on svg .st4, .portfolio-list .po-item a.on svg .st4 {
+        .portfolio-list li a:hover svg .st4, .portfolio-list li a:focus svg .st4, .portfolio-list li a.on svg .st4, .portfolio-list .po-item a:hover svg .st4, .portfolio-list .po-item a:focus svg .st4, .portfolio-list .po-item a.on svg .st4 {
           fill: #C41531; }
-        .portfolio-list li a.on svg .st5, .portfolio-list .po-item a.on svg .st5 {
+        .portfolio-list li a:hover svg .st5, .portfolio-list li a:focus svg .st5, .portfolio-list li a.on svg .st5, .portfolio-list .po-item a:hover svg .st5, .portfolio-list .po-item a:focus svg .st5, .portfolio-list .po-item a.on svg .st5 {
           fill: #7C1C16; }
-        .portfolio-list li a.on svg .st6, .portfolio-list .po-item a.on svg .st6 {
+        .portfolio-list li a:hover svg .st6, .portfolio-list li a:focus svg .st6, .portfolio-list li a.on svg .st6, .portfolio-list .po-item a:hover svg .st6, .portfolio-list .po-item a:focus svg .st6, .portfolio-list .po-item a.on svg .st6 {
           fill: #FCE16D; }
-        .portfolio-list li a.on svg .st7, .portfolio-list .po-item a.on svg .st7 {
+        .portfolio-list li a:hover svg .st7, .portfolio-list li a:focus svg .st7, .portfolio-list li a.on svg .st7, .portfolio-list .po-item a:hover svg .st7, .portfolio-list .po-item a:focus svg .st7, .portfolio-list .po-item a.on svg .st7 {
           fill: #E95326; }
-        .portfolio-list li a.on svg .st8, .portfolio-list .po-item a.on svg .st8 {
+        .portfolio-list li a:hover svg .st8, .portfolio-list li a:focus svg .st8, .portfolio-list li a.on svg .st8, .portfolio-list .po-item a:hover svg .st8, .portfolio-list .po-item a:focus svg .st8, .portfolio-list .po-item a.on svg .st8 {
           fill: #C41632; }
-        .portfolio-list li a.on svg .st9, .portfolio-list .po-item a.on svg .st9 {
+        .portfolio-list li a:hover svg .st9, .portfolio-list li a:focus svg .st9, .portfolio-list li a.on svg .st9, .portfolio-list .po-item a:hover svg .st9, .portfolio-list .po-item a:focus svg .st9, .portfolio-list .po-item a.on svg .st9 {
           fill: #7C1B15; }
-        .portfolio-list li a.on svg .st10, .portfolio-list .po-item a.on svg .st10 {
+        .portfolio-list li a:hover svg .st10, .portfolio-list li a:focus svg .st10, .portfolio-list li a.on svg .st10, .portfolio-list .po-item a:hover svg .st10, .portfolio-list .po-item a:focus svg .st10, .portfolio-list .po-item a.on svg .st10 {
           fill: #F49A4B; }
-        .portfolio-list li a.on svg .cls-1, .portfolio-list .po-item a.on svg .cls-1 {
+        .portfolio-list li a:hover svg .cls-1, .portfolio-list li a:focus svg .cls-1, .portfolio-list li a.on svg .cls-1, .portfolio-list .po-item a:hover svg .cls-1, .portfolio-list .po-item a:focus svg .cls-1, .portfolio-list .po-item a.on svg .cls-1 {
           fill: #282c38; }
-        .portfolio-list li a.on svg .cls-1, .portfolio-list li a.on svg .cls-2, .portfolio-list .po-item a.on svg .cls-1, .portfolio-list .po-item a.on svg .cls-2 {
+        .portfolio-list li a:hover svg .cls-1, .portfolio-list li a:hover svg .cls-2, .portfolio-list li a:focus svg .cls-1, .portfolio-list li a:focus svg .cls-2, .portfolio-list li a.on svg .cls-1, .portfolio-list li a.on svg .cls-2, .portfolio-list .po-item a:hover svg .cls-1, .portfolio-list .po-item a:hover svg .cls-2, .portfolio-list .po-item a:focus svg .cls-1, .portfolio-list .po-item a:focus svg .cls-2, .portfolio-list .po-item a.on svg .cls-1, .portfolio-list .po-item a.on svg .cls-2 {
           fill-rule: evenodd; }
-        .portfolio-list li a.on svg .cls-2, .portfolio-list .po-item a.on svg .cls-2 {
+        .portfolio-list li a:hover svg .cls-2, .portfolio-list li a:focus svg .cls-2, .portfolio-list li a.on svg .cls-2, .portfolio-list .po-item a:hover svg .cls-2, .portfolio-list .po-item a:focus svg .cls-2, .portfolio-list .po-item a.on svg .cls-2 {
           fill: #00cb3e; }
-        .portfolio-list li a.on svg .algo-1, .portfolio-list li a.on svg .algo-2, .portfolio-list .po-item a.on svg .algo-1, .portfolio-list .po-item a.on svg .algo-2 {
+        .portfolio-list li a:hover svg .algo-1, .portfolio-list li a:hover svg .algo-2, .portfolio-list li a:focus svg .algo-1, .portfolio-list li a:focus svg .algo-2, .portfolio-list li a.on svg .algo-1, .portfolio-list li a.on svg .algo-2, .portfolio-list .po-item a:hover svg .algo-1, .portfolio-list .po-item a:hover svg .algo-2, .portfolio-list .po-item a:focus svg .algo-1, .portfolio-list .po-item a:focus svg .algo-2, .portfolio-list .po-item a.on svg .algo-1, .portfolio-list .po-item a.on svg .algo-2 {
           fill-rule: evenodd; }
-        .portfolio-list li a.on svg .algo-2, .portfolio-list .po-item a.on svg .algo-2 {
+        .portfolio-list li a:hover svg .algo-2, .portfolio-list li a:focus svg .algo-2, .portfolio-list li a.on svg .algo-2, .portfolio-list .po-item a:hover svg .algo-2, .portfolio-list .po-item a:focus svg .algo-2, .portfolio-list .po-item a.on svg .algo-2 {
           fill: #4dafd8; }
-        .portfolio-list li a.on svg .ct-1, .portfolio-list .po-item a.on svg .ct-1 {
+        .portfolio-list li a:hover svg .ct-1, .portfolio-list li a:focus svg .ct-1, .portfolio-list li a.on svg .ct-1, .portfolio-list .po-item a:hover svg .ct-1, .portfolio-list .po-item a:focus svg .ct-1, .portfolio-list .po-item a.on svg .ct-1 {
           fill: #1a2327; }
-        .portfolio-list li a.on svg .ct-2, .portfolio-list .po-item a.on svg .ct-2 {
+        .portfolio-list li a:hover svg .ct-2, .portfolio-list li a:focus svg .ct-2, .portfolio-list li a.on svg .ct-2, .portfolio-list .po-item a:hover svg .ct-2, .portfolio-list .po-item a:focus svg .ct-2, .portfolio-list .po-item a.on svg .ct-2 {
           fill: #a0a0a0; }
-        .portfolio-list li a.on svg .ct-3, .portfolio-list .po-item a.on svg .ct-3 {
+        .portfolio-list li a:hover svg .ct-3, .portfolio-list li a:focus svg .ct-3, .portfolio-list li a.on svg .ct-3, .portfolio-list .po-item a:hover svg .ct-3, .portfolio-list .po-item a:focus svg .ct-3, .portfolio-list .po-item a.on svg .ct-3 {
           fill: #4db04f; }
-        .portfolio-list li a.on svg .ct-4, .portfolio-list .po-item a.on svg .ct-4 {
+        .portfolio-list li a:hover svg .ct-4, .portfolio-list li a:focus svg .ct-4, .portfolio-list li a.on svg .ct-4, .portfolio-list .po-item a:hover svg .ct-4, .portfolio-list .po-item a:focus svg .ct-4, .portfolio-list .po-item a.on svg .ct-4 {
           fill: #1b1c1f; }
-        .portfolio-list li a.on svg .tl-1, .portfolio-list .po-item a.on svg .tl-1 {
+        .portfolio-list li a:hover svg .tl-1, .portfolio-list li a:focus svg .tl-1, .portfolio-list li a.on svg .tl-1, .portfolio-list .po-item a:hover svg .tl-1, .portfolio-list .po-item a:focus svg .tl-1, .portfolio-list .po-item a.on svg .tl-1 {
           fill: #00b0ad; }
-        .portfolio-list li a.on svg .zone-svg, .portfolio-list .po-item a.on svg .zone-svg {
-          transition: fill 0.2s linear; }
+        .portfolio-list li a:hover svg .ak-1, .portfolio-list li a:focus svg .ak-1, .portfolio-list li a.on svg .ak-1, .portfolio-list .po-item a:hover svg .ak-1, .portfolio-list .po-item a:focus svg .ak-1, .portfolio-list .po-item a.on svg .ak-1 {
+          fill: url(#Dégradé_sans_nom); }
+        .portfolio-list li a:hover svg .ak-2, .portfolio-list li a:focus svg .ak-2, .portfolio-list li a.on svg .ak-2, .portfolio-list .po-item a:hover svg .ak-2, .portfolio-list .po-item a:focus svg .ak-2, .portfolio-list .po-item a.on svg .ak-2 {
+          fill: url(#Dégradé_sans_nom_2); }
+        .portfolio-list li a:hover svg .ak-3, .portfolio-list li a:focus svg .ak-3, .portfolio-list li a.on svg .ak-3, .portfolio-list .po-item a:hover svg .ak-3, .portfolio-list .po-item a:focus svg .ak-3, .portfolio-list .po-item a.on svg .ak-3 {
+          fill: url(#Dégradé_sans_nom_3); }
+        .portfolio-list li a:hover svg .ak-4, .portfolio-list li a:focus svg .ak-4, .portfolio-list li a.on svg .ak-4, .portfolio-list .po-item a:hover svg .ak-4, .portfolio-list .po-item a:focus svg .ak-4, .portfolio-list .po-item a.on svg .ak-4 {
+          fill: url(#Dégradé_sans_nom_4); }
+        .portfolio-list li a:hover svg .ak-5, .portfolio-list li a:focus svg .ak-5, .portfolio-list li a.on svg .ak-5, .portfolio-list .po-item a:hover svg .ak-5, .portfolio-list .po-item a:focus svg .ak-5, .portfolio-list .po-item a.on svg .ak-5 {
+          fill: url(#Dégradé_sans_nom_5); }
+        .portfolio-list li a:hover svg .dv-1, .portfolio-list li a:focus svg .dv-1, .portfolio-list li a.on svg .dv-1, .portfolio-list .po-item a:hover svg .dv-1, .portfolio-list .po-item a:focus svg .dv-1, .portfolio-list .po-item a.on svg .dv-1 {
+          fill: #3c465a; }
+        .portfolio-list li a:hover svg .zone-svg, .portfolio-list li a:focus svg .zone-svg, .portfolio-list li a.on svg .zone-svg, .portfolio-list .po-item a:hover svg .zone-svg, .portfolio-list .po-item a:focus svg .zone-svg, .portfolio-list .po-item a.on svg .zone-svg {
+          transition: fill 0.4s linear;
+          transition-delay: 0.25s; }
+      .portfolio-list li a.on img, .portfolio-list li a.on svg, .portfolio-list .po-item a.on img, .portfolio-list .po-item a.on svg {
+        transform: translate3d(-50%, -50%, 0) scale(0.95); }
+      .portfolio-list li a.on svg .st0, .portfolio-list .po-item a.on svg .st0 {
+        fill: #1F1F1D; }
+      .portfolio-list li a.on svg .st1, .portfolio-list .po-item a.on svg .st1 {
+        fill: #C51632; }
+      .portfolio-list li a.on svg .st2, .portfolio-list .po-item a.on svg .st2 {
+        fill: #F49A4C; }
+      .portfolio-list li a.on svg .st3, .portfolio-list .po-item a.on svg .st3 {
+        fill: #E95427; }
+      .portfolio-list li a.on svg .st4, .portfolio-list .po-item a.on svg .st4 {
+        fill: #C41531; }
+      .portfolio-list li a.on svg .st5, .portfolio-list .po-item a.on svg .st5 {
+        fill: #7C1C16; }
+      .portfolio-list li a.on svg .st6, .portfolio-list .po-item a.on svg .st6 {
+        fill: #FCE16D; }
+      .portfolio-list li a.on svg .st7, .portfolio-list .po-item a.on svg .st7 {
+        fill: #E95326; }
+      .portfolio-list li a.on svg .st8, .portfolio-list .po-item a.on svg .st8 {
+        fill: #C41632; }
+      .portfolio-list li a.on svg .st9, .portfolio-list .po-item a.on svg .st9 {
+        fill: #7C1B15; }
+      .portfolio-list li a.on svg .st10, .portfolio-list .po-item a.on svg .st10 {
+        fill: #F49A4B; }
+      .portfolio-list li a.on svg .cls-1, .portfolio-list .po-item a.on svg .cls-1 {
+        fill: #282c38; }
+      .portfolio-list li a.on svg .cls-1, .portfolio-list li a.on svg .cls-2, .portfolio-list .po-item a.on svg .cls-1, .portfolio-list .po-item a.on svg .cls-2 {
+        fill-rule: evenodd; }
+      .portfolio-list li a.on svg .cls-2, .portfolio-list .po-item a.on svg .cls-2 {
+        fill: #00cb3e; }
+      .portfolio-list li a.on svg .algo-1, .portfolio-list li a.on svg .algo-2, .portfolio-list .po-item a.on svg .algo-1, .portfolio-list .po-item a.on svg .algo-2 {
+        fill-rule: evenodd; }
+      .portfolio-list li a.on svg .algo-2, .portfolio-list .po-item a.on svg .algo-2 {
+        fill: #4dafd8; }
+      .portfolio-list li a.on svg .ct-1, .portfolio-list .po-item a.on svg .ct-1 {
+        fill: #1a2327; }
+      .portfolio-list li a.on svg .ct-2, .portfolio-list .po-item a.on svg .ct-2 {
+        fill: #a0a0a0; }
+      .portfolio-list li a.on svg .ct-3, .portfolio-list .po-item a.on svg .ct-3 {
+        fill: #4db04f; }
+      .portfolio-list li a.on svg .ct-4, .portfolio-list .po-item a.on svg .ct-4 {
+        fill: #1b1c1f; }
+      .portfolio-list li a.on svg .tl-1, .portfolio-list .po-item a.on svg .tl-1 {
+        fill: #00b0ad; }
+      .portfolio-list li a.on svg .zone-svg, .portfolio-list .po-item a.on svg .zone-svg {
+        transition: fill 0.2s linear; }
   .portfolio-list .po-item {
     padding: 10px 0;
     position: relative; }
@@ -1735,11 +1738,7 @@ select::-ms-expand {
     .portfolio-list .po-item a {
       left: 0;
       right: 0; }
-  .portfolio-list img {
-    display: inline-block;
-    max-width: 65%;
-    transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1); }
-  .portfolio-list svg {
+  .portfolio-list svg, .portfolio-list img {
     display: inline-block;
     max-width: 58%;
     position: absolute;
@@ -1749,10 +1748,10 @@ select::-ms-expand {
     transition: transform 0.15s cubic-bezier(0.55, 0.085, 0.68, 0.53);
     transition-delay: 0s;
     z-index: 1; }
-    .portfolio-list svg .zone-svg {
-      transition: fill 0.3s linear;
-      transition-delay: 0s;
-      fill: #303b3d; }
+  .portfolio-list svg .zone-svg {
+    transition: fill 0.3s linear;
+    transition-delay: 0s;
+    fill: #303b3d; }
   .portfolio-list .txt {
     position: absolute;
     left: 0;
@@ -1767,11 +1766,12 @@ select::-ms-expand {
     right: 0;
     opacity: 0;
     transform: translate3d(0, 100%, 0);
-    transition: color 0.45s cubic-bezier(0.75, 0, 0.125, 1); }
-    .portfolio-list .hover img {
-      display: block;
-      max-width: 70%;
-      margin: 5px auto 0; }
+    transition: color 0.45s cubic-bezier(0.75, 0, 0.125, 1);
+    /*img{
+        display: block;
+        max-width: 70%;
+        margin: 5px auto 0;
+    }*/ }
   .portfolio-list .po-item-col:first-child {
     transform: translate3d(0, 55px, 0); }
   .portfolio-list .po-item-col:nth-child(2) {
@@ -1795,15 +1795,16 @@ select::-ms-expand {
   width: 100%;
   padding: 30px 0 25px;
   border-bottom: 1px solid #ccd1d2;
-  position: fixed;
-  top: -2px;
   z-index: 15;
   background: #fff;
   text-align: center;
   backface-visibility: hidden;
-  transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
-  .portfolio-filters.on {
-    transform: translate3d(0, 99px, 0); }
+  transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
+  .portfolio-filters.fixed {
+    position: fixed;
+    top: 97px; }
+    .portfolio-filters.fixed.on {
+      transform: translate3d(0, -99px, 0); }
 
 .portfolio-header {
   padding: 230px 0 30px;
@@ -1855,11 +1856,11 @@ select::-ms-expand {
       .portfolio-header .header-block-btn .btn-invert .before {
         color: #fff; }
       .portfolio-header .header-block-btn .btn-invert .after {
-        color: #01a2a6; }
+        color: #4b5d60; }
       .is-desktop .portfolio-header .header-block-btn .btn-invert:hover, .is-desktop .portfolio-header .header-block-btn .btn-invert:focus, .no-js .portfolio-header .header-block-btn .btn-invert:hover, .no-js .portfolio-header .header-block-btn .btn-invert:focus {
         background: #fff;
         border-color: #fff;
-        color: #01a2a6; }
+        color: #4b5d60; }
   .portfolio-header .btn-store {
     margin: 0 5px 0 0; }
   .portfolio-header .btn-close {
@@ -2156,12 +2157,21 @@ select::-ms-expand {
   padding-bottom: 80px !important; }
 
 .wrapper-interactive-blocks {
-  padding: 0 0 140px 0; }
+  padding: 20px 0 140px 0; }
 
 .interactive-block {
   margin: 0 0 0 8.3333333333%; }
   .interactive-block.align-right {
     margin: 0 8.3333333333% 0 0; }
+  .interactive-block h3 {
+    font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+    letter-spacing: -1px;
+    font-size: 3.8rem;
+    margin: 0 0 20px; }
+  .interactive-block p {
+    font-size: 1.4rem;
+    margin: 0 0 30px;
+    line-height: 1.3; }
 
 /* Buttons */
 .btn, .btn-invert, .btn-arrow, #menu-main a {
@@ -2580,7 +2590,8 @@ select::-ms-expand {
 
 .share {
   display: inline-block;
-  position: relative; }
+  position: relative;
+  text-align: center; }
   .share:before {
     top: -7px;
     left: 0; }
@@ -2623,7 +2634,8 @@ select::-ms-expand {
     height: 32px;
     background: #818a8c;
     border-radius: 50%;
-    font-size: 15px; }
+    font-size: 15px;
+    color: #fff !important; }
     .share a:before {
       float: left;
       margin: 0;
@@ -2655,6 +2667,13 @@ select::-ms-expand {
   .share .corner:after {
     bottom: 0;
     right: -7px; }
+  .content-default .share {
+    padding: 0 20px;
+    float: right;
+    margin-right: 10%; }
+
+.post-medium {
+  float: left; }
 
 /* Newsletter */
 .newsletter {
@@ -3030,22 +3049,12 @@ select::-ms-expand {
   .post-title {
     font-size: 2rem; }
 
-  #header {
-    /*&.fixed{
-        &.on{
-            .single &{
-                #menu-main{
-                    transform: translate3d(0, -15px, 0);
-                }
-            }
-        }
-    }*/ }
-    #header .post-title {
-      display: none; }
-    #header .btn-search {
-      margin-top: 5px;
-      margin-bottom: 5px;
-      margin-right: 95px; }
+  #header .post-title {
+    display: none; }
+  #header .btn-search {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 95px; }
 
   #menu-main {
     display: none; }
@@ -3155,7 +3164,19 @@ select::-ms-expand {
 
   .newsletter-title {
     width: 33.3333333333%;
-    margin: 0 8.3333333333%; } }
+    margin: 0 8.3333333333%; }
+
+  .wrapper-interactive-blocks {
+    padding: 0 0 54px 0; }
+    .wrapper-interactive-blocks .interactive-block {
+      width: 50%;
+      margin: 0;
+      padding: 0 20px;
+      text-align: center; }
+      .wrapper-interactive-blocks .interactive-block.align-right {
+        margin: 0; }
+      .wrapper-interactive-blocks .interactive-block h3 {
+        font-size: 2.8rem; } }
 @media (max-width: 767px) {
   body {
     font-size: 1.4em; }
@@ -3285,7 +3306,45 @@ select::-ms-expand {
   .main-spotlight-post h3 {
     font-size: 2.2rem; }
   .main-spotlight-post p {
-    margin-bottom: 15px; } }
+    margin-bottom: 15px; }
+
+  .post-medium {
+    float: none;
+    margin-bottom: 50px;
+    text-align: center; }
+
+  .content-default .share {
+    float: none;
+    display: block;
+    width: 195px;
+    margin: 0 auto; }
+
+  .wrapper-interactive-blocks {
+    padding: 0 0 20px; }
+    .wrapper-interactive-blocks .interactive-block {
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px 8.3333333333%; }
+      .wrapper-interactive-blocks .interactive-block.align-right {
+        margin: 0 auto; }
+      .wrapper-interactive-blocks .interactive-block .btn.btn-left {
+        padding: 21px 47px 19px 17px; }
+        .wrapper-interactive-blocks .interactive-block .btn.btn-left:before {
+          left: auto;
+          right: 20px; }
+        .wrapper-interactive-blocks .interactive-block .btn.btn-left:after {
+          left: auto;
+          right: 17px;
+          transform: translate3d(0, 0, 0) rotate(0); }
+        .wrapper-interactive-blocks .interactive-block .btn.btn-left .after {
+          right: 47px;
+          left: auto; }
+        .wrapper-interactive-blocks .interactive-block .btn.btn-left:hover:before {
+          transform: translate3d(7px, 0, 0) scale(0.6, 0.85); }
+        .wrapper-interactive-blocks .interactive-block .btn.btn-left:hover:after {
+          transform: translate3d(7px, 0, 0) scale(0.85); } }
 @media (max-width: 540px) {
   h1 {
     width: 100%; }
@@ -3351,7 +3410,10 @@ select::-ms-expand {
     .newsletter form {
       width: 100%;
       padding: 0;
-      text-align: center; } }
+      text-align: center; }
+
+  .wrapper-interactive-blocks .interactive-block h3 {
+    font-size: 1.8rem; } }
 @media (max-width: 480px) {
   .home h1 {
     font-size: 3rem; }

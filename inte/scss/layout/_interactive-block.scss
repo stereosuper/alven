@@ -1,10 +1,21 @@
 .wrapper-interactive-blocks{
-	padding: 0 0 140px 0;
+	padding: 20px 0 140px 0;
 }
 
 .interactive-block{
+	margin: 0 0 0 $col;
 	&.align-right{
 		margin: 0 $col 0 0;
 	}
-	margin: 0 0 0 $col;
+	h3{
+		font-family: $sourceBlack;
+		letter-spacing: -1px;
+		font-size: 3.8rem;
+		margin: 0 0 20px;
+	}
+	p{
+		font-size: 1.4rem;
+		margin: 0 0 30px;
+		line-height: 1.3;
+	}
 }
