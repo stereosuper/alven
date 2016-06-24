@@ -629,8 +629,16 @@ hr {
   border: 0;
   height: 1px;
   max-width: 250px;
-  margin: 3em auto 2em;
+  margin: 3em auto 5em;
   background: #e5e8e8;
+}
+
+sup {
+  position: relative;
+  top: -0.5em;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
 }
 
 /******* LIENS / BOUTONS *******/
@@ -1362,9 +1370,9 @@ select::-ms-expand {
 
 .post-meta-header {
   text-align: center;
-}
-.post-meta-header .share {
-  margin: 4.5em 0 0;
+  /*.share{
+      margin: 4.5em 0 0;
+  }*/
 }
 
 .post-meta-header .btn-cat, .post-meta-spotlight .btn-cat {
@@ -1784,6 +1792,115 @@ select::-ms-expand {
 .post p {
   margin: 0 0 4px;
 }
+.post .special-cat {
+  height: 0;
+  padding: 0 0 60%;
+  position: relative;
+  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-size: 1.7rem;
+  background: #636a6b;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+.post .special-cat > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.calendar {
+  width: 63px;
+  height: 75px;
+  border: 3px solid #fff;
+  border-top: 20px solid #fff;
+}
+.calendar:before, .calendar:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+.calendar:after {
+  bottom: -5px;
+  right: -5px;
+  border-width: 0 0 19px 19px;
+  border-color: transparent transparent #636a6b transparent;
+}
+.calendar:before {
+  bottom: -3px;
+  right: -3px;
+  border-width: 15px 15px 0 0;
+  border-color: #fff transparent transparent transparent;
+}
+.calendar .month {
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  color: #636a6b;
+  line-height: 1;
+}
+.calendar .day {
+  display: block;
+  font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
+  font-size: 3rem;
+}
+.calendar .day sup {
+  font-size: 50%;
+  text-transform: none;
+}
+
+.cat-job {
+  width: 80px;
+  height: 80px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  line-height: 76px;
+}
+
+.cat-def {
+  width: 112px;
+  height: 36px;
+  border: 3px solid #fff;
+  line-height: 32px;
+}
+
+.cat-book {
+  width: 50px;
+  height: 70px;
+  border: 3px solid #fff;
+}
+.cat-book:before {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 70px;
+  border: 3px solid #fff;
+  margin: 6px 0 0px -12px;
+  background: #636a6b;
+}
+
+.pagination {
+  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  text-align: center;
+  color: #404040;
+}
+.pagination .current {
+  color: #636a6b;
+}
+.pagination .page-numbers {
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0 2px;
+}
+.pagination .next, .pagination .prev {
+  vertical-align: bottom;
+}
 
 /* Section */
 .section-header {
@@ -1953,16 +2070,15 @@ select::-ms-expand {
   color: #fff;
   -webkit-transition: fill 0.4s linear;
   transition: fill 0.4s linear;
+  /*> img{
+      transform: translate3d(-50%, 0, 0);
+      position: absolute;
+      top: 16px;
+      left: 50%;
+  }*/
 }
 .portfolio-list li.transfered a:after, .portfolio-list .po-item.transfered a:after {
   display: none;
-}
-.portfolio-list li.transfered a > img, .portfolio-list .po-item.transfered a > img {
-  -webkit-transform: translate3d(-50%, 0, 0);
-          transform: translate3d(-50%, 0, 0);
-  position: absolute;
-  top: 16px;
-  left: 50%;
 }
 .portfolio-list li.transfered a .content-transfered, .portfolio-list .po-item.transfered a .content-transfered {
   position: absolute;
@@ -1976,7 +2092,7 @@ select::-ms-expand {
   display: block;
   margin: 10px 0;
 }
-.portfolio-list li.transfered a svg, .portfolio-list .po-item.transfered a svg {
+.portfolio-list li.transfered a svg, .portfolio-list li.transfered a img, .portfolio-list .po-item.transfered a svg, .portfolio-list .po-item.transfered a img {
   position: relative;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
@@ -1996,7 +2112,7 @@ select::-ms-expand {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
-.portfolio-list li.transfered a .hover svg, .portfolio-list .po-item.transfered a .hover svg {
+.portfolio-list li.transfered a .hover svg, .portfolio-list li.transfered a .hover img, .portfolio-list .po-item.transfered a .hover svg, .portfolio-list .po-item.transfered a .hover img {
   position: relative;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
@@ -2019,7 +2135,7 @@ select::-ms-expand {
   -webkit-transition: fill 0.4s linear;
   transition: fill 0.4s linear;
 }
-.portfolio-list li.transfered a:hover svg, .portfolio-list li.transfered a:focus svg, .portfolio-list li.transfered a.on svg, .portfolio-list .po-item.transfered a:hover svg, .portfolio-list .po-item.transfered a:focus svg, .portfolio-list .po-item.transfered a.on svg {
+.portfolio-list li.transfered a:hover svg, .portfolio-list li.transfered a:hover img, .portfolio-list li.transfered a:focus svg, .portfolio-list li.transfered a:focus img, .portfolio-list li.transfered a.on svg, .portfolio-list li.transfered a.on img, .portfolio-list .po-item.transfered a:hover svg, .portfolio-list .po-item.transfered a:hover img, .portfolio-list .po-item.transfered a:focus svg, .portfolio-list .po-item.transfered a:focus img, .portfolio-list .po-item.transfered a.on svg, .portfolio-list .po-item.transfered a.on img {
   -webkit-transform: translate3d(0, 0, 0) scale(1);
           transform: translate3d(0, 0, 0) scale(1);
 }
@@ -2074,6 +2190,9 @@ select::-ms-expand {
   border-color: #34b6b8;
   -webkit-transition: border-color 0s cubic-bezier(0.42, 0, 0.58, 1);
   transition: border-color 0s cubic-bezier(0.42, 0, 0.58, 1);
+  /*> img{
+      opacity: 0.3;
+  }*/
 }
 .portfolio-list li a:hover:after, .portfolio-list li a:focus:after, .portfolio-list li a.on:after, .portfolio-list .po-item a:hover:after, .portfolio-list .po-item a:focus:after, .portfolio-list .po-item a.on:after {
   -webkit-transform: scale(0.96, 0.94);
@@ -2085,13 +2204,10 @@ select::-ms-expand {
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
 }
-.portfolio-list li a:hover > img, .portfolio-list li a:focus > img, .portfolio-list li a.on > img, .portfolio-list .po-item a:hover > img, .portfolio-list .po-item a:focus > img, .portfolio-list .po-item a.on > img {
-  opacity: 0.3;
-}
 .portfolio-list li a:hover .txt, .portfolio-list li a:focus .txt, .portfolio-list li a.on .txt, .portfolio-list .po-item a:hover .txt, .portfolio-list .po-item a:focus .txt, .portfolio-list .po-item a.on .txt {
   opacity: 0;
 }
-.portfolio-list li a:hover svg, .portfolio-list li a:focus svg, .portfolio-list li a.on svg, .portfolio-list .po-item a:hover svg, .portfolio-list .po-item a:focus svg, .portfolio-list .po-item a.on svg {
+.portfolio-list li a:hover svg, .portfolio-list li a:hover img, .portfolio-list li a:focus svg, .portfolio-list li a:focus img, .portfolio-list li a.on svg, .portfolio-list li a.on img, .portfolio-list .po-item a:hover svg, .portfolio-list .po-item a:hover img, .portfolio-list .po-item a:focus svg, .portfolio-list .po-item a:focus img, .portfolio-list .po-item a.on svg, .portfolio-list .po-item a.on img {
   -webkit-transform: translate3d(-50%, -50%, 0) scale(1);
           transform: translate3d(-50%, -50%, 0) scale(1);
   -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -2188,7 +2304,7 @@ select::-ms-expand {
   -webkit-transition-delay: 0.25s;
           transition-delay: 0.25s;
 }
-.portfolio-list li a.on svg, .portfolio-list .po-item a.on svg {
+.portfolio-list li a.on img, .portfolio-list li a.on svg, .portfolio-list .po-item a.on img, .portfolio-list .po-item a.on svg {
   -webkit-transform: translate3d(-50%, -50%, 0) scale(0.95);
           transform: translate3d(-50%, -50%, 0) scale(0.95);
 }
@@ -2296,13 +2412,7 @@ select::-ms-expand {
   left: 0;
   right: 0;
 }
-.portfolio-list img {
-  display: inline-block;
-  max-width: 65%;
-  -webkit-transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1);
-}
-.portfolio-list svg {
+.portfolio-list svg, .portfolio-list img {
   display: inline-block;
   max-width: 58%;
   position: absolute;
@@ -2344,11 +2454,11 @@ select::-ms-expand {
           transform: translate3d(0, 100%, 0);
   -webkit-transition: color 0.45s cubic-bezier(0.75, 0, 0.125, 1);
   transition: color 0.45s cubic-bezier(0.75, 0, 0.125, 1);
-}
-.portfolio-list .hover img {
-  display: block;
-  max-width: 70%;
-  margin: 5px auto 0;
+  /*img{
+      display: block;
+      max-width: 70%;
+      margin: 5px auto 0;
+  }*/
 }
 .portfolio-list .po-item-col:first-child {
   -webkit-transform: translate3d(0, 55px, 0);
@@ -2859,7 +2969,7 @@ select::-ms-expand {
 }
 
 /* Buttons */
-.btn, .btn-invert, .btn-arrow, #menu-main a {
+.btn, .btn-invert, .btn-arrow, #menu-main a, .next, .prev {
   position: relative;
   font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
   font-size: 1.375rem;
@@ -2868,19 +2978,19 @@ select::-ms-expand {
   text-transform: uppercase;
   color: #404040;
 }
-.btn.btn-left:after, .btn-invert.btn-left:after, .btn-arrow.btn-left:after, #menu-main a.btn-left:after {
+.btn.btn-left:after, .btn-invert.btn-left:after, .btn-arrow.btn-left:after, #menu-main a.btn-left:after, .next.btn-left:after, .prev.btn-left:after {
   -webkit-transform: translate3d(0, -1px, 0) rotate(180deg);
           transform: translate3d(0, -1px, 0) rotate(180deg);
 }
-.no-js .btn.btn-left:hover:after, .is-desktop .btn.btn-left:hover:after, .no-js .btn.btn-left:focus:after, .is-desktop .btn.btn-left:focus:after, .no-js .btn-invert.btn-left:hover:after, .is-desktop .btn-invert.btn-left:hover:after, .no-js .btn-invert.btn-left:focus:after, .is-desktop .btn-invert.btn-left:focus:after, .no-js .btn-arrow.btn-left:hover:after, .no-js #menu-main a.btn-left:hover:after, #menu-main .no-js a.btn-left:hover:after, .is-desktop .btn-arrow.btn-left:hover:after, .is-desktop #menu-main a.btn-left:hover:after, #menu-main .is-desktop a.btn-left:hover:after, .no-js .btn-arrow.btn-left:focus:after, .no-js #menu-main a.btn-left:focus:after, #menu-main .no-js a.btn-left:focus:after, .is-desktop .btn-arrow.btn-left:focus:after, .is-desktop #menu-main a.btn-left:focus:after, #menu-main .is-desktop a.btn-left:focus:after {
+.no-js .btn.btn-left:hover:after, .is-desktop .btn.btn-left:hover:after, .no-js .btn.btn-left:focus:after, .is-desktop .btn.btn-left:focus:after, .no-js .btn-invert.btn-left:hover:after, .is-desktop .btn-invert.btn-left:hover:after, .no-js .btn-invert.btn-left:focus:after, .is-desktop .btn-invert.btn-left:focus:after, .no-js .btn-arrow.btn-left:hover:after, .no-js #menu-main a.btn-left:hover:after, #menu-main .no-js a.btn-left:hover:after, .is-desktop .btn-arrow.btn-left:hover:after, .is-desktop #menu-main a.btn-left:hover:after, #menu-main .is-desktop a.btn-left:hover:after, .no-js .btn-arrow.btn-left:focus:after, .no-js #menu-main a.btn-left:focus:after, #menu-main .no-js a.btn-left:focus:after, .is-desktop .btn-arrow.btn-left:focus:after, .is-desktop #menu-main a.btn-left:focus:after, #menu-main .is-desktop a.btn-left:focus:after, .no-js .next.btn-left:hover:after, .is-desktop .next.btn-left:hover:after, .no-js .next.btn-left:focus:after, .is-desktop .next.btn-left:focus:after, .no-js .prev.btn-left:hover:after, .is-desktop .prev.btn-left:hover:after, .no-js .prev.btn-left:focus:after, .is-desktop .prev.btn-left:focus:after {
   -webkit-transform: translate3d(-7px, -1px, 0) rotate(180deg);
           transform: translate3d(-7px, -1px, 0) rotate(180deg);
 }
-.no-js .btn.btn-left:hover:before, .is-desktop .btn.btn-left:hover:before, .no-js .btn.btn-left:focus:before, .is-desktop .btn.btn-left:focus:before, .no-js .btn-invert.btn-left:hover:before, .is-desktop .btn-invert.btn-left:hover:before, .no-js .btn-invert.btn-left:focus:before, .is-desktop .btn-invert.btn-left:focus:before, .no-js .btn-arrow.btn-left:hover:before, .no-js #menu-main a.btn-left:hover:before, #menu-main .no-js a.btn-left:hover:before, .is-desktop .btn-arrow.btn-left:hover:before, .is-desktop #menu-main a.btn-left:hover:before, #menu-main .is-desktop a.btn-left:hover:before, .no-js .btn-arrow.btn-left:focus:before, .no-js #menu-main a.btn-left:focus:before, #menu-main .no-js a.btn-left:focus:before, .is-desktop .btn-arrow.btn-left:focus:before, .is-desktop #menu-main a.btn-left:focus:before, #menu-main .is-desktop a.btn-left:focus:before {
+.no-js .btn.btn-left:hover:before, .is-desktop .btn.btn-left:hover:before, .no-js .btn.btn-left:focus:before, .is-desktop .btn.btn-left:focus:before, .no-js .btn-invert.btn-left:hover:before, .is-desktop .btn-invert.btn-left:hover:before, .no-js .btn-invert.btn-left:focus:before, .is-desktop .btn-invert.btn-left:focus:before, .no-js .btn-arrow.btn-left:hover:before, .no-js #menu-main a.btn-left:hover:before, #menu-main .no-js a.btn-left:hover:before, .is-desktop .btn-arrow.btn-left:hover:before, .is-desktop #menu-main a.btn-left:hover:before, #menu-main .is-desktop a.btn-left:hover:before, .no-js .btn-arrow.btn-left:focus:before, .no-js #menu-main a.btn-left:focus:before, #menu-main .no-js a.btn-left:focus:before, .is-desktop .btn-arrow.btn-left:focus:before, .is-desktop #menu-main a.btn-left:focus:before, #menu-main .is-desktop a.btn-left:focus:before, .no-js .next.btn-left:hover:before, .is-desktop .next.btn-left:hover:before, .no-js .next.btn-left:focus:before, .is-desktop .next.btn-left:focus:before, .no-js .prev.btn-left:hover:before, .is-desktop .prev.btn-left:hover:before, .no-js .prev.btn-left:focus:before, .is-desktop .prev.btn-left:focus:before {
   -webkit-transform: translate3d(-7px, 0, 0) scaleX(0.85);
           transform: translate3d(-7px, 0, 0) scaleX(0.85);
 }
-.btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, #menu-main a:before, .btn-arrow:after, #menu-main a:after {
+.btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, #menu-main a:before, .btn-arrow:after, #menu-main a:after, .next:before, .next:after, .prev:before, .prev:after {
   font-family: 'icomoon' !important;
   speak: none;
   font-style: normal;
@@ -2897,7 +3007,7 @@ select::-ms-expand {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
-.btn:before, .btn-invert:before, .btn-arrow:before, #menu-main a:before {
+.btn:before, .btn-invert:before, .btn-arrow:before, #menu-main a:before, .next:before, .prev:before {
   content: '\e900';
   height: 16px;
   bottom: 2px;
@@ -2906,20 +3016,33 @@ select::-ms-expand {
   -webkit-transform-origin: 100% 50%;
           transform-origin: 100% 50%;
 }
-.btn:after, .btn-invert:after, .btn-arrow:after, #menu-main a:after {
+.btn:after, .btn-invert:after, .btn-arrow:after, #menu-main a:after, .next:after, .prev:after {
   content: '\e901';
   height: 9px;
   font-size: 9px;
   right: -28px;
   bottom: 5px;
 }
-.no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .no-js #menu-main a:hover:after, #menu-main .no-js a:hover:after, .is-desktop .btn-arrow:hover:after, .is-desktop #menu-main a:hover:after, #menu-main .is-desktop a:hover:after, .no-js .btn-arrow:focus:after, .no-js #menu-main a:focus:after, #menu-main .no-js a:focus:after, .is-desktop .btn-arrow:focus:after, .is-desktop #menu-main a:focus:after, #menu-main .is-desktop a:focus:after {
+.no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .no-js #menu-main a:hover:after, #menu-main .no-js a:hover:after, .is-desktop .btn-arrow:hover:after, .is-desktop #menu-main a:hover:after, #menu-main .is-desktop a:hover:after, .no-js .btn-arrow:focus:after, .no-js #menu-main a:focus:after, #menu-main .no-js a:focus:after, .is-desktop .btn-arrow:focus:after, .is-desktop #menu-main a:focus:after, #menu-main .is-desktop a:focus:after, .no-js .next:hover:after, .is-desktop .next:hover:after, .no-js .next:focus:after, .is-desktop .next:focus:after, .no-js .prev:hover:after, .is-desktop .prev:hover:after, .no-js .prev:focus:after, .is-desktop .prev:focus:after {
   -webkit-transform: translate3d(7px, 0, 0);
           transform: translate3d(7px, 0, 0);
 }
-.no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .no-js #menu-main a:hover:before, #menu-main .no-js a:hover:before, .is-desktop .btn-arrow:hover:before, .is-desktop #menu-main a:hover:before, #menu-main .is-desktop a:hover:before, .no-js .btn-arrow:focus:before, .no-js #menu-main a:focus:before, #menu-main .no-js a:focus:before, .is-desktop .btn-arrow:focus:before, .is-desktop #menu-main a:focus:before, #menu-main .is-desktop a:focus:before {
+.no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .no-js #menu-main a:hover:before, #menu-main .no-js a:hover:before, .is-desktop .btn-arrow:hover:before, .is-desktop #menu-main a:hover:before, #menu-main .is-desktop a:hover:before, .no-js .btn-arrow:focus:before, .no-js #menu-main a:focus:before, #menu-main .no-js a:focus:before, .is-desktop .btn-arrow:focus:before, .is-desktop #menu-main a:focus:before, #menu-main .is-desktop a:focus:before, .no-js .next:hover:before, .is-desktop .next:hover:before, .no-js .next:focus:before, .is-desktop .next:focus:before, .no-js .prev:hover:before, .is-desktop .prev:hover:before, .no-js .prev:focus:before, .is-desktop .prev:focus:before {
   -webkit-transform: translate3d(7px, 0, 0) scaleX(0.85);
           transform: translate3d(7px, 0, 0) scaleX(0.85);
+}
+
+.prev:after {
+  -webkit-transform: translate3d(0, -1px, 0) rotate(180deg);
+          transform: translate3d(0, -1px, 0) rotate(180deg);
+}
+.no-js .prev:hover:after, .is-desktop .prev:hover:after, .no-js .prev:focus:after, .is-desktop .prev:focus:after {
+  -webkit-transform: translate3d(-7px, -1px, 0) rotate(180deg);
+          transform: translate3d(-7px, -1px, 0) rotate(180deg);
+}
+.no-js .prev:hover:before, .is-desktop .prev:hover:before, .no-js .prev:focus:before, .is-desktop .prev:focus:before {
+  -webkit-transform: translate3d(-7px, 0, 0) scaleX(0.85);
+          transform: translate3d(-7px, 0, 0) scaleX(0.85);
 }
 
 .btn, .btn-invert {
@@ -3429,6 +3552,7 @@ select::-ms-expand {
 .share {
   display: inline-block;
   position: relative;
+  text-align: center;
 }
 .share:before {
   top: -7px;
@@ -3483,6 +3607,7 @@ select::-ms-expand {
   background: #818a8c;
   border-radius: 50%;
   font-size: 15px;
+  color: #fff !important;
 }
 .share a:before {
   float: left;
@@ -3526,6 +3651,15 @@ select::-ms-expand {
 .share .corner:after {
   bottom: 0;
   right: -7px;
+}
+.content-default .share {
+  padding: 0 20px;
+  float: right;
+  margin-right: 10%;
+}
+
+.post-medium {
+  float: left;
 }
 
 /* Newsletter */
@@ -4103,6 +4237,35 @@ select::-ms-expand {
   .quote blockquote p {
     font-size: 1.8rem;
   }
+
+  .post-meta-spotlight {
+    margin: 5px 0 10px 0;
+  }
+
+  .post-meta-header .btn-cat, .post-meta-spotlight .btn-cat {
+    font-size: 1.6rem;
+    margin-right: 3px;
+    padding: 4px 4px 2px;
+  }
+  .post-meta-header time, .post-meta-spotlight time {
+    margin-left: 3px;
+  }
+
+  time, .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .main-spotlight-post .txt {
+    margin: 10px 0 60px 0;
+  }
+  .main-spotlight-post h3 {
+    font-size: 2.8rem;
+    line-height: 1.1;
+  }
+  .main-spotlight-post p {
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
 }
 @media (max-width: 767px) {
   body {
@@ -4237,6 +4400,65 @@ select::-ms-expand {
   }
   .quote .img-quote {
     width: 50%;
+  }
+
+  .post-meta-header .btn-cat, .post-meta-spotlight .btn-cat {
+    font-size: 1.4rem;
+    margin-right: 1px;
+    padding: 4px 4px 2px;
+  }
+  .post-meta-header time, .post-meta-spotlight time {
+    margin-left: 1px;
+  }
+
+  time, .subtitle {
+    font-size: 1.4rem;
+  }
+
+  .main-spotlight-post .img, .main-spotlight-post .txt {
+    width: 100%;
+  }
+  .main-spotlight-post .txt {
+    margin: 10px 0 35px 0;
+  }
+  .main-spotlight-post .txt:before {
+    bottom: -43px;
+  }
+  .main-spotlight-post .txt:after {
+    bottom: -36px;
+  }
+  .main-spotlight-post .img {
+    padding: 0;
+    margin: 0;
+  }
+  .main-spotlight-post .img img {
+    max-width: none;
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    width: 100%;
+    width: calc(100% + 40px);
+    margin: 0 0 0 -20px;
+  }
+  .main-spotlight-post h3 {
+    font-size: 2.2rem;
+  }
+  .main-spotlight-post p {
+    margin-bottom: 15px;
+  }
+
+  .post-medium {
+    float: none;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .content-default .share {
+    float: none;
+    display: block;
+    width: 195px;
+    margin: 0 auto;
   }
 }
 @media (max-width: 540px) {

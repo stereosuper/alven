@@ -61,13 +61,14 @@ get_header(); ?>
                                 <?php while($startups->have_posts()): $startups->the_post(); ?>
                                     <?php if(get_field('investment') !== 'past'){ ?><li class='col-2'>
                                         <a href='<?php the_permalink(); ?>'>
-                                            <?php the_post_thumbnail('full'); ?>
                                             <?php
                                                 if( has_post_thumbnail() ){
                                                     $icon = wp_get_attachment_thumb_url(get_post_thumbnail_id());
                                                     if(strpos( $icon, '.svg' )){
                                                         $icon = str_replace( site_url(), '', $icon);
                                                         echo file_get_contents(ABSPATH . $icon);
+                                                    }else{
+                                                        the_post_thumbnail('medium', array('class' => 'no-scroll'));
                                                     }
                                                 }
                                             ?>
@@ -94,6 +95,8 @@ get_header(); ?>
                                 <span class='btn-invert'>Send your pitch</span>
                             </span>
                         </a>
+                    </div>
+                    <div id='contact'>
                     </div>
                 </div>
             </article>
