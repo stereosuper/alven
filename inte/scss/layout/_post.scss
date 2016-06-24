@@ -331,5 +331,114 @@
     p{
         margin: 0 0 4px;
     }
+    .special-cat{
+        height: 0;
+        padding: 0 0 60%;
+        position: relative;
+        font-family: $sourceBlack;
+        font-size: 1.7rem;
+        background: $txt;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        > div{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    }
+}
+
+.calendar{
+    width: 63px;
+    height: 75px;
+    border: 3px solid #fff;
+    border-top: 20px solid #fff;
+    &:before, &:after{
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+    }
+    &:after{
+        bottom: -5px;
+        right: -5px;
+        border-width: 0 0 19px 19px;
+        border-color: transparent transparent $txt transparent;
+    }
+    &:before{
+        bottom: -3px;
+        right: -3px;
+        border-width: 15px 15px 0 0;
+        border-color: #fff transparent transparent transparent;
+    }
+    .month{
+        position: absolute;
+        top: -18px;
+        left: 0;
+        right: 0;
+        color: $txt;
+        line-height: 1;
+    }
+    .day{
+        display: block;
+        font-family: $sourceSemiBold;
+        font-size: 3rem;
+        sup{
+            font-size: 50%;
+            text-transform: none;
+        }
+    }
+}
+
+.cat-job{
+    width: 80px;
+    height: 80px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    line-height: 76px;
+}
+
+.cat-def{
+    width: 112px;
+    height: 36px;
+    border: 3px solid #fff;
+    line-height: 32px;
+}
+
+.cat-book{
+    width: 50px;
+    height: 70px;
+    border: 3px solid #fff;
+    &:before{
+        content: '';
+        display: block;
+        width: 50px;
+        height: 70px;
+        border: 3px solid #fff;
+        margin: 6px 0 0px -12px;
+        background: $txt;
+    }
+}
+
+.pagination{
+    font-family: $sourceBlack;
+    text-align: center;
+    color: $title;
+    .current{
+        color: $txt;
+    }
+    .page-numbers{
+        display: inline-block;
+        vertical-align: baseline;
+        margin: 0 2px;
+    }
+    .next, .prev{
+        vertical-align: bottom;
+    }
 }
 
