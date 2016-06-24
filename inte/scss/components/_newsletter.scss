@@ -4,19 +4,26 @@
     padding: 60px 0 55px;
     background: $gold;
     color: $greyBlue;
+    .newsletter-title{
+        vertical-align: middle;
+    }
     h3, p, form{
         vertical-align: middle;
     }
-    h3, p{
-        margin: 0 $col 0 0;
-    }
     h3{
+        display: inline-block;
         font-family: $sourceBlack;
         color: inherit;
+        width: 33.333333%;
+        margin: 0;
     }
     p{
+        display: inline-block;
         font-size: 1.4rem;
         color: #626262;
+        width: 66.666666%;
+        padding: 0 0 0 $col;
+        margin: 0;
     }
     form{
         padding-left: $outterGutter;
