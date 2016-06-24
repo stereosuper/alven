@@ -37,11 +37,11 @@ remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 
 // remove comment author class
 function remove_comment_author_class( $classes ){
-	foreach( $classes as $key => $class ){
-		if(strstr($class, "comment-author-"))
-			unset( $classes[$key] );
-	}
-	return $classes;
+    foreach( $classes as $key => $class ){
+        if(strstr($class, "comment-author-"))
+            unset( $classes[$key] );
+    }
+    return $classes;
 }
 add_filter( 'comment_class' , 'remove_comment_author_class' );
 
@@ -69,7 +69,7 @@ add_action( 'admin_bar_menu', 'alven_remove_top_menus', 999 );
 
 // Enlever le lien par défaut autour des images
 function alven_imagelink_setup(){
-	$image_set = get_option( 'image_default_link_type' );
+    $image_set = get_option( 'image_default_link_type' );
     if($image_set !== 'none')
         update_option('image_default_link_type', 'none');
 }
@@ -170,16 +170,16 @@ add_filter( 'nav_menu_css_class', 'alven_css_attributes_filter' );
 /* Sidebar & Widgets
 /*-----------------------------------------------------------------------------------*/
 function alven_register_sidebars(){
-	register_sidebar(array(
-		'id' => 'menu-responsive',
-		'name' => 'Responsive Menu & Footer Menu',
-		'description' => 'Put here the menus for the responsive main menu and the footer',
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
-		'empty_title'=> ''
-	));
+    register_sidebar(array(
+        'id' => 'menu-responsive',
+        'name' => 'Responsive Menu & Footer Menu',
+        'description' => 'Put here the menus for the responsive main menu and the footer',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '',
+        'after_title' => '',
+        'empty_title'=> ''
+    ));
 }
 add_action( 'widgets_init', 'alven_register_sidebars' );
 
@@ -478,14 +478,14 @@ add_filter( 'nav_menu_css_class', 'alven_correct_menu_parent_class', 10, 2 );
 /* Enqueue Styles and Scripts
 /*-----------------------------------------------------------------------------------*/
 function alven_scripts(){
-		// header
-		wp_enqueue_style( 'alven-style', get_template_directory_uri() . '/css/main.css', array(), ALVEN_VERSION );
-		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.min.js', array(), null);
+        // header
+        wp_enqueue_style( 'alven-style', get_template_directory_uri() . '/css/main.css', array(), ALVEN_VERSION );
+        wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.min.js', array(), null);
 
-		// footer
+        // footer
         wp_enqueue_script( 'isMobile', get_template_directory_uri() . '/js/isMobile.min.js', array(), null, true );
-	    wp_deregister_script('jquery');
-		wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.0.0.min.js', array(), null, true );
+        wp_deregister_script('jquery');
+        wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.0.0.min.js', array(), null, true );
 
         wp_enqueue_script( 'tweenmax', get_template_directory_uri() . '/js/TweenMax.min.js', array(), null, true );
         wp_enqueue_script( 'splittext', get_template_directory_uri() . '/js/splitText.min.js', array(), null, true );
