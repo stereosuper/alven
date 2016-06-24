@@ -500,6 +500,13 @@ hr {
   margin: 3em auto 5em;
   background: #e5e8e8; }
 
+sup {
+  position: relative;
+  top: -0.5em;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline; }
+
 /******* LIENS / BOUTONS *******/
 a {
   box-shadow: 0 1px 0 0 currentColor;
@@ -1370,6 +1377,98 @@ select::-ms-expand {
     font-size: 3.2rem; }
   .post p {
     margin: 0 0 4px; }
+  .post .special-cat {
+    height: 0;
+    padding: 0 0 60%;
+    position: relative;
+    font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+    font-size: 1.7rem;
+    background: #636a6b;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase; }
+    .post .special-cat > div {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto; }
+
+.calendar {
+  width: 63px;
+  height: 75px;
+  border: 3px solid #fff;
+  border-top: 20px solid #fff; }
+  .calendar:before, .calendar:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid; }
+  .calendar:after {
+    bottom: -5px;
+    right: -5px;
+    border-width: 0 0 19px 19px;
+    border-color: transparent transparent #636a6b transparent; }
+  .calendar:before {
+    bottom: -3px;
+    right: -3px;
+    border-width: 15px 15px 0 0;
+    border-color: #fff transparent transparent transparent; }
+  .calendar .month {
+    position: absolute;
+    top: -18px;
+    left: 0;
+    right: 0;
+    color: #636a6b;
+    line-height: 1; }
+  .calendar .day {
+    display: block;
+    font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
+    font-size: 3rem; }
+    .calendar .day sup {
+      font-size: 50%;
+      text-transform: none; }
+
+.cat-job {
+  width: 80px;
+  height: 80px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  line-height: 76px; }
+
+.cat-def {
+  width: 112px;
+  height: 36px;
+  border: 3px solid #fff;
+  line-height: 32px; }
+
+.cat-book {
+  width: 50px;
+  height: 70px;
+  border: 3px solid #fff; }
+  .cat-book:before {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 70px;
+    border: 3px solid #fff;
+    margin: 6px 0 0px -12px;
+    background: #636a6b; }
+
+.pagination {
+  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  text-align: center;
+  color: #404040; }
+  .pagination .current {
+    color: #636a6b; }
+  .pagination .page-numbers {
+    display: inline-block;
+    vertical-align: baseline;
+    margin: 0 2px; }
+  .pagination .next, .pagination .prev {
+    vertical-align: bottom; }
 
 /* Section */
 .section-header {
@@ -1460,12 +1559,7 @@ select::-ms-expand {
   position: relative;
   margin: 185px 0 0;
   z-index: 1;
-  background: #303b3d;
-  /*&:after{
-      content: '';
-      display: block;
-      padding: 0 0 10%;
-  }*/ }
+  background: #303b3d; }
   .portfolio-list:before {
     content: '';
     height: 150px;
@@ -1508,13 +1602,7 @@ select::-ms-expand {
       background-color: #34b6b8;
       border-color: #34b6b8;
       color: #fff;
-      transition: fill 0.4s linear;
-      /*> img{
-          transform: translate3d(-50%, 0, 0);
-          position: absolute;
-          top: 16px;
-          left: 50%;
-      }*/ }
+      transition: fill 0.4s linear; }
       .portfolio-list li.transfered a:after, .portfolio-list .po-item.transfered a:after {
         display: none; }
       .portfolio-list li.transfered a .content-transfered, .portfolio-list .po-item.transfered a .content-transfered {
@@ -1664,6 +1752,10 @@ select::-ms-expand {
         .portfolio-list li a:hover svg .zone-svg, .portfolio-list li a:focus svg .zone-svg, .portfolio-list li a.on svg .zone-svg, .portfolio-list .po-item a:hover svg .zone-svg, .portfolio-list .po-item a:focus svg .zone-svg, .portfolio-list .po-item a.on svg .zone-svg {
           transition: fill 0.4s linear;
           transition-delay: 0.25s; }
+      .portfolio-list li a.on:hover, .portfolio-list li a.on:focus, .portfolio-list li a.on.on, .portfolio-list .po-item a.on:hover, .portfolio-list .po-item a.on:focus, .portfolio-list .po-item a.on.on {
+        border-color: #e5e8e8; }
+        .portfolio-list li a.on:hover:after, .portfolio-list li a.on:focus:after, .portfolio-list li a.on.on:after, .portfolio-list .po-item a.on:hover:after, .portfolio-list .po-item a.on:focus:after, .portfolio-list .po-item a.on.on:after {
+          transform: scale(1, 1); }
       .portfolio-list li a.on img, .portfolio-list li a.on svg, .portfolio-list .po-item a.on img, .portfolio-list .po-item a.on svg {
         transform: translate3d(-50%, -50%, 0) scale(0.95); }
       .portfolio-list li a.on svg .st0, .portfolio-list .po-item a.on svg .st0 {
@@ -2174,7 +2266,7 @@ select::-ms-expand {
     line-height: 1.3; }
 
 /* Buttons */
-.btn, .btn-invert, .btn-arrow, #menu-main a {
+.btn, .btn-invert, .btn-arrow, #menu-main a, .next, .prev {
   position: relative;
   font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
   font-size: 1.375rem;
@@ -2182,13 +2274,13 @@ select::-ms-expand {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #404040; }
-  .btn.btn-left:after, .btn-invert.btn-left:after, .btn-arrow.btn-left:after, #menu-main a.btn-left:after {
+  .btn.btn-left:after, .btn-invert.btn-left:after, .btn-arrow.btn-left:after, #menu-main a.btn-left:after, .next.btn-left:after, .prev.btn-left:after {
     transform: translate3d(0, -1px, 0) rotate(180deg); }
-  .no-js .btn.btn-left:hover:after, .is-desktop .btn.btn-left:hover:after, .no-js .btn.btn-left:focus:after, .is-desktop .btn.btn-left:focus:after, .no-js .btn-invert.btn-left:hover:after, .is-desktop .btn-invert.btn-left:hover:after, .no-js .btn-invert.btn-left:focus:after, .is-desktop .btn-invert.btn-left:focus:after, .no-js .btn-arrow.btn-left:hover:after, .no-js #menu-main a.btn-left:hover:after, #menu-main .no-js a.btn-left:hover:after, .is-desktop .btn-arrow.btn-left:hover:after, .is-desktop #menu-main a.btn-left:hover:after, #menu-main .is-desktop a.btn-left:hover:after, .no-js .btn-arrow.btn-left:focus:after, .no-js #menu-main a.btn-left:focus:after, #menu-main .no-js a.btn-left:focus:after, .is-desktop .btn-arrow.btn-left:focus:after, .is-desktop #menu-main a.btn-left:focus:after, #menu-main .is-desktop a.btn-left:focus:after {
+  .no-js .btn.btn-left:hover:after, .is-desktop .btn.btn-left:hover:after, .no-js .btn.btn-left:focus:after, .is-desktop .btn.btn-left:focus:after, .no-js .btn-invert.btn-left:hover:after, .is-desktop .btn-invert.btn-left:hover:after, .no-js .btn-invert.btn-left:focus:after, .is-desktop .btn-invert.btn-left:focus:after, .no-js .btn-arrow.btn-left:hover:after, .no-js #menu-main a.btn-left:hover:after, #menu-main .no-js a.btn-left:hover:after, .is-desktop .btn-arrow.btn-left:hover:after, .is-desktop #menu-main a.btn-left:hover:after, #menu-main .is-desktop a.btn-left:hover:after, .no-js .btn-arrow.btn-left:focus:after, .no-js #menu-main a.btn-left:focus:after, #menu-main .no-js a.btn-left:focus:after, .is-desktop .btn-arrow.btn-left:focus:after, .is-desktop #menu-main a.btn-left:focus:after, #menu-main .is-desktop a.btn-left:focus:after, .no-js .next.btn-left:hover:after, .is-desktop .next.btn-left:hover:after, .no-js .next.btn-left:focus:after, .is-desktop .next.btn-left:focus:after, .no-js .prev.btn-left:hover:after, .is-desktop .prev.btn-left:hover:after, .no-js .prev.btn-left:focus:after, .is-desktop .prev.btn-left:focus:after {
     transform: translate3d(-7px, -1px, 0) rotate(180deg); }
-  .no-js .btn.btn-left:hover:before, .is-desktop .btn.btn-left:hover:before, .no-js .btn.btn-left:focus:before, .is-desktop .btn.btn-left:focus:before, .no-js .btn-invert.btn-left:hover:before, .is-desktop .btn-invert.btn-left:hover:before, .no-js .btn-invert.btn-left:focus:before, .is-desktop .btn-invert.btn-left:focus:before, .no-js .btn-arrow.btn-left:hover:before, .no-js #menu-main a.btn-left:hover:before, #menu-main .no-js a.btn-left:hover:before, .is-desktop .btn-arrow.btn-left:hover:before, .is-desktop #menu-main a.btn-left:hover:before, #menu-main .is-desktop a.btn-left:hover:before, .no-js .btn-arrow.btn-left:focus:before, .no-js #menu-main a.btn-left:focus:before, #menu-main .no-js a.btn-left:focus:before, .is-desktop .btn-arrow.btn-left:focus:before, .is-desktop #menu-main a.btn-left:focus:before, #menu-main .is-desktop a.btn-left:focus:before {
+  .no-js .btn.btn-left:hover:before, .is-desktop .btn.btn-left:hover:before, .no-js .btn.btn-left:focus:before, .is-desktop .btn.btn-left:focus:before, .no-js .btn-invert.btn-left:hover:before, .is-desktop .btn-invert.btn-left:hover:before, .no-js .btn-invert.btn-left:focus:before, .is-desktop .btn-invert.btn-left:focus:before, .no-js .btn-arrow.btn-left:hover:before, .no-js #menu-main a.btn-left:hover:before, #menu-main .no-js a.btn-left:hover:before, .is-desktop .btn-arrow.btn-left:hover:before, .is-desktop #menu-main a.btn-left:hover:before, #menu-main .is-desktop a.btn-left:hover:before, .no-js .btn-arrow.btn-left:focus:before, .no-js #menu-main a.btn-left:focus:before, #menu-main .no-js a.btn-left:focus:before, .is-desktop .btn-arrow.btn-left:focus:before, .is-desktop #menu-main a.btn-left:focus:before, #menu-main .is-desktop a.btn-left:focus:before, .no-js .next.btn-left:hover:before, .is-desktop .next.btn-left:hover:before, .no-js .next.btn-left:focus:before, .is-desktop .next.btn-left:focus:before, .no-js .prev.btn-left:hover:before, .is-desktop .prev.btn-left:hover:before, .no-js .prev.btn-left:focus:before, .is-desktop .prev.btn-left:focus:before {
     transform: translate3d(-7px, 0, 0) scaleX(0.85); }
-  .btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, #menu-main a:before, .btn-arrow:after, #menu-main a:after {
+  .btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, #menu-main a:before, .btn-arrow:after, #menu-main a:after, .next:before, .next:after, .prev:before, .prev:after {
     font-family: 'icomoon' !important;
     speak: none;
     font-style: normal;
@@ -2200,23 +2292,30 @@ select::-ms-expand {
     margin: auto;
     transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
     transform: translate3d(0, 0, 0); }
-  .btn:before, .btn-invert:before, .btn-arrow:before, #menu-main a:before {
+  .btn:before, .btn-invert:before, .btn-arrow:before, #menu-main a:before, .next:before, .prev:before {
     content: '\e900';
     height: 16px;
     bottom: 2px;
     right: -25px;
     font-size: 16px;
     transform-origin: 100% 50%; }
-  .btn:after, .btn-invert:after, .btn-arrow:after, #menu-main a:after {
+  .btn:after, .btn-invert:after, .btn-arrow:after, #menu-main a:after, .next:after, .prev:after {
     content: '\e901';
     height: 9px;
     font-size: 9px;
     right: -28px;
     bottom: 5px; }
-  .no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .no-js #menu-main a:hover:after, #menu-main .no-js a:hover:after, .is-desktop .btn-arrow:hover:after, .is-desktop #menu-main a:hover:after, #menu-main .is-desktop a:hover:after, .no-js .btn-arrow:focus:after, .no-js #menu-main a:focus:after, #menu-main .no-js a:focus:after, .is-desktop .btn-arrow:focus:after, .is-desktop #menu-main a:focus:after, #menu-main .is-desktop a:focus:after {
+  .no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .no-js #menu-main a:hover:after, #menu-main .no-js a:hover:after, .is-desktop .btn-arrow:hover:after, .is-desktop #menu-main a:hover:after, #menu-main .is-desktop a:hover:after, .no-js .btn-arrow:focus:after, .no-js #menu-main a:focus:after, #menu-main .no-js a:focus:after, .is-desktop .btn-arrow:focus:after, .is-desktop #menu-main a:focus:after, #menu-main .is-desktop a:focus:after, .no-js .next:hover:after, .is-desktop .next:hover:after, .no-js .next:focus:after, .is-desktop .next:focus:after, .no-js .prev:hover:after, .is-desktop .prev:hover:after, .no-js .prev:focus:after, .is-desktop .prev:focus:after {
     transform: translate3d(7px, 0, 0); }
-  .no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .no-js #menu-main a:hover:before, #menu-main .no-js a:hover:before, .is-desktop .btn-arrow:hover:before, .is-desktop #menu-main a:hover:before, #menu-main .is-desktop a:hover:before, .no-js .btn-arrow:focus:before, .no-js #menu-main a:focus:before, #menu-main .no-js a:focus:before, .is-desktop .btn-arrow:focus:before, .is-desktop #menu-main a:focus:before, #menu-main .is-desktop a:focus:before {
+  .no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .no-js #menu-main a:hover:before, #menu-main .no-js a:hover:before, .is-desktop .btn-arrow:hover:before, .is-desktop #menu-main a:hover:before, #menu-main .is-desktop a:hover:before, .no-js .btn-arrow:focus:before, .no-js #menu-main a:focus:before, #menu-main .no-js a:focus:before, .is-desktop .btn-arrow:focus:before, .is-desktop #menu-main a:focus:before, #menu-main .is-desktop a:focus:before, .no-js .next:hover:before, .is-desktop .next:hover:before, .no-js .next:focus:before, .is-desktop .next:focus:before, .no-js .prev:hover:before, .is-desktop .prev:hover:before, .no-js .prev:focus:before, .is-desktop .prev:focus:before {
     transform: translate3d(7px, 0, 0) scaleX(0.85); }
+
+.prev:after {
+  transform: translate3d(0, -1px, 0) rotate(180deg); }
+.no-js .prev:hover:after, .is-desktop .prev:hover:after, .no-js .prev:focus:after, .is-desktop .prev:focus:after {
+  transform: translate3d(-7px, -1px, 0) rotate(180deg); }
+.no-js .prev:hover:before, .is-desktop .prev:hover:before, .no-js .prev:focus:before, .is-desktop .prev:focus:before {
+  transform: translate3d(-7px, 0, 0) scaleX(0.85); }
 
 .btn, .btn-invert {
   border-color: #d3ceaa;

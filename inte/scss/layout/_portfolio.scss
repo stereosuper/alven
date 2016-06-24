@@ -5,10 +5,8 @@
     margin: 185px 0 0;
     z-index: 1;
     background: $chapo;
-    //transform: translate3d(0, 12%, 0);
     &:before{
         content: '';
-        //height: 33%;
         height: 150px;
         position: absolute;
         bottom: -1px;
@@ -17,11 +15,6 @@
         z-index: -1;
         background: #fff;
     }
-    /*&:after{
-        content: '';
-        display: block;
-        padding: 0 0 10%;
-    }*/
     .grid{
         padding: $innerGutter 0;
         &.is-hovered{
@@ -74,17 +67,10 @@
                 background-color: #34b6b8;
                 border-color: #34b6b8;
                 color: #fff;
-                //transition: none;
                 transition: fill 0.4s linear;
                 &:after{
                     display: none;
                 }
-                /*> img{
-                    transform: translate3d(-50%, 0, 0);
-                    position: absolute;
-                    top: 16px;
-                    left: 50%;
-                }*/
                 .content-transfered{
                     position: absolute;
                     top: 50%;
@@ -229,6 +215,12 @@
                 }
             }
             &.on{
+                &:hover, &:focus, &.on{
+                    border-color: $greyBorder;
+                    &:after{
+                        transform: scale(1, 1);
+                    }
+                }
                 img, svg{
                     transform: translate3d(-50%, -50%, 0) scale(0.95);
                 }
