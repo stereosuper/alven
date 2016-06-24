@@ -38,16 +38,16 @@
                             <div class='header-block-btn'>
                                 <span class='title-small'>App</span>
                                 <?php if(get_field('appStoreLink')){ ?>
-                                    <a href='<?php the_field('appStoreLink'); ?>' target='_blank' class='btn-store'>AppStore</a>
+                                    <a href='<?php the_field('appStoreLink'); ?>' target='_blank' rel='nofollow' class='btn-store'>AppStore</a>
                                 <?php }
                                 if(get_field('googlePlayLink')){ ?>
-                                    <a href='<?php the_field('googlePlayLink'); ?>' target='_blank' class='btn-play'>Google play</a>
+                                    <a href='<?php the_field('googlePlayLink'); ?>' target='_blank' rel='nofollow' class='btn-play'>Google play</a>
                                 <?php } ?>
                             </div>
                         <?php } ?>
                     </div>
                 </div>
-                <a href='#' id='closePortfolio' class='btn-close'>Close</a>
+                <a href='<?php echo get_permalink(PORTFOLIO_ID); ?>' id='closePortfolio' class='btn-close'>Close</a>
             </div>
         </div>
 

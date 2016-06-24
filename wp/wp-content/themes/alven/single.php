@@ -15,7 +15,7 @@
                 <h1><?php the_title(); ?></h1>
             </div>
             <?php if($hasImg){ ?>
-                <div class='img' style='background-image:url(<?php echo $imgUrl; ?>)'>
+                <div class='img' style='background-image:url(<?php echo $imgUrl; ?>);background-position:<?php the_field('coverPos'); ?>'>
                     <?php the_post_thumbnail(); ?>
                 </div>
             <?php } ?>
@@ -29,19 +29,6 @@
                             <?php the_category( ', ' ); ?> -
                             <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
                         </div>
-                        <div class='share'>
-                            <span class='title-small'>Share</span>
-                            <ul>
-                                <li>
-                                    <a href='#' class='icon-linkedin' rel='nofollow' target='_blank'>Linkedin</a>
-                                </li><li>
-                                    <a href='#' class='icon-twitter' rel='nofollow' target='_blank'>Twitter</a>
-                                </li><?php if(get_field('medium')){ ?><li>
-                                    <a href='<?php the_field('medium'); ?>' class='icon-medium' target='_blank'>Read this post on Medium</a>
-                                </li><?php } ?>
-                            </ul>
-                            <div class='corner'></div>
-                        </div>
                     </aside>
 
                     <h2><?php the_excerpt(); ?></h2>
@@ -50,6 +37,23 @@
                         <div class='grid'>
                             <article class='col-8 content-default'>
                                 <?php the_content(); ?>
+                                <hr>
+                                <?php if(get_field('medium')){ ?>
+                                    <p class='post-medium'><a href='<?php the_field('medium'); ?>' target='_blank'>Comment on Medium</a></p>
+                                <?php } ?>
+                                <div class='share'>
+                                    <span class='title-small'>Share</span>
+                                    <ul>
+                                        <li>
+                                            <a href='http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>' class='icon-linkedin' rel='nofollow' target='_blank'>Linkedin</a>
+                                        </li><li>
+                                            <a href='http://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>&via=alvencap' class='icon-twitter' rel='nofollow' target='_blank'>Twitter</a>
+                                        </li><!--<?php //if(get_field('medium')){ ?><li>
+                                            <a href='<?php //the_field('medium'); ?>' class='icon-medium' target='_blank'>Read this post on Medium</a>
+                                        </li><?php //} ?>-->
+                                    </ul>
+                                    <div class='corner'></div>
+                                </div>
                             </article><?php $relatedPosts = alven_related_posts($post->ID);
                             if($relatedPosts){ ?><aside class='col-2 post-sidebar' id='postSidebar'>
                                 <span class='title-small'>Related articles</span>
@@ -134,8 +138,7 @@
             <section class='spotlight-posts' id='spotlightPost'>
                 <div class='container' id='spotlightDrag'>
                     <div class='grid'>
-                        <?php while($spotlightPosts->have_posts()): $spotlightPosts->the_post(); ?>
-                            <div class='col-2 spotlight-post'>
+                        <?php while($spotlightPosts->have_posts()): $spotlightPosts->the_post(); ?><div class='col-2 spotlight-post'>
                                 <div>
                                     <div class='content'>
                                         <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
@@ -146,8 +149,7 @@
                                         <a href='<?php the_permalink(); ?>' class='btn-arrow'><?php echo $btn; ?></a>
                                     </div>
                                 </div>
-                            </div>
-                        <?php endwhile; ?>
+                        </div><?php endwhile; ?>
                     </div>
                 </div>
             </section>

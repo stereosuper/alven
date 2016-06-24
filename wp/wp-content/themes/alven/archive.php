@@ -35,8 +35,26 @@
                         <div class='container'>
                             <div class='grid'>
                                 <?php $specialCat = array_search(get_the_category()[0]->term_id, $specialCats); ?>
-                                <div class='img col-4 <?php if($specialCat){ echo 'special-cat' . get_category($specialCats[$specialCat])->slug . '-cat'; } ?>'>
-                                    <?php the_post_thumbnail(); ?>
+                                <div class='img col-4'>
+                                    <?php
+                                        if($specialCat){ ?>
+                                            <div class='special-cat'>
+                                                <?php if(get_the_category()[0]->slug === 'jobs'){ ?>
+                                                    <div class='cat-job'>Job</div>
+                                                <?php }else if(get_the_category()[0]->slug === 'definitions'){ ?>
+                                                    <div class='cat-def'>Definition</div>
+                                                <?php }else if(get_the_category()[0]->slug === 'books'){ ?>
+                                                    <div class='cat-book'></div>
+                                                <?php }else{ ?>
+                                                    <div class='calendar'>
+                                                        <span class='month'><?php echo get_the_date('M'); ?></span><span class='day'><?php echo get_the_date('j'); ?><sup><?php echo get_the_date('S'); ?></sup></span>
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+                                        <?php }else{
+                                            the_post_thumbnail();
+                                        }
+                                    ?>
                                 </div><div class='txt col-8'>
                                     <h3><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
                                     <div class='post-meta'>
@@ -51,8 +69,8 @@
                     </div>
                 <?php endwhile; ?>
 
-                <div class='pagination'>
-                    <?php echo paginate_links( array( 'prev_text' => '<b>‹</b> <span>' . 'Précédent' . '</span>', 'next_text'  => '<span>' . 'Suivant' . '</span> <b>›</b>' ) ); ?>
+                <div class='container pagination'>
+                    <?php echo paginate_links( array( 'prev_text' => '', 'next_text'  => '' ) ); ?>
                 </div>
             </div>
         </main>
