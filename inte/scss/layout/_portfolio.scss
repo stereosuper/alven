@@ -79,12 +79,12 @@
                 &:after{
                     display: none;
                 }
-                > img{
+                /*> img{
                     transform: translate3d(-50%, 0, 0);
                     position: absolute;
                     top: 16px;
                     left: 50%;
-                }
+                }*/
                 .content-transfered{
                     position: absolute;
                     top: 50%;
@@ -96,7 +96,7 @@
                         margin: 10px 0;
                     }
                 }
-                svg{
+                svg, img{
                     position: relative;
                     transform: translate3d(0, 0, 0);
                     top: auto;
@@ -105,6 +105,8 @@
                     padding-bottom: 2px;
                     backface-visibility: hidden;
                     transition-delay: 0s;
+                }
+                svg{
                     .zone-svg{
                         fill: #fff;
                     }
@@ -112,12 +114,14 @@
                 .hover{
                     opacity: 1;
                     transform: translate3d(0, 0, 0);
-                    svg{
+                    svg, img{
                         position: relative;
                         transform: translate3d(0, 0, 0);
                         top: auto;
                         left: auto;
                         transition-delay: 0s;
+                    }
+                    svg{
                         .zone-svg{
                             transition-delay: 0s;
                         }
@@ -132,8 +136,10 @@
                     color: $chapo;
                     //transition: none;
                     transition: fill 0.4s linear;
-                    svg{
+                    svg, img{
                         transform: translate3d(0, 0, 0) scale(1);
+                    }
+                    svg{
                         .zone-svg{
                             transition-delay: 0s;
                         }
@@ -184,17 +190,18 @@
                     transition: transform 0.65s cubic-bezier(0.000, 0.855, 0.345, 1.000);
                     transition-delay: 0s;
                 }
-                > img{
+                /*> img{
                     opacity: 0.3;
-                }
+                }*/
                 .txt{
                     opacity: 0;
                 }
-                svg{
+                svg, img{
                     transform: translate3d(-50%, -50%, 0) scale(1);
                     transition: transform 0.2s cubic-bezier(0.455, 0.030, 0.515, 0.955);
                     transition-delay: 0.10s;
-
+                }
+                svg{
                     .st0{fill:#1F1F1D;}
                     .st1{fill:#C51632;}
                     .st2{fill:#F49A4C;}
@@ -222,8 +229,10 @@
                 }
             }
             &.on{
-                svg{
+                img, svg{
                     transform: translate3d(-50%, -50%, 0) scale(0.95);
+                }
+                svg{
                     .st0{fill:#1F1F1D;}
                     .st1{fill:#C51632;}
                     .st2{fill:#F49A4C;}
@@ -286,12 +295,7 @@
             right: 0;
         }
     }
-    img{
-        display: inline-block;
-        max-width: 65%;
-        transition: 0.45s $transitionFunction;
-    }
-    svg{
+    svg, img{
         display: inline-block;
         max-width: 58%;
         position: absolute;
@@ -301,6 +305,8 @@
         transition: transform 0.15s cubic-bezier(0.550, 0.085, 0.680, 0.530);
         transition-delay: 0s;
         z-index: 1;
+    }
+    svg{
         .zone-svg{
             transition: fill 0.3s linear;
             transition-delay: 0s;
@@ -323,11 +329,11 @@
         opacity: 0;
         transform: translate3d(0, 100%, 0);
         transition: color 0.45s cubic-bezier(0.75, 0, 0.125, 1);
-        img{
+        /*img{
             display: block;
             max-width: 70%;
             margin: 5px auto 0;
-        }
+        }*/
     }
     .po-item-col{
         &:first-child{
