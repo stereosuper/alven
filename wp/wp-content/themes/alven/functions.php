@@ -86,7 +86,16 @@ function akn_mime_types($mimes){
     $mimes['svg'] = 'image/svg+xml';
     return $mimes;
 }
-add_filter('upload_mimes', 'akn_mime_types');
+add_filter( 'upload_mimes', 'akn_mime_types' );
+function akn_svg_size(){
+  echo '<style>
+    svg, img[src*=".svg"]{
+        max-width: 150px !important;
+        max-height: 150px !important;
+    }
+  </style>';
+}
+add_action( 'admin_head', 'akn_svg_size' );
 
 // Custom posts in the dashboard
 function alven_right_now_custom_post() {

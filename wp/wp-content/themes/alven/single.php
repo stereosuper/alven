@@ -58,7 +58,9 @@
                                     <li class='post-small'>
                                         <?php if(has_post_thumbnail()){ ?>
                                             <div class='img'>
-                                                <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
+                                                <a href='<?php the_permalink(); ?>'>
+                                                    <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
+                                                </a>
                                             </div>
                                         <?php } ?>
                                         <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>

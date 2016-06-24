@@ -18,7 +18,8 @@ $(function(){
     var spotlightPost = $('#spotlightPost'), spotlightDrag = false;
     var related = $('#related');
     var menu = $('#menu-responsive');
-    var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioFilters = $('#portfolioFilters'), portfolioItemScroll = [];
+    var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioItemScroll = [],
+        portfolioFilters = $('#portfolioFilters'), portfolioFiltersTop = portfolioFilters.length ? portfolioFilters.offset().top : 0;
     var dropdowns = $('.dropdown');
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
 
@@ -82,8 +83,11 @@ $(function(){
             }
         }
 
-        if(portfolioFilters.length && myScroll > 80){
-            scrollDir > 0 ? portfolioFilters.addClass('on') : portfolioFilters.removeClass('on');
+        if(portfolioFilters.length){
+            myScroll > portfolioFiltersTop - headerHeight ? portfolioFilters.addClass('fixed') : portfolioFilters.removeClass('fixed');
+            if(myScroll > portfolioFiltersTop - headerHeight + 200){
+                scrollDir < 0 ? portfolioFilters.addClass('on') : portfolioFilters.removeClass('on');
+            }
         }
 
         if(readIndicator.length && (body.hasClass('single-post') || body.hasClass('page-template-default'))){
@@ -255,7 +259,7 @@ $(function(){
         for(i; i<nbCol; i++){
             portfolioContent += '<div class="po-item-col col-2">';
             j = 0;
-            posCta = colCta === 1 ? Math.floor(arrayCols[i]/2) : arrayCols[i]-1;
+            posCta = colCta === 1 ? 3 : 2;
             for(j; j<arrayCols[i]; j++){
                 if(i === colCta && j === posCta){
                     portfolioContent += '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';

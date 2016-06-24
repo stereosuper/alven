@@ -19,6 +19,7 @@
 .share{
     display: inline-block;
     position: relative;
+    text-align: center;
     &:before{
         top: -7px;
         left: 0;
@@ -70,6 +71,7 @@
         background: $grey;
         border-radius: 50%;
         font-size: 15px;
+        color: #fff !important;
         &:before{
             width: 100%;
             text-align: center;
@@ -125,4 +127,13 @@
             right: -7px;
         }
     }
+    .content-default &{
+        padding: 0 $outterGutter;
+        float: right;
+        margin-right: 10%;
+    }
+}
+
+.post-medium{
+    float: left;
 }
