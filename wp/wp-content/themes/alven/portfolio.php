@@ -60,25 +60,17 @@ get_header(); ?>
                             <ul class='grid'>
                                 <?php while($startups->have_posts()): $startups->the_post(); ?>
                                     <?php if(get_field('investment') !== 'past'){ ?><li class='col-2'>
-                                        <a href='<?php the_permalink(); ?>' class='ajax-load'>
-                                            <?php
-                                                if( has_post_thumbnail() ){
-                                                    $icon = wp_get_attachment_thumb_url(get_post_thumbnail_id());
-                                                    if(strpos( $icon, '.svg' )){
-                                                        $icon = str_replace( site_url(), '', $icon);
-                                                        echo file_get_contents(ABSPATH . $icon);
-                                                    }else{
-                                                        the_post_thumbnail('medium', array('class' => 'no-scroll'));
-                                                    }
-                                                }
-                                            ?>
+                                        <a href='<?php the_permalink(); ?>' class='ajax-load off'>
+                                            <?php if( has_post_thumbnail() ){
+                                                echo alven_get_svg(get_post_thumbnail_id());
+                                            } ?>
                                         </a>
                                     </li><?php } else{ ?><li class='col-2 transfered'>
                                         <a href='<?php the_permalink(); ?>' class='ajax-load'>
                                             <span class='content-transfered captain-train-trainline'>
-                                                <span><?php the_post_thumbnail('full'); ?></span>
+                                                <span><?php echo alven_get_svg(get_post_thumbnail_id()); ?></span>
                                                 <span>Acquired by</span>
-                                                <span></span>
+                                                <span><?php echo alven_get_svg(get_field('acquiredByLogo')); ?></span>
                                             </span>
                                         </a>
                                     </li><?php } ?>

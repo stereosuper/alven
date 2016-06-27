@@ -348,6 +348,9 @@
             left: 0;
             right: 0;
             margin: auto;
+            &.cat-book{
+                top: -7px;
+            }
         }
     }
 }

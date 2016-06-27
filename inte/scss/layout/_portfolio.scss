@@ -46,6 +46,7 @@
     }
     li, .po-item{
         padding: $innerGutter;
+        overflow: hidden;
         font-family: $sourceLight;
         font-size: 1.4rem;
         text-transform: uppercase;
@@ -67,7 +68,6 @@
                 background-color: #34b6b8;
                 border-color: #34b6b8;
                 color: #fff;
-                transition: fill 0.4s linear;
                 &:after{
                     display: none;
                 }
@@ -92,8 +92,8 @@
                     backface-visibility: hidden;
                     transition-delay: 0s;
                 }
-                svg{
-                    .zone-svg{
+                &.off{
+                    path, polygon, rect, ellipse, circle, line{
                         fill: #fff;
                     }
                 }
@@ -107,10 +107,8 @@
                         left: auto;
                         transition-delay: 0s;
                     }
-                    svg{
-                        .zone-svg{
-                            transition-delay: 0s;
-                        }
+                    path, polygon, rect, ellipse, circle, line{
+                        transition-delay: 0s;
                     }
                 }
                 .txt{
@@ -121,19 +119,18 @@
                     background: #fff;
                     color: $chapo;
                     //transition: none;
-                    transition: fill 0.4s linear;
+                    path, polygon, rect, ellipse, circle, line{
+                        transition: fill 0.4s linear;
+                        transition-delay: 0s;
+                    }
                     svg, img{
                         transform: translate3d(0, 0, 0) scale(1);
-                    }
-                    svg{
-                        .zone-svg{
-                            transition-delay: 0s;
-                        }
                     }
                 }
             }
         }
         a{
+            border: 1px solid $greyBorder;
             position: absolute;
             top: $innerGutter;
             left: $innerGutter;
@@ -141,7 +138,6 @@
             bottom: $innerGutter;
             background: #34b6b8;
             box-shadow: none;
-            border: 1px solid $greyBorder;
             transition: border-color 0.1s cubic-bezier(0.420, 0.000, 0.580, 1.000);
             transition-delay: 0.3s;
             &:before{
@@ -187,15 +183,13 @@
                     transition: transform 0.2s cubic-bezier(0.455, 0.030, 0.515, 0.955);
                     transition-delay: 0.10s;
                 }
-                svg{
-                    .zone-svg{
-                        transition: fill 0.4s linear;
-                        transition-delay: 0.25s;
-                    }
+                path, polygon, rect, ellipse, circle, line{
+                    transition: fill 0.4s linear;
+                    transition-delay: 0.25s;
                 }
             }
             &.on{
-                &:hover, &:focus, &.on{
+                &:hover, &:focus{
                     border-color: $greyBorder;
                     &:after{
                         transform: scale(1, 1);
@@ -204,15 +198,15 @@
                 img, svg{
                     transform: translate3d(-50%, -50%, 0) scale(0.95);
                 }
-                svg{
-                    .zone-svg{
-                        transition: fill 0.2s linear;
-                    }
+                path, polygon, rect, ellipse, circle, line{
+                    transition: fill 0.2s linear;
                 }
             }
-        }
-        path{
-            fill: $chapo;
+            &.off{
+                path, polygon, rect, ellipse, circle, line{
+                    fill: $chapo;
+                }
+            }
         }
     }
     .po-item{
@@ -254,7 +248,10 @@
     }
     svg, img{
         display: inline-block;
+        width: auto;
+        height: auto;
         max-width: 58%;
+        max-height: 70%;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -263,12 +260,9 @@
         transition-delay: 0s;
         z-index: 1;
     }
-    svg{
-        .zone-svg{
-            transition: fill 0.3s linear;
-            transition-delay: 0s;
-            fill: $chapo;
-        }
+    path, polygon, rect, ellipse, circle, line{
+        transition: fill 0.3s linear;
+        transition-delay: 0s;
     }
     .txt{
         position: absolute;

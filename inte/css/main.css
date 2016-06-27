@@ -1811,6 +1811,9 @@ select::-ms-expand {
   right: 0;
   margin: auto;
 }
+.post .special-cat > div.cat-book {
+  top: -7px;
+}
 
 .calendar {
   width: 63px;
@@ -2042,6 +2045,7 @@ select::-ms-expand {
 }
 .portfolio-list li, .portfolio-list .po-item {
   padding: 10px;
+  overflow: hidden;
   font-family: "source-light", "merriweather", sans-serif;
   font-size: 1.4rem;
   text-transform: uppercase;
@@ -2063,8 +2067,6 @@ select::-ms-expand {
   background-color: #34b6b8;
   border-color: #34b6b8;
   color: #fff;
-  -webkit-transition: fill 0.4s linear;
-  transition: fill 0.4s linear;
 }
 .portfolio-list li.transfered a:after, .portfolio-list .po-item.transfered a:after {
   display: none;
@@ -2093,7 +2095,7 @@ select::-ms-expand {
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
 }
-.portfolio-list li.transfered a svg .zone-svg, .portfolio-list .po-item.transfered a svg .zone-svg {
+.portfolio-list li.transfered a.off path, .portfolio-list li.transfered a.off polygon, .portfolio-list li.transfered a.off rect, .portfolio-list li.transfered a.off ellipse, .portfolio-list li.transfered a.off circle, .portfolio-list li.transfered a.off line, .portfolio-list .po-item.transfered a.off path, .portfolio-list .po-item.transfered a.off polygon, .portfolio-list .po-item.transfered a.off rect, .portfolio-list .po-item.transfered a.off ellipse, .portfolio-list .po-item.transfered a.off circle, .portfolio-list .po-item.transfered a.off line {
   fill: #fff;
 }
 .portfolio-list li.transfered a .hover, .portfolio-list .po-item.transfered a .hover {
@@ -2110,7 +2112,7 @@ select::-ms-expand {
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
 }
-.portfolio-list li.transfered a .hover svg .zone-svg, .portfolio-list .po-item.transfered a .hover svg .zone-svg {
+.portfolio-list li.transfered a .hover path, .portfolio-list li.transfered a .hover polygon, .portfolio-list li.transfered a .hover rect, .portfolio-list li.transfered a .hover ellipse, .portfolio-list li.transfered a .hover circle, .portfolio-list li.transfered a .hover line, .portfolio-list .po-item.transfered a .hover path, .portfolio-list .po-item.transfered a .hover polygon, .portfolio-list .po-item.transfered a .hover rect, .portfolio-list .po-item.transfered a .hover ellipse, .portfolio-list .po-item.transfered a .hover circle, .portfolio-list .po-item.transfered a .hover line {
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
 }
@@ -2121,18 +2123,19 @@ select::-ms-expand {
   border: 1px solid #e5e8e8;
   background: #fff;
   color: #303b3d;
+}
+.portfolio-list li.transfered a:hover path, .portfolio-list li.transfered a:hover polygon, .portfolio-list li.transfered a:hover rect, .portfolio-list li.transfered a:hover ellipse, .portfolio-list li.transfered a:hover circle, .portfolio-list li.transfered a:hover line, .portfolio-list li.transfered a:focus path, .portfolio-list li.transfered a:focus polygon, .portfolio-list li.transfered a:focus rect, .portfolio-list li.transfered a:focus ellipse, .portfolio-list li.transfered a:focus circle, .portfolio-list li.transfered a:focus line, .portfolio-list li.transfered a.on path, .portfolio-list li.transfered a.on polygon, .portfolio-list li.transfered a.on rect, .portfolio-list li.transfered a.on ellipse, .portfolio-list li.transfered a.on circle, .portfolio-list li.transfered a.on line, .portfolio-list .po-item.transfered a:hover path, .portfolio-list .po-item.transfered a:hover polygon, .portfolio-list .po-item.transfered a:hover rect, .portfolio-list .po-item.transfered a:hover ellipse, .portfolio-list .po-item.transfered a:hover circle, .portfolio-list .po-item.transfered a:hover line, .portfolio-list .po-item.transfered a:focus path, .portfolio-list .po-item.transfered a:focus polygon, .portfolio-list .po-item.transfered a:focus rect, .portfolio-list .po-item.transfered a:focus ellipse, .portfolio-list .po-item.transfered a:focus circle, .portfolio-list .po-item.transfered a:focus line, .portfolio-list .po-item.transfered a.on path, .portfolio-list .po-item.transfered a.on polygon, .portfolio-list .po-item.transfered a.on rect, .portfolio-list .po-item.transfered a.on ellipse, .portfolio-list .po-item.transfered a.on circle, .portfolio-list .po-item.transfered a.on line {
   -webkit-transition: fill 0.4s linear;
   transition: fill 0.4s linear;
+  -webkit-transition-delay: 0s;
+          transition-delay: 0s;
 }
 .portfolio-list li.transfered a:hover svg, .portfolio-list li.transfered a:hover img, .portfolio-list li.transfered a:focus svg, .portfolio-list li.transfered a:focus img, .portfolio-list li.transfered a.on svg, .portfolio-list li.transfered a.on img, .portfolio-list .po-item.transfered a:hover svg, .portfolio-list .po-item.transfered a:hover img, .portfolio-list .po-item.transfered a:focus svg, .portfolio-list .po-item.transfered a:focus img, .portfolio-list .po-item.transfered a.on svg, .portfolio-list .po-item.transfered a.on img {
   -webkit-transform: translate3d(0, 0, 0) scale(1);
           transform: translate3d(0, 0, 0) scale(1);
 }
-.portfolio-list li.transfered a:hover svg .zone-svg, .portfolio-list li.transfered a:focus svg .zone-svg, .portfolio-list li.transfered a.on svg .zone-svg, .portfolio-list .po-item.transfered a:hover svg .zone-svg, .portfolio-list .po-item.transfered a:focus svg .zone-svg, .portfolio-list .po-item.transfered a.on svg .zone-svg {
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
-}
 .portfolio-list li a, .portfolio-list .po-item a {
+  border: 1px solid #e5e8e8;
   position: absolute;
   top: 10px;
   left: 10px;
@@ -2140,7 +2143,6 @@ select::-ms-expand {
   bottom: 10px;
   background: #34b6b8;
   box-shadow: none;
-  border: 1px solid #e5e8e8;
   -webkit-transition: border-color 0.1s cubic-bezier(0.42, 0, 0.58, 1);
   transition: border-color 0.1s cubic-bezier(0.42, 0, 0.58, 1);
   -webkit-transition-delay: 0.3s;
@@ -2206,16 +2208,16 @@ select::-ms-expand {
   -webkit-transition-delay: 0.10s;
           transition-delay: 0.10s;
 }
-.portfolio-list li a:hover svg .zone-svg, .portfolio-list li a:focus svg .zone-svg, .portfolio-list li a.on svg .zone-svg, .portfolio-list .po-item a:hover svg .zone-svg, .portfolio-list .po-item a:focus svg .zone-svg, .portfolio-list .po-item a.on svg .zone-svg {
+.portfolio-list li a:hover path, .portfolio-list li a:hover polygon, .portfolio-list li a:hover rect, .portfolio-list li a:hover ellipse, .portfolio-list li a:hover circle, .portfolio-list li a:hover line, .portfolio-list li a:focus path, .portfolio-list li a:focus polygon, .portfolio-list li a:focus rect, .portfolio-list li a:focus ellipse, .portfolio-list li a:focus circle, .portfolio-list li a:focus line, .portfolio-list li a.on path, .portfolio-list li a.on polygon, .portfolio-list li a.on rect, .portfolio-list li a.on ellipse, .portfolio-list li a.on circle, .portfolio-list li a.on line, .portfolio-list .po-item a:hover path, .portfolio-list .po-item a:hover polygon, .portfolio-list .po-item a:hover rect, .portfolio-list .po-item a:hover ellipse, .portfolio-list .po-item a:hover circle, .portfolio-list .po-item a:hover line, .portfolio-list .po-item a:focus path, .portfolio-list .po-item a:focus polygon, .portfolio-list .po-item a:focus rect, .portfolio-list .po-item a:focus ellipse, .portfolio-list .po-item a:focus circle, .portfolio-list .po-item a:focus line, .portfolio-list .po-item a.on path, .portfolio-list .po-item a.on polygon, .portfolio-list .po-item a.on rect, .portfolio-list .po-item a.on ellipse, .portfolio-list .po-item a.on circle, .portfolio-list .po-item a.on line {
   -webkit-transition: fill 0.4s linear;
   transition: fill 0.4s linear;
   -webkit-transition-delay: 0.25s;
           transition-delay: 0.25s;
 }
-.portfolio-list li a.on:hover, .portfolio-list li a.on:focus, .portfolio-list li a.on.on, .portfolio-list .po-item a.on:hover, .portfolio-list .po-item a.on:focus, .portfolio-list .po-item a.on.on {
+.portfolio-list li a.on:hover, .portfolio-list li a.on:focus, .portfolio-list .po-item a.on:hover, .portfolio-list .po-item a.on:focus {
   border-color: #e5e8e8;
 }
-.portfolio-list li a.on:hover:after, .portfolio-list li a.on:focus:after, .portfolio-list li a.on.on:after, .portfolio-list .po-item a.on:hover:after, .portfolio-list .po-item a.on:focus:after, .portfolio-list .po-item a.on.on:after {
+.portfolio-list li a.on:hover:after, .portfolio-list li a.on:focus:after, .portfolio-list .po-item a.on:hover:after, .portfolio-list .po-item a.on:focus:after {
   -webkit-transform: scale(1, 1);
           transform: scale(1, 1);
 }
@@ -2223,11 +2225,11 @@ select::-ms-expand {
   -webkit-transform: translate3d(-50%, -50%, 0) scale(0.95);
           transform: translate3d(-50%, -50%, 0) scale(0.95);
 }
-.portfolio-list li a.on svg .zone-svg, .portfolio-list .po-item a.on svg .zone-svg {
+.portfolio-list li a.on path, .portfolio-list li a.on polygon, .portfolio-list li a.on rect, .portfolio-list li a.on ellipse, .portfolio-list li a.on circle, .portfolio-list li a.on line, .portfolio-list .po-item a.on path, .portfolio-list .po-item a.on polygon, .portfolio-list .po-item a.on rect, .portfolio-list .po-item a.on ellipse, .portfolio-list .po-item a.on circle, .portfolio-list .po-item a.on line {
   -webkit-transition: fill 0.2s linear;
   transition: fill 0.2s linear;
 }
-.portfolio-list li path, .portfolio-list .po-item path {
+.portfolio-list li a.off path, .portfolio-list li a.off polygon, .portfolio-list li a.off rect, .portfolio-list li a.off ellipse, .portfolio-list li a.off circle, .portfolio-list li a.off line, .portfolio-list .po-item a.off path, .portfolio-list .po-item a.off polygon, .portfolio-list .po-item a.off rect, .portfolio-list .po-item a.off ellipse, .portfolio-list .po-item a.off circle, .portfolio-list .po-item a.off line {
   fill: #303b3d;
 }
 .portfolio-list .po-item {
@@ -2269,7 +2271,10 @@ select::-ms-expand {
 }
 .portfolio-list svg, .portfolio-list img {
   display: inline-block;
+  width: auto;
+  height: auto;
   max-width: 58%;
+  max-height: 70%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2283,12 +2288,11 @@ select::-ms-expand {
           transition-delay: 0s;
   z-index: 1;
 }
-.portfolio-list svg .zone-svg {
+.portfolio-list path, .portfolio-list polygon, .portfolio-list rect, .portfolio-list ellipse, .portfolio-list circle, .portfolio-list line {
   -webkit-transition: fill 0.3s linear;
   transition: fill 0.3s linear;
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
-  fill: #303b3d;
 }
 .portfolio-list .txt {
   position: absolute;
@@ -3598,7 +3602,7 @@ select::-ms-expand {
 .filters-cat li {
   display: inline-block;
   padding: 0;
-  margin: 0 10px;
+  margin: 0 10px 5px;
 }
 .filters-cat li:before {
   display: none;
@@ -4127,7 +4131,7 @@ select::-ms-expand {
   }
 
   .post-meta-spotlight {
-    margin: 5px 0 10px 0;
+    margin: 5px 0 10px;
   }
 
   .post-meta-header .btn-cat, .post-meta-spotlight .btn-cat {
@@ -4140,7 +4144,7 @@ select::-ms-expand {
   }
 
   .main-spotlight-post .txt {
-    margin: 10px 0 60px 0;
+    margin-top: 30px;
   }
   .main-spotlight-post h3 {
     font-size: 2.8rem;
@@ -4190,6 +4194,47 @@ select::-ms-expand {
   }
   .wrapper-interactive-blocks .interactive-block h3 {
     font-size: 2.8rem;
+  }
+
+  .post h3 {
+    font-size: 2.2rem;
+  }
+  .post .special-cat {
+    font-size: 1.2rem;
+  }
+
+  .cat-book, .cat-book:before {
+    width: 35px;
+    height: 50px;
+  }
+
+  .cat-def {
+    width: 95px;
+    height: 30px;
+    line-height: 26px;
+  }
+
+  .cat-job {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+  }
+
+  .calendar {
+    width: 45px;
+    height: 55px;
+  }
+  .calendar:before {
+    border-width: 10px 10px 0 0;
+  }
+  .calendar:after {
+    border-width: 0 0 14px 14px;
+  }
+  .calendar .month {
+    top: -15px;
+  }
+  .calendar .day {
+    font-size: 2rem;
   }
 }
 @media (max-width: 767px) {
@@ -4344,7 +4389,7 @@ select::-ms-expand {
     width: 100%;
   }
   .main-spotlight-post .txt {
-    margin: 30px 0 35px 0;
+    margin-bottom: 35px;
   }
   .main-spotlight-post .txt:before {
     bottom: -43px;
@@ -4423,6 +4468,25 @@ select::-ms-expand {
   .wrapper-interactive-blocks .interactive-block .btn.btn-left:hover:after {
     -webkit-transform: translate3d(7px, 0, 0) scale(0.85);
             transform: translate3d(7px, 0, 0) scale(0.85);
+  }
+
+  .post {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+  }
+  .post .grid {
+    min-height: 480px;
+  }
+  .post .grid:before, .post .grid:after {
+    left: 10px;
+  }
+  .post .img, .post .txt {
+    width: 100%;
+  }
+  .post .img {
+    padding: 0 10px;
+    margin: 0 0 20px;
   }
 }
 @media (max-width: 540px) {
@@ -4513,6 +4577,13 @@ select::-ms-expand {
 
   .wrapper-interactive-blocks .interactive-block h3 {
     font-size: 1.8rem;
+  }
+
+  .post {
+    width: 100%;
+  }
+  .post .grid {
+    min-height: 0;
   }
 }
 @media (max-width: 480px) {

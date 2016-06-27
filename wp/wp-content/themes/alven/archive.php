@@ -30,8 +30,7 @@
         <main role='main' id='main'>
             <div class='content-main no-border' id='mainContent'>
 
-                <?php while ( have_posts() ) : the_post(); ?>
-                    <div class='post'>
+                <?php while ( have_posts() ) : the_post(); ?><div class='post'>
                         <div class='container'>
                             <div class='grid'>
                                 <?php $specialCat = array_search(get_the_category()[0]->term_id, $specialCats); ?>
@@ -66,8 +65,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endwhile; ?>
+                </div><?php endwhile; ?>
 
                 <div class='container pagination'>
                     <?php echo paginate_links( array( 'prev_text' => '', 'next_text'  => '' ) ); ?>

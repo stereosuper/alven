@@ -400,6 +400,18 @@ function alven_related_posts($currentId){
     return $relatedPosts;
 }
 
+// return inline svg or img
+function alven_get_svg($id){
+    $icon = wp_get_attachment_thumb_url($id);
+    if(strpos( $icon, '.svg' )){
+        $icon = str_replace( site_url(), '', $icon);
+        $img = file_get_contents(ABSPATH . $icon);
+    }else{
+        $img = get_the_post_thumbnail('medium', array('class' => 'no-scroll'));
+    }
+    return $img;
+}
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Custom Post Types

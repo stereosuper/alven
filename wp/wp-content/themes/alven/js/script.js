@@ -201,7 +201,7 @@ $(function(){
             poItems.find('a').removeClass('on');
             animPortfolio1 = setTimeout(function(){
                 if(!portfolio.find('div.grid').hasClass('is-hovered') && !poItemsNotTransfered.eq(y).hasClass('cta')){
-                    poItemsNotTransfered.eq(y).find('a').addClass('on');
+                    poItemsNotTransfered.eq(y).find('a').addClass('on').removeClass('off');
                 }
             }, 1500);
             animPortfolio2 = setTimeout(lightTransferedPoItems, 3500, newElemNumber);
@@ -296,9 +296,11 @@ $(function(){
             if(!$(this).closest('.po-item').hasClass('cta')){
                 $(this).closest('.po-item').addClass('link-hovered').closest('.grid').addClass('is-hovered');
                 poItems.find('a').removeClass('on');
+                $(this).removeClass('off');
             }
         }).on('mouseleave', function(){
             $(this).closest('.po-item').removeClass('link-hovered').closest('.grid').removeClass('is-hovered');
+            $(this).addClass('off');
         });
     }
 

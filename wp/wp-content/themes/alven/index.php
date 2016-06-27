@@ -61,8 +61,7 @@
                     $queryPost = new WP_Query(array('post__not_in' => array($sticky), 'paged' => $paged));
                     if($queryPost->have_posts()):
                 ?>
-                    <?php while ( $queryPost->have_posts() ) : $queryPost->the_post(); ?>
-                        <div class='post'>
+                    <?php while ( $queryPost->have_posts() ) : $queryPost->the_post(); ?><div class='post'>
                             <div class='container'>
                                 <div class='grid'>
                                     <?php $specialCat = in_array(get_the_category()[0]->term_id, $specialCats); ?>
@@ -97,8 +96,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endwhile; ?>
+                    </div><?php endwhile; ?>
 
                     <div class='container pagination'>
                         <?php echo paginate_links( array( 'prev_text' => '', 'next_text'  => '' ) ); ?>
