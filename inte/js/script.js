@@ -21,7 +21,7 @@ $(function(){
     var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioItemScroll = [],
         portfolioFilters = $('#portfolioFilters'), portfolioFiltersTop = portfolioFilters.length ? portfolioFilters.offset().top : 0;
     var dropdowns = $('.dropdown');
-    var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
+    var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, /*teamMemberHeight, */offsetYtoScroll;
 
 
 
@@ -192,7 +192,7 @@ $(function(){
 
     function setPortfolio(poItem, nbPoItem, nbCol){
         var portfolioContent = '<div class="grid">', poItemIndex = 0,
-            total = 0, i = 0, j = 0, ratio1 = 0.1, ratio2 = 0.4,
+            /*total = 0,*/ i = 0, j = 0, /*ratio1 = 0.1, ratio2 = 0.4,*/
             transfered, nbTrItem = 0, poItems, colCta = 3, posCta;
 
         function lightTransferedPoItems(y, old){
@@ -208,7 +208,7 @@ $(function(){
             animPortfolio2 = setTimeout(lightTransferedPoItems, 3500, newElemNumber, y);
         }
 
-        if(nbPoItem > 37){
+       /* if(nbPoItem > 37){
             ratio1 += 0.02;
             ratio2 -= 0.02;
         }
@@ -228,7 +228,42 @@ $(function(){
                 Math.ceil(lastNbItem/3),
                 Math.ceil(lastNbItem/3),
                 Math.floor(lastNbItem/3)
-            ];
+            ];*/
+
+        // On se donne un modèle de répartition
+        // Pour chaque nombre de colonne souhaité, on donne le modèle de répartition
+        // La maquette présentait sur 6 colonnes 5, 7, 7, 6, 6, 6 éléments
+        // ce qu'on peut réduire à -2, 0, 0, -1, -1, -1
+        // sachant que le total doit être inférieur à 0 pour ne pas avoir plus d'emplacement que d'éléments à placer
+        var repartitionModel = {
+            3 : [-1, 0, -1],
+            6 : [-2, 0, 0, -1, -1, -1]
+        };
+
+        var unaffectedPriorityModel = {
+            3 : [1, 2, 0],
+            6 : [2, 3, 4, 1, 5, 0]
+        };
+
+        // On calcule la répartition normale (nombre d'élément divisé par nombre de colonne, arrondi inférieur)
+        var straightRepartition =  Math.ceil(nbPoItem / nbCol);
+
+        // On répartit dans un tableau le nombre d'élément
+        var arrayCols = [];
+        i = 0;
+        for (i; i<nbCol ; i++) {
+            arrayCols[i] = straightRepartition + repartitionModel[nbCol][i];
+        }
+
+        // On calcule le nombre d'éléments n'ayant pas encore été placé
+        var unaffectedElementsCount = nbPoItem - arrayCols.reduce(function(a, b) { return a + b; }, 0);
+
+        // On place les éléments non affectés dans les colonnes par priorité
+        i = 0;
+        for (i; i<unaffectedElementsCount ; i++) {
+            var columnIndex = unaffectedPriorityModel[nbCol][i%nbCol];
+            arrayCols[columnIndex] ++;
+        }
 
         clearTimeout(animPortfolio1);
         clearTimeout(animPortfolio2);
@@ -239,23 +274,23 @@ $(function(){
         }
 
         if(nbCol === 3){
-            arrayCols = [
+            /*arrayCols = [
                 firstNbItem + Math.floor(secondNbItem/2),
                 Math.ceil(secondNbItem/2) + Math.ceil(lastNbItem/3),
                 Math.ceil(lastNbItem/3) + Math.floor(lastNbItem/3)
-            ];
+            ];*/
             colCta = 1;
         }
 
-        i = 0;
+        /*i = 0;
         for(i; i<nbCol; i++){
             total += arrayCols[i];
         }
         if(total > nbPoItem){
             arrayCols[nbCol-2] -= 1;
-        }
+        }*/
 
-        currentNb = 0;
+        var currentNb = 0;
         i = 0;
         for(i; i<nbCol; i++){
             portfolioContent += '<div class="po-item-col col-2">';
@@ -265,7 +300,7 @@ $(function(){
                 if(i === colCta && j === posCta){
                     portfolioContent += '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
                 }
-                if($('ul.grid > li').eq(currentNb).hasClass('transfered')){
+                if(portfolio.find('ul.grid').find('li').eq(currentNb).hasClass('transfered')){
                     portfolioContent += '<div class="po-item transfered">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
                 }else{
                     portfolioContent += '<div class="po-item">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
@@ -871,7 +906,7 @@ $(function(){
 $(window).on('load', function(){
     var main = $('#main');
     var contentHeader = $('#contentHeader');
-    var team = $('.team');
+    //var team = $('.team');
 
     function animTxt(splitText){
         splitText.split({type:'words'});

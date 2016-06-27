@@ -208,27 +208,39 @@ $(function(){
             animPortfolio2 = setTimeout(lightTransferedPoItems, 3500, newElemNumber, y);
         }
 
-        if(nbPoItem > 37){
-            ratio1 += 0.02;
-            ratio2 -= 0.02;
-        }
-        if(nbPoItem > 60){
-            ratio1 += 0.05;
-            ratio2 -= 0.05;
+        // On se donne un modèle de répartition
+        // Pour chaque nombre de colonne souhaité, on donne le modèle de répartition
+        // La maquette présentait sur 6 colonnes 5, 7, 7, 6, 6, 6 éléments
+        // ce qu'on peut réduire à -2, 0, 0, -1, -1, -1
+        // sachant que le total doit être inférieur à 0 pour ne pas avoir plus d'emplacement que d'éléments à placer
+        var repartitionModel = {
+            3 : [-1, 0, -1],
+            6 : [-2, 0, 0, -1, -1, -1]
+        };
+
+        var unaffectedPriorityModel = {
+            3 : [1, 2, 0],
+            6 : [2, 3, 4, 1, 5, 0]
+        };
+
+        // On calcule la répartition normale (nombre d'élément divisé par nombre de colonne, arrondi inférieur)
+        var straightRepartition =  Math.ceil(nbPoItem / nbCol);
+
+        // On répartit dans un tableau le nombre d'élément
+        var arrayCols = [];
+        for (var i=0 ; i<nbCol ; i++) {
+            arrayCols[i] = straightRepartition + repartitionModel[nbCol][i];
         }
 
-        var currentNb,
-            firstNbItem = Math.ceil(ratio1*nbPoItem),
-            secondNbItem = Math.ceil(ratio2*nbPoItem),
-            lastNbItem = nbPoItem - (firstNbItem + secondNbItem),
-            arrayCols = [
-                firstNbItem,
-                Math.floor(secondNbItem/2),
-                Math.ceil(secondNbItem/2),
-                Math.ceil(lastNbItem/3),
-                Math.ceil(lastNbItem/3),
-                Math.floor(lastNbItem/3)
-            ];
+        // On calcule le nombre d'éléments n'ayant pas encore été placé
+        var unaffectedElementsCount = nbPoItem - arrayCols.reduce(function(a, b) { return a + b; }, 0);
+
+        // On place les éléments non affectés dans les colonnes par priorité
+        for (var i=0 ; i<unaffectedElementsCount ; i++) {
+            var columnIndex = unaffectedPriorityModel[nbCol][i%nbCol];
+            arrayCols[columnIndex] ++;
+        }
+
 
         clearTimeout(animPortfolio1);
         clearTimeout(animPortfolio2);
@@ -236,15 +248,6 @@ $(function(){
             for(i; i<portfolioItemScroll.length; i++){
                 portfolioItemScroll[i].destroy(true);
             }
-        }
-
-        if(nbCol === 3){
-            arrayCols = [
-                firstNbItem + Math.floor(secondNbItem/2),
-                Math.ceil(secondNbItem/2) + Math.ceil(lastNbItem/3),
-                Math.ceil(lastNbItem/3) + Math.floor(lastNbItem/3)
-            ];
-            colCta = 1;
         }
 
         i = 0;
@@ -255,7 +258,7 @@ $(function(){
             arrayCols[nbCol-2] -= 1;
         }
 
-        currentNb = 0;
+        var currentNb = 0;
         i = 0;
         for(i; i<nbCol; i++){
             portfolioContent += '<div class="po-item-col col-2">';
