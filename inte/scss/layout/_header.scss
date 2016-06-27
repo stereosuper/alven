@@ -64,7 +64,7 @@
         background: #fff;
         color: $title;
         transform: translate3d(0, -10px, 0);
-        #logo{
+        #logo-alven{
             background-image: url(../layoutImg/alven-grey.png);
         }
         .read-indicator{
@@ -99,7 +99,7 @@
                     background: #fff;
                 }
             }
-            #logo{
+            #logo-alven{
                 background-image: url(../layoutImg/alven.png);
             }
         }
@@ -126,7 +126,7 @@
     opacity: 0;
 }
 
-#logo{
+#logo-alven{
     display: inline-block;
     width: $col*2;
     height: 31px;
