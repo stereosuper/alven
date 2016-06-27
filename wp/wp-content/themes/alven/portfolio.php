@@ -66,8 +66,8 @@ get_header(); ?>
                                             } ?>
                                         </a>
                                     </li><?php } else{ ?><li class='col-2 transfered'>
-                                        <a href='<?php the_permalink(); ?>' class='ajax-load'>
-                                            <span class='content-transfered captain-train-trainline'>
+                                        <a href='<?php the_permalink(); ?>' class='ajax-load off'>
+                                            <span class='content-transfered'>
                                                 <span><?php echo alven_get_svg(get_post_thumbnail_id()); ?></span>
                                                 <span>Acquired by</span>
                                                 <span><?php echo alven_get_svg(get_field('acquiredByLogo')); ?></span>

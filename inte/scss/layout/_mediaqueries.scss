@@ -730,6 +730,20 @@
             margin: 0 0 20px;
         }
     }
+
+    .portfolio-header{
+        h1{
+            display: block;
+            width: 50%;
+            margin-bottom: 50px;
+        }
+        div.col-3{
+            width: $col*5;
+            &:first-of-type{
+                margin-left: 0;
+            }
+        }
+    }
 }
 
 @media (max-width: 540px){
@@ -840,6 +854,22 @@
         width: 100%;
         .grid{
             min-height: 0;
+        }
+    }
+
+    .portfolio-header{
+        h1{
+            width: auto;
+        }
+        div.col-3{
+            width: 100%;
+            margin-left: 0;
+        }
+        .header-block-keywords{
+            margin: 65px 0 0;
+        }
+        .btn-close{
+            top: -30px;
         }
     }
 }
