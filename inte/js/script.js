@@ -192,8 +192,8 @@ $(function(){
 
     function setPortfolio(poItem, nbPoItem, nbCol){
         var portfolioContent = '<div class="grid">', poItemIndex = 0,
-            /*total = 0,*/ i = 0, j = 0, /*ratio1 = 0.1, ratio2 = 0.4,*/
-            transfered, nbTrItem = 0, poItems, colCta = 3, posCta;
+            currentNb = 0, i = 0, j = 0, transfered,
+            nbTrItem = 0, poItems, nbItemByCol = [];
 
         function lightTransferedPoItems(y, old){
             var poItemsNotTransfered = portfolio.find('.po-item:not(.transfered)'), poItemNotTransfered = portfolio.find('li:not(.transfered)'), nbPoItemNotTransfered = poItemNotTransfered.length;
@@ -207,28 +207,6 @@ $(function(){
             }, 1500);
             animPortfolio2 = setTimeout(lightTransferedPoItems, 3500, newElemNumber, y);
         }
-
-       /* if(nbPoItem > 37){
-            ratio1 += 0.02;
-            ratio2 -= 0.02;
-        }
-        if(nbPoItem > 60){
-            ratio1 += 0.05;
-            ratio2 -= 0.05;
-        }
-
-        var currentNb,
-            firstNbItem = Math.ceil(ratio1*nbPoItem),
-            secondNbItem = Math.ceil(ratio2*nbPoItem),
-            lastNbItem = nbPoItem - (firstNbItem + secondNbItem),
-            arrayCols = [
-                firstNbItem,
-                Math.floor(secondNbItem/2),
-                Math.ceil(secondNbItem/2),
-                Math.ceil(lastNbItem/3),
-                Math.ceil(lastNbItem/3),
-                Math.floor(lastNbItem/3)
-            ];*/
 
         // On se donne un modèle de répartition
         // Pour chaque nombre de colonne souhaité, on donne le modèle de répartition
@@ -265,6 +243,9 @@ $(function(){
             arrayCols[columnIndex] ++;
         }
 
+        var colCta = nbCol === 3 ? 1 : 3;
+        var posCta = nbCol === 3 ? 3 : 2;
+
         clearTimeout(animPortfolio1);
         clearTimeout(animPortfolio2);
         if(portfolioItemScroll.length){
@@ -273,45 +254,33 @@ $(function(){
             }
         }
 
-        if(nbCol === 3){
-            /*arrayCols = [
-                firstNbItem + Math.floor(secondNbItem/2),
-                Math.ceil(secondNbItem/2) + Math.ceil(lastNbItem/3),
-                Math.ceil(lastNbItem/3) + Math.floor(lastNbItem/3)
-            ];*/
-            colCta = 1;
-        }
-
-        /*i = 0;
-        for(i; i<nbCol; i++){
-            total += arrayCols[i];
-        }
-        if(total > nbPoItem){
-            arrayCols[nbCol-2] -= 1;
-        }*/
-
-        var currentNb = 0;
         i = 0;
         for(i; i<nbCol; i++){
-            portfolioContent += '<div class="po-item-col col-2">';
-            j = 0;
-            posCta = colCta === 1 ? 3 : 2;
-            for(j; j<arrayCols[i]; j++){
-                if(i === colCta && j === posCta){
-                    portfolioContent += '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
-                }
-                if(portfolio.find('ul.grid').find('li').eq(currentNb).hasClass('transfered')){
-                    portfolioContent += '<div class="po-item transfered">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
-                }else{
-                    portfolioContent += '<div class="po-item">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
-                }
-                currentNb++;
-            }
-            poItemIndex += j;
-            portfolioContent += '</div>';
+            nbItemByCol[i] = [];
+            portfolioContent += '<div class="po-item-col col-2"></div>';
         }
         portfolioContent += '</div>';
         portfolio.find('.container').append(portfolioContent);
+
+        var itemContent;
+        while(currentNb < nbPoItem){
+            j = 0;
+            for(j; j<nbCol; j++){
+                nbItemByCol[j] ++;
+                if(arrayCols[j] >= nbItemByCol[j]){
+                    if(j === colCta && nbItemByCol[j] === posCta){
+                        itemContent = '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
+                    }
+                    if(portfolio.find('ul.grid').find('li').eq(currentNb).hasClass('transfered')){
+                        itemContent = '<div class="po-item transfered">'+portfolio.find('li').eq(currentNb).html()+'</div>';
+                    }else{
+                        itemContent = '<div class="po-item">'+portfolio.find('li').eq(currentNb).html()+'</div>';
+                    }
+                    portfolio.find('.po-item-col').eq(j).append(itemContent);
+                    currentNb++;
+                }
+            }
+        }
 
         TweenMax.set(portfolio.find('.po-item'), {opacity: 0, y: '30%', scale: 0.8});
         i = 0;
