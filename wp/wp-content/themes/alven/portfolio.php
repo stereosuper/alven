@@ -5,7 +5,7 @@ Template Name: Portfolio
 
 get_header(); ?>
 
-	<?php if ( have_posts() ) : the_post(); ?>
+    <?php if ( have_posts() ) : the_post(); ?>
 
         <section class='content-header-transparent'>
             <h2 class='section-title'><?php the_field('title'); ?></h2>
@@ -60,7 +60,7 @@ get_header(); ?>
                             <ul class='grid'>
                                 <?php while($startups->have_posts()): $startups->the_post(); ?>
                                     <?php if(get_field('investment') !== 'past'){ ?><li class='col-2'>
-                                        <a href='<?php the_permalink(); ?>'>
+                                        <a href='<?php the_permalink(); ?>' class='ajax-load'>
                                             <?php
                                                 if( has_post_thumbnail() ){
                                                     $icon = wp_get_attachment_thumb_url(get_post_thumbnail_id());
@@ -74,7 +74,7 @@ get_header(); ?>
                                             ?>
                                         </a>
                                     </li><?php } else{ ?><li class='col-2 transfered'>
-                                        <a href='<?php the_permalink(); ?>'>
+                                        <a href='<?php the_permalink(); ?>' class='ajax-load'>
                                             <span class='content-transfered captain-train-trainline'>
                                                 <span><?php the_post_thumbnail('full'); ?></span>
                                                 <span>Acquired by</span>
@@ -102,9 +102,9 @@ get_header(); ?>
             </article>
         </main>
 
-	<?php else : ?>
+    <?php else : ?>
 
-		<div class='content-header' id='contentHeader'>
+        <div class='content-header' id='contentHeader'>
             <div class='container'>
                 <h1>404</h1>
             </div>
@@ -120,6 +120,6 @@ get_header(); ?>
             </article>
         </main>
 
-	<?php endif; ?>
+    <?php endif; ?>
 
 <?php get_footer(); ?>

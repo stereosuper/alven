@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<?php if ( have_posts() ) : the_post(); ?>
+    <?php if ( have_posts() ) : the_post(); ?>
 
         <?php
             $hasImg = false;
@@ -156,9 +156,9 @@
 
         <?php endif; ?>
 
-	<?php else : ?>
+    <?php else : ?>
 
-		<div class='content-header' id='contentHeader'>
+        <div class='content-header' id='contentHeader'>
             <div class='container'>
                 <h1>404</h1>
             </div>
@@ -174,6 +174,6 @@
             </article>
         </main>
 
-	<?php endif; ?>
+    <?php endif; ?>
 
 <?php get_footer(); ?>
