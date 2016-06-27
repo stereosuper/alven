@@ -491,6 +491,9 @@ function alven_scripts(){
         wp_enqueue_script( 'splittext', get_template_directory_uri() . '/js/splitText.min.js', array(), null, true );
         wp_enqueue_script( 'draggable', get_template_directory_uri() . '/js/draggable.min.js', array(), null, true );
 
+        wp_enqueue_script( 'jquery-address', get_template_directory_uri() . '/js/jquery.address-1.6.min.js', array('jquery'), null, true );
+        wp_enqueue_script( 'jquery-scrollto', get_template_directory_uri() . '/js/jquery.scrollTo.min.js', array('jquery'), null, true );
+
         wp_enqueue_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array(), null, true );
         wp_enqueue_script( 'gsap', get_template_directory_uri() . '/js/animation.gsap.js', array(), null, true );
 
