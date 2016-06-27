@@ -2042,6 +2042,7 @@ select::-ms-expand {
 }
 .portfolio-list li, .portfolio-list .po-item {
   padding: 10px;
+  overflow: hidden;
   font-family: "source-light", "merriweather", sans-serif;
   font-size: 1.4rem;
   text-transform: uppercase;
@@ -2063,8 +2064,6 @@ select::-ms-expand {
   background-color: #34b6b8;
   border-color: #34b6b8;
   color: #fff;
-  -webkit-transition: fill 0.4s linear;
-  transition: fill 0.4s linear;
 }
 .portfolio-list li.transfered a:after, .portfolio-list .po-item.transfered a:after {
   display: none;
@@ -2121,6 +2120,8 @@ select::-ms-expand {
   border: 1px solid #e5e8e8;
   background: #fff;
   color: #303b3d;
+}
+.portfolio-list li.transfered a:hover path, .portfolio-list li.transfered a:focus path, .portfolio-list li.transfered a.on path, .portfolio-list .po-item.transfered a:hover path, .portfolio-list .po-item.transfered a:focus path, .portfolio-list .po-item.transfered a.on path {
   -webkit-transition: fill 0.4s linear;
   transition: fill 0.4s linear;
 }
@@ -2133,6 +2134,7 @@ select::-ms-expand {
           transition-delay: 0s;
 }
 .portfolio-list li a, .portfolio-list .po-item a {
+  border: 1px solid #e5e8e8;
   position: absolute;
   top: 10px;
   left: 10px;
@@ -2140,7 +2142,6 @@ select::-ms-expand {
   bottom: 10px;
   background: #34b6b8;
   box-shadow: none;
-  border: 1px solid #e5e8e8;
   -webkit-transition: border-color 0.1s cubic-bezier(0.42, 0, 0.58, 1);
   transition: border-color 0.1s cubic-bezier(0.42, 0, 0.58, 1);
   -webkit-transition-delay: 0.3s;
@@ -2212,10 +2213,10 @@ select::-ms-expand {
   -webkit-transition-delay: 0.25s;
           transition-delay: 0.25s;
 }
-.portfolio-list li a.on:hover, .portfolio-list li a.on:focus, .portfolio-list li a.on.on, .portfolio-list .po-item a.on:hover, .portfolio-list .po-item a.on:focus, .portfolio-list .po-item a.on.on {
+.portfolio-list li a.on:hover, .portfolio-list li a.on:focus, .portfolio-list .po-item a.on:hover, .portfolio-list .po-item a.on:focus {
   border-color: #e5e8e8;
 }
-.portfolio-list li a.on:hover:after, .portfolio-list li a.on:focus:after, .portfolio-list li a.on.on:after, .portfolio-list .po-item a.on:hover:after, .portfolio-list .po-item a.on:focus:after, .portfolio-list .po-item a.on.on:after {
+.portfolio-list li a.on:hover:after, .portfolio-list li a.on:focus:after, .portfolio-list .po-item a.on:hover:after, .portfolio-list .po-item a.on:focus:after {
   -webkit-transform: scale(1, 1);
           transform: scale(1, 1);
 }
@@ -2227,8 +2228,12 @@ select::-ms-expand {
   -webkit-transition: fill 0.2s linear;
   transition: fill 0.2s linear;
 }
-.portfolio-list li path, .portfolio-list .po-item path {
+.portfolio-list li a.off path, .portfolio-list .po-item a.off path {
   fill: #303b3d;
+}
+.portfolio-list li a path, .portfolio-list .po-item a path {
+  -webkit-transition: fill 0.4s linear;
+  transition: fill 0.4s linear;
 }
 .portfolio-list .po-item {
   padding: 10px 0;
