@@ -1811,6 +1811,9 @@ select::-ms-expand {
   right: 0;
   margin: auto;
 }
+.post .special-cat > div.cat-book {
+  top: -7px;
+}
 
 .calendar {
   width: 63px;
@@ -2121,7 +2124,7 @@ select::-ms-expand {
   background: #fff;
   color: #303b3d;
 }
-.portfolio-list li.transfered a:hover path, .portfolio-list li.transfered a:focus path, .portfolio-list li.transfered a.on path, .portfolio-list .po-item.transfered a:hover path, .portfolio-list .po-item.transfered a:focus path, .portfolio-list .po-item.transfered a.on path {
+.portfolio-list li.transfered a:hover path, .portfolio-list li.transfered a:hover polygon, .portfolio-list li.transfered a:hover rect, .portfolio-list li.transfered a:hover ellipse, .portfolio-list li.transfered a:hover circle, .portfolio-list li.transfered a:hover line, .portfolio-list li.transfered a:focus path, .portfolio-list li.transfered a:focus polygon, .portfolio-list li.transfered a:focus rect, .portfolio-list li.transfered a:focus ellipse, .portfolio-list li.transfered a:focus circle, .portfolio-list li.transfered a:focus line, .portfolio-list li.transfered a.on path, .portfolio-list li.transfered a.on polygon, .portfolio-list li.transfered a.on rect, .portfolio-list li.transfered a.on ellipse, .portfolio-list li.transfered a.on circle, .portfolio-list li.transfered a.on line, .portfolio-list .po-item.transfered a:hover path, .portfolio-list .po-item.transfered a:hover polygon, .portfolio-list .po-item.transfered a:hover rect, .portfolio-list .po-item.transfered a:hover ellipse, .portfolio-list .po-item.transfered a:hover circle, .portfolio-list .po-item.transfered a:hover line, .portfolio-list .po-item.transfered a:focus path, .portfolio-list .po-item.transfered a:focus polygon, .portfolio-list .po-item.transfered a:focus rect, .portfolio-list .po-item.transfered a:focus ellipse, .portfolio-list .po-item.transfered a:focus circle, .portfolio-list .po-item.transfered a:focus line, .portfolio-list .po-item.transfered a.on path, .portfolio-list .po-item.transfered a.on polygon, .portfolio-list .po-item.transfered a.on rect, .portfolio-list .po-item.transfered a.on ellipse, .portfolio-list .po-item.transfered a.on circle, .portfolio-list .po-item.transfered a.on line {
   -webkit-transition: fill 0.4s linear;
   transition: fill 0.4s linear;
 }
@@ -2228,10 +2231,10 @@ select::-ms-expand {
   -webkit-transition: fill 0.2s linear;
   transition: fill 0.2s linear;
 }
-.portfolio-list li a.off path, .portfolio-list .po-item a.off path {
+.portfolio-list li a.off path, .portfolio-list li a.off polygon, .portfolio-list li a.off rect, .portfolio-list li a.off ellipse, .portfolio-list li a.off circle, .portfolio-list li a.off line, .portfolio-list .po-item a.off path, .portfolio-list .po-item a.off polygon, .portfolio-list .po-item a.off rect, .portfolio-list .po-item a.off ellipse, .portfolio-list .po-item a.off circle, .portfolio-list .po-item a.off line {
   fill: #303b3d;
 }
-.portfolio-list li a path, .portfolio-list .po-item a path {
+.portfolio-list li a path, .portfolio-list li a polygon, .portfolio-list li a rect, .portfolio-list li a ellipse, .portfolio-list li a circle, .portfolio-list li a line, .portfolio-list .po-item a path, .portfolio-list .po-item a polygon, .portfolio-list .po-item a rect, .portfolio-list .po-item a ellipse, .portfolio-list .po-item a circle, .portfolio-list .po-item a line {
   -webkit-transition: fill 0.4s linear;
   transition: fill 0.4s linear;
 }
@@ -2275,6 +2278,7 @@ select::-ms-expand {
 .portfolio-list svg, .portfolio-list img {
   display: inline-block;
   max-width: 58%;
+  max-height: 70%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2294,6 +2298,10 @@ select::-ms-expand {
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
   fill: #303b3d;
+}
+.portfolio-list img {
+  width: auto;
+  height: auto;
 }
 .portfolio-list .txt {
   position: absolute;
@@ -4132,7 +4140,7 @@ select::-ms-expand {
   }
 
   .post-meta-spotlight {
-    margin: 5px 0 10px 0;
+    margin: 5px 0 10px;
   }
 
   .post-meta-header .btn-cat, .post-meta-spotlight .btn-cat {
@@ -4145,7 +4153,7 @@ select::-ms-expand {
   }
 
   .main-spotlight-post .txt {
-    margin: 10px 0 60px 0;
+    margin-top: 30px;
   }
   .main-spotlight-post h3 {
     font-size: 2.8rem;
@@ -4195,6 +4203,47 @@ select::-ms-expand {
   }
   .wrapper-interactive-blocks .interactive-block h3 {
     font-size: 2.8rem;
+  }
+
+  .post h3 {
+    font-size: 2.2rem;
+  }
+  .post .special-cat {
+    font-size: 1.2rem;
+  }
+
+  .cat-book, .cat-book:before {
+    width: 35px;
+    height: 50px;
+  }
+
+  .cat-def {
+    width: 95px;
+    height: 30px;
+    line-height: 26px;
+  }
+
+  .cat-job {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+  }
+
+  .calendar {
+    width: 45px;
+    height: 55px;
+  }
+  .calendar:before {
+    border-width: 10px 10px 0 0;
+  }
+  .calendar:after {
+    border-width: 0 0 14px 14px;
+  }
+  .calendar .month {
+    top: -15px;
+  }
+  .calendar .day {
+    font-size: 2rem;
   }
 }
 @media (max-width: 767px) {
@@ -4349,7 +4398,7 @@ select::-ms-expand {
     width: 100%;
   }
   .main-spotlight-post .txt {
-    margin: 30px 0 35px 0;
+    margin-bottom: 35px;
   }
   .main-spotlight-post .txt:before {
     bottom: -43px;
@@ -4428,6 +4477,10 @@ select::-ms-expand {
   .wrapper-interactive-blocks .interactive-block .btn.btn-left:hover:after {
     -webkit-transform: translate3d(7px, 0, 0) scale(0.85);
             transform: translate3d(7px, 0, 0) scale(0.85);
+  }
+
+  .post .img, .post .txt {
+    width: 100%;
   }
 }
 @media (max-width: 540px) {

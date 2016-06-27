@@ -121,7 +121,7 @@
                     background: #fff;
                     color: $chapo;
                     //transition: none;
-                    path{
+                    path, polygon, rect, ellipse, circle, line{
                         transition: fill 0.4s linear;
                     }
                     svg, img{
@@ -213,11 +213,11 @@
                 }
             }
             &.off{
-                path{
+                path, polygon, rect, ellipse, circle, line{
                     fill: $chapo;
                 }
             }
-            path{
+            path, polygon, rect, ellipse, circle, line{
                 transition: fill 0.4s linear;
             }
         }
@@ -262,6 +262,7 @@
     svg, img{
         display: inline-block;
         max-width: 58%;
+        max-height: 70%;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -276,6 +277,10 @@
             transition-delay: 0s;
             fill: $chapo;
         }
+    }
+    img{
+        width: auto;
+        height: auto;
     }
     .txt{
         position: absolute;

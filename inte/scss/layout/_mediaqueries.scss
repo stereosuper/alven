@@ -345,7 +345,7 @@
         }
     }
     .post-meta-spotlight{
-        margin: 5px 0 10px 0;
+        margin: 5px 0 10px;
     }
     .post-meta-header, .post-meta-spotlight{
         .btn-cat{
@@ -357,10 +357,10 @@
             margin-left: 3px;
         }
     }
-    
+
     .main-spotlight-post{
         .txt{
-            margin: 10px 0 60px 0;
+            margin-top: 30px;
         }
         h3{
             font-size: 2.8rem;
@@ -374,7 +374,7 @@
             font-size: 1.6rem;
         }
     }
-    
+
     .newsletter{
         h3{
             display: block;
@@ -410,6 +410,47 @@
             h3{
                 font-size: 2.8rem;
             }
+        }
+    }
+
+
+    .post{
+        h3{
+            font-size: 2.2rem;
+        }
+        .special-cat{
+            font-size: 1.2rem;
+        }
+    }
+
+    .cat-book, .cat-book:before{
+        width: 35px;
+        height: 50px;
+    }
+    .cat-def{
+        width: 95px;
+        height: 30px;
+        line-height: 26px;
+    }
+    .cat-job{
+        width: 50px;
+        height: 50px;
+        line-height: 45px;
+    }
+    .calendar{
+        width: 45px;
+        height: 55px;
+        &:before{
+            border-width: 10px 10px 0 0;
+        }
+        &:after{
+            border-width: 0 0 14px 14px;
+        }
+        .month{
+            top: -15px;
+        }
+        .day{
+            font-size: 2rem;
         }
     }
 }
@@ -587,7 +628,7 @@
             width: 100%;
         }
         .txt{
-            margin: 30px 0 35px 0;
+            margin-bottom: 35px;
             &:before{
                 bottom: -43px;
             }
@@ -668,6 +709,12 @@
                     }
                 }
             }
+        }
+    }
+
+    .post{
+        .img, .txt{
+            width: 100%;
         }
     }
 }
