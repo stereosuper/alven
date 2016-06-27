@@ -7,6 +7,7 @@ $(function(){
     function handleAjaxOpen() {
         var $links = $('a.ajax-load');
         var $ajaxContainer = $( "#ajaxContainer" );
+        var $nonAjaxContainer = $( "#nonAjaxContainer" );
 
         /**
          * Ferme la portion de page ajax
@@ -16,6 +17,10 @@ $(function(){
          * @returns {undefined}
          */
         function wipeAjaxContainer(data, href, callback) {
+            $nonAjaxContainer
+                .fadeIn('slow')
+            ;
+
             $ajaxContainer
                 .removeClass('open')
                 .slideUp('slow', function() {
@@ -38,6 +43,10 @@ $(function(){
                 .html(data)
                 .slideDown('slow')
                 .addClass('open')
+            ;
+
+            $nonAjaxContainer
+                .fadeOut('slow')
             ;
 
             $('a.btn-close').on('click', function() {

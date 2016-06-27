@@ -62,3 +62,5 @@
         </header>
 
         <div id="ajaxContainer"></div>
+
+        <div id="nonAjaxContainer">

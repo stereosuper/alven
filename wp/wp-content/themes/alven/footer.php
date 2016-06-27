@@ -1,3 +1,5 @@
+    </div>
+
     <footer role='contentinfo' id='footer'>
         <div class='container'>
             <div class='container-small'>
