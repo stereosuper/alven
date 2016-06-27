@@ -195,16 +195,17 @@ $(function(){
             total = 0, i = 0, j = 0, ratio1 = 0.1, ratio2 = 0.4,
             transfered, nbTrItem = 0, poItems, colCta = 3, posCta;
 
-        function lightTransferedPoItems(y){
+        function lightTransferedPoItems(y, old){
             var poItemsNotTransfered = portfolio.find('.po-item:not(.transfered)'), poItemNotTransfered = portfolio.find('li:not(.transfered)'), nbPoItemNotTransfered = poItemNotTransfered.length;
             var newElemNumber = Math.floor(Math.random() * nbPoItemNotTransfered);
             poItems.find('a').removeClass('on');
+            poItemsNotTransfered.eq(old).find('a').addClass('off');
             animPortfolio1 = setTimeout(function(){
                 if(!portfolio.find('div.grid').hasClass('is-hovered') && !poItemsNotTransfered.eq(y).hasClass('cta')){
                     poItemsNotTransfered.eq(y).find('a').addClass('on').removeClass('off');
                 }
             }, 1500);
-            animPortfolio2 = setTimeout(lightTransferedPoItems, 3500, newElemNumber);
+            animPortfolio2 = setTimeout(lightTransferedPoItems, 3500, newElemNumber, y);
         }
 
         if(nbPoItem > 37){
@@ -290,7 +291,7 @@ $(function(){
         transfered = portfolio.find('div.grid').find('.transfered');
         nbTrItem = transfered.length;
         poItems = portfolio.find('.po-item');
-        lightTransferedPoItems(0);
+        lightTransferedPoItems(0, -1);
 
         poItems.find('a').on('mouseenter', function(){
             if(!$(this).closest('.po-item').hasClass('cta')){
