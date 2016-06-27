@@ -25,7 +25,7 @@
     <?php wp_reset_postdata(); ?>
 
 
-	<?php if ( have_posts() ) : ?>
+    <?php if ( have_posts() ) : ?>
 
         <main role='main' id='main'>
             <div class='content-main no-border' id='mainContent'>
@@ -108,9 +108,9 @@
             </div>
         </main>
 
-	<?php else : ?>
+    <?php else : ?>
 
-		<main role='main' id='main'>
+        <main role='main' id='main'>
             <div class='content-main' id='mainContent'>
                 <div class='container'>
 
@@ -120,7 +120,7 @@
             </div>
         </main>
 
-	<?php endif; ?>
+    <?php endif; ?>
 
 <?php get_footer(); ?>
 

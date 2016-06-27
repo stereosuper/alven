@@ -1,4 +1,4 @@
-	<footer role='contentinfo' id='footer'>
+    <footer role='contentinfo' id='footer'>
         <div class='container'>
             <div class='container-small'>
                 <div class='grid'>
@@ -6,9 +6,9 @@
                 </div>
             </div>
         </div>
-	</footer>
+    </footer>
 
-	<?php wp_footer(); ?>
+    <?php wp_footer(); ?>
 
-	</body>
+    </body>
 </html>
