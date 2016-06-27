@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <main role='main' id='main'>
+        <!--<main role='main' id='main'>-->
             <article class='content-main'>
                 <div class='container'>
 
@@ -109,4 +109,4 @@
                     </div>
                 <?php wp_reset_postdata(); }
             ?>
-        </main>
+        <!--</main>-->
