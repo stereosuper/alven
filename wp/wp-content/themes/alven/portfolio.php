@@ -60,7 +60,7 @@ get_header(); ?>
                             <ul class='grid'>
                                 <?php while($startups->have_posts()): $startups->the_post(); ?>
                                     <?php if(get_field('investment') !== 'past'){ ?><li class='col-2'>
-                                        <a href='<?php the_permalink(); ?>' class='ajax-load'>
+                                        <a href='<?php the_permalink(); ?>' class='ajax-load off'>
                                             <?php
                                                 if( has_post_thumbnail() ){
                                                     $icon = wp_get_attachment_thumb_url(get_post_thumbnail_id());
