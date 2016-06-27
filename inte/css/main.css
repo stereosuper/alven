@@ -4582,6 +4582,9 @@ select::-ms-expand {
   .post {
     width: 100%;
   }
+  .post .grid {
+    min-height: 0;
+  }
 }
 @media (max-width: 480px) {
   .home h1 {

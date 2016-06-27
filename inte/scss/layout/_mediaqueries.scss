@@ -713,8 +713,21 @@
     }
 
     .post{
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+        .grid{
+            min-height: 480px;
+            &:before, &:after{
+                left: $innerGutter;
+            }
+        }
         .img, .txt{
             width: 100%;
+        }
+        .img{
+            padding: 0 $innerGutter;
+            margin: 0 0 20px;
         }
     }
 }
@@ -820,6 +833,13 @@
             h3{
                 font-size: 1.8rem;
             }
+        }
+    }
+
+    .post{
+        width: 100%;
+        .grid{
+            min-height: 0;
         }
     }
 }
