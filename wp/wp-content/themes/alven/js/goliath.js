@@ -42,6 +42,7 @@ $(function(){
 
             $('a.btn-close').on('click', function() {
                 wipeAjaxContainer();
+                $.address.value('');
 
                 return false;
             });
@@ -90,6 +91,10 @@ $(function(){
 
             if (href && href!='' && href != '/') {
                 loadUrlAjax(href);
+            } else {
+                if ($ajaxContainer.hasClass('open')) {
+                    wipeAjaxContainer();
+                }
             }
         });
 
