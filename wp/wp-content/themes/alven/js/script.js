@@ -198,7 +198,7 @@ $(function(){
         function lightTransferedPoItems(y){
             var poItemsNotTransfered = portfolio.find('.po-item:not(.transfered)'), poItemNotTransfered = portfolio.find('li:not(.transfered)'), nbPoItemNotTransfered = poItemNotTransfered.length;
             var newElemNumber = Math.floor(Math.random() * nbPoItemNotTransfered);
-            poItems.find('a').removeClass('on').addClass('off');
+            poItems.find('a').removeClass('on');
             animPortfolio1 = setTimeout(function(){
                 if(!portfolio.find('div.grid').hasClass('is-hovered') && !poItemsNotTransfered.eq(y).hasClass('cta')){
                     poItemsNotTransfered.eq(y).find('a').addClass('on').removeClass('off');
