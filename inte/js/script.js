@@ -103,19 +103,26 @@ $(function(){
 
         if(windowWidth < spotlightWidth){
             if(!spotlightDrag){
+                var gridWidth = Math.round($('#spotlightDrag').find('.spotlight-post').first().innerWidth());
                 spotlightDrag = Draggable.create( '#spotlightDrag', {
                     type: 'x',
                     bounds: spotlightPost,
                     cursor: 'grab',
                     throwProps: true,
-                    edgeResistance:0.65,
+                    edgeResistance:0.9,
+                    snap: {
+                        x: function(endValue) {
+                            return Math.round(endValue / gridWidth) * gridWidth;
+                        }
+                    },
                     onDrag: detectVisiblePosts,
                     onDragStart: function(){
                         spotlightPost.find('.container').addClass('grabbing');
                     },
                     onDragEnd: function(){
                         spotlightPost.find('.container').removeClass('grabbing');
-                    }
+                    },
+                    onThrowComplete: detectVisiblePosts
                 } );
             }else{
                 spotlightDrag[0].enable();
@@ -308,20 +315,20 @@ $(function(){
                 offsetLiOpen = team.find('> li.open').offset().left;
             }
             if(windowWidth > 767 && nbTeamMembers > 5){
-                TweenMax.set([$('.wrapper-btn-glob.prev'), $('.wrapper-btn-glob.next')], {className:'-=open'});
+                TweenMax.set([$('.wrapper-btn-glob.btn-prev'), $('.wrapper-btn-glob.btn-next')], {className:'-=open'});
                 if(teamLeft < -Math.ceil(teamMemberWidth*2)){
-                    TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
+                    TweenMax.set($('.wrapper-btn-glob.btn-prev'), {className:'+=open'});
                 }
                 if(Math.ceil(teamRight+teamMemberWidth*2) > containerTeamWidth){
-                    TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
+                    TweenMax.set($('.wrapper-btn-glob.btn-next'), {className:'+=open'});
                 }
             }else if(windowWidth <= 767 && nbTeamMembers > 3){
-                TweenMax.set([$('.wrapper-btn-glob.prev'), $('.wrapper-btn-glob.next')], {className:'-=open'});
+                TweenMax.set([$('.wrapper-btn-glob.btn-prev'), $('.wrapper-btn-glob.btn-next')], {className:'-=open'});
                 if(teamLeft < -Math.ceil(teamMemberWidth)){
-                    TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
+                    TweenMax.set($('.wrapper-btn-glob.btn-prev'), {className:'+=open'});
                 }
                 if(Math.ceil(teamRight+teamMemberWidth) > containerTeamWidth){
-                    TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
+                    TweenMax.set($('.wrapper-btn-glob.btn-next'), {className:'+=open'});
                 }
             }
         }else{
@@ -358,7 +365,7 @@ $(function(){
                     bounds: $('.container-team'),
                     cursor: 'grab',
                     throwProps: true,
-                    edgeResistance: 0.65,
+                    edgeResistance: 0.9,
                     dragClickables: true,
                     snap: {
                         x: function(endValue) {
@@ -403,7 +410,7 @@ $(function(){
                     bounds: $('.container-team'),
                     cursor: 'grab',
                     throwProps: true,
-                    edgeResistance: 0.65,
+                    edgeResistance: 0.9,
                     dragClickables: true,
                     snap: {
                         x: function(endValue) {

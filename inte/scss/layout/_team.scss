@@ -224,14 +224,14 @@
 		bottom: 0;
 		background-color: #fff;
 	}
-	&.prev{
+	&.btn-prev{
 		left: 0;
 		&:before{
 			left: -20px;
 			right: 8px;
 		}
 	}
-	&.next{
+	&.btn-next{
 		right: 0;
 		&:before{
 			left: 8px;
