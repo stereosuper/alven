@@ -216,9 +216,12 @@
         background: #fff;
     }
     .img{
-        position: relative;
+        position: absolute;
         vertical-align: middle;
-        margin: 0 $col 0 0;
+        margin: 0 $col 0 -10px;
+        top: 0;
+        bottom: 10px;
+        left: 0;
         img{
             max-width: 50vw;
             position: absolute;
@@ -231,10 +234,11 @@
     .txt{
         position: relative;
         vertical-align: middle;
-        margin: 4.4em 0 60px;
+        margin: 4.4em 0 60px $col*7;
         z-index: 1;
-
         @include pseudoCross;
+
+        text-align: left;
         &:before, &:after{
             left: 10px;
         }

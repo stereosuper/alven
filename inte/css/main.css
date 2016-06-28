@@ -695,6 +695,14 @@ a:active {
   position: relative;
 }
 
+.img-fit.compat-object-fit {
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.img-fit.compat-object-fit img {
+  opacity: 0;
+}
+
 /* Placeholders */
 /* Grid */
 #main {
@@ -2226,9 +2234,12 @@ select::-ms-expand {
   background: #fff;
 }
 .main-spotlight-post .img {
-  position: relative;
+  position: absolute;
   vertical-align: middle;
-  margin: 0 8.3333333333% 0 0;
+  margin: 0 8.3333333333% 0 -10px;
+  top: 0;
+  bottom: 10px;
+  left: 0;
 }
 .main-spotlight-post .img img {
   max-width: 50vw;
@@ -2241,8 +2252,9 @@ select::-ms-expand {
 .main-spotlight-post .txt {
   position: relative;
   vertical-align: middle;
-  margin: 4.4em 0 60px;
+  margin: 4.4em 0 60px 58.3333333333%;
   z-index: 1;
+  text-align: left;
 }
 .main-spotlight-post .txt:before, .main-spotlight-post .txt:after {
   background: #26393d;
@@ -4041,6 +4053,13 @@ select::-ms-expand {
   .portfolio-list .po-item.cta a > span {
     max-width: 95%;
   }
+
+  .main-spotlight-post h3 {
+    font-size: 3.5rem;
+  }
+  .main-spotlight-post .txt {
+    margin: 40px 0 40px 58.3333333333%;
+  }
 }
 @media (max-width: 979px) {
   h1 {
@@ -4196,7 +4215,7 @@ select::-ms-expand {
   }
 
   .main-spotlight-post .txt {
-    margin-top: 30px;
+    margin: 30px 0 35px 58.3333333333%;
   }
   .main-spotlight-post h3 {
     font-size: 2.8rem;
@@ -4441,7 +4460,7 @@ select::-ms-expand {
     width: 100%;
   }
   .main-spotlight-post .txt {
-    margin-bottom: 35px;
+    margin: 30px 0 35px 0;
   }
   .main-spotlight-post .txt:before {
     bottom: -43px;
@@ -4450,8 +4469,14 @@ select::-ms-expand {
     bottom: -36px;
   }
   .main-spotlight-post .img {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    width: calc(100% + 40px);
+    height: 330px;
     padding: 0;
-    margin: 0;
+    margin: 0 0 0 -20px;
   }
   .main-spotlight-post .img img {
     max-width: none;
@@ -4671,6 +4696,10 @@ select::-ms-expand {
   .portfolio-header .btn-close {
     top: -30px;
   }
+
+  .main-spotlight-post .img {
+    height: 280px;
+  }
 }
 @media (max-width: 480px) {
   .home h1 {
@@ -4762,6 +4791,10 @@ select::-ms-expand {
   }
   .portfolio-list .po-item.cta .btn-invert {
     font-size: 0.7rem;
+  }
+
+  .main-spotlight-post .img {
+    height: 215px;
   }
 
   .quote blockquote {
