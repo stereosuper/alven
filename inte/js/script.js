@@ -176,6 +176,7 @@ $(function(){
 
 
     function setPortfolio(poItem, nbPoItem, nbCol){
+        console.log(poItem);
         var portfolioContent = '<div class="grid">', poItemIndex = 0,
             currentNb = 0, i = 0, transfered,
             nbTrItem = 0, poItems, nbItemByCol = [];
@@ -255,10 +256,10 @@ $(function(){
                     if(i === colCta && nbItemByCol[i] === posCta){
                         itemContent = '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
                     }
-                    if(portfolio.find('ul.grid').find('li').eq(currentNb).hasClass('transfered')){
-                        itemContent = '<div class="po-item transfered">'+portfolio.find('li').eq(currentNb).html()+'</div>';
+                    if(poItem.eq(currentNb).hasClass('transfered')){
+                        itemContent = '<div class="po-item transfered">'+poItem.eq(currentNb).html()+'</div>';
                     }else{
-                        itemContent = '<div class="po-item">'+portfolio.find('li').eq(currentNb).html()+'</div>';
+                        itemContent = '<div class="po-item">'+poItem.eq(currentNb).html()+'</div>';
                     }
                     portfolio.find('.po-item-col').eq(i).append(itemContent);
                     currentNb++;
@@ -671,6 +672,42 @@ $(function(){
         if(nbPoItem > nbCol){
             setPortfolio(poItem, nbPoItem, nbCol);
         }
+
+        portfolioFilters.on('click', 'li', function(){
+            var thisBtn = $(this);
+            if(!thisBtn.hasClass('actif')){
+                var data = [thisBtn.data()], i = 0,
+                    siblings = thisBtn.parents('.col-2').siblings().find('.actif'),
+                    nbSiblings = siblings.length, filteredPoItem, nbFilteredPoItem,
+                    filters = [];
+
+                thisBtn.siblings().removeClass('actif');
+                thisBtn.addClass('actif').clone().prependTo(thisBtn.parents('.dropdown'));
+                thisBtn.remove();
+
+                for(i; i<nbSiblings; i++){
+                    data[i+1] = siblings.data();
+                }
+
+                /*i = 0;
+                for(i; i<data.length; i++){
+                    filters[i] = Object.keys(data[i])[0];
+                }*/
+
+                filteredPoItem = poItem.filter(function(){
+                    if(data[0]['investment'] !== 'all'){
+                        return $.inArray(data[0]['investment'], [$('a', this).data('investment')]) > -1;
+                    }else{
+                        return $(this);
+                    }
+                });
+
+                nbFilteredPoItem = filteredPoItem.length;
+                nbCol = windowWidth > 767 ? 6 : 3;
+                portfolio.find('div.grid').remove();
+                setPortfolio(filteredPoItem, nbFilteredPoItem, nbCol);
+            }
+        });
     }
 
     if(team.length){
