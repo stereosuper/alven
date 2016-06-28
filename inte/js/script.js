@@ -103,19 +103,26 @@ $(function(){
 
         if(windowWidth < spotlightWidth){
             if(!spotlightDrag){
+                var gridWidth = Math.round($('#spotlightDrag').find('.spotlight-post').first().innerWidth());
                 spotlightDrag = Draggable.create( '#spotlightDrag', {
                     type: 'x',
                     bounds: spotlightPost,
                     cursor: 'grab',
                     throwProps: true,
-                    edgeResistance:0.65,
+                    edgeResistance:0.9,
+                    snap: {
+                        x: function(endValue) {
+                            return Math.round(endValue / gridWidth) * gridWidth;
+                        }
+                    },
                     onDrag: detectVisiblePosts,
                     onDragStart: function(){
                         spotlightPost.find('.container').addClass('grabbing');
                     },
                     onDragEnd: function(){
                         spotlightPost.find('.container').removeClass('grabbing');
-                    }
+                    },
+                    onThrowComplete: detectVisiblePosts
                 } );
             }else{
                 spotlightDrag[0].enable();
@@ -357,7 +364,7 @@ $(function(){
                     bounds: $('.container-team'),
                     cursor: 'grab',
                     throwProps: true,
-                    edgeResistance: 0.65,
+                    edgeResistance: 0.9,
                     dragClickables: true,
                     snap: {
                         x: function(endValue) {
@@ -402,7 +409,7 @@ $(function(){
                     bounds: $('.container-team'),
                     cursor: 'grab',
                     throwProps: true,
-                    edgeResistance: 0.65,
+                    edgeResistance: 0.9,
                     dragClickables: true,
                     snap: {
                         x: function(endValue) {
