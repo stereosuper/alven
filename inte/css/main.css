@@ -1233,7 +1233,7 @@ select::-ms-expand {
           transition: fill 0.4s linear;
           transition-delay: 0s; }
         .portfolio-list li.transfered a:hover svg, .portfolio-list li.transfered a:hover img, .portfolio-list li.transfered a:focus svg, .portfolio-list li.transfered a:focus img, .portfolio-list li.transfered a.on svg, .portfolio-list li.transfered a.on img, .portfolio-list .po-item.transfered a:hover svg, .portfolio-list .po-item.transfered a:hover img, .portfolio-list .po-item.transfered a:focus svg, .portfolio-list .po-item.transfered a:focus img, .portfolio-list .po-item.transfered a.on svg, .portfolio-list .po-item.transfered a.on img {
-          transform: translate3d(0, 0, 0) scale(1); }
+          transform: translate3d(0, 0, 0) scale(1) rotate(0.1deg); }
     .portfolio-list li a, .portfolio-list .po-item a {
       border: 1px solid #e5e8e8;
       position: absolute;
@@ -1244,7 +1244,9 @@ select::-ms-expand {
       background: #34b6b8;
       box-shadow: none;
       transition: border-color 0.1s cubic-bezier(0.42, 0, 0.58, 1);
-      transition-delay: 0.3s; }
+      transition-delay: 0.3s;
+      backface-visibility: hidden;
+      transform-style: preserve-3d; }
       .portfolio-list li a:before, .portfolio-list .po-item a:before {
         content: '';
         display: inline-block;
@@ -1264,8 +1266,10 @@ select::-ms-expand {
         transition: transform 0.25s cubic-bezier(0.42, 0, 0.58, 1);
         transition-delay: 0.1s;
         pointer-events: none;
-        transform: scale(1, 1);
-        background-color: #fff; }
+        transform: scale(1, 1) rotate(0.1deg);
+        background-color: #fff;
+        backface-visibility: hidden;
+        transform-style: preserve-3d; }
       .portfolio-list li a:hover, .portfolio-list li a:focus, .portfolio-list li a.on, .portfolio-list .po-item a:hover, .portfolio-list .po-item a:focus, .portfolio-list .po-item a.on {
         opacity: 1;
         border-color: #34b6b8;
@@ -1274,24 +1278,26 @@ select::-ms-expand {
             opacity: 0.3;
         }*/ }
         .portfolio-list li a:hover:after, .portfolio-list li a:focus:after, .portfolio-list li a.on:after, .portfolio-list .po-item a:hover:after, .portfolio-list .po-item a:focus:after, .portfolio-list .po-item a.on:after {
-          transform: scale(0.96, 0.94);
+          transform: scale(0.96, 0.94) rotate(0.1deg);
           transition: transform 0.65s cubic-bezier(0, 0.855, 0.345, 1);
           transition-delay: 0s; }
         .portfolio-list li a:hover .txt, .portfolio-list li a:focus .txt, .portfolio-list li a.on .txt, .portfolio-list .po-item a:hover .txt, .portfolio-list .po-item a:focus .txt, .portfolio-list .po-item a.on .txt {
           opacity: 0; }
         .portfolio-list li a:hover svg, .portfolio-list li a:hover img, .portfolio-list li a:focus svg, .portfolio-list li a:focus img, .portfolio-list li a.on svg, .portfolio-list li a.on img, .portfolio-list .po-item a:hover svg, .portfolio-list .po-item a:hover img, .portfolio-list .po-item a:focus svg, .portfolio-list .po-item a:focus img, .portfolio-list .po-item a.on svg, .portfolio-list .po-item a.on img {
-          transform: translate3d(-50%, -50%, 0) scale(1);
+          transform: translate3d(-50%, -50%, 0) scale(1) rotate(0.1deg);
           transition: transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-          transition-delay: 0.10s; }
+          transition-delay: 0.10s;
+          backface-visibility: hidden;
+          transform-style: preserve-3d; }
         .portfolio-list li a:hover path, .portfolio-list li a:hover polygon, .portfolio-list li a:hover rect, .portfolio-list li a:hover ellipse, .portfolio-list li a:hover circle, .portfolio-list li a:hover line, .portfolio-list li a:hover polyline, .portfolio-list li a:focus path, .portfolio-list li a:focus polygon, .portfolio-list li a:focus rect, .portfolio-list li a:focus ellipse, .portfolio-list li a:focus circle, .portfolio-list li a:focus line, .portfolio-list li a:focus polyline, .portfolio-list li a.on path, .portfolio-list li a.on polygon, .portfolio-list li a.on rect, .portfolio-list li a.on ellipse, .portfolio-list li a.on circle, .portfolio-list li a.on line, .portfolio-list li a.on polyline, .portfolio-list .po-item a:hover path, .portfolio-list .po-item a:hover polygon, .portfolio-list .po-item a:hover rect, .portfolio-list .po-item a:hover ellipse, .portfolio-list .po-item a:hover circle, .portfolio-list .po-item a:hover line, .portfolio-list .po-item a:hover polyline, .portfolio-list .po-item a:focus path, .portfolio-list .po-item a:focus polygon, .portfolio-list .po-item a:focus rect, .portfolio-list .po-item a:focus ellipse, .portfolio-list .po-item a:focus circle, .portfolio-list .po-item a:focus line, .portfolio-list .po-item a:focus polyline, .portfolio-list .po-item a.on path, .portfolio-list .po-item a.on polygon, .portfolio-list .po-item a.on rect, .portfolio-list .po-item a.on ellipse, .portfolio-list .po-item a.on circle, .portfolio-list .po-item a.on line, .portfolio-list .po-item a.on polyline {
           transition: fill 0.4s linear;
           transition-delay: 0.25s; }
       .portfolio-list li a.on:hover, .portfolio-list li a.on:focus, .portfolio-list .po-item a.on:hover, .portfolio-list .po-item a.on:focus {
         border-color: #e5e8e8; }
         .portfolio-list li a.on:hover:after, .portfolio-list li a.on:focus:after, .portfolio-list .po-item a.on:hover:after, .portfolio-list .po-item a.on:focus:after {
-          transform: scale(1, 1); }
+          transform: scale(1, 1) rotate(0.1deg); }
       .portfolio-list li a.on img, .portfolio-list li a.on svg, .portfolio-list .po-item a.on img, .portfolio-list .po-item a.on svg {
-        transform: translate3d(-50%, -50%, 0) scale(0.95); }
+        transform: translate3d(-50%, -50%, 0) scale(0.95) rotate(0.1deg); }
       .portfolio-list li a.on path, .portfolio-list li a.on polygon, .portfolio-list li a.on rect, .portfolio-list li a.on ellipse, .portfolio-list li a.on circle, .portfolio-list li a.on line, .portfolio-list li a.on polyline, .portfolio-list .po-item a.on path, .portfolio-list .po-item a.on polygon, .portfolio-list .po-item a.on rect, .portfolio-list .po-item a.on ellipse, .portfolio-list .po-item a.on circle, .portfolio-list .po-item a.on line, .portfolio-list .po-item a.on polyline {
         transition: fill 0.2s linear; }
       .portfolio-list li a.off path, .portfolio-list li a.off polygon, .portfolio-list li a.off rect, .portfolio-list li a.off ellipse, .portfolio-list li a.off circle, .portfolio-list li a.off line, .portfolio-list li a.off polyline, .portfolio-list .po-item a.off path, .portfolio-list .po-item a.off polygon, .portfolio-list .po-item a.off rect, .portfolio-list .po-item a.off ellipse, .portfolio-list .po-item a.off circle, .portfolio-list .po-item a.off line, .portfolio-list .po-item a.off polyline {
@@ -1333,7 +1339,7 @@ select::-ms-expand {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate3d(-50%, -50%, 0) scale(0.95);
+    transform: translate3d(-50%, -50%, 0) scale(0.95) rotate(0.1deg);
     transition: transform 0.15s cubic-bezier(0.55, 0.085, 0.68, 0.53);
     transition-delay: 0s;
     z-index: 1; }
