@@ -1956,16 +1956,16 @@ select::-ms-expand {
   border-right: 10px solid #fff;
 }
 .related-portfolio-list:before {
-  top: -78px;
+  top: -58px;
   left: 10px;
 }
 .related-portfolio-list:after {
-  top: -71px;
+  top: -51px;
   left: -7px;
 }
 .related-portfolio .title-small {
   position: absolute;
-  top: -100px;
+  top: -80px;
   left: 28px;
 }
 .related-portfolio .post-small {
@@ -2546,16 +2546,19 @@ select::-ms-expand {
 }
 
 .related-startups .title-small {
-  top: -45px;
+  top: -30px;
 }
 .related-startups .related-portfolio-list:after {
-  top: -21px;
+  top: -1px;
 }
 .related-startups .related-portfolio-list:before {
-  top: -28px;
+  top: -8px;
 }
 .related-startups .post-small {
-  border: 0;
+  margin-top: 30px;
+}
+.related-startups .post-small:after {
+  display: none;
 }
 .related-startups img {
   width: auto;
@@ -4323,6 +4326,9 @@ select::-ms-expand {
     font-size: 2rem;
   }
 
+  .related-portfolio .container-small {
+    padding: 0 20px;
+  }
   .related-portfolio .post-small {
     width: 33.33333%;
   }
@@ -4604,6 +4610,10 @@ select::-ms-expand {
   .portfolio-header div.col-3:first-of-type {
     margin-left: 0;
   }
+
+  .related-portfolio .post-small {
+    width: 50%;
+  }
 }
 @media (max-width: 540px) {
   h1 {
@@ -4718,6 +4728,10 @@ select::-ms-expand {
 
   .main-spotlight-post .img {
     height: 280px;
+  }
+
+  .related-portfolio-list {
+    margin: 0;
   }
 }
 @media (max-width: 480px) {
