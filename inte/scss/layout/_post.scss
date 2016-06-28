@@ -34,6 +34,7 @@
 
 .post-sidebar{
     margin: 0 0 50px;
+    backface-visibility: hidden;
     .title-small{
         padding: 0 0 0 16px;
     }
@@ -446,6 +447,44 @@
     }
     .next, .prev{
         vertical-align: bottom;
+    }
+}
+
+.related-startups{
+    .title-small{
+        top: -45px;
+    }
+    .related-portfolio-list{
+        &:after{
+            top: -21px;
+        }
+        &:before{
+            top: -28px;
+        }
+    }
+    .post-small{
+        border: 0;
+    }
+    img{
+        width: auto;
+        height: auto;
+        max-width: 60%;
+        max-height: 60%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    .img{
+        padding: 0 0 60%;
+        border: 1px solid $greyBorder;
+        position: relative;
+        a{
+            display: block;
+            box-shadow: none;
+        }
     }
 }
 
