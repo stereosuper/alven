@@ -62,14 +62,18 @@ get_header(); ?>
                                     <?php
                                         $fields = get_the_terms($post, 'field');
                                         $fieldList = '';
-                                        foreach($fields as $field){
-                                            $fieldList .= $field->slug.',';
+                                        if($fields){
+                                            foreach($fields as $field){
+                                                $fieldList .= $field->slug.',';
+                                            }
                                         }
 
-                                        $footprints = get_the_terms($post, 'field');
+                                        $footprints = get_the_terms($post, 'footprint');
                                         $footprintList = '';
-                                        foreach($footprints as $footprint){
-                                            $footprintList .= $footprint->slug.',';
+                                        if($footprints){
+                                            foreach($footprints as $footprint){
+                                                $footprintList .= $footprint->slug.',';
+                                            }
                                         }
                                     ?>
                                     <?php if(get_field('investment') !== 'past'){ ?><li class='col-2'>
