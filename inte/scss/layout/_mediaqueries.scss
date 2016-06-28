@@ -464,6 +464,9 @@
     }
 
     .related-portfolio{
+        .container-small{
+            padding: 0 20px;
+        }
         .post-small{
             width: 33.33333%;
         }
@@ -773,6 +776,12 @@
             }
         }
     }
+
+    .related-portfolio{
+        .post-small{
+            width: 50%;
+        }
+    }
 }
 
 @media (max-width: 540px){
@@ -906,6 +915,10 @@
         .img{
             height: 280px;
         }
+    }
+
+    .related-portfolio-list{
+        margin: 0;
     }
 }
 
