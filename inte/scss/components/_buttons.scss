@@ -60,7 +60,13 @@
 
 .prev{
     &:after{
+        left: -28px;
+        right: auto;
         transform: translate3d(0, -1px, 0) rotate(180deg);
+    }
+    &:before{
+        right: auto;
+        left: -25px;
     }
     &:hover, &:focus{
         .no-js &, .is-desktop &{
