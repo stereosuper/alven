@@ -1931,7 +1931,7 @@ select::-ms-expand {
 .related-portfolio {
   padding: 0 0 35px;
   border-bottom: 1px solid #e5e8e8;
-  margin: 0 0 50px;
+  margin: -20px 0 50px;
 }
 .related-portfolio .container-small {
   padding: 0;
@@ -1973,7 +1973,18 @@ select::-ms-expand {
   width: 25%;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 0;
+  border: 0;
+  position: relative;
   vertical-align: top;
+  margin-top: 20px;
+}
+.related-portfolio .post-small:after {
+  content: '';
+  display: block;
+  height: 1px;
+  margin: 20px 0 0;
+  background: #e5e8e8;
 }
 .related-portfolio .post-small h4 {
   margin-top: 15px;
@@ -4310,6 +4321,10 @@ select::-ms-expand {
   }
   .calendar .day {
     font-size: 2rem;
+  }
+
+  .related-portfolio .post-small {
+    width: 33.33333%;
   }
 }
 @media (max-width: 767px) {

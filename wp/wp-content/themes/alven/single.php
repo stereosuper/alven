@@ -8,6 +8,8 @@
                 $hasImg = true;
                 $imgUrl = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0];
             }
+
+            $related = get_field('startup');
         ?>
 
         <div class='content-header <?php if($hasImg){ echo 'has-img'; } ?>' id='contentHeader'>
@@ -35,7 +37,7 @@
 
                     <div class='container-small'>
                         <div class='grid'>
-                            <article class='col-8 content-default'>
+                            <article class='col-8 content-default <?php if($related){ echo "no-cross"; } ?>'>
                                 <?php the_content(); ?>
                                 <hr>
                                 <?php if(get_field('medium')){ ?>
@@ -82,50 +84,33 @@
                 </div>
             </section>
 
-            <!--
-                <?php
-                    $related = get_posts(array(
-                        'post_type' => 'post',
-                        'meta_query' => array(
-                            array(
-                                'key' => 'startup', // name of custom field
-                                'value' => '"' . get_the_ID() . '"',
-                                'compare' => 'LIKE'
-                            )
-                        )
-                    ));
-                    if($related){ ?>
-                        <div class='related-portfolio'>
-                            <div class='container'>
-                                <div class='container-small'>
-                                    <div class='grid'>
-                                        <div class='related-portfolio-list'>
-                                            <span class='title-small'>Related articles</span>
-                                            <?php foreach($related as $post){ setup_postdata($post); ?>
-                                                <div class='post-small'>
-                                                    <?php if(has_post_thumbnail()){ ?>
-                                                        <div class='img'>
-                                                            <a href='<?php the_permalink(); ?>'>
-                                                                <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
-                                                            </a>
-                                                        </div>
-                                                    <?php } ?>
-                                                    <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
-                                                    <div class='post-meta'>
-                                                        <?php the_category( ', ' ); ?> -
-                                                        <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
+            <?php
+                if($related){ ?>
+                    <div class='related-portfolio related-startups'>
+                        <div class='container'>
+                            <div class='container-small'>
+                                <div class='grid'>
+                                    <div class='related-portfolio-list'>
+                                        <span class='title-small'>Related startups</span>
+                                        <?php foreach($related as $post){ setup_postdata($post); ?>
+                                            <div class='post-small'>
+                                                <?php if(has_post_thumbnail()){ ?>
+                                                    <div class='img'>
+                                                        <a href='<?php the_permalink(); ?>'>
+                                                            <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
+                                                        </a>
                                                     </div>
-                                                    <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
-                                                </div>
-                                            <?php } ?>
-                                        </div>
+                                                <?php } ?>
+                                                <a href='<?php the_permalink(); ?>' class='btn-arrow'><?php the_title(); ?></a>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <?php wp_reset_postdata(); }
-                ?>
-            -->
+                    </div>
+                <?php wp_reset_postdata(); }
+            ?>
 
             <?php
 

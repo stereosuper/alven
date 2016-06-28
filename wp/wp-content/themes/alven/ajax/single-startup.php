@@ -85,23 +85,21 @@
                                 <div class='grid'>
                                     <div class='related-portfolio-list'>
                                         <span class='title-small'>Related articles</span>
-                                        <?php foreach($related as $post){ setup_postdata($post); ?>
-                                            <div class='post-small'>
-                                                <?php if(has_post_thumbnail()){ ?>
-                                                    <div class='img'>
+                                        <?php foreach($related as $post){ setup_postdata($post); ?><div class='post-small'>
+                                            <?php if(has_post_thumbnail()){ ?>
+                                                <div class='img'>
                                                         <a href='<?php the_permalink(); ?>'>
-                                                            <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
-                                                        </a>
-                                                    </div>
-                                                <?php } ?>
-                                                <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
-                                                <div class='post-meta'>
-                                                    <?php the_category( ', ' ); ?> -
-                                                    <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
+                                                        <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
+                                                    </a>
                                                 </div>
-                                                <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
+                                            <?php } ?>
+                                            <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
+                                            <div class='post-meta'>
+                                                <?php the_category( ', ' ); ?> -
+                                                <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
                                             </div>
-                                        <?php } ?>
+                                            <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
+                                        </div><?php } ?>
                                     </div>
                                 </div>
                             </div>

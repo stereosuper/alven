@@ -1,5 +1,11 @@
 'use strict';
 
+// globale car utilisée dans ajax.js
+function setBtn(btn){
+    var txt = btn.html();
+    return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
+}
+
 $(function(){
 
     /**** VARIABLES ****/
@@ -21,7 +27,7 @@ $(function(){
     var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioItemScroll = [],
         portfolioFilters = $('#portfolioFilters'), portfolioFiltersTop = portfolioFilters.length ? portfolioFilters.offset().top : 0;
     var dropdowns = $('.dropdown');
-    var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, teamMemberHeight, offsetYtoScroll;
+    var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, /*teamMemberHeight, */offsetYtoScroll;
 
 
 
@@ -31,44 +37,6 @@ $(function(){
         var scrollDir = myScroll > lastScrollTop ? -1 : 1;
         lastScrollTop = myScroll;
         return scrollDir;
-    }
-
-    /*function setButtons(buttons){
-        var i = 0, tlBeforeButtons = [], tlAfterButtons = [],
-            mySplitTextBeforeButtons = [], mySplitTextAfterButtons = [],
-            charsBeforeButtons = [], charsAfterButtons = [], nbButtons = buttons.length,
-            textBtn;
-
-        for(i; i<nbButtons; i++){
-            textBtn = buttons.eq(i).html();
-            buttons.eq(i).html('<span class="bg"></span><span class="before">'+textBtn+'</span><span class="after">'+textBtn+'</span>');
-
-            tlBeforeButtons[i] = new TimelineMax();
-            mySplitTextBeforeButtons[i] = new SplitText($('.before', buttons.eq(i)), {type:'words,chars'});
-            charsBeforeButtons[i] = mySplitTextBeforeButtons[i].chars;
-
-            tlAfterButtons[i] = new TimelineMax();
-            mySplitTextAfterButtons[i] = new SplitText($('.after', buttons.eq(i)), {type:'words,chars'});
-            charsAfterButtons[i] = mySplitTextAfterButtons[i].chars;
-            TweenMax.set(charsAfterButtons[i], {y:40, opacity: 0});
-        }
-
-        buttons.hover(
-            function(){
-                var indexButtonHovered = buttons.index(this);
-                tlBeforeButtons[indexButtonHovered].staggerTo(charsBeforeButtons[indexButtonHovered], 0.2, {y:-40, opacity: 0, ease:Cubic.easeIn}, 0.013);
-                tlAfterButtons[indexButtonHovered].staggerTo(charsAfterButtons[indexButtonHovered], 0.2, {y:0, opacity: 1, delay: 0.1, ease:Cubic.easeIn}, 0.013);
-            }, function(){
-                var indexButtonHovered = buttons.index(this);
-                tlBeforeButtons[indexButtonHovered].staggerTo(charsBeforeButtons[indexButtonHovered], 0.2, {y:0, opacity: 1, delay: 0.1, ease:Cubic.easeOut}, 0.013);
-                tlAfterButtons[indexButtonHovered].staggerTo(charsAfterButtons[indexButtonHovered], 0.2, {y:40, opacity: 0, ease:Cubic.easeIn}, 0.013);
-            }
-        );
-    }*/
-
-    function setBtn(btn){
-        var txt = btn.html();
-        return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
     }
 
     function closeDropdown(dropdown){
@@ -84,8 +52,13 @@ $(function(){
         }
 
         if(portfolioFilters.length){
-            myScroll > portfolioFiltersTop - headerHeight ? portfolioFilters.addClass('fixed') : portfolioFilters.removeClass('fixed');
-            if(myScroll > portfolioFiltersTop - headerHeight + 200){
+            var triggerTop = portfolioFiltersTop - headerHeight + 200;
+            if(!portfolioFilters.hasClass('single-on')){
+                myScroll > portfolioFiltersTop - headerHeight ? portfolioFilters.addClass('fixed') : portfolioFilters.removeClass('fixed');
+            }else{
+                triggerTop -= 400;
+            }
+            if(myScroll > triggerTop){
                 scrollDir < 0 ? portfolioFilters.addClass('on') : portfolioFilters.removeClass('on');
             }
         }
@@ -106,11 +79,7 @@ $(function(){
             var i = 0, nbPosts = posts.length, postWidth = posts.eq(0).innerWidth();
             for(i; i<nbPosts; i++){
                 var postPos = posts.eq(i).offset().left + postWidth;
-                if(postPos > windowWidth || postPos < postWidth){
-                    posts.eq(i).addClass('off');
-                }else{
-                    posts.eq(i).removeClass('off');
-                }
+                postPos > windowWidth || postPos < postWidth ? posts.eq(i).addClass('off') : posts.eq(i).removeClass('off');
             }
         }
 
@@ -192,11 +161,11 @@ $(function(){
 
     function setPortfolio(poItem, nbPoItem, nbCol){
         var portfolioContent = '<div class="grid">', poItemIndex = 0,
-            total = 0, i = 0, j = 0, ratio1 = 0.1, ratio2 = 0.4,
-            transfered, nbTrItem = 0, poItems, colCta = 3, posCta;
+            currentNb = 0, i = 0, transfered,
+            nbTrItem = 0, poItems, nbItemByCol = [];
 
         function lightTransferedPoItems(y, old){
-            var poItemsNotTransfered = portfolio.find('.po-item:not(.transfered)'), poItemNotTransfered = portfolio.find('li:not(.transfered)'), nbPoItemNotTransfered = poItemNotTransfered.length;
+            var poItemsNotTransfered = poItems.not('.transfered'), poItemNotTransfered = portfolio.find('li').not('.transfered'), nbPoItemNotTransfered = poItemNotTransfered.length;
             var newElemNumber = Math.floor(Math.random() * nbPoItemNotTransfered);
             poItems.find('a').removeClass('on');
             poItemsNotTransfered.eq(old).find('a').addClass('off');
@@ -228,7 +197,8 @@ $(function(){
 
         // On répartit dans un tableau le nombre d'élément
         var arrayCols = [];
-        for (var i=0 ; i<nbCol ; i++) {
+        i = 0;
+        for (i; i<nbCol ; i++) {
             arrayCols[i] = straightRepartition + repartitionModel[nbCol][i];
         }
 
@@ -236,11 +206,13 @@ $(function(){
         var unaffectedElementsCount = nbPoItem - arrayCols.reduce(function(a, b) { return a + b; }, 0);
 
         // On place les éléments non affectés dans les colonnes par priorité
-        for (var i=0 ; i<unaffectedElementsCount ; i++) {
+        i = 0;
+        for (i; i<unaffectedElementsCount ; i++) {
             var columnIndex = unaffectedPriorityModel[nbCol][i%nbCol];
             arrayCols[columnIndex] ++;
         }
 
+        var colCta = nbCol === 3 ? 1 : 3, posCta = nbCol === 3 ? 3 : 2;
 
         clearTimeout(animPortfolio1);
         clearTimeout(animPortfolio2);
@@ -252,34 +224,31 @@ $(function(){
 
         i = 0;
         for(i; i<nbCol; i++){
-            total += arrayCols[i];
-        }
-        if(total > nbPoItem){
-            arrayCols[nbCol-2] -= 1;
-        }
-
-        var currentNb = 0;
-        i = 0;
-        for(i; i<nbCol; i++){
-            portfolioContent += '<div class="po-item-col col-2">';
-            j = 0;
-            posCta = colCta === 1 ? 3 : 2;
-            for(j; j<arrayCols[i]; j++){
-                if(i === colCta && j === posCta){
-                    portfolioContent += '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
-                }
-                if($('ul.grid > li').eq(currentNb).hasClass('transfered')){
-                    portfolioContent += '<div class="po-item transfered">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
-                }else{
-                    portfolioContent += '<div class="po-item">'+portfolio.find('li').eq(j+poItemIndex).html()+'</div>';
-                }
-                currentNb++;
-            }
-            poItemIndex += j;
-            portfolioContent += '</div>';
+            nbItemByCol[i] = [];
+            portfolioContent += '<div class="po-item-col col-2"></div>';
         }
         portfolioContent += '</div>';
         portfolio.find('.container').append(portfolioContent);
+
+        var itemContent;
+        while(currentNb < nbPoItem){
+            i = 0;
+            for(i; i<nbCol; i++){
+                nbItemByCol[i] ++;
+                if(arrayCols[i] >= nbItemByCol[i]){
+                    if(i === colCta && nbItemByCol[i] === posCta){
+                        itemContent = '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
+                    }
+                    if(portfolio.find('ul.grid').find('li').eq(currentNb).hasClass('transfered')){
+                        itemContent = '<div class="po-item transfered">'+portfolio.find('li').eq(currentNb).html()+'</div>';
+                    }else{
+                        itemContent = '<div class="po-item">'+portfolio.find('li').eq(currentNb).html()+'</div>';
+                    }
+                    portfolio.find('.po-item-col').eq(i).append(itemContent);
+                    currentNb++;
+                }
+            }
+        }
 
         TweenMax.set(portfolio.find('.po-item'), {opacity: 0, y: '30%', scale: 0.8});
         i = 0;
@@ -310,10 +279,9 @@ $(function(){
 
 
     function updateBtnGlob(){
-        if($(window).width() <= 979){
+        if(windowWidth <= 979){
             var nbTeamMembers = $('.team > li').length;
-            var teamLeft = team.offset().left-20;
-            var teamRight = teamLeft+team.width();
+            var teamLeft = team.offset().left-20, teamRight = teamLeft+team.width();
             var containerTeamWidth = $('.container-team').width();
             var posiLiOpen = 0;
             var offsetLiOpen = 0;
@@ -322,18 +290,16 @@ $(function(){
                 posiLiOpen = team.find('> li.open').position().left;
                 offsetLiOpen = team.find('> li.open').offset().left;
             }
-            if(($(window).width() > 767) && (nbTeamMembers > 5)){
-                TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
-                TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
+            if(windowWidth > 767 && nbTeamMembers > 5){
+                TweenMax.set([$('.wrapper-btn-glob.prev'), $('.wrapper-btn-glob.next')], {className:'-=open'});
                 if(teamLeft < -Math.ceil(teamMemberWidth*2)){
                     TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
                 }
                 if(Math.ceil(teamRight+teamMemberWidth*2) > containerTeamWidth){
                     TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
                 }
-            }else if(($(window).width() <= 767) && (nbTeamMembers > 3)){
-                TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
-                TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
+            }else if(windowWidth <= 767 && nbTeamMembers > 3){
+                TweenMax.set([$('.wrapper-btn-glob.prev'), $('.wrapper-btn-glob.next')], {className:'-=open'});
                 if(teamLeft < -Math.ceil(teamMemberWidth)){
                     TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
                 }
@@ -351,23 +317,21 @@ $(function(){
     }
 
     function teamPosition(){
-        if($(window).width() <= 979){
+        if(windowWidth <= 979){
             imgTeamHeight = team.find('.team-member img').eq(0).outerHeight();
             TweenMax.set($('.wrapper-btn-glob a'), {top: (imgTeamHeight/2)+'px'});
             if(!teamDrag){
-                if($(window).width() <= 767){
+                if(windowWidth <= 767){
                     teamMemberWidth = $('.container-team').width()/3;
                     decalageMemberWidth = teamMemberWidth;
                 }else{
                     teamMemberWidth = $('.container-team').width()/5;
                     decalageMemberWidth = teamMemberWidth*2;
                 }
-                TweenMax.set($('.team > li'), {width: teamMemberWidth+'px'});
+                TweenMax.set(team.find('> li'), {width: teamMemberWidth+'px'});
 
                 teamWidth = 0;
-                $('.team > li').each(function() {
-                    teamWidth += $(this).outerWidth();
-                });
+                team.find('> li').each(function(){ teamWidth += $(this).outerWidth(); });
                 teamWidth += (decalageMemberWidth*2);
                 TweenMax.set(team, {width: teamWidth+'px', padding: '0 '+decalageMemberWidth+'px', x: -decalageMemberWidth});
 
@@ -390,7 +354,7 @@ $(function(){
                         var currentLi = $('.team.member-open > li.open');
                         currentDesc = $('.desc', currentLi);
                         tlTeamCurrent = new TimelineMax();
-                        if($(window).width() > 979){
+                        if(windowWidth > 979){
                             tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
                             tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
                         }else{
@@ -403,18 +367,16 @@ $(function(){
                     }
                 });
             }else{
-                if($(window).width() <= 767){
+                if(windowWidth <= 767){
                     teamMemberWidth = $('.container-team').width()/3;
                     decalageMemberWidth = teamMemberWidth;
                 }else{
                     teamMemberWidth = $('.container-team').width()/5;
                     decalageMemberWidth = teamMemberWidth*2;
                 }
-                TweenMax.set($('.team > li'), {width: teamMemberWidth+'px'});
+                TweenMax.set(team.find('> li'), {width: teamMemberWidth+'px'});
                 teamWidth = 0;
-                $('.team > li').each(function() {
-                    teamWidth += $(this).outerWidth();
-                });
+                team.find('> li').each(function(){ teamWidth += $(this).outerWidth(); });
                 teamWidth += (decalageMemberWidth*2);
                 TweenMax.set(team, {width: teamWidth+'px', padding: '0 '+decalageMemberWidth+'px', x: -decalageMemberWidth});
 
@@ -452,8 +414,8 @@ $(function(){
             }
         }else{
             if(teamDrag){
-                TweenMax.set($('.team'), {clearProps:'all'});
-                TweenMax.set($('.team > li'), {clearProps:'width'});
+                TweenMax.set(team, {clearProps:'all'});
+                TweenMax.set(team.find('> li'), {clearProps:'width'});
                 teamDrag[0].disable();
             }
         }
@@ -471,11 +433,11 @@ $(function(){
                 tlTeam = new TimelineMax();
                 tlTeam.set(liParent, {className:'+=open'});
                 updateBtnGlob();
-                if($(window).width() > 979){
+                if(windowWidth > 979){
                     tlTeam.add('paddingAnimation')
-                    .to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeOut}, 'paddingAnimation')
-                    .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
-                    tlTeam.to(desc, 0.25, {opacity: 1, visibility: 'visible'});
+                        .to(liParent, 0.5, {paddingBottom: heightDesc+'px', ease:Cubic.easeOut}, 'paddingAnimation')
+                        .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation')
+                        .to(desc, 0.25, {opacity: 1, visibility: 'visible'});
                 }else{
                     descResponsive.html(desc.html());
                     TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
@@ -483,12 +445,11 @@ $(function(){
                     TweenMax.set(descResponsive, {height: '0', position: 'relative'});
 
                     tlTeam.add('heightAnimation')
-                    .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
-                    .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation');
-                    tlTeam.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible'});
+                        .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
+                        .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation')
+                        .to(descResponsive, 0.25, {opacity: 1, visibility: 'visible'});
 
-                    var teamMemberHeight = Math.max.apply(null, team.find('.team-member').map(function ()
-                    {
+                    var teamMemberHeight = Math.max.apply(null, team.find('.team-member').map(function (){
                         return $(this).height();
                     }).get());
                     TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: teamMemberHeight+10+'px', ease:Cubic.easeInOut});
@@ -509,29 +470,26 @@ $(function(){
                     currentDesc = $('.desc', currentLi);
                     tlTeamCurrent = new TimelineMax();
 
-                    if($(window).width() > 979){
+                    if(windowWidth > 979){
+                        offsetYtoScroll = team.offset().top+liParent.position().top-120;
                         if(currentLi.offset().top < liParent.offset().top){
-                            offsetYtoScroll = team.offset().top+liParent.position().top-parseFloat(currentLi.css('paddingBottom'))-120;
-                        }else{
-                            offsetYtoScroll = team.offset().top+liParent.position().top-120;
+                            offsetYtoScroll -= parseFloat(currentLi.css('paddingBottom'));
                         }
 
-                        tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
-                        tlTeamCurrent.set(currentLi, {className:'-=open'});
+                        tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'}).set(currentLi, {className:'-=open'});
 
 
-                        tlTeamCurrent.set(liParent, {className:'+=open'});
-                        tlTeamCurrent.add('paddingAnimation')
-                        .to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut}, 'paddingAnimation')
-                        .to(liParent, 0.25, {paddingBottom: heightDesc+'px', ease:Cubic.easeIn}, 'paddingAnimation')
-                        .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
+                        tlTeamCurrent.set(liParent, {className:'+=open'})
+                            .add('paddingAnimation')
+                            .to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut}, 'paddingAnimation')
+                            .to(liParent, 0.25, {paddingBottom: heightDesc+'px', ease:Cubic.easeIn}, 'paddingAnimation')
+                            .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
 
                         tlTeamCurrent.to(desc, 0.25, {opacity: 1, visibility: 'visible'});
                     }else{
                         offsetYtoScroll = liParent.offset().top-120;
 
-                        tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'});
-                        tlTeamCurrent.set(currentLi, {className:'-=open'});
+                        tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'}).set(currentLi, {className:'-=open'});
 
                         tlTeamCurrent.set(liParent, {className:'+=open', onComplete: function(){
                             descResponsive.html(desc.html());
@@ -540,10 +498,11 @@ $(function(){
                             heightDescResponsive = descResponsive.outerHeight();
                             TweenMax.set(descResponsive, {height: '0', position: 'relative'});
 
-                            tlTeamCurrent.add('heightAnimation')
-                            .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
-                            .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation');
-                            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible'});
+                            tlTeamCurrent
+                                .add('heightAnimation')
+                                .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
+                                .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation')
+                                .to(descResponsive, 0.25, {opacity: 1, visibility: 'visible'});
 
                             // Centrer cliqué
                             posiLiClique = liParent.position().left;
@@ -563,15 +522,12 @@ $(function(){
         var currentLi = $('.team.member-open > li.open');
         currentDesc = $('.desc', currentLi);
         tlTeamCurrent = new TimelineMax();
-        if($(window).width() > 979){
-            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
-            tlTeamCurrent.to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
+        if(windowWidth > 979){
+            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'}).to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeInOut});
         }else{
-            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0});
-            tlTeamCurrent.to(descResponsive, 0.5, {height: '0', visibility: 'hidden', ease:Cubic.easeInOut});
+            tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0}).to(descResponsive, 0.5, {height: '0', visibility: 'hidden', ease:Cubic.easeInOut});
         }
-        tlTeamCurrent.set(currentLi, {className:'-=open'});
-        tlTeamCurrent.set(team, {className:'-=member-open'});
+        tlTeamCurrent.set(currentLi, {className:'-=open'}).set(team, {className:'-=member-open'});
         TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
     }
 
@@ -581,34 +537,24 @@ $(function(){
             var currentLi = $('.team.member-open > li.open');
             currentDesc = $('.desc', currentLi);
             tlTeamCurrent = new TimelineMax();
-            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
-            tlTeamCurrent.set(currentLi, {className:'-=open'});
+            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'}).set(currentLi, {className:'-=open'});
             if($(this).hasClass('left')){
-                if (currentLi.prev().length){
-                    newLi = currentLi.prev();
-                }else{
-                    newLi = team.find('> li').last();
-                }
+                newLi = currentLi.prev().length ? currentLi.prev() : team.find('> li').last();
             }else{
-                if (currentLi.next().length){
-                    newLi = currentLi.next();
-                }else{
-                    newLi = team.find('> li').first();
-                }
+                newLi = currentLi.next().length ? currentLi.next() : team.find('> li').first();
             }
             if(currentLi.offset().top < newLi.offset().top){
                 offsetYtoScroll = team.offset().top+newLi.position().top-parseFloat(currentLi.css('paddingBottom'))-120;
             }else{
-               offsetYtoScroll = newLi.offset().top-120;
+                offsetYtoScroll = newLi.offset().top-120;
             }
             newDesc = $('.desc', newLi);
             heightNewDesc = newDesc.outerHeight();
-            tlTeamCurrent.set(newLi, {className:'+=open'});
-            tlTeamCurrent.add('paddingAnimation')
-            .to(newLi, 0.25, {paddingBottom: heightNewDesc+'px', ease:Cubic.easeIn}, 'paddingAnimation')
-            .to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeOut}, 'paddingAnimation')
-            .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation');
-            tlTeamCurrent.to(newDesc, 0.25, {opacity: 1, visibility: 'visible'});
+            tlTeamCurrent.set(newLi, {className:'+=open'}).add('paddingAnimation')
+                .to(newLi, 0.25, {paddingBottom: heightNewDesc+'px', ease:Cubic.easeIn}, 'paddingAnimation')
+                .to(currentLi, 0.5, {paddingBottom: '0', ease:Cubic.easeOut}, 'paddingAnimation')
+                .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'paddingAnimation')
+                .to(newDesc, 0.25, {opacity: 1, visibility: 'visible'});
         }
     }
 
@@ -623,18 +569,13 @@ $(function(){
                 }
             }
 
-            if(($(window).width() <= 979) && (team.hasClass('member-open')) && btnGlobClique.closest('.wrapper-btn-glob').hasClass('open')){
+            if(windowWidth <= 979 && team.hasClass('member-open') && btnGlobClique.closest('.wrapper-btn-glob').hasClass('open')){
                 // On passe au suivant ou au précédent
                 var currentLi = $('.team.member-open > li.open');
                 currentDesc = $('.desc', currentLi);
                 tlTeamCurrent = new TimelineMax();
-                tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'});
-                tlTeamCurrent.set(currentLi, {className:'-=open'})
-                if(btnGlobClique.hasClass('left')){
-                    newLi = currentLi.prev();
-                }else{
-                    newLi = currentLi.next();
-                }
+                tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'}).set(currentLi, {className:'-=open'})
+                newLi = btnGlobClique.hasClass('left') ? currentLi.prev() : currentLi.next();
                 offsetYtoScroll = newLi.offset().top-120;
                 newDesc = $('.desc', newLi);
 
@@ -645,9 +586,9 @@ $(function(){
                     heightDescResponsive = descResponsive.outerHeight();
                     TweenMax.set(descResponsive, {height: '0', position: 'relative'});
                     tlTeamCurrent.add('heightAnimation')
-                    .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
-                    .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation');
-                    tlTeamCurrent.to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: updateBtnGlob});
+                        .to(descResponsive, 0.5, {height: heightDescResponsive+'px', ease:Cubic.easeInOut}, 'heightAnimation')
+                        .to(window, 0.5, {scrollTo:{y:offsetYtoScroll}, ease:Cubic.easeOut}, 'heightAnimation')
+                        .to(descResponsive, 0.25, {opacity: 1, visibility: 'visible', onComplete: updateBtnGlob});
                 }});
             }else{
                 closeBtnGlob();
@@ -874,7 +815,7 @@ $(function(){
 $(window).on('load', function(){
     var main = $('#main');
     var contentHeader = $('#contentHeader');
-    var team = $('.team');
+    //var team = $('.team');
 
     function animTxt(splitText){
         splitText.split({type:'words'});
