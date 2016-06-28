@@ -1,11 +1,15 @@
 <?php
 
-if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-    if ( have_posts() ) : the_post();
-        get_template_part('ajax/single-startup');
-        return;
-    endif;
-}
+if ( have_posts() ) : the_post();
+
+    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            get_template_part('ajax/single-startup');
+            return;
+    }
+
+    wp_redirect(alven_get_startup_permalink($post));
+
+endif;
 
 get_header();
 ?>
