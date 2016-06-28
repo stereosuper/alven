@@ -1,5 +1,11 @@
 'use strict';
 
+// globale car utilisée dans ajax.js
+function setBtn(btn){
+    var txt = btn.html();
+    return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
+}
+
 $(function(){
 
     /**** VARIABLES ****/
@@ -33,44 +39,6 @@ $(function(){
         return scrollDir;
     }
 
-    /*function setButtons(buttons){
-        var i = 0, tlBeforeButtons = [], tlAfterButtons = [],
-            mySplitTextBeforeButtons = [], mySplitTextAfterButtons = [],
-            charsBeforeButtons = [], charsAfterButtons = [], nbButtons = buttons.length,
-            textBtn;
-
-        for(i; i<nbButtons; i++){
-            textBtn = buttons.eq(i).html();
-            buttons.eq(i).html('<span class="bg"></span><span class="before">'+textBtn+'</span><span class="after">'+textBtn+'</span>');
-
-            tlBeforeButtons[i] = new TimelineMax();
-            mySplitTextBeforeButtons[i] = new SplitText($('.before', buttons.eq(i)), {type:'words,chars'});
-            charsBeforeButtons[i] = mySplitTextBeforeButtons[i].chars;
-
-            tlAfterButtons[i] = new TimelineMax();
-            mySplitTextAfterButtons[i] = new SplitText($('.after', buttons.eq(i)), {type:'words,chars'});
-            charsAfterButtons[i] = mySplitTextAfterButtons[i].chars;
-            TweenMax.set(charsAfterButtons[i], {y:40, opacity: 0});
-        }
-
-        buttons.hover(
-            function(){
-                var indexButtonHovered = buttons.index(this);
-                tlBeforeButtons[indexButtonHovered].staggerTo(charsBeforeButtons[indexButtonHovered], 0.2, {y:-40, opacity: 0, ease:Cubic.easeIn}, 0.013);
-                tlAfterButtons[indexButtonHovered].staggerTo(charsAfterButtons[indexButtonHovered], 0.2, {y:0, opacity: 1, delay: 0.1, ease:Cubic.easeIn}, 0.013);
-            }, function(){
-                var indexButtonHovered = buttons.index(this);
-                tlBeforeButtons[indexButtonHovered].staggerTo(charsBeforeButtons[indexButtonHovered], 0.2, {y:0, opacity: 1, delay: 0.1, ease:Cubic.easeOut}, 0.013);
-                tlAfterButtons[indexButtonHovered].staggerTo(charsAfterButtons[indexButtonHovered], 0.2, {y:40, opacity: 0, ease:Cubic.easeIn}, 0.013);
-            }
-        );
-    }*/
-
-    function setBtn(btn){
-        var txt = btn.html();
-        return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
-    }
-
     function closeDropdown(dropdown){
         dropdown.css('height', dropdown.data('height')).removeClass('on');
     }
@@ -84,8 +52,13 @@ $(function(){
         }
 
         if(portfolioFilters.length){
-            myScroll > portfolioFiltersTop - headerHeight ? portfolioFilters.addClass('fixed') : portfolioFilters.removeClass('fixed');
-            if(myScroll > portfolioFiltersTop - headerHeight + 200){
+            var triggerTop = portfolioFiltersTop - headerHeight + 200;
+            if(!portfolioFilters.hasClass('single-on')){
+                myScroll > portfolioFiltersTop - headerHeight ? portfolioFilters.addClass('fixed') : portfolioFilters.removeClass('fixed');
+            }else{
+                triggerTop -= 400;
+            }
+            if(myScroll > triggerTop){
                 scrollDir < 0 ? portfolioFilters.addClass('on') : portfolioFilters.removeClass('on');
             }
         }
