@@ -4,6 +4,7 @@
 	margin: 0 auto;
 	padding: 0;
 	position: relative;
+	will-change: transform;
 	&.member-open{
 		.team-member{
 			opacity: 0.25;
@@ -282,4 +283,6 @@
 
 .container-team{
 	padding-bottom: 80px!important;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
 }
