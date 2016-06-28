@@ -106,11 +106,7 @@ $(function(){
             var i = 0, nbPosts = posts.length, postWidth = posts.eq(0).innerWidth();
             for(i; i<nbPosts; i++){
                 var postPos = posts.eq(i).offset().left + postWidth;
-                if(postPos > windowWidth || postPos < postWidth){
-                    posts.eq(i).addClass('off');
-                }else{
-                    posts.eq(i).removeClass('off');
-                }
+                postPos > windowWidth || postPos < postWidth ? posts.eq(i).addClass('off') : posts.eq(i).removeClass('off');
             }
         }
 
@@ -322,8 +318,7 @@ $(function(){
                 offsetLiOpen = team.find('> li.open').offset().left;
             }
             if(windowWidth > 767 && nbTeamMembers > 5){
-                TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
-                TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
+                TweenMax.set([$('.wrapper-btn-glob.prev'), $('.wrapper-btn-glob.next')], {className:'-=open'});
                 if(teamLeft < -Math.ceil(teamMemberWidth*2)){
                     TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
                 }
@@ -331,8 +326,7 @@ $(function(){
                     TweenMax.set($('.wrapper-btn-glob.next'), {className:'+=open'});
                 }
             }else if(windowWidth <= 767 && nbTeamMembers > 3){
-                TweenMax.set($('.wrapper-btn-glob.prev'), {className:'-=open'});
-                TweenMax.set($('.wrapper-btn-glob.next'), {className:'-=open'});
+                TweenMax.set([$('.wrapper-btn-glob.prev'), $('.wrapper-btn-glob.next')], {className:'-=open'});
                 if(teamLeft < -Math.ceil(teamMemberWidth)){
                     TweenMax.set($('.wrapper-btn-glob.prev'), {className:'+=open'});
                 }
@@ -364,9 +358,7 @@ $(function(){
                 TweenMax.set(team.find('> li'), {width: teamMemberWidth+'px'});
 
                 teamWidth = 0;
-                team.find('> li').each(function() {
-                    teamWidth += $(this).outerWidth();
-                });
+                team.find('> li').each(function(){ teamWidth += $(this).outerWidth(); });
                 teamWidth += (decalageMemberWidth*2);
                 TweenMax.set(team, {width: teamWidth+'px', padding: '0 '+decalageMemberWidth+'px', x: -decalageMemberWidth});
 
@@ -411,9 +403,7 @@ $(function(){
                 }
                 TweenMax.set(team.find('> li'), {width: teamMemberWidth+'px'});
                 teamWidth = 0;
-                team.find('> li').each(function() {
-                    teamWidth += $(this).outerWidth();
-                });
+                team.find('> li').each(function(){ teamWidth += $(this).outerWidth(); });
                 teamWidth += (decalageMemberWidth*2);
                 TweenMax.set(team, {width: teamWidth+'px', padding: '0 '+decalageMemberWidth+'px', x: -decalageMemberWidth});
 
@@ -574,8 +564,7 @@ $(function(){
             var currentLi = $('.team.member-open > li.open');
             currentDesc = $('.desc', currentLi);
             tlTeamCurrent = new TimelineMax();
-            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'});
-            tlTeamCurrent.set(currentLi, {className:'-=open'});
+            tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'}).set(currentLi, {className:'-=open'});
             if($(this).hasClass('left')){
                 newLi = currentLi.prev().length ? currentLi.prev() : team.find('> li').last();
             }else{
