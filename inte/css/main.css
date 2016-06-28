@@ -948,6 +948,8 @@ select::-ms-expand {
 .content-default {
   padding-bottom: 50px;
   position: relative; }
+  .single-post .content-default {
+    padding-bottom: 100px; }
   .content-default > p, .content-default > h3, .content-default > h4, .content-default > h5, .content-default > h6, .content-default > ul, .content-default > ol {
     padding: 0 20px;
     margin-left: 10%;
@@ -985,7 +987,7 @@ select::-ms-expand {
     border-left: 10px solid #fff;
     border-right: 10px solid #fff;
     bottom: -6px; }
-  .single-startup .content-default:before, .single-startup .content-default:after {
+  .single-startup .content-default:before, .single-startup .content-default:after, .content-default.no-cross:before, .content-default.no-cross:after {
     display: none; }
 
 .content-main {
@@ -994,6 +996,8 @@ select::-ms-expand {
   margin: 0 0 70px; }
   .content-main.no-border {
     border: 0; }
+  .single-post .content-main {
+    margin: 0 0 20px; }
 
 .content-header-transparent, .content-header {
   padding: 100px 0 5px; }
@@ -1001,7 +1005,8 @@ select::-ms-expand {
 .content-header {
   width: 100%;
   top: 0;
-  background: #404040; }
+  background: #404040;
+  backface-visibility: hidden; }
   .js .content-header {
     position: fixed; }
     .js .content-header h1 {
@@ -1051,6 +1056,448 @@ select::-ms-expand {
   border-bottom: 1px solid #e5e8e8;
   margin: 0 0 80px; }
 
+/* Section */
+.section-header {
+  width: 66.6666666667%;
+  padding: 0 10px;
+  margin: 0 auto 60px;
+  text-align: center; }
+
+.section-title {
+  width: auto;
+  padding: 0 20px;
+  margin: 1.75em 0 0;
+  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-size: 5.2rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #303b3d; }
+  .section-title + .subtitle {
+    display: block;
+    padding: 0 20px 30px;
+    border-bottom: 1px solid #e5e8e8;
+    position: relative;
+    margin: 0 0 30px;
+    text-align: center; }
+    .section-title + .subtitle:before, .section-title + .subtitle:after {
+      background: #26393d;
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto; }
+      .theme-magazine .section-title + .subtitle:before, .theme-magazine .section-title + .subtitle:after {
+        background: #f06850; }
+      .theme-portfolio .section-title + .subtitle:before, .theme-portfolio .section-title + .subtitle:after {
+        background: #01a2a6; }
+      .theme-we .section-title + .subtitle:before, .theme-we .section-title + .subtitle:after {
+        background: #33a4df; }
+    .section-title + .subtitle:before {
+      width: 1px;
+      height: 15px;
+      bottom: -8px; }
+    .section-title + .subtitle:after {
+      width: 35px;
+      height: 1px;
+      border-left: 10px solid #fff;
+      border-right: 10px solid #fff;
+      bottom: -1px; }
+
+.menu-small {
+  font-size: 1.4rem; }
+  .menu-small ul {
+    margin: 0;
+    font-family: "source", "merriweather", sans-serif;
+    color: #fff; }
+  .menu-small li {
+    margin: 0;
+    padding: 0; }
+    .menu-small li:before {
+      display: none; }
+  .menu-small > ul {
+    padding: 20px 0 0;
+    line-height: 1.8; }
+    .menu-small > ul ul {
+      padding: 10px 0 0 15px;
+      line-height: 1.2; }
+  .menu-small a {
+    box-shadow: none; }
+    .menu-small a:active {
+      color: #d3ceaa; }
+
+.menu-title {
+  display: block;
+  font-family: "source-bold", "merriweather-bold", "merriweather", sans-serif;
+  font-size: 2.2rem;
+  line-height: 1;
+  letter-spacing: -0.04em; }
+
+.menu-subtitle {
+  display: inline-block;
+  font-family: "source-light", "merriweather", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  line-height: 1; }
+
+/* Portfolio */
+.portfolio-list {
+  position: relative;
+  margin: 185px 0 0;
+  z-index: 1;
+  background: #303b3d; }
+  .portfolio-list:before {
+    content: '';
+    height: 150px;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: #fff; }
+  .portfolio-list .grid {
+    padding: 10px 0; }
+    .portfolio-list .grid.is-hovered .po-item:after {
+      opacity: 0.5;
+      visibility: visible; }
+    .portfolio-list .grid.is-hovered .po-item.link-hovered:after {
+      opacity: 0;
+      visibility: hidden; }
+    .portfolio-list .grid.is-hovered .po-item.cta:after {
+      opacity: 0;
+      visibility: hidden; }
+  .js .portfolio-list ul {
+    display: none; }
+  .portfolio-list li, .portfolio-list .po-item {
+    padding: 10px;
+    overflow: hidden;
+    font-family: "source-light", "merriweather", sans-serif;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: #303b3d;
+    text-align: center; }
+    .portfolio-list li:before, .portfolio-list .po-item:before {
+      display: block;
+      width: auto;
+      height: auto;
+      padding: 75% 0 0;
+      position: static;
+      background: none !important; }
+    .portfolio-list li.transfered:after, .portfolio-list .po-item.transfered:after {
+      background-color: #303b3d; }
+    .portfolio-list li.transfered a, .portfolio-list .po-item.transfered a {
+      background-color: #34b6b8;
+      border-color: #34b6b8;
+      color: #fff;
+      transition: none; }
+      .portfolio-list li.transfered a:after, .portfolio-list .po-item.transfered a:after {
+        display: none; }
+      .portfolio-list li.transfered a .content-transfered, .portfolio-list .po-item.transfered a .content-transfered {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate3d(0, -50%, 0);
+        width: 100%; }
+        .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
+          display: block;
+          margin: 10px 0; }
+      .portfolio-list li.transfered a svg, .portfolio-list li.transfered a img, .portfolio-list .po-item.transfered a svg, .portfolio-list .po-item.transfered a img {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+        top: auto;
+        left: auto;
+        padding-bottom: 2px;
+        backface-visibility: hidden;
+        transition-delay: 0s; }
+      .portfolio-list li.transfered a.off path, .portfolio-list li.transfered a.off polygon, .portfolio-list li.transfered a.off rect, .portfolio-list li.transfered a.off ellipse, .portfolio-list li.transfered a.off circle, .portfolio-list li.transfered a.off line, .portfolio-list li.transfered a.off polyline, .portfolio-list .po-item.transfered a.off path, .portfolio-list .po-item.transfered a.off polygon, .portfolio-list .po-item.transfered a.off rect, .portfolio-list .po-item.transfered a.off ellipse, .portfolio-list .po-item.transfered a.off circle, .portfolio-list .po-item.transfered a.off line, .portfolio-list .po-item.transfered a.off polyline {
+        fill: #fff; }
+      .portfolio-list li.transfered a .hover, .portfolio-list .po-item.transfered a .hover {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        transition: none; }
+        .portfolio-list li.transfered a .hover svg, .portfolio-list li.transfered a .hover img, .portfolio-list .po-item.transfered a .hover svg, .portfolio-list .po-item.transfered a .hover img {
+          position: relative;
+          transform: translate3d(0, 0, 0);
+          top: auto;
+          left: auto;
+          transition-delay: 0s; }
+        .portfolio-list li.transfered a .hover path, .portfolio-list li.transfered a .hover polygon, .portfolio-list li.transfered a .hover rect, .portfolio-list li.transfered a .hover ellipse, .portfolio-list li.transfered a .hover circle, .portfolio-list li.transfered a .hover line, .portfolio-list li.transfered a .hover polyline, .portfolio-list .po-item.transfered a .hover path, .portfolio-list .po-item.transfered a .hover polygon, .portfolio-list .po-item.transfered a .hover rect, .portfolio-list .po-item.transfered a .hover ellipse, .portfolio-list .po-item.transfered a .hover circle, .portfolio-list .po-item.transfered a .hover line, .portfolio-list .po-item.transfered a .hover polyline {
+          transition-delay: 0s; }
+      .portfolio-list li.transfered a .txt, .portfolio-list .po-item.transfered a .txt {
+        opacity: 0; }
+      .portfolio-list li.transfered a:hover, .portfolio-list li.transfered a:focus, .portfolio-list li.transfered a.on, .portfolio-list .po-item.transfered a:hover, .portfolio-list .po-item.transfered a:focus, .portfolio-list .po-item.transfered a.on {
+        border-color: #e5e8e8;
+        background: #fff;
+        color: #303b3d; }
+        .portfolio-list li.transfered a:hover path, .portfolio-list li.transfered a:hover polygon, .portfolio-list li.transfered a:hover rect, .portfolio-list li.transfered a:hover ellipse, .portfolio-list li.transfered a:hover circle, .portfolio-list li.transfered a:hover line, .portfolio-list li.transfered a:hover polyline, .portfolio-list li.transfered a:focus path, .portfolio-list li.transfered a:focus polygon, .portfolio-list li.transfered a:focus rect, .portfolio-list li.transfered a:focus ellipse, .portfolio-list li.transfered a:focus circle, .portfolio-list li.transfered a:focus line, .portfolio-list li.transfered a:focus polyline, .portfolio-list li.transfered a.on path, .portfolio-list li.transfered a.on polygon, .portfolio-list li.transfered a.on rect, .portfolio-list li.transfered a.on ellipse, .portfolio-list li.transfered a.on circle, .portfolio-list li.transfered a.on line, .portfolio-list li.transfered a.on polyline, .portfolio-list .po-item.transfered a:hover path, .portfolio-list .po-item.transfered a:hover polygon, .portfolio-list .po-item.transfered a:hover rect, .portfolio-list .po-item.transfered a:hover ellipse, .portfolio-list .po-item.transfered a:hover circle, .portfolio-list .po-item.transfered a:hover line, .portfolio-list .po-item.transfered a:hover polyline, .portfolio-list .po-item.transfered a:focus path, .portfolio-list .po-item.transfered a:focus polygon, .portfolio-list .po-item.transfered a:focus rect, .portfolio-list .po-item.transfered a:focus ellipse, .portfolio-list .po-item.transfered a:focus circle, .portfolio-list .po-item.transfered a:focus line, .portfolio-list .po-item.transfered a:focus polyline, .portfolio-list .po-item.transfered a.on path, .portfolio-list .po-item.transfered a.on polygon, .portfolio-list .po-item.transfered a.on rect, .portfolio-list .po-item.transfered a.on ellipse, .portfolio-list .po-item.transfered a.on circle, .portfolio-list .po-item.transfered a.on line, .portfolio-list .po-item.transfered a.on polyline {
+          transition: fill 0.4s linear;
+          transition-delay: 0s; }
+        .portfolio-list li.transfered a:hover svg, .portfolio-list li.transfered a:hover img, .portfolio-list li.transfered a:focus svg, .portfolio-list li.transfered a:focus img, .portfolio-list li.transfered a.on svg, .portfolio-list li.transfered a.on img, .portfolio-list .po-item.transfered a:hover svg, .portfolio-list .po-item.transfered a:hover img, .portfolio-list .po-item.transfered a:focus svg, .portfolio-list .po-item.transfered a:focus img, .portfolio-list .po-item.transfered a.on svg, .portfolio-list .po-item.transfered a.on img {
+          transform: translate3d(0, 0, 0) scale(1); }
+    .portfolio-list li a, .portfolio-list .po-item a {
+      border: 1px solid #e5e8e8;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      background: #34b6b8;
+      box-shadow: none;
+      transition: border-color 0.1s cubic-bezier(0.42, 0, 0.58, 1);
+      transition-delay: 0.3s; }
+      .portfolio-list li a:before, .portfolio-list .po-item a:before {
+        content: '';
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        vertical-align: middle; }
+      .portfolio-list li a:after, .portfolio-list .po-item a:after {
+        content: '';
+        display: block;
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: transform 0.25s cubic-bezier(0.42, 0, 0.58, 1);
+        transition-delay: 0.1s;
+        pointer-events: none;
+        transform: scale(1, 1);
+        background-color: #fff; }
+      .portfolio-list li a:hover, .portfolio-list li a:focus, .portfolio-list li a.on, .portfolio-list .po-item a:hover, .portfolio-list .po-item a:focus, .portfolio-list .po-item a.on {
+        opacity: 1;
+        border-color: #34b6b8;
+        transition: border-color 0s cubic-bezier(0.42, 0, 0.58, 1);
+        /*> img{
+            opacity: 0.3;
+        }*/ }
+        .portfolio-list li a:hover:after, .portfolio-list li a:focus:after, .portfolio-list li a.on:after, .portfolio-list .po-item a:hover:after, .portfolio-list .po-item a:focus:after, .portfolio-list .po-item a.on:after {
+          transform: scale(0.96, 0.94);
+          transition: transform 0.65s cubic-bezier(0, 0.855, 0.345, 1);
+          transition-delay: 0s; }
+        .portfolio-list li a:hover .txt, .portfolio-list li a:focus .txt, .portfolio-list li a.on .txt, .portfolio-list .po-item a:hover .txt, .portfolio-list .po-item a:focus .txt, .portfolio-list .po-item a.on .txt {
+          opacity: 0; }
+        .portfolio-list li a:hover svg, .portfolio-list li a:hover img, .portfolio-list li a:focus svg, .portfolio-list li a:focus img, .portfolio-list li a.on svg, .portfolio-list li a.on img, .portfolio-list .po-item a:hover svg, .portfolio-list .po-item a:hover img, .portfolio-list .po-item a:focus svg, .portfolio-list .po-item a:focus img, .portfolio-list .po-item a.on svg, .portfolio-list .po-item a.on img {
+          transform: translate3d(-50%, -50%, 0) scale(1);
+          transition: transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+          transition-delay: 0.10s; }
+        .portfolio-list li a:hover path, .portfolio-list li a:hover polygon, .portfolio-list li a:hover rect, .portfolio-list li a:hover ellipse, .portfolio-list li a:hover circle, .portfolio-list li a:hover line, .portfolio-list li a:hover polyline, .portfolio-list li a:focus path, .portfolio-list li a:focus polygon, .portfolio-list li a:focus rect, .portfolio-list li a:focus ellipse, .portfolio-list li a:focus circle, .portfolio-list li a:focus line, .portfolio-list li a:focus polyline, .portfolio-list li a.on path, .portfolio-list li a.on polygon, .portfolio-list li a.on rect, .portfolio-list li a.on ellipse, .portfolio-list li a.on circle, .portfolio-list li a.on line, .portfolio-list li a.on polyline, .portfolio-list .po-item a:hover path, .portfolio-list .po-item a:hover polygon, .portfolio-list .po-item a:hover rect, .portfolio-list .po-item a:hover ellipse, .portfolio-list .po-item a:hover circle, .portfolio-list .po-item a:hover line, .portfolio-list .po-item a:hover polyline, .portfolio-list .po-item a:focus path, .portfolio-list .po-item a:focus polygon, .portfolio-list .po-item a:focus rect, .portfolio-list .po-item a:focus ellipse, .portfolio-list .po-item a:focus circle, .portfolio-list .po-item a:focus line, .portfolio-list .po-item a:focus polyline, .portfolio-list .po-item a.on path, .portfolio-list .po-item a.on polygon, .portfolio-list .po-item a.on rect, .portfolio-list .po-item a.on ellipse, .portfolio-list .po-item a.on circle, .portfolio-list .po-item a.on line, .portfolio-list .po-item a.on polyline {
+          transition: fill 0.4s linear;
+          transition-delay: 0.25s; }
+      .portfolio-list li a.on:hover, .portfolio-list li a.on:focus, .portfolio-list .po-item a.on:hover, .portfolio-list .po-item a.on:focus {
+        border-color: #e5e8e8; }
+        .portfolio-list li a.on:hover:after, .portfolio-list li a.on:focus:after, .portfolio-list .po-item a.on:hover:after, .portfolio-list .po-item a.on:focus:after {
+          transform: scale(1, 1); }
+      .portfolio-list li a.on img, .portfolio-list li a.on svg, .portfolio-list .po-item a.on img, .portfolio-list .po-item a.on svg {
+        transform: translate3d(-50%, -50%, 0) scale(0.95); }
+      .portfolio-list li a.on path, .portfolio-list li a.on polygon, .portfolio-list li a.on rect, .portfolio-list li a.on ellipse, .portfolio-list li a.on circle, .portfolio-list li a.on line, .portfolio-list li a.on polyline, .portfolio-list .po-item a.on path, .portfolio-list .po-item a.on polygon, .portfolio-list .po-item a.on rect, .portfolio-list .po-item a.on ellipse, .portfolio-list .po-item a.on circle, .portfolio-list .po-item a.on line, .portfolio-list .po-item a.on polyline {
+        transition: fill 0.2s linear; }
+      .portfolio-list li a.off path, .portfolio-list li a.off polygon, .portfolio-list li a.off rect, .portfolio-list li a.off ellipse, .portfolio-list li a.off circle, .portfolio-list li a.off line, .portfolio-list li a.off polyline, .portfolio-list .po-item a.off path, .portfolio-list .po-item a.off polygon, .portfolio-list .po-item a.off rect, .portfolio-list .po-item a.off ellipse, .portfolio-list .po-item a.off circle, .portfolio-list .po-item a.off line, .portfolio-list .po-item a.off polyline {
+        fill: #303b3d; }
+  .portfolio-list .po-item {
+    padding: 10px 0;
+    position: relative; }
+    .portfolio-list .po-item:before {
+      content: ''; }
+    .portfolio-list .po-item.cta {
+      font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+      text-transform: none;
+      color: #fff; }
+      .portfolio-list .po-item.cta a {
+        background: none;
+        box-shadow: none;
+        border: none; }
+        .portfolio-list .po-item.cta a:after {
+          display: none; }
+        .portfolio-list .po-item.cta a > span {
+          display: inline-block;
+          vertical-align: middle;
+          max-width: 97%; }
+      .portfolio-list .po-item.cta .btn-invert {
+        margin-top: 15px;
+        opacity: 1 !important;
+        transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1); }
+    .portfolio-list .po-item a {
+      left: 0;
+      right: 0; }
+  .portfolio-list svg, .portfolio-list img {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    max-width: 58%;
+    max-height: 58%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(0.95);
+    transition: transform 0.15s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    transition-delay: 0s;
+    z-index: 1; }
+  .portfolio-list path, .portfolio-list polygon, .portfolio-list rect, .portfolio-list ellipse, .portfolio-list circle, .portfolio-list line, .portfolio-list polyline {
+    transition: fill 0.3s linear;
+    transition-delay: 0s; }
+  .portfolio-list .txt {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1); }
+  .portfolio-list .hover {
+    display: block;
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+    transition: color 0.45s cubic-bezier(0.75, 0, 0.125, 1);
+    /*img{
+        display: block;
+        max-width: 70%;
+        margin: 5px auto 0;
+    }*/ }
+  .portfolio-list .po-item-col:first-child {
+    transform: translate3d(0, 55px, 0); }
+  .portfolio-list .po-item-col:nth-child(2) {
+    transform: translate3d(0, -70px, 0); }
+  .portfolio-list .po-item-col:nth-child(3) {
+    transform: translate3d(0, -100px, 0); }
+  .portfolio-list .po-item-col:nth-child(4) {
+    transform: translate3d(0, -35px, 0); }
+  .portfolio-list .po-item-col:nth-child(5) {
+    transform: translate3d(0, 20px, 0); }
+  .portfolio-list .po-item-col:nth-child(6) {
+    transform: translate3d(0, -55px, 0); }
+  .portfolio-list + .container {
+    position: relative;
+    z-index: 1; }
+
+.js #ctaPortfolio {
+  display: none; }
+
+.portfolio-filters {
+  width: 100%;
+  padding: 30px 0 25px;
+  border-bottom: 1px solid #ccd1d2;
+  z-index: 15;
+  background: #fff;
+  text-align: center;
+  backface-visibility: hidden;
+  transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
+  .portfolio-filters.fixed {
+    position: fixed;
+    top: 97px; }
+    .portfolio-filters.fixed.on {
+      transform: translate3d(0, -99px, 0); }
+
+.portfolio-header {
+  padding: 230px 0 30px;
+  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: linear-gradient(to bottom, #303c3e, #4b5d60);
+  color: #fff; }
+  .portfolio-header .container {
+    position: relative; }
+  .portfolio-header h1 {
+    height: 0;
+    padding-bottom: 25%;
+    position: relative;
+    margin: 10px;
+    background: #fff; }
+    .portfolio-header h1 img {
+      max-width: 80%;
+      max-height: 60%;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0; }
+  .portfolio-header div.col-3 {
+    margin-left: 8.3333333333%; }
+  .portfolio-header .title-small {
+    display: block;
+    margin: 0 0 10px;
+    color: #586c70; }
+  .portfolio-header .header-block-term {
+    min-height: 105px;
+    margin: 10px 0 0; }
+  .portfolio-header .header-block-history, .portfolio-header .header-block-keywords {
+    min-height: 160px; }
+  .portfolio-header .header-block-keywords {
+    margin: 110px 0 0;
+    font-family: "merriweather-italic", "merriweather", sans-serif;
+    font-size: 1.4rem;
+    text-transform: none;
+    color: #759095; }
+  .portfolio-header .header-block-btn {
+    min-height: 85px; }
+    .portfolio-header .header-block-btn .title-small {
+      margin: 0 0 25px; }
+    .portfolio-header .header-block-btn .btn-invert {
+      color: #fff;
+      border-color: #fff; }
+      .portfolio-header .header-block-btn .btn-invert .before {
+        color: #fff; }
+      .portfolio-header .header-block-btn .btn-invert .after {
+        color: #4b5d60; }
+      .is-desktop .portfolio-header .header-block-btn .btn-invert:hover, .is-desktop .portfolio-header .header-block-btn .btn-invert:focus, .no-js .portfolio-header .header-block-btn .btn-invert:hover, .no-js .portfolio-header .header-block-btn .btn-invert:focus {
+        background: #fff;
+        border-color: #fff;
+        color: #4b5d60; }
+  .portfolio-header .btn-store {
+    margin: 0 5px 0 0; }
+  .portfolio-header .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 20px; }
+
+.related-portfolio {
+  padding: 0 0 35px;
+  border-bottom: 1px solid #e5e8e8;
+  margin: 0 0 50px; }
+  .related-portfolio .container-small {
+    padding: 0; }
+  .related-portfolio-list {
+    position: relative;
+    margin: 0 10%; }
+    .related-portfolio-list:before, .related-portfolio-list:after {
+      background: #f06850;
+      content: '';
+      position: absolute; }
+    .related-portfolio-list:before {
+      width: 1px;
+      height: 15px; }
+    .related-portfolio-list:after {
+      width: 35px;
+      height: 1px;
+      border-left: 10px solid #fff;
+      border-right: 10px solid #fff; }
+    .related-portfolio-list:before {
+      top: -78px;
+      left: 10px; }
+    .related-portfolio-list:after {
+      top: -71px;
+      left: -7px; }
+  .related-portfolio .title-small {
+    position: absolute;
+    top: -100px;
+    left: 28px; }
+  .related-portfolio h4 {
+    margin-top: 15px; }
+  .related-portfolio .post-small {
+    display: inline-block;
+    width: 25%;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: top; }
+
 /* Post */
 .post-meta {
   margin: 10px 0 15px; }
@@ -1076,7 +1523,8 @@ select::-ms-expand {
   font-size: 1.8rem; }
 
 .post-sidebar {
-  margin: 0 0 50px; }
+  margin: 0 0 50px;
+  backface-visibility: hidden; }
   .post-sidebar .title-small {
     padding: 0 0 0 16px; }
   .post-sidebar ul {
@@ -1482,445 +1930,32 @@ select::-ms-expand {
   .pagination .next, .pagination .prev {
     vertical-align: bottom; }
 
-/* Section */
-.section-header {
-  width: 66.6666666667%;
-  padding: 0 10px;
-  margin: 0 auto 60px;
-  text-align: center; }
-
-.section-title {
+.related-startups .title-small {
+  top: -45px; }
+.related-startups .related-portfolio-list:after {
+  top: -21px; }
+.related-startups .related-portfolio-list:before {
+  top: -28px; }
+.related-startups .post-small {
+  border: 0; }
+.related-startups img {
   width: auto;
-  padding: 0 20px;
-  margin: 1.75em 0 0;
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
-  font-size: 5.2rem;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: #303b3d; }
-  .section-title + .subtitle {
+  height: auto;
+  max-width: 60%;
+  max-height: 60%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; }
+.related-startups .img {
+  padding: 0 0 60%;
+  border: 1px solid #e5e8e8;
+  position: relative; }
+  .related-startups .img a {
     display: block;
-    padding: 0 20px 30px;
-    border-bottom: 1px solid #e5e8e8;
-    position: relative;
-    margin: 0 0 30px;
-    text-align: center; }
-    .section-title + .subtitle:before, .section-title + .subtitle:after {
-      background: #26393d;
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: auto; }
-      .theme-magazine .section-title + .subtitle:before, .theme-magazine .section-title + .subtitle:after {
-        background: #f06850; }
-      .theme-portfolio .section-title + .subtitle:before, .theme-portfolio .section-title + .subtitle:after {
-        background: #01a2a6; }
-      .theme-we .section-title + .subtitle:before, .theme-we .section-title + .subtitle:after {
-        background: #33a4df; }
-    .section-title + .subtitle:before {
-      width: 1px;
-      height: 15px;
-      bottom: -8px; }
-    .section-title + .subtitle:after {
-      width: 35px;
-      height: 1px;
-      border-left: 10px solid #fff;
-      border-right: 10px solid #fff;
-      bottom: -1px; }
-
-.menu-small {
-  font-size: 1.4rem; }
-  .menu-small ul {
-    margin: 0;
-    font-family: "source", "merriweather", sans-serif;
-    color: #fff; }
-  .menu-small li {
-    margin: 0;
-    padding: 0; }
-    .menu-small li:before {
-      display: none; }
-  .menu-small > ul {
-    padding: 20px 0 0;
-    line-height: 1.8; }
-    .menu-small > ul ul {
-      padding: 10px 0 0 15px;
-      line-height: 1.2; }
-  .menu-small a {
     box-shadow: none; }
-    .menu-small a:active {
-      color: #d3ceaa; }
-
-.menu-title {
-  display: block;
-  font-family: "source-bold", "merriweather-bold", "merriweather", sans-serif;
-  font-size: 2.2rem;
-  line-height: 1;
-  letter-spacing: -0.04em; }
-
-.menu-subtitle {
-  display: inline-block;
-  font-family: "source-light", "merriweather", sans-serif;
-  text-transform: uppercase;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-  line-height: 1; }
-
-/* Portfolio */
-.portfolio-list {
-  position: relative;
-  margin: 185px 0 0;
-  z-index: 1;
-  background: #303b3d; }
-  .portfolio-list:before {
-    content: '';
-    height: 150px;
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    background: #fff; }
-  .portfolio-list .grid {
-    padding: 10px 0; }
-    .portfolio-list .grid.is-hovered .po-item:after {
-      opacity: 0.5;
-      visibility: visible; }
-    .portfolio-list .grid.is-hovered .po-item.link-hovered:after {
-      opacity: 0;
-      visibility: hidden; }
-    .portfolio-list .grid.is-hovered .po-item.cta:after {
-      opacity: 0;
-      visibility: hidden; }
-  .js .portfolio-list ul {
-    display: none; }
-  .portfolio-list li, .portfolio-list .po-item {
-    padding: 10px;
-    overflow: hidden;
-    font-family: "source-light", "merriweather", sans-serif;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    color: #303b3d;
-    text-align: center; }
-    .portfolio-list li:before, .portfolio-list .po-item:before {
-      display: block;
-      width: auto;
-      height: auto;
-      padding: 75% 0 0;
-      position: static;
-      background: none !important; }
-    .portfolio-list li.transfered:after, .portfolio-list .po-item.transfered:after {
-      background-color: #303b3d; }
-    .portfolio-list li.transfered a, .portfolio-list .po-item.transfered a {
-      background-color: #34b6b8;
-      border-color: #34b6b8;
-      color: #fff; }
-      .portfolio-list li.transfered a:after, .portfolio-list .po-item.transfered a:after {
-        display: none; }
-      .portfolio-list li.transfered a .content-transfered, .portfolio-list .po-item.transfered a .content-transfered {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translate3d(0, -50%, 0);
-        width: 100%; }
-        .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
-          display: block;
-          margin: 10px 0; }
-      .portfolio-list li.transfered a svg, .portfolio-list li.transfered a img, .portfolio-list .po-item.transfered a svg, .portfolio-list .po-item.transfered a img {
-        position: relative;
-        transform: translate3d(0, 0, 0);
-        top: auto;
-        left: auto;
-        padding-bottom: 2px;
-        backface-visibility: hidden;
-        transition-delay: 0s; }
-      .portfolio-list li.transfered a.off path, .portfolio-list li.transfered a.off polygon, .portfolio-list li.transfered a.off rect, .portfolio-list li.transfered a.off ellipse, .portfolio-list li.transfered a.off circle, .portfolio-list li.transfered a.off line, .portfolio-list li.transfered a.off polyline, .portfolio-list .po-item.transfered a.off path, .portfolio-list .po-item.transfered a.off polygon, .portfolio-list .po-item.transfered a.off rect, .portfolio-list .po-item.transfered a.off ellipse, .portfolio-list .po-item.transfered a.off circle, .portfolio-list .po-item.transfered a.off line, .portfolio-list .po-item.transfered a.off polyline {
-        fill: #fff; }
-      .portfolio-list li.transfered a .hover, .portfolio-list .po-item.transfered a .hover {
-        opacity: 1;
-        transform: translate3d(0, 0, 0); }
-        .portfolio-list li.transfered a .hover svg, .portfolio-list li.transfered a .hover img, .portfolio-list .po-item.transfered a .hover svg, .portfolio-list .po-item.transfered a .hover img {
-          position: relative;
-          transform: translate3d(0, 0, 0);
-          top: auto;
-          left: auto;
-          transition-delay: 0s; }
-        .portfolio-list li.transfered a .hover path, .portfolio-list li.transfered a .hover polygon, .portfolio-list li.transfered a .hover rect, .portfolio-list li.transfered a .hover ellipse, .portfolio-list li.transfered a .hover circle, .portfolio-list li.transfered a .hover line, .portfolio-list li.transfered a .hover polyline, .portfolio-list .po-item.transfered a .hover path, .portfolio-list .po-item.transfered a .hover polygon, .portfolio-list .po-item.transfered a .hover rect, .portfolio-list .po-item.transfered a .hover ellipse, .portfolio-list .po-item.transfered a .hover circle, .portfolio-list .po-item.transfered a .hover line, .portfolio-list .po-item.transfered a .hover polyline {
-          transition-delay: 0s; }
-      .portfolio-list li.transfered a .txt, .portfolio-list .po-item.transfered a .txt {
-        opacity: 0; }
-      .portfolio-list li.transfered a:hover, .portfolio-list li.transfered a:focus, .portfolio-list li.transfered a.on, .portfolio-list .po-item.transfered a:hover, .portfolio-list .po-item.transfered a:focus, .portfolio-list .po-item.transfered a.on {
-        border: 1px solid #e5e8e8;
-        background: #fff;
-        color: #303b3d; }
-        .portfolio-list li.transfered a:hover path, .portfolio-list li.transfered a:hover polygon, .portfolio-list li.transfered a:hover rect, .portfolio-list li.transfered a:hover ellipse, .portfolio-list li.transfered a:hover circle, .portfolio-list li.transfered a:hover line, .portfolio-list li.transfered a:hover polyline, .portfolio-list li.transfered a:focus path, .portfolio-list li.transfered a:focus polygon, .portfolio-list li.transfered a:focus rect, .portfolio-list li.transfered a:focus ellipse, .portfolio-list li.transfered a:focus circle, .portfolio-list li.transfered a:focus line, .portfolio-list li.transfered a:focus polyline, .portfolio-list li.transfered a.on path, .portfolio-list li.transfered a.on polygon, .portfolio-list li.transfered a.on rect, .portfolio-list li.transfered a.on ellipse, .portfolio-list li.transfered a.on circle, .portfolio-list li.transfered a.on line, .portfolio-list li.transfered a.on polyline, .portfolio-list .po-item.transfered a:hover path, .portfolio-list .po-item.transfered a:hover polygon, .portfolio-list .po-item.transfered a:hover rect, .portfolio-list .po-item.transfered a:hover ellipse, .portfolio-list .po-item.transfered a:hover circle, .portfolio-list .po-item.transfered a:hover line, .portfolio-list .po-item.transfered a:hover polyline, .portfolio-list .po-item.transfered a:focus path, .portfolio-list .po-item.transfered a:focus polygon, .portfolio-list .po-item.transfered a:focus rect, .portfolio-list .po-item.transfered a:focus ellipse, .portfolio-list .po-item.transfered a:focus circle, .portfolio-list .po-item.transfered a:focus line, .portfolio-list .po-item.transfered a:focus polyline, .portfolio-list .po-item.transfered a.on path, .portfolio-list .po-item.transfered a.on polygon, .portfolio-list .po-item.transfered a.on rect, .portfolio-list .po-item.transfered a.on ellipse, .portfolio-list .po-item.transfered a.on circle, .portfolio-list .po-item.transfered a.on line, .portfolio-list .po-item.transfered a.on polyline {
-          transition: fill 0.4s linear;
-          transition-delay: 0s; }
-        .portfolio-list li.transfered a:hover svg, .portfolio-list li.transfered a:hover img, .portfolio-list li.transfered a:focus svg, .portfolio-list li.transfered a:focus img, .portfolio-list li.transfered a.on svg, .portfolio-list li.transfered a.on img, .portfolio-list .po-item.transfered a:hover svg, .portfolio-list .po-item.transfered a:hover img, .portfolio-list .po-item.transfered a:focus svg, .portfolio-list .po-item.transfered a:focus img, .portfolio-list .po-item.transfered a.on svg, .portfolio-list .po-item.transfered a.on img {
-          transform: translate3d(0, 0, 0) scale(1); }
-    .portfolio-list li a, .portfolio-list .po-item a {
-      border: 1px solid #e5e8e8;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      background: #34b6b8;
-      box-shadow: none;
-      transition: border-color 0.1s cubic-bezier(0.42, 0, 0.58, 1);
-      transition-delay: 0.3s; }
-      .portfolio-list li a:before, .portfolio-list .po-item a:before {
-        content: '';
-        display: inline-block;
-        width: 0;
-        height: 100%;
-        vertical-align: middle; }
-      .portfolio-list li a:after, .portfolio-list .po-item a:after {
-        content: '';
-        display: block;
-        width: auto;
-        height: auto;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        transition: transform 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-        transition-delay: 0.1s;
-        pointer-events: none;
-        transform: scale(1, 1);
-        background-color: #fff; }
-      .portfolio-list li a:hover, .portfolio-list li a:focus, .portfolio-list li a.on, .portfolio-list .po-item a:hover, .portfolio-list .po-item a:focus, .portfolio-list .po-item a.on {
-        opacity: 1;
-        border-color: #34b6b8;
-        transition: border-color 0s cubic-bezier(0.42, 0, 0.58, 1);
-        /*> img{
-            opacity: 0.3;
-        }*/ }
-        .portfolio-list li a:hover:after, .portfolio-list li a:focus:after, .portfolio-list li a.on:after, .portfolio-list .po-item a:hover:after, .portfolio-list .po-item a:focus:after, .portfolio-list .po-item a.on:after {
-          transform: scale(0.96, 0.94);
-          transition: transform 0.65s cubic-bezier(0, 0.855, 0.345, 1);
-          transition-delay: 0s; }
-        .portfolio-list li a:hover .txt, .portfolio-list li a:focus .txt, .portfolio-list li a.on .txt, .portfolio-list .po-item a:hover .txt, .portfolio-list .po-item a:focus .txt, .portfolio-list .po-item a.on .txt {
-          opacity: 0; }
-        .portfolio-list li a:hover svg, .portfolio-list li a:hover img, .portfolio-list li a:focus svg, .portfolio-list li a:focus img, .portfolio-list li a.on svg, .portfolio-list li a.on img, .portfolio-list .po-item a:hover svg, .portfolio-list .po-item a:hover img, .portfolio-list .po-item a:focus svg, .portfolio-list .po-item a:focus img, .portfolio-list .po-item a.on svg, .portfolio-list .po-item a.on img {
-          transform: translate3d(-50%, -50%, 0) scale(1);
-          transition: transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-          transition-delay: 0.10s; }
-        .portfolio-list li a:hover path, .portfolio-list li a:hover polygon, .portfolio-list li a:hover rect, .portfolio-list li a:hover ellipse, .portfolio-list li a:hover circle, .portfolio-list li a:hover line, .portfolio-list li a:hover polyline, .portfolio-list li a:focus path, .portfolio-list li a:focus polygon, .portfolio-list li a:focus rect, .portfolio-list li a:focus ellipse, .portfolio-list li a:focus circle, .portfolio-list li a:focus line, .portfolio-list li a:focus polyline, .portfolio-list li a.on path, .portfolio-list li a.on polygon, .portfolio-list li a.on rect, .portfolio-list li a.on ellipse, .portfolio-list li a.on circle, .portfolio-list li a.on line, .portfolio-list li a.on polyline, .portfolio-list .po-item a:hover path, .portfolio-list .po-item a:hover polygon, .portfolio-list .po-item a:hover rect, .portfolio-list .po-item a:hover ellipse, .portfolio-list .po-item a:hover circle, .portfolio-list .po-item a:hover line, .portfolio-list .po-item a:hover polyline, .portfolio-list .po-item a:focus path, .portfolio-list .po-item a:focus polygon, .portfolio-list .po-item a:focus rect, .portfolio-list .po-item a:focus ellipse, .portfolio-list .po-item a:focus circle, .portfolio-list .po-item a:focus line, .portfolio-list .po-item a:focus polyline, .portfolio-list .po-item a.on path, .portfolio-list .po-item a.on polygon, .portfolio-list .po-item a.on rect, .portfolio-list .po-item a.on ellipse, .portfolio-list .po-item a.on circle, .portfolio-list .po-item a.on line, .portfolio-list .po-item a.on polyline {
-          transition: fill 0.4s linear;
-          transition-delay: 0.25s; }
-      .portfolio-list li a.on:hover, .portfolio-list li a.on:focus, .portfolio-list .po-item a.on:hover, .portfolio-list .po-item a.on:focus {
-        border-color: #e5e8e8; }
-        .portfolio-list li a.on:hover:after, .portfolio-list li a.on:focus:after, .portfolio-list .po-item a.on:hover:after, .portfolio-list .po-item a.on:focus:after {
-          transform: scale(1, 1); }
-      .portfolio-list li a.on img, .portfolio-list li a.on svg, .portfolio-list .po-item a.on img, .portfolio-list .po-item a.on svg {
-        transform: translate3d(-50%, -50%, 0) scale(0.95); }
-      .portfolio-list li a.on path, .portfolio-list li a.on polygon, .portfolio-list li a.on rect, .portfolio-list li a.on ellipse, .portfolio-list li a.on circle, .portfolio-list li a.on line, .portfolio-list li a.on polyline, .portfolio-list .po-item a.on path, .portfolio-list .po-item a.on polygon, .portfolio-list .po-item a.on rect, .portfolio-list .po-item a.on ellipse, .portfolio-list .po-item a.on circle, .portfolio-list .po-item a.on line, .portfolio-list .po-item a.on polyline {
-        transition: fill 0.2s linear; }
-      .portfolio-list li a.off path, .portfolio-list li a.off polygon, .portfolio-list li a.off rect, .portfolio-list li a.off ellipse, .portfolio-list li a.off circle, .portfolio-list li a.off line, .portfolio-list li a.off polyline, .portfolio-list .po-item a.off path, .portfolio-list .po-item a.off polygon, .portfolio-list .po-item a.off rect, .portfolio-list .po-item a.off ellipse, .portfolio-list .po-item a.off circle, .portfolio-list .po-item a.off line, .portfolio-list .po-item a.off polyline {
-        fill: #303b3d; }
-  .portfolio-list .po-item {
-    padding: 10px 0;
-    position: relative; }
-    .portfolio-list .po-item:before {
-      content: ''; }
-    .portfolio-list .po-item.cta {
-      font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
-      font-size: 2rem;
-      line-height: 1;
-      text-transform: none;
-      color: #fff; }
-      .portfolio-list .po-item.cta a {
-        background: none;
-        box-shadow: none;
-        border: none; }
-        .portfolio-list .po-item.cta a:after {
-          display: none; }
-        .portfolio-list .po-item.cta a > span {
-          display: inline-block;
-          vertical-align: middle;
-          max-width: 97%; }
-      .portfolio-list .po-item.cta .btn-invert {
-        margin-top: 15px;
-        opacity: 1 !important;
-        transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1); }
-    .portfolio-list .po-item a {
-      left: 0;
-      right: 0; }
-  .portfolio-list svg, .portfolio-list img {
-    display: inline-block;
-    width: auto;
-    height: auto;
-    max-width: 58%;
-    max-height: 58%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0) scale(0.95);
-    transition: transform 0.15s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    transition-delay: 0s;
-    z-index: 1; }
-  .portfolio-list path, .portfolio-list polygon, .portfolio-list rect, .portfolio-list ellipse, .portfolio-list circle, .portfolio-list line, .portfolio-list polyline {
-    transition: fill 0.3s linear;
-    transition-delay: 0s; }
-  .portfolio-list .txt {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 30px;
-    transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1); }
-  .portfolio-list .hover {
-    display: block;
-    position: absolute;
-    bottom: 16px;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-    transition: color 0.45s cubic-bezier(0.75, 0, 0.125, 1);
-    /*img{
-        display: block;
-        max-width: 70%;
-        margin: 5px auto 0;
-    }*/ }
-  .portfolio-list .po-item-col:first-child {
-    transform: translate3d(0, 55px, 0); }
-  .portfolio-list .po-item-col:nth-child(2) {
-    transform: translate3d(0, -70px, 0); }
-  .portfolio-list .po-item-col:nth-child(3) {
-    transform: translate3d(0, -100px, 0); }
-  .portfolio-list .po-item-col:nth-child(4) {
-    transform: translate3d(0, -35px, 0); }
-  .portfolio-list .po-item-col:nth-child(5) {
-    transform: translate3d(0, 20px, 0); }
-  .portfolio-list .po-item-col:nth-child(6) {
-    transform: translate3d(0, -55px, 0); }
-  .portfolio-list + .container {
-    position: relative;
-    z-index: 1; }
-
-.js #ctaPortfolio {
-  display: none; }
-
-.portfolio-filters {
-  width: 100%;
-  padding: 30px 0 25px;
-  border-bottom: 1px solid #ccd1d2;
-  z-index: 15;
-  background: #fff;
-  text-align: center;
-  backface-visibility: hidden;
-  transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
-  .portfolio-filters.fixed {
-    position: fixed;
-    top: 97px; }
-    .portfolio-filters.fixed.on {
-      transform: translate3d(0, -99px, 0); }
-
-.portfolio-header {
-  padding: 230px 0 30px;
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  background: linear-gradient(to bottom, #303c3e, #4b5d60);
-  color: #fff; }
-  .portfolio-header .container {
-    position: relative; }
-  .portfolio-header h1 {
-    height: 0;
-    padding-bottom: 25%;
-    position: relative;
-    margin: 10px;
-    background: #fff; }
-    .portfolio-header h1 img {
-      max-width: 80%;
-      max-height: 60%;
-      position: absolute;
-      margin: auto;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0; }
-  .portfolio-header div.col-3 {
-    margin-left: 8.3333333333%; }
-  .portfolio-header .title-small {
-    display: block;
-    margin: 0 0 10px;
-    color: #586c70; }
-  .portfolio-header .header-block-term {
-    min-height: 105px;
-    margin: 10px 0 0; }
-  .portfolio-header .header-block-history, .portfolio-header .header-block-keywords {
-    min-height: 160px; }
-  .portfolio-header .header-block-keywords {
-    margin: 110px 0 0;
-    font-family: "merriweather-italic", "merriweather", sans-serif;
-    font-size: 1.4rem;
-    text-transform: none;
-    color: #759095; }
-  .portfolio-header .header-block-btn {
-    min-height: 85px; }
-    .portfolio-header .header-block-btn .title-small {
-      margin: 0 0 25px; }
-    .portfolio-header .header-block-btn .btn-invert {
-      color: #fff;
-      border-color: #fff; }
-      .portfolio-header .header-block-btn .btn-invert .before {
-        color: #fff; }
-      .portfolio-header .header-block-btn .btn-invert .after {
-        color: #4b5d60; }
-      .is-desktop .portfolio-header .header-block-btn .btn-invert:hover, .is-desktop .portfolio-header .header-block-btn .btn-invert:focus, .no-js .portfolio-header .header-block-btn .btn-invert:hover, .no-js .portfolio-header .header-block-btn .btn-invert:focus {
-        background: #fff;
-        border-color: #fff;
-        color: #4b5d60; }
-  .portfolio-header .btn-store {
-    margin: 0 5px 0 0; }
-  .portfolio-header .btn-close {
-    position: absolute;
-    top: 10px;
-    right: 20px; }
-
-.related-portfolio {
-  padding: 0 0 35px;
-  border-bottom: 1px solid #e5e8e8;
-  margin: 0 0 50px; }
-  .related-portfolio .container-small {
-    padding: 0; }
-  .related-portfolio-list {
-    position: relative;
-    margin: 0 10%; }
-    .related-portfolio-list:before, .related-portfolio-list:after {
-      background: #f06850;
-      content: '';
-      position: absolute; }
-    .related-portfolio-list:before {
-      width: 1px;
-      height: 15px; }
-    .related-portfolio-list:after {
-      width: 35px;
-      height: 1px;
-      border-left: 10px solid #fff;
-      border-right: 10px solid #fff; }
-    .related-portfolio-list:before {
-      top: -78px;
-      left: 10px; }
-    .related-portfolio-list:after {
-      top: -71px;
-      left: -7px; }
-  .related-portfolio .title-small {
-    position: absolute;
-    top: -100px;
-    left: 28px; }
-  .related-portfolio h4 {
-    margin-top: 15px; }
-  .related-portfolio .post-small {
-    display: inline-block;
-    width: 25%;
-    padding-left: 10px;
-    padding-right: 10px;
-    vertical-align: top; }
 
 .team {
   display: block;

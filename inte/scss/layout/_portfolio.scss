@@ -68,6 +68,7 @@
                 background-color: #34b6b8;
                 border-color: #34b6b8;
                 color: #fff;
+                transition: none;
                 &:after{
                     display: none;
                 }
@@ -100,6 +101,7 @@
                 .hover{
                     opacity: 1;
                     transform: translate3d(0, 0, 0);
+                    transition: none;
                     svg, img{
                         position: relative;
                         transform: translate3d(0, 0, 0);
@@ -115,10 +117,10 @@
                     opacity: 0;
                 }
                 &:hover, &:focus, &.on{
-                    border: 1px solid $greyBorder;
+                    //border: 1px solid $greyBorder;
+                    border-color: $greyBorder;
                     background: #fff;
                     color: $chapo;
-                    //transition: none;
                     path, polygon, rect, ellipse, circle, line, polyline{
                         transition: fill 0.4s linear;
                         transition-delay: 0s;
