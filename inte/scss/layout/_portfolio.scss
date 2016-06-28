@@ -453,14 +453,14 @@
         top: -100px;
         left: 28px;
     }
-    h4{
-        margin-top: 15px;
-    }
     .post-small{
         display: inline-block;
         width: 25%;
         padding-left: $innerGutter;
         padding-right: $innerGutter;
         vertical-align: top;
+        h4{
+            margin-top: 15px;
+        }
     }
 }
