@@ -20,13 +20,13 @@ get_header(); ?>
         <div class='portfolio-filters' id='portfolioFilters'>
             <div class='container'>
                 <div class='col-2'>
-                    <ul class='dropdown'>
+                    <ul class='dropdown' data-filter='investment'>
                         <li data-investment='all' class='actif'>All investments</li>
                         <li data-investment='present'>Present</li>
                         <li data-investment='past'>Past</li>
                     </ul>
                 </div><div class='col-2'>
-                    <ul class='dropdown'>
+                    <ul class='dropdown' data-filter='field'>
                         <li data-field='all' class='actif'>Fields of activity</li>
                         <?php
                             $fields = get_terms(array('taxonomy' => 'field'));
@@ -36,7 +36,7 @@ get_header(); ?>
                         ?>
                     </ul>
                 </div><div class='col-2'>
-                    <ul class='dropdown'>
+                    <ul class='dropdown' data-filter='footprint'>
                         <li data-footprint='all' class='actif'>Global footprint</li>
                         <?php
                             $footprints = get_terms(array('taxonomy' => 'footprint'));
