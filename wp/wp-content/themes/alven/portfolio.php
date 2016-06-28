@@ -7,7 +7,7 @@ get_header(); ?>
 
     <?php if ( have_posts() ) : the_post(); ?>
 
-        <section class='content-header-transparent'>
+        <section class='content-header-transparent' id='ajaxDisappear'>
             <h2 class='section-title'><?php the_field('title'); ?></h2>
             <strong class='subtitle'><?php the_field('subtitle'); ?></strong>
             <div class='container'>

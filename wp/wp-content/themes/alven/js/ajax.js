@@ -6,7 +6,8 @@ $(function(){
      */
     function handleAjaxOpen() {
         var $links = $('a.ajax-load');
-        var $ajaxContainer = $( "#ajaxContainer" );
+        var $ajaxContainer = $( '#ajaxContainer' );
+        var $ajaxDisappear = $( '#ajaxDisappear' );
 
         /**
          * Ferme la portion de page ajax
@@ -16,14 +17,19 @@ $(function(){
          * @returns {undefined}
          */
         function wipeAjaxContainer(data, href, callback) {
-            $ajaxContainer
-                .removeClass('open')
-                .slideUp('slow', function() {
-                    if (callback) {
-                        callback(data, href);
-                    }
-                })
-            ;
+            $ajaxContainer.removeClass('open').slideUp(400, function() {
+                if (callback) {
+                    callback(data, href);
+                }
+            });
+
+            if($ajaxDisappear.length){
+                $ajaxDisappear.slideDown(300);
+            }
+
+            if($('#portfolioFilters').length){
+                $('#portfolioFilters').removeClass('fixed single-on');
+            }
         }
 
         /**
@@ -33,18 +39,26 @@ $(function(){
          * @returns {undefined}
          */
         function openAjaxContainer(data, href) {
-            $ajaxContainer
-                .hide()
-                .html(data)
-                .slideDown('slow')
-                .addClass('open')
-            ;
+            $ajaxContainer.hide().empty().append(data).slideDown(300).addClass('open');
 
-            $('a.btn-close').on('click', function() {
+            if($ajaxContainer.find('.btn-invert').length){
+                $ajaxContainer.find('.btn-invert').each(function(i){
+                    $ajaxContainer.find('.btn-invert').eq(i).html(setBtn($ajaxContainer.find('.btn-invert').eq(i)));
+                });
+            }
+
+            if($ajaxDisappear.length){
+                $ajaxDisappear.slideUp(300);
+            }
+
+            if($('#portfolioFilters').length){
+                $('#portfolioFilters').addClass('fixed single-on');
+            }
+
+            $('#closePortfolio').on('click', function(e){
+                e.preventDefault();
                 wipeAjaxContainer();
                 $.address.value('');
-
-                return false;
             });
 
             $.address.value(href.replace(/^.*\/\/[^\/]+/, ''));
@@ -63,7 +77,7 @@ $(function(){
                 /*
                  * Première façon de faire : on séquence le scrollto et l'ouverture du bloc
                  */
-                $.scrollTo($ajaxContainer, 400, {
+                $.scrollTo($ajaxContainer, 300, {
                   onAfter: function() {
                     if ($ajaxContainer.hasClass('open')) {
                         wipeAjaxContainer(data, href, openAjaxContainer);
@@ -75,19 +89,19 @@ $(function(){
 
                 /*
                  * Seconde façon : on scroll et on ouvre le bloc dans le même temps
-                $.scrollTo($ajaxContainer, 400);
-                if ($ajaxContainer.hasClass('open')) {
-                    wipeAjaxContainer();
-                } else {
-                    openAjaxContainer();
-                }
                  */
+                /*$.scrollTo($ajaxContainer, 300);
+                if ($ajaxContainer.hasClass('open')) {
+                    wipeAjaxContainer(data, href, openAjaxContainer);
+                } else {
+                    openAjaxContainer(data, href);
+                }*/
             });
         }
 
         // Lorsqu'on recharge la page et qu'elle a un segment d'url ajax, on relance les scripts d'ouverture
-        $.address.externalChange(function(event) {
-            var href = event.value;
+        $.address.externalChange(function(e) {
+            var href = e.value;
 
             if (href && href!='' && href != '/') {
                 loadUrlAjax(href);

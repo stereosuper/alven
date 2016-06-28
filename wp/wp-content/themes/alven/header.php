@@ -49,7 +49,7 @@
 
         <header role='banner' id='header' <?php if($headerFixed){ echo "class='fixed'"; } ?>>
             <div class='container'>
-                <a href='<?php echo home_url( '/' ); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home' id='logo'><?php bloginfo( 'name' ); ?></a>
+                <a href='<?php echo home_url( '/' ); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home' id='logo-alven'><?php bloginfo( 'name' ); ?></a>
                 <nav role='navigation' id='menu-main'>
                     <?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => '')); ?>
                 </nav>
@@ -61,4 +61,4 @@
             <div id='readIndicator' class='read-indicator'></div>
         </header>
 
-        <div id="ajaxContainer"></div>
+        <div id='ajaxContainer' <?php if($currentPageId === PORTFOLIO_ID) echo "class='single-startup'"; ?>></div>

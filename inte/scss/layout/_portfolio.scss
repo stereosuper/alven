@@ -432,7 +432,7 @@
 .related-portfolio{
     padding: 0 0 35px;
     border-bottom: 1px solid $greyBorder;
-    margin: 0 0 50px;
+    margin: -20px 0 50px;
     .container-small{
         padding: 0;
     }
@@ -442,27 +442,38 @@
 
         @include pseudoCross($magazine);
         &:before{
-            top: -78px;
+            top: -58px;
             left: 10px;
         }
         &:after{
-            top: -71px;
+            top: -51px;
             left: -7px;
         }
     }
     .title-small{
         position: absolute;
-        top: -100px;
+        top: -80px;
         left: 28px;
-    }
-    h4{
-        margin-top: 15px;
     }
     .post-small{
         display: inline-block;
         width: 25%;
         padding-left: $innerGutter;
         padding-right: $innerGutter;
+        padding-bottom: 0;
+        border: 0;
+        position: relative;
         vertical-align: top;
+        margin-top: 20px;
+        &:after{
+            content: '';
+            display: block;
+            height: 1px;
+            margin: 20px 0 0;
+            background: $greyBorder;
+        }
+        h4{
+            margin-top: 15px;
+        }
     }
 }
