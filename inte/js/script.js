@@ -828,9 +828,17 @@ $(function(){
         }
     });
 
-    $('input').on('change', function(){
+    function setLabelInput(){
         $(this).val() ? $(this).addClass('filled') : $(this).removeClass('filled');
-    });
+    }
+
+    if($('input').length){
+        $('input').each(setLabelInput).on('change', setLabelInput);
+
+        if($('label').length){
+           $('label').css('opacity', 1);
+        }
+    }
 
 
     $(document).on('scroll', function(){
