@@ -81,9 +81,13 @@
                     left: 0;
                     transform: translate3d(0, -50%, 0);
                     width: 100%;
+                    display: inline-block;
+                    vertical-align: top;
                     > span{
                         display: block;
-                        margin: 10px 0;
+                        margin: 10px auto;
+                        max-width: 58%;
+                        max-height: 40%;
                     }
                 }
                 svg, img{
@@ -95,6 +99,8 @@
                     padding-bottom: 2px;
                     backface-visibility: hidden;
                     transition-delay: 0s;
+                    max-width: none;
+                    max-height: none;
                 }
                 &.off{
                     path, polygon, rect, ellipse, circle, line, polyline{

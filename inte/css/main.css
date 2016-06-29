@@ -1202,10 +1202,14 @@ select::-ms-expand {
         top: 50%;
         left: 0;
         transform: translate3d(0, -50%, 0);
-        width: 100%; }
+        width: 100%;
+        display: inline-block;
+        vertical-align: top; }
         .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
           display: block;
-          margin: 10px 0; }
+          margin: 10px auto;
+          max-width: 58%;
+          max-height: 40%; }
       .portfolio-list li.transfered a svg, .portfolio-list li.transfered a img, .portfolio-list .po-item.transfered a svg, .portfolio-list .po-item.transfered a img {
         position: relative;
         transform: translate3d(0, 0, 0);
@@ -1213,7 +1217,9 @@ select::-ms-expand {
         left: auto;
         padding-bottom: 2px;
         backface-visibility: hidden;
-        transition-delay: 0s; }
+        transition-delay: 0s;
+        max-width: none;
+        max-height: none; }
       .portfolio-list li.transfered a.off path, .portfolio-list li.transfered a.off polygon, .portfolio-list li.transfered a.off rect, .portfolio-list li.transfered a.off ellipse, .portfolio-list li.transfered a.off circle, .portfolio-list li.transfered a.off line, .portfolio-list li.transfered a.off polyline, .portfolio-list .po-item.transfered a.off path, .portfolio-list .po-item.transfered a.off polygon, .portfolio-list .po-item.transfered a.off rect, .portfolio-list .po-item.transfered a.off ellipse, .portfolio-list .po-item.transfered a.off circle, .portfolio-list .po-item.transfered a.off line, .portfolio-list .po-item.transfered a.off polyline {
         fill: #fff; }
       .portfolio-list li.transfered a .hover, .portfolio-list .po-item.transfered a .hover {
