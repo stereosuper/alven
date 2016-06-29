@@ -33,6 +33,15 @@ $(function(){
 
     /**** INIT ****/
 
+    function getQuery(){
+        var oParametre = [];
+        for (var aItKey, nKeyId = 0, aCouples = window.location.search.substr(1).split("&"); nKeyId < aCouples.length; nKeyId++) {
+            aItKey = aCouples[nKeyId].split("=");
+            oParametre[nKeyId] = [unescape(aItKey[0]), aItKey.length > 1 ? unescape(aItKey[1]) : ""];
+        }
+        return oParametre;
+    }
+
     // Alternative au CSS object-fit
     // Fonction pour adapter la taille d'une image à son container
     // Basé sur le script de Primož Cigler https://medium.com/@primozcigler/neat-trick-for-css-object-fit-fallback-on-edge-and-other-browsers-afbc53bbb2c3#.n2teu1z9m
@@ -301,6 +310,70 @@ $(function(){
             $(this).closest('.po-item').removeClass('link-hovered').closest('.grid').removeClass('is-hovered');
             $(this).addClass('off');
         });
+    }
+
+    function filterPortfolio(data, url){
+        var filteredPoItem, nbFilteredPoItem;
+
+        filteredPoItem = poItem.filter(function(){
+            var elt = $(this), keepElt = true;
+            data.forEach(function(e, i){
+                if(e[1] !== 'all' && keepElt){
+                    if($.inArray(e[1], $('a', elt).data(e[0]).split(',')) === -1){
+                        keepElt = false;
+                    }
+                }
+            });
+            return keepElt;
+        });
+
+        nbFilteredPoItem = filteredPoItem.length;
+        nbCol = windowWidth > 767 ? 6 : 3;
+        portfolio.find('div.grid').remove();
+
+        history.pushState(null, null, url);
+
+        setPortfolio(filteredPoItem, nbFilteredPoItem, nbCol);
+    }
+
+    function setFiltersPortfolio(){
+        var thisBtn = $(this);
+        if(!thisBtn.hasClass('actif')){
+            var data = [], filterLists = portfolioFilters.find('.dropdown'),
+                url = window.location.origin + window.location.pathname + '?';
+
+            thisBtn.siblings().removeClass('actif');
+            thisBtn.addClass('actif').clone().prependTo(thisBtn.parents('.dropdown'));
+            thisBtn.remove();
+
+            filterLists.each(function(i){
+                var filterName = $(this).data('filter');
+                data[i] = [filterName, $(this).find('.actif').data(filterName)];
+
+                if(i !== 0){ url += '&'; }
+                url += data[i][0] + '=' + data[i][1];
+            });
+
+            filterPortfolio(data, url);
+        }
+    }
+
+    function setFiltersPortfolioOnLoad(filters){
+        var filterLists = portfolioFilters.find('.dropdown');
+
+        filterLists.each(function(i){
+            var thisDropdown = filterLists.eq(i);
+            if(filters[i] !== undefined){
+                var thisBtn = thisDropdown.find('[data-'+filters[i][0]+'='+filters[i][1]+']');
+                thisBtn.addClass('actif').clone().prependTo(thisDropdown);
+                thisBtn.remove();
+            }else{
+                var thisFilter = thisDropdown.data('filter');
+                filters[i] = [thisFilter, thisDropdown.find('.actif').data(thisFilter)];
+            }
+        });
+
+        filterPortfolio(filters, window.location.href);
     }
 
 
@@ -678,42 +751,14 @@ $(function(){
     if(portfolio.length){
         var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3;
 
-        if(nbPoItem > nbCol){
+        if(window.location.search){
+            var filters = getQuery();
+            setFiltersPortfolioOnLoad(filters);
+        }else{
             setPortfolio(poItem, nbPoItem, nbCol);
         }
 
-        portfolioFilters.on('click', 'li', function(){
-            var thisBtn = $(this);
-            if(!thisBtn.hasClass('actif')){
-                var data = [], i = 0, filterLists = portfolioFilters.find('.dropdown'),
-                    nbFilters = filterLists.length, filteredPoItem, nbFilteredPoItem;
-
-                thisBtn.siblings().removeClass('actif');
-                thisBtn.addClass('actif').clone().prependTo(thisBtn.parents('.dropdown'));
-                thisBtn.remove();
-
-                for(i; i<nbFilters; i++){
-                    data[i] = [filterLists.eq(i).attr('data-filter'), filterLists.eq(i).find('.actif').attr('data-'+filterLists.eq(i).attr('data-filter'))];
-                }
-
-                filteredPoItem = poItem.filter(function(){
-                    var elt = $(this), keepElt = true;
-                    data.forEach(function(e, i){
-                        if(data[i][1] !== 'all' && keepElt){
-                            if($.inArray(data[i][1], $('a', elt).data(data[i][0]).split(',')) === -1){
-                                keepElt = false;
-                            }
-                        }
-                    });
-                    return keepElt;
-                });
-
-                nbFilteredPoItem = filteredPoItem.length;
-                nbCol = windowWidth > 767 ? 6 : 3;
-                portfolio.find('div.grid').remove();
-                setPortfolio(filteredPoItem, nbFilteredPoItem, nbCol);
-            }
-        });
+        portfolioFilters.on('click', 'li', setFiltersPortfolio);
     }
 
     if(team.length){
