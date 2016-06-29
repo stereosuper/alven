@@ -5,7 +5,6 @@ $(function(){
      * @returns {undefined}
      */
     function handleAjaxOpen() {
-        var $links = $('a.ajax-load');
         var $ajaxContainer = $( '#ajaxContainer' );
         var $ajaxDisappear = $( '#ajaxDisappear' );
 
@@ -113,7 +112,7 @@ $(function(){
         });
 
         // Gère le click sur les liens ajax
-        $links.click(function() {
+        $('a.ajax-load').on('click', function() {
             var $link = $(this);
             var href = $link.attr('href');
 
