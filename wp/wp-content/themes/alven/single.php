@@ -115,7 +115,6 @@
             <?php
 
                 $lastPosts = new WP_Query(array(
-                    'post_type' => 'post',
                     'post__not_in' => array($post->ID),
                     'posts_per_page'=> 3,
                     'tax_query' => array(
@@ -150,7 +149,6 @@
 
         <?php
             $spotlightPosts = new WP_Query(array(
-                'post_type' => 'post',
                 'post__not_in' => array($post->ID),
                 'posts_per_page'=> 6,
                 'tax_query' => array(
