@@ -2,8 +2,10 @@
 
 define( 'ALVEN_VERSION', 1.0 );
 
-define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );
-define( 'WE_ID', url_to_postid(get_field('pageWe', 'options')) );
+if(function_exists('get_field')){
+    define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );
+    //define( 'WE_ID', url_to_postid(get_field('pageWe', 'options')) );
+}
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -436,8 +438,22 @@ function alven_post_type(){
             'menu_name' => 'Team'
         ),
         'public' => true,
+        'publicly_queryable' => false,
+        'query_var' => false,
         'menu_icon' => 'dashicons-groups',
         'supports' => array('title', 'editor', 'thumbnail', 'revisions')
+    ));
+    register_post_type('quote', array(
+        'label' => 'Quotes',
+        'labels' => array(
+            'singular_name' => 'Quote',
+            'menu_name' => 'Quotes'
+        ),
+        'public' => true,
+        'publicly_queryable' => false,
+        'query_var' => false,
+        'menu_icon' => 'dashicons-format-quote',
+        'supports' => array('title', 'thumbnail', 'revisions')
     ));
 }
 add_action( 'init', 'alven_post_type' );
@@ -463,9 +479,9 @@ add_action( 'init', 'alven_taxonomy' );
 function alven_save_custom_post_parent($data, $postarr){
     if( $postarr['post_type'] === 'startup' ){
         $data['post_parent'] = PORTFOLIO_ID;
-    }else if( $postarr['post_type'] === 'team' ){
+    }/*else if( $postarr['post_type'] === 'team' ){
         $data['post_parent'] = WE_ID;
-    }
+    }*/
 
     return $data;
 }
@@ -490,29 +506,29 @@ add_filter( 'nav_menu_css_class', 'alven_correct_menu_parent_class', 10, 2 );
 /* Enqueue Styles and Scripts
 /*-----------------------------------------------------------------------------------*/
 function alven_scripts(){
-        // header
-        wp_enqueue_style( 'alven-style', get_template_directory_uri() . '/css/main.css', array(), ALVEN_VERSION );
-        wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.min.js', array(), null);
+    // header
+    wp_enqueue_style( 'alven-style', get_template_directory_uri() . '/css/main.css', array(), ALVEN_VERSION );
+    wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.min.js', array(), null);
 
-        // footer
-        wp_enqueue_script( 'isMobile', get_template_directory_uri() . '/js/isMobile.min.js', array(), null, true );
+    // footer
+    wp_enqueue_script( 'isMobile', get_template_directory_uri() . '/js/isMobile.min.js', array(), null, true );
 
-        wp_deregister_script('jquery');
-        wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.0.0.min.js', array(), null, true );
-        wp_enqueue_script( 'jquery-address', get_template_directory_uri() . '/js/jquery.address-1.6.min.js', array('jquery'), null, true );
-        wp_enqueue_script( 'jquery-scrollto', get_template_directory_uri() . '/js/jquery.scrollTo.min.js', array('jquery'), null, true );
+    wp_deregister_script('jquery');
+    wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.0.0.min.js', array(), null, true );
+    wp_enqueue_script( 'jquery-address', get_template_directory_uri() . '/js/jquery.address-1.6.min.js', array('jquery'), null, true );
+    wp_enqueue_script( 'jquery-scrollto', get_template_directory_uri() . '/js/jquery.scrollTo.min.js', array('jquery'), null, true );
 
-        wp_enqueue_script( 'tweenmax', get_template_directory_uri() . '/js/TweenMax.min.js', array(), null, true );
-        wp_enqueue_script( 'splittext', get_template_directory_uri() . '/js/splitText.min.js', array(), null, true );
-        wp_enqueue_script( 'draggable', get_template_directory_uri() . '/js/draggable.min.js', array(), null, true );
+    wp_enqueue_script( 'tweenmax', get_template_directory_uri() . '/js/TweenMax.min.js', array(), null, true );
+    wp_enqueue_script( 'splittext', get_template_directory_uri() . '/js/splitText.min.js', array(), null, true );
+    wp_enqueue_script( 'draggable', get_template_directory_uri() . '/js/draggable.min.js', array(), null, true );
 
-        wp_enqueue_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array(), null, true );
-        wp_enqueue_script( 'gsap', get_template_directory_uri() . '/js/animation.gsap.js', array(), null, true );
+    wp_enqueue_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array(), null, true );
+    wp_enqueue_script( 'gsap', get_template_directory_uri() . '/js/animation.gsap.js', array(), null, true );
 
-        wp_enqueue_script( 'alven-script', get_template_directory_uri() . '/js/script.min.js', array(), null, true );
-        wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/js/ajax.min.js', array(), null, true );
+    wp_enqueue_script( 'alven-script', get_template_directory_uri() . '/js/script.min.js', array(), null, true );
+    wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/js/ajax.min.js', array(), null, true );
 
-        wp_deregister_script( 'wp-embed' );
+    wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_enqueue_scripts', 'alven_scripts' );
 
@@ -553,7 +569,8 @@ function alven_get_startup_permalink($post) {
 
     $portfolio_url = sushi_get_page_url_by_template('portfolio.php');
     if ($portfolio_url) {
-        $relative_url = str_replace(home_url(), '', $url);
+        $protocol = (stripos($_SERVER['SERVER_PROTOCOL'], 'https') === true)?'https://':'http://';
+        $relative_url = str_replace($protocol.$_SERVER['SERVER_NAME'], '', $url);
         $url = $portfolio_url.'#'.$relative_url;
     }
 

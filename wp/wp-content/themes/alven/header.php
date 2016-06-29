@@ -27,9 +27,9 @@
                 $theme = 'theme-portfolio';
             }else if($currentPageId === $themeMagazine || $currentPage->post_type === 'post' || is_archive()){
                 $theme = 'theme-magazine';
-            }else if($currentPageId === WE_ID || $currentPageParent === WE_ID){
+            }/*else if($currentPageId === WE_ID || $currentPageParent === WE_ID){
                 $theme = 'theme-we';
-            }
+            }*/
 
             if($currentPage->post_type === 'post' || !$theme){
                 // une page sans theme (donc default template ou home) ou un single post

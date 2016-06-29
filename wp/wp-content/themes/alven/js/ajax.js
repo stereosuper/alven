@@ -112,7 +112,7 @@ $(function(){
         });
 
         // Gère le click sur les liens ajax
-        $('a.ajax-load').on('click', function() {
+        $('body').on('click', 'a.ajax-load', function(){
             var $link = $(this);
             var href = $link.attr('href');
 
