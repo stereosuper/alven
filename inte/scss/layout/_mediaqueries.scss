@@ -286,6 +286,17 @@
         position: relative;
     }
     .team{
+        .js &{
+            cursor: move;
+            cursor: grab;
+            cursor: -moz-grab;
+            cursor: -webkit-grab;
+            &.grabbing{
+                cursor: grabbing;
+                cursor: -moz-grabbing;
+                cursor: -webkit-grabbing;
+            }
+        }
         > li{
             margin: 0;
             position: relative;
