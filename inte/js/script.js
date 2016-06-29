@@ -33,6 +33,15 @@ $(function(){
 
     /**** INIT ****/
 
+    function getQuery(){
+        var oParametre = [];
+        for (var aItKey, nKeyId = 0, aCouples = window.location.search.substr(1).split("&"); nKeyId < aCouples.length; nKeyId++) {
+            aItKey = aCouples[nKeyId].split("=");
+            oParametre[nKeyId] = [unescape(aItKey[0]), aItKey.length > 1 ? unescape(aItKey[1]) : ""];
+        }
+        return oParametre;
+    }
+
     // Alternative au CSS object-fit
     // Fonction pour adapter la taille d'une image à son container
     // Basé sur le script de Primož Cigler https://medium.com/@primozcigler/neat-trick-for-css-object-fit-fallback-on-edge-and-other-browsers-afbc53bbb2c3#.n2teu1z9m
@@ -183,7 +192,6 @@ $(function(){
 
 
     function setPortfolio(poItem, nbPoItem, nbCol){
-        console.log(poItem);
         var portfolioContent = '<div class="grid">', poItemIndex = 0,
             currentNb = 0, i = 0, transfered,
             nbTrItem = 0, poItems, nbItemByCol = [];
@@ -254,24 +262,27 @@ $(function(){
         portfolioContent += '</div>';
         portfolio.find('.container').append(portfolioContent);
 
-        var itemContent;
+
+
         while(currentNb < nbPoItem){
             i = 0;
             for(i; i<nbCol; i++){
+                var itemContent = '';
                 nbItemByCol[i] ++;
-                if(arrayCols[i] >= nbItemByCol[i]){
+                if(poItem.eq(currentNb).length && arrayCols[i] >= nbItemByCol[i]){
                     if(i === colCta && nbItemByCol[i] === posCta){
                         itemContent = '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
                     }
                     if(poItem.eq(currentNb).hasClass('transfered')){
-                        itemContent = '<div class="po-item transfered">'+poItem.eq(currentNb).html()+'</div>';
+                        itemContent += '<div class="po-item transfered">'+poItem.eq(currentNb).html()+'</div>';
                     }else{
-                        itemContent = '<div class="po-item">'+poItem.eq(currentNb).html()+'</div>';
+                        itemContent += '<div class="po-item">'+poItem.eq(currentNb).html()+'</div>';
                     }
                     portfolio.find('.po-item-col').eq(i).append(itemContent);
                     currentNb++;
                 }
             }
+
         }
 
         TweenMax.set(portfolio.find('.po-item'), {opacity: 0, y: '30%', scale: 0.8});
@@ -299,6 +310,70 @@ $(function(){
             $(this).closest('.po-item').removeClass('link-hovered').closest('.grid').removeClass('is-hovered');
             $(this).addClass('off');
         });
+    }
+
+    function filterPortfolio(data, url){
+        var filteredPoItem, nbFilteredPoItem;
+
+        filteredPoItem = poItem.filter(function(){
+            var elt = $(this), keepElt = true;
+            data.forEach(function(e, i){
+                if(e[1] !== 'all' && keepElt){
+                    if($.inArray(e[1], $('a', elt).data(e[0]).split(',')) === -1){
+                        keepElt = false;
+                    }
+                }
+            });
+            return keepElt;
+        });
+
+        nbFilteredPoItem = filteredPoItem.length;
+        nbCol = windowWidth > 767 ? 6 : 3;
+        portfolio.find('div.grid').remove();
+
+        history.pushState(null, null, url);
+
+        setPortfolio(filteredPoItem, nbFilteredPoItem, nbCol);
+    }
+
+    function setFiltersPortfolio(){
+        var thisBtn = $(this);
+        if(!thisBtn.hasClass('actif')){
+            var data = [], filterLists = portfolioFilters.find('.dropdown'),
+                url = window.location.origin + window.location.pathname + '?';
+
+            thisBtn.siblings().removeClass('actif');
+            thisBtn.addClass('actif').clone().prependTo(thisBtn.parents('.dropdown'));
+            thisBtn.remove();
+
+            filterLists.each(function(i){
+                var filterName = $(this).data('filter');
+                data[i] = [filterName, $(this).find('.actif').data(filterName)];
+
+                if(i !== 0){ url += '&'; }
+                url += data[i][0] + '=' + data[i][1];
+            });
+
+            filterPortfolio(data, url);
+        }
+    }
+
+    function setFiltersPortfolioOnLoad(filters){
+        var filterLists = portfolioFilters.find('.dropdown');
+
+        filterLists.each(function(i){
+            var thisDropdown = filterLists.eq(i);
+            if(filters[i] !== undefined){
+                var thisBtn = thisDropdown.find('[data-'+filters[i][0]+'='+filters[i][1]+']');
+                thisBtn.addClass('actif').clone().prependTo(thisDropdown);
+                thisBtn.remove();
+            }else{
+                var thisFilter = thisDropdown.data('filter');
+                filters[i] = [thisFilter, thisDropdown.find('.actif').data(thisFilter)];
+            }
+        });
+
+        filterPortfolio(filters, window.location.href);
     }
 
 
@@ -676,51 +751,20 @@ $(function(){
     if(portfolio.length){
         var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3;
 
-        if(nbPoItem > nbCol){
+        if(window.location.search){
+            var filters = getQuery();
+            setFiltersPortfolioOnLoad(filters);
+        }else{
             setPortfolio(poItem, nbPoItem, nbCol);
         }
 
-        portfolioFilters.on('click', 'li', function(){
-            var thisBtn = $(this);
-            if(!thisBtn.hasClass('actif')){
-                var data = [thisBtn.data()], i = 0,
-                    siblings = thisBtn.parents('.col-2').siblings().find('.actif'),
-                    nbSiblings = siblings.length, filteredPoItem, nbFilteredPoItem,
-                    filters = [];
-
-                thisBtn.siblings().removeClass('actif');
-                thisBtn.addClass('actif').clone().prependTo(thisBtn.parents('.dropdown'));
-                thisBtn.remove();
-
-                for(i; i<nbSiblings; i++){
-                    data[i+1] = siblings.data();
-                }
-
-                /*i = 0;
-                for(i; i<data.length; i++){
-                    filters[i] = Object.keys(data[i])[0];
-                }*/
-
-                filteredPoItem = poItem.filter(function(){
-                    if(data[0]['investment'] !== 'all'){
-                        return $.inArray(data[0]['investment'], [$('a', this).data('investment')]) > -1;
-                    }else{
-                        return $(this);
-                    }
-                });
-
-                nbFilteredPoItem = filteredPoItem.length;
-                nbCol = windowWidth > 767 ? 6 : 3;
-                portfolio.find('div.grid').remove();
-                setPortfolio(filteredPoItem, nbFilteredPoItem, nbCol);
-            }
-        });
+        portfolioFilters.on('click', 'li', setFiltersPortfolio);
     }
 
     if(team.length){
         var teamMember = team.find('.team-member');
         var desc, heightDesc, liParent, tlTeam,
-            currentLi, currentDesc, tlTeamCurrent,
+            currentDesc, tlTeamCurrent,
             newLi, newDesc, heightNewDesc,
             liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive'), heightDescResponsive, posiLiClique, containerTeamWidth, posiToGo;
 
@@ -753,7 +797,7 @@ $(function(){
         setMenuElmts();
     }
 
-    dropdowns.on('click', function(e){
+    dropdowns.on('click', function(){
         var dropdown = $(this), height = 2, siblings = dropdowns.not(dropdown);
         if(dropdown.hasClass('on')){
             closeDropdown(dropdown);
