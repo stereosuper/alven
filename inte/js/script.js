@@ -183,7 +183,6 @@ $(function(){
 
 
     function setPortfolio(poItem, nbPoItem, nbCol){
-        console.log(poItem);
         var portfolioContent = '<div class="grid">', poItemIndex = 0,
             currentNb = 0, i = 0, transfered,
             nbTrItem = 0, poItems, nbItemByCol = [];
@@ -254,24 +253,27 @@ $(function(){
         portfolioContent += '</div>';
         portfolio.find('.container').append(portfolioContent);
 
-        var itemContent;
+
+
         while(currentNb < nbPoItem){
             i = 0;
             for(i; i<nbCol; i++){
+                var itemContent = '';
                 nbItemByCol[i] ++;
-                if(arrayCols[i] >= nbItemByCol[i]){
+                if(poItem.eq(currentNb).length && arrayCols[i] >= nbItemByCol[i]){
                     if(i === colCta && nbItemByCol[i] === posCta){
                         itemContent = '<div class="po-item cta">'+$('#ctaPortfolio').html()+'</div>';
                     }
                     if(poItem.eq(currentNb).hasClass('transfered')){
-                        itemContent = '<div class="po-item transfered">'+poItem.eq(currentNb).html()+'</div>';
+                        itemContent += '<div class="po-item transfered">'+poItem.eq(currentNb).html()+'</div>';
                     }else{
-                        itemContent = '<div class="po-item">'+poItem.eq(currentNb).html()+'</div>';
+                        itemContent += '<div class="po-item">'+poItem.eq(currentNb).html()+'</div>';
                     }
                     portfolio.find('.po-item-col').eq(i).append(itemContent);
                     currentNb++;
                 }
             }
+
         }
 
         TweenMax.set(portfolio.find('.po-item'), {opacity: 0, y: '30%', scale: 0.8});
@@ -683,30 +685,27 @@ $(function(){
         portfolioFilters.on('click', 'li', function(){
             var thisBtn = $(this);
             if(!thisBtn.hasClass('actif')){
-                var data = [thisBtn.data()], i = 0,
-                    siblings = thisBtn.parents('.col-2').siblings().find('.actif'),
-                    nbSiblings = siblings.length, filteredPoItem, nbFilteredPoItem,
-                    filters = [];
+                var data = [], i = 0, filterLists = portfolioFilters.find('.dropdown'),
+                    nbFilters = filterLists.length, filteredPoItem, nbFilteredPoItem;
 
                 thisBtn.siblings().removeClass('actif');
                 thisBtn.addClass('actif').clone().prependTo(thisBtn.parents('.dropdown'));
                 thisBtn.remove();
 
-                for(i; i<nbSiblings; i++){
-                    data[i+1] = siblings.data();
+                for(i; i<nbFilters; i++){
+                    data[i] = [filterLists.eq(i).attr('data-filter'), filterLists.eq(i).find('.actif').attr('data-'+filterLists.eq(i).attr('data-filter'))];
                 }
 
-                /*i = 0;
-                for(i; i<data.length; i++){
-                    filters[i] = Object.keys(data[i])[0];
-                }*/
-
                 filteredPoItem = poItem.filter(function(){
-                    if(data[0]['investment'] !== 'all'){
-                        return $.inArray(data[0]['investment'], [$('a', this).data('investment')]) > -1;
-                    }else{
-                        return $(this);
-                    }
+                    var elt = $(this), keepElt = true;
+                    data.forEach(function(e, i){
+                        if(data[i][1] !== 'all' && keepElt){
+                            if($.inArray(data[i][1], $('a', elt).data(data[i][0]).split(',')) === -1){
+                                keepElt = false;
+                            }
+                        }
+                    });
+                    return keepElt;
                 });
 
                 nbFilteredPoItem = filteredPoItem.length;
@@ -720,7 +719,7 @@ $(function(){
     if(team.length){
         var teamMember = team.find('.team-member');
         var desc, heightDesc, liParent, tlTeam,
-            currentLi, currentDesc, tlTeamCurrent,
+            currentDesc, tlTeamCurrent,
             newLi, newDesc, heightNewDesc,
             liTeamOpen, descOpen, heightDescOpen, descResponsive = $('.content-desc-responsive'), heightDescResponsive, posiLiClique, containerTeamWidth, posiToGo;
 
@@ -753,7 +752,7 @@ $(function(){
         setMenuElmts();
     }
 
-    dropdowns.on('click', function(e){
+    dropdowns.on('click', function(){
         var dropdown = $(this), height = 2, siblings = dropdowns.not(dropdown);
         if(dropdown.hasClass('on')){
             closeDropdown(dropdown);
