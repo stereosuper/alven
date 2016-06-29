@@ -3845,12 +3845,11 @@ select::-ms-expand {
   padding: 0;
   border: 1px solid;
   position: relative;
-  margin: 0 10px;
+  margin: 0;
   overflow: hidden;
   border-color: #26393d;
   -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  cursor: pointer;
 }
 .theme-magazine .dropdown {
   border-color: #f06850;
@@ -3876,6 +3875,7 @@ select::-ms-expand {
   color: #26393d;
   -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  cursor: pointer;
 }
 .theme-magazine .dropdown li {
   color: #f06850;
@@ -3885,6 +3885,11 @@ select::-ms-expand {
 }
 .theme-we .dropdown li {
   color: #33a4df;
+}
+.dropdown li.empty {
+  color: #818a8c;
+  cursor: default;
+  pointer-events: none;
 }
 .dropdown li:hover {
   background: #26393d;
@@ -4230,6 +4235,15 @@ select::-ms-expand {
     position: relative;
   }
 
+  .js .team {
+    cursor: move;
+    cursor: grab;
+    cursor: -webkit-grab;
+  }
+  .js .team.grabbing {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+  }
   .team > li {
     margin: 0;
     position: relative;

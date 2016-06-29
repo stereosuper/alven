@@ -320,9 +320,7 @@ $(function(){
             return poItem.filter(function(){
                 var elt = $(this), keepElt = true;
                 data.forEach(function(e, i){
-                    if (e[0] == excludedFilterName) {
-                        // on passe au suivant sans altérer keepElt
-                    } else {
+                    if(e[0] != excludedFilterName){
                         if(e[1] !== 'all' && keepElt){
                             if($.inArray(e[1], $('a', elt).data(e[0]).split(',')) === -1){
                                 keepElt = false;
@@ -338,7 +336,6 @@ $(function(){
 
         function disableImpossibleChoices(forFilterName) {
             var remainingFilters = [];
-
             var filteredPoItem = filterItem(forFilterName);
 
             // Je parcours tous mes éléments startup et je consolide dans un tableau les valeurs de filtre restant possibles
@@ -366,7 +363,6 @@ $(function(){
             filterLists.each(function(){
                 var $this = $(this);
                 var filterName = $this.data('filter');
-
                 var filterListValues = $this.find('li');
 
                 filterListValues.each(function() {
@@ -430,6 +426,7 @@ $(function(){
             var thisDropdown = filterLists.eq(i);
             if(filters[i] !== undefined){
                 var thisBtn = thisDropdown.find('[data-'+filters[i][0]+'='+filters[i][1]+']');
+                thisBtn.siblings().removeClass('actif');
                 thisBtn.addClass('actif').clone().prependTo(thisDropdown);
                 thisBtn.remove();
             }else{
@@ -528,6 +525,10 @@ $(function(){
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
                         tlTeamCurrent.set(team, {className:'-=member-open'});
                         TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
+                        team.addClass('grabbing');
+                    },
+                    onDragEnd: function(){
+                        team.removeClass('grabbing');
                     }
                 });
             }else{
@@ -573,6 +574,10 @@ $(function(){
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
                         tlTeamCurrent.set(team, {className:'-=member-open'});
                         TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
+                        team.addClass('grabbing');
+                    },
+                    onDragEnd: function(){
+                        team.removeClass('grabbing');
                     }
                 });
             }
@@ -817,7 +822,13 @@ $(function(){
         var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3;
 
         if(window.location.search){
+            // si il y a des paramètres, on les récupère
             var filters = getQuery();
+            // on vérifie que les paramètres correspondent bien a des filtres
+            filters = filters.filter(function(e, i){
+                return e[0] === 'investment' || e[0] === 'field' || e[0] === 'footprint';
+            });
+            // on filtre
             setFiltersPortfolioOnLoad(filters);
         }else{
             setPortfolio(poItem, nbPoItem, nbCol);

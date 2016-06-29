@@ -60,8 +60,8 @@ get_header(); ?>
                     ?>
                         <div class='main-spotlight-post'>
                             <div class='container'>
-                                <div class='img col-5'>
-                                    <?php the_post_thumbnail(); ?>
+                                <div class='img col-6 img-fit'>
+                                    <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
                                 </div><div class='txt col-5'>
                                     <h3><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
                                     <div class='post-meta-spotlight'>

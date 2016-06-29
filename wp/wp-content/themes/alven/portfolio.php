@@ -27,7 +27,7 @@ get_header(); ?>
                     </ul>
                 </div><div class='col-2'>
                     <ul class='dropdown' data-filter='field'>
-                        <li data-field='all' class='actif'>Fields of activity</li>
+                        <li data-field='all' class='actif'>All fields of activity</li>
                         <?php
                             $fields = get_terms(array('taxonomy' => 'field'));
                             foreach($fields as $field){
