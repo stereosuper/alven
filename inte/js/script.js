@@ -774,9 +774,9 @@ $(function(){
                 var i = 0, nbMenu = menu.find('.menu-small').length;
 
                 for(i; i<nbMenu; i++){
-                    TweenMax.to(menu.find('.menu-title').eq(i), 0.25, {y: '0%', opacity: 1});
-                    TweenMax.to(menu.find('.menu-subtitle').eq(i), 0.25, {y: '0%', opacity: 1}).delay(0.05);
-                    TweenMax.staggerTo(menu.find('.menu-small').eq(i).find('li'), 0.25, {y: '0%', opacity: 1}, 0.08);
+                    TweenMax.to(menu.find('.menu-title').eq(i), 0.25, {y: '0%', opacity: 1, z: 0.01, force3d: true});
+                    TweenMax.to(menu.find('.menu-subtitle').eq(i), 0.25, {y: '0%', opacity: 1, z: 0.01, force3d: true}).delay(0.05);
+                    TweenMax.staggerTo(menu.find('.menu-small').eq(i).find('li'), 0.25, {y: '0%', opacity: 1, z: 0.01, force3d: true}, 0.08);
                 }
             }, 380);
         }else{

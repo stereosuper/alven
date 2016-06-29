@@ -861,7 +861,9 @@ select::-ms-expand {
   overflow: hidden;
   background: #303b3d;
   transform: translate3d(0, -100%, 0);
-  transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
+  transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  backface-visibility: hidden;
+  transform-style: preserve-3d; }
   #menu-responsive > div {
     width: 100%;
     position: absolute;
@@ -1145,7 +1147,8 @@ select::-ms-expand {
   position: relative;
   margin: 185px 0 0;
   z-index: 1;
-  background: #303b3d; }
+  background: #303b3d;
+  backface-visibility: hidden; }
   .portfolio-list:before {
     content: '';
     height: 150px;
@@ -1175,7 +1178,9 @@ select::-ms-expand {
     font-size: 1.4rem;
     text-transform: uppercase;
     color: #303b3d;
-    text-align: center; }
+    text-align: center;
+    backface-visibility: hidden;
+    transform-style: preserve-3d; }
     .portfolio-list li:before, .portfolio-list .po-item:before {
       display: block;
       width: auto;
@@ -1750,10 +1755,10 @@ select::-ms-expand {
     .main-spotlight-post .txt:before, .main-spotlight-post .txt:after {
       left: 10px; }
     .main-spotlight-post .txt:before {
-      bottom: -68px; }
+      bottom: -67px; }
     .main-spotlight-post .txt:after {
       left: -7px;
-      bottom: -61px; }
+      bottom: -60px; }
   .main-spotlight-post h3 {
     margin: 0;
     font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
@@ -1981,7 +1986,9 @@ select::-ms-expand {
   margin: 0 auto;
   padding: 0;
   position: relative;
-  will-change: transform; }
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d; }
   .team.member-open .team-member {
     opacity: 0.25; }
   .team.member-open > li.open .team-member {
@@ -1991,7 +1998,8 @@ select::-ms-expand {
     visibility: hidden; }
   .team > li {
     margin: 0 0 80px 0;
-    position: static; }
+    position: static;
+    will-change: padding; }
     .team > li:before {
       display: none; }
   .team a {

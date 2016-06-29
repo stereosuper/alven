@@ -5,6 +5,7 @@
     margin: 185px 0 0;
     z-index: 1;
     background: $chapo;
+    backface-visibility: hidden;
     &:before{
         content: '';
         height: 150px;
@@ -52,6 +53,8 @@
         text-transform: uppercase;
         color: $chapo;
         text-align: center;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
         &:before{
             display: block;
             width: auto;

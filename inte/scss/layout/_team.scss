@@ -5,6 +5,8 @@
 	padding: 0;
 	position: relative;
 	will-change: transform;
+	backface-visibility: hidden;
+	transform-style: preserve-3d;
 	&.member-open{
 		.team-member{
 			opacity: 0.25;
@@ -24,6 +26,7 @@
 	> li{
 		margin: 0 0 80px 0;
 		position: static;
+		will-change: padding;
 		&:before{
 			display: none;
 		}

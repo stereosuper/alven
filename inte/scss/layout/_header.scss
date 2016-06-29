@@ -201,6 +201,8 @@
     background: $chapo;
     transform: translate3d(0, -100%, 0);
     transition: $transition;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
     > div{
         width: 100%;
         position: absolute;
