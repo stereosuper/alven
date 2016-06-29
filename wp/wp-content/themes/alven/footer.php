@@ -1,4 +1,8 @@
-    <footer role='contentinfo' id='footer'>
+<?php
+global $is_ajax;
+
+    if (!$is_ajax) :
+?><footer role='contentinfo' id='footer'>
         <div class='container'>
             <div class='container-small'>
                 <div class='grid'>
@@ -11,4 +15,6 @@
     <?php wp_footer(); ?>
 
     </body>
-</html>
+</html><?php
+
+endif; // if (!is_ajax) :

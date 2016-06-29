@@ -1,4 +1,43 @@
-<!DOCTYPE html>
+<?php
+
+global $is_ajax;
+
+    $is_ajax = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
+
+    $currentPage = get_queried_object();
+    $theme = '';
+    $headerFixed = true;
+
+    if($currentPage){
+        $currentPageId = $currentPage->ID;
+        $currentPageParent = $currentPage->post_parent;
+
+        $themeMagazine = intval(get_option( 'page_for_posts' ));
+
+        if($currentPageId === PORTFOLIO_ID || $currentPageParent === PORTFOLIO_ID){
+            $theme = 'theme-portfolio';
+        }else if($currentPageId === $themeMagazine || $currentPage->post_type === 'post' || is_archive()){
+            $theme = 'theme-magazine';
+        }else if($currentPageId === WE_ID || $currentPageParent === WE_ID){
+            $theme = 'theme-we';
+        }
+
+        if($currentPage->post_type === 'post' || !$theme){
+            // une page sans theme (donc default template ou home) ou un single post
+            // on ajoute la classe fixed au header car il n'y a pas de fond en haut de page
+            // et donc le header nécessite un fond
+
+            // en js la fonction n'est déclenchée que si la div #contentHeader est présente
+            $headerFixed = false;
+        }
+    }
+
+    global $specialCats;
+    $specialCats = array(get_field('catJob', 'options'), get_field('catDef', 'options'), get_field('catRead', 'options'), get_field('catEvent', 'options'));
+
+    if (!$is_ajax) :
+
+?><!DOCTYPE html>
 <html class='no-js' <?php language_attributes(); ?>>
 
     <head>
@@ -11,39 +50,6 @@
 
         <?php wp_head(); ?>
     </head>
-
-    <?php
-        $currentPage = get_queried_object();
-        $theme = '';
-        $headerFixed = true;
-
-        if($currentPage){
-            $currentPageId = $currentPage->ID;
-            $currentPageParent = $currentPage->post_parent;
-
-            $themeMagazine = intval(get_option( 'page_for_posts' ));
-
-            if($currentPageId === PORTFOLIO_ID || $currentPageParent === PORTFOLIO_ID){
-                $theme = 'theme-portfolio';
-            }else if($currentPageId === $themeMagazine || $currentPage->post_type === 'post' || is_archive()){
-                $theme = 'theme-magazine';
-            }else if($currentPageId === WE_ID || $currentPageParent === WE_ID){
-                $theme = 'theme-we';
-            }
-
-            if($currentPage->post_type === 'post' || !$theme){
-                // une page sans theme (donc default template ou home) ou un single post
-                // on ajoute la classe fixed au header car il n'y a pas de fond en haut de page
-                // et donc le header nécessite un fond
-
-                // en js la fonction n'est déclenchée que si la div #contentHeader est présente
-                $headerFixed = false;
-            }
-        }
-
-        global $specialCats;
-        $specialCats = array(get_field('catJob', 'options'), get_field('catDef', 'options'), get_field('catRead', 'options'), get_field('catEvent', 'options'));
-    ?>
 
     <body <?php body_class($theme); ?>>
 
@@ -62,3 +68,5 @@
         </header>
 
         <div id='ajaxContainer' <?php if($currentPageId === PORTFOLIO_ID) echo "class='single-startup'"; ?>></div>
+
+<?php endif; // if (!is_ajax) : ?>

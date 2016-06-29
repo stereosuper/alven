@@ -1,11 +1,5 @@
 'use strict';
 
-// globale car utilisée dans ajax.js
-function setBtn(btn){
-    var txt = btn.html();
-    return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
-}
-
 $(function(){
 
     /**** VARIABLES ****/
@@ -32,6 +26,150 @@ $(function(){
 
 
     /**** INIT ****/
+
+    /**
+     * Ici le code qui est exécuté quand on charge une vraie page
+     * -> Concerne le layout (header, footer)
+     *
+     * @returns {undefined}
+     */
+    function pageInit() {
+        // TODO
+        afterAjaxLoadInit();
+        handleAjaxOpen();
+    }
+    // Et on l'appelle tout de suite
+    pageInit();
+
+    /**
+     * Ici le code qui est exécuté à chaque chargement Ajax
+     * -> Concerne les scripts sur des éléments dans le contenu de la page
+     *
+     *
+     * @returns {undefined}
+     */
+    function afterAjaxLoadInit() {
+        portfolioInit();
+    }
+
+    /**** FUNCTIONS ****/
+
+    /**
+     * Gère tous les comportements liés au chargement en ajax des pages
+     * @returns {undefined}
+     */
+    function handleAjaxOpen() {
+        var $ajaxContainer = $( '#ajaxContainer' );
+        var $ajaxDisappear = $( '#ajaxDisappear' );
+
+        /**
+         * Ferme la portion de page ajax
+         * @param {type} data
+         * @param {type} href
+         * @param {type} callback si on passe ici un pointeur de fonction, elle sera excutée
+         * @returns {undefined}
+         */
+        function wipeAjaxContainer(data, href, callback) {
+            $ajaxContainer.removeClass('open').slideUp(400, function() {
+                if (callback) {
+                    callback(data, href);
+                }
+            });
+
+            if($ajaxDisappear.length){
+                $ajaxDisappear.slideDown(300);
+            }
+
+            if($('#portfolioFilters').length){
+                $('#portfolioFilters').removeClass('fixed single-on');
+            }
+        }
+
+        /**
+         * Ouvre la portion de page ajax
+         * @param {type} data
+         * @param {type} href
+         * @returns {undefined}
+         */
+        function openAjaxContainer(data, href) {
+            $ajaxContainer.hide().empty().append(data).slideDown(300).addClass('open');
+
+            if($ajaxContainer.find('.btn-invert').length){
+                $ajaxContainer.find('.btn-invert').each(function(i){
+                    $ajaxContainer.find('.btn-invert').eq(i).html(setBtn($ajaxContainer.find('.btn-invert').eq(i)));
+                });
+            }
+
+            if($ajaxDisappear.length){
+                $ajaxDisappear.slideUp(300);
+            }
+
+            if($('#portfolioFilters').length){
+                $('#portfolioFilters').addClass('fixed single-on');
+            }
+
+            $('#closePortfolio').on('click', function(e){
+                e.preventDefault();
+                wipeAjaxContainer();
+                $.address.value('');
+            });
+
+            $.address.value(href.replace(/^.*\/\/[^\/]+/, ''));
+
+            afterAjaxLoadInit();
+        }
+
+        /**
+         * Charge en ajax l'url passée en paramètre
+         *
+         * @param {type} href
+         * @returns {undefined}
+         */
+        function loadUrlAjax(href) {
+
+            $.get( href, function( data ) {
+                $.scrollTo($ajaxContainer, 300, {
+                  onAfter: function() {
+                    if ($ajaxContainer.hasClass('open')) {
+                        wipeAjaxContainer(data, href, openAjaxContainer);
+                    } else {
+                        openAjaxContainer(data, href);
+                    }
+                  }
+                });
+            });
+        }
+
+        // Lorsqu'on recharge la page et qu'elle a un segment d'url ajax, on relance les scripts d'ouverture
+        /*
+        $.address.externalChange(function(e) {
+            var href = e.value;
+
+            if (href && href!='' && href != '/') {
+                loadUrlAjax(href);
+            } else {
+                if ($ajaxContainer.hasClass('open')) {
+                    wipeAjaxContainer();
+                }
+            }
+        });
+        */
+
+        // Gère le click sur les liens ajax
+        $('body').on('click', 'a', function() {
+            var $link = $(this);
+            var href = $link.attr('href');
+
+            loadUrlAjax(href);
+
+            return false;
+        });
+    }
+
+    function setBtn(btn){
+        var txt = btn.html();
+        return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
+    }
 
     // Alternative au CSS object-fit
     // Fonction pour adapter la taille d'une image à son container
@@ -181,7 +319,6 @@ $(function(){
         TweenMax.set(menu.find('li'), {y: '-120%', opacity: 0});
     }
 
-
     function setPortfolio(poItem, nbPoItem, nbCol){
         var portfolioContent = '<div class="grid">', poItemIndex = 0,
             currentNb = 0, i = 0, transfered,
@@ -302,7 +439,6 @@ $(function(){
             $(this).addClass('off');
         });
     }
-
 
     function updateBtnGlob(){
         if(windowWidth <= 979){
@@ -622,8 +758,6 @@ $(function(){
         }
     }
 
-
-
     isMobile.any ? htmlTag.addClass('is-mobile') : htmlTag.addClass('is-desktop');
 
     setHeaderScroll(myScroll, scrollDir);
@@ -675,45 +809,49 @@ $(function(){
             .addTo(controller);
     }
 
-    if(portfolio.length){
-        var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3;
+    function portfolioInit() {
+        portfolio = $('#portfolio');
 
-        if(nbPoItem > nbCol){
-            setPortfolio(poItem, nbPoItem, nbCol);
-        }
+        if(portfolio.length){
+            var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3;
 
-        portfolioFilters.on('click', 'li', function(){
-            var thisBtn = $(this);
-            if(!thisBtn.hasClass('actif')){
-                var data = [], i = 0, filterLists = portfolioFilters.find('.dropdown'),
-                    nbFilters = filterLists.length, filteredPoItem, nbFilteredPoItem;
-
-                thisBtn.siblings().removeClass('actif');
-                thisBtn.addClass('actif').clone().prependTo(thisBtn.parents('.dropdown'));
-                thisBtn.remove();
-
-                for(i; i<nbFilters; i++){
-                    data[i] = [filterLists.eq(i).attr('data-filter'), filterLists.eq(i).find('.actif').attr('data-'+filterLists.eq(i).attr('data-filter'))];
-                }
-
-                filteredPoItem = poItem.filter(function(){
-                    var elt = $(this), keepElt = true;
-                    data.forEach(function(e, i){
-                        if(data[i][1] !== 'all' && keepElt){
-                            if($.inArray(data[i][1], $('a', elt).data(data[i][0]).split(',')) === -1){
-                                keepElt = false;
-                            }
-                        }
-                    });
-                    return keepElt;
-                });
-
-                nbFilteredPoItem = filteredPoItem.length;
-                nbCol = windowWidth > 767 ? 6 : 3;
-                portfolio.find('div.grid').remove();
-                setPortfolio(filteredPoItem, nbFilteredPoItem, nbCol);
+            if(nbPoItem > nbCol){
+                setPortfolio(poItem, nbPoItem, nbCol);
             }
-        });
+
+            portfolioFilters.on('click', 'li', function(){
+                var thisBtn = $(this);
+                if(!thisBtn.hasClass('actif')){
+                    var data = [], i = 0, filterLists = portfolioFilters.find('.dropdown'),
+                        nbFilters = filterLists.length, filteredPoItem, nbFilteredPoItem;
+
+                    thisBtn.siblings().removeClass('actif');
+                    thisBtn.addClass('actif').clone().prependTo(thisBtn.parents('.dropdown'));
+                    thisBtn.remove();
+
+                    for(i; i<nbFilters; i++){
+                        data[i] = [filterLists.eq(i).attr('data-filter'), filterLists.eq(i).find('.actif').attr('data-'+filterLists.eq(i).attr('data-filter'))];
+                    }
+
+                    filteredPoItem = poItem.filter(function(){
+                        var elt = $(this), keepElt = true;
+                        data.forEach(function(e, i){
+                            if(data[i][1] !== 'all' && keepElt){
+                                if($.inArray(data[i][1], $('a', elt).data(data[i][0]).split(',')) === -1){
+                                    keepElt = false;
+                                }
+                            }
+                        });
+                        return keepElt;
+                    });
+
+                    nbFilteredPoItem = filteredPoItem.length;
+                    nbCol = windowWidth > 767 ? 6 : 3;
+                    portfolio.find('div.grid').remove();
+                    setPortfolio(filteredPoItem, nbFilteredPoItem, nbCol);
+                }
+            });
+        }
     }
 
     if(team.length){
