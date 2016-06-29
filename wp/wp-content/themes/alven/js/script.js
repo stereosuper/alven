@@ -315,17 +315,82 @@ $(function(){
     function filterPortfolio(data, url){
         var filteredPoItem, nbFilteredPoItem;
 
-        filteredPoItem = poItem.filter(function(){
-            var elt = $(this), keepElt = true;
-            data.forEach(function(e, i){
-                if(e[1] !== 'all' && keepElt){
-                    if($.inArray(e[1], $('a', elt).data(e[0]).split(',')) === -1){
-                        keepElt = false;
+        // Filtre les poItem en ayant la possibilité de ne pas prendre en compte un filtre (pour griser les entrées d'un select)
+        function filterItem(excludedFilterName) {
+            return poItem.filter(function(){
+                var elt = $(this), keepElt = true;
+                data.forEach(function(e, i){
+                    if (e[0] == excludedFilterName) {
+                        // on passe au suivant sans altérer keepElt
+                    } else {
+                        if(e[1] !== 'all' && keepElt){
+                            if($.inArray(e[1], $('a', elt).data(e[0]).split(',')) === -1){
+                                keepElt = false;
+                            }
+                        }
                     }
-                }
+                });
+                return keepElt;
             });
-            return keepElt;
-        });
+        }
+
+        filteredPoItem = filterItem(false);
+
+        function disableImpossibleChoices(forFilterName) {
+            var remainingFilters = [];
+
+            var filteredPoItem = filterItem(forFilterName);
+
+            // Je parcours tous mes éléments startup et je consolide dans un tableau les valeurs de filtre restant possibles
+            filteredPoItem.each(function() {
+                var $a = $(this).find('a');
+
+                function appendToRemainingFilters(filterName) {
+                    if (!(filterName in remainingFilters)) {
+                        remainingFilters[filterName] = [];
+                    }
+                    var dataArray = $a.data(filterName).split(',');
+                    dataArray.forEach(function(e, i) {
+                        if (e != '') {
+                            remainingFilters[filterName][e] = true;
+                        }
+                    });
+                }
+
+                appendToRemainingFilters('investment');
+                appendToRemainingFilters('field');
+                appendToRemainingFilters('footprint');
+            });
+
+            var filterLists = portfolioFilters.find('.dropdown[data-filter='+forFilterName+']');
+            filterLists.each(function(){
+                var $this = $(this);
+                var filterName = $this.data('filter');
+
+                var filterListValues = $this.find('li');
+
+                filterListValues.each(function() {
+                    var $this = $(this);
+                    var value = $this.data(filterName);
+
+                    if (value != 'all') {
+                        if (remainingFilters[filterName]) {
+                            if (value in remainingFilters[filterName]) {
+                                $this.removeClass('empty');
+                            } else {
+                                $this.addClass('empty');
+                            }
+                        } else {
+                            $this.addClass('empty');
+                        }
+                    }
+                });
+            });
+        }
+
+        disableImpossibleChoices('investment');
+        disableImpossibleChoices('field');
+        disableImpossibleChoices('footprint');
 
         nbFilteredPoItem = filteredPoItem.length;
         nbCol = windowWidth > 767 ? 6 : 3;
