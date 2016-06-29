@@ -61,4 +61,4 @@
             <div id='readIndicator' class='read-indicator'></div>
         </header>
 
-        <div id='ajaxContainer' <?php if($currentPageId === PORTFOLIO_ID) echo "class='single-startup'"; ?>></div>
+        <div id='ajaxContainer' <?php if(isset($currentPageId) && $currentPageId === PORTFOLIO_ID) echo "class='single-startup'"; ?>></div>

@@ -18,7 +18,7 @@ get_header(); ?>
                         <a href='<?php echo get_permalink(PORTFOLIO_ID); ?>' class='btn-arrow'>Portfolio</a>
                     </li><li>
                         <span>Team :</span>
-                        <a href='<?php home_url('#who-we-are'); ?>' class='btn-arrow'>Who we are</a>
+                        <a href='<?php echo home_url('#who-we-are'); ?>' class='btn-arrow'>Who we are</a>
                     </li>
                 </ul>
             </div>
@@ -279,30 +279,52 @@ get_header(); ?>
                     <?php endif; wp_reset_query(); ?>
                 </section>
 
-                <section class='theme-gold'>
-                    <div class='contact-us'>
-                        <div class='container'>
-                            <h2 class='section-title'><?php the_field('contactTitle'); ?></h2>
-                            <strong class='subtitle'><?php the_field('contactSubtitle'); ?></strong>
-                            <div class='container-small'>
-                                <div class='grid wrapper-interactive-blocks'>
-                                    <div class='col-4 align-right interactive-block'>
-                                        <h3><?php the_field('pitchTitle'); ?></h3>
-                                        <p><?php the_field('pitchText'); ?></p>
-                                        <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] pitch&body=Please tell us about your startup. %0AYou can join a lightweight presentation' class='btn btn-left'>Send your pitch</a>
-                                    </div><!--
-                                    --><div class='col-4 interactive-block'>
-                                        <h3><?php the_field('generalTitle'); ?></h3>
-                                        <p><?php the_field('generalText'); ?></p>
-                                        <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] general question&body=Please tell us what you would like to know. %0AWe&#39;ll read it carefully, and answer you with pleasure' class='btn'>General questions</a>
-                                    </div>
+            </div>
+
+            <section class='theme-gold'>
+                <div class='contact-us'>
+                    <div class='container'>
+                        <h2 class='section-title'><?php the_field('contactTitle'); ?></h2>
+                        <strong class='subtitle'><?php the_field('contactSubtitle'); ?></strong>
+                        <div class='container-small'>
+                            <div class='grid wrapper-interactive-blocks'>
+                                <div class='col-4 align-right interactive-block'>
+                                    <h3><?php the_field('pitchTitle'); ?></h3>
+                                    <p><?php the_field('pitchText'); ?></p>
+                                    <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] pitch&body=Please tell us about your startup. %0AYou can join a lightweight presentation' class='btn btn-left'>Send your pitch</a>
+                                </div><!--
+                                --><div class='col-4 interactive-block'>
+                                    <h3><?php the_field('generalTitle'); ?></h3>
+                                    <p><?php the_field('generalText'); ?></p>
+                                    <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] general question&body=Please tell us what you would like to know. %0AWe&#39;ll read it carefully, and answer you with pleasure' class='btn'>General questions</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-            </div>
+            <section class='quotes'>
+                <?php
+                    $quotes = new WP_Query(array('post_type' => 'quote', 'posts_per_page' => 3, 'orderby' => 'menu_order', 'order' => 'ASC'));
+                    if($quotes->have_posts()):
+                ?>
+                    <div class='container'>
+                        <div class='grid'>
+                            <?php while($quotes->have_posts()): $quotes->the_post(); ?><div class='col-4 quote'>
+                                <div class='img-quote'><?php the_post_thumbnail('medium'); ?></div>
+                                <blockquote>
+                                    <p><?php the_field('quote'); ?></p>
+                                    <?php if(get_field('author')){ ?>
+                                        <footer><?php the_field('author'); ?></footer>
+                                    <?php } ?>
+                                </blockquote>
+                            </div><?php endwhile; ?>
+                        </div>
+                    </div>
+                <?php endif; wp_reset_query(); ?>
+            </section>
+
         </main>
 
     <?php else : ?>

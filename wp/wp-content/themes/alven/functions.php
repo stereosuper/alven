@@ -163,7 +163,7 @@ register_nav_menus( array('primary' => 'Primary Menu') );
 
 // Cleanup WP Menu html
 function alven_css_attributes_filter($classes){
-    return is_array($classes) ? array_intersect($classes, array('current-menu-item', 'current_page_parent')) : '';
+    return is_array($classes) ? array_intersect($classes, array('current-menu-item', 'current_page_parent', 'who-we-are')) : '';
 }
 add_filter( 'nav_menu_css_class', 'alven_css_attributes_filter' );
 
@@ -413,6 +413,15 @@ function alven_get_svg($id){
     }
     return $img;
 }
+
+// filter search results to only have posts and startups
+function alven_search_filter($query){
+    if($query->is_search){
+        $query->set('post_type', array('post', 'startup'));
+    }
+    return $query;
+}
+add_filter( 'pre_get_posts', 'alven_search_filter' );
 
 
 /*-----------------------------------------------------------------------------------*/
