@@ -15,7 +15,7 @@ $(function(){
     var controller = new ScrollMagic.Controller(), lastScrollTop = 0, myScroll = $(document).scrollTop(), scrollDir = 0;
 
     var htmlTag = $('html'), body = $('body');
-    var header = $('#header'), headerHeight = header.innerHeight();
+    var header = $('#header'), headerHeight = header.innerHeight(), mainMenu = $('#menu-main');
     var mainContent = $('#mainContent'), main = $('#main');
     var readIndicator = $('#readIndicator');
     var buttons = $('.btn'), buttonsInvert = $('.btn-invert');
@@ -33,11 +33,12 @@ $(function(){
 
     /**** INIT ****/
 
+    // return the url queries -> oParametre = [[query, value]]
     function getQuery(){
         var oParametre = [];
-        for (var aItKey, nKeyId = 0, aCouples = window.location.search.substr(1).split("&"); nKeyId < aCouples.length; nKeyId++) {
-            aItKey = aCouples[nKeyId].split("=");
-            oParametre[nKeyId] = [unescape(aItKey[0]), aItKey.length > 1 ? unescape(aItKey[1]) : ""];
+        for(var aItKey, nKeyId = 0, aCouples = window.location.search.substr(1).split('&'); nKeyId < aCouples.length; nKeyId++){
+            aItKey = aCouples[nKeyId].split('=');
+            oParametre[nKeyId] = [unescape(aItKey[0]), aItKey.length > 1 ? unescape(aItKey[1]) : ''];
         }
         return oParametre;
     }
@@ -46,15 +47,13 @@ $(function(){
     // Fonction pour adapter la taille d'une image à son container
     // Basé sur le script de Primož Cigler https://medium.com/@primozcigler/neat-trick-for-css-object-fit-fallback-on-edge-and-other-browsers-afbc53bbb2c3#.n2teu1z9m
     function imgFit(){
-        if (!Modernizr.objectfit && $('.img-fit').length) {
-            $('.img-fit').each(function () {
-            var $container = $(this), imgUrl = $container.find('img').prop('src');
-            if (imgUrl) {
-              $container
-                .css('backgroundImage', 'url(' + imgUrl + ')')
-                .addClass('compat-object-fit');
-            }
-          });
+        if(!Modernizr.objectfit && $('.img-fit').length){
+            $('.img-fit').each(function(){
+                var $container = $(this), imgUrl = $container.find('img').prop('src');
+                if(imgUrl){
+                    $container.css('backgroundImage', 'url(' + imgUrl + ')').addClass('compat-object-fit');
+                }
+              });
         }
     }
 
@@ -68,6 +67,7 @@ $(function(){
         dropdown.css('height', dropdown.data('height')).removeClass('on');
     }
 
+    // header animation on scroll + filters animation on scroll + readIndicator
     function setHeaderScroll(myScroll, scrollDir){
         if(mainContent.length && contentHeader.length && !htmlTag.hasClass('menu-open')){
             myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
@@ -96,16 +96,36 @@ $(function(){
         }
     }
 
+    // add a current class to an anchor if we are on the targeted section
+    function setAnchorLink(myScroll){
+        var current = mainMenu.find('.anchor');
+        if(current.length){
+            var href = current.find('a').attr('href'), indexOfHash = href.indexOf('#');
+            if(indexOfHash > -1){
+                var hash = href.substring(indexOfHash);
+                if($(hash).length){
+                    var hashTop = $(hash).offset().top;
+                    if(myScroll >= hashTop - 200 && myScroll <= (hashTop + $(hash).outerHeight() - 200)){
+                        current.addClass('current-menu-item');
+                    }else{
+                        current.removeClass('current-menu-item');
+                    }
+                }
+            }
+        }
+    }
+
+    // set draggable spotglight posts, detect if they are in the viewport
     function setSpotlightPost(){
         var posts = spotlightPost.find('.spotlight-post'),
             spotlightWidth = spotlightPost.find('.container').innerWidth();
 
         function detectVisiblePosts(){
-            var i = 0, nbPosts = posts.length, postWidth = posts.eq(0).innerWidth();
-            for(i; i<nbPosts; i++){
-                var postPos = posts.eq(i).offset().left + postWidth;
-                postPos > windowWidth || postPos < postWidth ? posts.eq(i).addClass('off') : posts.eq(i).removeClass('off');
-            }
+            var postWidth = posts.eq(0).innerWidth();
+            posts.each(function(){
+                var postPos = $(this).offset().left + postWidth;
+                postPos > windowWidth || postPos < postWidth ? $(this).addClass('off') : $(this).removeClass('off');
+            });
         }
 
         detectVisiblePosts();
@@ -120,7 +140,7 @@ $(function(){
                     throwProps: true,
                     edgeResistance:0.9,
                     snap: {
-                        x: function(endValue) {
+                        x: function(endValue){
                             return Math.round(endValue / gridWidth) * gridWidth;
                         }
                     },
@@ -144,6 +164,7 @@ $(function(){
         }
     }
 
+    // animate sidebar on post pages
     function setSidebarScroll(myScroll){
         var sidebarMargin = 20, sidebarHeight = postSidebar.innerHeight(),
             contentTop = mainContent.offset().top, contentHeight = mainContent.innerHeight();
@@ -171,28 +192,28 @@ $(function(){
         }
     }
 
+    // animate opacity on elmts on scroll
     function setScrollElmts(elmts){
-        var nbElmts = elmts.length, i = 0;
-
         TweenMax.set(elmts, {opacity: 0});
 
-        for(i; i<nbElmts; i++){
+        elmts.each(function(i){
             new ScrollMagic.Scene({ triggerElement: elmts[i] })
                 .triggerHook(0.7)
-                .setTween( TweenMax.to(elmts.eq(i), 0.25, {opacity: 1}) )
+                .setTween( TweenMax.to($(this), 0.25, {opacity: 1}) )
                 //.addIndicators()
                 .addTo(controller);
-        }
+        });
     }
 
+    // animate responsive menu elmts
     function setMenuElmts(){
         TweenMax.set([menu.find('.menu-title'), menu.find('.menu-subtitle')], {y: '-100%', opacity: 0});
         TweenMax.set(menu.find('li'), {y: '-120%', opacity: 0});
     }
 
-
+    // create portfolio
     function setPortfolio(poItem, nbPoItem, nbCol){
-        var portfolioContent = '<div class="grid">', poItemIndex = 0,
+        var portfolioContent = '<div class="grid">',
             currentNb = 0, i = 0, transfered,
             nbTrItem = 0, poItems, nbItemByCol = [];
 
@@ -319,8 +340,8 @@ $(function(){
         function filterItem(excludedFilterName) {
             return poItem.filter(function(){
                 var elt = $(this), keepElt = true;
-                data.forEach(function(e, i){
-                    if(e[0] != excludedFilterName){
+                data.forEach(function(e){
+                    if(e[0] !== excludedFilterName){
                         if(e[1] !== 'all' && keepElt){
                             if($.inArray(e[1], $('a', elt).data(e[0]).split(',')) === -1){
                                 keepElt = false;
@@ -347,8 +368,8 @@ $(function(){
                         remainingFilters[filterName] = [];
                     }
                     var dataArray = $a.data(filterName).split(',');
-                    dataArray.forEach(function(e, i) {
-                        if (e != '') {
+                    dataArray.forEach(function(e) {
+                        if (e !== '') {
                             remainingFilters[filterName][e] = true;
                         }
                     });
@@ -361,21 +382,14 @@ $(function(){
 
             var filterLists = portfolioFilters.find('.dropdown[data-filter='+forFilterName+']');
             filterLists.each(function(){
-                var $this = $(this);
-                var filterName = $this.data('filter');
-                var filterListValues = $this.find('li');
+                var $this = $(this), filterName = $this.data('filter'), filterListValues = $this.find('li');
 
-                filterListValues.each(function() {
-                    var $this = $(this);
-                    var value = $this.data(filterName);
+                filterListValues.each(function(){
+                    var $this = $(this), value = $this.data(filterName);
 
-                    if (value != 'all') {
+                    if (value !== 'all') {
                         if (remainingFilters[filterName]) {
-                            if (value in remainingFilters[filterName]) {
-                                $this.removeClass('empty');
-                            } else {
-                                $this.addClass('empty');
-                            }
+                            value in remainingFilters[filterName] ? $this.removeClass('empty') : $this.addClass('empty');
                         } else {
                             $this.addClass('empty');
                         }
@@ -765,6 +779,14 @@ $(function(){
         }
     }
 
+    // add class to label when input is filled
+    function setLabelInput(){
+        var thisInput = $(this);
+        if(!thisInput.is('[type=submit]')){
+            thisInput.val() ? thisInput.addClass('filled') : thisInput.removeClass('filled');
+        }
+    }
+
 
 
     isMobile.any ? htmlTag.addClass('is-mobile') : htmlTag.addClass('is-desktop');
@@ -785,9 +807,14 @@ $(function(){
         });
     }
 
-    if(mainContent.length && mainContent.find('img').length){
-        var imgs = mainContent.find('img').not('.no-scroll');
-        setScrollElmts(imgs);
+    if(mainContent.length){
+        if(mainContent.find('img').length){
+            var imgs = mainContent.find('img').not('.no-scroll');
+            setScrollElmts(imgs);
+        }
+        if(mainContent.find('.special-cat').length){
+            setScrollElmts(mainContent.find('.special-cat'));
+        }
     }
 
     if(postSidebar.length){
@@ -873,6 +900,49 @@ $(function(){
         setMenuElmts();
     }
 
+    // check all links if href contains an anchor
+    // if yes, remove if there is the first part of the url
+    // and add the scroll-anchor class to add smooth scroll on click
+    if($('a').length){
+        var currentLocation = location.protocol+'//'+location.host+location.pathname;
+        $('a').each(function(){
+            var href = $(this).attr('href'), indexOfHash = href.indexOf('#');
+            if(indexOfHash === 0){
+                $(this).addClass('scroll-anchor');
+            }else if(indexOfHash > -1){
+                var thisLocation = href.substring(0, indexOfHash);
+                if(thisLocation.slice(-1) !== '/'){
+                    thisLocation += '/';
+                }
+                if(currentLocation === thisLocation){
+                    $(this).attr('href', href.substring(indexOfHash)).addClass('scroll-anchor');
+                }
+            }
+        });
+    }
+
+    // smooth scroll
+    body.on('click', '.scroll-anchor', function(e){
+        e.preventDefault();
+        $('html, body').animate({scrollTop: $(this.hash).offset().top - 150}, 500);
+        $(this).blur();
+    });
+
+
+    if(mainMenu.length){
+        // si le lien a la classe current menu item, c'est qu'il correspond a la page en cours
+        var current = mainMenu.find('.current-menu-item');
+        if(current.length){
+            var href = current.find('a').attr('href'), indexOfHash = href.indexOf('#');
+            // on cherche une ancre et s'il en a une, on lance la fonction qui l'activera au scroll
+            if(indexOfHash > -1){
+                current.removeClass('current-menu-item').addClass('anchor');
+                setAnchorLink(myScroll);
+            }
+        }
+    }
+
+    // animate dropdown height on click
     dropdowns.on('click', function(){
         var dropdown = $(this), height = 2, siblings = dropdowns.not(dropdown);
         if(dropdown.hasClass('on')){
@@ -886,6 +956,7 @@ $(function(){
         siblings.each(function(){ closeDropdown($(this)); });
     });
 
+    // open/close menu on click on burger
     $('#burger').on('click', function(e){
         e.preventDefault();
         htmlTag.toggleClass('menu-open');
@@ -894,9 +965,9 @@ $(function(){
                 var i = 0, nbMenu = menu.find('.menu-small').length;
 
                 for(i; i<nbMenu; i++){
-                    TweenMax.to(menu.find('.menu-title').eq(i), 0.25, {y: '0%', opacity: 1, z: 0.01, force3d: true});
-                    TweenMax.to(menu.find('.menu-subtitle').eq(i), 0.25, {y: '0%', opacity: 1, z: 0.01, force3d: true}).delay(0.05);
-                    TweenMax.staggerTo(menu.find('.menu-small').eq(i).find('li'), 0.25, {y: '0%', opacity: 1, z: 0.01, force3d: true}, 0.08);
+                    TweenMax.to(menu.find('.menu-title').eq(i), 0.25, {y: '0%', opacity: 1, z: 0.01, force3D: true});
+                    TweenMax.to(menu.find('.menu-subtitle').eq(i), 0.25, {y: '0%', opacity: 1, z: 0.01, force3D: true}).delay(0.05);
+                    TweenMax.staggerTo(menu.find('.menu-small').eq(i).find('li'), 0.25, {y: '0%', opacity: 1, z: 0.01, force3D: true}, 0.08);
                 }
             }, 380);
         }else{
@@ -904,16 +975,32 @@ $(function(){
         }
     });
 
-    function setLabelInput(){
-        $(this).val() ? $(this).addClass('filled') : $(this).removeClass('filled');
-    }
 
     if($('input').length){
         $('input').each(setLabelInput).on('change', setLabelInput);
 
         if($('label').length){
-           $('label').css('opacity', 1);
+           $('label').not('[for=search-header]').css('opacity', 1);
         }
+
+        var formSearch = $('.form-search'), formSearchHeader = $('.form-search-header');
+        formSearch.on('submit', function(e){
+            var input = $(this).find('input');
+            if(!input.val()){
+                e.preventDefault();
+                input.focus();
+                if($(this).hasClass('form-search-header')){
+                    $(this).toggleClass('on');
+                }
+            }
+            if(windowWidth < 480){
+                e.preventDefault();
+                window.location.href = $(this).attr('action') + '?s=';
+            }
+        });
+        formSearchHeader.on('focusout', function(e){
+            $(this).find('input').val() ? $(this).addClass('on') : $(this).removeClass('on');
+        });
     }
 
 
@@ -939,6 +1026,10 @@ $(function(){
 
         if(dropdowns.length){
             dropdowns.each(function(){ closeDropdown($(this)); });
+        }
+
+        if(mainMenu.length){
+            setAnchorLink(myScroll);
         }
     });
 
@@ -986,7 +1077,7 @@ $(function(){
             updateBtnGlob();
         }
 
-        if(windowWidthOnReady != windowWidth){
+        if(windowWidthOnReady !== windowWidth){
             // Le resize se fait au moins sur la largeur, p-e sur la largeur et la hauteur
             if(team.length){
                 if(team.hasClass('member-open')){

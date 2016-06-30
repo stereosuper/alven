@@ -159,7 +159,7 @@ add_filter( 'menu_order', 'alven_menu_order' );
 /*-----------------------------------------------------------------------------------*/
 /* Menus
 /*-----------------------------------------------------------------------------------*/
-register_nav_menus( array('primary' => 'Primary Menu') );
+register_nav_menus( array('primary' => 'Primary Menu', 'secondary' => 'Secondary Menu') );
 
 // Cleanup WP Menu html
 function alven_css_attributes_filter($classes){
@@ -176,6 +176,16 @@ function alven_register_sidebars(){
         'id' => 'menu-responsive',
         'name' => 'Responsive Menu & Footer Menu',
         'description' => 'Put here the menus for the responsive main menu and the footer',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '',
+        'after_title' => '',
+        'empty_title'=> ''
+    ));
+    register_sidebar(array(
+        'id' => 'newsletter',
+        'name' => 'Newsletter',
+        'description' => 'Put here the mailjet widget to appear on home page',
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '',
@@ -416,7 +426,7 @@ function alven_get_svg($id){
 
 // filter search results to only have posts and startups
 function alven_search_filter($query){
-    if($query->is_search){
+    if($query->is_search && !is_admin()){
         $query->set('post_type', array('post', 'startup'));
     }
     return $query;
@@ -504,6 +514,10 @@ function alven_correct_menu_parent_class($classes, $item){
     $postType = get_post_type();
     if($postType == 'startup' || $postType == 'team'){
         $item->object_id == $post->post_parent ? $classes[] = 'current_page_parent' : $classes = [];
+    }
+
+    if(is_search()){
+        $classes = [];
     }
 
     return $classes;

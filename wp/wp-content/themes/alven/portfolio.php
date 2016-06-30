@@ -17,15 +17,14 @@ get_header(); ?>
             </div>
         </section>
 
-        <div class='portfolio-filters' id='portfolioFilters'>
-            <div class='container'>
-                <div class='col-2'>
+        <main role='main' id='main'>
+            <div class='portfolio-filters' id='portfolioFilters'>
+                <div class='container'>
                     <ul class='dropdown' data-filter='investment'>
                         <li data-investment='all' class='actif'>All investments</li>
                         <li data-investment='present'>Present</li>
                         <li data-investment='past'>Past</li>
                     </ul>
-                </div><div class='col-2'>
                     <ul class='dropdown' data-filter='field'>
                         <li data-field='all' class='actif'>All fields of activity</li>
                         <?php
@@ -35,7 +34,6 @@ get_header(); ?>
                             }
                         ?>
                     </ul>
-                </div><div class='col-2'>
                     <ul class='dropdown' data-filter='footprint'>
                         <li data-footprint='all' class='actif'>Global footprint</li>
                         <?php
@@ -47,9 +45,7 @@ get_header(); ?>
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <main role='main' id='main'>
             <section class='content-main' id='mainContent'>
                 <?php
                     $startups = new WP_Query(array('post_type' => 'startup', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC'));
@@ -78,16 +74,36 @@ get_header(); ?>
                                     ?>
                                     <?php if(get_field('investment') !== 'past'){ ?><li class='col-2'>
                                         <a href='<?php the_permalink(); ?>' class='ajax-load off' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-footprint='<?php echo $footprintList; ?>'>
-                                            <?php if( has_post_thumbnail() ){
-                                                echo alven_get_svg(get_post_thumbnail_id());
-                                            } ?>
+                                            <?php
+                                                if( has_post_thumbnail() ){
+                                                    echo alven_get_svg(get_post_thumbnail_id());
+                                                }else{ ?>
+                                                    <span class='txt'><?php the_title(); ?></span>
+                                                <?php }
+                                            ?>
                                         </a>
                                     </li><?php } else{ ?><li class='col-2 transfered'>
                                         <a href='<?php the_permalink(); ?>' class='ajax-load off' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-footprint='<?php echo $footprintList; ?>'>
                                             <span class='content-transfered'>
-                                                <span><?php echo alven_get_svg(get_post_thumbnail_id()); ?></span>
+                                                <span>
+                                                    <?php
+                                                        if( has_post_thumbnail() ){
+                                                            echo alven_get_svg(get_post_thumbnail_id());
+                                                        }else{ ?>
+                                                            <span class='txt'><?php the_title(); ?></span>
+                                                        <?php }
+                                                    ?>
+                                                </span>
                                                 <span>Acquired by</span>
-                                                <span><?php echo alven_get_svg(get_field('acquiredByLogo')); ?></span>
+                                                <span>
+                                                    <?php
+                                                        if(get_field('acquiredByLogo')){
+                                                            echo alven_get_svg(get_field('acquiredByLogo'));
+                                                        }else{ ?>
+                                                            <span class='txt'><?php echo get_field('acquiredBy'); ?></span>
+                                                        <?php }
+                                                    ?>
+                                                </span>
                                             </span>
                                         </a>
                                     </li><?php } ?>

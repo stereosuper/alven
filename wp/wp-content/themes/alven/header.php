@@ -54,7 +54,11 @@
                     <?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => '')); ?>
                 </nav>
                 <span class='post-title'><?php the_title(); ?></span>
-                <a id='searchBtn' class='btn-search' href='#'>Explore Alven</a>
+                <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search form-search-header'>
+                    <input type='search' name='s' value='' id='search-header'>
+                    <label for='search-header'>type some keywords</label>
+                    <button type='submit' class='btn-search'>Explore Alven</button>
+                </form>
                 <button id='burger'><span>Menu</span></button>
                 <nav role='navigation' id='menu-responsive'><div><?php dynamic_sidebar( 'menu-responsive' ); ?></div></nav>
             </div>

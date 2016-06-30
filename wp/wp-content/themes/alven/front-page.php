@@ -153,12 +153,13 @@ get_header(); ?>
                                     --><p>
                                         Signup for our newsletter and be in the&nbsp;loop!
                                     </p>
-                                </div><form method='post' action='' class='col-5'>
+                                </div><!--<form method='post' action='' class='col-5'>
                                     <fieldset>
                                         <input type='email' name='email' id='email' required>
                                         <label for='email'>Your email</label>
                                     </fieldset><button type='submit' class='btn-invert'>Signup</button>
-                                </form>
+                                </form>-->
+                                <?php dynamic_sidebar( 'newsletter' ); ?>
                             </div>
                         </div>
                     </div>
