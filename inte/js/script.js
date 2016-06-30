@@ -978,8 +978,27 @@ $(function(){
         $('input').each(setLabelInput).on('change', setLabelInput);
 
         if($('label').length){
-           $('label').css('opacity', 1);
+           $('label').not('[for=search-header]').css('opacity', 1);
         }
+
+        var formSearch = $('.form-search'), formSearchHeader = $('.form-search-header');
+        formSearch.on('submit', function(e){
+            var input = $(this).find('input');
+            if(!input.val()){
+                e.preventDefault();
+                input.focus();
+                if($(this).hasClass('form-search-header')){
+                    $(this).toggleClass('on');
+                }
+            }
+            if(windowWidth < 480){
+                e.preventDefault();
+                window.location.href = $(this).attr('action') + '?s=';
+            }
+        });
+        formSearchHeader.on('focusout', function(e){
+            $(this).find('input').val() ? $(this).addClass('on') : $(this).removeClass('on');
+        });
     }
 
 
