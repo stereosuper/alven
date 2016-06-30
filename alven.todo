@@ -6,10 +6,10 @@
    ☐ search
    ☐ contact
    ✔ portfolio ajax + responsive startup @done (16-06-29 14:30)
-   ☐ team
-   ☐ home
+   ✔ team @done (16-06-30 15:20)
+   ✔ home @done (16-06-30 15:20)
    ☐ load
-   ☐ special cats visual
+   ✔ special cats visual @done (16-06-30 15:20)
    ✔ share links single.php @done (16-06-24 10:46)
    ✔ suppr post medium pour enlever le publish on medium @done (16-06-24 11:56)
    ✔ share en bas, remplacer text medium @done (16-06-24 11:56)
@@ -28,7 +28,7 @@
    ✔ responsive page blog @done (16-06-29 14:30)
        ✔ burger -> article du haut img au dessus, articles en dessous deux par deux (img rognée en haut et en bas comme cover) @done (16-06-29 14:30)
        ✔ phone -> un par un @done (16-06-29 14:30)
-   ☐ search (ouvre un input puis page search)
+   ✔ search (ouvre un input puis page search) @done (16-06-30 15:20)
    ✔ pagination @done (16-06-29 14:30)
 
 Bugs:

@@ -41,12 +41,41 @@
         color: inherit;
         transition: opacity $transition;
     }
-    .btn-search{
-        position: relative;
+    .form-search{
+        width: 15%;
+        min-width: 150px;
         float: right;
-        margin-top: 8px;
-        margin-bottom: 8px;
+        margin: 0;
         z-index: 10;
+        text-align: right;
+        input{
+            position: absolute;
+            left: 0;
+        }
+        input, label{
+            opacity: 0;
+        }
+        &.on{
+            input, label{
+                opacity: 1;
+            }
+            .btn-search{
+                width: 0;
+                white-space: nowrap;
+                color: transparent;
+                transition: color $transition, width 0s linear .3s;
+                &:after{
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .btn-search{
+        width: 116px;
+        position: relative;
+        top: 0;
+        transition: color $transition;
+        color: #fff;
     }
     .post-title{
         @include ellipsis;
@@ -76,6 +105,18 @@
         #burger{
             &:before, &:after, span{
                 background: $txt;
+            }
+        }
+        .btn-search{
+            color: $title;
+        }
+        .form-search{
+            &.on{
+                .btn-search{
+                    &:after{
+                        color: $title;
+                    }
+                }
             }
         }
         &.on{

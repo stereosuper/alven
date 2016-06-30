@@ -217,6 +217,7 @@
 }
 
 .btn-search{
+    border: 0;
     position: relative;
     margin: 0 34px 0 0;
     font-family: $sourceBlack;
@@ -224,6 +225,7 @@
     line-height: 1;
     letter-spacing: 0.07em;
     text-transform: uppercase;
+    box-shadow: 0 1px 0 0 currentColor;
     &:after{
         @include fontIcon;
 
@@ -243,6 +245,19 @@
             &:after{
                 transform: translate3d(0, 0, 0) rotate(-70deg) scale(1.1);
             }
+        }
+    }
+    &.btn-no-text{
+        width: 21px;
+        height: 21px;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-indent: -99em;
+        box-shadow: none;
+        &:after{
+            text-indent: 0;
+            right: 0;
         }
     }
 }
