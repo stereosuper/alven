@@ -5,11 +5,10 @@
     padding: 0;
     border: 1px solid;
     position: relative;
-    margin: 0 $innerGutter;
+    margin: 0;
     overflow: hidden;
     @include themeBorder;
     transition: $transition;
-    cursor: pointer;
     &.on{
         li:first-child{
             &:after{
@@ -27,6 +26,12 @@
         text-transform: uppercase;
         @include themeColor;
         transition: $transition;
+        cursor: pointer;
+        &.empty{
+           color: $grey;
+           cursor: default;
+           pointer-events: none;
+        }
         &:hover{
             @include themeBgHover;
             .no-js &, .is-desktop &{

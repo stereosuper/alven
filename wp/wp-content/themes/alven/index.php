@@ -18,6 +18,11 @@
                             <?php wp_list_categories(array('title_li' => '', 'current_category' => get_query_var('cat'))); ?>
                         </ul>
                         <span class='title-small'>or</span>
+                        <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search'>
+                            <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
+                            <label for='search'>type some keywords</label>
+                            <button type='submit' class='btn-search'>Explore</button>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -42,8 +47,8 @@
                 ?>
                     <div class='main-spotlight-post'>
                         <div class='container'>
-                            <div class='img col-5'>
-                                <?php the_post_thumbnail(); ?>
+                            <div class='img col-6 img-fit'>
+                                <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
                             </div><div class='txt col-5'>
                                 <h3><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
                                 <div class='post-meta-spotlight'>

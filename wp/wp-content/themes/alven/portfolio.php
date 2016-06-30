@@ -27,7 +27,7 @@ get_header(); ?>
                     </ul>
                 </div><div class='col-2'>
                     <ul class='dropdown' data-filter='field'>
-                        <li data-field='all' class='actif'>Fields of activity</li>
+                        <li data-field='all' class='actif'>All fields of activity</li>
                         <?php
                             $fields = get_terms(array('taxonomy' => 'field'));
                             foreach($fields as $field){
@@ -52,7 +52,7 @@ get_header(); ?>
         <main role='main' id='main'>
             <section class='content-main' id='mainContent'>
                 <?php
-                    $startups = new WP_Query(array('post_type' => 'startup', 'posts_per_page' => -1));
+                    $startups = new WP_Query(array('post_type' => 'startup', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC'));
                     if($startups->have_posts()):
                 ?>
                     <div class='portfolio-list' id='portfolio'>
@@ -98,7 +98,7 @@ get_header(); ?>
                 <?php endif; ?>
                 <div class='container align-center'>
                     <div id='ctaPortfolio'>
-                        <a href='#contact'>
+                        <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] pitch&body=Please tell us about your startup. %0AYou can join a lightweight presentation'>
                             <span>
                                 Could this be you&nbsp;?
                                 <span class='btn-invert'>Send your pitch</span>
@@ -120,13 +120,13 @@ get_header(); ?>
         </div>
 
         <main role='main' id='main'>
-            <article class='content-main' id='mainContent'>
+            <div class='content-main' id='mainContent'>
                 <div class='container'>
 
                     <h2>Page not found</h2>
 
                 </div>
-            </article>
+            </div>
         </main>
 
     <?php endif; ?>

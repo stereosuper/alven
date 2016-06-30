@@ -315,17 +315,78 @@ $(function(){
     function filterPortfolio(data, url){
         var filteredPoItem, nbFilteredPoItem;
 
-        filteredPoItem = poItem.filter(function(){
-            var elt = $(this), keepElt = true;
-            data.forEach(function(e, i){
-                if(e[1] !== 'all' && keepElt){
-                    if($.inArray(e[1], $('a', elt).data(e[0]).split(',')) === -1){
-                        keepElt = false;
+        // Filtre les poItem en ayant la possibilité de ne pas prendre en compte un filtre (pour griser les entrées d'un select)
+        function filterItem(excludedFilterName) {
+            return poItem.filter(function(){
+                var elt = $(this), keepElt = true;
+                data.forEach(function(e, i){
+                    if(e[0] != excludedFilterName){
+                        if(e[1] !== 'all' && keepElt){
+                            if($.inArray(e[1], $('a', elt).data(e[0]).split(',')) === -1){
+                                keepElt = false;
+                            }
+                        }
                     }
-                }
+                });
+                return keepElt;
             });
-            return keepElt;
-        });
+        }
+
+        filteredPoItem = filterItem(false);
+
+        function disableImpossibleChoices(forFilterName) {
+            var remainingFilters = [];
+            var filteredPoItem = filterItem(forFilterName);
+
+            // Je parcours tous mes éléments startup et je consolide dans un tableau les valeurs de filtre restant possibles
+            filteredPoItem.each(function() {
+                var $a = $(this).find('a');
+
+                function appendToRemainingFilters(filterName) {
+                    if (!(filterName in remainingFilters)) {
+                        remainingFilters[filterName] = [];
+                    }
+                    var dataArray = $a.data(filterName).split(',');
+                    dataArray.forEach(function(e, i) {
+                        if (e != '') {
+                            remainingFilters[filterName][e] = true;
+                        }
+                    });
+                }
+
+                appendToRemainingFilters('investment');
+                appendToRemainingFilters('field');
+                appendToRemainingFilters('footprint');
+            });
+
+            var filterLists = portfolioFilters.find('.dropdown[data-filter='+forFilterName+']');
+            filterLists.each(function(){
+                var $this = $(this);
+                var filterName = $this.data('filter');
+                var filterListValues = $this.find('li');
+
+                filterListValues.each(function() {
+                    var $this = $(this);
+                    var value = $this.data(filterName);
+
+                    if (value != 'all') {
+                        if (remainingFilters[filterName]) {
+                            if (value in remainingFilters[filterName]) {
+                                $this.removeClass('empty');
+                            } else {
+                                $this.addClass('empty');
+                            }
+                        } else {
+                            $this.addClass('empty');
+                        }
+                    }
+                });
+            });
+        }
+
+        disableImpossibleChoices('investment');
+        disableImpossibleChoices('field');
+        disableImpossibleChoices('footprint');
 
         nbFilteredPoItem = filteredPoItem.length;
         nbCol = windowWidth > 767 ? 6 : 3;
@@ -365,6 +426,7 @@ $(function(){
             var thisDropdown = filterLists.eq(i);
             if(filters[i] !== undefined){
                 var thisBtn = thisDropdown.find('[data-'+filters[i][0]+'='+filters[i][1]+']');
+                thisBtn.siblings().removeClass('actif');
                 thisBtn.addClass('actif').clone().prependTo(thisDropdown);
                 thisBtn.remove();
             }else{
@@ -463,6 +525,10 @@ $(function(){
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
                         tlTeamCurrent.set(team, {className:'-=member-open'});
                         TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
+                        team.addClass('grabbing');
+                    },
+                    onDragEnd: function(){
+                        team.removeClass('grabbing');
                     }
                 });
             }else{
@@ -508,6 +574,10 @@ $(function(){
                         tlTeamCurrent.set(currentLi, {className:'-=open'});
                         tlTeamCurrent.set(team, {className:'-=member-open'});
                         TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
+                        team.addClass('grabbing');
+                    },
+                    onDragEnd: function(){
+                        team.removeClass('grabbing');
                     }
                 });
             }
@@ -752,7 +822,13 @@ $(function(){
         var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3;
 
         if(window.location.search){
+            // si il y a des paramètres, on les récupère
             var filters = getQuery();
+            // on vérifie que les paramètres correspondent bien a des filtres
+            filters = filters.filter(function(e, i){
+                return e[0] === 'investment' || e[0] === 'field' || e[0] === 'footprint';
+            });
+            // on filtre
             setFiltersPortfolioOnLoad(filters);
         }else{
             setPortfolio(poItem, nbPoItem, nbCol);
@@ -818,9 +894,9 @@ $(function(){
                 var i = 0, nbMenu = menu.find('.menu-small').length;
 
                 for(i; i<nbMenu; i++){
-                    TweenMax.to(menu.find('.menu-title').eq(i), 0.25, {y: '0%', opacity: 1});
-                    TweenMax.to(menu.find('.menu-subtitle').eq(i), 0.25, {y: '0%', opacity: 1}).delay(0.05);
-                    TweenMax.staggerTo(menu.find('.menu-small').eq(i).find('li'), 0.25, {y: '0%', opacity: 1}, 0.08);
+                    TweenMax.to(menu.find('.menu-title').eq(i), 0.25, {y: '0%', opacity: 1, z: 0.01, force3d: true});
+                    TweenMax.to(menu.find('.menu-subtitle').eq(i), 0.25, {y: '0%', opacity: 1, z: 0.01, force3d: true}).delay(0.05);
+                    TweenMax.staggerTo(menu.find('.menu-small').eq(i).find('li'), 0.25, {y: '0%', opacity: 1, z: 0.01, force3d: true}, 0.08);
                 }
             }, 380);
         }else{
@@ -828,9 +904,17 @@ $(function(){
         }
     });
 
-    $('input').on('change', function(){
+    function setLabelInput(){
         $(this).val() ? $(this).addClass('filled') : $(this).removeClass('filled');
-    });
+    }
+
+    if($('input').length){
+        $('input').each(setLabelInput).on('change', setLabelInput);
+
+        if($('label').length){
+           $('label').css('opacity', 1);
+        }
+    }
 
 
     $(document).on('scroll', function(){

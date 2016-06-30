@@ -55,6 +55,11 @@
     .single-post &{
         margin: 0 0 20px;
     }
+    img:not(.no-scroll), .special-cat{
+        .js &{
+            opacity: 0;
+        }
+    }
 }
 
 .content-header-transparent, .content-header{

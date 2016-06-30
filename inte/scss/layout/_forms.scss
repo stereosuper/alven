@@ -30,6 +30,9 @@ label{
     .no-js &{
         top: -30px;
     }
+    .js &{
+        opacity: 0;
+    }
 }
 
 input, textarea, select, button{
@@ -83,9 +86,40 @@ input, textarea{
     }
 }
 
+input{
+    &[type=search]{
+        &::-webkit-search-cancel-button{
+            display: none;
+        }
+    }
+}
+
 select{
     // hide the arrow on edge + ie
     &::-ms-expand{
         display: none;
+    }
+}
+
+.form-search{
+    display: inline-block;
+    max-width: 300px;
+    position: relative;
+    vertical-align: middle;
+    .btn-search{
+        width: 21px;
+        height: 21px;
+        border: 0;
+        position: absolute;
+        top: 7px;
+        right: 0;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-indent: -99em;
+        &:after{
+            text-indent: 0;
+            right: 0;
+        }
     }
 }

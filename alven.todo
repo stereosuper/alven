@@ -5,7 +5,7 @@
    ☐ calage cover + title
    ☐ search
    ☐ contact
-   ☐ portfolio ajax + responsive startup
+   ✔ portfolio ajax + responsive startup @done (16-06-29 14:30)
    ☐ team
    ☐ home
    ☐ load
@@ -25,11 +25,11 @@
    ☐ will-change
 
  A checker avec JF:
-   ☐ responsive page blog
-       ☐ burger -> article du haut img au dessus, articles en dessous deux par deux (img rognée en haut et en bas comme cover)
-       ☐ phone -> un par un
+   ✔ responsive page blog @done (16-06-29 14:30)
+       ✔ burger -> article du haut img au dessus, articles en dessous deux par deux (img rognée en haut et en bas comme cover) @done (16-06-29 14:30)
+       ✔ phone -> un par un @done (16-06-29 14:30)
    ☐ search (ouvre un input puis page search)
-   ☐ pagination
+   ✔ pagination @done (16-06-29 14:30)
 
 Bugs:
    ✔ resize portfolio cleartimeout @done (16-06-22 14:05)

@@ -18,6 +18,11 @@
                             <?php wp_list_categories(array('title_li' => '', 'current_category' => get_query_var('cat'))); ?>
                         </ul>
                         <span class='title-small'>or</span>
+                        <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search'>
+                            <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
+                            <label for='search'>type some keywords</label>
+                            <button type='submit' class='btn-search'>Explore</button>
+                        </form>
                     </div>
                 </div>
             </section>
