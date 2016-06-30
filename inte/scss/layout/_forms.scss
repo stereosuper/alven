@@ -76,14 +76,14 @@ input, textarea{
             }
         }
     }
-    &:focus, &.filled{
+    /*&:focus, &.filled{
         &:valid{
             border-color: $portfolio;
             + label{
                 color: $portfolio;
             }
         }
-    }
+    }*/
 }
 
 input{

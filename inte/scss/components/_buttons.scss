@@ -216,6 +216,35 @@
     }
 }
 
+.mailjet-subscribe{
+    display: inline-block;
+    border: 1px solid;
+    //padding: 13px 35px 11px 17px;
+    padding: 13px 17px 11px;
+    position: relative;
+    font-family: $sourceBlack;
+    font-size: 1.375rem;
+    line-height: 1;
+    text-transform: uppercase;
+    border-color: $greyBlue;
+    box-shadow: none;
+    letter-spacing: 0.08em;
+    overflow: hidden;
+    color: $greyBlue;
+    background: transparent;
+    &:hover, &:focus{
+        .no-js &, .is-desktop &{
+            background: $greyBlue;
+            border-color: $greyBlue;
+            color: $gold;
+            opacity: 1;
+        }
+        .no-js &{
+            background: $greyBlue;
+        }
+    }
+}
+
 .btn-search{
     border: 0;
     position: relative;

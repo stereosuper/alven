@@ -52,3 +52,27 @@
         }
     }
 }
+
+
+.subscribe-form{
+    display: inline-block;
+    width: $col*5;
+    padding: 0 $innerGutter 0 $outterGutter;
+    vertical-align: middle;
+    input{
+        &[type=text]{
+            width: 62.35%;
+            margin: 0 $outterGutter 0 0;
+        }
+        &[type=submit]{
+            width: auto;
+        }
+    }
+    + .response{
+        width: $col*6;
+        padding: 0 $innerGutter 0 25px;
+        float: right;
+        font-size: 1.2rem;
+        color: $magazine;
+    }
+}
