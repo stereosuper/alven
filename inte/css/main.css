@@ -1285,7 +1285,7 @@ select::-ms-expand {
 
 /* Footer */
 #footer {
-  padding: 70px 0 95px;
+  padding: 70px 0 45px;
   position: relative;
   z-index: 10;
   background: #303b3d;
@@ -1541,94 +1541,29 @@ select::-ms-expand {
   line-height: 1;
 }
 
+.menu-secondary {
+  padding: 50px 0;
+  margin: 50px 0 0;
+  text-align: center;
+}
+.menu-secondary ul {
+  padding: 0;
+  margin: 0;
+}
+.menu-secondary li {
+  padding: 0;
+  margin: 0 10px;
+}
+.menu-secondary li:before {
+  display: none;
+}
+
 /* Portfolio */
 .portfolio-list {
   position: relative;
   margin: 250px 0 0;
   z-index: 1;
   background: #303b3d;
-<<<<<<< HEAD
-  backface-visibility: hidden; }
-  .portfolio-list:before {
-    content: '';
-    height: 150px;
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    background: #fff; }
-  .portfolio-list .grid {
-    padding: 10px 0; }
-    .portfolio-list .grid.is-hovered .po-item:after {
-      opacity: 0.5;
-      visibility: visible; }
-    .portfolio-list .grid.is-hovered .po-item.link-hovered:after {
-      opacity: 0;
-      visibility: hidden; }
-    .portfolio-list .grid.is-hovered .po-item.cta:after {
-      opacity: 0;
-      visibility: hidden; }
-  .js .portfolio-list ul {
-    display: none; }
-  .portfolio-list li, .portfolio-list .po-item {
-    padding: 10px;
-    overflow: hidden;
-    font-family: "source-light", "merriweather", sans-serif;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    color: #303b3d;
-    text-align: center;
-    backface-visibility: hidden;
-    transform-style: preserve-3d; }
-    .portfolio-list li:before, .portfolio-list .po-item:before {
-      display: block;
-      width: auto;
-      height: auto;
-      padding: 75% 0 0;
-      position: static;
-      background: none !important; }
-    .portfolio-list li.transfered:after, .portfolio-list .po-item.transfered:after {
-      background-color: #303b3d; }
-    .portfolio-list li.transfered a, .portfolio-list .po-item.transfered a {
-      background-color: #34b6b8;
-      border-color: #34b6b8;
-      color: #fff;
-      transition: none; }
-      .portfolio-list li.transfered a:after, .portfolio-list .po-item.transfered a:after {
-        display: none; }
-      .portfolio-list li.transfered a .content-transfered, .portfolio-list .po-item.transfered a .content-transfered {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translate3d(0, -50%, 0);
-        width: 100%;
-        display: inline-block;
-        vertical-align: top; }
-        .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
-          display: block;
-          margin: 10px auto;
-          max-width: 58%;
-          max-height: 40%; }
-      .portfolio-list li.transfered a svg, .portfolio-list li.transfered a img, .portfolio-list .po-item.transfered a svg, .portfolio-list .po-item.transfered a img {
-        position: relative;
-        transform: translate3d(0, 0, 0);
-        top: auto;
-        left: auto;
-        padding-bottom: 2px;
-        backface-visibility: hidden;
-        transition-delay: 0s;
-        max-width: 58%;
-        max-height: 40%; }
-      .portfolio-list li.transfered a.off path, .portfolio-list li.transfered a.off polygon, .portfolio-list li.transfered a.off rect, .portfolio-list li.transfered a.off ellipse, .portfolio-list li.transfered a.off circle, .portfolio-list li.transfered a.off line, .portfolio-list li.transfered a.off polyline, .portfolio-list .po-item.transfered a.off path, .portfolio-list .po-item.transfered a.off polygon, .portfolio-list .po-item.transfered a.off rect, .portfolio-list .po-item.transfered a.off ellipse, .portfolio-list .po-item.transfered a.off circle, .portfolio-list .po-item.transfered a.off line, .portfolio-list .po-item.transfered a.off polyline {
-        fill: #fff; }
-      .portfolio-list li.transfered a .hover, .portfolio-list .po-item.transfered a .hover {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-        transition: none; }
-        .portfolio-list li.transfered a .hover svg, .portfolio-list li.transfered a .hover img, .portfolio-list .po-item.transfered a .hover svg, .portfolio-list .po-item.transfered a .hover img {
-          position: relative;
-=======
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
@@ -1721,8 +1656,8 @@ select::-ms-expand {
           backface-visibility: hidden;
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
-  max-width: none;
-  max-height: none;
+  max-width: 58%;
+  max-height: 40%;
 }
 .portfolio-list li.transfered a.off path, .portfolio-list li.transfered a.off polygon, .portfolio-list li.transfered a.off rect, .portfolio-list li.transfered a.off ellipse, .portfolio-list li.transfered a.off circle, .portfolio-list li.transfered a.off line, .portfolio-list li.transfered a.off polyline, .portfolio-list .po-item.transfered a.off path, .portfolio-list .po-item.transfered a.off polygon, .portfolio-list .po-item.transfered a.off rect, .portfolio-list .po-item.transfered a.off ellipse, .portfolio-list .po-item.transfered a.off circle, .portfolio-list .po-item.transfered a.off line, .portfolio-list .po-item.transfered a.off polyline {
   fill: #fff;
@@ -1730,7 +1665,6 @@ select::-ms-expand {
 .portfolio-list li.transfered a .hover, .portfolio-list .po-item.transfered a .hover {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
->>>>>>> 621d9c9b0a145e1631ec25206e359cd6ce2ae6b4
           transform: translate3d(0, 0, 0);
   -webkit-transition: none;
   transition: none;
@@ -4622,7 +4556,7 @@ select::-ms-expand {
     /*&:before{
         height: 18%;
     }*/
-    margin-top: 140px;
+    margin-top: 180px;
   }
   .portfolio-list .po-item-col {
     width: 33.3333333333%;
