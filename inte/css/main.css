@@ -1218,8 +1218,8 @@ select::-ms-expand {
         padding-bottom: 2px;
         backface-visibility: hidden;
         transition-delay: 0s;
-        max-width: none;
-        max-height: none; }
+        max-width: 58%;
+        max-height: 40%; }
       .portfolio-list li.transfered a.off path, .portfolio-list li.transfered a.off polygon, .portfolio-list li.transfered a.off rect, .portfolio-list li.transfered a.off ellipse, .portfolio-list li.transfered a.off circle, .portfolio-list li.transfered a.off line, .portfolio-list li.transfered a.off polyline, .portfolio-list .po-item.transfered a.off path, .portfolio-list .po-item.transfered a.off polygon, .portfolio-list .po-item.transfered a.off rect, .portfolio-list .po-item.transfered a.off ellipse, .portfolio-list .po-item.transfered a.off circle, .portfolio-list .po-item.transfered a.off line, .portfolio-list .po-item.transfered a.off polyline {
         fill: #fff; }
       .portfolio-list li.transfered a .hover, .portfolio-list .po-item.transfered a .hover {

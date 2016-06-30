@@ -751,13 +751,14 @@ $(function(){
     if(portfolio.length){
         var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3;
 
-        if(window.location.search){
+        /*if(window.location.search){
             var filters = getQuery();
             setFiltersPortfolioOnLoad(filters);
         }else{
             setPortfolio(poItem, nbPoItem, nbCol);
-        }
-
+        }*/
+        setPortfolio(poItem, nbPoItem, nbCol);
+        
         portfolioFilters.on('click', 'li', setFiltersPortfolio);
     }
 
