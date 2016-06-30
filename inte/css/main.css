@@ -1636,14 +1636,26 @@ select::-ms-expand {
   -webkit-transform: translate3d(0, -50%, 0);
           transform: translate3d(0, -50%, 0);
   width: 100%;
+  height: 100%;
   display: inline-block;
   vertical-align: top;
 }
 .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
   display: block;
-  margin: 10px auto;
+  margin: 0 auto;
+  padding: 10px 0;
+  height: 20%;
   max-width: 58%;
-  max-height: 40%;
+}
+.portfolio-list li.transfered a .content-transfered > span:before, .portfolio-list .po-item.transfered a .content-transfered > span:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+.portfolio-list li.transfered a .content-transfered > span:first-child, .portfolio-list li.transfered a .content-transfered > span:last-child, .portfolio-list .po-item.transfered a .content-transfered > span:first-child, .portfolio-list .po-item.transfered a .content-transfered > span:last-child {
+  height: 40%;
 }
 .portfolio-list li.transfered a svg, .portfolio-list li.transfered a img, .portfolio-list .po-item.transfered a svg, .portfolio-list .po-item.transfered a img {
   position: relative;
@@ -1656,8 +1668,12 @@ select::-ms-expand {
           backface-visibility: hidden;
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
-  max-width: 58%;
-  max-height: 40%;
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }
 .portfolio-list li.transfered a.off path, .portfolio-list li.transfered a.off polygon, .portfolio-list li.transfered a.off rect, .portfolio-list li.transfered a.off ellipse, .portfolio-list li.transfered a.off circle, .portfolio-list li.transfered a.off line, .portfolio-list li.transfered a.off polyline, .portfolio-list .po-item.transfered a.off path, .portfolio-list .po-item.transfered a.off polygon, .portfolio-list .po-item.transfered a.off rect, .portfolio-list .po-item.transfered a.off ellipse, .portfolio-list .po-item.transfered a.off circle, .portfolio-list .po-item.transfered a.off line, .portfolio-list .po-item.transfered a.off polyline {
   fill: #fff;
