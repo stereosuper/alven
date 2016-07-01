@@ -3362,31 +3362,9 @@ select::-ms-expand {
 .no-js .btn:hover, .is-desktop .btn:hover, .no-js .btn:focus, .is-desktop .btn:focus {
   background: #fff;
 }
-.btn:hover span, .btn:focus span {
+.no-js .btn:hover span, .no-js .btn:focus span {
   -webkit-transform: translate3d(0, -21px, 0);
           transform: translate3d(0, -21px, 0);
-}
-.no-js .btn:hover, .no-js .btn:focus {
-  color: #26393d;
-  border-color: #26393d;
-}
-.theme-magazine .no-js .btn:hover, .theme-magazine .no-js .btn:focus {
-  color: #f06850;
-}
-.theme-portfolio .no-js .btn:hover, .theme-portfolio .no-js .btn:focus {
-  color: #01a2a6;
-}
-.theme-we .no-js .btn:hover, .theme-we .no-js .btn:focus {
-  color: #33a4df;
-}
-.theme-magazine .no-js .btn:hover, .theme-magazine .no-js .btn:focus {
-  border-color: #f06850;
-}
-.theme-portfolio .no-js .btn:hover, .theme-portfolio .no-js .btn:focus {
-  border-color: #01a2a6;
-}
-.theme-we .no-js .btn:hover, .theme-we .no-js .btn:focus {
-  border-color: #33a4df;
 }
 .btn:active {
   color: #fff;
@@ -3622,19 +3600,19 @@ select::-ms-expand {
   left: 15px;
   margin-top: -5px;
 }
-.btn-arrow-only:hover {
+.no-js .btn-arrow-only:hover, .is-desktop .btn-arrow-only:hover, .no-js .btn-arrow-only:focus, .is-desktop .btn-arrow-only:focus {
   background-color: #33a4df;
   color: #fff;
 }
-.btn-arrow-only:hover:before, .btn-arrow-only:hover:after {
+.no-js .btn-arrow-only:hover:before, .no-js .btn-arrow-only:hover:after, .is-desktop .btn-arrow-only:hover:before, .is-desktop .btn-arrow-only:hover:after, .no-js .btn-arrow-only:focus:before, .no-js .btn-arrow-only:focus:after, .is-desktop .btn-arrow-only:focus:before, .is-desktop .btn-arrow-only:focus:after {
   -webkit-transform: translate3d(7px, 0, 0);
           transform: translate3d(7px, 0, 0);
 }
-.btn-arrow-only:hover.left:before {
+.no-js .btn-arrow-only:hover.left:before, .is-desktop .btn-arrow-only:hover.left:before, .no-js .btn-arrow-only:focus.left:before, .is-desktop .btn-arrow-only:focus.left:before {
   -webkit-transform: translate3d(-7px, 0, 0);
           transform: translate3d(-7px, 0, 0);
 }
-.btn-arrow-only:hover.left:after {
+.no-js .btn-arrow-only:hover.left:after, .is-desktop .btn-arrow-only:hover.left:after, .no-js .btn-arrow-only:focus.left:after, .is-desktop .btn-arrow-only:focus.left:after {
   -webkit-transform: translate3d(-7px, 0, 0) rotate(-180deg);
           transform: translate3d(-7px, 0, 0) rotate(-180deg);
 }
