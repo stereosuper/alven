@@ -405,17 +405,28 @@
             width: 100%;
             padding: 0;
         }
-        fieldset{
+        /*fieldset{
             display: block;
             width: 100%;
             margin: 0 0 20px 0;
             padding: 0;
-        }
+        }*/
     }
     .newsletter-title{
         width: $col*4;
         margin: 0 $col;
     }
+    .subscribe-form{
+        input{
+            &[type=text], &[type=email]{
+                display: block;
+                width: 100%;
+                margin: 0 0 20px;
+            }
+        }
+    }
+
+
     .wrapper-interactive-blocks{
         padding: 0 0 54px 0;
         .interactive-block{
@@ -535,7 +546,11 @@
     }
 
     .btn-invert{
-        padding: 13px 30px 11px 8px
+        padding: 13px 30px 11px 8px;
+        .after{
+            left: 8px;
+            right: 30px;
+        }
     }
 
     .spotlight-post{
@@ -889,9 +904,23 @@
     }
     .newsletter{
         padding: 30px 0;
-        form{
+        /*form{
             width: 100%;
             padding: 0;
+            text-align: center;
+        }*/
+    }
+    .subscribe-form{
+        width: 100%;
+        padding: 0;
+        margin: 20px 0 0;
+        text-align: center;
+        label{
+            left: 15px;
+        }
+        + .response{
+            width: 100%;
+            padding: 20px 40px 0;
             text-align: center;
         }
     }

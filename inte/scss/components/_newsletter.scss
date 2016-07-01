@@ -2,6 +2,7 @@
 
 .newsletter{
     padding: 60px 0 55px;
+    overflow: hidden;
     background: $gold;
     color: $greyBlue;
     .newsletter-title{
@@ -25,12 +26,12 @@
         padding: 0 0 0 $col;
         margin: 0;
     }
-    form{
+    /*form{
         padding-left: $outterGutter;
     }
     fieldset{
         width: 62.35%;
-    }
+    }*/
     .btn-invert{
         color: $greyBlue;
         border-color: $greyBlue;
@@ -58,9 +59,12 @@
     display: inline-block;
     width: $col*5;
     padding: 0 $innerGutter 0 $outterGutter;
-    vertical-align: middle;
+    position: relative;
+    label{
+        left: 35px;
+    }
     input{
-        &[type=text]{
+        &[type=text], &[type=email]{
             width: 62.35%;
             margin: 0 $outterGutter 0 0;
         }
