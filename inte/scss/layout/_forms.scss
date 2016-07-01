@@ -47,6 +47,7 @@ input, textarea{
     padding: 5px 15px;
     border: 0;
     border-bottom: 2px solid $greyBlue;
+    font-family: $merriweather;
     font-size: 16px;
     color: $greyBlue;
   	&:-webkit-autofill{
@@ -88,7 +89,7 @@ input, textarea{
 
 input{
     &[type=search]{
-        &::-webkit-search-cancel-button{
+        &::-webkit-search-cancel-button, &::-webkit-search-decoration{
             display: none;
         }
     }
