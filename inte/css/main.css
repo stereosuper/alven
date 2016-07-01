@@ -1989,7 +1989,11 @@ select::-ms-expand {
 .portfolio-filters .dropdown {
   display: inline-block;
   vertical-align: top;
-  margin: 0 10px;
+  margin: 10px;
+}
+.portfolio-filters .dropdown > li:first-child {
+  text-indent: 0;
+  padding: 15px 26px 13px 15px;
 }
 
 .portfolio-header {
