@@ -4,6 +4,7 @@ define( 'ALVEN_VERSION', 1.0 );
 
 if(function_exists('get_field')){
     define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );
+    define( 'CONTACT_ID', url_to_postid(get_field('pageContact', 'options')) );
     //define( 'WE_ID', url_to_postid(get_field('pageWe', 'options')) );
 }
 
@@ -544,6 +545,8 @@ function alven_scripts(){
     wp_enqueue_script( 'tweenmax', get_template_directory_uri() . '/js/TweenMax.min.js', array(), null, true );
     wp_enqueue_script( 'splittext', get_template_directory_uri() . '/js/splitText.min.js', array(), null, true );
     wp_enqueue_script( 'draggable', get_template_directory_uri() . '/js/draggable.min.js', array(), null, true );
+    wp_enqueue_script( 'throwprop', get_template_directory_uri() . '/js/ThrowPropsPlugin.min.js', array(), null, true );
+    wp_enqueue_script( 'scrollto', get_template_directory_uri() . '/js/ScrollToPlugin.min.js', array(), null, true );
 
     wp_enqueue_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array(), null, true );
     wp_enqueue_script( 'gsap', get_template_directory_uri() . '/js/animation.gsap.js', array(), null, true );
@@ -592,7 +595,7 @@ function alven_get_startup_permalink($post) {
 
     $portfolio_url = sushi_get_page_url_by_template('portfolio.php');
     if ($portfolio_url) {
-        $protocol = (stripos($_SERVER['SERVER_PROTOCOL'], 'https') === true)?'https://':'http://';
+        $protocol = (stripos($_SERVER['SERVER_PROTOCOL'], 'https') === true) ? 'https://' : 'http://';
         $relative_url = str_replace($protocol.$_SERVER['SERVER_NAME'], '', $url);
         $url = $portfolio_url.'#'.$relative_url;
     }

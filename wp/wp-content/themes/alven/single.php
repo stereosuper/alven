@@ -12,7 +12,7 @@
             $related = get_field('startup');
         ?>
 
-        <div class='content-header <?php if($hasImg){ echo 'has-img'; } ?>' id='contentHeader'>
+        <div class='content-header <?php if($hasImg){ echo 'has-img '; } the_field('titlePos'); ?>' id='contentHeader'>
             <div class='container'>
                 <h1><?php the_title(); ?></h1>
             </div>

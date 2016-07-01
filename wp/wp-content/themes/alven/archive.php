@@ -56,7 +56,11 @@
                                                 <?php } ?>
                                             </div>
                                         <?php }else{
-                                            the_post_thumbnail();
+                                            if(has_post_thumbnail()){
+                                                the_post_thumbnail();
+                                            }else{ ?>
+                                                <div class='special-cat'><div class='cat-default'><div></div></div></div>
+                                            <?php }
                                         }
                                     ?>
                                 </div><div class='txt col-8'>

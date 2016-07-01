@@ -28,6 +28,7 @@ $(function(){
         portfolioFilters = $('#portfolioFilters'), portfolioFiltersTop = portfolioFilters.length ? portfolioFilters.offset().top : 0;
     var dropdowns = $('.dropdown');
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, /*teamMemberHeight, */offsetYtoScroll;
+    var fadePage = $('#fadePage')/*, loadAnimation = true*/;
 
 
 
@@ -73,10 +74,15 @@ $(function(){
             myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
             if(header.hasClass('fixed')){
                 scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
-            }
+                //TweenMax.set(readIndicator, {opacity: 1});
+            }/*else{
+                if(!loadAnimation){
+                    TweenMax.set(readIndicator, {opacity: 0});
+                }
+            }*/
         }
 
-        if(portfolioFilters.length){
+        if(portfolioFilters.length && windowHeight > 700 && windowWidth > 767){
             var triggerTop = portfolioFiltersTop - headerHeight + 200;
             if(!portfolioFilters.hasClass('single-on')){
                 myScroll > portfolioFiltersTop - headerHeight ? portfolioFilters.addClass('fixed') : portfolioFilters.removeClass('fixed');
@@ -398,6 +404,8 @@ $(function(){
             });
         }
 
+        $('html, body').animate({scrollTop: main.offset().top}, 400);
+
         disableImpossibleChoices('investment');
         disableImpossibleChoices('field');
         disableImpossibleChoices('footprint');
@@ -714,14 +722,14 @@ $(function(){
         TweenMax.to($('.wrapper-btn-glob'), 0.5,{height: '100%', ease:Cubic.easeInOut});
     }
 
-    function btnDescTeam(){
+    function btnDescTeam(that){
         if(!TweenMax.isTweening(team.find('li')) && !TweenMax.isTweening(team.find('.desc')) && !TweenMax.isTweening($('.wrapper-btn-glob'))){
             // close already open and open new
             var currentLi = $('.team.member-open > li.open');
             currentDesc = $('.desc', currentLi);
             tlTeamCurrent = new TimelineMax();
             tlTeamCurrent.to(currentDesc, 0.25, {opacity: 0, visibility: 'hidden'}).set(currentLi, {className:'-=open'});
-            if($(this).hasClass('left')){
+            if(that.hasClass('left')){
                 newLi = currentLi.prev().length ? currentLi.prev() : team.find('> li').last();
             }else{
                 newLi = currentLi.next().length ? currentLi.next() : team.find('> li').first();
@@ -793,6 +801,19 @@ $(function(){
 
     setHeaderScroll(myScroll, scrollDir);
     imgFit();
+
+    /*if(fadePage.length){
+        if(body.hasClass('home')){
+            TweenMax.to(fadePage, 0.3, {opacity: 1});
+        }else{
+            TweenMax.to(readIndicator, 1, {scaleX: 1, onComplete: function(){
+                TweenMax.to(readIndicator, 0.3, {opacity: 0, onComplete: function(){
+                    TweenMax.set(readIndicator, {scaleX: 0, opacity: 1});
+                    loadAnimation = false;
+                }});
+            }});
+        }
+    }*/
 
     if(buttons.length){
         //setButtons(buttons);
@@ -882,7 +903,7 @@ $(function(){
 
         $('.btn-desc > li a').on('click', function(e){
             e.preventDefault();
-            btnDescTeam();
+            btnDescTeam($(this));
         });
 
         $('.container-team .wrapper-btn-glob a').on('click', function(e){
@@ -904,18 +925,25 @@ $(function(){
     // if yes, remove if there is the first part of the url
     // and add the scroll-anchor class to add smooth scroll on click
     if($('a').length){
-        var currentLocation = location.protocol+'//'+location.host+location.pathname;
+        var currentSite = location.protocol+'//'+location.host,
+            currentLocation = currentSite+location.pathname;
         $('a').each(function(){
             var href = $(this).attr('href'), indexOfHash = href.indexOf('#');
-            if(indexOfHash === 0){
-                $(this).addClass('scroll-anchor');
-            }else if(indexOfHash > -1){
-                var thisLocation = href.substring(0, indexOfHash);
-                if(thisLocation.slice(-1) !== '/'){
-                    thisLocation += '/';
-                }
-                if(currentLocation === thisLocation){
-                    $(this).attr('href', href.substring(indexOfHash)).addClass('scroll-anchor');
+            if(href !== '#'){
+                if(indexOfHash === 0){
+                    $(this).addClass('scroll-anchor');
+                }else if(indexOfHash > -1){
+                    var thisLocation = href.substring(0, indexOfHash);
+                    if(thisLocation.slice(-1) !== '/'){
+                        thisLocation += '/';
+                    }
+                    if(currentLocation === thisLocation){
+                        $(this).attr('href', href.substring(indexOfHash)).addClass('scroll-anchor');
+                    }
+                }else{
+                    if(href.indexOf(currentSite) === 0){
+                        $(this).addClass('fade-page-link');
+                    }
                 }
             }
         });
@@ -926,6 +954,17 @@ $(function(){
         e.preventDefault();
         $('html, body').animate({scrollTop: $(this.hash).offset().top - 150}, 500);
         $(this).blur();
+    });
+
+    // fade page effect
+    body.on('click', '.fade-page-link', function(e){
+        if(!$(this).hasClass('ajax-load')){
+            e.preventDefault();
+            var href = $(this).attr('href');
+            TweenMax.to(fadePage, 0.2, {opacity: 0, onComplete: function(){
+                window.location.href = href;
+            }});
+        }
     });
 
 
@@ -1003,6 +1042,14 @@ $(function(){
         });
     }
 
+    var newsletter = $('.subscribe-form');
+    if(newsletter.length){
+        newsletter.find('#email').attr('type', 'email').attr('placeholder', '').attr('required', true).after('<label for="email" style="opacity:1">Your email</label>');
+        newsletter.append('<button type="submit" name="submit" class="btn-invert">Signup</button>');
+        newsletter.find('.mailjet-subscribe').remove();
+        newsletter.find('button').html(setBtn(newsletter.find('button')));
+    }
+
 
     $(document).on('scroll', function(){
         var myScroll = $(document).scrollTop(), scrollDir = detectScrollDir(myScroll);
@@ -1022,10 +1069,6 @@ $(function(){
 
         if(postSidebar.length && mainContent.length && !isMobile.any){
             setSidebarScroll(myScroll);
-        }
-
-        if(dropdowns.length){
-            dropdowns.each(function(){ closeDropdown($(this)); });
         }
 
         if(mainMenu.length){
@@ -1093,8 +1136,10 @@ $(function(){
 });
 
 $(window).on('load', function(){
+    var body = $('body');
     var main = $('#main');
     var contentHeader = $('#contentHeader');
+    var fadePage = $('#fadePage');
     //var team = $('.team');
 
     function animTxt(splitText){
@@ -1111,6 +1156,10 @@ $(window).on('load', function(){
         if(main.length){
             main.css('marginTop', Math.floor(contentHeader.outerHeight()));
         }
+    }
+
+    if(fadePage.length){
+        TweenMax.to(fadePage, 0.2, {opacity: 1});
     }
 });
 

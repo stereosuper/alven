@@ -46,7 +46,7 @@ get_header(); ?>
                 </div>
             </div>
 
-            <section class='content-main' id='mainContent'>
+            <section class='content-main no-border' id='mainContent'>
                 <?php
                     $startups = new WP_Query(array('post_type' => 'startup', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC'));
                     if($startups->have_posts()):
@@ -84,26 +84,30 @@ get_header(); ?>
                                         </a>
                                     </li><?php } else{ ?><li class='col-2 transfered'>
                                         <a href='<?php the_permalink(); ?>' class='ajax-load off' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-footprint='<?php echo $footprintList; ?>'>
-                                            <span class='content-transfered'>
-                                                <span>
+                                            <span class='content-transfered <?php if(!get_field('acquiredBy')){ echo 'no-by'; } ?>'>
+                                                <span <?php if(!has_post_thumbnail()){ echo "class='txt-container'"; } ?>>
                                                     <?php
-                                                        if( has_post_thumbnail() ){
+                                                        if(has_post_thumbnail()){
                                                             echo alven_get_svg(get_post_thumbnail_id());
                                                         }else{ ?>
                                                             <span class='txt'><?php the_title(); ?></span>
                                                         <?php }
                                                     ?>
                                                 </span>
-                                                <span>Acquired by</span>
-                                                <span>
-                                                    <?php
-                                                        if(get_field('acquiredByLogo')){
-                                                            echo alven_get_svg(get_field('acquiredByLogo'));
-                                                        }else{ ?>
-                                                            <span class='txt'><?php echo get_field('acquiredBy'); ?></span>
-                                                        <?php }
-                                                    ?>
-                                                </span>
+                                                <?php if(get_field('acquiredBy')){ ?>
+                                                    <span>Acquired by</span>
+                                                    <span <?php if(!get_field('acquiredByLogo')){ echo "class='txt-container'"; } ?>>
+                                                        <?php
+                                                            if(get_field('acquiredByLogo')){
+                                                                echo alven_get_svg(get_field('acquiredByLogo'));
+                                                            }else{ ?>
+                                                                <span class='txt'><?php echo get_field('acquiredBy'); ?></span>
+                                                            <?php }
+                                                        ?>
+                                                    </span>
+                                                <?php }else{ ?>
+                                                    <span>Acquired</span>
+                                                <?php } ?>
                                             </span>
                                         </a>
                                     </li><?php } ?>
@@ -121,7 +125,28 @@ get_header(); ?>
                             </span>
                         </a>
                     </div>
-                    <div id='contact'>
+                </div>
+            </section>
+
+            <section>
+                <div class='contact-us'>
+                    <h2 class='section-title'><?php echo get_the_title(CONTACT_ID); ?></h2>
+                    <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
+                    <div class='container'>
+                        <div class='container-small'>
+                            <div class='grid wrapper-interactive-blocks'>
+                                <div class='col-4 align-right interactive-block'>
+                                    <h3><?php the_field('pitchTitle', CONTACT_ID); ?></h3>
+                                    <p><?php the_field('pitchText', CONTACT_ID); ?></p>
+                                    <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] pitch&body=Please tell us about your startup. %0AYou can join a lightweight presentation' class='btn btn-left'>Send your pitch</a>
+                                </div><!--
+                                --><div class='col-4 interactive-block'>
+                                    <h3><?php the_field('generalTitle', CONTACT_ID); ?></h3>
+                                    <p><?php the_field('generalText', CONTACT_ID); ?></p>
+                                    <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] general question&body=Please tell us what you would like to know. %0AWe&#39;ll read it carefully, and answer you with pleasure' class='btn'>General questions</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
