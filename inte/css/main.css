@@ -1048,6 +1048,10 @@ select::-ms-expand {
     border: 0; }
   .single-post .content-main {
     margin: 0 0 20px; }
+  .home .content-main {
+    border: none;
+    margin: 0;
+    padding-bottom: 0; }
   .js .content-main img:not(.no-scroll), .js .content-main .special-cat {
     opacity: 0; }
 

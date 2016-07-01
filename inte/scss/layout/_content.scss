@@ -55,6 +55,11 @@
     .single-post &{
         margin: 0 0 20px;
     }
+    .home &{
+        border: none;
+        margin: 0;
+        padding-bottom: 0;
+    }
     img:not(.no-scroll), .special-cat{
         .js &{
             opacity: 0;
