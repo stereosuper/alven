@@ -16,6 +16,9 @@
     line-height: 1;
     letter-spacing: -0.03em;
     color: $chapo;
+    .contact-us &{
+        margin-top: 0;
+    }
     + .subtitle{
         display: block;
         padding: 0 $outterGutter 30px;
