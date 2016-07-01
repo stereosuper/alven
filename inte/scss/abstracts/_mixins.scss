@@ -94,7 +94,9 @@
   }
 }
 @mixin themeBgHover($default : $greyBlue){
-    background: $default;
+    .no-js &, .is-desktop &{
+        background: $default;
+    }
     .no-js .theme-magazine &, .is-desktop .theme-magazine &{
         background: $magazine;
     }
@@ -119,7 +121,9 @@
   }
 }
 @mixin themeColorHover($default : $greyBlue){
-    color: $default;
+    .no-js &, .is-desktop &{
+        color: $default;
+    }
     .no-js .theme-magazine &, .is-desktop .theme-magazine &{
         color: $magazine;
     }
@@ -144,7 +148,9 @@
   }
 }
 @mixin themeBorderHover($default : $greyBlue){
-    border-color: $default;
+    .no-js &, .is-desktop &{
+        border-color: $default;
+    }
     .no-js .theme-magazine &, .is-desktop .theme-magazine &{
         border-color: $magazine;
     }

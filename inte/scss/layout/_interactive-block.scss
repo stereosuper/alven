@@ -1,5 +1,5 @@
 .wrapper-interactive-blocks{
-	padding: 20px 0 140px 0;
+	padding: 20px 0 140px;
 }
 
 .interactive-block{
@@ -17,5 +17,36 @@
 		font-size: 1.4rem;
 		margin: 0 0 30px;
 		line-height: 1.3;
+	}
+}
+
+.contact-us{
+	.subtitle{
+		color: $title;
+	}
+	.section-title{
+		+ .subtitle{
+			.theme-portfolio &{
+				&:before, &:after{
+					background: $title;
+				}
+			}
+		}
+	}
+	.btn{
+		.theme-portfolio &{
+			background: $gold;
+			border-color: $gold;
+			color: $title;
+			.before, .after{
+				color: $title;
+			}
+			&:hover, &:focus{
+				.no-js &, .is-desktop &{
+					color: $title;
+					border-color: $title;
+				}
+			}
+		}
 	}
 }
