@@ -53,6 +53,10 @@
             left: 0;
             color: #fff;
             border-color: #fff;
+            .menu-open &{
+                color: #fff !important;
+                border-color: #fff !important;
+            }
         }
         input, label{
             opacity: 0;
@@ -64,7 +68,7 @@
             .btn-search{
                 width: 0;
                 white-space: nowrap;
-                color: transparent;
+                color: transparent !important;
                 transition: color $transition, width 0s linear .3s;
                 &:after{
                     color: #fff;
@@ -78,6 +82,12 @@
         top: 0;
         transition: color $transition;
         color: #fff;
+        .menu-open &{
+            color: #fff !important;
+            &:after{
+                color: #fff !important;
+            }
+        }
     }
     .post-title{
         @include ellipsis;
@@ -170,6 +180,7 @@
     transform-origin: 0 0;
     transform: scaleX(0);
     transition: opacity $transition;
+    opacity: 0;
     .no-js &{
         display: none;
     }

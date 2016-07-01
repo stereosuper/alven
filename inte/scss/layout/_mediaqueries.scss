@@ -66,7 +66,7 @@
         img{
             max-width: 80%;
         }
-        .hover, .txt{
+        .hover{
             bottom: 20px;
         }
         .po-item, li{
@@ -158,7 +158,7 @@
     }
 
     .portfolio-list{
-        .hover, .txt{
+        .hover{
             bottom: 10px;
         }
         .hover{
@@ -480,7 +480,7 @@
         height: 50px;
         line-height: 45px;
     }
-    .calendar{
+    .calendar, .cat-default{
         width: 45px;
         height: 55px;
         &:before{
@@ -489,6 +489,17 @@
         &:after{
             border-width: 0 0 14px 14px;
         }
+    }
+    .cat-default{
+        div{
+            margin: 8px 0;
+            &:before, &:after{
+                height: 11px;
+                margin: 5px auto 0;
+            }
+        }
+    }
+    .calendar{
         .month{
             top: -15px;
         }
