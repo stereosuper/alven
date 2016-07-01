@@ -171,7 +171,7 @@
         .no-js &, .is-desktop &{
             background: #fff;
         }
-        .no-js &{
+        .is-desktop &{
             span{
                 transform: translate3d(0, -21px, 0);
             }
