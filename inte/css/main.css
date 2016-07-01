@@ -1624,6 +1624,9 @@ select::-ms-expand {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
+.no-js .portfolio-list {
+  margin-bottom: 50px;
+}
 .portfolio-list:before {
   content: '';
   height: 150px;
@@ -1633,6 +1636,9 @@ select::-ms-expand {
   right: 0;
   z-index: -1;
   background: #fff;
+}
+.no-js .portfolio-list:before {
+  display: none;
 }
 .portfolio-list .txt {
   display: inline-block;
@@ -2003,7 +2009,7 @@ select::-ms-expand {
   z-index: 1;
 }
 
-.js #ctaPortfolio {
+#ctaPortfolio {
   display: none;
 }
 
@@ -2022,6 +2028,9 @@ select::-ms-expand {
   transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1), -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+}
+.no-js .portfolio-filters {
+  display: none;
 }
 .portfolio-filters.fixed {
   position: fixed;
@@ -2833,6 +2842,9 @@ select::-ms-expand {
 }
 .team .team-member {
   padding-bottom: 34px;
+}
+.no-js .team .team-member {
+  pointer-events: none;
 }
 .team .social {
   margin: -25px 0 0 0;

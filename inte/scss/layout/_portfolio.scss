@@ -6,6 +6,9 @@
     z-index: 1;
     background: $chapo;
     backface-visibility: hidden;
+    .no-js &{
+        margin-bottom: 50px;
+    }
     &:before{
         content: '';
         height: 150px;
@@ -15,6 +18,9 @@
         right: 0;
         z-index: -1;
         background: #fff;
+        .no-js &{
+            display: none;
+        }
     }
     .txt{
         display: inline-block;
@@ -361,9 +367,7 @@
 }
 
 #ctaPortfolio{
-    .js &{
-        display: none;
-    }
+    display: none;
 }
 
 .portfolio-filters{
@@ -377,6 +381,9 @@
     text-align: center;
     backface-visibility: hidden;
     transition: transform $transition;
+    .no-js &{
+        display: none;
+    }
     &.fixed{
         position: fixed;
         top: 97px;

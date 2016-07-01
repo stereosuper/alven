@@ -38,6 +38,9 @@
 	}
 	.team-member{
 		padding-bottom: 34px;
+		.no-js &{
+			pointer-events: none;
+		}
 	}
 	.social{
 		margin: -25px 0 0 0;
