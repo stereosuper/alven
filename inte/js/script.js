@@ -958,11 +958,13 @@ $(function(){
 
     // fade page effect
     body.on('click', '.fade-page-link', function(e){
-        e.preventDefault();
-        var href = $(this).attr('href');
-        TweenMax.to(fadePage, 0.2, {opacity: 0, onComplete: function(){
-            window.location.href = href;
-        }});
+        if(!$(this).hasClass('ajax-load')){
+            e.preventDefault();
+            var href = $(this).attr('href');
+            TweenMax.to(fadePage, 0.2, {opacity: 0, onComplete: function(){
+                window.location.href = href;
+            }});
+        }
     });
 
 

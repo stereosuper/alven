@@ -1009,7 +1009,7 @@ select::-ms-expand {
   color: #fff;
 }
 #header .btn-search {
-  width: 116px;
+  width: 117px;
   position: relative;
   top: 0;
   -webkit-transition: color 0.25s cubic-bezier(0.75, 0, 0.125, 1);
@@ -3362,7 +3362,7 @@ select::-ms-expand {
 .no-js .btn:hover, .is-desktop .btn:hover, .no-js .btn:focus, .is-desktop .btn:focus {
   background: #fff;
 }
-.no-js .btn:hover span, .no-js .btn:focus span {
+.is-desktop .btn:hover span, .is-desktop .btn:focus span {
   -webkit-transform: translate3d(0, -21px, 0);
           transform: translate3d(0, -21px, 0);
 }
