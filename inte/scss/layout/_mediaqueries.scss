@@ -533,6 +533,9 @@
         font-size: 3.6rem;
     }
     .content-header{
+        &.align-bottom-left, &.align-bottom-right{
+            padding-bottom: 20px;
+        }
         &.align-bottom-right{
             h1{
                 margin-left: $col*2;
