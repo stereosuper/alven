@@ -91,6 +91,9 @@
             display: none;
         }
     }
+    &.align-bottom-left, &.align-bottom-right{
+        padding: calc(145px + 9vh) 0 5vh;
+    }
     &.align-bottom-left{
         h1{
             //margin: 8vh 0;
