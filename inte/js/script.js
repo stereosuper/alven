@@ -74,7 +74,7 @@ $(function(){
             myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
             if(header.hasClass('fixed')){
                 scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
-                TweenMax.set(readIndicator, {opacity: 1});
+                //TweenMax.set(readIndicator, {opacity: 1});
             }/*else{
                 if(!loadAnimation){
                     TweenMax.set(readIndicator, {opacity: 0});

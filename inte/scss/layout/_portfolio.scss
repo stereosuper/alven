@@ -16,6 +16,12 @@
         z-index: -1;
         background: #fff;
     }
+    .txt{
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        font-family: $sourceBold;
+    }
     .grid{
         padding: $innerGutter 0;
         &.is-hovered{
@@ -90,6 +96,7 @@
                         padding: 10px 0;
                         height: 20%;
                         max-width: 58%;
+                        line-height: 1;
                         &:before{
                             content: '';
                             display: inline-block;
@@ -99,6 +106,16 @@
                         }
                         &:first-child, &:last-child{
                             height: 40%;
+                        }
+                    }
+                    &.no-by{
+                        > span{
+                            &:first-child{
+                                height: 70%;
+                            }
+                            &:last-child{
+                                height: 30%;
+                            }
                         }
                     }
                 }
@@ -137,9 +154,6 @@
                     path, polygon, rect, ellipse, circle, line, polyline{
                         transition-delay: 0s;
                     }
-                }
-                .txt{
-                    opacity: 0;
                 }
                 &:hover, &:focus, &.on{
                     //border: 1px solid $greyBorder;
@@ -202,12 +216,6 @@
                     transform: scale(0.96, 0.94) rotate(0.1deg);
                     transition: transform 0.65s cubic-bezier(0.000, 0.855, 0.345, 1.000);
                     transition-delay: 0s;
-                }
-                /*> img{
-                    opacity: 0.3;
-                }*/
-                .txt{
-                    opacity: 0;
                 }
                 svg, img{
                     transform: translate3d(-50%, -50%, 0) scale(1) rotate(0.1deg);
@@ -296,13 +304,6 @@
     path, polygon, rect, ellipse, circle, line, polyline{
         transition: fill 0.3s linear;
         transition-delay: 0s;
-    }
-    .txt{
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 30px;
-        transition: 0.45s $transitionFunction;
     }
     .hover{
         display: block;
