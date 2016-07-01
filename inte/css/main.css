@@ -555,6 +555,9 @@ a {
   .img-fit.compat-object-fit img {
     opacity: 0; }
 
+.js #fadePage {
+  opacity: 0; }
+
 /* Placeholders */
 /* Grid */
 #main {
@@ -766,7 +769,9 @@ select::-ms-expand {
     text-align: right; }
     #header .form-search input {
       position: absolute;
-      left: 0; }
+      left: 0;
+      color: #fff;
+      border-color: #fff; }
     #header .form-search input, #header .form-search label {
       opacity: 0; }
     #header .form-search.on input, #header .form-search.on label {
@@ -812,6 +817,9 @@ select::-ms-expand {
       color: #404040; }
     #header.fixed .form-search.on .btn-search:after, .no-js #header .form-search.on .btn-search:after {
       color: #404040; }
+    #header.fixed .form-search.on input, .no-js #header .form-search.on input {
+      color: #404040;
+      border-color: #404040; }
     .single #header.fixed.on .post-title, .single .no-js #header.on .post-title {
       opacity: 1;
       transform: translate3d(0, -25px, 0); }
@@ -839,14 +847,15 @@ select::-ms-expand {
   right: 0;
   transform-origin: 0 0;
   transform: scaleX(0);
-  transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  opacity: 0; }
+  transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
   .theme-magazine .read-indicator {
     background: #f06850; }
   .theme-portfolio .read-indicator {
     background: #01a2a6; }
   .theme-we .read-indicator {
     background: #33a4df; }
+  .no-js .read-indicator {
+    display: none; }
 
 #logo-alven {
   display: inline-block;
@@ -1128,6 +1137,8 @@ select::-ms-expand {
   line-height: 1;
   letter-spacing: -0.03em;
   color: #303b3d; }
+  .contact-us .section-title {
+    margin-top: 0; }
   .section-title + .subtitle {
     display: block;
     padding: 0 20px 30px;
@@ -1489,7 +1500,7 @@ select::-ms-expand {
 
 .portfolio-filters {
   width: 100%;
-  padding: 30px 0 25px;
+  padding: 10px 0;
   border-bottom: 1px solid #ccd1d2;
   position: absolute;
   top: 0;
@@ -1502,7 +1513,7 @@ select::-ms-expand {
     position: fixed;
     top: 97px; }
     .portfolio-filters.fixed.on {
-      transform: translate3d(0, -99px, 0); }
+      transform: translate3d(0, -85px, 0); }
   .portfolio-filters.single-on + .content-main .portfolio-list {
     margin-top: 150px; }
   .portfolio-filters .dropdown {
@@ -2344,7 +2355,6 @@ select::-ms-expand {
     margin: 0 0 30px 0; }
 
 .container-team {
-  padding-bottom: 80px !important;
   backface-visibility: hidden;
   transform-style: preserve-3d; }
 
