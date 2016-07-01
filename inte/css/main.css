@@ -338,31 +338,16 @@ hr {
   background: #33a4df;
 }
 
-::-moz-selection {
-  background: #26393d;
-  color: #fff;
-  text-shadow: none;
-}
-
 ::selection {
   background: #26393d;
   color: #fff;
   text-shadow: none;
 }
-.theme-magazine ::-moz-selection {
-  background: #f06850;
-}
 .theme-magazine ::selection {
   background: #f06850;
 }
-.theme-portfolio ::-moz-selection {
-  background: #01a2a6;
-}
 .theme-portfolio ::selection {
   background: #01a2a6;
-}
-.theme-we ::-moz-selection {
-  background: #33a4df;
 }
 .theme-we ::selection {
   background: #33a4df;
@@ -646,7 +631,6 @@ a {
   box-shadow: 0 1px 0 0 currentColor;
   color: inherit;
   text-decoration: none;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .no-js a:focus, .is-desktop a:focus, .no-js a:hover, .is-desktop a:hover {
@@ -833,9 +817,7 @@ label {
   font-family: "merriweather-italic", "merriweather", sans-serif;
   font-size: 1.4rem;
   cursor: text;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transform: translate3d(0, 0, 0);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .no-js label {
@@ -846,7 +828,6 @@ label {
 }
 
 input, textarea, select, button {
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 input:focus, textarea:focus, select:focus, button:focus {
@@ -883,12 +864,10 @@ input:focus, textarea:focus {
 }
 input:focus + label, textarea:focus + label {
   opacity: 1;
-  -webkit-transform: translate3d(0, -30px, 0);
-          transform: translate3d(0, -30px, 0);
+  transform: translate3d(0, -30px, 0);
 }
 input.filled + label, textarea.filled + label {
-  -webkit-transform: translate3d(0, -30px, 0);
-          transform: translate3d(0, -30px, 0);
+  transform: translate3d(0, -30px, 0);
 }
 input.filled:invalid, textarea.filled:invalid {
   border-color: #f06850;
@@ -936,11 +915,8 @@ select::-ms-expand {
   font-size: 1.8rem;
   letter-spacing: -0.04em;
   color: #fff;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 #header::after {
@@ -961,7 +937,6 @@ select::-ms-expand {
   z-index: 1;
   background: #303b3d;
   opacity: 0;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .menu-open #header .container:before {
@@ -970,7 +945,6 @@ select::-ms-expand {
 #header a {
   display: inline-block;
   color: inherit;
-  -webkit-transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 #header .form-search {
@@ -997,7 +971,6 @@ select::-ms-expand {
   width: 0;
   white-space: nowrap;
   color: transparent;
-  -webkit-transition: color 0.25s cubic-bezier(0.75, 0, 0.125, 1), width 0s linear 0.3s;
   transition: color 0.25s cubic-bezier(0.75, 0, 0.125, 1), width 0s linear 0.3s;
 }
 #header .form-search.on .btn-search:after {
@@ -1007,7 +980,6 @@ select::-ms-expand {
   width: 116px;
   position: relative;
   top: 0;
-  -webkit-transition: color 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: color 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   color: #fff;
 }
@@ -1021,15 +993,13 @@ select::-ms-expand {
   left: 25%;
   margin: 0 0 0 -12px;
   opacity: 0;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1), background 0.2s ease;
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1), background 0.2s ease;
 }
 #header.fixed, .no-js #header {
   border-color: #ccd1d2;
   background: #fff;
   color: #404040;
-  -webkit-transform: translate3d(0, -10px, 0);
-          transform: translate3d(0, -10px, 0);
+  transform: translate3d(0, -10px, 0);
 }
 #header.fixed #logo-alven, .no-js #header #logo-alven {
   background-image: url(../layoutImg/alven-grey.png);
@@ -1055,12 +1025,10 @@ select::-ms-expand {
 }
 .single #header.fixed.on .post-title, .single .no-js #header.on .post-title {
   opacity: 1;
-  -webkit-transform: translate3d(0, -25px, 0);
-          transform: translate3d(0, -25px, 0);
+  transform: translate3d(0, -25px, 0);
 }
 .single #header.fixed.on #menu-main, .single .no-js #header.on #menu-main {
-  -webkit-transform: translate3d(0, -25px, 0);
-          transform: translate3d(0, -25px, 0);
+  transform: translate3d(0, -25px, 0);
 }
 .single #header.fixed.on #menu-main li:not(.current-menu-item):not(.current_page_parent), .single .no-js #header.on #menu-main li:not(.current-menu-item):not(.current_page_parent) {
   opacity: 0;
@@ -1088,11 +1056,8 @@ select::-ms-expand {
   bottom: -3px;
   left: 0;
   right: 0;
-  -webkit-transform-origin: 0 0;
-          transform-origin: 0 0;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
-  -webkit-transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transform-origin: 0 0;
+  transform: scaleX(0);
   transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .theme-magazine .read-indicator {
@@ -1144,9 +1109,7 @@ select::-ms-expand {
   left: 0;
   border-radius: 2px;
   background: #fff;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-transition: .1s ease-in-out;
+  transform: translate3d(0, 0, 0);
   transition: .1s ease-in-out;
 }
 #burger:before {
@@ -1162,17 +1125,14 @@ select::-ms-expand {
   overflow: hidden;
 }
 .menu-open #burger:before {
-  -webkit-transform: translate3d(0, 9px, 0) rotate(135deg);
-          transform: translate3d(0, 9px, 0) rotate(135deg);
+  transform: translate3d(0, 9px, 0) rotate(135deg);
 }
 .menu-open #burger:after {
   width: 0;
-  -webkit-transform: translate3d(0, -10px, 0);
-          transform: translate3d(0, -10px, 0);
+  transform: translate3d(0, -10px, 0);
 }
 .menu-open #burger span {
-  -webkit-transform: translate3d(0, -9px, 0) rotate(-135deg);
-          transform: translate3d(0, -9px, 0) rotate(-135deg);
+  transform: translate3d(0, -9px, 0) rotate(-135deg);
 }
 
 #menu-responsive {
@@ -1184,29 +1144,23 @@ select::-ms-expand {
   left: 0;
   overflow: hidden;
   background: #303b3d;
-  -webkit-transform: translate3d(0, -100%, 0);
-          transform: translate3d(0, -100%, 0);
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transform: translate3d(0, -100%, 0);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 #menu-responsive > div {
   width: 100%;
   position: absolute;
   top: 55%;
-  -webkit-transform: translate3d(0, -50%, 0);
-          transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
 }
 #menu-responsive .menu-small:nth-child(3), #menu-responsive .menu-small:last-child {
   margin-bottom: 0;
 }
 .menu-open #menu-responsive {
   overflow: scroll;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 #menu-main {
@@ -1218,12 +1172,8 @@ select::-ms-expand {
   z-index: 1;
   box-sizing: content-box;
   white-space: nowrap;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transform: translate3d(0, 0, 0);
   transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1), -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 #menu-main ul {
   padding: 0;
@@ -1236,7 +1186,6 @@ select::-ms-expand {
   padding: 0 10px;
   width: 33.333%;
   position: relative;
-  -webkit-transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 #menu-main li:before {
@@ -1389,8 +1338,7 @@ select::-ms-expand {
   width: 100%;
   top: 0;
   background: #404040;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .js .content-header {
   position: fixed;
@@ -1439,8 +1387,7 @@ select::-ms-expand {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   background-position: 50% 50%;
   background-size: auto 100%;
   background-size: cover;
@@ -1589,8 +1536,7 @@ select::-ms-expand {
   margin: 250px 0 0;
   z-index: 1;
   background: #303b3d;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .portfolio-list:before {
   content: '';
@@ -1628,10 +1574,8 @@ select::-ms-expand {
   text-transform: uppercase;
   color: #303b3d;
   text-align: center;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 .portfolio-list li:before, .portfolio-list .po-item:before {
   display: block;
@@ -1648,7 +1592,6 @@ select::-ms-expand {
   background-color: #34b6b8;
   border-color: #34b6b8;
   color: #fff;
-  -webkit-transition: none;
   transition: none;
 }
 .portfolio-list li.transfered a:after, .portfolio-list .po-item.transfered a:after {
@@ -1658,8 +1601,7 @@ select::-ms-expand {
   position: absolute;
   top: 50%;
   left: 0;
-  -webkit-transform: translate3d(0, -50%, 0);
-          transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
   width: 100%;
   height: 100%;
   display: inline-block;
@@ -1684,15 +1626,12 @@ select::-ms-expand {
 }
 .portfolio-list li.transfered a svg, .portfolio-list li.transfered a img, .portfolio-list .po-item.transfered a svg, .portfolio-list .po-item.transfered a img {
   position: relative;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   top: auto;
   left: auto;
   padding-bottom: 2px;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
+  backface-visibility: hidden;
+  transition-delay: 0s;
   max-width: none;
   max-height: none;
   width: 100%;
@@ -1705,23 +1644,18 @@ select::-ms-expand {
 }
 .portfolio-list li.transfered a .hover, .portfolio-list .po-item.transfered a .hover {
   opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-transition: none;
+  transform: translate3d(0, 0, 0);
   transition: none;
 }
 .portfolio-list li.transfered a .hover svg, .portfolio-list li.transfered a .hover img, .portfolio-list .po-item.transfered a .hover svg, .portfolio-list .po-item.transfered a .hover img {
   position: relative;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   top: auto;
   left: auto;
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
+  transition-delay: 0s;
 }
 .portfolio-list li.transfered a .hover path, .portfolio-list li.transfered a .hover polygon, .portfolio-list li.transfered a .hover rect, .portfolio-list li.transfered a .hover ellipse, .portfolio-list li.transfered a .hover circle, .portfolio-list li.transfered a .hover line, .portfolio-list li.transfered a .hover polyline, .portfolio-list .po-item.transfered a .hover path, .portfolio-list .po-item.transfered a .hover polygon, .portfolio-list .po-item.transfered a .hover rect, .portfolio-list .po-item.transfered a .hover ellipse, .portfolio-list .po-item.transfered a .hover circle, .portfolio-list .po-item.transfered a .hover line, .portfolio-list .po-item.transfered a .hover polyline {
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
+  transition-delay: 0s;
 }
 .portfolio-list li.transfered a .txt, .portfolio-list .po-item.transfered a .txt {
   opacity: 0;
@@ -1732,14 +1666,11 @@ select::-ms-expand {
   color: #303b3d;
 }
 .portfolio-list li.transfered a:hover path, .portfolio-list li.transfered a:hover polygon, .portfolio-list li.transfered a:hover rect, .portfolio-list li.transfered a:hover ellipse, .portfolio-list li.transfered a:hover circle, .portfolio-list li.transfered a:hover line, .portfolio-list li.transfered a:hover polyline, .portfolio-list li.transfered a:focus path, .portfolio-list li.transfered a:focus polygon, .portfolio-list li.transfered a:focus rect, .portfolio-list li.transfered a:focus ellipse, .portfolio-list li.transfered a:focus circle, .portfolio-list li.transfered a:focus line, .portfolio-list li.transfered a:focus polyline, .portfolio-list li.transfered a.on path, .portfolio-list li.transfered a.on polygon, .portfolio-list li.transfered a.on rect, .portfolio-list li.transfered a.on ellipse, .portfolio-list li.transfered a.on circle, .portfolio-list li.transfered a.on line, .portfolio-list li.transfered a.on polyline, .portfolio-list .po-item.transfered a:hover path, .portfolio-list .po-item.transfered a:hover polygon, .portfolio-list .po-item.transfered a:hover rect, .portfolio-list .po-item.transfered a:hover ellipse, .portfolio-list .po-item.transfered a:hover circle, .portfolio-list .po-item.transfered a:hover line, .portfolio-list .po-item.transfered a:hover polyline, .portfolio-list .po-item.transfered a:focus path, .portfolio-list .po-item.transfered a:focus polygon, .portfolio-list .po-item.transfered a:focus rect, .portfolio-list .po-item.transfered a:focus ellipse, .portfolio-list .po-item.transfered a:focus circle, .portfolio-list .po-item.transfered a:focus line, .portfolio-list .po-item.transfered a:focus polyline, .portfolio-list .po-item.transfered a.on path, .portfolio-list .po-item.transfered a.on polygon, .portfolio-list .po-item.transfered a.on rect, .portfolio-list .po-item.transfered a.on ellipse, .portfolio-list .po-item.transfered a.on circle, .portfolio-list .po-item.transfered a.on line, .portfolio-list .po-item.transfered a.on polyline {
-  -webkit-transition: fill 0.4s linear;
   transition: fill 0.4s linear;
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
+  transition-delay: 0s;
 }
 .portfolio-list li.transfered a:hover svg, .portfolio-list li.transfered a:hover img, .portfolio-list li.transfered a:focus svg, .portfolio-list li.transfered a:focus img, .portfolio-list li.transfered a.on svg, .portfolio-list li.transfered a.on img, .portfolio-list .po-item.transfered a:hover svg, .portfolio-list .po-item.transfered a:hover img, .portfolio-list .po-item.transfered a:focus svg, .portfolio-list .po-item.transfered a:focus img, .portfolio-list .po-item.transfered a.on svg, .portfolio-list .po-item.transfered a.on img {
-  -webkit-transform: translate3d(0, 0, 0) scale(1) rotate(0.1deg);
-          transform: translate3d(0, 0, 0) scale(1) rotate(0.1deg);
+  transform: translate3d(0, 0, 0) scale(1) rotate(0.1deg);
 }
 .portfolio-list li a, .portfolio-list .po-item a {
   border: 1px solid #e5e8e8;
@@ -1750,14 +1681,10 @@ select::-ms-expand {
   bottom: 10px;
   background: #34b6b8;
   box-shadow: none;
-  -webkit-transition: border-color 0.1s cubic-bezier(0.42, 0, 0.58, 1);
   transition: border-color 0.1s cubic-bezier(0.42, 0, 0.58, 1);
-  -webkit-transition-delay: 0.3s;
-          transition-delay: 0.3s;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transition-delay: 0.3s;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 .portfolio-list li a:before, .portfolio-list .po-item a:before {
   content: '';
@@ -1776,76 +1703,51 @@ select::-ms-expand {
   right: 0;
   bottom: 0;
   left: 0;
-  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-  transition: -webkit-transform 0.25s cubic-bezier(0.42, 0, 0.58, 1);
   transition: transform 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-  transition: transform 0.25s cubic-bezier(0.42, 0, 0.58, 1), -webkit-transform 0.25s cubic-bezier(0.42, 0, 0.58, 1);
-  -webkit-transition-delay: 0.1s;
-          transition-delay: 0.1s;
+  transition-delay: 0.1s;
   pointer-events: none;
-  -webkit-transform: scale(1, 1) rotate(0.1deg);
-          transform: scale(1, 1) rotate(0.1deg);
+  transform: scale(1, 1) rotate(0.1deg);
   background-color: #fff;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 .portfolio-list li a:hover, .portfolio-list li a:focus, .portfolio-list li a.on, .portfolio-list .po-item a:hover, .portfolio-list .po-item a:focus, .portfolio-list .po-item a.on {
   opacity: 1;
   border-color: #34b6b8;
-  -webkit-transition: border-color 0s cubic-bezier(0.42, 0, 0.58, 1);
   transition: border-color 0s cubic-bezier(0.42, 0, 0.58, 1);
   /*> img{
       opacity: 0.3;
   }*/
 }
 .portfolio-list li a:hover:after, .portfolio-list li a:focus:after, .portfolio-list li a.on:after, .portfolio-list .po-item a:hover:after, .portfolio-list .po-item a:focus:after, .portfolio-list .po-item a.on:after {
-  -webkit-transform: scale(0.96, 0.94) rotate(0.1deg);
-          transform: scale(0.96, 0.94) rotate(0.1deg);
-  -webkit-transition: -webkit-transform 0.65s cubic-bezier(0, 0.855, 0.345, 1);
-  transition: -webkit-transform 0.65s cubic-bezier(0, 0.855, 0.345, 1);
+  transform: scale(0.96, 0.94) rotate(0.1deg);
   transition: transform 0.65s cubic-bezier(0, 0.855, 0.345, 1);
-  transition: transform 0.65s cubic-bezier(0, 0.855, 0.345, 1), -webkit-transform 0.65s cubic-bezier(0, 0.855, 0.345, 1);
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
+  transition-delay: 0s;
 }
 .portfolio-list li a:hover .txt, .portfolio-list li a:focus .txt, .portfolio-list li a.on .txt, .portfolio-list .po-item a:hover .txt, .portfolio-list .po-item a:focus .txt, .portfolio-list .po-item a.on .txt {
   opacity: 0;
 }
 .portfolio-list li a:hover svg, .portfolio-list li a:hover img, .portfolio-list li a:focus svg, .portfolio-list li a:focus img, .portfolio-list li a.on svg, .portfolio-list li a.on img, .portfolio-list .po-item a:hover svg, .portfolio-list .po-item a:hover img, .portfolio-list .po-item a:focus svg, .portfolio-list .po-item a:focus img, .portfolio-list .po-item a.on svg, .portfolio-list .po-item a.on img {
-  -webkit-transform: translate3d(-50%, -50%, 0) scale(1) rotate(0.1deg);
-          transform: translate3d(-50%, -50%, 0) scale(1) rotate(0.1deg);
-  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  transition: -webkit-transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transform: translate3d(-50%, -50%, 0) scale(1) rotate(0.1deg);
   transition: transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  transition: transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  -webkit-transition-delay: 0.10s;
-          transition-delay: 0.10s;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transition-delay: 0.10s;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 .portfolio-list li a:hover path, .portfolio-list li a:hover polygon, .portfolio-list li a:hover rect, .portfolio-list li a:hover ellipse, .portfolio-list li a:hover circle, .portfolio-list li a:hover line, .portfolio-list li a:hover polyline, .portfolio-list li a:focus path, .portfolio-list li a:focus polygon, .portfolio-list li a:focus rect, .portfolio-list li a:focus ellipse, .portfolio-list li a:focus circle, .portfolio-list li a:focus line, .portfolio-list li a:focus polyline, .portfolio-list li a.on path, .portfolio-list li a.on polygon, .portfolio-list li a.on rect, .portfolio-list li a.on ellipse, .portfolio-list li a.on circle, .portfolio-list li a.on line, .portfolio-list li a.on polyline, .portfolio-list .po-item a:hover path, .portfolio-list .po-item a:hover polygon, .portfolio-list .po-item a:hover rect, .portfolio-list .po-item a:hover ellipse, .portfolio-list .po-item a:hover circle, .portfolio-list .po-item a:hover line, .portfolio-list .po-item a:hover polyline, .portfolio-list .po-item a:focus path, .portfolio-list .po-item a:focus polygon, .portfolio-list .po-item a:focus rect, .portfolio-list .po-item a:focus ellipse, .portfolio-list .po-item a:focus circle, .portfolio-list .po-item a:focus line, .portfolio-list .po-item a:focus polyline, .portfolio-list .po-item a.on path, .portfolio-list .po-item a.on polygon, .portfolio-list .po-item a.on rect, .portfolio-list .po-item a.on ellipse, .portfolio-list .po-item a.on circle, .portfolio-list .po-item a.on line, .portfolio-list .po-item a.on polyline {
-  -webkit-transition: fill 0.4s linear;
   transition: fill 0.4s linear;
-  -webkit-transition-delay: 0.25s;
-          transition-delay: 0.25s;
+  transition-delay: 0.25s;
 }
 .portfolio-list li a.on:hover, .portfolio-list li a.on:focus, .portfolio-list .po-item a.on:hover, .portfolio-list .po-item a.on:focus {
   border-color: #e5e8e8;
 }
 .portfolio-list li a.on:hover:after, .portfolio-list li a.on:focus:after, .portfolio-list .po-item a.on:hover:after, .portfolio-list .po-item a.on:focus:after {
-  -webkit-transform: scale(1, 1) rotate(0.1deg);
-          transform: scale(1, 1) rotate(0.1deg);
+  transform: scale(1, 1) rotate(0.1deg);
 }
 .portfolio-list li a.on img, .portfolio-list li a.on svg, .portfolio-list .po-item a.on img, .portfolio-list .po-item a.on svg {
-  -webkit-transform: translate3d(-50%, -50%, 0) scale(0.95) rotate(0.1deg);
-          transform: translate3d(-50%, -50%, 0) scale(0.95) rotate(0.1deg);
+  transform: translate3d(-50%, -50%, 0) scale(0.95) rotate(0.1deg);
 }
 .portfolio-list li a.on path, .portfolio-list li a.on polygon, .portfolio-list li a.on rect, .portfolio-list li a.on ellipse, .portfolio-list li a.on circle, .portfolio-list li a.on line, .portfolio-list li a.on polyline, .portfolio-list .po-item a.on path, .portfolio-list .po-item a.on polygon, .portfolio-list .po-item a.on rect, .portfolio-list .po-item a.on ellipse, .portfolio-list .po-item a.on circle, .portfolio-list .po-item a.on line, .portfolio-list .po-item a.on polyline {
-  -webkit-transition: fill 0.2s linear;
   transition: fill 0.2s linear;
 }
 .portfolio-list li a.off path, .portfolio-list li a.off polygon, .portfolio-list li a.off rect, .portfolio-list li a.off ellipse, .portfolio-list li a.off circle, .portfolio-list li a.off line, .portfolio-list li a.off polyline, .portfolio-list .po-item a.off path, .portfolio-list .po-item a.off polygon, .portfolio-list .po-item a.off rect, .portfolio-list .po-item a.off ellipse, .portfolio-list .po-item a.off circle, .portfolio-list .po-item a.off line, .portfolio-list .po-item a.off polyline {
@@ -1881,7 +1783,6 @@ select::-ms-expand {
 .portfolio-list .po-item.cta .btn-invert {
   margin-top: 15px;
   opacity: 1 !important;
-  -webkit-transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .portfolio-list .po-item a {
@@ -1897,28 +1798,20 @@ select::-ms-expand {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate3d(-50%, -50%, 0) scale(0.95) rotate(0.1deg);
-          transform: translate3d(-50%, -50%, 0) scale(0.95) rotate(0.1deg);
-  -webkit-transition: -webkit-transform 0.15s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-  transition: -webkit-transform 0.15s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transform: translate3d(-50%, -50%, 0) scale(0.95) rotate(0.1deg);
   transition: transform 0.15s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-  transition: transform 0.15s cubic-bezier(0.55, 0.085, 0.68, 0.53), -webkit-transform 0.15s cubic-bezier(0.55, 0.085, 0.68, 0.53);
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
+  transition-delay: 0s;
   z-index: 1;
 }
 .portfolio-list path, .portfolio-list polygon, .portfolio-list rect, .portfolio-list ellipse, .portfolio-list circle, .portfolio-list line, .portfolio-list polyline {
-  -webkit-transition: fill 0.3s linear;
   transition: fill 0.3s linear;
-  -webkit-transition-delay: 0s;
-          transition-delay: 0s;
+  transition-delay: 0s;
 }
 .portfolio-list .txt {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 30px;
-  -webkit-transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.45s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .portfolio-list .hover {
@@ -1928,9 +1821,7 @@ select::-ms-expand {
   left: 0;
   right: 0;
   opacity: 0;
-  -webkit-transform: translate3d(0, 100%, 0);
-          transform: translate3d(0, 100%, 0);
-  -webkit-transition: color 0.45s cubic-bezier(0.75, 0, 0.125, 1);
+  transform: translate3d(0, 100%, 0);
   transition: color 0.45s cubic-bezier(0.75, 0, 0.125, 1);
   /*img{
       display: block;
@@ -1939,28 +1830,22 @@ select::-ms-expand {
   }*/
 }
 .portfolio-list .po-item-col:first-child {
-  -webkit-transform: translate3d(0, 55px, 0);
-          transform: translate3d(0, 55px, 0);
+  transform: translate3d(0, 55px, 0);
 }
 .portfolio-list .po-item-col:nth-child(2) {
-  -webkit-transform: translate3d(0, -70px, 0);
-          transform: translate3d(0, -70px, 0);
+  transform: translate3d(0, -70px, 0);
 }
 .portfolio-list .po-item-col:nth-child(3) {
-  -webkit-transform: translate3d(0, -100px, 0);
-          transform: translate3d(0, -100px, 0);
+  transform: translate3d(0, -100px, 0);
 }
 .portfolio-list .po-item-col:nth-child(4) {
-  -webkit-transform: translate3d(0, -35px, 0);
-          transform: translate3d(0, -35px, 0);
+  transform: translate3d(0, -35px, 0);
 }
 .portfolio-list .po-item-col:nth-child(5) {
-  -webkit-transform: translate3d(0, 20px, 0);
-          transform: translate3d(0, 20px, 0);
+  transform: translate3d(0, 20px, 0);
 }
 .portfolio-list .po-item-col:nth-child(6) {
-  -webkit-transform: translate3d(0, -55px, 0);
-          transform: translate3d(0, -55px, 0);
+  transform: translate3d(0, -55px, 0);
 }
 .portfolio-list + .container {
   position: relative;
@@ -1980,20 +1865,15 @@ select::-ms-expand {
   z-index: 15;
   background: #fff;
   text-align: center;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  backface-visibility: hidden;
   transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1), -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .portfolio-filters.fixed {
   position: fixed;
   top: 97px;
 }
 .portfolio-filters.fixed.on {
-  -webkit-transform: translate3d(0, -85px, 0);
-          transform: translate3d(0, -85px, 0);
+  transform: translate3d(0, -85px, 0);
 }
 .portfolio-filters.single-on + .content-main .portfolio-list {
   margin-top: 150px;
@@ -2014,7 +1894,6 @@ select::-ms-expand {
   font-size: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  background: -webkit-linear-gradient(top, #303c3e, #4b5d60);
   background: linear-gradient(to bottom, #303c3e, #4b5d60);
   color: #fff;
 }
@@ -2185,8 +2064,7 @@ select::-ms-expand {
 
 .post-sidebar {
   margin: 0 0 50px;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .post-sidebar .title-small {
   padding: 0 0 0 16px;
@@ -2279,7 +2157,6 @@ select::-ms-expand {
   height: 0;
   padding: 0 0 74%;
   overflow: hidden;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .post-sidebar .img.off {
@@ -2342,17 +2219,14 @@ select::-ms-expand {
   position: relative;
 }
 .no-js .spotlight-post:hover > div, .is-desktop .spotlight-post:hover > div {
-  -webkit-transform: translate3d(0, 12px, 0);
-          transform: translate3d(0, 12px, 0);
+  transform: translate3d(0, 12px, 0);
 }
 .spotlight-post > div {
   padding: 20px 30px 20px 20px;
   position: relative;
   margin: -32px 0 0;
   background: #fff;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transform: translate3d(0, 0, 0);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   border: 1px solid #e5e8e8;
 }
@@ -2383,7 +2257,6 @@ select::-ms-expand {
   background: #636a6b;
 }
 .spotlight-post .content {
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .spotlight-post.off .content {
@@ -2751,10 +2624,8 @@ select::-ms-expand {
   padding: 0;
   position: relative;
   will-change: transform;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 .team.member-open .team-member {
   opacity: 0.25;
@@ -2778,6 +2649,12 @@ select::-ms-expand {
   display: block;
   box-shadow: none;
   text-decoration: none;
+}
+.team .team-member {
+  padding-bottom: 34px;
+}
+.team .social {
+  margin: -25px 0 0 0;
 }
 .team .infos, .team .name, .team .function {
   display: block;
@@ -2886,9 +2763,10 @@ select::-ms-expand {
 }
 
 .social {
+  display: block;
+  height: auto;
   margin: 8px 0 0 0;
   padding: 0;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .social:not(.social-desc) a {
@@ -2982,7 +2860,6 @@ select::-ms-expand {
   z-index: 10000;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
 }
 .wrapper-btn-glob a {
@@ -3025,8 +2902,7 @@ select::-ms-expand {
 .btn-desc > li {
   position: absolute;
   top: 50%;
-  -webkit-transform: translate3d(0, -50%, 0);
-          transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
 }
 .btn-desc > li:before {
   display: none;
@@ -3043,7 +2919,7 @@ select::-ms-expand {
   opacity: 0;
   visibility: hidden;
   text-align: center;
-  margin: 20px 0 20px 0;
+  margin: 0 0 20px 0;
   padding: 0;
 }
 .content-desc-responsive .btn-desc {
@@ -3058,10 +2934,8 @@ select::-ms-expand {
 
 .container-team {
   padding-bottom: 80px !important;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 .wrapper-interactive-blocks {
@@ -3097,16 +2971,13 @@ select::-ms-expand {
   color: #404040;
 }
 .btn.btn-left:after, .btn-invert.btn-left:after, .btn-arrow.btn-left:after, #menu-main a.btn-left:after, .next.btn-left:after, .prev.btn-left:after {
-  -webkit-transform: translate3d(0, -1px, 0) rotate(180deg);
-          transform: translate3d(0, -1px, 0) rotate(180deg);
+  transform: translate3d(0, -1px, 0) rotate(180deg);
 }
 .no-js .btn.btn-left:hover:after, .is-desktop .btn.btn-left:hover:after, .no-js .btn.btn-left:focus:after, .is-desktop .btn.btn-left:focus:after, .no-js .btn-invert.btn-left:hover:after, .is-desktop .btn-invert.btn-left:hover:after, .no-js .btn-invert.btn-left:focus:after, .is-desktop .btn-invert.btn-left:focus:after, .no-js .btn-arrow.btn-left:hover:after, .no-js #menu-main a.btn-left:hover:after, #menu-main .no-js a.btn-left:hover:after, .is-desktop .btn-arrow.btn-left:hover:after, .is-desktop #menu-main a.btn-left:hover:after, #menu-main .is-desktop a.btn-left:hover:after, .no-js .btn-arrow.btn-left:focus:after, .no-js #menu-main a.btn-left:focus:after, #menu-main .no-js a.btn-left:focus:after, .is-desktop .btn-arrow.btn-left:focus:after, .is-desktop #menu-main a.btn-left:focus:after, #menu-main .is-desktop a.btn-left:focus:after, .no-js .next.btn-left:hover:after, .is-desktop .next.btn-left:hover:after, .no-js .next.btn-left:focus:after, .is-desktop .next.btn-left:focus:after, .no-js .prev.btn-left:hover:after, .is-desktop .prev.btn-left:hover:after, .no-js .prev.btn-left:focus:after, .is-desktop .prev.btn-left:focus:after {
-  -webkit-transform: translate3d(-7px, -1px, 0) rotate(180deg);
-          transform: translate3d(-7px, -1px, 0) rotate(180deg);
+  transform: translate3d(-7px, -1px, 0) rotate(180deg);
 }
 .no-js .btn.btn-left:hover:before, .is-desktop .btn.btn-left:hover:before, .no-js .btn.btn-left:focus:before, .is-desktop .btn.btn-left:focus:before, .no-js .btn-invert.btn-left:hover:before, .is-desktop .btn-invert.btn-left:hover:before, .no-js .btn-invert.btn-left:focus:before, .is-desktop .btn-invert.btn-left:focus:before, .no-js .btn-arrow.btn-left:hover:before, .no-js #menu-main a.btn-left:hover:before, #menu-main .no-js a.btn-left:hover:before, .is-desktop .btn-arrow.btn-left:hover:before, .is-desktop #menu-main a.btn-left:hover:before, #menu-main .is-desktop a.btn-left:hover:before, .no-js .btn-arrow.btn-left:focus:before, .no-js #menu-main a.btn-left:focus:before, #menu-main .no-js a.btn-left:focus:before, .is-desktop .btn-arrow.btn-left:focus:before, .is-desktop #menu-main a.btn-left:focus:before, #menu-main .is-desktop a.btn-left:focus:before, .no-js .next.btn-left:hover:before, .is-desktop .next.btn-left:hover:before, .no-js .next.btn-left:focus:before, .is-desktop .next.btn-left:focus:before, .no-js .prev.btn-left:hover:before, .is-desktop .prev.btn-left:hover:before, .no-js .prev.btn-left:focus:before, .is-desktop .prev.btn-left:focus:before {
-  -webkit-transform: translate3d(-7px, 0, 0) scaleX(0.85);
-          transform: translate3d(-7px, 0, 0) scaleX(0.85);
+  transform: translate3d(-7px, 0, 0) scaleX(0.85);
 }
 .btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, #menu-main a:before, .btn-arrow:after, #menu-main a:after, .next:before, .next:after, .prev:before, .prev:after {
   font-family: 'icomoon' !important;
@@ -3118,12 +2989,8 @@ select::-ms-expand {
   line-height: 1;
   position: absolute;
   margin: auto;
-  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1), -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 .btn:before, .btn-invert:before, .btn-arrow:before, #menu-main a:before, .next:before, .prev:before {
   content: '\e900';
@@ -3131,8 +2998,7 @@ select::-ms-expand {
   bottom: 2px;
   right: -25px;
   font-size: 16px;
-  -webkit-transform-origin: 100% 50%;
-          transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
 }
 .btn:after, .btn-invert:after, .btn-arrow:after, #menu-main a:after, .next:after, .prev:after {
   content: '\e901';
@@ -3142,31 +3008,26 @@ select::-ms-expand {
   bottom: 5px;
 }
 .no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .no-js #menu-main a:hover:after, #menu-main .no-js a:hover:after, .is-desktop .btn-arrow:hover:after, .is-desktop #menu-main a:hover:after, #menu-main .is-desktop a:hover:after, .no-js .btn-arrow:focus:after, .no-js #menu-main a:focus:after, #menu-main .no-js a:focus:after, .is-desktop .btn-arrow:focus:after, .is-desktop #menu-main a:focus:after, #menu-main .is-desktop a:focus:after, .no-js .next:hover:after, .is-desktop .next:hover:after, .no-js .next:focus:after, .is-desktop .next:focus:after, .no-js .prev:hover:after, .is-desktop .prev:hover:after, .no-js .prev:focus:after, .is-desktop .prev:focus:after {
-  -webkit-transform: translate3d(7px, 0, 0);
-          transform: translate3d(7px, 0, 0);
+  transform: translate3d(7px, 0, 0);
 }
 .no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .no-js #menu-main a:hover:before, #menu-main .no-js a:hover:before, .is-desktop .btn-arrow:hover:before, .is-desktop #menu-main a:hover:before, #menu-main .is-desktop a:hover:before, .no-js .btn-arrow:focus:before, .no-js #menu-main a:focus:before, #menu-main .no-js a:focus:before, .is-desktop .btn-arrow:focus:before, .is-desktop #menu-main a:focus:before, #menu-main .is-desktop a:focus:before, .no-js .next:hover:before, .is-desktop .next:hover:before, .no-js .next:focus:before, .is-desktop .next:focus:before, .no-js .prev:hover:before, .is-desktop .prev:hover:before, .no-js .prev:focus:before, .is-desktop .prev:focus:before {
-  -webkit-transform: translate3d(7px, 0, 0) scaleX(0.85);
-          transform: translate3d(7px, 0, 0) scaleX(0.85);
+  transform: translate3d(7px, 0, 0) scaleX(0.85);
 }
 
 .prev:after {
   left: -28px;
   right: auto;
-  -webkit-transform: translate3d(0, -1px, 0) rotate(180deg);
-          transform: translate3d(0, -1px, 0) rotate(180deg);
+  transform: translate3d(0, -1px, 0) rotate(180deg);
 }
 .prev:before {
   right: auto;
   left: -25px;
 }
 .no-js .prev:hover:after, .is-desktop .prev:hover:after, .no-js .prev:focus:after, .is-desktop .prev:focus:after {
-  -webkit-transform: translate3d(-7px, -1px, 0) rotate(180deg);
-          transform: translate3d(-7px, -1px, 0) rotate(180deg);
+  transform: translate3d(-7px, -1px, 0) rotate(180deg);
 }
 .no-js .prev:hover:before, .is-desktop .prev:hover:before, .no-js .prev:focus:before, .is-desktop .prev:focus:before {
-  -webkit-transform: translate3d(-7px, 0, 0) scaleX(0.85);
-          transform: translate3d(-7px, 0, 0) scaleX(0.85);
+  transform: translate3d(-7px, 0, 0) scaleX(0.85);
 }
 
 .btn, .btn-invert {
@@ -3197,7 +3058,6 @@ select::-ms-expand {
 }
 .btn span, .btn-invert span {
   display: block;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .btn .after, .btn-invert .after {
@@ -3312,8 +3172,7 @@ select::-ms-expand {
   background: #fff;
 }
 .btn:hover span, .btn:focus span {
-  -webkit-transform: translate3d(0, -21px, 0);
-          transform: translate3d(0, -21px, 0);
+  transform: translate3d(0, -21px, 0);
 }
 .no-js .btn:hover, .no-js .btn:focus {
   color: #26393d;
@@ -3404,8 +3263,7 @@ select::-ms-expand {
   color: #fff;
 }
 .is-desktop .btn-invert:hover span, .is-desktop .btn-invert:focus span {
-  -webkit-transform: translate3d(0, -13px, 0);
-          transform: translate3d(0, -13px, 0);
+  transform: translate3d(0, -13px, 0);
 }
 
 .mailjet-subscribe {
@@ -3461,16 +3319,11 @@ select::-ms-expand {
   right: -38px;
   margin: auto;
   font-size: 20px;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transform: translate3d(0, 0, 0);
   transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1), -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .no-js .btn-search:hover:after, .is-desktop .btn-search:hover:after, .no-js .btn-search:focus:after, .is-desktop .btn-search:focus:after {
-  -webkit-transform: translate3d(0, 0, 0) rotate(-70deg) scale(1.1);
-          transform: translate3d(0, 0, 0) rotate(-70deg) scale(1.1);
+  transform: translate3d(0, 0, 0) rotate(-70deg) scale(1.1);
 }
 .btn-search.btn-no-text {
   width: 21px;
@@ -3542,12 +3395,8 @@ select::-ms-expand {
   text-indent: 0;
   position: absolute;
   top: 50%;
-  -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1), -webkit-transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 .btn-arrow-only:before {
   content: '\e900';
@@ -3562,12 +3411,10 @@ select::-ms-expand {
   left: 28px;
   font-size: 9px;
   margin: -4px 0 0 0;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
 }
 .btn-arrow-only.left:after {
-  -webkit-transform: rotate(-180deg);
-          transform: rotate(-180deg);
+  transform: rotate(-180deg);
   left: 15px;
   margin-top: -5px;
 }
@@ -3576,16 +3423,13 @@ select::-ms-expand {
   color: #fff;
 }
 .btn-arrow-only:hover:before, .btn-arrow-only:hover:after {
-  -webkit-transform: translate3d(7px, 0, 0);
-          transform: translate3d(7px, 0, 0);
+  transform: translate3d(7px, 0, 0);
 }
 .btn-arrow-only:hover.left:before {
-  -webkit-transform: translate3d(-7px, 0, 0);
-          transform: translate3d(-7px, 0, 0);
+  transform: translate3d(-7px, 0, 0);
 }
 .btn-arrow-only:hover.left:after {
-  -webkit-transform: translate3d(-7px, 0, 0) rotate(-180deg);
-          transform: translate3d(-7px, 0, 0) rotate(-180deg);
+  transform: translate3d(-7px, 0, 0) rotate(-180deg);
 }
 
 .btn-cross {
@@ -3631,12 +3475,10 @@ select::-ms-expand {
   background: #33a4df;
 }
 .btn-cross:before {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .btn-cross:after {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .btn-close {
@@ -3657,27 +3499,22 @@ select::-ms-expand {
   top: 50%;
   right: -34px;
   background: #fff;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .btn-close:before {
-  -webkit-transform: translate3d(0, 0, 0) rotate(45deg);
-          transform: translate3d(0, 0, 0) rotate(45deg);
+  transform: translate3d(0, 0, 0) rotate(45deg);
 }
 .btn-close:after {
-  -webkit-transform: translate3d(0, 0, 0) rotate(-45deg);
-          transform: translate3d(0, 0, 0) rotate(-45deg);
+  transform: translate3d(0, 0, 0) rotate(-45deg);
 }
 .no-js .btn-close:hover, .is-desktop .btn-close:hover, .no-js .btn-close:focus, .is-desktop .btn-close:focus {
   opacity: 0.6;
 }
 .no-js .btn-close:hover:before, .is-desktop .btn-close:hover:before, .no-js .btn-close:focus:before, .is-desktop .btn-close:focus:before {
-  -webkit-transform: translate3d(0, 0, 0) rotate(135deg) scale(1.1);
-          transform: translate3d(0, 0, 0) rotate(135deg) scale(1.1);
+  transform: translate3d(0, 0, 0) rotate(135deg) scale(1.1);
 }
 .no-js .btn-close:hover:after, .is-desktop .btn-close:hover:after, .no-js .btn-close:focus:after, .is-desktop .btn-close:focus:after {
-  -webkit-transform: translate3d(0, 0, 0) rotate(45deg) scale(1.1);
-          transform: translate3d(0, 0, 0) rotate(45deg) scale(1.1);
+  transform: translate3d(0, 0, 0) rotate(45deg) scale(1.1);
 }
 
 .btn-store, .btn-play {
@@ -3936,7 +3773,6 @@ select::-ms-expand {
 
 /* Quotes */
 .quotes {
-  background: -webkit-linear-gradient(top, #818a8c 0%, #636a6b 100%);
   background: linear-gradient(to bottom, #818a8c 0%, #636a6b 100%);
   position: relative;
   overflow: hidden;
@@ -4019,7 +3855,6 @@ select::-ms-expand {
   margin: 0;
   overflow: hidden;
   border-color: #26393d;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .theme-magazine .dropdown {
@@ -4032,8 +3867,7 @@ select::-ms-expand {
   border-color: #33a4df;
 }
 .dropdown.on li:first-child:after {
-  -webkit-transform: translate3d(0, 0, 0) rotate(-180deg);
-          transform: translate3d(0, 0, 0) rotate(-180deg);
+  transform: translate3d(0, 0, 0) rotate(-180deg);
 }
 .dropdown li {
   padding: 15px 15px 13px;
@@ -4044,7 +3878,6 @@ select::-ms-expand {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #26393d;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   cursor: pointer;
 }
@@ -4096,12 +3929,10 @@ select::-ms-expand {
   top: 16px;
   right: 10px;
   font-size: 10px;
-  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   color: #26393d;
   pointer-events: none;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   text-indent: 0;
 }
 .theme-magazine .dropdown li:first-child:after {
@@ -4121,7 +3952,6 @@ select::-ms-expand {
   color: inherit;
   text-transform: inherit;
   letter-spacing: inherit;
-  -webkit-transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .no-js .dropdown button:focus, .is-desktop .dropdown button:focus {
@@ -4214,10 +4044,12 @@ select::-ms-expand {
   .js .spotlight-posts .container {
     cursor: move;
     cursor: grab;
+    cursor: -moz-grab;
     cursor: -webkit-grab;
   }
   .js .spotlight-posts .container.grabbing {
     cursor: grabbing;
+    cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
   }
 
@@ -4233,8 +4065,7 @@ select::-ms-expand {
     bottom: 20px;
   }
   .portfolio-list .po-item a.transfered:hover > img, .portfolio-list .po-item a.transfered:focus > img, .portfolio-list .po-item a.transfered.on > img, .portfolio-list li a.transfered:hover > img, .portfolio-list li a.transfered:focus > img, .portfolio-list li a.transfered.on > img {
-    -webkit-transform: translate3d(0, -40px, 0);
-            transform: translate3d(0, -40px, 0);
+    transform: translate3d(0, -40px, 0);
   }
 
   .quote blockquote p {
@@ -4250,8 +4081,7 @@ select::-ms-expand {
     top: 30px;
   }
   .single #header.fixed.on #menu-main {
-    -webkit-transform: translate3d(0, -20px, 0);
-            transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
   }
 
   #menu-main li {
@@ -4300,8 +4130,7 @@ select::-ms-expand {
     font-size: 1.2rem;
   }
   .portfolio-list .po-item a.transfered:hover > img, .portfolio-list .po-item a.transfered:focus > img, .portfolio-list .po-item a.transfered.on > img, .portfolio-list li a.transfered:hover > img, .portfolio-list li a.transfered:focus > img, .portfolio-list li a.transfered.on > img {
-    -webkit-transform: translate3d(0, -30px, 0);
-            transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -30px, 0);
   }
   .portfolio-list .po-item.cta {
     font-size: 1.6rem;
@@ -4408,10 +4237,12 @@ select::-ms-expand {
   .js .team {
     cursor: move;
     cursor: grab;
+    cursor: -moz-grab;
     cursor: -webkit-grab;
   }
   .js .team.grabbing {
     cursor: grabbing;
+    cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
   }
   .team > li {
@@ -4628,16 +4459,13 @@ select::-ms-expand {
   }
 
   .btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, #menu-main a:before, .btn-arrow:after, #menu-main a:after {
-    -webkit-transform: translate3d(0, 0, 0) scale(0.85);
-            transform: translate3d(0, 0, 0) scale(0.85);
+    transform: translate3d(0, 0, 0) scale(0.85);
   }
   .no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .no-js #menu-main a:hover:after, #menu-main .no-js a:hover:after, .is-desktop .btn-arrow:hover:after, .is-desktop #menu-main a:hover:after, #menu-main .is-desktop a:hover:after, .no-js .btn-arrow:focus:after, .no-js #menu-main a:focus:after, #menu-main .no-js a:focus:after, .is-desktop .btn-arrow:focus:after, .is-desktop #menu-main a:focus:after, #menu-main .is-desktop a:focus:after {
-    -webkit-transform: translate3d(0, 0, 0) scale(0.85) translateX(7px);
-            transform: translate3d(0, 0, 0) scale(0.85) translateX(7px);
+    transform: translate3d(0, 0, 0) scale(0.85) translateX(7px);
   }
   .no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .no-js #menu-main a:hover:before, #menu-main .no-js a:hover:before, .is-desktop .btn-arrow:hover:before, .is-desktop #menu-main a:hover:before, #menu-main .is-desktop a:hover:before, .no-js .btn-arrow:focus:before, .no-js #menu-main a:focus:before, #menu-main .no-js a:focus:before, .is-desktop .btn-arrow:focus:before, .is-desktop #menu-main a:focus:before, #menu-main .is-desktop a:focus:before {
-    -webkit-transform: translate3d(0, 0, 0) scale(0.6, 0.85) translateX(7px);
-            transform: translate3d(0, 0, 0) scale(0.6, 0.85) translateX(7px);
+    transform: translate3d(0, 0, 0) scale(0.6, 0.85) translateX(7px);
   }
 
   .btn-invert {
@@ -4678,12 +4506,10 @@ select::-ms-expand {
     }*/
   }
   .portfolio-list .po-item-col:first-child {
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   .portfolio-list .po-item-col:nth-child(3) {
-    -webkit-transform: translate3d(0, 35px, 0);
-            transform: translate3d(0, 35px, 0);
+    transform: translate3d(0, 35px, 0);
   }
   .portfolio-list .po-item.cta {
     font-size: 2rem;
@@ -4824,20 +4650,17 @@ select::-ms-expand {
   .wrapper-interactive-blocks .interactive-block .btn.btn-left:after {
     left: auto;
     right: 17px;
-    -webkit-transform: translate3d(0, 0, 0) rotate(0);
-            transform: translate3d(0, 0, 0) rotate(0);
+    transform: translate3d(0, 0, 0) rotate(0);
   }
   .wrapper-interactive-blocks .interactive-block .btn.btn-left .after {
     right: 47px;
     left: auto;
   }
   .wrapper-interactive-blocks .interactive-block .btn.btn-left:hover:before {
-    -webkit-transform: translate3d(7px, 0, 0) scale(0.6, 0.85);
-            transform: translate3d(7px, 0, 0) scale(0.6, 0.85);
+    transform: translate3d(7px, 0, 0) scale(0.6, 0.85);
   }
   .wrapper-interactive-blocks .interactive-block .btn.btn-left:hover:after {
-    -webkit-transform: translate3d(7px, 0, 0) scale(0.85);
-            transform: translate3d(7px, 0, 0) scale(0.85);
+    transform: translate3d(7px, 0, 0) scale(0.85);
   }
 
   .post {
@@ -4914,8 +4737,7 @@ select::-ms-expand {
   #menu-responsive > div {
     position: relative;
     top: 50px;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   #menu-responsive .menu-small {
     display: block;
@@ -5097,7 +4919,6 @@ select::-ms-expand {
   }
 
   .spotlight-post {
-    -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
     transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   }
   .spotlight-post > div {
@@ -5111,8 +4932,7 @@ select::-ms-expand {
     opacity: 1;
   }
   .spotlight-post:hover > div {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   .portfolio-list .po-item.cta {
@@ -5161,8 +4981,7 @@ select::-ms-expand {
   #menu-responsive > div {
     position: relative;
     top: 50px;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
 }
 /* retina */

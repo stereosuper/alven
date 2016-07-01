@@ -36,6 +36,12 @@
 		box-shadow: none;
 		text-decoration: none;
 	}
+	.team-member{
+		padding-bottom: 34px;
+	}
+	.social{
+		margin: -25px 0 0 0;
+	}
 	.infos, .name, .function{
 		display: block;
 	}
@@ -128,6 +134,8 @@
 }
 
 .social{
+	display: block;
+	height: auto;
 	margin: 8px 0 0 0;
 	padding: 0;
 	transition: $transition;
@@ -271,7 +279,7 @@
 	opacity: 0;
 	visibility: hidden;
 	text-align: center;
-	margin: 20px 0 20px 0;
+	margin: 0 0 20px 0;
 	padding: 0;
 	.btn-desc{
 		display: none;
