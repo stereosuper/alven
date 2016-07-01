@@ -91,6 +91,27 @@
             display: none;
         }
     }
+    &.align-bottom-left{
+        h1{
+            //margin: 8vh 0;
+            margin: 16vh 0 0 0;
+            @media(max-height: 850px){
+                //margin: 6vh 0 4vh 0;
+                margin: 10vh 0 0;
+            }
+        }
+    }
+    &.align-bottom-right{
+        h1{
+            text-align: right;
+            //margin: 8vh 0 8vh 50%;
+            margin: 16vh 0 0 50%;
+            @media(max-height: 850px){
+                //margin: 6vh 0 4vh 50%;
+                margin: 10vh 0 0 50%;
+            }
+        }
+    }
     .container{
         position: relative;
         z-index: 10;

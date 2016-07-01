@@ -1422,6 +1422,23 @@ select::-ms-expand {
 .content-header.has-video .img {
   display: none;
 }
+.content-header.align-bottom-left h1 {
+  margin: 16vh 0 0 0;
+}
+@media (max-height: 850px) {
+  .content-header.align-bottom-left h1 {
+    margin: 10vh 0 0;
+  }
+}
+.content-header.align-bottom-right h1 {
+  text-align: right;
+  margin: 16vh 0 0 50%;
+}
+@media (max-height: 850px) {
+  .content-header.align-bottom-right h1 {
+    margin: 10vh 0 0 50%;
+  }
+}
 .content-header .container {
   position: relative;
   z-index: 10;
@@ -2808,6 +2825,9 @@ select::-ms-expand {
 }
 .team .social {
   margin: -25px 0 0 0;
+}
+.team .social.social-desc {
+  margin: 0;
 }
 .team .infos, .team .name, .team .function {
   display: block;
@@ -4216,6 +4236,17 @@ select::-ms-expand {
     width: 66.6666666667%;
   }
 
+  .content-header.align-bottom-right h1 {
+    margin-left: 33.3333333333%;
+  }
+}
+@media (max-width: 1420px) and (max-height: 850px) {
+  .content-header.align-bottom-right h1 {
+    margin-left: 33.3333333333%;
+  }
+}
+
+@media (max-width: 1420px) {
   .home h1 {
     width: 50%;
   }
@@ -4646,6 +4677,17 @@ select::-ms-expand {
     font-size: 3.6rem;
   }
 
+  .content-header.align-bottom-right h1 {
+    margin-left: 16.6666666667%;
+  }
+}
+@media (max-width: 767px) and (max-height: 850px) {
+  .content-header.align-bottom-right h1 {
+    margin-left: 16.6666666667%;
+  }
+}
+
+@media (max-width: 767px) {
   h2 {
     font-size: 1.8rem;
   }
@@ -4934,6 +4976,17 @@ select::-ms-expand {
     width: 100%;
   }
 
+  .content-header.align-bottom-right h1 {
+    margin-left: 0;
+  }
+}
+@media (max-width: 540px) and (max-height: 850px) {
+  .content-header.align-bottom-right h1 {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 540px) {
   blockquote {
     margin-left: 0;
     margin-right: 0;
