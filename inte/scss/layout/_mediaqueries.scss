@@ -210,6 +210,9 @@
     .section-title{
         font-size: 3.4rem;
         margin: 25px 0 6px 0;
+        .contact-us &{
+            margin-top: 40px;
+        }
     }
     time, .subtitle{
         font-size: 1.3rem;
@@ -550,6 +553,18 @@
         .after{
             left: 8px;
             right: 30px;
+        }
+    }
+
+    .section-title{
+        .contact-us &{
+            margin-top: 25px;
+        }
+    }
+
+    .home{
+        .theme-we{
+            border-bottom: 1px solid $greyBorder;
         }
     }
 
