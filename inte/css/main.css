@@ -1261,6 +1261,7 @@ select::-ms-expand {
     background: #fff; }
   .portfolio-list .txt {
     display: inline-block;
+    vertical-align: middle;
     position: relative;
     z-index: 1;
     font-family: "source-bold", "merriweather-bold", "merriweather", sans-serif; }
@@ -1330,6 +1331,8 @@ select::-ms-expand {
           .portfolio-list li.transfered a .content-transfered > span:nth-child(2), .portfolio-list .po-item.transfered a .content-transfered > span:nth-child(2) {
             padding: 0 10px;
             max-width: none; }
+          .portfolio-list li.transfered a .content-transfered > span.txt-container, .portfolio-list .po-item.transfered a .content-transfered > span.txt-container {
+            max-width: 95%; }
         .portfolio-list li.transfered a .content-transfered.no-by > span:first-child, .portfolio-list .po-item.transfered a .content-transfered.no-by > span:first-child {
           height: 70%; }
         .portfolio-list li.transfered a .content-transfered.no-by > span:last-child, .portfolio-list .po-item.transfered a .content-transfered.no-by > span:last-child {
@@ -3538,7 +3541,10 @@ select::-ms-expand {
   .related-portfolio .container-small {
     padding: 0 20px; }
   .related-portfolio .post-small {
-    width: 33.33333%; } }
+    width: 33.33333%; }
+
+  .portfolio-list .txt {
+    font-size: 0.9em; } }
 @media (max-width: 767px) {
   body {
     font-size: 1.4em; }
@@ -3759,8 +3765,8 @@ select::-ms-expand {
   .related-portfolio .post-small {
     width: 50%; }
 
-  .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
-    max-width: 70%; } }
+  .portfolio-list .txt {
+    font-size: 1.2em; } }
 @media (max-width: 540px) {
   h1 {
     width: 100%; }
@@ -3878,7 +3884,10 @@ select::-ms-expand {
     height: 280px; }
 
   .related-portfolio-list {
-    margin: 0; } }
+    margin: 0; }
+
+  .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
+    max-width: 70%; } }
 @media (max-width: 480px) {
   .home h1 {
     font-size: 3rem; }
@@ -3916,7 +3925,9 @@ select::-ms-expand {
     display: none; }
 
   .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
-    padding: 5px 0; } }
+    padding: 5px 0; }
+  .portfolio-list .txt {
+    font-size: 0.9em; } }
 @media (max-width: 420px) {
   .home h1 {
     font-size: 2.2rem;
