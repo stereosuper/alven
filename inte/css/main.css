@@ -703,6 +703,10 @@ a:active {
   opacity: 0;
 }
 
+.js #fadePage {
+  opacity: 0;
+}
+
 /* Placeholders */
 /* Grid */
 #main {
@@ -980,6 +984,8 @@ select::-ms-expand {
 #header .form-search input {
   position: absolute;
   left: 0;
+  color: #fff;
+  border-color: #fff;
 }
 #header .form-search input, #header .form-search label {
   opacity: 0;
@@ -1043,6 +1049,10 @@ select::-ms-expand {
 #header.fixed .form-search.on .btn-search:after, .no-js #header .form-search.on .btn-search:after {
   color: #404040;
 }
+#header.fixed .form-search.on input, .no-js #header .form-search.on input {
+  color: #404040;
+  border-color: #404040;
+}
 .single #header.fixed.on .post-title, .single .no-js #header.on .post-title {
   opacity: 1;
   -webkit-transform: translate3d(0, -25px, 0);
@@ -1084,7 +1094,6 @@ select::-ms-expand {
           transform: scaleX(0);
   -webkit-transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-  opacity: 0;
 }
 .theme-magazine .read-indicator {
   background: #f06850;
@@ -1094,6 +1103,9 @@ select::-ms-expand {
 }
 .theme-we .read-indicator {
   background: #33a4df;
+}
+.no-js .read-indicator {
+  display: none;
 }
 
 #logo-alven {
@@ -1961,7 +1973,7 @@ select::-ms-expand {
 
 .portfolio-filters {
   width: 100%;
-  padding: 30px 0 25px;
+  padding: 10px 0;
   border-bottom: 1px solid #ccd1d2;
   position: absolute;
   top: 0;
@@ -1980,8 +1992,8 @@ select::-ms-expand {
   top: 97px;
 }
 .portfolio-filters.fixed.on {
-  -webkit-transform: translate3d(0, -99px, 0);
-          transform: translate3d(0, -99px, 0);
+  -webkit-transform: translate3d(0, -85px, 0);
+          transform: translate3d(0, -85px, 0);
 }
 .portfolio-filters.single-on + .content-main .portfolio-list {
   margin-top: 150px;
