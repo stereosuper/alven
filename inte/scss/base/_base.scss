@@ -299,3 +299,9 @@ a{
         }
     }
 }
+
+#fadePage{
+    .js &{
+        opacity: 0;
+    }
+}

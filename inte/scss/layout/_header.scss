@@ -51,6 +51,8 @@
         input{
             position: absolute;
             left: 0;
+            color: #fff;
+            border-color: #fff;
         }
         input, label{
             opacity: 0;
@@ -117,6 +119,10 @@
                         color: $title;
                     }
                 }
+                input{
+                    color: $title;
+                    border-color: $title;
+                }
             }
         }
         &.on{
@@ -164,7 +170,9 @@
     transform-origin: 0 0;
     transform: scaleX(0);
     transition: opacity $transition;
-    opacity: 0;
+    .no-js &{
+        display: none;
+    }
 }
 
 #logo-alven{
