@@ -631,17 +631,6 @@
                 font-size: 2rem;
             }
         }
-        li, .po-item{
-            &.transfered{
-                a{
-                    .content-transfered{
-                        > span{
-                            margin: 5px 0;
-                        }
-                    }
-                }
-            }
-        }
     }
 
     .content-desc-responsive{
@@ -838,6 +827,20 @@
     .related-portfolio{
         .post-small{
             width: 50%;
+        }
+    }
+
+    .portfolio-list{
+        li, .po-item{
+            &.transfered{
+                a{
+                    .content-transfered{
+                        > span{
+                            max-width: 75%;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -1066,6 +1069,19 @@
             }
             .no-js &{
                 display: none;
+            }
+        }
+    }
+    .portfolio-list{
+        li, .po-item{
+            &.transfered{
+                a{
+                    .content-transfered{
+                        > span{
+                            padding: 5px 0;
+                        }
+                    }
+                }
             }
         }
     }
