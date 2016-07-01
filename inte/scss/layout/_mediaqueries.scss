@@ -3,6 +3,16 @@
     h1{
         width: $col*8;
     }
+    .content-header{
+        &.align-bottom-right{
+            h1{
+                margin-left: $col*4;
+                @media (max-height: 850px){
+                    margin-left: $col*4;
+                }
+            }
+        }
+    }
     .home{
         h1{
             width: 50%;
@@ -506,7 +516,16 @@
         width: $col*10;
         font-size: 3.6rem;
     }
-
+    .content-header{
+        &.align-bottom-right{
+            h1{
+                margin-left: $col*2;
+                @media (max-height: 850px){
+                    margin-left: $col*2;
+                }
+            }
+        }
+    }
     h2{
         font-size: 1.8rem;
     }
@@ -826,6 +845,16 @@
 @media (max-width: 540px){
     h1{
         width: 100%;
+    }
+    .content-header{
+        &.align-bottom-right{
+            h1{
+                margin-left: 0;
+                @media (max-height: 850px){
+                    margin-left: 0;
+                }
+            }
+        }
     }
 
     blockquote{
