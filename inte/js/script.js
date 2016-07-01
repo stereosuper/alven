@@ -82,7 +82,7 @@ $(function(){
             }*/
         }
 
-        if(portfolioFilters.length){
+        if(portfolioFilters.length && windowHeight > 700 && windowWidth > 767){
             var triggerTop = portfolioFiltersTop - headerHeight + 200;
             if(!portfolioFilters.hasClass('single-on')){
                 myScroll > portfolioFiltersTop - headerHeight ? portfolioFilters.addClass('fixed') : portfolioFilters.removeClass('fixed');

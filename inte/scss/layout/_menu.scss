@@ -49,15 +49,7 @@
     font-size: 1.2rem;
     font-family: $source;
     text-align: center;
-    &:before{
-        content: '';
-        display: block;
-        width: $col*6;
-        height: 1px;
-        margin: 20px auto;
-        background: $txt;
-        opacity: 0.4;
-    }
+    color: #fff;
     ul{
         padding: 0;
         margin: 0;
