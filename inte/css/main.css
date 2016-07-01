@@ -4364,6 +4364,9 @@ select::-ms-expand {
     font-size: 3.4rem;
     margin: 25px 0 6px 0;
   }
+  .contact-us .section-title {
+    margin-top: 40px;
+  }
 
   time, .subtitle {
     font-size: 1.3rem;
@@ -4670,6 +4673,14 @@ select::-ms-expand {
   .btn-invert .after {
     left: 8px;
     right: 30px;
+  }
+
+  .contact-us .section-title {
+    margin-top: 25px;
+  }
+
+  .home .theme-we {
+    border-bottom: 1px solid #e5e8e8;
   }
 
   .spotlight-post h4 {
