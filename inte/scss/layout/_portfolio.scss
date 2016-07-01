@@ -385,7 +385,13 @@
     .dropdown{
         display: inline-block;
         vertical-align: top;
-        margin: 0 10px;
+        margin: 10px;
+        > li{
+            &:first-child{
+                text-indent: 0;
+                padding: 15px 26px 13px 15px;
+            }
+        }
     }
 }
 
