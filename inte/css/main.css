@@ -2130,6 +2130,8 @@ select::-ms-expand {
     padding-bottom: 34px; }
   .team .social {
     margin: -25px 0 0 0; }
+    .team .social.social-desc {
+      margin: 0; }
   .team .infos, .team .name, .team .function {
     display: block; }
   .team .infos {
