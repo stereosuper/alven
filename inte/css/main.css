@@ -1569,15 +1569,7 @@ select::-ms-expand {
   font-size: 1.2rem;
   font-family: "source", "merriweather", sans-serif;
   text-align: center;
-}
-.menu-secondary:before {
-  content: '';
-  display: block;
-  width: 50%;
-  height: 1px;
-  margin: 20px auto;
-  background: #636a6b;
-  opacity: 0.4;
+  color: #fff;
 }
 .menu-secondary ul {
   padding: 0;
@@ -2626,30 +2618,46 @@ select::-ms-expand {
   top: -7px;
 }
 
-.calendar {
+.calendar, .cat-default {
   width: 63px;
   height: 75px;
   border: 3px solid #fff;
-  border-top: 20px solid #fff;
 }
-.calendar:before, .calendar:after {
+.calendar:before, .calendar:after, .cat-default:before, .cat-default:after {
   content: '';
   position: absolute;
   width: 0;
   height: 0;
   border-style: solid;
 }
-.calendar:after {
+.calendar:after, .cat-default:after {
   bottom: -5px;
   right: -5px;
   border-width: 0 0 19px 19px;
   border-color: transparent transparent #636a6b transparent;
 }
-.calendar:before {
+.calendar:before, .cat-default:before {
   bottom: -3px;
   right: -3px;
   border-width: 15px 15px 0 0;
   border-color: #fff transparent transparent transparent;
+}
+
+.cat-default div {
+  margin: 15px 0;
+}
+.cat-default div:before, .cat-default div:after {
+  content: '';
+  display: block;
+  margin: 7px auto 0;
+  width: 70%;
+  height: 12px;
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+}
+
+.calendar {
+  border-top: 20px solid #fff;
 }
 .calendar .month {
   position: absolute;
@@ -4685,7 +4693,6 @@ select::-ms-expand {
     /*&:before{
         height: 18%;
     }*/
-    margin-top: 180px;
   }
   .portfolio-list .po-item-col {
     width: 33.3333333333%;
@@ -5061,6 +5068,9 @@ select::-ms-expand {
     font-size: 1.1rem;
   }
 
+  .portfolio-list {
+    margin: 280px 0 0;
+  }
   .portfolio-list li, .portfolio-list .po-item {
     font-size: 1rem;
   }

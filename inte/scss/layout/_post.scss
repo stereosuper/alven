@@ -360,11 +360,10 @@
     }
 }
 
-.calendar{
+.calendar, .cat-default{
     width: 63px;
     height: 75px;
     border: 3px solid #fff;
-    border-top: 20px solid #fff;
     &:before, &:after{
         content: '';
         position: absolute;
@@ -384,6 +383,25 @@
         border-width: 15px 15px 0 0;
         border-color: #fff transparent transparent transparent;
     }
+}
+
+.cat-default{
+    div{
+        margin: 15px 0;
+        &:before, &:after{
+            content: '';
+            display: block;
+            margin: 7px auto 0;
+            width: 70%;
+            height: 12px;
+            border-top: 3px solid #fff;
+            border-bottom: 3px solid #fff;
+        }
+    }
+}
+
+.calendar{
+    border-top: 20px solid #fff;
     .month{
         position: absolute;
         top: -18px;

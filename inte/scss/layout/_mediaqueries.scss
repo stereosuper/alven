@@ -579,7 +579,6 @@
         /*&:before{
             height: 18%;
         }*/
-        margin-top: 180px;
         .po-item-col{
             width: $col*4;
             &:first-child{
@@ -994,6 +993,7 @@
         }
     }
     .portfolio-list{
+        margin: 280px 0 0;
         li, .po-item{
             font-size: 1rem;
         }
