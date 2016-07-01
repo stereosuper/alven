@@ -21,7 +21,7 @@
                         <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search'>
                             <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
                             <label for='search'>type some keywords</label>
-                            <button type='submit' class='btn-search'>Explore</button>
+                            <button type='submit' class='btn-search btn-no-text'>Explore</button>
                         </form>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                                 <?php $specialCat = array_search(get_the_category()[0]->term_id, $specialCats); ?>
                                 <div class='img col-4'>
                                     <?php
-                                        if($specialCat){ ?>
+                                        if($specialCat > -1){ ?>
                                             <div class='special-cat'>
                                                 <?php if(get_the_category()[0]->slug === 'jobs'){ ?>
                                                     <div class='cat-job'>Job</div>

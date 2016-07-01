@@ -5,6 +5,9 @@
                     <?php dynamic_sidebar( 'menu-responsive' ); ?>
                 </div>
             </div>
+            <div class='menu-secondary'>
+                <?php wp_nav_menu(array('theme_location' => 'secondary', 'container' => null, 'menu_id' => '', 'menu_class' => '')); ?>
+            </div>
         </div>
     </footer>
 

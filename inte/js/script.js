@@ -782,7 +782,9 @@ $(function(){
     // add class to label when input is filled
     function setLabelInput(){
         var thisInput = $(this);
-        thisInput.val() ? thisInput.addClass('filled') : thisInput.removeClass('filled');
+        if(!thisInput.is('[type=submit]')){
+            thisInput.val() ? thisInput.addClass('filled') : thisInput.removeClass('filled');
+        }
     }
 
 
