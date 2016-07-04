@@ -1159,17 +1159,6 @@ $(function(){
             }
         }
 
-        if(team.length){
-            if(team.hasClass('member-open')){
-                liTeamOpen = $('.team.member-open > li.open');
-                descOpen = $('.desc', liTeamOpen);
-                heightDescOpen = descOpen.outerHeight();
-                TweenMax.set(liTeamOpen, {paddingBottom: heightDescOpen+'px', ease:Cubic.easeInOut});
-            }
-            teamPosition();
-            updateBtnGlob();
-        }
-
         if(windowWidthOnReady !== windowWidth){
             // Le resize se fait au moins sur la largeur, p-e sur la largeur et la hauteur
             if(team.length){
@@ -1178,7 +1167,14 @@ $(function(){
                     TweenMax.set($('.team.member-open > li.open'), {className:'-=open', clearProps:'all'});
                     TweenMax.set($('.content-desc-responsive'), {clearProps:'all'});
                     TweenMax.set(team, {className:'-=member-open'});
+
+                    liTeamOpen = $('.team.member-open > li.open');
+                    descOpen = $('.desc', liTeamOpen);
+                    heightDescOpen = descOpen.outerHeight();
+                    TweenMax.set(liTeamOpen, {paddingBottom: heightDescOpen+'px', ease:Cubic.easeInOut});
                 }
+                teamPosition();
+                updateBtnGlob();
             }
         }
     });
@@ -1215,6 +1211,10 @@ $(window).on('load', function(){
         galleries.each(function(){
             setGallery($(this));
         });
+    }
+
+    if(team.length){
+        teamPosition();
     }
 });
 
