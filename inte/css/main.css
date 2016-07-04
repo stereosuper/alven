@@ -3981,7 +3981,7 @@ select::-ms-expand {
 
 /* Filters */
 .filters {
-  margin-top: 70px !important;
+  margin-top: -50px !important;
   margin-bottom: -50px !important;
   text-align: center;
 }
@@ -4201,6 +4201,19 @@ select::-ms-expand {
 }
 .no-js .dropdown button:focus, .is-desktop .dropdown button:focus {
   opacity: 0.6;
+}
+
+/* Gallery */
+.gallery {
+  margin: 0 -10px;
+}
+.gallery img {
+  display: inline-block;
+  margin: 10px;
+}
+.js .gallery img {
+  height: 350px;
+  width: auto;
 }
 
 /* Home */
