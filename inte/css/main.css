@@ -3957,7 +3957,19 @@ select::-ms-expand {
   .portfolio-list li.transfered a .content-transfered > span, .portfolio-list .po-item.transfered a .content-transfered > span {
     padding: 5px 0; }
   .portfolio-list .txt {
-    font-size: 0.9em; } }
+    font-size: 0.9em; }
+
+  .filters {
+    margin-bottom: -25px !important; }
+
+  .form-search {
+    margin: 20px 0; }
+
+  .portfolio-filters {
+    padding-top: 0; }
+
+  .portfolio-header {
+    padding-top: 270px; } }
 @media (max-width: 420px) {
   .home h1 {
     font-size: 2.2rem;
@@ -4018,7 +4030,31 @@ select::-ms-expand {
 
 @media (max-height: 850px) {
   .post-meta-header .share {
-    margin: 3em 0 0; } }
+    margin: 3em 0 0; }
+
+  .section-title {
+    margin-top: 1em; }
+
+  .section-header {
+    margin-bottom: 30px; }
+
+  .portfolio-list {
+    margin-top: 200px; }
+
+  .filters {
+    margin-top: 30px !important; } }
+@media (max-height: 850px) and (max-width: 1150px) {
+  .filters {
+    margin-top: 0 !important; } }
+@media (max-height: 850px) and (max-width: 979px) {
+  .section-title {
+    margin-top: 25px; } }
+@media (max-height: 850px) and (max-width: 480px) {
+  .section-title {
+    margin-top: 25px; }
+
+  .filters {
+    margin-top: -20px !important; } }
 @media (max-height: 610px) {
   #menu-responsive > div {
     position: relative;
