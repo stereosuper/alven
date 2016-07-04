@@ -9,13 +9,16 @@
     text-transform: uppercase;
     color: $title;
     &.btn-left{
+        &:before{
+            transform-origin: 0% 50%;
+        }
         &:after{
-            transform: translate3d(0, -1px, 0) rotate(180deg);
+            content: '\e909';
         }
         &:hover, &:focus{
             .no-js &, .is-desktop &{
                 &:after{
-                    transform: translate3d(-7px, -1px, 0) rotate(180deg);
+                    transform: translate3d(-7px, 0, 0);
                 }
                 &:before{
                     transform: translate3d(-7px, 0, 0) scaleX(0.85);
@@ -32,19 +35,19 @@
         transform: translate3d(0, 0, 0);
     }
     &:before{
-        content: '\e900';
-        height: 16px;
-        bottom: 2px;
+        content: '\e908';
+        font-size: 10px;
+        height: 10px;
+        bottom: 4px;
         right: -25px;
-        font-size: 16px;
         transform-origin: 100% 50%;
     }
     &:after{
-        content: '\e901';
-        height: 9px;
-        font-size: 9px;
-        right: -28px;
-        bottom: 5px;
+        content: '\e907';
+        height: 10px;
+        font-size: 10px;
+        right: -26px;
+        bottom: 4px;
     }
     &:hover, &:focus{
         .no-js &, .is-desktop &{
@@ -95,7 +98,7 @@
         z-index: 1;
     }
     &:after{
-        top: 1px;
+        top: 0;
         bottom: 0;
     }
     span{
@@ -139,7 +142,7 @@
         }
         &:after{
             right: auto;
-            left: 17px;
+            left: 19px;
         }
         .after{
             right: auto;
@@ -153,7 +156,7 @@
         right: 20px;
     }
     &:after{
-        right: 17px;
+        right: 19px;
     }
     .before{
         color: $greyBlue;
@@ -190,7 +193,7 @@
         right: 10px;
     }
     &:after{
-        right: 7px;
+        right: 9px;
     }
     .before{
         @include themeColor;

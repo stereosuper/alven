@@ -243,6 +243,15 @@ hr {
   text-transform: none;
   line-height: 1; }
 
+.icon-arrow-tip-left-new::before {
+  content: ""; }
+
+.icon-arrow-tip-new::before {
+  content: ""; }
+
+.icon-arrow-body-new::before {
+  content: ""; }
+
 .icon-arrow-down::before {
   content: ""; }
 
@@ -1003,7 +1012,7 @@ select::-ms-expand {
       #menu-main li > a:after {
         bottom: 2px; }
       #menu-main li > a:before {
-        bottom: -1px; }
+        bottom: 2px; }
 
 /* Footer */
 #footer {
@@ -2441,10 +2450,12 @@ select::-ms-expand {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #404040; }
+  .btn.btn-left:before, .btn-invert.btn-left:before, .btn-arrow.btn-left:before, #menu-main a.btn-left:before, .next.btn-left:before, .prev.btn-left:before {
+    transform-origin: 0% 50%; }
   .btn.btn-left:after, .btn-invert.btn-left:after, .btn-arrow.btn-left:after, #menu-main a.btn-left:after, .next.btn-left:after, .prev.btn-left:after {
-    transform: translate3d(0, -1px, 0) rotate(180deg); }
+    content: '\e909'; }
   .no-js .btn.btn-left:hover:after, .is-desktop .btn.btn-left:hover:after, .no-js .btn.btn-left:focus:after, .is-desktop .btn.btn-left:focus:after, .no-js .btn-invert.btn-left:hover:after, .is-desktop .btn-invert.btn-left:hover:after, .no-js .btn-invert.btn-left:focus:after, .is-desktop .btn-invert.btn-left:focus:after, .no-js .btn-arrow.btn-left:hover:after, .no-js #menu-main a.btn-left:hover:after, #menu-main .no-js a.btn-left:hover:after, .is-desktop .btn-arrow.btn-left:hover:after, .is-desktop #menu-main a.btn-left:hover:after, #menu-main .is-desktop a.btn-left:hover:after, .no-js .btn-arrow.btn-left:focus:after, .no-js #menu-main a.btn-left:focus:after, #menu-main .no-js a.btn-left:focus:after, .is-desktop .btn-arrow.btn-left:focus:after, .is-desktop #menu-main a.btn-left:focus:after, #menu-main .is-desktop a.btn-left:focus:after, .no-js .next.btn-left:hover:after, .is-desktop .next.btn-left:hover:after, .no-js .next.btn-left:focus:after, .is-desktop .next.btn-left:focus:after, .no-js .prev.btn-left:hover:after, .is-desktop .prev.btn-left:hover:after, .no-js .prev.btn-left:focus:after, .is-desktop .prev.btn-left:focus:after {
-    transform: translate3d(-7px, -1px, 0) rotate(180deg); }
+    transform: translate3d(-7px, 0, 0); }
   .no-js .btn.btn-left:hover:before, .is-desktop .btn.btn-left:hover:before, .no-js .btn.btn-left:focus:before, .is-desktop .btn.btn-left:focus:before, .no-js .btn-invert.btn-left:hover:before, .is-desktop .btn-invert.btn-left:hover:before, .no-js .btn-invert.btn-left:focus:before, .is-desktop .btn-invert.btn-left:focus:before, .no-js .btn-arrow.btn-left:hover:before, .no-js #menu-main a.btn-left:hover:before, #menu-main .no-js a.btn-left:hover:before, .is-desktop .btn-arrow.btn-left:hover:before, .is-desktop #menu-main a.btn-left:hover:before, #menu-main .is-desktop a.btn-left:hover:before, .no-js .btn-arrow.btn-left:focus:before, .no-js #menu-main a.btn-left:focus:before, #menu-main .no-js a.btn-left:focus:before, .is-desktop .btn-arrow.btn-left:focus:before, .is-desktop #menu-main a.btn-left:focus:before, #menu-main .is-desktop a.btn-left:focus:before, .no-js .next.btn-left:hover:before, .is-desktop .next.btn-left:hover:before, .no-js .next.btn-left:focus:before, .is-desktop .next.btn-left:focus:before, .no-js .prev.btn-left:hover:before, .is-desktop .prev.btn-left:hover:before, .no-js .prev.btn-left:focus:before, .is-desktop .prev.btn-left:focus:before {
     transform: translate3d(-7px, 0, 0) scaleX(0.85); }
   .btn:before, .btn:after, .btn-invert:before, .btn-invert:after, .btn-arrow:before, #menu-main a:before, .btn-arrow:after, #menu-main a:after, .next:before, .next:after, .prev:before, .prev:after {
@@ -2460,18 +2471,18 @@ select::-ms-expand {
     transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
     transform: translate3d(0, 0, 0); }
   .btn:before, .btn-invert:before, .btn-arrow:before, #menu-main a:before, .next:before, .prev:before {
-    content: '\e900';
-    height: 16px;
-    bottom: 2px;
+    content: '\e908';
+    font-size: 10px;
+    height: 10px;
+    bottom: 4px;
     right: -25px;
-    font-size: 16px;
     transform-origin: 100% 50%; }
   .btn:after, .btn-invert:after, .btn-arrow:after, #menu-main a:after, .next:after, .prev:after {
-    content: '\e901';
-    height: 9px;
-    font-size: 9px;
-    right: -28px;
-    bottom: 5px; }
+    content: '\e907';
+    height: 10px;
+    font-size: 10px;
+    right: -26px;
+    bottom: 4px; }
   .no-js .btn:hover:after, .is-desktop .btn:hover:after, .no-js .btn:focus:after, .is-desktop .btn:focus:after, .no-js .btn-invert:hover:after, .is-desktop .btn-invert:hover:after, .no-js .btn-invert:focus:after, .is-desktop .btn-invert:focus:after, .no-js .btn-arrow:hover:after, .no-js #menu-main a:hover:after, #menu-main .no-js a:hover:after, .is-desktop .btn-arrow:hover:after, .is-desktop #menu-main a:hover:after, #menu-main .is-desktop a:hover:after, .no-js .btn-arrow:focus:after, .no-js #menu-main a:focus:after, #menu-main .no-js a:focus:after, .is-desktop .btn-arrow:focus:after, .is-desktop #menu-main a:focus:after, #menu-main .is-desktop a:focus:after, .no-js .next:hover:after, .is-desktop .next:hover:after, .no-js .next:focus:after, .is-desktop .next:focus:after, .no-js .prev:hover:after, .is-desktop .prev:hover:after, .no-js .prev:focus:after, .is-desktop .prev:focus:after {
     transform: translate3d(7px, 0, 0); }
   .no-js .btn:hover:before, .is-desktop .btn:hover:before, .no-js .btn:focus:before, .is-desktop .btn:focus:before, .no-js .btn-invert:hover:before, .is-desktop .btn-invert:hover:before, .no-js .btn-invert:focus:before, .is-desktop .btn-invert:focus:before, .no-js .btn-arrow:hover:before, .no-js #menu-main a:hover:before, #menu-main .no-js a:hover:before, .is-desktop .btn-arrow:hover:before, .is-desktop #menu-main a:hover:before, #menu-main .is-desktop a:hover:before, .no-js .btn-arrow:focus:before, .no-js #menu-main a:focus:before, #menu-main .no-js a:focus:before, .is-desktop .btn-arrow:focus:before, .is-desktop #menu-main a:focus:before, #menu-main .is-desktop a:focus:before, .no-js .next:hover:before, .is-desktop .next:hover:before, .no-js .next:focus:before, .is-desktop .next:focus:before, .no-js .prev:hover:before, .is-desktop .prev:hover:before, .no-js .prev:focus:before, .is-desktop .prev:focus:before {
@@ -2507,7 +2518,7 @@ select::-ms-expand {
     bottom: 0;
     z-index: 1; }
   .btn:after, .btn-invert:after {
-    top: 1px;
+    top: 0;
     bottom: 0; }
   .btn span, .btn-invert span {
     display: block;
@@ -2550,7 +2561,7 @@ select::-ms-expand {
       left: 20px; }
     .btn.btn-left:after {
       right: auto;
-      left: 17px; }
+      left: 19px; }
     .btn.btn-left .after {
       right: auto;
       left: 47px; }
@@ -2559,7 +2570,7 @@ select::-ms-expand {
   .btn:before {
     right: 20px; }
   .btn:after {
-    right: 17px; }
+    right: 19px; }
   .btn .before {
     color: #26393d; }
     .theme-magazine .btn .before, .theme-portfolio .btn .before, .theme-we .btn .before {
@@ -2609,7 +2620,7 @@ select::-ms-expand {
   .btn-invert:before {
     right: 10px; }
   .btn-invert:after {
-    right: 7px; }
+    right: 9px; }
   .btn-invert .before {
     color: #26393d; }
     .theme-magazine .btn-invert .before {
@@ -3206,16 +3217,13 @@ select::-ms-expand {
 
 /* Gallery */
 .gallery {
-  margin: 0 -10px;
-}
-.gallery img {
-  display: inline-block;
-  margin: 10px;
-}
-.js .gallery img {
-  height: 350px;
-  width: auto;
-}
+  margin: 0 -10px; }
+  .gallery img {
+    display: inline-block;
+    margin: 10px; }
+  .js .gallery img {
+    height: 350px;
+    width: auto; }
 
 /* Home */
 .home #main {
