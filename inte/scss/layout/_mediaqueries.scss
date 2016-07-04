@@ -856,6 +856,20 @@
             font-size: 1.2em;
         }
     }
+
+    .portfolio-header{
+        .header-block-term{
+            min-height: auto;
+            margin-bottom: 30px;
+        }
+        .header-block-history, .header-block-keywords{
+            min-height: auto;
+            margin-bottom: 30px;
+        }
+        .header-block-btn{
+            min-height: auto;
+        }
+    }
 }
 
 @media (max-width: 540px){
