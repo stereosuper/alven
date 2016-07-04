@@ -1582,10 +1582,10 @@ select::-ms-expand {
     margin: 0 0 10px;
     color: #586c70; }
   .portfolio-header .header-block-term {
-    min-height: 105px;
+    min-height: 50px;
     margin: 10px 0 0; }
   .portfolio-header .header-block-history, .portfolio-header .header-block-keywords {
-    min-height: 160px; }
+    min-height: 215px; }
   .portfolio-header .header-block-keywords {
     margin: 110px 0 0;
     font-family: "merriweather-italic", "merriweather", sans-serif;
@@ -3796,7 +3796,16 @@ select::-ms-expand {
     width: 50%; }
 
   .portfolio-list .txt {
-    font-size: 1.2em; } }
+    font-size: 1.2em; }
+
+  .portfolio-header .header-block-term {
+    min-height: auto;
+    margin-bottom: 30px; }
+  .portfolio-header .header-block-history, .portfolio-header .header-block-keywords {
+    min-height: auto;
+    margin-bottom: 30px; }
+  .portfolio-header .header-block-btn {
+    min-height: auto; } }
 @media (max-width: 540px) {
   h1 {
     width: 100%; }
