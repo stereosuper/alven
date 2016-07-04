@@ -2,14 +2,34 @@
 
 .gallery{
     margin: 0 1*-$innerGutter;
-    img{
+    div{
         display: inline-block;
+        vertical-align: top;
+        transition: $transition;
+        &.off{
+            opacity: 0.5;
+        }
+    }
+    img{
+        display: block;
+        width: auto;
+        height: 100%;
         margin: $innerGutter;
     }
     .js &{
-        img{
+        width: 10000px;
+        cursor: move;
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+        &.grabbing{
+            cursor: grabbing;
+            cursor: -moz-grabbing;
+            cursor: -webkit-grabbing;
+        }
+        div{
             height: 350px;
-            width: auto;
+            max-height: 60vh;
         }
     }
 }

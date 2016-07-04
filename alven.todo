@@ -1,14 +1,14 @@
  WP:
    ☐ gallery wp (drag n drop)
-   ☐ sitemap
-   ☐ 404
-   ☐ calage cover + title
-   ☐ search
-   ☐ contact
+   ✔ sitemap @done (16-07-01 17:14)
+   ✔ 404 @done (16-07-01 17:14)
+   ✔ calage cover + title @done (16-07-01 17:14)
+   ✔ search @done (16-07-01 17:14)
+   ✔ contact @done (16-07-01 17:14)
    ✔ portfolio ajax + responsive startup @done (16-06-29 14:30)
    ✔ team @done (16-06-30 15:20)
    ✔ home @done (16-06-30 15:20)
-   ☐ load
+   ✔ load @done (16-07-01 17:14)
    ✔ special cats visual @done (16-06-30 15:20)
    ✔ share links single.php @done (16-06-24 10:46)
    ✔ suppr post medium pour enlever le publish on medium @done (16-06-24 11:56)
@@ -19,7 +19,7 @@
    ☐ favicon
    ☐ no-js
    ☐ robots.txt
-   ☐ opt img
+   ✔ opt img @done (16-07-01 17:16)
    ☐ print
    ☐ mixin cross a repercuter
    ☐ will-change
