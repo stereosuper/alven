@@ -1,9 +1,53 @@
 'use strict';
 
-// globale car utilisée dans ajax.js
+// globales car utilisée dans ajax.js
 function setBtn(btn){
     var txt = btn.html();
     return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
+}
+
+function setGallery(gallery){
+    var imgs = gallery.find('div'), width = 0,
+        container = gallery.closest('.container-small').length ? gallery.closest('.container-small') : gallery.closest('.container');
+
+    function detectVisibleImgs(){
+        if($(window).width() > 767){
+            imgs.each(function(){
+                var imgWidth = $(this).width(), imgPos = $(this).offset().left + imgWidth;
+                imgPos > $(window).width() || imgPos < imgWidth ? $(this).addClass('off') : $(this).removeClass('off');
+            });
+        }else{
+            imgs.removeClass('off')
+        }
+    }
+
+    gallery.imagesLoaded().always(function(){
+        imgs.each(function(){ width += Math.ceil($(this).width()); });
+        gallery.width(width);
+
+        Draggable.create( gallery, {
+            type: 'x',
+            bounds: gallery.closest('.container-small'),
+            cursor: 'grab',
+            throwProps: true,
+            edgeResistance: 0.9,
+            /*snap: {
+                x: function(endValue){
+                    return Math.round(endValue / gridWidth) * gridWidth;
+                }
+            },*/
+            onDrag: detectVisibleImgs,
+            onDragStart: function(){
+                gallery.addClass('grabbing');
+            },
+            onDragEnd: function(){
+                gallery.removeClass('grabbing');
+            },
+            onThrowComplete: detectVisibleImgs
+        } );
+
+        detectVisibleImgs();
+    });
 }
 
 $(function(){
@@ -96,9 +140,7 @@ $(function(){
 
         if(readIndicator.length && (body.hasClass('single-post') || body.hasClass('page-template-default'))){
             var readingPercent = (myScroll-mainContent.offset().top)/(mainContent.innerHeight()-windowHeight);
-            if(myScroll > mainContent.offset().top){
-                TweenMax.set(readIndicator, {scaleX: readingPercent});
-            }
+            TweenMax.set(readIndicator, {scaleX: readingPercent});
         }
     }
 
@@ -144,7 +186,7 @@ $(function(){
                     bounds: spotlightPost,
                     cursor: 'grab',
                     throwProps: true,
-                    edgeResistance:0.9,
+                    edgeResistance: 0.9,
                     snap: {
                         x: function(endValue){
                             return Math.round(endValue / gridWidth) * gridWidth;
@@ -797,6 +839,7 @@ $(function(){
 
 
 
+
     isMobile.any ? htmlTag.addClass('is-mobile') : htmlTag.addClass('is-desktop');
 
     setHeaderScroll(myScroll, scrollDir);
@@ -949,6 +992,7 @@ $(function(){
         });
     }
 
+
     // smooth scroll
     body.on('click', '.scroll-anchor', function(e){
         e.preventDefault();
@@ -958,13 +1002,19 @@ $(function(){
 
     // fade page effect
     body.on('click', '.fade-page-link', function(e){
-        if(!$(this).hasClass('ajax-load')){
-            e.preventDefault();
-            var href = $(this).attr('href');
-            TweenMax.to(fadePage, 0.2, {opacity: 0, onComplete: function(){
-                window.location.href = href;
-            }});
+        if( $(this).hasClass('ajax-load') ){ // le lien est externe
+            return;
         }
+
+        if( e.ctrlKey || e.shiftKey || e.metaKey || (e.button && e.button == 1) ){ // on ouvre la page dans un nouel onlget en utlisant ctrl par ex
+            return;
+        }
+
+        var href = $(this).attr('href');
+        e.preventDefault();
+        TweenMax.to(fadePage, 0.2, {opacity: 0, onComplete: function(){
+            window.location.href = href;
+        }});
     });
 
 
@@ -1136,11 +1186,10 @@ $(function(){
 });
 
 $(window).on('load', function(){
-    var body = $('body');
     var main = $('#main');
     var contentHeader = $('#contentHeader');
     var fadePage = $('#fadePage');
-    //var team = $('.team');
+    var galleries = $('.gallery');
 
     function animTxt(splitText){
         splitText.split({type:'words'});
@@ -1160,6 +1209,12 @@ $(window).on('load', function(){
 
     if(fadePage.length){
         TweenMax.to(fadePage, 0.2, {opacity: 1});
+    }
+
+    if(galleries.length){
+        galleries.each(function(){
+            setGallery($(this));
+        });
     }
 });
 

@@ -301,6 +301,7 @@ a{
 }
 
 #fadePage{
+    overflow: hidden;
     .js &{
         opacity: 0;
     }

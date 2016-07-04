@@ -46,11 +46,17 @@ $(function(){
                 });
             }
 
+            if($ajaxContainer.find('.gallery').length){
+                $ajaxContainer.find('.gallery').each(function(){
+                    setGallery($(this));
+                });
+            }
+
             if($ajaxDisappear.length){
                 $ajaxDisappear.slideUp(300);
             }
 
-            if($('#portfolioFilters').length){
+            if($('#portfolioFilters').length && $(window).height() > 700 && $(window).width() > 767){
                 $('#portfolioFilters').addClass('fixed single-on');
             }
 
