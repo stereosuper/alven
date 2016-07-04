@@ -1,0 +1,15 @@
+/* Gallery */
+
+.gallery{
+    margin: 0 1*-$innerGutter;
+    img{
+        display: inline-block;
+        margin: $innerGutter;
+    }
+    .js &{
+        img{
+            height: 350px;
+            width: auto;
+        }
+    }
+}
