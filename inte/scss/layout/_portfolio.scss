@@ -222,12 +222,16 @@
                 backface-visibility: hidden;
                 transform-style: preserve-3d;
             }
-            &:hover, &:focus, &.on{
-                opacity: 1;
+            &:hover, &:focus{
                 border-color: #34b6b8;
-                transition: border-color 0s cubic-bezier(0.420, 0.000, 0.580, 1.000);
                 &:after{
                     transform: scale(0.96, 0.94) rotate(0.1deg);
+                }
+            }
+            &:hover, &:focus, &.on{
+                opacity: 1;
+                transition: border-color 0s cubic-bezier(0.420, 0.000, 0.580, 1.000);
+                &:after{
                     transition: transform 0.65s cubic-bezier(0.000, 0.855, 0.345, 1.000);
                     transition-delay: 0s;
                 }
