@@ -4229,6 +4229,9 @@ select::-ms-expand {
   height: 100%;
   margin: 10px;
 }
+.gallery a {
+  cursor: default;
+}
 .js .gallery {
   width: 10000px;
   cursor: move;
@@ -5054,6 +5057,32 @@ select::-ms-expand {
   }
   .portfolio-header .header-block-btn {
     min-height: auto;
+  }
+
+  .gallery {
+    margin: 0;
+  }
+  .js .gallery {
+    width: 100%;
+    cursor: auto;
+  }
+  .js .gallery div {
+    height: auto;
+    max-height: none;
+  }
+  .gallery a {
+    cusor: pointer;
+  }
+  .gallery img {
+    height: auto;
+    max-width: 100%;
+    margin: 20px 0;
+  }
+  .gallery div {
+    display: block;
+  }
+  .gallery div.off {
+    opacity: 1;
   }
 }
 @media (max-width: 540px) {

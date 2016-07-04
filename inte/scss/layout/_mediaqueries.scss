@@ -870,6 +870,32 @@
             min-height: auto;
         }
     }
+
+    .gallery{
+        margin: 0;
+        .js &{
+            width: 100%;
+            cursor: auto;
+            div{
+                height: auto;
+                max-height: none;
+            }
+        }
+        a{
+            cusor: pointer;
+        }
+        img{
+            height: auto;
+            max-width: 100%;
+            margin: $outterGutter 0;
+        }
+        div{
+            display: block;
+            &.off{
+                opacity: 1;
+            }
+        }
+    }
 }
 
 @media (max-width: 540px){

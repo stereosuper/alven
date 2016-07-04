@@ -6,48 +6,57 @@ function setBtn(btn){
     return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
 }
 
-function setGallery(gallery){
-    var imgs = gallery.find('div'), width = 0,
-        container = gallery.closest('.container-small').length ? gallery.closest('.container-small') : gallery.closest('.container');
+var dragGallery = false;
+function setGallery(gallery, windowWidth){
+    console.log(dragGallery);
+    if(windowWidth > 767){
+        var imgs = gallery.find('div'), width = 0,
+            container = gallery.closest('.container-small').length ? gallery.closest('.container-small') : gallery.closest('.container');
 
-    function detectVisibleImgs(){
-        if($(window).width() > 767){
+        function detectVisibleImgs(){
             imgs.each(function(){
                 var imgWidth = $(this).width(), imgPos = $(this).offset().left + imgWidth;
-                imgPos > $(window).width() || imgPos < imgWidth ? $(this).addClass('off') : $(this).removeClass('off');
+                imgPos > windowWidth || imgPos < imgWidth ? $(this).addClass('off') : $(this).removeClass('off');
             });
-        }else{
-            imgs.removeClass('off')
         }
+
+        if(dragGallery){
+            dragGallery[0].enable();
+            gallery.width(gallery.data('width'));
+        }else{
+            gallery.imagesLoaded().always(function(){
+                imgs.each(function(){ width += Math.ceil($(this).width()); });
+                gallery.width(width).data('width', width);
+
+                dragGallery = Draggable.create( gallery, {
+                    type: 'x',
+                    bounds: gallery.closest('.container-small'),
+                    cursor: 'grab',
+                    throwProps: true,
+                    onDrag: detectVisibleImgs,
+                    onDragStart: function(){
+                        gallery.addClass('grabbing');
+                    },
+                    onDragEnd: function(){
+                        gallery.removeClass('grabbing');
+                    },
+                    onThrowComplete: detectVisibleImgs
+                } );
+
+                detectVisibleImgs();
+            });
+        }
+
+        gallery.find('a').on('click', function(e){
+            e.preventDefault();
+        });
+    }else{
+        if(dragGallery){
+            dragGallery[0].disable();
+            TweenMax.set(gallery, {x: '0px', width: '100%'});
+        }
+        gallery.find('a').off('click');
     }
-
-    gallery.imagesLoaded().always(function(){
-        imgs.each(function(){ width += Math.ceil($(this).width()); });
-        gallery.width(width);
-
-        Draggable.create( gallery, {
-            type: 'x',
-            bounds: gallery.closest('.container-small'),
-            cursor: 'grab',
-            throwProps: true,
-            edgeResistance: 0.9,
-            /*snap: {
-                x: function(endValue){
-                    return Math.round(endValue / gridWidth) * gridWidth;
-                }
-            },*/
-            onDrag: detectVisibleImgs,
-            onDragStart: function(){
-                gallery.addClass('grabbing');
-            },
-            onDragEnd: function(){
-                gallery.removeClass('grabbing');
-            },
-            onThrowComplete: detectVisibleImgs
-        } );
-
-        detectVisibleImgs();
-    });
 }
 
 $(function(){
@@ -73,6 +82,7 @@ $(function(){
     var dropdowns = $('.dropdown');
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, /*teamMemberHeight, */offsetYtoScroll;
     var fadePage = $('#fadePage')/*, loadAnimation = true*/;
+    var galleries = $('.gallery');
 
 
 
@@ -1002,7 +1012,7 @@ $(function(){
 
     // fade page effect
     body.on('click', '.fade-page-link', function(e){
-        if( $(this).hasClass('ajax-load') ){ // le lien est externe
+        if( $(this).hasClass('ajax-load') || $(this).attr('target' === '_blank')){
             return;
         }
 
@@ -1181,6 +1191,12 @@ $(function(){
                 }
             }
         }
+
+        if(galleries.length){
+            galleries.each(function(){
+                setGallery($(this), $(window).width());
+            });
+        }
     });
 
 });
@@ -1213,7 +1229,7 @@ $(window).on('load', function(){
 
     if(galleries.length){
         galleries.each(function(){
-            setGallery($(this));
+            setGallery($(this), $(window).width());
         });
     }
 });

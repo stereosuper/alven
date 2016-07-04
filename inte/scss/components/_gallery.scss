@@ -16,6 +16,9 @@
         height: 100%;
         margin: $innerGutter;
     }
+    a{
+        cursor: default;
+    }
     .js &{
         width: 10000px;
         cursor: move;

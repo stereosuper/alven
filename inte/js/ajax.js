@@ -48,7 +48,7 @@ $(function(){
 
             if($ajaxContainer.find('.gallery').length){
                 $ajaxContainer.find('.gallery').each(function(){
-                    setGallery($(this));
+                    setGallery($(this), $(window).width());
                 });
             }
 
