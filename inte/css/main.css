@@ -2773,23 +2773,27 @@ select::-ms-expand {
     transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1);
     transform: translate3d(0, 0, 0); }
   .btn-arrow-only:before {
-    content: '\e900';
-    height: 16px;
-    left: 21px;
-    font-size: 16px;
-    margin: -8px 0 0 0; }
-  .btn-arrow-only:after {
-    content: '\e901';
+    content: '\e908';
     height: 10px;
-    left: 30px;
+    right: 19px;
+    left: auto;
+    font-size: 10px;
+    margin: -5px 0 0 0; }
+  .btn-arrow-only:after {
+    content: '\e907';
+    height: 10px;
+    left: auto;
+    right: 18px;
     font-size: 10px;
     margin: -5px 0 0 0;
     transform-origin: 50% 50%; }
   .btn-arrow-only.left:before {
-    left: 18px; }
+    right: auto;
+    left: 19px; }
   .btn-arrow-only.left:after {
     content: '\e909';
-    left: 17px; }
+    left: 18px;
+    right: auto; }
   .no-js .btn-arrow-only:hover, .is-desktop .btn-arrow-only:hover, .no-js .btn-arrow-only:focus, .is-desktop .btn-arrow-only:focus {
     background-color: #33a4df;
     color: #fff; }
