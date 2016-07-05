@@ -10,7 +10,6 @@
                         <p><?php the_field('text'); ?></p>
                     </div>
                     <div class='container-small filters'>
-                        <span class='title-small'>Choose your thema</span>
                         <ul class='filters-cat'>
                             <li>
                                 <a href='<?php echo get_permalink(get_option( 'page_for_posts' )); ?>'>All</a>

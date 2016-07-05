@@ -1,9 +1,56 @@
 'use strict';
 
-// globale car utilisée dans ajax.js
+// globales car utilisée dans ajax.js
 function setBtn(btn){
     var txt = btn.html();
     return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
+}
+
+var dragGallery = false;
+function setGallery(gallery, windowWidth){
+    if(windowWidth > 767){
+        var imgs = gallery.find('div'), width = 0,
+            container = gallery.closest('.container-small').length ? gallery.closest('.container-small') : gallery.closest('.container');
+
+        function detectVisibleImgs(){
+            imgs.each(function(){
+                var imgWidth = $(this).width(), imgPos = $(this).offset().left + imgWidth;
+                imgPos > windowWidth || imgPos < imgWidth ? $(this).addClass('off') : $(this).removeClass('off');
+            });
+        }
+
+        if(dragGallery){
+            dragGallery[0].enable();
+            gallery.width(gallery.data('width'));
+        }else{
+            gallery.imagesLoaded().always(function(){
+                imgs.each(function(){ width += Math.ceil($(this).width()); });
+                gallery.width(width).data('width', width);
+
+                dragGallery = Draggable.create( gallery, {
+                    type: 'x',
+                    bounds: gallery.closest('.container-small'),
+                    cursor: 'grab',
+                    throwProps: true,
+                    onDrag: detectVisibleImgs,
+                    onDragStart: function(){
+                        gallery.addClass('grabbing');
+                    },
+                    onDragEnd: function(){
+                        gallery.removeClass('grabbing');
+                    },
+                    onThrowComplete: detectVisibleImgs
+                } );
+
+                detectVisibleImgs();
+            });
+        }
+    }else{
+        if(dragGallery){
+            dragGallery[0].disable();
+            TweenMax.set(gallery, {x: '0px', width: '100%'});
+        }
+    }
 }
 
 $(function(){
@@ -29,6 +76,7 @@ $(function(){
     var dropdowns = $('.dropdown');
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, /*teamMemberHeight, */offsetYtoScroll;
     var fadePage = $('#fadePage')/*, loadAnimation = true*/;
+    var galleries = $('.gallery');
 
 
 
@@ -96,9 +144,7 @@ $(function(){
 
         if(readIndicator.length && (body.hasClass('single-post') || body.hasClass('page-template-default'))){
             var readingPercent = (myScroll-mainContent.offset().top)/(mainContent.innerHeight()-windowHeight);
-            if(myScroll > mainContent.offset().top){
-                TweenMax.set(readIndicator, {scaleX: readingPercent});
-            }
+            TweenMax.set(readIndicator, {scaleX: readingPercent});
         }
     }
 
@@ -144,7 +190,7 @@ $(function(){
                     bounds: spotlightPost,
                     cursor: 'grab',
                     throwProps: true,
-                    edgeResistance:0.9,
+                    edgeResistance: 0.9,
                     snap: {
                         x: function(endValue){
                             return Math.round(endValue / gridWidth) * gridWidth;
@@ -797,6 +843,7 @@ $(function(){
 
 
 
+
     isMobile.any ? htmlTag.addClass('is-mobile') : htmlTag.addClass('is-desktop');
 
     setHeaderScroll(myScroll, scrollDir);
@@ -949,6 +996,7 @@ $(function(){
         });
     }
 
+
     // smooth scroll
     body.on('click', '.scroll-anchor', function(e){
         e.preventDefault();
@@ -958,13 +1006,19 @@ $(function(){
 
     // fade page effect
     body.on('click', '.fade-page-link', function(e){
-        if(!$(this).hasClass('ajax-load')){
-            e.preventDefault();
-            var href = $(this).attr('href');
-            TweenMax.to(fadePage, 0.2, {opacity: 0, onComplete: function(){
-                window.location.href = href;
-            }});
+        if( $(this).hasClass('ajax-load') || $(this).attr('target' === '_blank')){
+            return;
         }
+
+        if( e.ctrlKey || e.shiftKey || e.metaKey || (e.button && e.button == 1) ){ // on ouvre la page dans un nouel onlget en utlisant ctrl par ex
+            return;
+        }
+
+        var href = $(this).attr('href');
+        e.preventDefault();
+        TweenMax.to(fadePage, 0.2, {opacity: 0, onComplete: function(){
+            window.location.href = href;
+        }});
     });
 
 
@@ -1109,17 +1163,6 @@ $(function(){
             }
         }
 
-        if(team.length){
-            if(team.hasClass('member-open')){
-                liTeamOpen = $('.team.member-open > li.open');
-                descOpen = $('.desc', liTeamOpen);
-                heightDescOpen = descOpen.outerHeight();
-                TweenMax.set(liTeamOpen, {paddingBottom: heightDescOpen+'px', ease:Cubic.easeInOut});
-            }
-            teamPosition();
-            updateBtnGlob();
-        }
-
         if(windowWidthOnReady !== windowWidth){
             // Le resize se fait au moins sur la largeur, p-e sur la largeur et la hauteur
             if(team.length){
@@ -1128,19 +1171,32 @@ $(function(){
                     TweenMax.set($('.team.member-open > li.open'), {className:'-=open', clearProps:'all'});
                     TweenMax.set($('.content-desc-responsive'), {clearProps:'all'});
                     TweenMax.set(team, {className:'-=member-open'});
+
+                    liTeamOpen = $('.team.member-open > li.open');
+                    descOpen = $('.desc', liTeamOpen);
+                    heightDescOpen = descOpen.outerHeight();
+                    TweenMax.set(liTeamOpen, {paddingBottom: heightDescOpen+'px', ease:Cubic.easeInOut});
                 }
+                teamPosition();
+                updateBtnGlob();
             }
+        }
+
+        if(galleries.length){
+            galleries.each(function(){
+                setGallery($(this), $(window).width());
+            });
         }
     });
 
 });
 
 $(window).on('load', function(){
-    var body = $('body');
     var main = $('#main');
     var contentHeader = $('#contentHeader');
     var fadePage = $('#fadePage');
-    //var team = $('.team');
+    var galleries = $('.gallery');
+    var team = $('.team');
 
     function animTxt(splitText){
         splitText.split({type:'words'});
@@ -1160,6 +1216,16 @@ $(window).on('load', function(){
 
     if(fadePage.length){
         TweenMax.to(fadePage, 0.2, {opacity: 1});
+    }
+
+    if(galleries.length){
+        galleries.each(function(){
+            setGallery($(this), $(window).width());
+        });
+    }
+
+    if(team.length){
+        teamPosition();
     }
 });
 

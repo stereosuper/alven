@@ -73,8 +73,7 @@ add_action( 'admin_bar_menu', 'alven_remove_top_menus', 999 );
 // Enlever le lien par défaut autour des images
 function alven_imagelink_setup(){
     $image_set = get_option( 'image_default_link_type' );
-    if($image_set !== 'none')
-        update_option('image_default_link_type', 'none');
+    if($image_set !== 'none') update_option('image_default_link_type', 'none');
 }
 add_action( 'admin_init', 'alven_imagelink_setup' );
 
@@ -141,7 +140,7 @@ function alven_mce_before_init($styles){
     // Remove h1 and code
     $styles['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
     // Let only the colors you want
-    $styles['textcolor_map'] = '[' . "'000000', 'Black', '565656', 'Text'" . ']';
+    //$styles['textcolor_map'] = '[' . "'000000', 'Black', '565656', 'Text'" . ']';
     return $styles;
 }
 add_filter( 'tiny_mce_before_init', 'alven_mce_before_init' );
@@ -527,37 +526,89 @@ add_filter( 'nav_menu_css_class', 'alven_correct_menu_parent_class', 10, 2 );
 
 
 /*-----------------------------------------------------------------------------------*/
-/* Enqueue Styles and Scripts
+/* Search -> Include search results in taxonomies
 /*-----------------------------------------------------------------------------------*/
-function alven_scripts(){
-    // header
-    wp_enqueue_style( 'alven-style', get_template_directory_uri() . '/css/main.css', array(), ALVEN_VERSION );
-    wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.min.js', array(), null);
-
-    // footer
-    wp_enqueue_script( 'isMobile', get_template_directory_uri() . '/js/isMobile.min.js', array(), null, true );
-
-    wp_deregister_script('jquery');
-    wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.0.0.min.js', array(), null, true );
-    wp_enqueue_script( 'jquery-address', get_template_directory_uri() . '/js/jquery.address-1.6.min.js', array('jquery'), null, true );
-    wp_enqueue_script( 'jquery-scrollto', get_template_directory_uri() . '/js/jquery.scrollTo.min.js', array('jquery'), null, true );
-
-    wp_enqueue_script( 'tweenmax', get_template_directory_uri() . '/js/TweenMax.min.js', array(), null, true );
-    wp_enqueue_script( 'splittext', get_template_directory_uri() . '/js/splitText.min.js', array(), null, true );
-    wp_enqueue_script( 'draggable', get_template_directory_uri() . '/js/draggable.min.js', array(), null, true );
-    wp_enqueue_script( 'throwprop', get_template_directory_uri() . '/js/ThrowPropsPlugin.min.js', array(), null, true );
-    wp_enqueue_script( 'scrollto', get_template_directory_uri() . '/js/ScrollToPlugin.min.js', array(), null, true );
-
-    wp_enqueue_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array(), null, true );
-    wp_enqueue_script( 'gsap', get_template_directory_uri() . '/js/animation.gsap.js', array(), null, true );
-
-    wp_enqueue_script( 'alven-script', get_template_directory_uri() . '/js/script.min.js', array(), null, true );
-    wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/js/ajax.min.js', array(), null, true );
-
-    wp_deregister_script( 'wp-embed' );
+function alven_search_where($where){
+    global $wpdb;
+    if(is_search()){
+        $where .= "OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish')";
+    }
+    return $where;
 }
-add_action( 'wp_enqueue_scripts', 'alven_scripts' );
+add_filter( 'posts_where', 'alven_search_where' );
 
+function alven_search_join($join){
+    global $wpdb;
+    if(is_search()){
+        $join .= "LEFT JOIN {$wpdb->term_relationships} tr ON {$wpdb->posts}.ID = tr.object_id INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id INNER JOIN {$wpdb->terms} t ON t.term_id = tt.term_id";
+    }
+    return $join;
+}
+add_filter( 'posts_join', 'alven_search_join' );
+
+function alven_search_groupby($groupby){
+    global $wpdb;
+
+    $groupby_id = "{$wpdb->posts}.ID";
+    if(!is_search() || strpos($groupby, $groupby_id) !== false) return $groupby;
+
+    if(!strlen(trim($groupby))) return $groupby_id;
+
+    return $groupby.", ".$groupby_id;
+}
+add_filter( 'posts_groupby', 'alven_search_groupby' );
+
+
+/*-----------------------------------------------------------------------------------*/
+/* Markup gallery
+/*-----------------------------------------------------------------------------------*/
+function alven_post_gallery($output, $attr){
+    global $post;
+
+    if( isset($attr['orderby']) ){
+        $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+        if( !$attr['orderby'] ) unset( $attr['orderby'] );
+    }
+
+    extract(shortcode_atts(array(
+        'order'      => 'ASC',
+        'orderby'    => 'menu_order ID',
+        'id'         => $post->ID,
+        'itemtag'    => '',
+        'icontag'    => '',
+        'captiontag' => '',
+        'columns'    => 0,
+        'size'       => 'large',
+        'include'    => '',
+        'exclude'    => ''
+    ), $attr));
+
+    $id = intval($id);
+
+    $include = preg_replace( '/[^0-9,]+/', '', $include );
+    $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+    $attachments = array();
+    foreach( $_attachments as $key => $val ){
+        $attachments[$val->ID] = $_attachments[$key];
+    }
+
+    if( empty($attachments) ) return '';
+
+    $output = '<div class="gallery">';
+    foreach( $attachments as $id => $attachment ){
+        $output .= '<div><a target="_blank" href="' . wp_get_attachment_image_src($id, $size)[0] . '">' . wp_get_attachment_image($id, $size, false, array('class' => 'no-scroll')) . '</a></div>';
+    }
+    $output .= '</div>';
+
+    return $output;
+}
+add_filter( 'post_gallery', 'alven_post_gallery', 10, 2 );
+
+
+/*-----------------------------------------------------------------------------------*/
+/* AJAX
+/*-----------------------------------------------------------------------------------*/
 
 /**
  * Retourne la première page utilisant le template donné
@@ -602,3 +653,37 @@ function alven_get_startup_permalink($post) {
 
     return $url;
 }
+
+
+/*-----------------------------------------------------------------------------------*/
+/* Enqueue Styles and Scripts
+/*-----------------------------------------------------------------------------------*/
+function alven_scripts(){
+    // header
+    wp_enqueue_style( 'alven-style', get_template_directory_uri() . '/css/main.css', array(), ALVEN_VERSION );
+    wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.min.js', array(), null);
+
+    // footer
+    wp_enqueue_script( 'isMobile', get_template_directory_uri() . '/js/isMobile.min.js', array(), null, true );
+
+    wp_deregister_script('jquery');
+    wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.0.0.min.js', array(), null, true );
+    wp_enqueue_script( 'jquery-address', get_template_directory_uri() . '/js/jquery.address-1.6.min.js', array('jquery'), null, true );
+    wp_enqueue_script( 'jquery-scrollto', get_template_directory_uri() . '/js/jquery.scrollTo.min.js', array('jquery'), null, true );
+    wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/js/imagesloaded.min.js', array('jquery'), null, true );
+
+    wp_enqueue_script( 'tweenmax', get_template_directory_uri() . '/js/TweenMax.min.js', array(), null, true );
+    wp_enqueue_script( 'splittext', get_template_directory_uri() . '/js/splitText.min.js', array(), null, true );
+    wp_enqueue_script( 'draggable', get_template_directory_uri() . '/js/draggable.min.js', array(), null, true );
+    wp_enqueue_script( 'throwprop', get_template_directory_uri() . '/js/ThrowPropsPlugin.min.js', array(), null, true );
+    wp_enqueue_script( 'scrollto', get_template_directory_uri() . '/js/ScrollToPlugin.min.js', array(), null, true );
+
+    wp_enqueue_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array(), null, true );
+    wp_enqueue_script( 'gsap', get_template_directory_uri() . '/js/animation.gsap.js', array(), null, true );
+
+    wp_enqueue_script( 'alven-script', get_template_directory_uri() . '/js/script.min.js', array(), null, true );
+    wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/js/ajax.min.js', array(), null, true );
+
+    wp_deregister_script( 'wp-embed' );
+}
+add_action( 'wp_enqueue_scripts', 'alven_scripts' );

@@ -2,10 +2,23 @@
 
     <?php if ( have_posts() ) : the_post(); ?>
 
-        <div class='content-header' id='contentHeader'>
+        <?php
+            $hasImg = false;
+            if(has_post_thumbnail()){
+                $hasImg = true;
+                $imgUrl = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0];
+            }
+        ?>
+
+        <div class='content-header <?php if($hasImg){ echo 'has-img '; } ?>' id='contentHeader'>
             <div class='container'>
                 <h1><?php the_title(); ?></h1>
             </div>
+            <?php if($hasImg){ ?>
+                <div class='img' style='background-image:url(<?php echo $imgUrl; ?>);'>
+                    <?php the_post_thumbnail(); ?>
+                </div>
+            <?php } ?>
         </div>
 
         <main role='main' id='main'>

@@ -39,6 +39,10 @@
                 // en js la fonction n'est déclenchée que si la div #contentHeader est présente
                 $headerFixed = false;
             }
+
+            if($currentPageId === CONTACT_ID){
+                $headerFixed = true;
+            }
         }
 
         global $specialCats;

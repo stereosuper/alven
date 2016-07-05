@@ -8,9 +8,15 @@
                         <div class='header-block-term'>
                             <?php
                                 $terms = get_the_terms( $post->ID , 'field' );
+                                $totalTerms = count($terms);
+                                $countTerm = 0;
                                 if ($terms) {
                                     foreach($terms as $term){
+                                        $countTerm ++;
                                         echo $term->name;
+                                        if($countTerm < $totalTerms){
+                                            echo ' / ';
+                                        }
                                     }
                                 }
                             ?>
