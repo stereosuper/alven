@@ -67,15 +67,15 @@ $(function(){
     var readIndicator = $('#readIndicator');
     var buttons = $('.btn'), buttonsInvert = $('.btn-invert');
     var contentHeader = $('#contentHeader');
-    var postSidebar = $('#postSidebar'), postSidebarTop = 0 /*postSidebarPos = 0,*/, postSidebarWidth = 0;
+    var postSidebar = $('#postSidebar'), postSidebarTop = 0, postSidebarWidth = 0;
     var spotlightPost = $('#spotlightPost'), spotlightDrag = false;
     var related = $('#related');
     var menu = $('#menu-responsive');
     var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioItemScroll = [],
         portfolioFilters = $('#portfolioFilters'), portfolioFiltersTop = portfolioFilters.length ? portfolioFilters.offset().top : 0;
     var dropdowns = $('.dropdown');
-    var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, /*teamMemberHeight, */offsetYtoScroll;
-    var fadePage = $('#fadePage')/*, loadAnimation = true*/;
+    var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, offsetYtoScroll;
+    var fadePage = $('#fadePage');
     var galleries = $('.gallery');
 
 
@@ -122,12 +122,7 @@ $(function(){
             myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
             if(header.hasClass('fixed')){
                 scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
-                //TweenMax.set(readIndicator, {opacity: 1});
-            }/*else{
-                if(!loadAnimation){
-                    TweenMax.set(readIndicator, {opacity: 0});
-                }
-            }*/
+            }
         }
 
         if(portfolioFilters.length && windowHeight > 700 && windowWidth > 767){
@@ -143,8 +138,10 @@ $(function(){
         }
 
         if(readIndicator.length && (body.hasClass('single-post') || body.hasClass('page-template-default'))){
-            var readingPercent = (myScroll-mainContent.offset().top)/(mainContent.innerHeight()-windowHeight);
-            TweenMax.set(readIndicator, {scaleX: readingPercent});
+            if(mainContent.innerHeight() > windowHeight){
+                var readingPercent = (myScroll-mainContent.offset().top)/(mainContent.innerHeight()-windowHeight);
+                TweenMax.set(readIndicator, {scaleX: readingPercent});
+            }
         }
     }
 
@@ -364,7 +361,6 @@ $(function(){
             portfolioItemScroll[i] = new ScrollMagic.Scene({ triggerElement: portfolio.find('.po-item')[i] })
                 .triggerHook(0.9)
                 .setTween( TweenMax.to(portfolio.find('.po-item').eq(i), 0.25, {opacity: 1, y: '0%', scale: 1}) )
-                //.addIndicators()
                 .addTo(controller);
         }
 
@@ -846,30 +842,17 @@ $(function(){
 
     isMobile.any ? htmlTag.addClass('is-mobile') : htmlTag.addClass('is-desktop');
 
-    setHeaderScroll(myScroll, scrollDir);
+    if(!body.hasClass('home')){
+        setHeaderScroll(myScroll, scrollDir);
+    }
     imgFit();
 
-    /*if(fadePage.length){
-        if(body.hasClass('home')){
-            TweenMax.to(fadePage, 0.3, {opacity: 1});
-        }else{
-            TweenMax.to(readIndicator, 1, {scaleX: 1, onComplete: function(){
-                TweenMax.to(readIndicator, 0.3, {opacity: 0, onComplete: function(){
-                    TweenMax.set(readIndicator, {scaleX: 0, opacity: 1});
-                    loadAnimation = false;
-                }});
-            }});
-        }
-    }*/
-
     if(buttons.length){
-        //setButtons(buttons);
         buttons.each(function(i){
             buttons.eq(i).html(setBtn(buttons.eq(i)));
         });
     }
     if(buttonsInvert.length){
-        //setButtons(buttonsInvert);
         buttonsInvert.each(function(i){
             buttonsInvert.eq(i).html(setBtn(buttonsInvert.eq(i)));
         });
@@ -898,7 +881,6 @@ $(function(){
         new ScrollMagic.Scene({ triggerElement: '#spotlightPost' })
             .triggerHook(0.9)
             .setTween( TweenMax.staggerTo(spotlightPost.find('.spotlight-post'), 0.25, {y: '0%'}, 0.1) )
-            //.addIndicators()
             .addTo(controller);
     }
 
@@ -909,7 +891,6 @@ $(function(){
         new ScrollMagic.Scene({ triggerElement: '#related' })
             .triggerHook(0.7)
             .setTween( TweenMax.staggerTo(relatedPosts, 0.25, {opacity: 1}, 0.1) )
-            //.addIndicators()
             .addTo(controller);
     }
 
@@ -976,21 +957,22 @@ $(function(){
             currentLocation = currentSite+location.pathname;
         $('a').each(function(){
             var href = $(this).attr('href'), indexOfHash = href.indexOf('#');
-            if(href !== '#'){
-                if(indexOfHash === 0){
-                    $(this).addClass('scroll-anchor');
-                }else if(indexOfHash > -1){
-                    var thisLocation = href.substring(0, indexOfHash);
-                    if(thisLocation.slice(-1) !== '/'){
-                        thisLocation += '/';
-                    }
-                    if(currentLocation === thisLocation){
-                        $(this).attr('href', href.substring(indexOfHash)).addClass('scroll-anchor');
-                    }
-                }else{
-                    if(href.indexOf(currentSite) === 0){
-                        $(this).addClass('fade-page-link');
-                    }
+            if(href === '#' || $(this).attr('target') === '_blank'){
+                return;
+            }
+            if(indexOfHash === 0){
+                $(this).addClass('scroll-anchor');
+            }else if(indexOfHash > -1){
+                var thisLocation = href.substring(0, indexOfHash);
+                if(thisLocation.slice(-1) !== '/'){
+                    thisLocation += '/';
+                }
+                if(currentLocation === thisLocation){
+                    $(this).attr('href', href.substring(indexOfHash)).addClass('scroll-anchor');
+                }
+            }else{
+                if(href.indexOf(currentSite) === 0){
+                    $(this).addClass('fade-page-link');
                 }
             }
         });
@@ -1006,7 +988,7 @@ $(function(){
 
     // fade page effect
     body.on('click', '.fade-page-link', function(e){
-        if( $(this).hasClass('ajax-load') || $(this).attr('target' === '_blank')){
+        if($(this).hasClass('ajax-load')){
             return;
         }
 
@@ -1196,7 +1178,6 @@ $(window).on('load', function(){
     var contentHeader = $('#contentHeader');
     var fadePage = $('#fadePage');
     var galleries = $('.gallery');
-    var team = $('.team');
 
     function animTxt(splitText){
         splitText.split({type:'words'});
@@ -1223,17 +1204,4 @@ $(window).on('load', function(){
             setGallery($(this), $(window).width());
         });
     }
-
-    if(team.length){
-        teamPosition();
-    }
 });
-
-/*$('.team-member img').one('load', function() {
-    var team = $('.team');
-    var imgTeamHeight = team.find('.team-member img').eq(0).outerHeight();
-    TweenMax.set($('.wrapper-btn-glob a'), {top: (imgTeamHeight/2)+'px'});
-    console.log(imgTeamHeight);
-}).each(function() {
-    if(this.complete) $(this).load();
-});*/
