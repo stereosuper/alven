@@ -100,7 +100,7 @@
             <div class='wrapper-video'>
                 <video class='video' poster='video/img1.jpg' autoplay muted loop>
                   <source src='video/alven-movie.mp4' type='video/mp4' />
-                  
+
                 </video>
             </div>
         </div>
@@ -1955,18 +1955,85 @@
                         <div class='container'>
                             <h2 class='section-title'>Contact us</h2>
                             <strong class='subtitle'>Get in touch with us</strong>
-                            <div class='container-small'>
-                                <div class='grid wrapper-interactive-blocks'>
-                                    <div class='col-4 align-right interactive-block'>
-                                        <h3>Pitch us !</h3>
-                                        <p>Please make sure you answer the  following questions : What is the shortest way to describe your project&nbsp;?</p>
-                                        <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] pitch&body=Please tell us about your startup. %0AYou can join a lightweight presentation' class='btn btn-left'>Send your pitch</a>
-                                    </div><!--
-                                    --><div class='col-4 interactive-block'>
-                                        <h3>General questions</h3>
-                                        <p>You have a general question about our company, you are an investors how want to have some more informations</p>
-                                        <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] general question&body=Please tell us what you would like to know. %0AWe&#39;ll read it carefully, and answer you with pleasure' class='btn'>General questions</a>
-                                    </div>
+                            <div class='grid wrapper-interactive-blocks'>
+                                <div class='col-4 align-right interactive-block'>
+                                    <h3>Pitch us !</h3>
+                                    <p>Please make sure you answer the  following questions : What is the shortest way to describe your project&nbsp;?</p>
+                                    <button class='btn btn-left open-form'>Send your pitch</button>
+                                    <form action='#' method='post' class='align-left form-to-open'>
+                                        <fieldset>
+                                            <legend class='active'>Let's <span>Introduce yourself</span></legend>
+                                            <section class='form-section'>
+                                                <div>
+                                                    <input type='text' name='firstname1' id='firstname1' required class='form-elt'>
+                                                    <label for='firstname1'>Your firstname</label>
+                                                </div><div>
+                                                    <input type='text' name='lastname1' id='lastname1' required class='form-elt'>
+                                                    <label for='lastname1'>Your lastname</label>
+                                                </div><div class='large'>
+                                                    <input type='email' name='email1' id='email1' required class='form-elt'>
+                                                    <label for='email1'>Your email</label>
+                                                </div>
+                                            </section>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>Send us <span>Your amazing pitch</span></legend>
+                                            <section class='form-section'>
+                                                <div class='full'>
+                                                    <input type='file' name='pitchfile' id='pitchfile' class='form-elt'><label for='pitchfile'>
+                                                        Upload your file
+                                                    </label><span class='form-desc'>
+                                                        a lightweight .pdf, .doc, .ptt, ...
+                                                    </span>
+                                                </div>
+                                                <span class='form-title'>Or</span>
+                                                <div class='full'>
+                                                    <input type='url' name='pitchurl' id='pitchurl'><label for='pitchurl' class='form-elt'>
+                                                        Send us your link
+                                                    </label><span class='form-desc'>
+                                                        a web page which describe your product or service
+                                                    </span>
+                                                </div>
+                                                <span class='form-title'>And</span>
+                                                <div class='full'>
+                                                    <textarea id='pitchtext' required class='form-elt'></textarea>
+                                                    <label for='ptichtext'>Write us a few word there about what you expect from us</label>
+                                                </div>
+                                            </section>
+                                        </fieldset>
+                                        <button type='submit' name='submitpitch' class='btn-invert'>Confirm</button>
+                                    </form>
+                                </div><div class='col-4 interactive-block'>
+                                    <h3>General questions</h3>
+                                    <p>You have a general question about our company, you are an investors how want to have some more informations</p>
+                                    <button class='btn open-form'>General questions</button>
+                                    <form action='#' method='post' class='align-left form-to-open'>
+                                        <fieldset>
+                                            <legend class='active'>Let's <span>Introduce yourself</span></legend>
+                                            <section class='form-section'>
+                                                <div>
+                                                    <input type='text' name='firstname2' id='firstname2' required class='form-elt'>
+                                                    <label for='firstname2'>Your firstname</label>
+                                                </div><div>
+                                                    <input type='text' name='lastname2' id='lastname2' required class='form-elt'>
+                                                    <label for='lastname2'>Your lastname</label>
+                                                </div><div class='large'>
+                                                    <input type='email' name='email2' id='email2' required>
+                                                    <label for='email2'>Your email</label>
+                                                </div>
+                                            </section>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>We're ready to read: <span>What would you like to know?</span></legend>
+                                            <section class='form-section'>
+                                                <div class='full'>
+                                                    <textarea id='pitchtext' required class='form-elt'></textarea>
+                                                    <label for='ptichtext'>Write us a few word there about what you expect from us</label>
+                                                </div>
+                                            </section>
+                                        </fieldset>
+                                        <button type='submit' name='submitcontact' class='btn-invert'>Confirm</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

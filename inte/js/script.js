@@ -77,6 +77,7 @@ $(function(){
     var team = $('.team'), teamDrag = false, teamMemberWidth, decalageMemberWidth, teamWidth, gridWidth, imgTeamHeight, offsetYtoScroll;
     var fadePage = $('#fadePage');
     var galleries = $('.gallery');
+    var formsPitch = $('.form-to-open'), btnForm = $('.open-form');
 
 
 
@@ -895,20 +896,20 @@ $(function(){
     }
 
     if(portfolio.length){
-        var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3;
+        var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3,
+            filters = [];
 
         if(window.location.search){
             // si il y a des paramètres, on les récupère
-            var filters = getQuery();
+            filters = getQuery();
             // on vérifie que les paramètres correspondent bien a des filtres
             filters = filters.filter(function(e, i){
                 return e[0] === 'investment' || e[0] === 'field' || e[0] === 'footprint';
             });
-            // on filtre
-            setFiltersPortfolioOnLoad(filters);
-        }else{
-            setPortfolio(poItem, nbPoItem, nbCol);
         }
+
+        // on filtre ou on lance juste le portfolio
+        filters.length ? setFiltersPortfolioOnLoad(filters) : setPortfolio(poItem, nbPoItem, nbCol);
 
         portfolioFilters.on('click', 'li', setFiltersPortfolio);
     }
@@ -1077,6 +1078,46 @@ $(function(){
             $(this).find('input').val() ? $(this).addClass('on') : $(this).removeClass('on');
         });
     }
+
+
+    btnForm.on('click', function(e){
+        var thisBtn = $(this), parent = thisBtn.parents('.interactive-block');
+
+        e.preventDefault();
+
+        parent.siblings().find('.form-to-open').slideUp(300);
+        parent.addClass('on').removeClass('off').siblings().removeClass('on').addClass('off').find('.open-form').delay(300).fadeIn(300);
+        thisBtn.fadeOut(150);
+        parent.find('.form-to-open').delay(250).slideDown(300, function(){
+            $(this).find('.form-elt').eq(0).focus();
+        });
+    });
+
+    function setFormSection(legend){
+        var form = legend.parents('.form-to-open'), nbSections = form.find('.form-section').length;
+        form.find('legend').removeClass('active').find('+ .form-section').slideUp(200);
+        legend.addClass('active').find('+ .form-section').slideDown(200, function(){
+            $(this).find('.form-elt').eq(0).focus();
+        });
+        if(legend.closest('fieldset').index() === nbSections - 1){
+            form.find('button[type=submit]').addClass('on');
+        }
+    }
+
+    formsPitch.on('click', 'legend', function(){
+        setFormSection($(this));
+    }).on('focusout', '.form-elt', function(){
+        var thisForm = $(this).parents('.form-to-open');
+        var nbSections = thisForm.find('.form-section').length, thisSection = $(this).closest('.form-section');
+        var nbInputs = $(this).closest('.form-section').find('.form-elt').length;
+        if(thisForm.find('.form-section').index(thisSection) < nbSections - 1){
+            if($(this).parents('div').index() === nbInputs - 1){
+                setFormSection(thisForm.find('.form-section').eq(thisSection.index()).siblings('legend'));
+                $('html, body').animate({scrollTop: thisForm.offset().top}, 300);
+            }
+        }
+    });
+
 
     var newsletter = $('.subscribe-form');
     if(newsletter.length){

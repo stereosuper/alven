@@ -32,7 +32,18 @@
     fieldset{
         width: 62.35%;
     }*/
+    input{
+        border-bottom: 1px solid $greyBlue;
+    }
+    fieldset{
+        display: inline-block;
+        padding: 0 $outterGutter 0 0;
+        position: relative;
+        vertical-align: bottom;
+        margin: 0;
+    }
     .btn-invert{
+        margin: 0;
         color: $greyBlue;
         border-color: $greyBlue;
         .before{

@@ -3,9 +3,23 @@
 }
 
 .interactive-block{
-	margin: 0 0 0 $col;
-	&.align-right{
-		margin: 0 $col 0 0;
+	margin: 0 $col;
+	transition: $transition;
+	&:first-of-type{
+		&.on{
+			margin-left: $col*2;
+		}
+		&.off{
+			margin-left: 0;
+		}
+	}
+	&:last-of-type{
+		&.on{
+			margin-right: $col*2;
+		}
+		&.off{
+			margin-right: 0;
+		}
 	}
 	h3{
 		font-family: $sourceBlack;
@@ -48,5 +62,41 @@
 				}
 			}
 		}
+	}
+}
+
+
+.open-form{
+	.no-js &{
+		display: none;
+	}
+}
+
+.form-to-open{
+	opacity: 0;
+	transition: opacity $transition;
+	.js &{
+		display: none;
+	}
+	.on &{
+		opacity: 1;
+	}
+	button{
+		.js &{
+			opacity: 0.5;
+			cursor: default;
+			pointer-events: none;
+		}
+		&.on{
+			opacity: 1;
+			cursor: pointer;
+			pointer-events: auto;
+		}
+	}
+}
+
+.form-section{
+	.js &{
+		display: none;
 	}
 }
