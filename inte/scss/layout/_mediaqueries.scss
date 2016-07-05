@@ -876,13 +876,13 @@
         .js &{
             width: 100%;
             cursor: auto;
+            &:before{
+                display: none;
+            }
             div{
                 height: auto;
                 max-height: none;
             }
-        }
-        a{
-            cusor: pointer;
         }
         img{
             height: auto;
@@ -891,6 +891,7 @@
         }
         div{
             display: block;
+            margin: 0;
             &.off{
                 opacity: 1;
             }

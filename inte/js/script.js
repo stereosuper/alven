@@ -8,7 +8,6 @@ function setBtn(btn){
 
 var dragGallery = false;
 function setGallery(gallery, windowWidth){
-    console.log(dragGallery);
     if(windowWidth > 767){
         var imgs = gallery.find('div'), width = 0,
             container = gallery.closest('.container-small').length ? gallery.closest('.container-small') : gallery.closest('.container');
@@ -46,16 +45,11 @@ function setGallery(gallery, windowWidth){
                 detectVisibleImgs();
             });
         }
-
-        gallery.find('a').on('click', function(e){
-            e.preventDefault();
-        });
     }else{
         if(dragGallery){
             dragGallery[0].disable();
             TweenMax.set(gallery, {x: '0px', width: '100%'});
         }
-        gallery.find('a').off('click');
     }
 }
 
@@ -1202,6 +1196,7 @@ $(window).on('load', function(){
     var contentHeader = $('#contentHeader');
     var fadePage = $('#fadePage');
     var galleries = $('.gallery');
+    var team = $('.team');
 
     function animTxt(splitText){
         splitText.split({type:'words'});

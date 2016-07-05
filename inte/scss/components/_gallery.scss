@@ -1,6 +1,7 @@
 /* Gallery */
 
 .gallery{
+    position: relative;
     margin: 0 1*-$innerGutter;
     div{
         display: inline-block;
@@ -14,10 +15,7 @@
         display: block;
         width: auto;
         height: 100%;
-        margin: $innerGutter;
-    }
-    a{
-        cursor: default;
+        margin: 0 $innerGutter;
     }
     .js &{
         width: 10000px;
@@ -25,6 +23,16 @@
         cursor: grab;
         cursor: -moz-grab;
         cursor: -webkit-grab;
+        &:before{
+            // to be above the links, so we can drag the entire zone
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
         &.grabbing{
             cursor: grabbing;
             cursor: -moz-grabbing;
@@ -33,6 +41,7 @@
         div{
             height: 350px;
             max-height: 60vh;
+            margin: $innerGutter 0;
         }
     }
 }
