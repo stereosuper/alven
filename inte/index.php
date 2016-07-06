@@ -2038,7 +2038,7 @@ if(isset($_POST['submitpitch'])){
                                             <legend>Send us <span>Your amazing pitch</span></legend>
                                             <section class='form-section'>
                                                 <div class='full'>
-                                                    <input type='file' name='pitchfile' id='pitchfile' class='form-elt'><label for='pitchfile'>
+                                                    <input type='file' name='pitchfile' id='pitchfile'><label for='pitchfile'>
                                                         Upload your file
                                                     </label><span class='form-desc'>
                                                         a lightweight .pdf, .doc, .ptt, ...
@@ -2046,7 +2046,7 @@ if(isset($_POST['submitpitch'])){
                                                 </div>
                                                 <span class='form-title'>Or</span>
                                                 <div class='full'>
-                                                    <input type='url' name='pitchurl' id='pitchurl'><label for='pitchurl' class='form-elt'>
+                                                    <input type='url' name='pitchurl' id='pitchurl' class='form-elt'><label for='pitchurl'>
                                                         Send us your link
                                                     </label><span class='form-desc'>
                                                         a web page which describe your product or service
@@ -2180,6 +2180,7 @@ if(isset($_POST['submitpitch'])){
 
         <script src='js/isMobile.min.js'></script>
         <script src='js/jquery-3.0.0.min.js'></script>
+        <script src='js/jquery.easing.min.js'></script>
 
         <script src='js/TweenMax.min.js'></script>
         <script src='js/splitText.min.js'></script>

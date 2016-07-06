@@ -843,7 +843,7 @@ form div {
   margin: 40px 0 0;
 }
 form div.large {
-  width: 230px;
+  width: 280px;
   max-width: 100%;
 }
 form div.full {
@@ -970,7 +970,7 @@ input, textarea {
   color: #26393d;
 }
 input:-webkit-autofill, textarea:-webkit-autofill {
-  box-shadow: 0 0 0 1000px #d3ceaa inset;
+  box-shadow: 0 0 0 1000px #fff inset;
 }
 input:hover, textarea:hover {
   opacity: 0.7;
@@ -4141,6 +4141,9 @@ select::-ms-expand {
 }
 .newsletter input {
   border-bottom: 1px solid #26393d;
+}
+.newsletter input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #d3ceaa inset;
 }
 .newsletter fieldset {
   display: inline-block;

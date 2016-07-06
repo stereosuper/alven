@@ -1077,7 +1077,7 @@ $(function(){
 
             inputFile.each(function(){
                 var inputFile = $(this);
-                inputFile.after('<button class="inputFile btn-invert">' + $(this).siblings('label').html() + '</button>')
+                inputFile.after('<button type="button" class="inputFile btn-invert">' + $(this).siblings('label').html() + '</button>')
                          .css('display', 'none').siblings('label').css('display', 'none');
 
                 $('.inputFile').on('click', function(e){
@@ -1146,7 +1146,7 @@ $(function(){
                 TweenMax.set(parent.find('.form-to-open'), {display: 'block', delay: 0.3});
             }
             TweenMax.to(parent.find('.form-to-open'), 0.2, {opacity: 1, delay: 0.3, ease: Power2.easeOut, onComplete: function(){
-                $(this).find('.form-elt').eq(0).focus();
+                parent.find('.form-to-open').find('.form-elt').eq(0).focus();
             }});
 
             if(!$('.interactive-block').hasClass('open')){
