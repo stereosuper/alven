@@ -2265,7 +2265,10 @@ select::-ms-expand {
   .team > li {
     margin: 0 0 80px 0;
     position: static;
-    will-change: padding; }
+    will-change: padding;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d; }
     .team > li:before {
       display: none; }
   .team a {
