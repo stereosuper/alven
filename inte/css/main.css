@@ -2979,6 +2979,10 @@ select::-ms-expand {
   margin: 0 0 80px 0;
   position: static;
   will-change: padding;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
 }
 .team > li:before {
   display: none;
@@ -5195,38 +5199,38 @@ select::-ms-expand {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px 8.3333333333%;
-    /*.btn{
-        &.btn-left{
-            padding: 21px 47px 19px 17px;
-            &:before{
-                left: auto;
-                right: 20px;
-            }
-            &:after{
-                left: auto;
-                right: 17px;
-                transform: translate3d(0, 0, 0) rotate(0);
-            }
-            .after{
-                right: 47px;
-                left: auto;
-            }
-            &:hover{
-                &:before{
-                    transform: translate3d(7px, 0, 0) scale(0.6, 0.85);
-                }
-                &:after{
-                    transform: translate3d(7px, 0, 0) scale(0.85);
-                }
-            }
-        }
-    }*/
   }
   .wrapper-interactive-blocks .interactive-block:first-of-type.on, .wrapper-interactive-blocks .interactive-block:first-of-type.off {
     margin-left: auto;
   }
   .wrapper-interactive-blocks .interactive-block:last-of-type.on, .wrapper-interactive-blocks .interactive-block:last-of-type.off {
     margin-right: auto;
+  }
+  .wrapper-interactive-blocks .interactive-block .btn.btn-left {
+    padding: 21px 47px 19px 17px;
+  }
+  .wrapper-interactive-blocks .interactive-block .btn.btn-left:before {
+    left: auto;
+    right: 20px;
+    -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+  }
+  .wrapper-interactive-blocks .interactive-block .btn.btn-left:after {
+    content: '\e907';
+    left: auto;
+    right: 19px;
+  }
+  .wrapper-interactive-blocks .interactive-block .btn.btn-left .after {
+    right: 47px;
+    left: auto;
+  }
+  .wrapper-interactive-blocks .interactive-block .btn.btn-left:hover:before {
+    -webkit-transform: translate3d(0, 0, 0) scale(0.85);
+            transform: translate3d(0, 0, 0) scale(0.85);
+  }
+  .wrapper-interactive-blocks .interactive-block .btn.btn-left:hover:after {
+    -webkit-transform: translate3d(0, 0, 0) scale(0.85);
+            transform: translate3d(0, 0, 0) scale(0.85);
   }
 
   .post {
@@ -5679,6 +5683,30 @@ select::-ms-expand {
   }
 }
 /* retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
+  #logo-alven {
+    background-image: url(../layoutImg/alven@2x.png);
+    background-size: 199px 31px;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 1225px), only screen and (min-resolution: 144dpi) and (max-width: 1225px) {
+  #logo-alven {
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
+  #header.fixed #logo-alven, .no-js #header #logo-alven {
+    background-image: url(../layoutImg/alven-grey@2x.png);
+    background-size: 199px 31px;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 1225px), only screen and (min-resolution: 144dpi) and (max-width: 1225px) {
+  #header.fixed #logo-alven, .no-js #header #logo-alven {
+    background-size: 100%;
+  }
+}
+
 /* Print styles */
 @media print {
   * {

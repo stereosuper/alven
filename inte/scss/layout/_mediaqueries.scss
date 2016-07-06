@@ -791,17 +791,18 @@
                     margin-right: auto;
                 }
             }
-            /*.btn{
+            .btn{
                 &.btn-left{
                     padding: 21px 47px 19px 17px;
                     &:before{
                         left: auto;
                         right: 20px;
+                        transform-origin: 100% 50%;
                     }
                     &:after{
+                        content: '\e907';
                         left: auto;
-                        right: 17px;
-                        transform: translate3d(0, 0, 0) rotate(0);
+                        right: 19px;
                     }
                     .after{
                         right: 47px;
@@ -809,14 +810,14 @@
                     }
                     &:hover{
                         &:before{
-                            transform: translate3d(7px, 0, 0) scale(0.6, 0.85);
+                            transform: translate3d(0, 0, 0) scale(0.85);
                         }
                         &:after{
-                            transform: translate3d(7px, 0, 0) scale(0.85);
+                            transform: translate3d(0, 0, 0) scale(0.85);
                         }
                     }
                 }
-            }*/
+            }
         }
     }
 
@@ -1341,7 +1342,24 @@
 
 /* retina */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
-
+    #logo-alven{
+        background-image: url(../layoutImg/alven@2x.png);
+        background-size: 199px 31px;
+        @media (max-width: 1225px){
+            background-size: 100%;
+        }
+    }
+    #header{
+        &.fixed, .no-js &{
+            #logo-alven{
+                background-image: url(../layoutImg/alven-grey@2x.png);
+                background-size: 199px 31px;
+                @media (max-width: 1225px){
+                    background-size: 100%;
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 144dpi) {
