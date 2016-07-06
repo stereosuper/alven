@@ -1,3 +1,61 @@
+<?php
+
+$mailto = 'elisabeth@stereosuper.fr';
+
+$status = '';
+/*$errorFirstname = '';
+$errorLastname = '';
+$errorEmail = '';
+$errorMsg = '';*/
+$errorSend = '';
+
+mail($mailto, 'hello', 'hey');
+
+if(isset($_POST['submitpitch'])){
+
+    $firstname = isset($_POST['firstname1']) ? strip_tags(stripslashes($_POST['firstname1'])) : '';
+    $lastname = isset($_POST['lastname1']) ? strip_tags(stripslashes($_POST['lastname1'])) : '';
+    $email = isset($_POST['email1']) ? strip_tags(stripslashes($_POST['email1'])) : '';
+    $file = isset($_POST['pitchfile']) ? strip_tags(stripslashes($_POST['pitchfile'])) : '';
+    $url = isset($_POST['pitchurl']) ? strip_tags(stripslashes($_POST['pitchurl'])) : '';
+    $msg = isset($_POST['pitchtext']) ? strip_tags(stripslashes($_POST['pitchtext'])) : '';
+
+    if(empty($firstname) || empty($lastname) || empty($msg) || empty($email)){
+        $status = 'error';
+    }
+
+    if(!preg_match('/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i', $email)){
+        $status = 'error';
+    }
+
+    if(!$status){
+
+        $name = sprintf('%s %s', $firstname, $lastname);
+        $subject = 'New pitch received from alvencapital.com';
+        $headers = 'From: "' . $name . '" <' . $email . '>' . "\r\n" .
+                   'Reply-To: ' . $email . "\r\n";
+
+        $content = 'From: ' . $name . "\r\n" .
+                   'Email: ' . $email . "\r\n" .
+                   'Pitch: ' . $url . "\r\n\r\n\r\n" .
+                   'Message: ' . "\r\n" . $msg;
+
+        //$sent = mail($mailto, $subject, $content, $headers);
+        $sent = mail($mailto, 'hello', 'hey');
+
+        if($sent){
+            $status = 'succes';
+        }else{
+            $status = 'error';
+            $errorSend = 'Sorry, an error occured and you pitch couldn\'t be send. Please try again later!';
+        }
+    }
+
+    echo $status . $errorSend;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang='fr-FR' class='no-js'>
 
@@ -2122,7 +2180,6 @@
 
         <script src='js/isMobile.min.js'></script>
         <script src='js/jquery-3.0.0.min.js'></script>
-        <script src='js/jquery.easing.min.js'></script>
 
         <script src='js/TweenMax.min.js'></script>
         <script src='js/splitText.min.js'></script>

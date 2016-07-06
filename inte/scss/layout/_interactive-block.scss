@@ -67,21 +67,15 @@
 
 
 .open-form{
+	transition: color $transition, background $transition;
 	.no-js &{
 		display: none;
 	}
 }
 
 .form-to-open{
-	opacity: 0;
 	transition: opacity $transition;
-	.js &{
-		display: none;
-	}
-	.on &{
-		opacity: 1;
-	}
-	button{
+	button[type=submit]{
 		.js &{
 			opacity: 0.5;
 			cursor: default;
@@ -96,7 +90,16 @@
 }
 
 .form-section{
-	.js &{
-		display: none;
+	position: relative;
+	overflow: hidden;
+	&.invalid{
+	    &:before{
+	        content: 'Some fields here are empty or invalid';
+	        position: absolute;
+	        top: -5px;
+	        left: $innerGutter;
+	        font-size: 1.2rem;
+	        color: $magazine;
+	    }
 	}
 }

@@ -863,9 +863,6 @@ fieldset {
 fieldset:first-of-type {
   margin: 0;
 }
-.js fieldset:first-of-type .form-section {
-  display: block;
-}
 
 legend {
   display: block;
@@ -874,7 +871,7 @@ legend {
   padding: 0 0 10px;
   border-bottom: 1px solid;
   position: relative;
-  margin: 0 0 0 10px;
+  margin: 0 0 10px 10px;
   font-size: 1.8rem;
   font-family: "source-light", "merriweather", sans-serif;
   line-height: 1.3;
@@ -894,29 +891,31 @@ legend span {
   opacity: 1;
 }
 .js legend.active {
-  opacity: 1;
   cursor: default;
 }
-.js legend.active:before, .js legend.active:after {
+legend.active, .no-js legend {
+  opacity: 1;
+}
+legend.active:before, legend.active:after, .no-js legend:before, .no-js legend:after {
   background: #404040;
   content: '';
   position: absolute;
 }
-.js legend.active:before {
+legend.active:before, .no-js legend:before {
   width: 1px;
   height: 15px;
 }
-.js legend.active:after {
+legend.active:after, .no-js legend:after {
   width: 35px;
   height: 1px;
   border-left: 10px solid #fff;
   border-right: 10px solid #fff;
 }
-.js legend.active:before {
+legend.active:before, .no-js legend:before {
   left: -17px;
   bottom: -8px;
 }
-.js legend.active:after {
+legend.active:after, .no-js legend:after {
   left: -34px;
   bottom: -1px;
 }
@@ -946,7 +945,8 @@ label {
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 .no-js label {
-  top: -30px;
+  -webkit-transform: translate3d(0, -180%, 0);
+          transform: translate3d(0, -180%, 0);
 }
 .js label {
   opacity: 0;
@@ -968,14 +968,6 @@ input, textarea {
   font-family: "merriweather", sans-serif;
   font-size: 16px;
   color: #26393d;
-  /*&:focus, &.filled{
-      &:valid{
-          border-color: $portfolio;
-          + label{
-              color: $portfolio;
-          }
-      }
-  }*/
 }
 input:-webkit-autofill, textarea:-webkit-autofill {
   box-shadow: 0 0 0 1000px #d3ceaa inset;
@@ -991,6 +983,8 @@ input:focus, textarea:focus {
 }
 input:focus + label, textarea:focus + label {
   opacity: 1;
+}
+.js input:focus + label, .js textarea:focus + label {
   -webkit-transform: translate3d(0, -180%, 0);
           transform: translate3d(0, -180%, 0);
 }
@@ -1002,6 +996,18 @@ input.filled:invalid, textarea.filled:invalid {
   border-color: #f06850;
 }
 input.filled:invalid + label, textarea.filled:invalid + label {
+  color: #f06850;
+}
+input.filled:valid, textarea.filled:valid {
+  border-color: #01a2a6;
+}
+input.filled:valid + label, textarea.filled:valid + label {
+  color: #01a2a6;
+}
+input.invalid, textarea.invalid {
+  border-color: #f06850;
+}
+input.invalid + label, textarea.invalid + label {
   color: #f06850;
 }
 
@@ -3332,34 +3338,40 @@ select::-ms-expand {
   border-color: #404040;
 }
 
+.open-form {
+  -webkit-transition: color 0.25s cubic-bezier(0.75, 0, 0.125, 1), background 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transition: color 0.25s cubic-bezier(0.75, 0, 0.125, 1), background 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+}
 .no-js .open-form {
   display: none;
 }
 
 .form-to-open {
-  opacity: 0;
   -webkit-transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
-.js .form-to-open {
-  display: none;
-}
-.on .form-to-open {
-  opacity: 1;
-}
-.js .form-to-open button {
+.js .form-to-open button[type=submit] {
   opacity: 0.5;
   cursor: default;
   pointer-events: none;
 }
-.form-to-open button.on {
+.form-to-open button[type=submit].on {
   opacity: 1;
   cursor: pointer;
   pointer-events: auto;
 }
 
-.js .form-section {
-  display: none;
+.form-section {
+  position: relative;
+  overflow: hidden;
+}
+.form-section.invalid:before {
+  content: 'Some fields here are empty or invalid';
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  font-size: 1.2rem;
+  color: #f06850;
 }
 
 /* Buttons */
