@@ -4297,6 +4297,22 @@ select::-ms-expand {
     top: 50px;
     transform: none; } }
 /* retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
+  #logo-alven {
+    background-image: url(../layoutImg/alven@2x.png);
+    background-size: 199px 31px; } }
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 1225px), only screen and (min-resolution: 144dpi) and (max-width: 1225px) {
+    #logo-alven {
+      background-size: 100%; } }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
+  #header.fixed #logo-alven, .no-js #header #logo-alven {
+    background-image: url(../layoutImg/alven-grey@2x.png);
+    background-size: 199px 31px; } }
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 1225px), only screen and (min-resolution: 144dpi) and (max-width: 1225px) {
+    #header.fixed #logo-alven, .no-js #header #logo-alven {
+      background-size: 100%; } }
+
 /* Print styles */
 @media print {
   * {
