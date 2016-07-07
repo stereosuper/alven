@@ -1005,6 +1005,9 @@ input.invalid, textarea.invalid {
 input.invalid + label, textarea.invalid + label {
   color: #f06850;
 }
+input:invalid, textarea:invalid {
+  box-shadow: none;
+}
 
 textarea {
   height: 150px;

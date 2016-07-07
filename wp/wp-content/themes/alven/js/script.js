@@ -8,17 +8,17 @@ function setBtn(btn){
 
 var dragGallery = false;
 function setGallery(gallery, windowWidth){
+    var imgs = gallery.find('div'), width = 0,
+        container = gallery.closest('.container-small').length ? gallery.closest('.container-small') : gallery.closest('.container');
+
+    function detectVisibleImgs(){
+        imgs.each(function(){
+            var imgWidth = $(this).width(), imgPos = $(this).offset().left + imgWidth;
+            imgPos > windowWidth || imgPos < imgWidth ? $(this).addClass('off') : $(this).removeClass('off');
+        });
+    }
+
     if(windowWidth > 767){
-        var imgs = gallery.find('div'), width = 0,
-            container = gallery.closest('.container-small').length ? gallery.closest('.container-small') : gallery.closest('.container');
-
-        function detectVisibleImgs(){
-            imgs.each(function(){
-                var imgWidth = $(this).width(), imgPos = $(this).offset().left + imgWidth;
-                imgPos > windowWidth || imgPos < imgWidth ? $(this).addClass('off') : $(this).removeClass('off');
-            });
-        }
-
         if(dragGallery){
             dragGallery[0].enable();
             gallery.width(gallery.data('width'));
@@ -29,7 +29,7 @@ function setGallery(gallery, windowWidth){
 
                 dragGallery = Draggable.create( gallery, {
                     type: 'x',
-                    bounds: gallery.closest('.container-small'),
+                    bounds: container,
                     cursor: 'grab',
                     throwProps: true,
                     onDrag: detectVisibleImgs,
@@ -807,7 +807,7 @@ $(function(){
                 var currentLi = $('.team.member-open > li.open');
                 currentDesc = $('.desc', currentLi);
                 tlTeamCurrent = new TimelineMax();
-                tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'}).set(currentLi, {className:'-=open'})
+                tlTeamCurrent.to(descResponsive, 0.25, {opacity: 0, visibility: 'hidden'}).set(currentLi, {className:'-=open'});
                 newLi = btnGlobClique.hasClass('left') ? currentLi.prev() : currentLi.next();
                 offsetYtoScroll = newLi.offset().top-120;
                 newDesc = $('.desc', newLi);
@@ -839,8 +839,7 @@ $(function(){
 
     // interactive forms
     function setFormSection(legend){
-        var form = legend.parents('.form-to-open'), nbSections = form.find('.form-section').length,
-            currentSection = legend.find('+ .form-section');
+        var form = legend.parents('.form-to-open'), currentSection = legend.find('+ .form-section');
 
         form.find('legend').removeClass('active');
         TweenMax.to(form.find('.form-section'), 0.2, {height: 0, ease: Power2.easeInOut});
@@ -927,7 +926,7 @@ $(function(){
             // si il y a des paramètres, on les récupère
             filters = getQuery();
             // on vérifie que les paramètres correspondent bien a des filtres
-            filters = filters.filter(function(e, i){
+            filters = filters.filter(function(e){
                 return e[0] === 'investment' || e[0] === 'field' || e[0] === 'footprint';
             });
         }
@@ -1017,7 +1016,7 @@ $(function(){
             return;
         }
 
-        if( e.ctrlKey || e.shiftKey || e.metaKey || (e.button && e.button == 1) ){ // on ouvre la page dans un nouel onlget en utlisant ctrl par ex
+        if( e.ctrlKey || e.shiftKey || e.metaKey || (e.button && e.button === 1) ){ // on ouvre la page dans un nouel onlget en utlisant ctrl par ex
             return;
         }
 
@@ -1091,7 +1090,7 @@ $(function(){
 
             inputFile.each(function(){
                 var inputFile = $(this);
-                inputFile.after('<button type="button" class="inputFile btn-invert">' + $(this).siblings('label').html() + '</button>')
+                inputFile.after('<button type="button" class="inputFile btn-invert form-elt">' + $(this).siblings('label').html() + '</button>')
                          .css('display', 'none').siblings('label').css('display', 'none');
 
                 $('.inputFile').on('click', function(e){
@@ -1101,8 +1100,8 @@ $(function(){
                     $(this).html(setBtn($(this)));
                 });
 
-                inputFile.on('change', function(e){
-                    $(this).siblings('.form-desc').html($(this).val());
+                inputFile.on('change', function(){
+                    $(this).siblings('.form-desc').html($(this)[0].files[0].name);
                 });
             });
         }
@@ -1122,7 +1121,7 @@ $(function(){
                 window.location.href = $(this).attr('action') + '?s=';
             }
         });
-        formSearchHeader.on('focusout', function(e){
+        formSearchHeader.on('focusout', function(){
             $(this).find('input').val() ? $(this).addClass('on') : $(this).removeClass('on');
         });
 
@@ -1177,7 +1176,7 @@ $(function(){
                 });
             }else{
                 if(windowWidth <= 767){
-                    $('.interactive-block').removeClass('open')
+                    $('.interactive-block').removeClass('open');
                 }
             }
 

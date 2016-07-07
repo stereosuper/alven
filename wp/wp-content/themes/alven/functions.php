@@ -344,6 +344,12 @@ function alven_cut_content($text){
     return balanceTags($visible, true);
 }
 
+// add image specific sizes
+function alven_thumbnail_sizes(){
+    add_image_size( 'team-thumb', 210, 277, true );
+}
+add_action( 'after_setup_theme', 'alven_thumbnail_sizes' );
+
 // related posts
 function alven_related_posts($currentId){
     $relatedPosts = array();

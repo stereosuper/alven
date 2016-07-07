@@ -208,7 +208,7 @@ get_header(); ?>
 
                     <div class='container align-center'>
                         <div id='ctaPortfolio'>
-                            <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] pitch&body=Please tell us about your startup. %0AYou can join a lightweight presentation'>
+                            <a href='#contact-us'>
                                 <span>
                                     Could this be you&nbsp;?
                                     <span class='btn-invert'>Send your pitch</span>
@@ -234,15 +234,15 @@ get_header(); ?>
                         <div class='container overflow-hidden'>
                             <div class='container-small container-team'>
                                 <div class='wrapper-btn-glob btn-prev'>
-                                    <a href='#' class='btn-arrow-only left'>Profil précédent</a>
+                                    <a href='#' class='btn-arrow-only left'>Previous profile</a>
                                 </div>
                                 <div class='wrapper-btn-glob btn-next'>
-                                    <a href='#' class='btn-arrow-only'>Profil suivant</a>
+                                    <a href='#' class='btn-arrow-only'>Next profile</a>
                                 </div>
                                 <ul class='team'>
                                     <?php while($team->have_posts()): $team->the_post(); ?><li class='col-2'>
                                         <a class='team-member' href='#'>
-                                            <?php the_post_thumbnail('medium'); ?>
+                                            <?php the_post_thumbnail('team-thumb'); ?>
                                             <span class='infos'>
                                                 <span class='name'><?php the_title(); ?></span>
                                                 <span class='function'><?php the_field('job'); ?></span>
@@ -286,7 +286,7 @@ get_header(); ?>
                     <?php endif; wp_reset_query(); ?>
                 </section>
 
-                <section class='contact-us'>
+                <section class='contact-us' id='contact-us'>
                     <h2 class='section-title'><?php echo get_the_title(CONTACT_ID); ?></h2>
                     <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
                     <?php require_once('includes/contact.php'); ?>
