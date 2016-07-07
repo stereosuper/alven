@@ -3956,13 +3956,17 @@ select::-ms-expand {
 
 .btn-close {
   position: relative;
-  margin: 0 34px 0 0;
+  padding: 0 34px 0 0;
   font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
   font-size: 1.375rem;
   line-height: 1;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #fff;
+  box-shadow: none;
+}
+.btn-close span {
+  box-shadow: 0 1px 0 0 currentColor;
 }
 .btn-close:before, .btn-close:after {
   content: '';
@@ -3970,7 +3974,7 @@ select::-ms-expand {
   width: 22px;
   height: 1px;
   top: 50%;
-  right: -34px;
+  right: 0;
   background: #fff;
   -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
