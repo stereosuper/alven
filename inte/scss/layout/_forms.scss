@@ -164,6 +164,9 @@ input, textarea{
             color: $magazine;
         }
     }
+    &:invalid{
+        box-shadow: none; // remove default invalid styles on FF
+    }
 }
 
 textarea{

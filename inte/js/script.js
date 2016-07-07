@@ -1090,7 +1090,7 @@ $(function(){
 
             inputFile.each(function(){
                 var inputFile = $(this);
-                inputFile.after('<button type="button" class="inputFile btn-invert">' + $(this).siblings('label').html() + '</button>')
+                inputFile.after('<button type="button" class="inputFile btn-invert form-elt">' + $(this).siblings('label').html() + '</button>')
                          .css('display', 'none').siblings('label').css('display', 'none');
 
                 $('.inputFile').on('click', function(e){
@@ -1101,7 +1101,7 @@ $(function(){
                 });
 
                 inputFile.on('change', function(){
-                    $(this).siblings('.form-desc').html($(this).val());
+                    $(this).siblings('.form-desc').html($(this)[0].files[0].name);
                 });
             });
         }
