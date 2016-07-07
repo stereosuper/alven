@@ -3,6 +3,8 @@
 Template Name: Contact
 */
 
+require_once('includes/form-contact.php');
+
 get_header(); ?>
 
     <?php if ( have_posts() ) : the_post(); ?>
@@ -10,27 +12,15 @@ get_header(); ?>
         <section class='content-header-transparent'>
             <h2 class='section-title'><?php the_title(); ?></h2>
             <strong class='subtitle'><?php the_field('subtitle'); ?></strong>
+            <div class='container'>
+                <div class='section-header'><?php the_content(); ?></div>
+            </div>
         </section>
 
         <main role='main' id='main'>
-            <article class='content-main theme-gold' id='mainContent'>
-                <div class='container'>
-                    <div class='container-small'>
-                        <div class='grid wrapper-interactive-blocks'>
-                            <div class='col-4 align-right interactive-block'>
-                                <h3><?php the_field('pitchTitle'); ?></h3>
-                                <?php the_field('pitchText'); ?>
-                                <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] pitch&body=Please tell us about your startup. %0AYou can join a lightweight presentation' class='btn btn-left'>Send your pitch</a>
-                            </div><!--
-                            --><div class='col-4 interactive-block'>
-                                <h3><?php the_field('generalTitle'); ?></h3>
-                                <?php the_field('generalText'); ?>
-                                <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] general question&body=Please tell us what you would like to know. %0AWe&#39;ll read it carefully, and answer you with pleasure' class='btn'>General questions</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
+            <div class='content-main' id='mainContent'>
+                <?php require_once('includes/contact.php'); ?>
+            </div>
         </main>
 
     <?php else : ?>

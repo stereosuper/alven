@@ -3,6 +3,8 @@
 Template Name: Portfolio
 */
 
+require_once('includes/form-contact.php');
+
 get_header(); ?>
 
     <?php if ( have_posts() ) : the_post(); ?>
@@ -118,7 +120,7 @@ get_header(); ?>
                 <?php endif; ?>
                 <div class='container align-center'>
                     <div id='ctaPortfolio'>
-                        <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] pitch&body=Please tell us about your startup. %0AYou can join a lightweight presentation'>
+                        <a href='#contact-us'>
                             <span>
                                 Could this be you&nbsp;?
                                 <span class='btn-invert'>Send your pitch</span>
@@ -128,27 +130,10 @@ get_header(); ?>
                 </div>
             </section>
 
-            <section>
-                <div class='contact-us'>
-                    <h2 class='section-title'><?php echo get_the_title(CONTACT_ID); ?></h2>
-                    <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
-                    <div class='container'>
-                        <div class='container-small'>
-                            <div class='grid wrapper-interactive-blocks'>
-                                <div class='col-4 align-right interactive-block'>
-                                    <h3><?php the_field('pitchTitle', CONTACT_ID); ?></h3>
-                                    <?php the_field('pitchText', CONTACT_ID); ?>
-                                    <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] pitch&body=Please tell us about your startup. %0AYou can join a lightweight presentation' class='btn btn-left'>Send your pitch</a>
-                                </div><!--
-                                --><div class='col-4 interactive-block'>
-                                    <h3><?php the_field('generalTitle', CONTACT_ID); ?></h3>
-                                    <?php the_field('generalText', CONTACT_ID); ?>
-                                    <a href='mailto:contact@alvencapital.com?subject=[Alven Capital Website] general question&body=Please tell us what you would like to know. %0AWe&#39;ll read it carefully, and answer you with pleasure' class='btn'>General questions</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <section class='contact-us' id='contact-us'>
+                <h2 class='section-title'><?php echo get_the_title(CONTACT_ID); ?></h2>
+                <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
+                <?php require_once('includes/contact.php'); ?>
             </section>
         </main>
 

@@ -837,6 +837,31 @@ $(function(){
         }
     }
 
+    // interactive forms
+    function setFormSection(legend){
+        var form = legend.parents('.form-to-open'), nbSections = form.find('.form-section').length,
+            currentSection = legend.find('+ .form-section');
+
+        form.find('legend').removeClass('active');
+        TweenMax.to(form.find('.form-section'), 0.2, {height: 0, ease: Power2.easeInOut});
+
+        legend.addClass('active');
+        TweenMax.to(currentSection, 0.2, {height: currentSection.data('height'), ease: Power2.easeInOut, onComplete: function(){
+            currentSection.find('.form-elt').eq(0).focus();
+        }});
+    }
+
+    function openFormError(form){
+        form.find('legend').addClass('active');
+        form.find('.form-section').each(function(){
+            TweenMax.to($(this), 0.2, {height: $(this).data('height')});
+        }).find('.form-elt').each(function(){
+            if($(this).attr('required') && !$(this).val()){
+                $(this).addClass('invalid').closest('.form-section').addClass('invalid');
+            }
+        });
+    }
+
 
 
 
@@ -895,20 +920,20 @@ $(function(){
     }
 
     if(portfolio.length){
-        var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3;
+        var poItem = portfolio.find('li'), nbPoItem = poItem.length, nbCol = windowWidth > 767 ? 6 : 3,
+            filters = [];
 
         if(window.location.search){
             // si il y a des paramètres, on les récupère
-            var filters = getQuery();
+            filters = getQuery();
             // on vérifie que les paramètres correspondent bien a des filtres
             filters = filters.filter(function(e, i){
                 return e[0] === 'investment' || e[0] === 'field' || e[0] === 'footprint';
             });
-            // on filtre
-            setFiltersPortfolioOnLoad(filters);
-        }else{
-            setPortfolio(poItem, nbPoItem, nbCol);
         }
+
+        // on filtre ou on lance juste le portfolio
+        filters.length ? setFiltersPortfolioOnLoad(filters) : setPortfolio(poItem, nbPoItem, nbCol);
 
         portfolioFilters.on('click', 'li', setFiltersPortfolio);
     }
@@ -1052,10 +1077,34 @@ $(function(){
 
 
     if($('input').length){
-        $('input').each(setLabelInput).on('change', setLabelInput);
+        $(':input').each(setLabelInput).on('change', setLabelInput).on('focus', function(){
+            $(this).attr('autocomplete', 'on');
+            // because of f*cking mailjet which add autocomplete off on focus (whyyyyyyyy ?!!)
+        });
 
         if($('label').length){
            $('label').not('[for=search-header]').css('opacity', 1);
+        }
+
+        if($('input[type=file]').length){
+            var inputFile = $('input[type=file]');
+
+            inputFile.each(function(){
+                var inputFile = $(this);
+                inputFile.after('<button type="button" class="inputFile btn-invert">' + $(this).siblings('label').html() + '</button>')
+                         .css('display', 'none').siblings('label').css('display', 'none');
+
+                $('.inputFile').on('click', function(e){
+                    e.preventDefault();
+                    inputFile.click();
+                }).each(function(){
+                    $(this).html(setBtn($(this)));
+                });
+
+                inputFile.on('change', function(e){
+                    $(this).siblings('.form-desc').html($(this).val());
+                });
+            });
         }
 
         var formSearch = $('.form-search'), formSearchHeader = $('.form-search-header');
@@ -1076,7 +1125,94 @@ $(function(){
         formSearchHeader.on('focusout', function(e){
             $(this).find('input').val() ? $(this).addClass('on') : $(this).removeClass('on');
         });
+
+
+        var formsPitch = $('.form-to-open'), btnForm = $('.open-form');
+
+        if(formsPitch.length){
+            formsPitch.each(function(){
+                $(this).find('.form-section').each(function(){
+                    $(this).data('height', $(this).height()).css('height', 0);
+                }).eq(0).css('height', $(this).find('.form-section').eq(0).data('height'));
+            }).css({'display': 'none', 'opacity': 0}).each(function(){
+                if($(this).hasClass('form-open-error')){
+                    $(this).css({'display': 'block', 'opacity': 1}).siblings('button').css('display', 'none');
+                    openFormError($(this));
+                }
+            });
+        }
+
+        btnForm.on('click', function(e){
+            var thisBtn = $(this), parent = thisBtn.parents('.interactive-block');
+
+            e.preventDefault();
+
+            TweenMax.to(parent.siblings().find('.form-to-open'), 0.2, {opacity: 0, ease: Power2.easeIn, onComplete: function(){
+                if($('.interactive-block').hasClass('open')){
+                    parent.siblings().find('.form-to-open').css('display', 'none');
+                }
+            }});
+
+            parent.addClass('on').removeClass('off').siblings().removeClass('on').addClass('off');
+
+            TweenMax.set(parent.siblings().find('.open-form'), {display: 'inline-block', delay: 0.3});
+            TweenMax.to(parent.siblings().find('.open-form'), 0.3, {opacity: 1, delay: 0.3, ease: Power2.easeInOut});
+            TweenMax.to(thisBtn, 0.3, {opacity: 0, ease: Power2.easeInOut, onComplete: function(){
+                thisBtn.css('display', 'none');
+            }});
+
+            if($('.interactive-block').hasClass('open')){
+                TweenMax.set(parent.find('.form-to-open'), {display: 'block', delay: 0.3});
+            }
+            TweenMax.to(parent.find('.form-to-open'), 0.2, {opacity: 1, delay: 0.3, ease: Power2.easeOut, onComplete: function(){
+                parent.find('.form-to-open').find('.form-elt').eq(0).focus();
+            }});
+
+            if(!$('.interactive-block').hasClass('open')){
+                parent.siblings().find('.form-to-open').slideUp(300, 'easeInQuad');
+                parent.find('.form-to-open').delay(300).slideDown(300, 'easeOutQuad', function(){
+                    if(windowWidth > 767){
+                        $('.interactive-block').addClass('open').css('minHeight', parent.height());
+                    }
+                });
+            }else{
+                if(windowWidth <= 767){
+                    $('.interactive-block').removeClass('open')
+                }
+            }
+
+            $('html, body').animate({scrollTop: parent.offset().top}, 200);
+        });
+        formsPitch.on('click', 'legend', function(){
+            setFormSection($(this));
+        }).on('focusout', '.form-elt', function(){
+            var thisForm = $(this).parents('.form-to-open');
+            var nbSections = thisForm.find('.form-section').length, thisSection = $(this).closest('.form-section');
+            var nbInputs = $(this).closest('.form-section').find('.form-elt').length;
+            if(thisForm.find('.form-section').index(thisSection) < nbSections - 1){
+                if($(this).parents('div').index() === nbInputs - 1){
+                    setFormSection(thisForm.find('.form-section').eq(thisSection.index()).siblings('legend'));
+                    $('html, body').animate({scrollTop: thisForm.offset().top}, 300);
+                }
+            }
+        }).on('input change', '.form-elt', function(){
+            var valid = true, submit = $(this).closest('.form-to-open').find('button[type=submit]');
+            $(this).closest('.form-to-open').find('.form-elt').each(function(){
+                if($(this).attr('required') && !$(this).val()){
+                    valid = false;
+                }
+            });
+            valid ? submit.addClass('on') : submit.removeClass('on');
+        }).on('click', 'button[type=submit]', function(e){
+            if(!$(this).hasClass('on')){
+                var form = $(this).parents('.form-to-open');
+                e.preventDefault();
+                openFormError(form);
+            }
+        });
     }
+
+
 
     var newsletter = $('.subscribe-form');
     if(newsletter.length){
