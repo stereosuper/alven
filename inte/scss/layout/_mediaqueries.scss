@@ -781,6 +781,7 @@
             max-width: 500px;
             margin: 0 auto;
             padding: 20px $col;
+            min-height: 0 !important; //override js
             &:first-of-type{
                 &.on, &.off{
                     margin-left: auto;

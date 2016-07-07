@@ -25,6 +25,11 @@ form{
                 max-width: 55%;
             }
         }
+        &.has-desc{
+            input, button{
+                margin: 0 5% 5px 0;
+            }
+        }
         label{
             left: 25px;
             right: 25px;
@@ -137,15 +142,9 @@ input, textarea{
         opacity: 1;
         + label{
             opacity: 1;
-            .js &{
-                transform: translate3d(0, -180%, 0);
-            }
         }
     }
     &.filled{
-        + label{
-            transform: translate3d(0, -180%, 0);
-        }
         &:invalid{
             border-color: $magazine;
             + label{
@@ -170,6 +169,18 @@ input, textarea{
 textarea{
     height: 150px;
     border: 1px solid $greyBlue;
+    &:focus{
+        + label{
+            .js &{
+                opacity: 0 !important; //override js
+            }
+        }
+    }
+    &.filled{
+        + label{
+            opacity: 0 !important; //override js
+        }
+    }
 }
 
 input{
@@ -186,6 +197,18 @@ input{
         cursor: pointer;
         + label{
             opacity: 0 !important;
+        }
+    }
+    &:focus{
+        + label{
+            .js &{
+                transform: translate3d(0, -180%, 0);
+            }
+        }
+    }
+    &.filled{
+        + label{
+            transform: translate3d(0, -180%, 0);
         }
     }
 }
@@ -207,12 +230,18 @@ select{
 
 .form-desc{
     display: inline-block;
-    padding: 0 0 0 $outterGutter;
-    max-width: 45%;
+    max-width: 40%;
     vertical-align: top;
     font-size: 1.4rem;
     font-family: $merriweatherIt;
     line-height: 1.2;
+}
+
+.form-success{
+    color: $portfolio;
+}
+.form-error{
+    color: $magazine;
 }
 
 .form-search{
@@ -225,5 +254,11 @@ select{
         position: absolute;
         top: 7px;
         right: 0;
+        margin-top: 0;
+        margin-left: 0;
+        z-index: 2;
+    }
+    label{
+        text-align: left;
     }
 }

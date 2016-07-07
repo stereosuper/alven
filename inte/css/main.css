@@ -852,6 +852,9 @@ form div.full {
 form div.full input {
   max-width: 55%;
 }
+form div.has-desc input, form div.has-desc button {
+  margin: 0 5% 5px 0;
+}
 form div label {
   left: 25px;
   right: 25px;
@@ -984,14 +987,6 @@ input:focus, textarea:focus {
 input:focus + label, textarea:focus + label {
   opacity: 1;
 }
-.js input:focus + label, .js textarea:focus + label {
-  -webkit-transform: translate3d(0, -180%, 0);
-          transform: translate3d(0, -180%, 0);
-}
-input.filled + label, textarea.filled + label {
-  -webkit-transform: translate3d(0, -180%, 0);
-          transform: translate3d(0, -180%, 0);
-}
 input.filled:invalid, textarea.filled:invalid {
   border-color: #f06850;
 }
@@ -1015,6 +1010,12 @@ textarea {
   height: 150px;
   border: 1px solid #26393d;
 }
+.js textarea:focus + label {
+  opacity: 0 !important;
+}
+textarea.filled + label {
+  opacity: 0 !important;
+}
 
 input {
   border: 0;
@@ -1031,6 +1032,14 @@ input[type=file] {
 input[type=file] + label {
   opacity: 0 !important;
 }
+.js input:focus + label {
+  -webkit-transform: translate3d(0, -180%, 0);
+          transform: translate3d(0, -180%, 0);
+}
+input.filled + label {
+  -webkit-transform: translate3d(0, -180%, 0);
+          transform: translate3d(0, -180%, 0);
+}
 
 button {
   color: #404040;
@@ -1046,12 +1055,19 @@ select::-ms-expand {
 
 .form-desc {
   display: inline-block;
-  padding: 0 0 0 20px;
-  max-width: 45%;
+  max-width: 40%;
   vertical-align: top;
   font-size: 1.4rem;
   font-family: "merriweather-italic", "merriweather", sans-serif;
   line-height: 1.2;
+}
+
+.form-success {
+  color: #01a2a6;
+}
+
+.form-error {
+  color: #f06850;
 }
 
 .form-search {
@@ -1065,6 +1081,12 @@ select::-ms-expand {
   position: absolute;
   top: 7px;
   right: 0;
+  margin-top: 0;
+  margin-left: 0;
+  z-index: 2;
+}
+.form-search label {
+  text-align: left;
 }
 
 /* Header */
@@ -3341,6 +3363,18 @@ select::-ms-expand {
   color: #404040;
   border-color: #404040;
 }
+.theme-portfolio .contact-us .btn-invert {
+  border-color: #26393d;
+  color: #26393d;
+}
+.theme-portfolio .contact-us .btn-invert .before {
+  color: #26393d;
+}
+.no-js .theme-portfolio .contact-us .btn-invert:hover, .is-desktop .theme-portfolio .contact-us .btn-invert:hover, .no-js .theme-portfolio .contact-us .btn-invert:focus, .is-desktop .theme-portfolio .contact-us .btn-invert:focus {
+  color: #fff;
+  border-color: #26393d;
+  background: #26393d;
+}
 
 .open-form {
   -webkit-transition: color 0.25s cubic-bezier(0.75, 0, 0.125, 1), background 0.25s cubic-bezier(0.75, 0, 0.125, 1);
@@ -5199,6 +5233,7 @@ select::-ms-expand {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px 8.3333333333%;
+    min-height: 0 !important;
   }
   .wrapper-interactive-blocks .interactive-block:first-of-type.on, .wrapper-interactive-blocks .interactive-block:first-of-type.off {
     margin-left: auto;

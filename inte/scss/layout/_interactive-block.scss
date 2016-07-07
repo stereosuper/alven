@@ -63,6 +63,22 @@
 			}
 		}
 	}
+	.btn-invert{
+		.theme-portfolio &{
+			border-color: $greyBlue;
+			color: $greyBlue;
+			.before{
+				color: $greyBlue;
+			}
+			&:hover, &:focus{
+				.no-js &, .is-desktop &{
+					color: #fff;
+					border-color: $greyBlue;
+					background: $greyBlue;
+				}
+			}
+		}
+	}
 }
 
 

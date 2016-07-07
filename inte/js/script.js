@@ -851,6 +851,17 @@ $(function(){
         }});
     }
 
+    function openFormError(form){
+        form.find('legend').addClass('active');
+        form.find('.form-section').each(function(){
+            TweenMax.to($(this), 0.2, {height: $(this).data('height')});
+        }).find('.form-elt').each(function(){
+            if($(this).attr('required') && !$(this).val()){
+                $(this).addClass('invalid').closest('.form-section').addClass('invalid');
+            }
+        });
+    }
+
 
 
 
@@ -1066,7 +1077,10 @@ $(function(){
 
 
     if($('input').length){
-        $('input, textarea').each(setLabelInput).on('change', setLabelInput);
+        $(':input').each(setLabelInput).on('change', setLabelInput).on('focus', function(){
+            $(this).attr('autocomplete', 'on');
+            // because of f*cking mailjet which add autocomplete off on focus (whyyyyyyyy ?!!)
+        });
 
         if($('label').length){
            $('label').not('[for=search-header]').css('opacity', 1);
@@ -1120,7 +1134,12 @@ $(function(){
                 $(this).find('.form-section').each(function(){
                     $(this).data('height', $(this).height()).css('height', 0);
                 }).eq(0).css('height', $(this).find('.form-section').eq(0).data('height'));
-            }).css({'display': 'none', 'opacity': 0});
+            }).css({'display': 'none', 'opacity': 0}).each(function(){
+                if($(this).hasClass('form-open-error')){
+                    $(this).css({'display': 'block', 'opacity': 1}).siblings('button').css('display', 'none');
+                    openFormError($(this));
+                }
+            });
         }
 
         btnForm.on('click', function(e){
@@ -1152,9 +1171,17 @@ $(function(){
             if(!$('.interactive-block').hasClass('open')){
                 parent.siblings().find('.form-to-open').slideUp(300, 'easeInQuad');
                 parent.find('.form-to-open').delay(300).slideDown(300, 'easeOutQuad', function(){
-                    $('.interactive-block').addClass('open').css('min-height', parent.height());
+                    if(windowWidth > 767){
+                        $('.interactive-block').addClass('open').css('minHeight', parent.height());
+                    }
                 });
+            }else{
+                if(windowWidth <= 767){
+                    $('.interactive-block').removeClass('open')
+                }
             }
+
+            $('html, body').animate({scrollTop: parent.offset().top}, 200);
         });
         formsPitch.on('click', 'legend', function(){
             setFormSection($(this));
@@ -1168,7 +1195,7 @@ $(function(){
                     $('html, body').animate({scrollTop: thisForm.offset().top}, 300);
                 }
             }
-        }).on('change', '.form-elt', function(){
+        }).on('input change', '.form-elt', function(){
             var valid = true, submit = $(this).closest('.form-to-open').find('button[type=submit]');
             $(this).closest('.form-to-open').find('.form-elt').each(function(){
                 if($(this).attr('required') && !$(this).val()){
@@ -1180,14 +1207,7 @@ $(function(){
             if(!$(this).hasClass('on')){
                 var form = $(this).parents('.form-to-open');
                 e.preventDefault();
-                form.find('legend').addClass('active');
-                form.find('.form-section').each(function(){
-                    TweenMax.to($(this), 0.2, {height: $(this).data('height')});
-                }).find('.form-elt').each(function(){
-                    if($(this).attr('required') && !$(this).val()){
-                        $(this).addClass('invalid').closest('.form-section').addClass('invalid');
-                    }
-                });
+                openFormError(form);
             }
         });
     }
