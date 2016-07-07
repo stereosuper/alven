@@ -27,9 +27,6 @@
 		margin: 0 0 80px 0;
 		position: static;
 		will-change: padding;
-		backface-visibility: hidden;
-		-webkit-backface-visibility: hidden;
-		transform-style: preserve-3d;
 		&:before{
 			display: none;
 		}

@@ -312,6 +312,9 @@
         > li{
             margin: 0;
             position: relative;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform-style: preserve-3d;
         }
     }
     .social{
