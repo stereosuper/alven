@@ -53,7 +53,7 @@
                         <?php } ?>
                     </div>
                 </div>
-                <a href='#' id='closePortfolio' class='btn-close'>Close</a>
+                <a href='#' id='closePortfolio' class='btn-close'><span>Close</span></a>
             </div>
         </div>
 

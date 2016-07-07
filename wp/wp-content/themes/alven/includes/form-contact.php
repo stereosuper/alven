@@ -55,34 +55,37 @@ if(isset($_POST['submitpitch'])){
     }
 
     if(!empty($file['name'])){
-        //print_r($file);
-        add_filter( 'upload_dir', 'wpse_183245_upload_dir' );
-        /*$allowedMimes = array(
-            'jpg|jpeg|jpe' => 'image/jpeg',
-            'gif'          => 'image/gif',
-            'png'          => 'image/png',
-        );
 
-        $fileInfo = wp_check_filetype(basename($_FILES['wpshop_file']['name']), $allowedMimes);*/
-        $overrides = array( 'test_form' => FALSE/*, 'mimes' => $allowedMimes*/ );
-        $fileInfo = wp_check_filetype(basename($file['name']));
-        if(!empty($fileInfo['ext'])){
-            $movefile = wp_handle_upload( $file, $overrides );
-            remove_filter( 'upload_dir', 'wpse_183245_upload_dir' );
-            if(!$movefile && isset($movefile['error'])){
-                $status = 'error';
-                $errorFile = true;
-                $errorSend = 'Sorry, your file couldn\'t be uploaded: ' . $movefile['error'];
-            }
-        }else{
+        if($file['size'] > 20971520){
             $status = 'error';
             $errorFile = true;
-            $errorSend = 'Sorry, your file couldn\'t be uploaded: the file extension isn\'t valid.';
+            $errorSend = 'Sorry, your pitch couldn\'t be send: the uploaded file is too heavy.';
+        }else{
+            add_filter( 'upload_dir', 'wpse_183245_upload_dir' );
+            $allowedMimes = array(
+                'pdf' => 'application/pdf',
+                'ppt' => 'application/vnd.ms-powerpoint',
+                'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                'key' => 'application/x-iWork-keynote-sffkey',
+                'zip' => 'application/zip'
+            );
+            $fileInfo = wp_check_filetype(basename($file['name']), $allowedMimes);
+            $overrides = array( 'test_form' => FALSE, 'mimes' => $allowedMimes );
+            if(!empty($fileInfo['ext'])){
+                $movefile = wp_handle_upload( $file, $overrides );
+                remove_filter( 'upload_dir', 'wpse_183245_upload_dir' );
+                if(!$movefile && isset($movefile['error'])){
+                    $status = 'error';
+                    $errorFile = true;
+                    $errorSend = 'Sorry, your pitch couldn\'t be send, the file couldn\'t be uploaded: ' . $movefile['error'];
+                }
+            }else{
+                $status = 'error';
+                $errorFile = true;
+                $errorSend = 'Sorry, your pitch couldn\'t be send: the uploaded file extension isn\'t valid.';
+            }
         }
 
-        //var_dump($movefile);
-        //echo $movefile['file'];
-        //echo WP_CONTENT_DIR;
     }else{
         if(empty($url)){
             $status = 'error';

@@ -30,10 +30,11 @@
                         <legend>Send us <span>Your amazing pitch</span></legend>
                         <section class='form-section <?php if($errorFile || $errorUrl || $errorMsg) echo "invalid"; ?>'>
                             <div class='full has-desc'>
+                                <input type='hidden' name='MAX_FILE_SIZE' value='20971520'>
                                 <input type='file' name='pitchfile' id='pitchfile'><label for='pitchfile'>
                                     Upload your file
                                 </label><span class='form-desc'>
-                                    a lightweight .pdf, .doc, .ptt, ...
+                                    a lightweight .pdf, .key, .ptt, .pptx
                                 </span>
                             </div>
                             <span class='form-title'>Or</span>
