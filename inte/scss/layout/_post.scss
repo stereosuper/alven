@@ -87,6 +87,12 @@
         &.off{
             padding: 0;
         }
+        img{
+            width: 100%;
+        }
+        a{
+            box-shadow: none;
+        }
     }
     &.fixed{
         position: fixed;
@@ -503,7 +509,11 @@
         border: 1px solid $greyBorder;
         position: relative;
         a{
-            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
             box-shadow: none;
         }
     }

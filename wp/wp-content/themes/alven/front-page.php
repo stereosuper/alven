@@ -13,13 +13,13 @@ get_header(); ?>
             <div class='container'>
                 <h1><?php the_field('title'); ?></h1><ul class='menu-home'>
                     <li>
-                        <span>Read us :</span>
+                        <span><?php the_field('titleHeaderMag'); ?></span>
                         <a href='<?php echo get_permalink( get_option('page_for_posts' ) ); ?>' class='btn-arrow'>Magazine</a>
                     </li><li>
-                        <span>We fund :</span>
+                        <span><?php the_field('titleHeaderPortfolio'); ?></span>
                         <a href='<?php echo get_permalink(PORTFOLIO_ID); ?>' class='btn-arrow'>Portfolio</a>
                     </li><li>
-                        <span>Team :</span>
+                        <span><?php the_field('titleHeaderTeam'); ?></span>
                         <a href='<?php echo home_url('#who-we-are'); ?>' class='btn-arrow'>Who we are</a>
                     </li>
                 </ul>
@@ -32,7 +32,7 @@ get_header(); ?>
             <?php if(get_field('video')){ ?>
                 <div class='wrapper-video'>
                     <video class='video' poster='<?php echo wp_get_attachment_url(get_field('videoImg')); ?>' autoplay muted loop>
-                        <source src='<?php the_field('video'); ?>' type='video/mp4' />
+                        <source src='<?php the_field('video'); ?>' type='video/mp4'>
                     </video>
                 </div>
             <?php } ?>
@@ -143,17 +143,16 @@ get_header(); ?>
                             </div>
                         </section>
 
-                    <?php endif; ?>
+                    <?php endif; wp_reset_query(); ?>
 
                     <div class='newsletter'>
                         <div class='container'>
                             <div class='grid'>
                                 <div class='col-6 newsletter-title'>
                                     <h3>
-                                        Get some more fresh&nbsp;news&nbsp;?
-                                    </h3><!--
-                                    --><p>
-                                        Signup for our newsletter and be in the&nbsp;loop!
+                                        <?php the_field('newsletterTitle'); ?>
+                                    </h3><p>
+                                        <?php the_field('newsletterText'); ?>
                                     </p>
                                 </div><!--<form method='post' action='' class='col-5'>
                                     <fieldset>
@@ -215,7 +214,7 @@ get_header(); ?>
                                 </span>
                             </a>
                         </div>
-                        <a href='<?php echo get_permalink(PORTFOLIO_ID); ?>' class='btn'>Browse all companies</a>
+                        <a href='<?php echo get_permalink(PORTFOLIO_ID); ?>' class='btn'><?php the_field('portfolioBtn'); ?></a>
                     </div>
                 </section>
 

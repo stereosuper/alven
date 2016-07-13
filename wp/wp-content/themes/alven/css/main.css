@@ -653,6 +653,14 @@ sup {
   vertical-align: baseline;
 }
 
+table {
+  margin: 2em 0;
+}
+
+td {
+  padding: 0 0 10px;
+}
+
 /******* LIENS / BOUTONS *******/
 a {
   box-shadow: 0 1px 0 0 currentColor;
@@ -2503,6 +2511,12 @@ select::-ms-expand {
 .post-sidebar .img.off {
   padding: 0;
 }
+.post-sidebar .img img {
+  width: 100%;
+}
+.post-sidebar .img a {
+  box-shadow: none;
+}
 .post-sidebar.fixed {
   position: fixed;
 }
@@ -2974,7 +2988,11 @@ select::-ms-expand {
   position: relative;
 }
 .related-startups .img a {
-  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   box-shadow: none;
 }
 
@@ -4242,6 +4260,10 @@ select::-ms-expand {
   margin-top: -50px !important;
   margin-bottom: -50px !important;
   text-align: center;
+}
+.search .filters {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .filters-cat {

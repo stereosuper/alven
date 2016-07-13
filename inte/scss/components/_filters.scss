@@ -4,6 +4,10 @@
     margin-top: -50px !important; // to override .container-small 1150px margin 0
     margin-bottom: -50px !important; // to compense the form-search margin
     text-align: center;
+    .search &{
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
 }
 
 .filters-cat{
