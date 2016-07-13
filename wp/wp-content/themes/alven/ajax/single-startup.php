@@ -65,7 +65,7 @@
 
                     <div class='container-small'>
                         <div class='grid'>
-                            <div class='col-8 content-default'>
+                            <div class='content-default'>
                                 <?php the_content(); ?>
                             </div>
                         </div>

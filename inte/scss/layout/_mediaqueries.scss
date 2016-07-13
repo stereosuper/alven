@@ -942,7 +942,7 @@
     }
 
     .content-default{
-        > p, > h3, > h4, > h5, > h6, > ul, > ol{
+        > p, > h3, > h4, > h5, > h6, > ul, > ol, > table{
             margin-left: 0;
             margin-right: 0;
         }
@@ -1211,7 +1211,7 @@
     }
 
     .content-default{
-        > p, > h3, > h4, > h5, > h6, > ul, > ol{
+        > p, > h3, > h4, > h5, > h6, > ul, > ol, > table{
             padding: 0;
         }
     }

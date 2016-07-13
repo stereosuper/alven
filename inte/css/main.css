@@ -655,6 +655,7 @@ sup {
 }
 
 table {
+  display: block;
   margin: 2em 0;
 }
 
@@ -1503,7 +1504,7 @@ select::-ms-expand {
 .single-post .content-default {
   padding-bottom: 100px;
 }
-.content-default > p, .content-default > h3, .content-default > h4, .content-default > h5, .content-default > h6, .content-default > ul, .content-default > ol {
+.content-default > p, .content-default > h3, .content-default > h4, .content-default > h5, .content-default > h6, .content-default > ul, .content-default > ol, .content-default > table {
   padding: 0 20px;
   margin-left: 10%;
   margin-right: 10%;
@@ -5405,7 +5406,7 @@ select::-ms-expand {
     margin-right: 0;
   }
 
-  .content-default > p, .content-default > h3, .content-default > h4, .content-default > h5, .content-default > h6, .content-default > ul, .content-default > ol {
+  .content-default > p, .content-default > h3, .content-default > h4, .content-default > h5, .content-default > h6, .content-default > ul, .content-default > ol, .content-default > table {
     margin-left: 0;
     margin-right: 0;
   }
@@ -5633,7 +5634,7 @@ select::-ms-expand {
     padding: 0 20px;
   }
 
-  .content-default > p, .content-default > h3, .content-default > h4, .content-default > h5, .content-default > h6, .content-default > ul, .content-default > ol {
+  .content-default > p, .content-default > h3, .content-default > h4, .content-default > h5, .content-default > h6, .content-default > ul, .content-default > ol, .content-default > table {
     padding: 0;
   }
 
