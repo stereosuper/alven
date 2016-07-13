@@ -25,11 +25,9 @@
             <article class='content-main' id='mainContent'>
                 <div class='container'>
 
-                    <h2></h2>
-
                     <div class='container-small'>
                         <div class='grid'>
-                            <div class='col-8 content-default'>
+                            <div class='content-default'>
                                 <?php the_content(); ?>
                             </div>
                         </div>

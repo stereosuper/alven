@@ -20,7 +20,7 @@ get_header(); ?>
 
                     <div class='container-small'>
                         <div class='grid'>
-                            <div class='col-8 content-default'>
+                            <div class='content-default'>
                                 <h3>Pages</h3>
                                 <ul>
                                     <?php wp_list_pages( array('post_type' => 'page', 'title_li' => '', 'orderby' => 'menu_order') ); ?>
