@@ -600,6 +600,7 @@ img.alignright {
 }
 
 figure {
+  max-width: 100%;
   margin: 2.5em 0;
   text-align: center;
 }
@@ -4508,6 +4509,7 @@ select::-ms-expand {
   cursor: move;
   cursor: grab;
   cursor: -webkit-grab;
+  z-index: auto !important;
 }
 .js .gallery:before {
   content: '';
