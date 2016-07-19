@@ -893,8 +893,15 @@
         }
     }
 
+    .gallery-container{
+        button{
+            display: none;
+        }
+    }
     .gallery{
+        width: 100% !important;
         margin: 0;
+        transform: none !important;
         .js &{
             width: 100%;
             cursor: auto;

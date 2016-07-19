@@ -1,5 +1,7 @@
 'use strict';
 
+var postSidebarTop = 0, postSidebarWidth = 0;
+
 // globales car utilisée dans ajax.js
 function setBtn(btn){
     var txt = btn.html();
@@ -18,38 +20,75 @@ function setGallery(gallery, windowWidth){
         });
     }
 
-    if(windowWidth > 767){
-        if(dragGallery){
-            dragGallery[0].enable();
-            gallery.width(gallery.data('width'));
-        }else{
-            gallery.imagesLoaded().always(function(){
-                imgs.each(function(){ width += Math.ceil($(this).width()); });
-                gallery.width(width).data('width', width);
+    function hideOrShowControls(x){
+        imgs.last().hasClass('off') ? $('#nextImg').removeClass('hidden') : $('#nextImg').addClass('hidden');
+        imgs.eq(0).offset().left >= 0 ? $('#prevImg').addClass('hidden') : $('#prevImg').removeClass('hidden');
+    }
 
-                dragGallery = Draggable.create( gallery, {
-                    type: 'x',
-                    bounds: container,
-                    cursor: 'grab',
-                    throwProps: true,
-                    onDrag: detectVisibleImgs,
-                    onDragStart: function(){
-                        gallery.addClass('grabbing');
-                    },
-                    onDragEnd: function(){
-                        gallery.removeClass('grabbing');
-                    },
-                    onThrowComplete: detectVisibleImgs
-                } );
+    function slideGallery(dir){
+        var x = gallery.data('x') ? gallery.data('x') : 0, newX = x;
 
+        if(!TweenMax.isTweening(gallery)){
+            imgs.each(function(){
+                var imgPos = $(this).offset().left;
+                imgPos < 10 ? $(this).addClass('hideLeft') : $(this).removeClass('hideLeft');
+            });
+
+            newX -= dir === 'right' ? imgs.not('.hideLeft').eq(0).offset().left : $('.hideLeft.off').last().offset().left;
+
+            TweenMax.to(gallery, 0.3, {x: newX+'px', onComplete: function(){
+                gallery.data('x', newX);
                 detectVisibleImgs();
+                hideOrShowControls(newX);
+            }});
+        }
+    }
+
+    if(windowWidth > 767 && !dragGallery){
+        gallery.css('opacity', 0).imagesLoaded().always(function(){
+            imgs.each(function(){ width += Math.ceil($(this).width()); });
+            gallery.width(width).data('width', width);
+
+            dragGallery = Draggable.create( gallery, {
+                type: 'x',
+                bounds: container,
+                cursor: 'grab',
+                throwProps: true,
+                onDrag: detectVisibleImgs,
+                onDragStart: function(){
+                    gallery.addClass('grabbing');
+                },
+                onDragEnd: function(){
+                    gallery.removeClass('grabbing');
+                },
+                onThrowComplete: function(){
+                    gallery.data('x', this.x);
+                    detectVisibleImgs();
+                    hideOrShowControls(this.x);
+                }
+            } );
+
+            detectVisibleImgs();
+
+            TweenMax.to(gallery, 0.3, {opacity: 1});
+        });
+
+        if(!$('#nextImg').length){
+            gallery.after('<button class="btn-arrow-only left hidden" id="prevImg">Previous image</button><button class="btn-arrow-only" id="nextImg">Next image</button>');
+            $('#nextImg').on('click', function(e){
+                e.preventDefault();
+                $(this).blur();
+                slideGallery('right');
+            });
+            $('#prevImg').on('click', function(e){
+                e.preventDefault();
+                $(this).blur();
+                slideGallery('left');
             });
         }
     }else{
-        if(dragGallery){
-            dragGallery[0].disable();
-            TweenMax.set(gallery, {x: '0px', width: '100%'});
-        }
+        Draggable.get(gallery).kill();
+        dragGallery = false;
     }
 }
 
@@ -67,8 +106,8 @@ $(function(){
     var readIndicator = $('#readIndicator');
     var buttons = $('.btn'), buttonsInvert = $('.btn-invert');
     var contentHeader = $('#contentHeader');
-    var postSidebar = $('#postSidebar'), postSidebarTop = 0, postSidebarWidth = 0;
     var spotlightPost = $('#spotlightPost'), spotlightDrag = false;
+    var postSidebar = $('#postSidebar');
     var related = $('#related');
     var menu = $('#menu-responsive');
     var portfolio = $('#portfolio'), animPortfolio1, animPortfolio2, portfolioItemScroll = [],
@@ -1313,6 +1352,7 @@ $(window).on('load', function(){
     var contentHeader = $('#contentHeader');
     var fadePage = $('#fadePage');
     var galleries = $('.gallery');
+    var postSidebar = $('#postSidebar');
 
     function animTxt(splitText){
         splitText.split({type:'words'});
@@ -1332,6 +1372,11 @@ $(window).on('load', function(){
 
     if(fadePage.length){
         TweenMax.to(fadePage, 0.2, {opacity: 1});
+    }
+
+    if(postSidebar.length){
+        postSidebarTop = postSidebar.offset().top;
+        postSidebarWidth = postSidebar.innerWidth();
     }
 
     if(galleries.length){

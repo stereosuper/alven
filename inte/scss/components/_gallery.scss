@@ -1,5 +1,38 @@
 /* Gallery */
 
+.gallery-container{
+    position: relative;
+    .btn-arrow-only{
+        width: 80px;
+        height: 70px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: 0;
+        z-index: 2;
+        background: #fff;
+        &:before{
+            right: 35px;
+        }
+        &:after{
+            right: 33px;
+        }
+        &.left{
+            right: auto;
+            left: 0;
+            &:before{
+                right: auto;
+                left: 35px;
+            }
+            &:after{
+                right: auto;
+                left: 33px;
+            }
+        }
+    }
+}
+
 .gallery{
     position: relative;
     margin: 0 1*-$innerGutter;
