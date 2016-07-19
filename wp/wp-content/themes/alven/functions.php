@@ -430,15 +430,6 @@ function alven_get_svg($id){
     return $img;
 }
 
-// filter search results to only have posts and startups
-function alven_search_filter($query){
-    if($query->is_search && !is_admin()){
-        $query->set('post_type', array('post', 'startup'));
-    }
-    return $query;
-}
-add_filter( 'pre_get_posts', 'alven_search_filter' );
-
 
 /*-----------------------------------------------------------------------------------*/
 /* Custom Post Types
@@ -536,8 +527,9 @@ add_filter( 'nav_menu_css_class', 'alven_correct_menu_parent_class', 10, 2 );
 /*-----------------------------------------------------------------------------------*/
 function alven_search_where($where){
     global $wpdb;
-    if(is_search()){
-        $where .= "OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish')";
+
+    if(is_search() && !is_admin()){
+        $where .= " OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish') AND {$wpdb->posts}.post_type IN ('post', 'startup')";
     }
     return $where;
 }
@@ -545,7 +537,7 @@ add_filter( 'posts_where', 'alven_search_where' );
 
 function alven_search_join($join){
     global $wpdb;
-    if(is_search()){
+    if(is_search() && !is_admin()){
         $join .= "LEFT JOIN {$wpdb->term_relationships} tr ON {$wpdb->posts}.ID = tr.object_id INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id INNER JOIN {$wpdb->terms} t ON t.term_id = tt.term_id";
     }
     return $join;
@@ -563,6 +555,18 @@ function alven_search_groupby($groupby){
     return $groupby.", ".$groupby_id;
 }
 add_filter( 'posts_groupby', 'alven_search_groupby' );
+
+
+// filter search results to only have posts and startups
+/*function alven_search_filter($query){
+    if(!is_admin() && $query->is_main_query()){
+        if($query->is_search){
+            $query->set('post_type', array('post', 'startup'));
+        }
+    }
+    return $query;
+}
+add_filter( 'pre_get_posts', 'alven_search_filter' );*/
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -601,11 +605,11 @@ function alven_post_gallery($output, $attr){
 
     if( empty($attachments) ) return '';
 
-    $output = '<div class="gallery">';
+    $output = '<div class="gallery-container"><div class="gallery">';
     foreach( $attachments as $id => $attachment ){
         $output .= '<div><a target="_blank" href="' . wp_get_attachment_image_src($id, $size)[0] . '">' . wp_get_attachment_image($id, $size, false, array('class' => 'no-scroll')) . '</a></div>';
     }
-    $output .= '</div>';
+    $output .= '</div></div>';
 
     return $output;
 }

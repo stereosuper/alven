@@ -61,8 +61,6 @@
             <article class='content-main'>
                 <div class='container'>
 
-                    <h2><?php the_excerpt(); ?></h2>
-
                     <div class='container-small'>
                         <div class='grid'>
                             <div class='content-default'>
