@@ -12,6 +12,7 @@
         right: 0;
         z-index: 2;
         background: #fff;
+        opacity: 0;
         &:before{
             right: 35px;
         }
@@ -29,6 +30,11 @@
                 right: auto;
                 left: 33px;
             }
+        }
+    }
+    &:hover, &.is-mobile{
+        .btn-arrow-only{
+            opacity: 1;
         }
     }
 }
