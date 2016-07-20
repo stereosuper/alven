@@ -24,8 +24,8 @@ get_header(); ?>
                 <div class='container'>
                     <ul class='dropdown' data-filter='investment'>
                         <li data-investment='all' class='actif'>All investments</li>
-                        <li data-investment='present'>Present</li>
-                        <li data-investment='past'>Past</li>
+                        <li data-investment='present'><?php the_field('present', 'options'); ?></li>
+                        <li data-investment='past'><?php the_field('past', 'options'); ?></li>
                     </ul>
                     <ul class='dropdown' data-filter='field'>
                         <li data-field='all' class='actif'>All fields of activity</li>
