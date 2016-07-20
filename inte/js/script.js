@@ -852,7 +852,7 @@ $(function(){
                 newDesc = $('.desc', newLi);
 
                 tlTeamCurrent.set(newLi, {className:'+=open', onComplete: function(){
-                    descResponsive.html(desc.html());
+                    descResponsive.html(newDesc.html());
 
                     TweenMax.set(descResponsive, {height: 'auto', position: 'absolute'});
                     heightDescResponsive = descResponsive.outerHeight();
