@@ -44,6 +44,7 @@
     margin: 0 1*-$innerGutter;
     div{
         display: inline-block;
+        position: relative;
         vertical-align: top;
         transition: $transition;
         &.off{
@@ -83,5 +84,16 @@
             max-height: 60vh;
             margin: $innerGutter 0;
         }
+    }
+    .caption{
+        padding: 5px 10px;
+        position: absolute;
+        bottom: 10px;
+        left: 20px;
+        margin: 0 20px 0 0;
+        font-size: 1.2rem;
+        background: rgba(#fff, 0.8);
+        color: $txt;
+        line-height: 1;
     }
 }
