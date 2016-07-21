@@ -12,7 +12,7 @@ function wpse_183245_upload_dir( $dirs ){
 }
 
 
-$mailto = 'elisabeth@stereosuper.fr';
+$mailto = 'contact@alvencapital.com';
 
 $status = '';
 $errorFirstname = '';

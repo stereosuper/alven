@@ -87,7 +87,9 @@ function setGallery(gallery, windowWidth){
             });
         }
     }else{
-        Draggable.get(gallery).kill();
+        if(Draggable.get(gallery) !== undefined){
+            Draggable.get(gallery).kill();
+        }
         dragGallery = false;
     }
 }

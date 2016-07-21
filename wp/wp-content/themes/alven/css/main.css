@@ -4540,6 +4540,7 @@ select::-ms-expand {
 }
 .gallery div {
   display: inline-block;
+  position: relative;
   vertical-align: top;
   -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
@@ -4577,6 +4578,19 @@ select::-ms-expand {
   height: 350px;
   max-height: 60vh;
   margin: 10px 0;
+}
+.gallery .caption {
+  padding: 5px 10px;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  margin: 0 20px 0 0;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: #636a6b;
+  line-height: 1;
+  -webkit-transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+  transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1);
 }
 
 /* Home */
@@ -5442,6 +5456,10 @@ select::-ms-expand {
   }
   .gallery div.off {
     opacity: 1;
+  }
+  .gallery .caption {
+    left: 10px;
+    margin-right: 10px;
   }
 }
 @media (max-width: 540px) {

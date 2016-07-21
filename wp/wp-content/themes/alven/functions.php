@@ -607,7 +607,9 @@ function alven_post_gallery($output, $attr){
 
     $output = '<div class="gallery-container"><div class="gallery">';
     foreach( $attachments as $id => $attachment ){
-        $output .= '<div><a target="_blank" href="' . wp_get_attachment_image_src($id, $size)[0] . '">' . wp_get_attachment_image($id, $size, false, array('class' => 'no-scroll')) . '</a></div>';
+        $caption = get_post( $id )->post_excerpt;
+        $captionOutput = empty($caption) ? '' : '<span class="caption">'.$caption.'</span>';
+        $output .= '<div><a target="_blank" href="' . wp_get_attachment_image_src($id, $size)[0] . '">' . wp_get_attachment_image($id, $size, false, array('class' => 'no-scroll')) . $captionOutput . '</a></div>';
     }
     $output .= '</div></div>';
 

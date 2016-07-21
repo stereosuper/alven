@@ -23,12 +23,12 @@ get_header(); ?>
             <div class='portfolio-filters' id='portfolioFilters'>
                 <div class='container'>
                     <ul class='dropdown' data-filter='investment'>
-                        <li data-investment='all' class='actif'>All investments</li>
+                        <li data-investment='all' class='actif'>All companies</li>
                         <li data-investment='present'><?php the_field('present', 'options'); ?></li>
                         <li data-investment='past'><?php the_field('past', 'options'); ?></li>
                     </ul>
                     <ul class='dropdown' data-filter='field'>
-                        <li data-field='all' class='actif'>All fields of activity</li>
+                        <li data-field='all' class='actif'>All fields</li>
                         <?php
                             $fields = get_terms(array('taxonomy' => 'field'));
                             foreach($fields as $field){
