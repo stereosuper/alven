@@ -1157,13 +1157,14 @@ $(function(){
                     $(this).toggleClass('on');
                 }
             }
+        });
+        formSearchHeader.on('focusout', function(){
+            $(this).find('input').val() ? $(this).addClass('on') : $(this).removeClass('on');
+        }).on('submit', function(e){
             if(windowWidth < 480){
                 e.preventDefault();
                 window.location.href = $(this).attr('action') + '?s=';
             }
-        });
-        formSearchHeader.on('focusout', function(){
-            $(this).find('input').val() ? $(this).addClass('on') : $(this).removeClass('on');
         });
 
 

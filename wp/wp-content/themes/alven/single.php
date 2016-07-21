@@ -133,6 +133,7 @@
                         <div class='grid'>
                             <?php while($lastPosts->have_posts()): $lastPosts->the_post(); ?>
                                 <div class='col-4 read-also-post'>
+                                    <a href='<?php the_permalink(); ?>' class='img'><?php the_post_thumbnail('large'); ?></a>
                                     <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
                                     <div class='post-meta'>
                                         <?php the_category( ', ' ); ?> -
