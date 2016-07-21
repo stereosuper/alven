@@ -309,6 +309,17 @@
         left: -7px;
         bottom: -61px;
     }
+
+    .img{
+        display: block;
+        max-width: 78%;
+        margin: 0 0 20px;
+        box-shadow: none;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
 }
 
 .post{

@@ -60,6 +60,9 @@
             max-width: 90%;
             font-size: 2.8rem;
         }
+        .img{
+            max-width: 90%;
+        }
     }
 
     .portfolio-list{
@@ -855,6 +858,7 @@
     }
 
     .portfolio-header{
+        padding-top: 130px;
         h1{
             display: block;
             width: 50%;
@@ -865,6 +869,12 @@
             &:first-of-type{
                 margin-left: 0;
             }
+        }
+    }
+    .portfolio-filters{
+        &.fixed{
+            position: relative;
+            top: 0;
         }
     }
 
@@ -1145,20 +1155,7 @@
             font-size: 1.1rem;
         }
     }
-    .portfolio-list{
-        margin: 280px 0 0;
-        li, .po-item{
-            font-size: 1rem;
-        }
-        .po-item{
-            &.cta{
-                font-size: 1.2rem;
-                .btn-invert{
-                    font-size: 0.8rem;
-                }
-            }
-        }
-    }
+
     .quote{
         blockquote{
             padding-right: $col*4;
@@ -1179,7 +1176,9 @@
         }
     }
     .portfolio-list{
+        margin: 280px 0 0;
         li, .po-item{
+            font-size: 1rem;
             &.transfered{
                 a{
                     .content-transfered{
@@ -1187,6 +1186,14 @@
                             padding: 5px 0;
                         }
                     }
+                }
+            }
+        }
+        .po-item{
+            &.cta{
+                font-size: 1.2rem;
+                .btn-invert{
+                    font-size: 0.8rem;
                 }
             }
         }
@@ -1202,9 +1209,6 @@
     }
     .portfolio-filters{
         padding-top: 0;
-    }
-    .portfolio-header{
-        padding-top: 270px;
     }
 }
 
@@ -1342,17 +1346,23 @@
     }
 }
 
+@media (max-height: 700px){
+    .portfolio-header{
+        padding-top: 130px;
+    }
+    .portfolio-filters{
+        &.fixed{
+            position: relative;
+            top: 0;
+        }
+    }
+}
+
 @media (max-height: 660px){
     h1{
         .home &{
             margin: 2vh auto;
         }
-    }
-}
-
-@media (max-height: 699px){
-    .portfolio-header{
-        padding-top: 130px;
     }
 }
 
