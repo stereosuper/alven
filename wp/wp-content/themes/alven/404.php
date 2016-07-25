@@ -15,7 +15,7 @@
                 <div class='container-small'>
                     <div class='grid'>
                         <div class='col-8 content-default'>
-                            You're lost? You can check the <a href='./sitemap/'>sitemap</a> or <a href='./'>go back to home</a>.
+                            You're lost? You can check the <a href='<?php echo site_url(); ?>/sitemap/'>sitemap</a> or <a href='<?php echo site_url(); ?>'>go back to home</a>.
                         </div>
                     </div>
                 </div>

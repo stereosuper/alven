@@ -302,7 +302,7 @@ $(function(){
     }
 
     // create portfolio
-    function setPortfolio(poItem, nbPoItem, nbCol){
+    function setPortfolio(poItem, nbPoItem, nbCol, scroll){
         var portfolioContent = '<div class="grid">',
             currentNb = 0, i = 0, transfered,
             nbTrItem = 0, poItems, nbItemByCol = [];
@@ -420,6 +420,10 @@ $(function(){
             $(this).closest('.po-item').removeClass('link-hovered').closest('.grid').removeClass('is-hovered');
             $(this).addClass('off');
         });
+
+        if(scroll){
+            setTimeout(function(){ $('html, body').animate({scrollTop: main.offset().top}, 400); }, 400);
+        }
     }
 
     function filterPortfolio(data, url){
@@ -487,8 +491,6 @@ $(function(){
             });
         }
 
-        $('html, body').animate({scrollTop: main.offset().top}, 400);
-
         disableImpossibleChoices('investment');
         disableImpossibleChoices('field');
         disableImpossibleChoices('footprint');
@@ -499,7 +501,7 @@ $(function(){
 
         history.pushState(null, null, url);
 
-        setPortfolio(filteredPoItem, nbFilteredPoItem, nbCol);
+        setPortfolio(filteredPoItem, nbFilteredPoItem, nbCol, 'scroll');
     }
 
     function setFiltersPortfolio(){

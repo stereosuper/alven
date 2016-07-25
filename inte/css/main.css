@@ -2524,7 +2524,7 @@ select::-ms-expand {
   width: 100%;
   position: absolute;
   top: 0;
-  bottom: 0;
+  bottom: 15px;
   margin: auto;
 }
 .post-sidebar .img a {
@@ -2781,13 +2781,20 @@ select::-ms-expand {
 }
 .read-also-post .img {
   display: block;
+  height: 150px;
   max-width: 78%;
+  overflow: hidden;
+  position: relative;
   margin: 0 0 20px;
   box-shadow: none;
 }
 .read-also-post .img img {
   width: 100%;
   height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .post {
@@ -4896,6 +4903,10 @@ select::-ms-expand {
 
   .read-also-posts h4 {
     font-size: 2.2rem;
+  }
+
+  .read-also-post .img {
+    height: 120px;
   }
 
   .container-team {

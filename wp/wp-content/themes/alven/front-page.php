@@ -30,7 +30,7 @@ get_header(); ?>
                 </div>
             <?php } ?>
             <?php if(get_field('video')){ ?>
-                <div class='wrapper-video'>
+                <div class='wrapper-video' style='opacity:<?php the_field('videoOpacity'); ?>'>
                     <video class='video' poster='<?php echo wp_get_attachment_url(get_field('videoImg')); ?>' autoplay muted loop>
                         <source src='<?php the_field('video'); ?>' type='video/mp4'>
                     </video>
@@ -247,15 +247,15 @@ get_header(); ?>
                                                 <span class='function'><?php the_field('job'); ?></span>
                                             </span>
                                         </a>
-                                        <?php if(get_field('linkedin') || get_field('twitter')){ ?>
-                                            <ul class='social'>
-                                                <?php if(get_field('linkedin')){ ?><li>
-                                                    <a href='<?php the_field('linkedin'); ?>' class='icon-linkedin' target='_blank'>Linkedin</a>
-                                                </li><?php } if(get_field('twitter')){ ?><li>
-                                                    <a href='<?php the_field('twitter'); ?>' class='icon-twitter' target='_blank'>Twitter</a>
-                                                </li><?php } ?>
-                                            </ul>
-                                        <?php } ?>
+                                        <?php //if(get_field('linkedin') || get_field('twitter')){ ?>
+                                            <!--<ul class='social'>
+                                                <?php //if(get_field('linkedin')){ ?><li>
+                                                    <a href='<?php //the_field('linkedin'); ?>' class='icon-linkedin' target='_blank'>Linkedin</a>
+                                                </li><?php //} if(get_field('twitter')){ ?><li>
+                                                    <a href='<?php //the_field('twitter'); ?>' class='icon-twitter' target='_blank'>Twitter</a>
+                                                </li><?php //} ?>
+                                            </ul>-->
+                                        <?php //} ?>
                                         <div class='desc'>
                                             <a class='btn-cross' href='#'>Close</a>
                                             <ul class='btn-desc'>
