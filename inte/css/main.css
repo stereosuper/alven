@@ -4279,10 +4279,18 @@ select::-ms-expand {
 }
 .subscribe-form + .response {
   width: 50%;
-  padding: 0 10px 0 25px;
+  padding: 5px 10px 0 25px;
   float: right;
   font-size: 1.2rem;
+  line-height: 1.2;
   color: #f06850;
+}
+.subscribe-form + .response p {
+  width: 52%;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: #01a2a6;
 }
 
 /* Filters */
@@ -5611,6 +5619,9 @@ select::-ms-expand {
     width: 100%;
     padding: 20px 40px 0;
     text-align: center;
+  }
+  .subscribe-form + .response p {
+    width: 100%;
   }
 
   .wrapper-interactive-blocks .interactive-block h3 {
