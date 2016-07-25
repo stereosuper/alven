@@ -117,7 +117,7 @@ get_header(); ?>
                             </ul>
                         </div>
                     </div>
-                <?php endif; ?>
+                <?php endif; wp_reset_query(); ?>
                 <div class='container align-center'>
                     <div id='ctaPortfolio'>
                         <a href='#contact-us'>
