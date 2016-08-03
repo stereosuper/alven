@@ -138,16 +138,16 @@ input, textarea{
         }
     }
     &.filled{
-        &:invalid{
-            border-color: $magazine;
-            + label{
-                color: $magazine;
-            }
-        }
         &:valid{
             border-color: $portfolio;
             + label{
                 color: $portfolio;
+            }
+        }
+        &:invalid, &.invalid{
+            border-color: $magazine;
+            + label{
+                color: $magazine;
             }
         }
     }

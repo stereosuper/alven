@@ -997,17 +997,17 @@ input:focus, textarea:focus {
 input:focus + label, textarea:focus + label {
   opacity: 1;
 }
-input.filled:invalid, textarea.filled:invalid {
-  border-color: #f06850;
-}
-input.filled:invalid + label, textarea.filled:invalid + label {
-  color: #f06850;
-}
 input.filled:valid, textarea.filled:valid {
   border-color: #01a2a6;
 }
 input.filled:valid + label, textarea.filled:valid + label {
   color: #01a2a6;
+}
+input.filled:invalid, input.filled.invalid, textarea.filled:invalid, textarea.filled.invalid {
+  border-color: #f06850;
+}
+input.filled:invalid + label, input.filled.invalid + label, textarea.filled:invalid + label, textarea.filled.invalid + label {
+  color: #f06850;
 }
 input.invalid, textarea.invalid {
   border-color: #f06850;

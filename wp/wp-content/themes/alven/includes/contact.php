@@ -24,6 +24,10 @@
                                 <input type='email' name='email1' id='email1' required class='form-elt <?php if($errorEmail) echo "invalid"; ?>' value='<?php echo $email; ?>'>
                                 <label for='email1'>Your email</label>
                             </div>
+                            <div class='hidden'>
+                                <input type='url' name='url' id='url' value='<?php echo $spamUrl; ?>'>
+                                <label for='url'>Leave this field empty please</label>
+                            </div>
                         </section>
                     </fieldset>
                     <fieldset>
@@ -75,6 +79,10 @@
                             </div><div class='large'>
                                 <input type='email' name='email2' id='email2' required class='form-elt <?php if($errorEmail2) echo "invalid"; ?>' value='<?php echo $email2; ?>'>
                                 <label for='email2'>Your email</label>
+                            </div>
+                            <div class='hidden'>
+                                <input type='url' name='url2' id='url2' value='<?php echo $spamUrl; ?>'>
+                                <label for='url2'>Leave this field empty please</label>
                             </div>
                         </section>
                     </fieldset>
