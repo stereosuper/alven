@@ -421,7 +421,7 @@ function alven_related_posts($currentId){
 // return inline svg or img
 function alven_get_svg($id){
     $icon = wp_get_attachment_thumb_url($id);
-    if(strpos( $icon, '.svg' ) && file_exists(ABSPATH . $icon)){
+    if(strpos( $icon, '.svg' )){
         $icon = str_replace( site_url(), '', $icon);
         $img = file_get_contents(ABSPATH . $icon);
     }else{
@@ -712,8 +712,8 @@ function alven_scripts(){
     wp_enqueue_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array(), null, true );
     wp_enqueue_script( 'gsap', get_template_directory_uri() . '/js/animation.gsap.min.js', array(), null, true );
 
-    wp_enqueue_script( 'alven-script', get_template_directory_uri() . '/js/script.min.js', array(), null, true );
-    wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/js/ajax.min.js', array('alven-script'), null, true );
+    wp_enqueue_script( 'alven-script', get_template_directory_uri() . '/js/script.js', array(), null, true );
+    wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/js/ajax.js', array('alven-script'), null, true );
 
     wp_deregister_script( 'wp-embed' );
 }
