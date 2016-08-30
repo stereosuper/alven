@@ -1,11 +1,5 @@
 <?php
-
 if ( have_posts() ) : the_post();
-
-    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            get_template_part('ajax/single-startup');
-            return;
-    }
 
     $current_url = full_url($_SERVER);
     $redirect_url = alven_get_startup_permalink($post);

@@ -421,7 +421,7 @@ function alven_related_posts($currentId){
 // return inline svg or img
 function alven_get_svg($id){
     $icon = wp_get_attachment_thumb_url($id);
-    if(strpos( $icon, '.svg' )){
+    if(strpos( $icon, '.svg' ) && file_exists(ABSPATH . $icon)){
         $icon = str_replace( site_url(), '', $icon);
         $img = file_get_contents(ABSPATH . $icon);
     }else{
@@ -714,7 +714,42 @@ function alven_scripts(){
 
     wp_enqueue_script( 'alven-script', get_template_directory_uri() . '/js/script.js', array(), null, true );
     wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/js/ajax.js', array('alven-script'), null, true );
+    wp_localize_script('ajax-script', 'alven_ajax', alven_ajax());
 
     wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_enqueue_scripts', 'alven_scripts' );
+
+/*
+ * Passe aux scripts l'adresse de la page admin-ajax.php
+ */
+function alven_ajax()
+{
+    return array(
+        'ajax_url' => admin_url('admin-ajax.php')
+    );
+}
+
+/*
+ * Traite la requête ajax
+ */
+function alven_portfolio_ajax()
+{
+    $url = $_POST['href'] ;
+    $slug = end((explode('/', untrailingslashit($url)))); //str_replace('/', '', str_replace('/startup/', '/', $url));
+
+    $args = array(
+        'name' => $slug,
+        'post_type' => 'startup',
+    );
+
+    query_posts($args);
+
+    the_post();
+
+    get_template_part('ajax/single', 'startup');
+
+    wp_die();
+}
+add_action('wp_ajax_nopriv_alven_portfolio_ajax', 'alven_portfolio_ajax');
+add_action('wp_ajax_alven_portfolio_ajax', 'alven_portfolio_ajax');

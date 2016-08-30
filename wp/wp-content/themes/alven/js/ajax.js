@@ -78,10 +78,15 @@ $(function(){
          */
         function loadUrlAjax(href) {
 
-            $.get( href, function( data ) {
+            var ajax_href = alven_ajax.ajax_url;
+            var params = {
+                'action': 'alven_portfolio_ajax',
+                'href' : href
+            };
 
+            $.post( ajax_href, params, function( data ) {
                 /*
-                 * Première façon de faire : on séquence le scrollto et l'ouverture du bloc
+                 * on séquence le scrollto et l'ouverture du bloc
                  */
                 $.scrollTo($ajaxContainer, 300, {
                   onAfter: function() {
@@ -92,16 +97,6 @@ $(function(){
                     }
                   }
                 });
-
-                /*
-                 * Seconde façon : on scroll et on ouvre le bloc dans le même temps
-                 */
-                /*$.scrollTo($ajaxContainer, 300);
-                if ($ajaxContainer.hasClass('open')) {
-                    wipeAjaxContainer(data, href, openAjaxContainer);
-                } else {
-                    openAjaxContainer(data, href);
-                }*/
             });
         }
 
