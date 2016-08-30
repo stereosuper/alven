@@ -421,7 +421,7 @@ function alven_related_posts($currentId){
 // return inline svg or img
 function alven_get_svg($id){
     $icon = wp_get_attachment_thumb_url($id);
-    if(strpos( $icon, '.svg' )){
+    if(strpos( $icon, '.svg' ) && file_exists(ABSPATH . $icon)){
         $icon = str_replace( site_url(), '', $icon);
         $img = file_get_contents(ABSPATH . $icon);
     }else{
@@ -664,6 +664,24 @@ function alven_get_startup_permalink($post) {
     }
 
     return $url;
+}
+
+// Src : http://stackoverflow.com/questions/6768793/get-the-full-url-in-php
+function url_origin( $s, $use_forwarded_host = false )
+{
+    $ssl      = ( ! empty( $s['HTTPS'] ) && $s['HTTPS'] == 'on' );
+    $sp       = strtolower( $s['SERVER_PROTOCOL'] );
+    $protocol = substr( $sp, 0, strpos( $sp, '/' ) ) . ( ( $ssl ) ? 's' : '' );
+    $port     = $s['SERVER_PORT'];
+    $port     = ( ( ! $ssl && $port=='80' ) || ( $ssl && $port=='443' ) ) ? '' : ':'.$port;
+    $host     = ( $use_forwarded_host && isset( $s['HTTP_X_FORWARDED_HOST'] ) ) ? $s['HTTP_X_FORWARDED_HOST'] : ( isset( $s['HTTP_HOST'] ) ? $s['HTTP_HOST'] : null );
+    $host     = isset( $host ) ? $host : $s['SERVER_NAME'] . $port;
+    return $protocol . '://' . $host;
+}
+
+function full_url( $s, $use_forwarded_host = false )
+{
+    return url_origin( $s, $use_forwarded_host ) . $s['REQUEST_URI'];
 }
 
 

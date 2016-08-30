@@ -7,7 +7,11 @@ if ( have_posts() ) : the_post();
             return;
     }
 
-    wp_redirect(alven_get_startup_permalink($post));
+    $current_url = full_url($_SERVER);
+    $redirect_url = alven_get_startup_permalink($post);
+    if ($current_url != $redirect_url) {
+        wp_redirect($redirect_url);
+    }
 
 endif;
 
