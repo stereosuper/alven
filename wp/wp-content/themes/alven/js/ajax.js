@@ -109,11 +109,13 @@ $(function(){
         $.address.externalChange(function(e) {
             var href = e.value;
 
-            if (href && href!='' && href != '/') {
-                loadUrlAjax(href);
-            } else {
-                if ($ajaxContainer.hasClass('open')) {
-                    wipeAjaxContainer();
+            if(href != '/contact'){
+                if (href && href != '' && href != '/') {
+                    loadUrlAjax(href);
+                } else {
+                    if ($ajaxContainer.hasClass('open')) {
+                        wipeAjaxContainer();
+                    }
                 }
             }
         });
