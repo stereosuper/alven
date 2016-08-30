@@ -11,6 +11,7 @@ if ( have_posts() ) : the_post();
     $redirect_url = alven_get_startup_permalink($post);
     if ($current_url != $redirect_url) {
         wp_redirect($redirect_url);
+        return;
     }
 
 endif;
