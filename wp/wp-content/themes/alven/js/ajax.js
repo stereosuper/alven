@@ -104,7 +104,7 @@ $(function(){
         $.address.externalChange(function(e) {
             var href = e.value;
 
-            if(href != '/contact'){
+            if(href != '/contact' && href != '/who-we-are'){
                 if (href && href != '' && href != '/') {
                     loadUrlAjax(href);
                 } else {
