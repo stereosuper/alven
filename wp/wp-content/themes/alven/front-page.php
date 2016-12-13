@@ -230,12 +230,24 @@ get_header(); ?>
                                                     echo $post->ID . alven_get_svg(get_post_thumbnail_id());
                                                 } ?>
                                             </a>
-                                        </li><?php } else{ ?><li class='col-2 transfered'>
+                                        </li><?php }else{ ?><li class='col-2 transfered'>
                                             <a href='<?php the_permalink(); ?>' class='off'>
-                                                <span class='content-transfered'>
+                                                <span class='content-transfered <?php if(!get_field('acquiredBy')){ echo 'no-by'; } ?>'>
                                                     <span><?php echo alven_get_svg(get_post_thumbnail_id()); ?></span>
-                                                    <span>Acquired by</span>
-                                                    <span><?php echo alven_get_svg(get_field('acquiredByLogo')); ?></span>
+                                                    <?php if(get_field('acquiredBy')){ ?>
+                                                        <span>Acquired by</span>
+                                                        <span <?php if(!get_field('acquiredByLogo')){ echo "class='txt-container'"; } ?>>
+                                                            <?php
+                                                                if(get_field('acquiredByLogo')){
+                                                                    echo alven_get_svg(get_field('acquiredByLogo'));
+                                                                }else{ ?>
+                                                                    <span class='txt'><?php echo get_field('acquiredBy'); ?></span>
+                                                                <?php }
+                                                            ?>
+                                                        </span>
+                                                    <?php }else{ ?>
+                                                        <span>Acquired</span>
+                                                    <?php } ?>
                                                 </span>
                                             </a>
                                         </li><?php } ?>
