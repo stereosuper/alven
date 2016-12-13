@@ -12,7 +12,7 @@ function wpse_183245_upload_dir( $dirs ){
 }
 
 
-$mailto = 'elisabeth@stereosuper.fr';
+$mailto = 'contact@alvencapital.com';
 
 $status = '';
 $errorFirstname = '';
@@ -177,15 +177,9 @@ if(isset($_POST['submitcontact'])){
         $errorEmail2 = true;
     }
 
-    if(!filter_var($email2, FILTER_VALIDATE_EMAIL)){
+    if(!preg_match('/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i', $email2)){
         $status2 = 'error';
         $errorEmail2 = true;
-    }else{
-        list($userName, $mailDomain) = split('@', $email2);
-        if(!checkdnsrr($mailDomain, 'MX')){
-            $status2 = 'error';
-            $errorEmail2 = true;
-        }
     }
 
     if($status2 === 'error'){
@@ -199,11 +193,11 @@ if(isset($_POST['submitcontact'])){
             $name2 = sprintf('%s %s', $firstname2, $lastname2);
             $subject2 = 'New message received from alvencapital.com';
             $headers2 = 'From: "' . $name2 . '" <' . $email2 . '>' . "\r\n" .
-                       'Reply-To: ' . $email2 . "\r\n";
+                        'Reply-To: ' . $email2 . "\r\n";
 
             $content2 = 'From: ' . $name2 . "\r\n" .
-                       'Email: ' . $email2 . "\r\n\r\n\r\n" .
-                       'Message: ' . "\r\n" . $msg2;
+                        'Email: ' . $email2 . "\r\n\r\n\r\n" .
+                        'Message: ' . "\r\n" . $msg2;
 
             $sent2 = wp_mail($mailto, $subject2, $content2, $headers2);
 
