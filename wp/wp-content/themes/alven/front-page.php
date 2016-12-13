@@ -5,6 +5,9 @@ Template Name: Home
 
 require_once('includes/form-contact.php');
 
+// we get the cookie that contains the ids of the startups displayed last time, if it exists
+$portfolioCookie = isset($_COOKIE['alv-portfolio']) ? unserialize($_COOKIE['alv-portfolio']) : false;
+
 get_header(); ?>
 
     <?php if ( have_posts() ) : the_post(); ?>
@@ -177,17 +180,54 @@ get_header(); ?>
                     </div>
 
                     <?php
-                        $startups = new WP_Query(array('post_type' => 'startup', 'posts_per_page' => 19, 'orderby' => 'menu_order', 'order' => 'ASC'));
+                        // $startups = new WP_Query(array('post_type' => 'startup', 'posts_per_page' => 19, 'orderby' => 'menu_order', 'order' => 'ASC'));
+
+                        // si le cookie existe
+                        if($portfolioCookie){
+                            // on remplit ce tableau avec max 19 startups aléatoires qui n'ont pas les meme id
+                            $otherPortfolio = [];
+                            $otherPortfolioPosts = get_posts(array(
+                                'post_type' => 'startup',
+                                'posts_per_page' => 19,
+                                'orderby' => 'rand',
+                                'meta_key' => 'displayHome',
+                                'meta_value' => true,
+                                'exclude' => $portfolioCookie
+                            ));
+                            foreach($otherPortfolioPosts as $portfolio){
+                               $otherPortfolio[] = $portfolio->ID;
+                            }
+                            // si on a récupéré moins de 19 startups, on complete avec des startups aléatoires dont les ids ne sont
+                            // pas dans le tableau précédent (et qui doivent donc etre présente dans le cookie)
+                            $countCompletePortfolio = 19 - count($otherPortfolio);
+                            if($countCompletePortfolio > 0){
+                                $completePortfolioPosts = get_posts(array(
+                                    'post_type' => 'startup',
+                                    'posts_per_page' => $countCompletePortfolio,
+                                    'orderby' => 'rand',
+                                    'meta_key' => 'displayHome',
+                                    'meta_value' => true,
+                                    'exclude' => $otherPortfolio
+                                ));
+                                foreach($completePortfolioPosts as $portfolio){
+                                   $otherPortfolio[] = $portfolio->ID;
+                                }
+                            }
+                            $args = array('post_type' => 'startup', 'posts_per_page' => 19, 'orderby' => 'rand', 'post__in' => $otherPortfolio);
+                        }else{
+                            $args = array('post_type' => 'startup', 'posts_per_page' => 19, 'orderby' => 'rand', 'meta_key' => 'displayHome', 'meta_value' => true);
+                        }
+                        $startups = new WP_Query($args);
                         if($startups->have_posts()):
                     ?>
                         <div class='portfolio-list' id='portfolio'>
                             <div class='container'>
                                 <ul class='grid'>
-                                    <?php while($startups->have_posts()): $startups->the_post(); ?>
+                                    <?php while($startups->have_posts()): $startups->the_post(); $portfolioIds[] = $post->ID; ?>
                                         <?php if(get_field('investment') !== 'past'){ ?><li class='col-2'>
                                             <a href='<?php the_permalink(); ?>' class='off'>
                                                 <?php if( has_post_thumbnail() ){
-                                                    echo alven_get_svg(get_post_thumbnail_id());
+                                                    echo $post->ID . alven_get_svg(get_post_thumbnail_id());
                                                 } ?>
                                             </a>
                                         </li><?php } else{ ?><li class='col-2 transfered'>
@@ -203,7 +243,7 @@ get_header(); ?>
                                 </ul>
                             </div>
                         </div>
-                    <?php endif; wp_reset_query(); ?>
+                    <?php endif; setcookie('alv-portfolio', serialize($portfolioIds), time()+3600); wp_reset_query(); ?>
 
                     <div class='container align-center'>
                         <div id='ctaPortfolio'>
