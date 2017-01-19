@@ -84,11 +84,14 @@ function alven_remove_p_around_images($content){
 add_filter( 'the_content', 'alven_remove_p_around_images' );
 
 // Allow svg in media library
-function akn_mime_types($mimes){
-    $mimes['svg'] = 'image/svg+xml';
-    return $mimes;
+function alven_allow_svg($filetype_ext_data, $file, $filename, $mimes){
+    if( substr($filename, -4) === '.svg' ){
+        $filetype_ext_data['ext'] = 'svg';
+        $filetype_ext_data['type'] = 'image/svg+xml';
+    }
+    return $filetype_ext_data;
 }
-add_filter( 'upload_mimes', 'akn_mime_types' );
+add_filter( 'wp_check_filetype_and_ext', 'alven_allow_svg', 100, 4 );
 function akn_svg_size(){
   echo '<style>
     svg, img[src*=".svg"]{
