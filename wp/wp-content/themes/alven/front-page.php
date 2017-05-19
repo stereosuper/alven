@@ -84,6 +84,7 @@ get_header(); ?>
                         $queryPost = new WP_Query( array(
                             'post__not_in' => array($sticky),
                             'posts_per_page' => 3,
+                            'ignore_sticky_posts' => 1,
                             'tax_query' => array(
                                 array(
                                     'taxonomy' => 'category',
