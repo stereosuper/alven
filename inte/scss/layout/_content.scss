@@ -145,6 +145,14 @@
         right: 0;
         overflow: hidden;
         opacity: 0.8;
+
+        svg {
+            left: 0;
+            position: absolute;
+            top: 0;
+            transform: translateX(-60%);
+            z-index: 2;
+        }
         .video{
             min-width: 100%;
             min-height: 100%;
@@ -157,6 +165,7 @@
             background-position: 50% 50%;
             background-size: auto 100%;
             background-size: cover;
+            z-index: 1;
         }
     }
 }
