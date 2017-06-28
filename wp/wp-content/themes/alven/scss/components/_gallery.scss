@@ -1,0 +1,99 @@
+/* Gallery */
+
+.gallery-container{
+    position: relative;
+    .btn-arrow-only{
+        width: 80px;
+        height: 70px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: 0;
+        z-index: 2;
+        background: #fff;
+        opacity: 0;
+        &:before{
+            right: 35px;
+        }
+        &:after{
+            right: 33px;
+        }
+        &.left{
+            right: auto;
+            left: 0;
+            &:before{
+                right: auto;
+                left: 35px;
+            }
+            &:after{
+                right: auto;
+                left: 33px;
+            }
+        }
+    }
+    &:hover, &.is-mobile{
+        .btn-arrow-only{
+            opacity: 1;
+        }
+    }
+}
+
+.gallery{
+    position: relative;
+    margin: 0 1*-$innerGutter;
+    div{
+        display: inline-block;
+        position: relative;
+        vertical-align: top;
+        transition: $transition;
+        &.off{
+            opacity: 0.5;
+        }
+    }
+    img{
+        display: block;
+        width: auto;
+        height: 100%;
+        margin: 0 $innerGutter;
+    }
+    .js &{
+        width: 10000px;
+        cursor: move;
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+        z-index: auto !important; // override tweenmax z-index of 1001 ?
+        &:before{
+            // to be above the links, so we can drag the entire zone
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+        &.grabbing{
+            cursor: grabbing;
+            cursor: -moz-grabbing;
+            cursor: -webkit-grabbing;
+        }
+        div{
+            height: 350px;
+            max-height: 60vh;
+            margin: $innerGutter 0;
+        }
+    }
+    .caption{
+        padding: 5px 10px;
+        position: absolute;
+        bottom: 10px;
+        left: 20px;
+        margin: 0 20px 0 0;
+        font-size: 1.2rem;
+        background: rgba(#fff, 0.8);
+        color: $txt;
+        line-height: 1;
+    }
+}

@@ -1,0 +1,65 @@
+.menu-small{
+    font-size: 1.4rem;
+    ul{
+        margin: 0;
+        font-family: $source;
+        color: #fff;
+    }
+    li{
+        margin: 0;
+        padding: 0;
+        &:before{
+            display: none;
+        }
+    }
+    > ul{
+        padding: 20px 0 0;
+        line-height: 1.8;
+        ul{
+            padding: 5px 0 0 10px;
+            line-height: 1.3;
+        }
+    }
+    a{
+        box-shadow: none;
+        &:active{
+            color: $gold;
+        }
+    }
+}
+
+.menu-title{
+    display: block;
+    font-family: $sourceBold;
+    font-size: 2.2rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+.menu-subtitle{
+    display: block;
+    font-family: $sourceLight;
+    text-transform: uppercase;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+}
+
+.menu-secondary{
+    margin: 150px 0 0;
+    font-size: 1.2rem;
+    font-family: $source;
+    text-align: center;
+    color: #fff;
+    ul{
+        padding: 0;
+        margin: 0;
+    }
+    li{
+        display: inline-block;
+        padding: 0;
+        margin: 0 10px;
+        &:before{
+            display: none;
+        }
+    }
+}

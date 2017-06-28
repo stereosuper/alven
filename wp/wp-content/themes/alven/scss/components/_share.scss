@@ -1,0 +1,139 @@
+/* Share */
+
+.share, .share ul, .share > span, .share .corner{
+    &:before, &:after{
+        content: '';
+        position: absolute;
+        background: $greyLight;
+    }
+    &:before{
+        width: 1px;
+        height: 15px;
+    }
+    &:after{
+        width: 15px;
+        height: 1px;
+    }
+}
+
+.share{
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    &:before{
+        top: -7px;
+        left: 0;
+    }
+    &:after{
+        top: 0;
+        left: -7px;
+    }
+    > span{
+        display: block;
+        margin: -10px 0 0;
+        &:before{
+            top: -7px;
+            right: 0;
+        }
+        &:after{
+            top: 0;
+            right: -7px;
+        }
+    }
+    ul{
+        display: inline-block;
+        padding: 15px;
+        margin: 0;
+        color: #fff;
+        &:before{
+            bottom: -7px;
+            left: 0;
+        }
+        &:after{
+            bottom: 0;
+            left: -7px;
+        }
+    }
+    li{
+        display: inline-block;
+        padding: 0;
+        margin: 0 15px;
+        &:before{
+            display: none;
+        }
+    }
+    a{
+        @include btnNoTextBefore();
+
+        display: block;
+        width: 32px;
+        height: 32px;
+        background: $grey;
+        border-radius: 50%;
+        font-size: 15px;
+        color: #fff !important;
+        &:before{
+            width: 100%;
+            text-align: center;
+            line-height: 32px;
+        }
+        &:focus, &:hover{
+            .no-js &, .is-desktop &{
+                opacity: 1;
+            }
+        }
+        &:active{
+            color: inherit;
+            opacity: 0.7;
+        }
+    }
+    .icon-twitter{
+        &:hover, &:focus{
+            .no-js &, .is-desktop &{
+                background: #1da1f2;
+            }
+        }
+        &:active{
+            background: #1da1f2;
+        }
+    }
+    .icon-medium{
+        &:hover, &:focus{
+            .no-js &, .is-desktop &{
+                background: #00ab6c;
+            }
+        }
+        &:active{
+            background: #00ab6c;
+        }
+    }
+    .icon-linkedin{
+        &:hover, &:focus{
+            .no-js &, .is-desktop &{
+                background: #2672ae;
+            }
+        }
+        &:active{
+            background: #2672ae;
+        }
+    }
+    .corner{
+        &:before{
+            bottom: -7px;
+            right: 0;
+        }
+        &:after{
+            bottom: 0;
+            right: -7px;
+        }
+    }
+    .content-default &{
+        padding: 0 $outterGutter;
+        float: right;
+        margin-right: 10%;
+    }
+}
+
+.post-medium{
+    float: left;
+}

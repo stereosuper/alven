@@ -38,6 +38,10 @@ wp/license.txt
 # Exclusion de la config PhpStorm
 .idea/*
 
+# Exclusion des node-modules gulp
+wp/wp-content/themes/alven/node_modules
+
+
 ### SublimeText template
 # cache files for sublime text
 *.tmlanguage.cache

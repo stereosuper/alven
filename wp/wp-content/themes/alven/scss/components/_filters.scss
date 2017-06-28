@@ -1,0 +1,36 @@
+/* Filters */
+
+.filters{
+    margin-top: -50px !important; // to override .container-small 1150px margin 0
+    margin-bottom: -50px !important; // to compense the form-search margin
+    text-align: center;
+    .search &{
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+.filters-cat{
+    display: inline-block;
+    padding: 0;
+    margin: 0 5px;
+    font-family: $sourceBlack;
+    font-size: 1.3rem;
+    color: $magazine;
+    text-transform: uppercase;
+    li{
+        display: inline-block;
+        padding: 0;
+        margin: 0 10px 5px;
+        &:before{
+            display: none;
+        }
+    }
+    .current-cat{
+        a{
+            box-shadow: none;
+            color: $txt;
+            pointer-events: none;
+        }
+    }
+}
