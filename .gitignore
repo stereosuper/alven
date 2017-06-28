@@ -35,27 +35,6 @@ wp/wp-trackback.php
 wp/xmlrpc.php
 wp/license.txt
 
-# Excusion de tout wp
-wp/*
-
-# Sauf de /wp/wp-content/
-!wp/wp-content/
-
-# Exclusion de tout wp-content
-wp/wp-content/*
-
-# Sauf les thèmes
-!wp/wp-content/themes/
-
-# Exclusion de tous les thèmes
-wp/wp-content/themes/*
-
-# Sauf le thème Alven
-!wp/wp-content/themes/alven/
-
-
-wp/wp-content/plugins/*
-
 # Exclusion de la config PhpStorm
 .idea/*
 
