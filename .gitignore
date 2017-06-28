@@ -35,6 +35,32 @@ wp/wp-trackback.php
 wp/xmlrpc.php
 wp/license.txt
 
+# Excusion de tout wp
+/wp/*
+
+# Sauf de /wp/wp-content/
+!/wp/wp-content/
+
+# Exclusion de tout wp-content
+/wp/wp-content/*
+
+# Sauf les thèmes
+!/wp/wp-content/themes/
+!/wp/wp-content/mu-plugins/
+!/wp/wp-content/plugins/
+
+# Exclusion de tous les thèmes
+/wp/wp-content/themes/*
+
+# Sauf le thème Alven
+!/wp/wp-content/themes/alven/
+
+
+/wp/wp-content/plugins/*
+
+# Exclusion de la config PhpStorm
+.idea/*
+
 ### SublimeText template
 # cache files for sublime text
 *.tmlanguage.cache
