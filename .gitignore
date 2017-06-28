@@ -46,8 +46,6 @@ wp/license.txt
 
 # Sauf les thèmes
 !/wp/wp-content/themes/
-!/wp/wp-content/mu-plugins/
-!/wp/wp-content/plugins/
 
 # Exclusion de tous les thèmes
 /wp/wp-content/themes/*
