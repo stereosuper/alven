@@ -374,7 +374,7 @@ html {
     overflow: hidden; }
 
 body {
-  font-family: "merriweather", sans-serif;
+  font-family: "avalonregular", sans-serif;
   font-size: 1.6em;
   font-weight: 400;
   font-style: normal;
@@ -969,10 +969,8 @@ select::-ms-expand {
   #header .form-search {
     width: 15%;
     min-width: 150px;
-    float: right;
     margin: 0;
-    z-index: 10;
-    text-align: right; }
+    z-index: 10; }
     #header .form-search input {
       position: absolute;
       left: 0;
@@ -1073,12 +1071,13 @@ select::-ms-expand {
 
 #logo-alven {
   display: inline-block;
+  float: right;
   width: 16.6666666667%;
   height: 31px;
   position: relative;
   vertical-align: middle;
   z-index: 10;
-  background: url(../layoutImg/alven.png) no-repeat;
+  background: url(../layoutImg/alven.png) right 0 no-repeat;
   text-indent: -99em;
   overflow: hidden;
   box-shadow: none; }
@@ -3799,7 +3798,8 @@ select::-ms-expand {
   #header .post-title {
     display: none; }
   #header .form-search {
-    margin-top: -2px;
+    margin-top: -2px; }
+  #header #logo-alven {
     margin-right: 70px; }
   #menu-main {
     display: none; }
@@ -4227,8 +4227,7 @@ select::-ms-expand {
   #header .form-search {
     width: 21px;
     min-width: 0;
-    margin-top: -3px;
-    margin-right: 50px; }
+    margin-top: -3px; }
   #header .btn-search {
     width: 21px;
     margin-right: 0;
@@ -4237,6 +4236,8 @@ select::-ms-expand {
     #header .btn-search:after {
       text-indent: 0;
       right: 0; }
+  #header #logo-alven {
+    margin-right: 50px; }
   #menu-responsive > div {
     position: relative;
     top: 50px;

@@ -271,3 +271,58 @@
   font-weight: 400;
   font-style: normal;
 }
+
+@mixin avalon($size){
+    font-family: $avalon;
+    font-size: $size;
+    font-weight: 400;
+    font-style: normal;
+}
+@mixin avalonItalic($size){
+    font-family: $avalonItalic;
+    font-size: $size;
+    font-weight: 400;
+    font-style: normal;
+}
+@mixin avalonBold($size){
+    font-family: $avalonBold;
+    font-size: $size;
+    font-weight: 400;
+    font-style: normal;
+}
+@mixin avalonBoldItalic($size){
+    font-family: $avalonBoldItalic;
+    font-size: $size;
+    font-weight: 400;
+    font-style: normal;
+}
+@mixin avalonMedium($size){
+    font-family: $avalonMedium;
+    font-size: $size;
+    font-weight: 400;
+    font-style: normal;
+}
+@mixin avalonMediumOblique($size){
+    font-family: $avalonMediumOblique;
+    font-size: $size;
+    font-weight: 400;
+    font-style: normal;
+}
+@mixin avalonMediumBold($size){
+    font-family: $avalonMediumBold;
+    font-size: $size;
+    font-weight: 400;
+    font-style: normal;
+}
+@mixin avalonBoldOblique($size){
+    font-family: $avalonBoldOblique;
+    font-size: $size;
+    font-weight: 400;
+    font-style: normal;
+}
+@mixin avalonExtraLightOblique($size){
+    font-family: $avalonExtraLightOblique;
+    font-size: $size;
+    font-weight: 400;
+    font-style: normal;
+}

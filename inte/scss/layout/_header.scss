@@ -44,10 +44,8 @@
     .form-search{
         width: 15%;
         min-width: 150px;
-        float: right;
         margin: 0;
         z-index: 10;
-        text-align: right;
         input{
             position: absolute;
             left: 0;
@@ -188,12 +186,13 @@
 
 #logo-alven{
     display: inline-block;
+    float: right;
     width: $col*2;
     height: 31px;
     position: relative;
     vertical-align: middle;
     z-index: 10;
-    background: url(../layoutImg/alven.png) no-repeat;
+    background: url(../layoutImg/alven.png) right 0 no-repeat;
     text-indent: -99em;
     overflow: hidden;
     box-shadow: none;

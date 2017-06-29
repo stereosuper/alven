@@ -18,6 +18,9 @@
         <meta name='application-name' content='AlvenCapital'>
         <meta name='theme-color' content='#ffffff'>
 
+        <?php // Google fonts ?>
+        <link href="https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i" rel="stylesheet">
+
         <?php wp_head(); ?>
     </head>
 
@@ -62,16 +65,16 @@
 
         <header role='banner' id='header' <?php if($headerFixed){ echo "class='fixed'"; } ?>>
             <div class='container'>
-                <a href='<?php echo home_url( '/' ); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home' id='logo-alven'><?php bloginfo( 'name' ); ?></a>
-                <nav role='navigation' id='menu-main'>
-                    <?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => '')); ?>
-                </nav>
-                <span class='post-title'><?php the_title(); ?></span>
                 <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search form-search-header'>
                     <input type='search' name='s' value='' id='search-header'>
                     <label for='search-header'>type some keywords</label>
                     <button type='submit' class='btn-search'>Explore Alven</button>
                 </form>
+                <nav role='navigation' id='menu-main'>
+                    <?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => '')); ?>
+                </nav>
+                <span class='post-title'><?php the_title(); ?></span>
+                <a href='<?php echo home_url( '/' ); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home' id='logo-alven'><?php bloginfo( 'name' ); ?></a>
                 <button id='burger'><span>Menu</span></button>
                 <nav role='navigation' id='menu-responsive'><div><?php dynamic_sidebar( 'menu-responsive' ); ?></div></nav>
             </div>
