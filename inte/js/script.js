@@ -1365,8 +1365,8 @@ $(window).on('load', function(){
     var line = $('.wrapper-video svg path'),
         lineLength = line.length;
 
-    $(line.get().reverse()).each(function(index) {
-        tweensTest[index] = new TweenMax.from(this, 0.1 , { opacity:0, x: (-(lineLength-index)*6)+200});
+    line.each(function(index) {
+        tweensTest[index] = new TweenMax.from(this, 0.1 , { opacity:0, x: 0});
     });
 
     var tl = new TimelineMax().timeScale(4);
