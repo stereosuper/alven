@@ -1352,12 +1352,34 @@ $(function(){
 
 });
 
+// Math.abs(Math.sin(Math.PI * index * 0.2))
+
 $(window).on('load', function(){
     var main = $('#main');
     var contentHeader = $('#contentHeader');
     var fadePage = $('#fadePage');
     var galleries = $('.gallery');
     var postSidebar = $('#postSidebar');
+    var tweensTest = [];
+
+    var line = $('.wrapper-video svg path'),
+        lineLength = line.length;
+
+    $(line.get().reverse()).each(function(index) {
+        tweensTest[index] = new TweenMax.from(this, 0.1 , { opacity:0, x: (-(lineLength-index)*6)+200});
+    });
+
+    var tl = new TimelineMax().timeScale(4);
+    tweensTest.forEach(function (element, index) {
+        tl.add(
+            element
+        );
+    });
+
+    var tlBtween = tl.tweenFromTo(0, tl.duration(), {ease:Power4.easeOut});
+
+
+    // TweenMax.staggerTo(line, 0.3, {ease:Expo.easeOut, autoAlpha: 0}, 0.03);
 
     function animTxt(splitText){
         splitText.split({type:'words'});

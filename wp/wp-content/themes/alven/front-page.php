@@ -35,112 +35,114 @@ get_header(); ?>
             <?php if(get_field('video')){ ?>
                 <div class='wrapper-video' style='opacity:<?php the_field('videoOpacity'); ?>'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1084.09 1278.32">
-                        <title>filet-header@1x</title>
-                        <line x1="465.62" y1="0.17" x2="0.47" y2="1278.15" fill="none"/>
-                        <line x1="465.62" y1="0.17" x2="0.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="471.62" y1="0.17" x2="6.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="477.62" y1="0.17" x2="12.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="483.62" y1="0.17" x2="18.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="489.62" y1="0.17" x2="24.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="495.62" y1="0.17" x2="30.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="501.62" y1="0.17" x2="36.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="507.62" y1="0.17" x2="42.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="513.62" y1="0.17" x2="48.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="519.62" y1="0.17" x2="54.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="525.62" y1="0.17" x2="60.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="531.62" y1="0.17" x2="66.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="537.62" y1="0.17" x2="72.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="543.62" y1="0.17" x2="78.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="549.62" y1="0.17" x2="84.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="555.62" y1="0.17" x2="90.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="561.62" y1="0.17" x2="96.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="567.62" y1="0.17" x2="102.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="573.62" y1="0.17" x2="108.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="579.62" y1="0.17" x2="114.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="585.62" y1="0.17" x2="120.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="591.62" y1="0.17" x2="126.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="597.62" y1="0.17" x2="132.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="603.62" y1="0.17" x2="138.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="609.62" y1="0.17" x2="144.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="615.62" y1="0.17" x2="150.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="621.62" y1="0.17" x2="156.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="627.62" y1="0.17" x2="162.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="633.62" y1="0.17" x2="168.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="639.62" y1="0.17" x2="174.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="645.62" y1="0.17" x2="180.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="651.62" y1="0.17" x2="186.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="657.62" y1="0.17" x2="192.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="663.62" y1="0.17" x2="198.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="669.62" y1="0.17" x2="204.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="675.62" y1="0.17" x2="210.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="681.62" y1="0.17" x2="216.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="687.62" y1="0.17" x2="222.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="693.62" y1="0.17" x2="228.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="699.62" y1="0.17" x2="234.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="705.62" y1="0.17" x2="240.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="711.62" y1="0.17" x2="246.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="717.62" y1="0.17" x2="252.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="723.62" y1="0.17" x2="258.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="729.62" y1="0.17" x2="264.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="735.62" y1="0.17" x2="270.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="741.62" y1="0.17" x2="276.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="747.62" y1="0.17" x2="282.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="753.62" y1="0.17" x2="288.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="759.62" y1="0.17" x2="294.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="765.62" y1="0.17" x2="300.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="771.62" y1="0.17" x2="306.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="777.62" y1="0.17" x2="312.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="783.62" y1="0.17" x2="318.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="789.62" y1="0.17" x2="324.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="795.62" y1="0.17" x2="330.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="801.62" y1="0.17" x2="336.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="807.62" y1="0.17" x2="342.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="813.62" y1="0.17" x2="348.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="819.62" y1="0.17" x2="354.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="825.62" y1="0.17" x2="360.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="831.62" y1="0.17" x2="366.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="837.62" y1="0.17" x2="372.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="843.62" y1="0.17" x2="378.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="849.62" y1="0.17" x2="384.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="855.62" y1="0.17" x2="390.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="861.62" y1="0.17" x2="396.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="867.62" y1="0.17" x2="402.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="873.62" y1="0.17" x2="408.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="879.62" y1="0.17" x2="414.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="885.62" y1="0.17" x2="420.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="891.62" y1="0.17" x2="426.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="897.62" y1="0.17" x2="432.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="903.62" y1="0.17" x2="438.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="909.62" y1="0.17" x2="444.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="915.62" y1="0.17" x2="450.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="921.62" y1="0.17" x2="456.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="927.62" y1="0.17" x2="462.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="933.62" y1="0.17" x2="468.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="939.62" y1="0.17" x2="474.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="945.62" y1="0.17" x2="480.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="951.62" y1="0.17" x2="486.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="957.62" y1="0.17" x2="492.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="963.62" y1="0.17" x2="498.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="969.62" y1="0.17" x2="504.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="975.62" y1="0.17" x2="510.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="981.62" y1="0.17" x2="516.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="987.62" y1="0.17" x2="522.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="993.62" y1="0.17" x2="528.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="999.62" y1="0.17" x2="534.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1005.62" y1="0.17" x2="540.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1011.62" y1="0.17" x2="546.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1017.62" y1="0.17" x2="552.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1023.62" y1="0.17" x2="558.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1029.62" y1="0.17" x2="564.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1035.62" y1="0.17" x2="570.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1041.62" y1="0.17" x2="576.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1047.62" y1="0.17" x2="582.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1053.62" y1="0.17" x2="588.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1059.62" y1="0.17" x2="594.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1065.62" y1="0.17" x2="600.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1071.62" y1="0.17" x2="606.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1077.62" y1="0.17" x2="612.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
-                        <line x1="1083.62" y1="0.17" x2="618.47" y2="1278.15" fill="none" stroke="#fde98f" stroke-miterlimit="10"/>
+                        <title>
+                            filet-header@1x
+                        </title>
+                        <path fill="none" d="M465.62.17L.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M465.62.17L.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M471.62.17L6.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M477.62.17L12.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M483.62.17L18.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M489.62.17L24.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M495.62.17L30.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M501.62.17L36.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M507.62.17L42.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M513.62.17L48.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M519.62.17L54.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M525.62.17L60.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M531.62.17L66.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M537.62.17L72.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M543.62.17L78.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M549.62.17L84.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M555.62.17L90.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M561.62.17L96.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M567.62.17L102.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M573.62.17L108.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M579.62.17L114.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M585.62.17L120.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M591.62.17L126.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M597.62.17L132.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M603.62.17L138.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M609.62.17L144.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M615.62.17L150.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M621.62.17L156.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M627.62.17L162.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M633.62.17L168.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M639.62.17L174.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M645.62.17L180.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M651.62.17L186.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M657.62.17L192.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M663.62.17L198.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M669.62.17L204.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M675.62.17L210.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M681.62.17L216.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M687.62.17L222.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M693.62.17L228.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M699.62.17L234.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M705.62.17L240.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M711.62.17L246.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M717.62.17L252.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M723.62.17L258.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M729.62.17L264.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M735.62.17L270.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M741.62.17L276.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M747.62.17L282.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M753.62.17L288.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M759.62.17L294.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M765.62.17L300.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M771.62.17L306.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M777.62.17L312.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M783.62.17L318.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M789.62.17L324.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M795.62.17L330.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M801.62.17L336.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M807.62.17L342.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M813.62.17L348.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M819.62.17L354.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M825.62.17L360.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M831.62.17L366.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M837.62.17L372.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M843.62.17L378.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M849.62.17L384.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M855.62.17L390.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M861.62.17L396.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M867.62.17L402.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M873.62.17L408.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M879.62.17L414.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M885.62.17L420.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M891.62.17L426.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M897.62.17L432.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M903.62.17L438.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M909.62.17L444.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M915.62.17L450.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M921.62.17L456.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M927.62.17L462.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M933.62.17L468.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M939.62.17L474.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M945.62.17L480.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M951.62.17L486.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M957.62.17L492.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M963.62.17L498.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M969.62.17L504.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M975.62.17L510.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M981.62.17L516.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M987.62.17L522.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M993.62.17L528.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M999.62.17L534.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1005.62.17L540.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1011.62.17L546.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1017.62.17L552.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1023.62.17L558.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1029.62.17L564.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1035.62.17L570.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1041.62.17L576.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1047.62.17L582.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1053.62.17L588.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1059.62.17L594.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1065.62.17L600.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1071.62.17L606.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1077.62.17L612.47 1278.15"/>
+                        <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1083.62.17L618.47 1278.15"/>
                     </svg>
                     <video class='video' poster='<?php echo wp_get_attachment_url(get_field('videoImg')); ?>' autoplay muted loop>
                         <source src='<?php the_field('video'); ?>' type='video/mp4'>
