@@ -508,7 +508,8 @@ time, .subtitle {
   text-transform: uppercase;
   letter-spacing: -0.04em; }
   .theme-magazine time, .theme-magazine .subtitle {
-    color: #23afa9; }
+    color: #23afa9;
+  }
   .theme-portfolio time, .theme-portfolio .subtitle {
     color: #03cfff; }
   .theme-we time, .theme-we .subtitle {
@@ -1330,11 +1331,14 @@ select::-ms-expand {
       right: 0;
       margin: auto; }
       .theme-magazine .section-title + .subtitle:before, .theme-magazine .section-title + .subtitle:after {
-        background: #23afa9; }
+        background: url('../layoutImg/separateur.svg');
+      }
       .theme-portfolio .section-title + .subtitle:before, .theme-portfolio .section-title + .subtitle:after {
-        background: #03cfff; }
+          background: url('../layoutImg/separateur-blue.svg');
+      }
       .theme-we .section-title + .subtitle:before, .theme-we .section-title + .subtitle:after {
-        background: #fde98f; }
+          background: url('../layoutImg/separateur-yellow.svg');
+      }
     .section-title + .subtitle:before {
       width: 1px;
       height: 15px;

@@ -22,7 +22,7 @@
 		}
 	}
 	h3{
-		font-family: $sourceBlack;
+        font-family: $avalonBold;
 		letter-spacing: -1px;
 		font-size: 3.8rem;
 		margin: 0 0 20px;
@@ -39,7 +39,7 @@
 		color: $title;
 	}
 	.section-title{
-		+ .subtitle{
+		+ . subtitle{
 			.theme-portfolio &{
 				&:before, &:after{
 					background: $title;

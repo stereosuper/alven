@@ -78,7 +78,7 @@
 		}
 	}
 	.name{
-		font-family: $sourceSemiBold;
+        font-family: $avalonMediumBold;
 		font-size: 2.2rem;
 		color: $chapo;
 		letter-spacing: -1px;
@@ -96,7 +96,7 @@
 		}
 	}
 	.function{
-		font-family: merriweather;
+        font-family:$arvo;
 		font-size: 1.4rem;
 		line-height: 1em;
 		&:before, &:after{
@@ -180,7 +180,7 @@
 		}
 		a{
 			color: $greyBlue;
-			font-family: $sourceBlack;
+            font-family: $avalonBold;
 			font-size: 1.4rem;
 			text-transform: uppercase;
 			text-decoration: underline;

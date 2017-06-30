@@ -30,13 +30,12 @@ body{
 }
 
 h1, h3, h5, h6{
-    @include sourceBold(6rem);
+    @include avalonBold(6rem);
     color: $title;
 }
 
 h1{
     width: $col*6;
-    //margin: 2em auto 2.5em;
     margin: 11vh auto 14vh;
     letter-spacing: -0.04em;
     line-height: 1;
@@ -47,7 +46,9 @@ h2{
     width: $col*8;
     padding: 0 $innerGutter;
     margin: 2.5em auto 2.75em;
-    @include merriweatherBoldIt(2.2rem);
+    font-family: $arvo;
+    font-weight: bold;
+    font-style: italic;
     line-height: 1.2;
     text-align: center;
     color: $chapo;
@@ -64,7 +65,7 @@ h3{
 }
 
 h4{
-    @include sourceSemiBold(2rem);
+    font-family: $avalonMediumBold;
     margin: 1.33em 0;
     line-height: 1;
     letter-spacing: -0.02em;
@@ -89,11 +90,13 @@ p{
 }
 
 b, strong{
-    @include merriweatherBold(1em);
+    font-family: $arvo;
+    font-weight: bold;
 }
 
 i, em{
-    @include merriweatherIt(1em);
+    font-family: $arvo;
+    font-style: italic;
 }
 
 blockquote{
@@ -104,7 +107,7 @@ blockquote{
         @include themeColor;
 
         margin-top: 0;
-        font-family: $sourceBold;
+        font-family: $avalonBold;
         font-size: 2rem;
         text-align: center;
         letter-spacing: -0.02em;
@@ -123,7 +126,8 @@ blockquote{
         }
         span{
             display: block;
-            font-family: $merriweatherIt;
+            font-family: $arvo;
+            font-style: italic;
             font-size: 1.4rem;
         }
     }
@@ -166,7 +170,8 @@ ol{
 
             content: counter(counter)'.';
             top: 5px;
-            font-family: $merriweatherBold;
+            font-family: $arvo;
+            font-weight: bold;
             font-size: 12px;
         }
     }
@@ -199,7 +204,8 @@ figure{
 }
 figcaption{
     margin: 10px 0 0;
-    font-family: $merriweatherIt;
+    font-family: $arvo;
+    font-style: italic;
     font-size: 1.4rem;
 }
 
@@ -213,7 +219,7 @@ code, pre{
 time, .subtitle{
     @include themeColor;
 
-    font-family: $sourceLight;
+    font-family: $avalon;
     font-size: 1.8rem;
     text-transform: uppercase;
     letter-spacing: -0.04em;
@@ -288,7 +294,7 @@ a{
 }
 
 .title-small{
-    font-family: $sourceBlack;
+    font-family: $avalonBold;
     font-size: 1.25rem;
     text-transform: uppercase;
     color: $greyLight;

@@ -3,7 +3,7 @@
 .post-meta{
     margin: 10px 0 15px;
     time{
-        font-family: $source;
+        font-family: $avalon;
         font-size: 1.2rem;
     }
     .btn-cat{
@@ -27,7 +27,7 @@
         margin-left: 5px;
     }
     .btn-cat{
-        font-family: $sourceLight;
+        font-family: $avalon;
         font-size: 1.8rem;
     }
 }
@@ -263,7 +263,7 @@
     }
     h3{
         margin: 0;
-        font-family: $sourceSemiBold;
+        font-family: $avalonMediumBold;
         font-size: 4.2rem;
         letter-spacing: -0.03em;
     }
@@ -359,7 +359,7 @@
         margin: 0 0 8px;
     }
     h3{
-        font-family: $sourceSemiBold;
+        font-family: $avalonMediumBold;
         font-size: 3.2rem;
     }
     p{
@@ -369,7 +369,7 @@
         height: 0;
         padding: 0 0 60%;
         position: relative;
-        font-family: $sourceBlack;
+        font-family: $avalonBold;
         font-size: 1.7rem;
         background: $txt;
         color: #fff;
@@ -441,7 +441,7 @@
     }
     .day{
         display: block;
-        font-family: $sourceSemiBold;
+        font-family: $avalonMediumBold;
         font-size: 3rem;
         sup{
             font-size: 50%;
@@ -481,7 +481,7 @@
 }
 
 .pagination{
-    font-family: $sourceBlack;
+    font-family: $avalonBold;
     text-align: center;
     color: $title;
     .current{

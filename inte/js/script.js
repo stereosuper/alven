@@ -94,6 +94,8 @@ function setGallery(gallery, windowWidth){
     }
 }
 
+var tlHeader = new TimelineMax({paused: true}).timeScale(4), tlHeaderDone = false;
+
 $(function(){
 
     /**** VARIABLES ****/
@@ -1280,6 +1282,14 @@ $(function(){
             if(contentHeader.find('.menu-home').length){
                 TweenMax.set(contentHeader.find('.menu-home'), {y: '-'+myScroll/4+'px'});
             }
+
+            // if(myScroll > 400 && tlHeaderDone){
+            //     tlHeader.pause().reverse();
+            //     tlHeaderDone = false;
+            // }else{
+            //     tlHeader.pause().play();
+            //     tlHeaderDone = true;
+            // }
         }
 
         if(postSidebar.length && mainContent.length && !isMobile.any){
@@ -1352,7 +1362,6 @@ $(function(){
 
 });
 
-// Math.abs(Math.sin(Math.PI * index * 0.2))
 
 $(window).on('load', function(){
     var main = $('#main');
@@ -1369,14 +1378,15 @@ $(window).on('load', function(){
         tweensTest[index] = new TweenMax.from(this, 0.1 , { opacity:0, x: 0});
     });
 
-    var tl = new TimelineMax().timeScale(4);
+    tlHeader.play();
+    tlHeaderDone = true;
     tweensTest.forEach(function (element, index) {
-        tl.add(
+        tlHeader.add(
             element
         );
     });
 
-    var tlBtween = tl.tweenFromTo(0, tl.duration(), {ease:Power4.easeOut});
+    var tlBtween = tlHeader.tweenFromTo(0, tlHeader.duration(), {ease:Power4.easeOut});
 
 
     // TweenMax.staggerTo(line, 0.3, {ease:Expo.easeOut, autoAlpha: 0}, 0.03);
@@ -1388,9 +1398,10 @@ $(window).on('load', function(){
 
     if(contentHeader.length){
         if(contentHeader.find('h1').length){
-            var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
-            contentHeader.find('h1').css('opacity', 1);
-            animTxt(splitText);
+            TweenMax.fromTo(contentHeader.find('h1'), 0.3, {opacity: 0, y: 100}, {opacity: 1, y: 0, delay: 1});
+            // var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
+            // contentHeader.find('h1').css('opacity', 1);
+            // animTxt(splitText);
         }
         if(main.length){
             main.css('marginTop', Math.floor(contentHeader.outerHeight()));
@@ -1412,3 +1423,4 @@ $(window).on('load', function(){
         });
     }
 });
+

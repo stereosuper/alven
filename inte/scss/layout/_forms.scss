@@ -93,7 +93,8 @@ label{
     top: 7px;
     left: 15px;
     right: 15px;
-    font-family: $merriweatherIt;
+    font-family: $arvo;
+    font-style: italic;
     font-size: 1.4rem;
     line-height: 1;
     cursor: text;
@@ -119,7 +120,7 @@ input, textarea{
     padding: 5px 15px;
     position: relative;
     z-index: 1;
-    font-family: $merriweather;
+    font-family: $arvo;
     font-size: 16px;
     color: $greyBlue;
   	&:-webkit-autofill{

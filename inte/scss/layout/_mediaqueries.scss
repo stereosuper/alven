@@ -131,12 +131,6 @@
         }
     }
 
-    #logo-alven{
-        height: 0;
-        padding: 0 0 2.5%;
-        background-size: 100%;
-    }
-
     .portfolio-list{
         img{
             max-width: 70%;
@@ -376,6 +370,9 @@
         .wrapper-video{
             display: none;
         }
+        .wrapper-video svg {
+            transform: translateX(-70%);
+        }
     }
 
     .quote{
@@ -546,6 +543,18 @@
         .txt{
             font-size: 0.9em;
         }
+    }
+    #header {
+        padding: 30px 0 30px;
+    }
+    #logo-alven {
+        top: 34px;
+        svg {
+            max-width: 25vw;
+        }
+    }
+    #burger {
+        top: 40px;
     }
 }
 
@@ -983,7 +992,7 @@
         .form-search{
             width: 21px;
             min-width: 0;
-            margin-top: -3px;
+            margin-top: 3px;
         }
         .btn-search{
             width: 21px;

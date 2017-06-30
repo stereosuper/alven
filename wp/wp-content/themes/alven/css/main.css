@@ -385,7 +385,7 @@ body {
   text-rendering: optimizeLegibility; }
 
 h1, h3, h5, h6 {
-  font-family: "source-bold", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 6rem;
   font-weight: 400;
   font-style: normal;
@@ -402,10 +402,9 @@ h2 {
   width: 66.6666666667%;
   padding: 0 10px;
   margin: 2.5em auto 2.75em;
-  font-family: "merriweather-bolditalic", "merriweather", sans-serif;
-  font-size: 2.2rem;
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Arvo", serif;
+  font-weight: bold;
+  font-style: italic;
   line-height: 1.2;
   text-align: center;
   color: #303b3d; }
@@ -419,10 +418,7 @@ h3 {
     color: #303b3d; }
 
 h4 {
-  font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
-  font-style: normal;
+  font-family: "avalon_mediumbold", "avalonmedium", "avalonregular", sans-serif;
   margin: 1.33em 0;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -442,16 +438,12 @@ p {
   margin: 0 0 1.4em; }
 
 b, strong {
-  font-family: "merriweather-bold", "merriweather", sans-serif;
-  font-size: 1em;
-  font-weight: 400;
-  font-style: normal; }
+  font-family: "Arvo", serif;
+  font-weight: bold; }
 
 i, em {
-  font-family: "merriweather-italic", "merriweather", sans-serif;
-  font-size: 1em;
-  font-weight: 400;
-  font-style: normal; }
+  font-family: "Arvo", serif;
+  font-style: italic; }
 
 blockquote {
   padding: 0 50px;
@@ -460,7 +452,7 @@ blockquote {
   blockquote p {
     color: #26393d;
     margin-top: 0;
-    font-family: "source-bold", "merriweather-bold", "merriweather", sans-serif;
+    font-family: "avalonbold", "avalonregular", sans-serif;
     font-size: 2rem;
     text-align: center;
     letter-spacing: -0.02em;
@@ -481,7 +473,8 @@ blockquote {
       content: '- '; }
     blockquote footer span {
       display: block;
-      font-family: "merriweather-italic", "merriweather", sans-serif;
+      font-family: "Arvo", serif;
+      font-style: italic;
       font-size: 1.4rem; }
 
 ol, ul {
@@ -521,7 +514,8 @@ ol {
       color: #26393d;
       content: counter(counter) ".";
       top: 5px;
-      font-family: "merriweather-bold", "merriweather", sans-serif;
+      font-family: "Arvo", serif;
+      font-weight: bold;
       font-size: 12px; }
       .theme-magazine ol li:before {
         color: #23afa9; }
@@ -552,7 +546,8 @@ figure {
 
 figcaption {
   margin: 10px 0 0;
-  font-family: "merriweather-italic", "merriweather", sans-serif;
+  font-family: "Arvo", serif;
+  font-style: italic;
   font-size: 1.4rem; }
 
 code, pre {
@@ -563,7 +558,7 @@ code, pre {
 
 time, .subtitle {
   color: #26393d;
-  font-family: "source-light", "merriweather", sans-serif;
+  font-family: "avalonregular", sans-serif;
   font-size: 1.8rem;
   text-transform: uppercase;
   letter-spacing: -0.04em; }
@@ -628,7 +623,7 @@ a {
   text-align: right; }
 
 .title-small {
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 1.25rem;
   text-transform: uppercase;
   color: #ccd1d2; }
@@ -814,7 +809,8 @@ label {
   top: 7px;
   left: 15px;
   right: 15px;
-  font-family: "merriweather-italic", "merriweather", sans-serif;
+  font-family: "Arvo", serif;
+  font-style: italic;
   font-size: 1.4rem;
   line-height: 1;
   cursor: text;
@@ -835,7 +831,7 @@ input, textarea {
   padding: 5px 15px;
   position: relative;
   z-index: 1;
-  font-family: "merriweather", sans-serif;
+  font-family: "Arvo", serif;
   font-size: 16px;
   color: #26393d; }
   input:-webkit-autofill, textarea:-webkit-autofill {
@@ -930,13 +926,13 @@ select::-ms-expand {
 #header {
   width: 100%;
   height: 107px;
-  padding: 45px 0 30px;
+  padding: 40px 0 30px;
   border-bottom: 1px solid transparent;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 20;
-  font-family: "source-bold", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 1.8rem;
   letter-spacing: -0.04em;
   color: #fff;
@@ -947,35 +943,35 @@ select::-ms-expand {
     content: '';
     display: table;
     clear: both; }
-  #header .container {
-    position: relative; }
-    #header .container:before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      left: 0;
-      right: 0;
-      bottom: -20px;
-      z-index: 1;
-      background: #303b3d;
-      opacity: 0;
-      transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
-      .menu-open #header .container:before {
-        opacity: 1; }
+  #header .container:before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    z-index: 1;
+    background: #303b3d;
+    opacity: 0;
+    transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
+    .menu-open #header .container:before {
+      opacity: 1; }
   #header a {
     display: inline-block;
     color: inherit;
     transition: opacity 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
   #header .form-search {
-    width: 15%;
+    background: #042f3e;
+    border-radius: 3px;
+    padding: 15px 17px;
     min-width: 150px;
     margin: 0;
     z-index: 10; }
     #header .form-search input {
       position: absolute;
       left: 0;
-      color: #fff;
-      border-color: #fff; }
+      color: #fde98f;
+      border-color: #fde98f; }
       .menu-open #header .form-search input {
         color: #fff !important;
         border-color: #fff !important; }
@@ -990,12 +986,14 @@ select::-ms-expand {
       transition: color 0.25s cubic-bezier(0.75, 0, 0.125, 1), width 0s linear 0.3s; }
       #header .form-search.on .btn-search:after {
         color: #fff; }
+  #header.on .form-search {
+    background: none; }
   #header .btn-search {
-    width: 117px;
     position: relative;
     top: 0;
     transition: color 0.25s cubic-bezier(0.75, 0, 0.125, 1);
-    color: #fff; }
+    color: #fde98f;
+    text-transform: none; }
     .menu-open #header .btn-search {
       color: #fff !important; }
       .menu-open #header .btn-search:after {
@@ -1016,8 +1014,8 @@ select::-ms-expand {
     background: #fff;
     color: #404040;
     transform: translate3d(0, -10px, 0); }
-    #header.fixed #logo-alven, .no-js #header #logo-alven {
-      background-image: url(../layoutImg/alven-grey.png); }
+    #header.fixed #logo-alven svg path, .no-js #header #logo-alven svg path {
+      fill: #28626F; }
     #header.fixed .read-indicator, .no-js #header .read-indicator {
       opacity: 1; }
       .menu-open #header.fixed .read-indicator, .menu-open .no-js #header .read-indicator {
@@ -1042,8 +1040,8 @@ select::-ms-expand {
       color: #fff; }
       .menu-open #header.fixed #burger:before, .menu-open #header.fixed #burger:after, .menu-open #header.fixed #burger span, .menu-open .no-js #header #burger:before, .menu-open .no-js #header #burger:after, .menu-open .no-js #header #burger span {
         background: #fff; }
-      .menu-open #header.fixed #logo-alven, .menu-open .no-js #header #logo-alven {
-        background-image: url(../layoutImg/alven.png); }
+      .menu-open #header.fixed #logo-alven svg path, .menu-open .no-js #header #logo-alven svg path {
+        fill: #fff0a1; }
   .menu-open #header {
     height: 102%; }
   .page-template-default #header, .single-post #header {
@@ -1070,17 +1068,20 @@ select::-ms-expand {
     display: none; }
 
 #logo-alven {
+  box-shadow: none;
   display: inline-block;
-  float: right;
-  width: 16.6666666667%;
-  height: 31px;
-  position: relative;
+  position: absolute;
+  right: 20px;
+  text-align: right;
+  top: 50%;
+  transform: translateY(-50%);
   vertical-align: middle;
-  z-index: 10;
-  background: url(../layoutImg/alven.png) right 0 no-repeat;
-  text-indent: -99em;
-  overflow: hidden;
-  box-shadow: none; }
+  width: 16.6666666667%;
+  z-index: 10; }
+  #logo-alven svg path {
+    fill: #fff0a1;
+    fill-rule: evenodd;
+    transition: fill 200ms; }
 
 #menu-responsive, #burger {
   display: none; }
@@ -1091,7 +1092,6 @@ select::-ms-expand {
   border: 0;
   position: absolute;
   right: 20px;
-  top: 2px;
   z-index: 10; }
   #burger:before, #burger:after {
     content: ''; }
@@ -1285,6 +1285,11 @@ select::-ms-expand {
   top: 0;
   background: #404040;
   backface-visibility: hidden; }
+  .content-header h1 {
+    color: #dabf44; }
+    .content-header h1 em {
+      font-family: "Arvo", serif;
+      font-style: italic; }
   .js .content-header {
     position: fixed; }
     .js .content-header h1 {
@@ -1337,7 +1342,7 @@ select::-ms-expand {
       left: 0;
       position: absolute;
       top: 0;
-      transform: translateX(-60%);
+      transform: translateX(-70%);
       z-index: 2; }
     .content-header .wrapper-video .video {
       min-width: 100%;
@@ -1369,7 +1374,7 @@ select::-ms-expand {
   width: auto;
   padding: 0 20px;
   margin: 1.75em 0 0;
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 5.2rem;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -1411,7 +1416,7 @@ select::-ms-expand {
   font-size: 1.4rem; }
   .menu-small ul {
     margin: 0;
-    font-family: "source", "merriweather", sans-serif;
+    font-family: "avalonregular", sans-serif;
     color: #fff; }
   .menu-small li {
     margin: 0;
@@ -1431,14 +1436,14 @@ select::-ms-expand {
 
 .menu-title {
   display: block;
-  font-family: "source-bold", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 2.2rem;
   line-height: 1;
   letter-spacing: -0.04em; }
 
 .menu-subtitle {
   display: block;
-  font-family: "source-light", "merriweather", sans-serif;
+  font-family: "avalonregular", sans-serif;
   text-transform: uppercase;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
@@ -1447,7 +1452,7 @@ select::-ms-expand {
 .menu-secondary {
   margin: 150px 0 0;
   font-size: 1.2rem;
-  font-family: "source", "merriweather", sans-serif;
+  font-family: "avalonregular", sans-serif;
   text-align: center;
   color: #fff; }
   .menu-secondary ul {
@@ -1485,7 +1490,7 @@ select::-ms-expand {
     vertical-align: middle;
     position: relative;
     z-index: 1;
-    font-family: "source-bold", "merriweather-bold", "merriweather", sans-serif; }
+    font-family: "avalonbold", "avalonregular", sans-serif; }
   .portfolio-list .grid {
     padding: 10px 0; }
     .portfolio-list .grid.is-hovered .po-item:after {
@@ -1502,7 +1507,7 @@ select::-ms-expand {
   .portfolio-list li, .portfolio-list .po-item {
     padding: 10px;
     overflow: hidden;
-    font-family: "source-light", "merriweather", sans-serif;
+    font-family: "avalonregular", sans-serif;
     font-size: 1.4rem;
     text-transform: uppercase;
     color: #303b3d;
@@ -1666,7 +1671,7 @@ select::-ms-expand {
     .portfolio-list .po-item:before {
       content: ''; }
     .portfolio-list .po-item.cta {
-      font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
+      font-family: "avalon_mediumbold", "avalonmedium", "avalonregular", sans-serif;
       font-size: 2rem;
       line-height: 1;
       text-transform: none;
@@ -1768,7 +1773,7 @@ select::-ms-expand {
 .portfolio-header {
   padding: 230px 0 30px;
   margin: 0 0 50px;
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -1805,7 +1810,8 @@ select::-ms-expand {
     min-height: 215px; }
   .portfolio-header .header-block-keywords {
     margin: 60px 0 0;
-    font-family: "merriweather-italic", "merriweather", sans-serif;
+    font-family: "Arvo", serif;
+    font-style: italic;
     font-size: 1.4rem;
     text-transform: none;
     color: #759095; }
@@ -1893,7 +1899,7 @@ select::-ms-expand {
 .post-meta {
   margin: 10px 0 15px; }
   .post-meta time {
-    font-family: "source", "merriweather", sans-serif;
+    font-family: "avalonregular", sans-serif;
     font-size: 1.2rem; }
   .post-meta .btn-cat {
     padding-bottom: 3px; }
@@ -1912,7 +1918,7 @@ select::-ms-expand {
   margin-left: 5px; }
 
 .post-meta-header .btn-cat, .post-meta-spotlight .btn-cat {
-  font-family: "source-light", "merriweather", sans-serif;
+  font-family: "avalonregular", sans-serif;
   font-size: 1.8rem; }
 
 .post-sidebar {
@@ -2142,7 +2148,7 @@ select::-ms-expand {
       bottom: -60px; }
   .main-spotlight-post h3 {
     margin: 0;
-    font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
+    font-family: "avalon_mediumbold", "avalonmedium", "avalonregular", sans-serif;
     font-size: 4.2rem;
     letter-spacing: -0.03em; }
   .main-spotlight-post p {
@@ -2249,7 +2255,7 @@ select::-ms-expand {
   .post h3, .post .post-meta {
     margin: 0 0 8px; }
   .post h3 {
-    font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
+    font-family: "avalon_mediumbold", "avalonmedium", "avalonregular", sans-serif;
     font-size: 3.2rem; }
   .post p {
     margin: 0 0 4px; }
@@ -2257,7 +2263,7 @@ select::-ms-expand {
     height: 0;
     padding: 0 0 60%;
     position: relative;
-    font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+    font-family: "avalonbold", "avalonregular", sans-serif;
     font-size: 1.7rem;
     background: #636a6b;
     color: #fff;
@@ -2316,7 +2322,7 @@ select::-ms-expand {
     line-height: 1; }
   .calendar .day {
     display: block;
-    font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
+    font-family: "avalon_mediumbold", "avalonmedium", "avalonregular", sans-serif;
     font-size: 3rem; }
     .calendar .day sup {
       font-size: 50%;
@@ -2349,7 +2355,7 @@ select::-ms-expand {
     background: #636a6b; }
 
 .pagination {
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   text-align: center;
   color: #404040; }
   .pagination .current {
@@ -2463,7 +2469,7 @@ select::-ms-expand {
       left: -27px;
       top: 20px; }
   .team .name {
-    font-family: "source-semi-bold", "merriweather-bold", "merriweather", sans-serif;
+    font-family: "avalon_mediumbold", "avalonmedium", "avalonregular", sans-serif;
     font-size: 2.2rem;
     color: #303b3d;
     letter-spacing: -1px;
@@ -2479,7 +2485,7 @@ select::-ms-expand {
       right: 0;
       background: #fff; }
   .team .function {
-    font-family: merriweather;
+    font-family: "Arvo", serif;
     font-size: 1.4rem;
     line-height: 1em; }
     .team .function:before, .team .function:after {
@@ -2560,7 +2566,7 @@ select::-ms-expand {
     text-align: left; }
   .social.social-desc a {
     color: #26393d;
-    font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+    font-family: "avalonbold", "avalonregular", sans-serif;
     font-size: 1.4rem;
     text-transform: uppercase;
     text-decoration: underline;
@@ -2677,7 +2683,7 @@ select::-ms-expand {
   .interactive-block:last-of-type.off {
     margin-right: 0; }
   .interactive-block h3 {
-    font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+    font-family: "avalonbold", "avalonregular", sans-serif;
     letter-spacing: -1px;
     font-size: 3.8rem;
     margin: 0 0 20px; }
@@ -2742,7 +2748,7 @@ select::-ms-expand {
 /* Buttons */
 .btn, .btn-invert, .btn-arrow, #menu-main a, .next, .prev {
   position: relative;
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 1.375rem;
   line-height: 1;
   letter-spacing: 0.07em;
@@ -2960,7 +2966,7 @@ select::-ms-expand {
   border: 1px solid;
   padding: 13px 17px 11px;
   position: relative;
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 1.375rem;
   line-height: 1;
   text-transform: uppercase;
@@ -2982,7 +2988,7 @@ select::-ms-expand {
   border: 0;
   position: relative;
   margin: 0 34px 0 0;
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 1.375rem;
   line-height: 1;
   letter-spacing: 0.07em;
@@ -3023,7 +3029,7 @@ select::-ms-expand {
 .btn-cat {
   display: inline-block;
   padding: 4px 7px 2px;
-  font-family: "source", "merriweather", sans-serif;
+  font-family: "avalonregular", sans-serif;
   font-size: 1.2rem;
   line-height: 1;
   text-transform: uppercase;
@@ -3108,7 +3114,7 @@ select::-ms-expand {
   vertical-align: top;
   position: relative;
   box-shadow: none;
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 1.375rem;
   line-height: 1;
   letter-spacing: 0.07em;
@@ -3145,7 +3151,7 @@ select::-ms-expand {
 .btn-close {
   position: relative;
   padding: 0 34px 0 0;
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 1.375rem;
   line-height: 1;
   letter-spacing: 0.07em;
@@ -3309,7 +3315,7 @@ select::-ms-expand {
     vertical-align: middle; }
   .newsletter h3 {
     display: inline-block;
-    font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+    font-family: "avalonbold", "avalonregular", sans-serif;
     color: inherit;
     width: 33.333333%;
     margin: 0; }
@@ -3384,7 +3390,7 @@ select::-ms-expand {
   display: inline-block;
   padding: 0;
   margin: 0 5px;
-  font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+  font-family: "avalonbold", "avalonregular", sans-serif;
   font-size: 1.3rem;
   color: #23afa9;
   text-transform: uppercase; }
@@ -3480,7 +3486,7 @@ select::-ms-expand {
   .dropdown li {
     padding: 15px 15px 13px;
     margin: 0;
-    font-family: "source-black", "merriweather-bold", "merriweather", sans-serif;
+    font-family: "avalonbold", "avalonregular", sans-serif;
     font-size: 1.375rem;
     line-height: 1;
     letter-spacing: 0.07em;
@@ -3653,22 +3659,34 @@ select::-ms-expand {
   padding: 0 10px;
   vertical-align: middle;
   margin: 0 8.3333333333%;
-  font-family: "source-light", "merriweather", sans-serif;
+  font-family: "avalonregular", sans-serif;
   color: #fff; }
   .menu-home li {
     margin: 0;
-    padding: 0 0 25px; }
+    padding: 0 0 25px 23px; }
     .menu-home li:before {
       display: none; }
     .menu-home li:last-child {
       padding-bottom: 0; }
+    .menu-home li:first-child {
+      background: url("../layoutImg/slash-cta.svg") 0 0 no-repeat; }
+    .menu-home li:nth-child(2) {
+      background: url("../layoutImg/slash-cta-blue.svg") 0 0 no-repeat; }
+    .menu-home li:nth-child(3) {
+      background: url("../layoutImg/slash-cta-yellow.svg") 0 0 no-repeat; }
   .menu-home span {
     display: block;
+    font-family: "avalonbold", "avalonregular", sans-serif;
     font-size: 1.8rem;
     line-height: 0.8;
-    letter-spacing: -0.03em; }
+    letter-spacing: -0.03em;
+    text-transform: uppercase; }
   .menu-home a {
-    color: inherit; }
+    box-shadow: none;
+    color: inherit;
+    font-family: "Arvo", serif; }
+    .menu-home a:before, .menu-home a:after {
+      bottom: 12px; }
 
 /* Responsive horizontal */
 @media (max-width: 1420px) {
@@ -3735,10 +3753,6 @@ select::-ms-expand {
       left: -13px; }
     #menu-main li.current-menu-item:after, #menu-main li.current_page_parent:after {
       width: 20px; }
-  #logo-alven {
-    height: 0;
-    padding: 0 0 2.5%;
-    background-size: 100%; }
   .portfolio-list img {
     max-width: 70%; }
   .portfolio-list .hover img {
@@ -3864,6 +3878,8 @@ select::-ms-expand {
     display: block; }
   .content-header .wrapper-video {
     display: none; }
+  .content-header .wrapper-video svg {
+    transform: translateX(-70%); }
   .quote {
     width: 50%; }
     .quote:nth-child(2) {
@@ -3963,7 +3979,15 @@ select::-ms-expand {
   .related-portfolio .post-small {
     width: 33.33333%; }
   .portfolio-list .txt {
-    font-size: 0.9em; } }
+    font-size: 0.9em; }
+  #header {
+    padding: 30px 0 30px; }
+  #logo-alven {
+    top: 34px; }
+    #logo-alven svg {
+      max-width: 25vw; }
+  #burger {
+    top: 40px; } }
 
 @media (max-width: 767px) {
   body {
@@ -4227,7 +4251,7 @@ select::-ms-expand {
   #header .form-search {
     width: 21px;
     min-width: 0;
-    margin-top: -3px; }
+    margin-top: 3px; }
   #header .btn-search {
     width: 21px;
     margin-right: 0;

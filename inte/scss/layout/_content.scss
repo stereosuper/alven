@@ -75,6 +75,13 @@
     top: 0;
     background: $title;
     backface-visibility: hidden;
+    h1 {
+        color: $goldDark;
+        em {
+            font-family: $arvo;
+            font-style: italic;
+        }
+    }
     .js &{
         position: fixed;
         h1{
@@ -150,7 +157,7 @@
             left: 0;
             position: absolute;
             top: 0;
-            transform: translateX(-60%);
+            transform: translateX(-70%);
             z-index: 2;
         }
         .video{

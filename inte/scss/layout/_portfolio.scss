@@ -27,7 +27,7 @@
         vertical-align: middle;
         position: relative;
         z-index: 1;
-        font-family: $sourceBold;
+        font-family: $avalonBold;
     }
     .grid{
         padding: $innerGutter 0;
@@ -61,7 +61,7 @@
     li, .po-item{
         padding: $innerGutter;
         overflow: hidden;
-        font-family: $sourceLight;
+        font-family: $avalon;
         font-size: 1.4rem;
         text-transform: uppercase;
         color: $chapo;
@@ -275,7 +275,7 @@
             content: '';
         }
         &.cta{
-            font-family: $sourceSemiBold;
+            font-family: $avalonMediumBold;
             font-size: 2rem;
             line-height: 1;
             text-transform: none;
@@ -418,7 +418,7 @@
 .portfolio-header{
     padding: 230px 0 30px;
     margin: 0 0 50px;
-    font-family: $sourceBlack;
+    font-family:  $avalonBold;
     font-size: 1.3rem;
     text-transform: uppercase;
     letter-spacing: 0.03em;
@@ -464,7 +464,8 @@
     }
     .header-block-keywords{
         margin: 60px 0 0;
-        font-family: $merriweatherIt;
+        font-family: $arvo;
+        font-style: italic;
         font-size: 1.4rem;
         text-transform: none;
         color: #759095;
