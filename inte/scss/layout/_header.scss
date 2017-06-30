@@ -5,7 +5,7 @@
 
     width: 100%;
     height: 107px;
-    padding: 40px 0 30px;
+    padding: 34px 0 30px;
     border-bottom: 1px solid transparent;
     position: fixed;
     top: 0;
@@ -19,7 +19,7 @@
     backface-visibility: hidden;
     transition: $transition;
     .container{
-        //position: relative;
+        position: relative;
         &:before{
             content: '';
             position: absolute;

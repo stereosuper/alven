@@ -39,7 +39,7 @@
 		color: $title;
 	}
 	.section-title{
-		+ . subtitle{
+		+ .subtitle{
 			.theme-portfolio &{
 				&:before, &:after{
 					background: $title;
