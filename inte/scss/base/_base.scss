@@ -1,14 +1,12 @@
 /******* GÉNÉRAL *******/
 
 ::-moz-selection{
-    @include themeBg();
-
+    background: $darkBlue;
     color: #fff;
     text-shadow: none;
 }
 ::selection{
-    @include themeBg();
-
+    background: $darkBlue;
     color: #fff;
     text-shadow: none;
 }
@@ -21,17 +19,21 @@ html{
 }
 
 body{
-    @include avalon(1.6em);
+    @include avalonMedium(1.6em);
     line-height: 1.6;
-    color: $txt;
+    color: $darkBlue;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
 }
 
+h1, h2, h3, h4, h5, h6{
+    font-weight: 400;
+    color: $darkBlue;
+}
+
 h1, h3, h5, h6{
     @include avalonBold(6rem);
-    color: $title;
 }
 
 h1{
@@ -51,7 +53,6 @@ h2{
     font-style: italic;
     line-height: 1.2;
     text-align: center;
-    color: $chapo;
 }
 
 h3{
@@ -60,7 +61,6 @@ h3{
     margin: 2.1em 0 1.6em;
     a{
         box-shadow: none;
-        color: $chapo;
     }
 }
 
@@ -69,7 +69,6 @@ h4{
     margin: 1.33em 0;
     line-height: 1;
     letter-spacing: -0.02em;
-    color: $chapo;
     a{
         box-shadow: none;
     }
@@ -90,13 +89,13 @@ p{
 }
 
 b, strong{
-    font-family: $arvo;
-    font-weight: bold;
+    font-family: $avalonMediumBold;
+    font-weight: 400;
 }
 
 i, em{
-    font-family: $arvo;
-    font-style: italic;
+    font-family: $avalonMediumOblique;
+    font-style: normal;
 }
 
 blockquote{
@@ -104,14 +103,13 @@ blockquote{
     margin: 3.5em $colSmall*2 4em;
     text-align: right;
     p{
-        @include themeColor;
-
         margin-top: 0;
         font-family: $avalonBold;
         font-size: 2rem;
         text-align: center;
         letter-spacing: -0.02em;
         line-height: 1.1;
+        color: $blue;
         &:before{
             content: '« ';
         }
@@ -151,8 +149,7 @@ ul{
     li{
         padding: 0 0 0 8px;
         &:before{
-            @include themeBg;
-
+            background: $blue;
             width: 3px;
             height: 3px;
             top: 11px;
@@ -166,13 +163,12 @@ ol{
         padding: 0 0 0 15px;
         counter-increment: counter;
         &:before{
-            @include themeColor;
-
             content: counter(counter)'.';
             top: 5px;
             font-family: $arvo;
             font-weight: bold;
             font-size: 12px;
+            color: $blue;
         }
     }
 }
@@ -213,16 +209,17 @@ code, pre{
     display: block;
     padding: 10px 15px;
     margin: 1em 0;
-    background: $grey;
+    background: $darkBlue;
 }
 
 time, .subtitle{
-    @include themeColor;
-
-    font-family: $avalon;
+    font-family: $avalonMedium;
     font-size: 1.8rem;
     text-transform: uppercase;
-    letter-spacing: -0.04em;
+    color: $darkBlue;
+}
+time{
+    color: $blue;
 }
 
 hr{

@@ -16,7 +16,7 @@
     margin: 0 5px;
     font-family: $avalonBold;
     font-size: 1.3rem;
-    color: $magazine;
+    color: $blue;
     text-transform: uppercase;
     li{
         display: inline-block;
@@ -29,7 +29,7 @@
     .current-cat{
         a{
             box-shadow: none;
-            color: $txt;
+            color: $darkBlue;
             pointer-events: none;
         }
     }

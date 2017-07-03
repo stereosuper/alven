@@ -34,53 +34,6 @@
 	}
 }
 
-.contact-us{
-	.subtitle{
-		color: $title;
-	}
-	.section-title{
-		+ .subtitle{
-			.theme-portfolio &{
-				&:before, &:after{
-					background: $title;
-				}
-			}
-		}
-	}
-	.btn{
-		.theme-portfolio &{
-			background: $gold;
-			border-color: $gold;
-			color: $title;
-			.before, .after{
-				color: $title;
-			}
-			&:hover, &:focus{
-				.no-js &, .is-desktop &{
-					color: $title;
-					border-color: $title;
-				}
-			}
-		}
-	}
-	.btn-invert{
-		.theme-portfolio &{
-			border-color: $greyBlue;
-			color: $greyBlue;
-			.before{
-				color: $greyBlue;
-			}
-			&:hover, &:focus{
-				.no-js &, .is-desktop &{
-					color: #fff;
-					border-color: $greyBlue;
-					background: $greyBlue;
-				}
-			}
-		}
-	}
-}
-
 
 .open-form{
 	transition: color $transition, background $transition;
@@ -115,7 +68,7 @@
 	        top: -5px;
 	        left: $innerGutter;
 	        font-size: 1.2rem;
-	        color: $magazine;
+	        color: $blue;
 	    }
 	}
 }

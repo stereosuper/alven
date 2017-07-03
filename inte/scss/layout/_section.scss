@@ -14,10 +14,8 @@
     font-family: $avalonBold;
     font-size: 5.2rem;
     line-height: 1;
-    letter-spacing: -0.03em;
-    color: $chapo;
+    color: $darkBlue;
     font-style: normal;
-
     .contact-us &{
         margin-top: 0;
     }
@@ -33,24 +31,26 @@
         text-align: center;
         text-transform: none;
         &:before, &:after{
-            @include themeBg;
-
-            content: '';
             position: absolute;
             left: 0;
             right: 0;
             margin: auto;
         }
-        &:before{
-            width: 1px;
+        &:after{
+            @include fontIcon();
+
+            content: '\e90a';
+            width: 22px;
             height: 15px;
             bottom: -8px;
+            font-size: 15px;
+            color: $blue;
         }
-        &:after{
+        &:before{
+            content: '';
             width: 35px;
             height: 1px;
-            border-left: 10px solid #fff;
-            border-right: 10px solid #fff;
+            background: #fff;
             bottom: -1px;
         }
     }

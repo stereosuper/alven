@@ -12,30 +12,22 @@
         margin-right: $colSmall;
     }
     a:not(.btn):not(.btn-invert){
-        @include themeColor;
+        color: $blue;
     }
     .btn{
         margin: 3.3em 0 0;
     }
-    &:before, &:after{
-        @include themeBg;
 
-        content: '';
-        position: absolute;
+    @include pseudoCross;
+    &:before, &:after{
         left: 0;
         right: 0;
         margin: auto;
     }
-    &:before{
-        width: 1px;
-        height: 15px;
+    &:after{
         bottom: -13px;
     }
-    &:after{
-        width: 35px;
-        height: 1px;
-        border-left: 10px solid #fff;
-        border-right: 10px solid #fff;
+    &:before{
         bottom: -6px;
     }
     .single-startup &, &.no-cross{
@@ -73,15 +65,8 @@
 .content-header{
     width: 100%;
     top: 0;
-    background: $title;
+    background: $darkBlue;
     backface-visibility: hidden;
-    h1 {
-        color: $goldDark;
-        em {
-            font-family: $arvo;
-            font-style: italic;
-        }
-    }
     .js &{
         position: fixed;
         h1{
@@ -91,9 +76,9 @@
     &.has-img{
         //padding: 145px 0 130px;
         padding: 145px 0 14vh;
-        background: #000;
+        background: #004254;
         .home &{
-            padding: 220px 0 27vh;
+            // padding: 220px 0 27vh;
             padding: calc(145px + 5vh) 0 20vh;
         }
     }
@@ -152,8 +137,8 @@
         right: 0;
         overflow: hidden;
         opacity: 0.8;
-
-        svg {
+        svg{
+            min-height: 1000px;
             left: 0;
             position: absolute;
             top: 0;

@@ -2,7 +2,7 @@
     font-size: 1.4rem;
     ul{
         margin: 0;
-        font-family: $avalon;
+        font-family: $avalonMedium;
         color: #fff;
     }
     li{
@@ -37,17 +37,16 @@
 }
 .menu-subtitle{
     display: block;
-    font-family: $avalon;
+    font-family: $avalonMedium;
     text-transform: uppercase;
     font-size: 1.35rem;
-    letter-spacing: -0.02em;
     line-height: 1.4;
 }
 
 .menu-secondary{
     margin: 150px 0 0;
     font-size: 1.2rem;
-    font-family: $avalon;
+    font-family: $avalonMedium;
     text-align: center;
     color: #fff;
     ul{

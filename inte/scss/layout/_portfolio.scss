@@ -4,7 +4,7 @@
     position: relative;
     margin: 250px 0 0;
     z-index: 1;
-    background: $grey;
+    background: $darkBlue;
     backface-visibility: hidden;
     .no-js &{
         margin-bottom: 50px;
@@ -61,10 +61,10 @@
     li, .po-item{
         padding: $innerGutter;
         overflow: hidden;
-        font-family: $avalon;
+        font-family: $avalonMedium;
         font-size: 1.4rem;
         text-transform: uppercase;
-        color: $chapo;
+        color: $darkBlue;
         text-align: center;
         backface-visibility: hidden;
         transform-style: preserve-3d;
@@ -78,11 +78,11 @@
         }
         &.transfered{
             &:after{
-                background-color: $chapo;
+                background-color: $darkBlue;
             }
             a{
-                background-color: #34b6b8;
-                border-color: #34b6b8;
+                background-color: $blue;
+                border-color: $blue;
                 color: #fff;
                 transition: none;
                 &:after{
@@ -98,19 +98,14 @@
                     display: inline-block;
                     vertical-align: top;
                     > span{
-                        display: block;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         margin: 0 auto;
                         padding: 10px 0;
                         height: 16%;
                         max-width: 58%;
                         line-height: 1;
-                        &:before{
-                            content: '';
-                            display: inline-block;
-                            height: 100%;
-                            vertical-align: middle;
-                            margin-right: -0.25em;
-                        }
                         &:first-child, &:last-child{
                             height: 42%;
                         }
@@ -173,7 +168,7 @@
                     //border: 1px solid $greyBorder;
                     border-color: $greyBorder;
                     background: #fff;
-                    color: $chapo;
+                    color: $darkBlue;
                     path, polygon, rect, ellipse, circle, line, polyline{
                         transition: fill 0.4s linear;
                         transition-delay: 0s;
@@ -191,7 +186,7 @@
             left: $innerGutter;
             right: $innerGutter;
             bottom: $innerGutter;
-            background: #34b6b8;
+            background: $blue;
             box-shadow: none;
             transition: border-color 0.1s cubic-bezier(0.420, 0.000, 0.580, 1.000);
             transition-delay: 0.3s;
@@ -223,7 +218,7 @@
                 transform-style: preserve-3d;
             }
             &:hover, &:focus{
-                border-color: #34b6b8;
+                border-color: $blue;
                 &:after{
                     transform: scale(0.96, 0.94) rotate(0.1deg);
                 }
@@ -263,7 +258,7 @@
             }
             &.off{
                 path, polygon, rect, ellipse, circle, line, polyline{
-                    fill: $chapo;
+                    fill: $darkBlue;
                 }
             }
         }
@@ -295,9 +290,23 @@
                 }
             }
             .btn-invert{
+                color: $gold;
+                border-color: $gold;
                 margin-top: 15px;
                 opacity: 1 !important;
                 transition: 0.45s $transitionFunction;
+                .before{
+                    color: $gold;
+                }
+                .after{
+                    color: $darkBlue;
+                }
+                &:hover, &:focus{
+                    background: $gold;
+                    .no-js &, .is-desktop &{
+                        color: $darkBlue;
+                    }
+                }
             }
         }
         a{
@@ -418,11 +427,11 @@
 .portfolio-header{
     padding: 230px 0 30px;
     margin: 0 0 50px;
-    font-family:  $avalonBold;
+    font-family: $avalonBold;
     font-size: 1.3rem;
     text-transform: uppercase;
     letter-spacing: 0.03em;
-    background: linear-gradient(to bottom, #303c3e, #4b5d60);
+    background: $darkBlue;
     color: #fff;
     .container{
         position: relative;
@@ -453,7 +462,8 @@
     .title-small{
         display: block;
         margin: 0 0 10px;
-        color: #586c70;
+        font-style: normal;
+        //color: #586c70;
     }
     .header-block-term{
         min-height: 50px;
@@ -476,19 +486,19 @@
             margin: 0 0 25px;
         }
         .btn-invert{
-            color: #fff;
-            border-color: #fff;
+            color: $gold;
+            border-color: $gold;
             .before{
-                color: #fff;
+                color: $gold;
             }
             .after{
-                color: #4b5d60;
+                color: $darkBlue;
             }
             .is-desktop &, .no-js &{
                 &:hover, &:focus{
-                    background: #fff;
-                    border-color: #fff;
-                    color: #4b5d60;
+                    background: $gold;
+                    border-color: $gold;
+                    color: $darkBlue;
                 }
             }
         }
@@ -500,6 +510,10 @@
         position: absolute;
         top: 10px;
         right: 20px;
+        color: $gold;
+        &:before, &:after{
+            background: $gold;
+        }
     }
 }
 
@@ -519,12 +533,12 @@
         position: relative;
         margin: 0 10%;
 
-        @include pseudoCross($magazine);
-        &:before{
-            top: -58px;
-            left: 10px;
-        }
+        @include pseudoCross;
         &:after{
+            top: -58px;
+            left: 1px;
+        }
+        &:before{
             top: -51px;
             left: -7px;
         }

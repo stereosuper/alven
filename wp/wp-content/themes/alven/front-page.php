@@ -16,14 +16,11 @@ get_header(); ?>
             <div class='container'>
                 <h1><?php the_field('title'); ?></h1><ul class='menu-home'>
                     <li>
-                        <span><?php the_field('titleHeaderMag'); ?></span>
-                        <a href='<?php echo get_permalink( get_option('page_for_posts' ) ); ?>' class='btn-arrow'>Magazine</a>
+                        <a href='<?php echo get_permalink( get_option('page_for_posts' ) ); ?>' class='btn-arrow'><span><?php the_field('titleHeaderMag'); ?></span> Magazine</a>
                     </li><li>
-                        <span><?php the_field('titleHeaderPortfolio'); ?></span>
-                        <a href='<?php echo get_permalink(PORTFOLIO_ID); ?>' class='btn-arrow'>Portfolio</a>
+                        <a href='<?php echo get_permalink(PORTFOLIO_ID); ?>' class='btn-arrow'><span><?php the_field('titleHeaderPortfolio'); ?></span> Portfolio</a>
                     </li><li>
-                        <span><?php the_field('titleHeaderTeam'); ?></span>
-                        <a href='<?php echo home_url('#who-we-are'); ?>' class='btn-arrow'>Who we are</a>
+                        <a href='<?php echo home_url('#who-we-are'); ?>' class='btn-arrow'><span><?php the_field('titleHeaderTeam'); ?></span> Who we are</a>
                     </li>
                 </ul>
             </div>
@@ -34,10 +31,7 @@ get_header(); ?>
             <?php } ?>
             <?php if(get_field('video')){ ?>
                 <div class='wrapper-video' style='opacity:<?php the_field('videoOpacity'); ?>'>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1084.09 1278.32">
-                        <title>
-                            filet-header@1x
-                        </title>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1084.09 1278.32" preserveAspectRatio="xMaxYMin slice">
                         <path fill="none" d="M465.62.17L.47 1278.15"/>
                         <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M465.62.17L.47 1278.15"/>
                         <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M471.62.17L6.47 1278.15"/>

@@ -101,7 +101,7 @@
 
     #header{
         .post-title{
-            top: 30px;
+            top: 50px;
         }
         &.fixed{
             &.on{
@@ -117,12 +117,6 @@
     #menu-main{
         li{
             margin: 0 70px 0 0;
-            &:before{
-                left: -5px;
-            }
-            &:after{
-                left: -13px;
-            }
             &.current-menu-item, &.current_page_parent{
                 &:after{
                     width: 20px;
@@ -263,13 +257,9 @@
     #menu-responsive, #burger{
         display: block;
     }
-    #menu-responsive{
-        color: $txt;
-    }
 
     #logo-alven{
         width: 170px;
-        height: 27px;
         padding: 0;
     }
 
@@ -367,11 +357,8 @@
                 display: block;
             }
         }
-        .wrapper-video{
+        .video{
             display: none;
-        }
-        .wrapper-video svg {
-            transform: translateX(-70%);
         }
     }
 
@@ -548,13 +535,13 @@
         padding: 30px 0 30px;
     }
     #logo-alven {
-        top: 34px;
+        top: 25px;
         svg {
             max-width: 25vw;
         }
     }
     #burger {
-        top: 40px;
+        top: 18px;
     }
 }
 
@@ -597,11 +584,21 @@
     .menu-home{
         text-align: left;
         width: auto;
+        font-size: 1.6rem;
         li{
-            padding: 0 0 20px 0;
+            padding: 0 0 20px 23px;
+            &:after{
+                top: -5px;
+                height: 26px;
+            }
         }
         span{
             display: none;
+        }
+        a{
+            &:before, &:after{
+                bottom: 3px;
+            }
         }
     }
 
@@ -749,10 +746,13 @@
         .txt{
             margin: 30px 0 35px 0;
             &:before{
-                bottom: -43px;
+                bottom: -36px;
+                .home &{
+                    bottom: -36px;
+                }
             }
             &:after{
-                bottom: -36px;
+                bottom: -43px;
             }
         }
         .img{
@@ -990,9 +990,14 @@
 
     #header{
         .form-search{
-            width: 21px;
+            width: 52px;
             min-width: 0;
-            margin-top: 3px;
+            input, label{
+                display: none;
+            }
+            .no-js &{
+                display: none;
+            }
         }
         .btn-search{
             width: 21px;
@@ -1186,16 +1191,6 @@
         }
     }
 
-    #header{
-        .form-search{
-            input, label{
-                display: none;
-            }
-            .no-js &{
-                display: none;
-            }
-        }
-    }
     .portfolio-list{
         margin: 280px 0 0;
         li, .po-item{
@@ -1402,34 +1397,34 @@
 
 
 /* retina */
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
-    #logo-alven{
-        background-image: url(../layoutImg/alven@2x.png);
-        background-size: 199px 31px;
-        @media (max-width: 1225px){
-            background-size: 100%;
-        }
-    }
-    #header{
-        &.fixed, .no-js &{
-            #logo-alven{
-                background-image: url(../layoutImg/alven-grey@2x.png);
-                background-size: 199px 31px;
-                @media (max-width: 1225px){
-                    background-size: 100%;
-                }
-            }
-        }
-    }
-}
+// @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
+//     #logo-alven{
+//         background-image: url(../layoutImg/alven@2x.png);
+//         background-size: 199px 31px;
+//         @media (max-width: 1225px){
+//             background-size: 100%;
+//         }
+//     }
+//     #header{
+//         &.fixed, .no-js &{
+//             #logo-alven{
+//                 background-image: url(../layoutImg/alven-grey@2x.png);
+//                 background-size: 199px 31px;
+//                 @media (max-width: 1225px){
+//                     background-size: 100%;
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 144dpi) {
+// @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 144dpi) {
 
-}
+// }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min-resolution: 288dpi) {
+// @media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min-resolution: 288dpi) {
 
-}
+// }
 
 
 /* Print styles */

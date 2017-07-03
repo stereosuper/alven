@@ -7,7 +7,7 @@
     position: relative;
     margin: 0;
     overflow: hidden;
-    @include themeBorder;
+    border-color: $blue;
     transition: $transition;
     &.on{
         li:first-child{
@@ -24,16 +24,16 @@
         line-height: 1;
         letter-spacing: 0.07em;
         text-transform: uppercase;
-        @include themeColor;
+        color: $blue;
         transition: $transition;
         cursor: pointer;
         &.empty{
-           color: $grey;
+           color: $darkBlue;
            cursor: default;
            pointer-events: none;
         }
         &:hover{
-            @include themeBgHover;
+            background: $blue;
             .no-js &, .is-desktop &{
                 color: #fff;
             }
@@ -51,7 +51,7 @@
                 right: 10px;
                 font-size: 10px;
                 transition: $transition;
-                @include themeColor;
+                color: $blue;
                 pointer-events: none;
                 transform: translate3d(0, 0, 0);
                 text-indent: 0;

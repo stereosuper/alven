@@ -4,7 +4,7 @@
     padding: 60px 0 55px;
     overflow: hidden;
     background: $gold;
-    color: $greyBlue;
+    color: $darkBlue;
     .newsletter-title{
         vertical-align: middle;
     }
@@ -21,7 +21,7 @@
     p{
         display: inline-block;
         font-size: 1.4rem;
-        color: #626262;
+        color: $darkBlue;
         width: 66.666666%;
         padding: 0 0 0 $col;
         margin: 0;
@@ -33,7 +33,7 @@
         width: 62.35%;
     }*/
     input{
-        border-bottom: 1px solid $greyBlue;
+        border-bottom: 1px solid $darkBlue;
         &:-webkit-autofill{
             box-shadow: 0 0 0 1000px $gold inset;
         }
@@ -47,22 +47,22 @@
     }
     .btn-invert{
         margin: 0;
-        color: $greyBlue;
-        border-color: $greyBlue;
+        color: $darkBlue;
+        border-color: $darkBlue;
         .before{
-            color: $greyBlue;
+            color: $darkBlue;
         }
         .after{
             color: $gold;
         }
         &:hover, &:focus{
             .no-js &, .is-desktop &{
-                background: $greyBlue;
-                border-color: $greyBlue;
+                background: $darkBlue;
+                border-color: $darkBlue;
                 color: $gold;
             }
             .no-js &{
-                background: $greyBlue;
+                background: $darkBlue;
             }
         }
     }
@@ -92,13 +92,13 @@
         float: right;
         font-size: 1.2rem;
         line-height: 1.2;
-        color: $magazine;
+        color: $blue;
         p{
             width: 52%;
             padding: 0;
             font-size: 1.2rem;
             line-height: 1.2;
-            color: $portfolio;
+            color: $blue;
         }
     }
 }

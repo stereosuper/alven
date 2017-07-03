@@ -46,14 +46,12 @@ legend{
     position: relative;
     margin: 0 0 10px $innerGutter;
     font-size: 1.8rem;
-    font-family: $sourceLight;
     line-height: 1.3;
-    color: $title;
     opacity: 0.5;
     transition: $transition;
     span{
         display: block;
-        font-family: $sourceSemiBold;
+        font-family: $avalonMediumBold;
     }
     .js &{
         cursor: pointer;
@@ -66,13 +64,14 @@ legend{
     }
     &.active, .no-js &{
         opacity: 1;
-        @include pseudoCross($title);
 
-        &:before{
-            left: -17px;
-            bottom: -8px;
-        }
+        @include pseudoCross();
         &:after{
+            left: -27px;
+            bottom: -8px;
+            font-size: 14px;
+        }
+        &:before{
             left: -34px;
             bottom: -1px;
         }
@@ -82,7 +81,6 @@ legend{
     display: block;
     margin: 20px 0 25px $innerGutter;
     font-size: 1.8rem;
-    font-family: $sourceLight;
     + div{
         margin-top: 0;
     }
@@ -97,6 +95,7 @@ label{
     font-style: italic;
     font-size: 1.4rem;
     line-height: 1;
+    letter-spacing: -0.05em;
     cursor: text;
     transform: translate3d(0, 0, 0);
     transition: $transition;
@@ -122,7 +121,7 @@ input, textarea{
     z-index: 1;
     font-family: $arvo;
     font-size: 16px;
-    color: $greyBlue;
+    color: $darkBlue;
   	&:-webkit-autofill{
       	box-shadow: 0 0 0 1000px #fff inset;
   	}
@@ -140,22 +139,22 @@ input, textarea{
     }
     &.filled{
         &:valid{
-            border-color: $portfolio;
+            border-color: $blue;
             + label{
-                color: $portfolio;
+                color: $blue;
             }
         }
         &:invalid, &.invalid{
-            border-color: $magazine;
+            border-color: #f06850;
             + label{
-                color: $magazine;
+                color: #f06850;
             }
         }
     }
     &.invalid{
-        border-color: $magazine;
+        border-color: #f06850;
         + label{
-            color: $magazine;
+            color: #f06850;
         }
     }
     &:invalid{
@@ -165,7 +164,7 @@ input, textarea{
 
 textarea{
     height: 150px;
-    border: 1px solid $greyBlue;
+    border: 1px solid $darkBlue;
     &:focus{
         + label{
             .js &{
@@ -182,7 +181,7 @@ textarea{
 
 input{
     border: 0;
-    border-bottom: 1px solid $greyBlue;
+    border-bottom: 1px solid $darkBlue;
     &[type=search]{
         &::-webkit-search-cancel-button, &::-webkit-search-decoration{
             display: none;
@@ -211,7 +210,7 @@ input{
 }
 
 button{
-    color: $title;
+    color: $darkBlue;
     &[type=submit]{
         margin-top: 25px;
         margin-left: $innerGutter;
@@ -230,15 +229,16 @@ select{
     max-width: 40%;
     vertical-align: top;
     font-size: 1.4rem;
-    font-family: $merriweatherIt;
+    font-family: $arvo;
+    font-style: italic;
     line-height: 1.2;
 }
 
 .form-success{
-    color: $portfolio;
+    color: $blue;
 }
 .form-error{
-    color: $magazine;
+    color: #f06850;
 }
 
 .form-search{

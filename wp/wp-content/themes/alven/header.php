@@ -68,7 +68,7 @@
                 <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search form-search-header'>
                     <input type='search' name='s' value='' id='search-header'>
                     <label for='search-header'>type some keywords</label>
-                    <button type='submit' class='btn-search'>Explore Alven</button>
+                    <button type='submit' class='btn-search'><span>Explore Alven</span></button>
                 </form>
                 <nav role='navigation' id='menu-main'>
                     <?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => '')); ?>

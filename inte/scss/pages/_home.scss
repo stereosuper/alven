@@ -10,6 +10,11 @@
         vertical-align: middle;
         margin: 10vh 0;
         text-align: right;
+        color: #fff0a1;
+        > em{
+            font-family: $arvo;
+            font-style: italic;
+        }
     }
     #menu-main{
         opacity: 0;
@@ -33,7 +38,7 @@
     padding: 0 $innerGutter;
     vertical-align: middle;
     margin: 0 $col;
-    font-family: $avalon;
+    font-family: $avalonMedium;
     color: #fff;
     li{
         margin: 0;
@@ -41,25 +46,25 @@
         &:before{
             display: none;
         }
+        &:after{
+            content: '';
+            width: 15px;
+            height: 32px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: url('../layoutImg/slash-cta-yel.svg') 0 0 no-repeat;
+        }
         &:last-child{
             padding-bottom: 0;
-        }
-        &:first-child {
-            background: url('../layoutImg/slash-cta.svg') 0 0 no-repeat;
-        }
-        &:nth-child(2) {
-            background: url('../layoutImg/slash-cta-blue.svg') 0 0 no-repeat;
-        }
-        &:nth-child(3) {
-            background: url('../layoutImg/slash-cta-yel.svg') 0 0 no-repeat;
         }
     }
     span{
         display: block;
+        margin: 0 0 4px;
         font-family: $avalonBold;
         font-size: 1.8rem;
         line-height: 0.8;
-        letter-spacing: -0.03em;
         text-transform: uppercase;
     }
     a{
@@ -70,5 +75,9 @@
         &:after {
             bottom: 12px;
         }
+    }
+    .btn-arrow{
+        display: inline-block;
+        font-style: normal;
     }
 }

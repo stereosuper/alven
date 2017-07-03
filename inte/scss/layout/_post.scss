@@ -3,7 +3,7 @@
 .post-meta{
     margin: 10px 0 15px;
     time{
-        font-family: $avalon;
+        font-family: $avalonMedium;
         font-size: 1.2rem;
     }
     .btn-cat{
@@ -20,15 +20,15 @@
 
 .post-meta-header, .post-meta-spotlight{
     .btn-cat{
-        padding-bottom: 0;
+        padding-bottom: 3px;
         margin-right: 5px;
     }
     time{
         margin-left: 5px;
     }
     .btn-cat{
-        font-family: $avalon;
-        font-size: 1.8rem;
+        font-family: $avalonMedium;
+        font-size: 1.4rem;
     }
 }
 
@@ -36,7 +36,7 @@
     margin: 0 0 50px;
     backface-visibility: hidden;
     .title-small{
-        padding: 0 0 0 16px;
+        padding: 0 0 0 24px;
     }
     ul{
         padding: 12px 0 0;
@@ -45,12 +45,12 @@
         position: relative;
 
         @include pseudoCross;
-        &:before{
+        &:after{
             top: -8px;
             left: -1px;
         }
-        &:after{
-            left: -18px;
+        &:before{
+            left: -10px;
             top: -1px;
         }
     }
@@ -58,18 +58,16 @@
         padding-left: 0;
         &:last-child{
             @include pseudoCross;
-            &:before, &:after{
-                left: 0;
-            }
             &:before{
                 display: block;
                 top: auto;
-                bottom: -8px;
+                left: -10px;
+                bottom: -1px;
                 border-radius: 0;
             }
             &:after{
-                left: -17px;
-                bottom: -1px;
+                bottom: -8px;
+                left: 0;
             }
             .img{
                 padding: 0;
@@ -120,7 +118,7 @@
         line-height: 1.2;
     }
     time{
-        color: $magazine;
+        color: $blue;
     }
     .post-meta{
         margin: 3px 0 5px;
@@ -129,7 +127,7 @@
 
 .post-title{
     font-size: 2.8rem;
-    color: $title;
+    color: $darkBlue;
 }
 
 
@@ -175,7 +173,7 @@
         margin: 0 0 10px;
         font-size: 2.4rem;
         word-wrap: break-word;
-        color: $magazine;
+        color: $blue;
     }
     p{
         margin: 0 0 10px;
@@ -193,7 +191,7 @@
         li{
             margin: 0 0 5px;
             &:before{
-                background: $txt;
+                background: $darkBlue;
             }
         }
     }
@@ -247,18 +245,19 @@
         vertical-align: middle;
         margin: 4.4em 0 60px $col*7;
         z-index: 1;
-        @include pseudoCross;
-
         text-align: left;
-        &:before, &:after{
-            left: 10px;
-        }
+
+        @include pseudoCross;
         &:before{
-            bottom: -67px;
+            left: 3px;
+            bottom: -61px;
+            .home &{
+                bottom: -60px;
+            }
         }
         &:after{
-            left: -7px;
-            bottom: -60px;
+            left: 10px;
+            bottom: -67px;
         }
     }
     h3{
@@ -299,14 +298,12 @@
     }*/
 
     @include pseudoCross;
-    &:before, &:after{
+    &:after{
         left: 10px;
-    }
-    &:before{
         bottom: -68px;
     }
-    &:after{
-        left: -7px;
+    &:before{
+        left: 3px;
         bottom: -61px;
     }
 
@@ -341,15 +338,15 @@
         position: relative;
 
         @include pseudoCross;
-        &:before{
+        &:after{
             bottom: -8px;
             left: $col;
             margin: 0 0 0 -1px;
         }
-        &:after{
+        &:before{
             left: $col;
             bottom: -1px;
-            margin: 0 0 0 -18px;
+            margin: 0 0 0 -8px;
         }
     }
     .img{
@@ -371,7 +368,7 @@
         position: relative;
         font-family: $avalonBold;
         font-size: 1.7rem;
-        background: $txt;
+        background: $darkBlue;
         color: #fff;
         text-align: center;
         text-transform: uppercase;
@@ -404,7 +401,7 @@
         bottom: -5px;
         right: -5px;
         border-width: 0 0 19px 19px;
-        border-color: transparent transparent $txt transparent;
+        border-color: transparent transparent $darkBlue transparent;
     }
     &:before{
         bottom: -3px;
@@ -436,7 +433,7 @@
         top: -18px;
         left: 0;
         right: 0;
-        color: $txt;
+        color: $darkBlue;
         line-height: 1;
     }
     .day{
@@ -475,17 +472,17 @@
         width: 50px;
         height: 70px;
         border: 3px solid #fff;
-        margin: 6px 0 0px -12px;
-        background: $txt;
+        margin: 6px 0 0 -12px;
+        background: $darkBlue;
     }
 }
 
 .pagination{
     font-family: $avalonBold;
     text-align: center;
-    color: $title;
+    color: $darkBlue;
     .current{
-        color: $txt;
+        color: $darkBlue;
     }
     .page-numbers{
         display: inline-block;
@@ -502,10 +499,10 @@
         top: -30px;
     }
     .related-portfolio-list{
-        &:after{
+        &:before{
             top: -1px;
         }
-        &:before{
+        &:after{
             top: -8px;
         }
     }
@@ -531,6 +528,7 @@
         padding: 0 0 60%;
         border: 1px solid $greyBorder;
         position: relative;
+        margin: 0 0 5px;
         a{
             position: absolute;
             top: 0;
