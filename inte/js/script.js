@@ -100,7 +100,7 @@ $(function(){
 
     /**** VARIABLES ****/
 
-    var docHeight = $(document).height(), windowHeight = $(window).height(), windowWidth = $(window).width(), windowWidthOnReady = windowWidth;
+    var docHeight = $(document).height(), windowHeight = $(window).height(), windowWidth = window.outerWidth, windowWidthOnReady = windowWidth;
 
     var controller = new ScrollMagic.Controller(), lastScrollTop = 0, myScroll = $(document).scrollTop(), scrollDir = 0;
 
@@ -1165,7 +1165,7 @@ $(function(){
         formSearchHeader.on('focusout', function(){
             $(this).find('input').val() ? $(this).addClass('on') : $(this).removeClass('on');
         }).on('submit', function(e){
-            if(windowWidth < 480){
+            if(windowWidth <= 540){
                 e.preventDefault();
                 window.location.href = $(this).attr('action') + '?s=';
             }
@@ -1304,7 +1304,7 @@ $(function(){
     $(window).on('resize', function(){
         docHeight = $(document).height();
         windowHeight = $(window).height();
-        windowWidth = $(window).width();
+        windowWidth = window.outerWidth;
 
         if(windowWidth > 979){
             htmlTag.removeClass('menu-open');
@@ -1369,21 +1369,18 @@ $(window).on('load', function(){
     var fadePage = $('#fadePage');
     var galleries = $('.gallery');
     var postSidebar = $('#postSidebar');
-    var tweensTest = [];
+    var tweensHeader = [];
 
-    var line = $('.wrapper-video svg path'),
-        lineLength = line.length;
+    var line = $('.wrapper-video path');
 
     line.each(function(index) {
-        tweensTest[index] = new TweenMax.from(this, 0.1 , { opacity:0, x: 0});
+        tweensHeader[index] = new TweenMax.from(this, 0.1 , { opacity:0, x: 0});
     });
 
     tlHeader.play();
     tlHeaderDone = true;
-    tweensTest.forEach(function (element, index) {
-        tlHeader.add(
-            element
-        );
+    tweensHeader.forEach(function(element, index){
+        tlHeader.add(element);
     });
 
     var tlBtween = tlHeader.tweenFromTo(0, tlHeader.duration(), {ease:Power4.easeOut});
@@ -1398,7 +1395,12 @@ $(window).on('load', function(){
 
     if(contentHeader.length){
         if(contentHeader.find('h1').length){
-            TweenMax.fromTo(contentHeader.find('h1'), 0.3, {opacity: 0, y: 100}, {opacity: 1, y: 0, delay: 1});
+            if($('body').hasClass('home')){
+                TweenMax.fromTo(contentHeader.find('h1'), 0.3, {opacity: 0, y: 100}, {opacity: 1, y: 0, delay: 1});
+            }else{
+                TweenMax.fromTo(contentHeader.find('h1'), 0.3, {opacity: 0, y: 100}, {opacity: 1, y: 0});
+            }
+            
             // var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
             // contentHeader.find('h1').css('opacity', 1);
             // animTxt(splitText);
