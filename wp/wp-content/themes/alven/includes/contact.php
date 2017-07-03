@@ -44,7 +44,7 @@
                             <span class='form-title'>Or</span>
                             <div class='full has-desc'>
                                 <input type='url' name='pitchurl' id='pitchurl' class='form-elt <?php if($errorUrl) echo "invalid"; ?>'><label for='pitchurl' value='<?php echo $url; ?>'>
-                                    Insert a link to download your deck
+                                    A link to download your deck
                                 </label><span class='form-desc'>
                                     insert a link for us to download your deck - write full url with http://
                                 </span>
