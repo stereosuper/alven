@@ -763,7 +763,7 @@ legend {
     legend.active:before, .no-js legend:before {
       content: '';
       width: 35px;
-      height: 1px;
+      height: 2px;
       background: #fff; }
     legend.active:after, .no-js legend:after {
       left: -27px;
@@ -1157,7 +1157,7 @@ select::-ms-expand {
     #menu-main li:before {
       content: '';
       width: 35px;
-      height: 1px;
+      height: 2px;
       background: #fff; }
     #menu-main li:after {
       content: '\e90b';
@@ -1224,7 +1224,7 @@ select::-ms-expand {
   .content-default:before {
     content: '';
     width: 35px;
-    height: 1px;
+    height: 2px;
     background: #fff; }
   .content-default:before, .content-default:after {
     left: 0;
@@ -1856,7 +1856,7 @@ select::-ms-expand {
     .related-portfolio-list:before {
       content: '';
       width: 35px;
-      height: 1px;
+      height: 2px;
       background: #fff; }
     .related-portfolio-list:after {
       top: -58px;
@@ -1941,7 +1941,7 @@ select::-ms-expand {
     .post-sidebar ul:before {
       content: '';
       width: 35px;
-      height: 1px;
+      height: 2px;
       background: #fff; }
     .post-sidebar ul:after {
       top: -8px;
@@ -1969,7 +1969,7 @@ select::-ms-expand {
     .post-sidebar li:last-child:before {
       content: '';
       width: 35px;
-      height: 1px;
+      height: 2px;
       background: #fff; }
     .post-sidebar li:last-child:before {
       display: block;
@@ -2134,13 +2134,11 @@ select::-ms-expand {
     .main-spotlight-post .txt:before {
       content: '';
       width: 35px;
-      height: 1px;
+      height: 2px;
       background: #fff; }
     .main-spotlight-post .txt:before {
       left: 3px;
       bottom: -61px; }
-      .home .main-spotlight-post .txt:before {
-        bottom: -60px; }
     .main-spotlight-post .txt:after {
       left: 10px;
       bottom: -67px; }
@@ -2190,7 +2188,7 @@ select::-ms-expand {
   .read-also-post:before {
     content: '';
     width: 35px;
-    height: 1px;
+    height: 2px;
     background: #fff; }
   .read-also-post:after {
     left: 10px;
@@ -2241,7 +2239,7 @@ select::-ms-expand {
     .post .grid:before {
       content: '';
       width: 35px;
-      height: 1px;
+      height: 2px;
       background: #fff; }
     .post .grid:after {
       bottom: -8px;
@@ -2465,7 +2463,7 @@ select::-ms-expand {
     .team .infos:before {
       content: '';
       width: 35px;
-      height: 1px;
+      height: 2px;
       background: #fff; }
     .team .infos:after {
       top: 13px;
@@ -2510,7 +2508,7 @@ select::-ms-expand {
     .team .function:before {
       content: '';
       width: 35px;
-      height: 1px;
+      height: 2px;
       background: #fff; }
     .team .function:after {
       top: 13px;
@@ -3318,7 +3316,7 @@ select::-ms-expand {
   .quote:before {
     content: '';
     width: 35px;
-    height: 1px;
+    height: 2px;
     background: #fff; }
   .quote:before, .quote:after {
     top: 50%; }
