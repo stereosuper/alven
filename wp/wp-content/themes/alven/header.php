@@ -9,14 +9,14 @@
 
         <link rel='alternate' type='application/rss+xml' title='Alven Capital RSS Feed' href='<?php echo get_bloginfo('rss2_url'); ?>'>
 
-        <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png'>
-        <link rel='icon' type='image/png' href='/favicon-32x32.png' sizes='32x32'>
-        <link rel='icon' type='image/png' href='/favicon-16x16.png' sizes='16x16'>
+        <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png?v=2'>
+        <link rel='icon' type='image/png' href='/favicon-32x32.png?v=2' sizes='32x32'>
+        <link rel='icon' type='image/png' href='/favicon-16x16.png?v=2' sizes='16x16'>
         <link rel='manifest' href='/manifest.json'>
-        <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#034599'>
-        <meta name='apple-mobile-web-app-title' content='AlvenCapital'>
-        <meta name='application-name' content='AlvenCapital'>
-        <meta name='theme-color' content='#ffffff'>
+        <link rel='mask-icon' href='/safari-pinned-tab.svg?v=2' color='#003240'>
+        <meta name='apple-mobile-web-app-title' content='Alven'>
+        <meta name='application-name' content='Alven'>
+        <meta name='theme-color' content='#fff'>
 
         <?php // Google fonts ?>
         <link href="https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i" rel="stylesheet">
