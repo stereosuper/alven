@@ -277,7 +277,7 @@ get_header(); ?>
 
                 <section class='theme-portfolio'>
                     <h2 class='section-title'><?php the_field('title', PORTFOLIO_ID); ?></h2>
-                    <strong class='subtitle'><?php the_field('subtitle', PORTFOLIO_ID); ?></strong>
+                    <strong class='subtitle'><?php the_field('portfolioSubtitle'); ?></strong>
                     <div class='container'>
                         <div class='section-header'>
                             <p><?php the_field('text', PORTFOLIO_ID); ?></p>
