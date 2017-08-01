@@ -281,8 +281,7 @@ class acf_field_google_map extends acf_field
    	
    	function input_admin_head() {
 	   	
-	   	$action = is_admin() ? 'admin_footer' : 'wp_footer';
-   		add_action( $action, array( $this, 'input_admin_footer') );
+   		add_action( 'admin_footer', array( $this, 'input_admin_footer') );
    		
    	}
    	
