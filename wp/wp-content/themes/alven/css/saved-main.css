@@ -382,7 +382,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, h3, h5, h6 {
   font-family: "avalonbold", "avalonmedium", sans-serif;
-  font-size: 5.5rem;
+  font-size: 6rem;
   font-weight: 400;
   font-style: normal; }
 
@@ -1312,7 +1312,7 @@ select::-ms-expand {
       left: 0;
       position: absolute;
       top: 0;
-      transform: translateX(-75%);
+      transform: translateX(-70%);
       z-index: 2; }
     .content-header .wrapper-video .video {
       min-width: 100%;
