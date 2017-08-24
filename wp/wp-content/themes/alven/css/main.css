@@ -1312,7 +1312,7 @@ select::-ms-expand {
       left: 0;
       position: absolute;
       top: 0;
-      transform: translateX(-75%);
+      transform: translateX(-78%);
       z-index: 2; }
     .content-header .wrapper-video .video {
       min-width: 100%;
