@@ -55,7 +55,7 @@ if(isset($_POST['submitpitch'])){
         $status = 'error';
         $errorEmail = true;
     }else{
-        list($userName, $mailDomain) = split('@', $email);
+        list($userName, $mailDomain) = preg_split('#@#', $email, null);
         // let's check if the email domain exists as a security mesure (go to hell, spammer!)
         if(!checkdnsrr($mailDomain, 'MX')){
             $status = 'error';
