@@ -12,7 +12,7 @@ function wpse_183245_upload_dir( $dirs ){
 }
 
 
-$mailto = 'contact@alvencapital.com';
+$mailto = get_field('mailList', 'option');
 
 $status = '';
 $errorFirstname = '';
@@ -111,7 +111,7 @@ if(isset($_POST['submitpitch'])){
         if(empty($spamUrl)){
 
             $name = sprintf('%s %s', $firstname, $lastname);
-            $subject = 'New pitch received from alvencapital.com';
+            $subject = 'New pitch received from alven.co';
             $headers = 'From: "' . $name . '" <' . $email . '>' . "\r\n" .
                        'Reply-To: ' . $email . "\r\n";
 
@@ -191,7 +191,7 @@ if(isset($_POST['submitcontact'])){
         if(empty($spamUrl2)){
 
             $name2 = sprintf('%s %s', $firstname2, $lastname2);
-            $subject2 = 'New message received from alvencapital.com';
+            $subject2 = 'New message received from alven.co';
             $headers2 = 'From: "' . $name2 . '" <' . $email2 . '>' . "\r\n" .
                         'Reply-To: ' . $email2 . "\r\n";
 
