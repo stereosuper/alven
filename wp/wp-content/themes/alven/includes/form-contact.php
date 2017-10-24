@@ -12,7 +12,8 @@ function wpse_183245_upload_dir( $dirs ){
 }
 
 
-$mailto = get_field('mailList', 'option');
+$mailtoContact = get_field('mailList', 'option');
+$mailtoPitch = get_field('mailListPitch', 'option');
 
 $status = '';
 $errorFirstname = '';
@@ -122,7 +123,7 @@ if(isset($_POST['submitpitch'])){
 
             $attachment = isset($movefile) ? array($movefile['file']) : array();
 
-            $sent = wp_mail($mailto, $subject, $content, $headers, $attachment);
+            $sent = wp_mail($mailtoPitch, $subject, $content, $headers, $attachment);
 
             if($sent){
                 $status = 'success';
@@ -199,7 +200,7 @@ if(isset($_POST['submitcontact'])){
                         'Email: ' . $email2 . "\r\n\r\n\r\n" .
                         'Message: ' . "\r\n" . $msg2;
 
-            $sent2 = wp_mail($mailto, $subject2, $content2, $headers2);
+            $sent2 = wp_mail($mailtoContact, $subject2, $content2, $headers2);
 
             if($sent2){
                 $status2 = 'success';
