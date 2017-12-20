@@ -1366,10 +1366,11 @@ $(function(){
 $(window).on('load', function(){
     var main = $('#main');
     var contentHeader = $('#contentHeader');
-    var fadePage = $('#fadePage');
+    //var fadePage = $('#fadePage');
     var galleries = $('.gallery');
     var postSidebar = $('#postSidebar');
     var tweensHeader = [];
+    var windowWidth = window.outerWidth;
 
     var line = $('.wrapper-video path');
 
@@ -1393,6 +1394,15 @@ $(window).on('load', function(){
         TweenMax.staggerFrom(splitText.words, 0.3, {ease:Expo.easeInOut, opacity:0, y:100}, 0.03);
     }
 
+    var video = $('#video');
+    var source = video.find('source');
+
+    if( video.length && windowWidth > 979 ){
+        source.attr('src', source.data('src'));
+        video[0].load();
+        video[0].play();
+    }
+
     if(contentHeader.length){
         if(contentHeader.find('h1').length){
             if($('body').hasClass('home')){
@@ -1410,9 +1420,9 @@ $(window).on('load', function(){
         }
     }
 
-    if(fadePage.length){
-        TweenMax.to(fadePage, 0.2, {opacity: 1});
-    }
+    // if(fadePage.length){
+    //     TweenMax.to(fadePage, 0.2, {opacity: 1});
+    // }
 
     if(postSidebar.length){
         postSidebarTop = postSidebar.offset().top;

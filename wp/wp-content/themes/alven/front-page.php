@@ -138,8 +138,8 @@ get_header(); ?>
                         <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1077.62.17L612.47 1278.15"/>
                         <path fill="none" stroke="#fde98f" stroke-miterlimit="10" d="M1083.62.17L618.47 1278.15"/>
                     </svg>
-                    <video class='video' poster='<?php echo wp_get_attachment_url(get_field('videoImg')); ?>' autoplay muted loop>
-                        <source src='<?php the_field('video'); ?>' type='video/mp4'>
+                    <video class='video' id='video' autoplay muted loop>
+                        <source data-src='<?php the_field('video'); ?>' type='video/mp4'>
                     </video>
                 </div>
             <?php } ?>

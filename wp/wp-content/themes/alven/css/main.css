@@ -610,8 +610,6 @@ a {
 
 #fadePage {
   overflow: hidden; }
-  .js #fadePage {
-    opacity: 0; }
 
 /* Placeholders */
 /* Grid */
