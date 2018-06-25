@@ -340,7 +340,7 @@ get_header(); ?>
                                                 <span class='content-transfered <?php if(!get_field('acquiredBy')){ echo 'no-by'; } ?>'>
                                                     <span><?php echo alven_get_svg(get_post_thumbnail_id()); ?></span>
                                                     <?php if(get_field('acquiredBy')){ ?>
-                                                        <span>Acquired by</span>
+                                                        <span>Sold to</span>
                                                         <span <?php if(!get_field('acquiredByLogo')){ echo "class='txt-container'"; } ?>>
                                                             <?php
                                                                 if(get_field('acquiredByLogo')){
@@ -351,7 +351,7 @@ get_header(); ?>
                                                             ?>
                                                         </span>
                                                     <?php }else{ ?>
-                                                        <span>Acquired</span>
+                                                        <span>Sold</span>
                                                     <?php } ?>
                                                 </span>
                                             </a>

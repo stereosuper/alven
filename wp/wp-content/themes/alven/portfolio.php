@@ -97,7 +97,7 @@ get_header(); ?>
                                                     ?>
                                                 </span>
                                                 <?php if(get_field('acquiredBy')){ ?>
-                                                    <span>Acquired by</span>
+                                                    <span>Sold to</span>
                                                     <span <?php if(!get_field('acquiredByLogo')){ echo "class='txt-container'"; } ?>>
                                                         <?php
                                                             if(get_field('acquiredByLogo')){
@@ -108,7 +108,7 @@ get_header(); ?>
                                                         ?>
                                                     </span>
                                                 <?php }else{ ?>
-                                                    <span>Acquired</span>
+                                                    <span>Sold</span>
                                                 <?php } ?>
                                             </span>
                                         </a>
