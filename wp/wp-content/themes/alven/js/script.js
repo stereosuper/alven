@@ -94,11 +94,13 @@ function setGallery(gallery, windowWidth){
     }
 }
 
+var tlHeader = new TimelineMax({paused: true}).timeScale(4), tlHeaderDone = false;
+
 $(function(){
 
     /**** VARIABLES ****/
 
-    var docHeight = $(document).height(), windowHeight = $(window).height(), windowWidth = $(window).width(), windowWidthOnReady = windowWidth;
+    var docHeight = $(document).height(), windowHeight = $(window).height(), windowWidth = window.outerWidth, windowWidthOnReady = windowWidth;
 
     var controller = new ScrollMagic.Controller(), lastScrollTop = 0, myScroll = $(document).scrollTop(), scrollDir = 0;
 
@@ -1163,7 +1165,7 @@ $(function(){
         formSearchHeader.on('focusout', function(){
             $(this).find('input').val() ? $(this).addClass('on') : $(this).removeClass('on');
         }).on('submit', function(e){
-            if(windowWidth < 480){
+            if(windowWidth <= 540){
                 e.preventDefault();
                 window.location.href = $(this).attr('action') + '?s=';
             }
@@ -1280,6 +1282,14 @@ $(function(){
             if(contentHeader.find('.menu-home').length){
                 TweenMax.set(contentHeader.find('.menu-home'), {y: '-'+myScroll/4+'px'});
             }
+
+            // if(myScroll > 400 && tlHeaderDone){
+            //     tlHeader.pause().reverse();
+            //     tlHeaderDone = false;
+            // }else{
+            //     tlHeader.pause().play();
+            //     tlHeaderDone = true;
+            // }
         }
 
         if(postSidebar.length && mainContent.length && !isMobile.any){
@@ -1294,7 +1304,7 @@ $(function(){
     $(window).on('resize', function(){
         docHeight = $(document).height();
         windowHeight = $(window).height();
-        windowWidth = $(window).width();
+        windowWidth = window.outerWidth;
 
         if(windowWidth > 979){
             htmlTag.removeClass('menu-open');
@@ -1352,32 +1362,67 @@ $(function(){
 
 });
 
+
 $(window).on('load', function(){
     var main = $('#main');
     var contentHeader = $('#contentHeader');
-    var fadePage = $('#fadePage');
+    //var fadePage = $('#fadePage');
     var galleries = $('.gallery');
     var postSidebar = $('#postSidebar');
+    var tweensHeader = [];
+    var windowWidth = window.outerWidth;
+
+    var line = $('.wrapper-video path');
+
+    line.each(function(index) {
+        tweensHeader[index] = new TweenMax.from(this, 0.1 , { opacity:0, x: 0});
+    });
+
+    tlHeader.play();
+    tlHeaderDone = true;
+    tweensHeader.forEach(function(element, index){
+        tlHeader.add(element);
+    });
+
+    var tlBtween = tlHeader.tweenFromTo(0, tlHeader.duration(), {ease:Power4.easeOut});
+
+
+    // TweenMax.staggerTo(line, 0.3, {ease:Expo.easeOut, autoAlpha: 0}, 0.03);
 
     function animTxt(splitText){
         splitText.split({type:'words'});
         TweenMax.staggerFrom(splitText.words, 0.3, {ease:Expo.easeInOut, opacity:0, y:100}, 0.03);
     }
 
+    var video = $('#video');
+    var source = video.find('source');
+
+    if( video.length && windowWidth > 979 ){
+        source.attr('src', source.data('src'));
+        video[0].load();
+        video[0].play();
+    }
+
     if(contentHeader.length){
         if(contentHeader.find('h1').length){
-            var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
-            contentHeader.find('h1').css('opacity', 1);
-            animTxt(splitText);
+            if($('body').hasClass('home')){
+                TweenMax.fromTo(contentHeader.find('h1'), 0.3, {opacity: 0, y: 100}, {opacity: 1, y: 0, delay: 1});
+            }else{
+                TweenMax.fromTo(contentHeader.find('h1'), 0.3, {opacity: 0, y: 100}, {opacity: 1, y: 0});
+            }
+            
+            // var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
+            // contentHeader.find('h1').css('opacity', 1);
+            // animTxt(splitText);
         }
         if(main.length){
             main.css('marginTop', Math.floor(contentHeader.outerHeight()));
         }
     }
 
-    if(fadePage.length){
-        TweenMax.to(fadePage, 0.2, {opacity: 1});
-    }
+    // if(fadePage.length){
+    //     TweenMax.to(fadePage, 0.2, {opacity: 1});
+    // }
 
     if(postSidebar.length){
         postSidebarTop = postSidebar.offset().top;
@@ -1390,3 +1435,4 @@ $(window).on('load', function(){
         });
     }
 });
+
