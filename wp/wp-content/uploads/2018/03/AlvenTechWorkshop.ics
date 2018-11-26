@@ -1,0 +1,41 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//www.marudot.com//iCal Event Maker
+X-WR-CALNAME:PSD2 Event
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:Europe/Berlin
+TZURL:http://tzurl.org/zoneinfo-outlook/Europe/Berlin
+X-LIC-LOCATION:Europe/Berlin
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20180307T132615Z
+UID:20180307T132615Z-1926312205@marudot.com
+DTSTART;TZID="Europe/Berlin":20180329T084000
+DTEND;TZID="Europe/Berlin":20180329T110000
+SUMMARY:Alven Tech Workshop
+DESCRIPTION:AWS is coming to our premises to present a new generation of AI services which will focus on game-changing innovations in data-processing\, machine learning\, language and vision learning and language and vision/ visual recognition.  These new services are aimed at helping you start up your AI platform or upgrade your existing platform. 
+LOCATION:Alven\, 124 rue Réaumur 75002 Paris
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Alven Tech Workshop
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
