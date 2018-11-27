@@ -23,6 +23,11 @@
     padding: 0 $innerGutter;
 }
 
+.flex-container{
+    display: flex;
+    justify-content: space-between;
+}
+
 .grid{
     margin: 0 $innerGutter*-1;
 }
@@ -33,6 +38,9 @@
     vertical-align: top;
     &.centered{
         margin: 0 auto;
+    }
+    &.no-padding{
+        padding: 0;
     }
 }
 

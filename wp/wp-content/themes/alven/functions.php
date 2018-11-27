@@ -49,7 +49,7 @@ function remove_comment_author_class( $classes ){
 add_filter( 'comment_class' , 'remove_comment_author_class' );
 
 // remove login errors
-add_filter( 'login_errors', create_function('$a', "return null;") );
+// add_filter( 'login_errors', create_function('$a', "return null;") );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -450,6 +450,16 @@ function alven_post_type(){
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
         'taxonomies' => array('post_tag')
     ));
+    register_post_type('job', array(
+        'label' => 'Jobs',
+        'labels' => array(
+            'singular_name' => 'Job',
+            'menu_name' => 'Jobs'
+        ),
+        'public' => true,
+        'menu_icon' => 'dashicons-businessman',
+        'supports' => array('title', 'editor', 'thumbnail', 'revisions')
+    ));
     register_post_type('team', array(
         'label' => 'Team members',
         'labels' => array(
@@ -620,6 +630,22 @@ function alven_post_gallery($output, $attr){
 }
 add_filter( 'post_gallery', 'alven_post_gallery', 10, 2 );
 
+
+/*-----------------------------------------------------------------------------------*/
+/* TEMPLATE REDIRECTION
+/*-----------------------------------------------------------------------------------*/
+function careers_page_template( $template ) {
+
+	if ( is_singular( 'job' ) ) {
+		$new_template = locate_template( array( 'careers.php' ) );
+		if ( !empty( $new_template ) ) {
+			return $new_template;
+		}
+	}
+
+	return $template;
+}
+add_filter( 'template_include', 'careers_page_template', 99 );
 
 /*-----------------------------------------------------------------------------------*/
 /* AJAX

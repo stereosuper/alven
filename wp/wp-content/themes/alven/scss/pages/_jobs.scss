@@ -1,0 +1,44 @@
+.startups-jobs{
+    margin: calc(2*#{$outterGutter}) 0 0;
+}
+.list-jobs{
+    flex-wrap: wrap;
+    .job{
+        display: flex;
+        align-items: center;
+        width: calc(50% - #{$innerGutter});
+        border-bottom: 1px solid $greyBorder;
+        box-shadow: none;
+        &:nth-child(odd){
+            margin: 0 $outterGutter 0 0;
+        }
+        > div{
+            flex: 1 0 0px;
+            padding: $innerGutter;
+            &:last-child{
+                margin: 0 0 0 $innerGutter;
+            }
+            img{
+                max-width: 80%;
+            }
+        }
+    }
+}
+
+.job-title{
+    font-family: $avalonBold;
+    color: $darkBlue;
+}
+.job-location{
+    font-family: $avalonMedium;
+    color: $blue;
+}
+
+.job-paginate{
+    margin: calc(4*#{$outterGutter}) 0 0 0;
+}
+
+.alven-jobs{
+    margin: calc(2*#{$outterGutter}) 0 0;
+    background-color: $gold;
+}
