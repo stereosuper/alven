@@ -1,26 +1,48 @@
 .startups-jobs{
-    margin: calc(2*#{$outterGutter}) 0 0;
+    margin: 2*$outterGutter 0 0;
+    h2{
+        padding: 0;
+        margin: 0;
+        font-family: $avalonMedium;
+        font-size: 3.6rem;
+        line-height: 1.6;
+        font-style: normal;
+        text-align: left;
+        + p{
+            margin: 0;
+            font-family: $arvo;
+            font-size: 2.2rem;
+        }
+    }
+    .form-search{
+        display: block;
+        max-width: 100%;
+        margin: 30px 0;
+    }
+    .dropdown{
+        margin: 0 0 10px;
+    }
 }
 .list-jobs{
     flex-wrap: wrap;
-    .job{
-        display: flex;
-        align-items: center;
-        width: calc(50% - #{$innerGutter});
-        border-bottom: 1px solid $greyBorder;
-        box-shadow: none;
-        &:nth-child(odd){
-            margin: 0 $outterGutter 0 0;
+}
+.job{
+    width: calc(50% - #{$innerGutter});
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $greyBorder;
+    box-shadow: none;
+    &:nth-child(odd){
+        margin: 0 $outterGutter 0 0;
+    }
+    > div{
+        padding: $innerGutter;
+        flex: 1 0 0px;
+        &:last-child{
+            margin: 0 0 0 $innerGutter;
         }
-        > div{
-            flex: 1 0 0px;
-            padding: $innerGutter;
-            &:last-child{
-                margin: 0 0 0 $innerGutter;
-            }
-            img{
-                max-width: 80%;
-            }
+        img{
+            max-width: 80%;
         }
     }
 }
@@ -35,10 +57,10 @@
 }
 
 .job-paginate{
-    margin: calc(4*#{$outterGutter}) 0 0 0;
+    margin: 4*$outterGutter 0 0 0;
 }
 
 .alven-jobs{
-    margin: calc(2*#{$outterGutter}) 0 0;
-    background-color: $gold;
+    margin: 2*$outterGutter 0 0;
+    background: $gold;
 }
