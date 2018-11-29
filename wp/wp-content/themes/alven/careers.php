@@ -3,7 +3,8 @@
 Template Name: Careers
 */
 
-$params = array();
+$params   = array( 'location', 'company', 'function', 'sector' );
+$taxquery = array( 'relation'   => 'AND' );
 
 function extend_query( $j ){
     // Set startup datas to job datas
@@ -37,6 +38,7 @@ function get_meta_values( $key = '', $type = 'post', $status = 'publish' ) {
 function extend_datas( $s, $k ){
     $extended = array(
         'name'  => get_the_title( $k ),
+        'slug'  => get_post_field( 'post_name', $k ),
         'count' => $s
     );
     return $extended;
@@ -44,11 +46,16 @@ function extend_datas( $s, $k ){
 
 function checkParams(){
     global $params;
+    global $taxquery;
 
-    $params['location'] = get_query_var('location') ? get_query_var('location') : '';
-    $params['company']  = get_query_var('company') ? get_query_var('company') : '';
-    $params['function'] = get_query_var('function') ? get_query_var('function') : '';
-    $params['sector']   = get_query_var('sector') ? get_query_var('sector') : '';
+    foreach ($params as $key => $param) {
+        if( get_query_var($param) ):
+            $params[$param] = get_query_var($param);
+            array_push($taxquery, array( 'taxonomy' => 'job_'.$param, 'field' => 'slug', 'terms' => $params[$param]));
+        else:
+            $params[$param] = '';
+        endif;
+    }
 }
 
 
@@ -92,10 +99,12 @@ get_header();
 
                 // Get posts
                 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
                 $posts_args = array(
                     'post_type'      => 'job',
                     'posts_per_page' =>  4,
-                    'paged'          => $paged
+                    'paged'          => $paged,
+                    'tax_query'      => $taxquery
                 );
                 $jobs = new WP_Query( $posts_args );
                 if( $jobs->have_posts() ):
@@ -141,8 +150,8 @@ get_header();
                                     <option value=''>All Locations</option>
                                     <?php
                                         foreach ($locations as $key => $location) {
-                                            $los = $location->name === $params['location'] ? 'selected' : '';
-                                            $lo  = '<option value="'.str_replace(' ','',$location->name).'" '.$los.'>';
+                                            $los = $location->slug === $params['location'] ? 'selected' : '';
+                                            $lo  = '<option value="'.$location->slug.'" '.$los.'>';
                                             $lo .= $location->name.'&nbsp;('.$location->count.')';
                                             $lo .= '</option>';
                                             echo $lo;
@@ -154,8 +163,8 @@ get_header();
                                     <option value=''>All Companies</option>
                                     <?php
                                         foreach ($startups_extended as $key => $startup) {
-                                            $sos = $startup['name'] === $params['company'] ? 'selected' : '';
-                                            $so  = '<option value="'.str_replace(' ','',$startup['name']).'" '.$sos.'>';
+                                            $sos = $startup['slug'] === $params['company'] ? 'selected' : '';
+                                            $so  = '<option value="'.$startup['slug'].'" '.$sos.'>';
                                             $so .= $startup['name'].'&nbsp;('.$startup['count'].')';
                                             $so .= '</option>';
                                             echo $so;
@@ -167,8 +176,8 @@ get_header();
                                     <option value=''>All Functions</option>
                                     <?php
                                         foreach ($functions as $key => $function) {
-                                            $fos = $function->name === $params['function'] ? 'selected' : '';
-                                            $fo  = '<option value="'.str_replace(' ','',$function->name).'" '.$fos.'>';
+                                            $fos = $function->slug === $params['function'] ? 'selected' : '';
+                                            $fo  = '<option value="'.$function->slug.'" '.$fos.'>';
                                             $fo .= $function->name.'&nbsp;('.$function->count.')';
                                             $fo .= '</option>';
                                             echo $fo;
@@ -180,8 +189,8 @@ get_header();
                                     <option value=''>All Sectors</option>
                                     <?php
                                         foreach ($sectors as $key => $sector) {
-                                            $seos = $sector->name === $params['sector'] ? 'selected' : '';
-                                            $seo  = '<option value="'.str_replace(' ','',$sector->name).'" '.$seos.'>';
+                                            $seos = $sector->slug === $params['sector'] ? 'selected' : '';
+                                            $seo  = '<option value="'.$sector->slug.'" '.$seos.'>';
                                             $seo .= $sector->name.'&nbsp;('.$sector->count.')';
                                             $seo .= '</option>';
                                             echo $seo;
@@ -200,26 +209,28 @@ get_header();
                                     var_dump(get_field('job_location', get_the_ID()));
                                 else:
                                     echo '<div class="list-jobs flex-container">';
-                                    foreach ($jobs_extended as $key => $job) {
-                                        $article = '<a href="'.esc_url( get_permalink( $job->ID ) ).'" class="job no-padding">';
-                                            $article .= '<div class="align-center"><img src="'.$job->from['logo'].'" alt="'.$job->from['name'].'"></div>';
-                                            $article .= '<div><p class="job-title">'.$job->post_title.'</p><p class="job-location">'.$job->location.'</p></div>';
-                                        $article .= '</a>';
-                                        echo $article;
-                                    }
-                                    echo "</div>";
+                                    if( $jobs_extended ):
+                                        foreach ($jobs_extended as $key => $job) {
+                                            $article = '<a href="'.esc_url( get_permalink( $job->ID ) ).'" class="job no-padding">';
+                                                $article .= '<div class="align-center"><img src="'.$job->from['logo'].'" alt="'.$job->from['name'].'"></div>';
+                                                $article .= '<div><p class="job-title">'.$job->post_title.'</p><p class="job-location">'.$job->location.'</p></div>';
+                                            $article .= '</a>';
+                                            echo $article;
+                                        }
+                                        echo "</div>";
 
-                                    echo "<div class='job-paginate align-center'>";
-                                        $big = 999999999; // need an unlikely integer
-                                        echo paginate_links( array(
-                                            'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                                            'format'    => '?paged=%#%',
-                                            'current'   => max( 1, get_query_var('paged') ),
-                                            'total'     => $jobs->max_num_pages,
-                                            'prev_text' => '',
-                                            'next_text' => ''
-                                        ) );
-                                    echo "</div>";
+                                        echo "<div class='job-paginate align-center'>";
+                                            $big = 999999999; // need an unlikely integer
+                                            echo paginate_links( array(
+                                                'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                                                'format'    => '?paged=%#%',
+                                                'current'   => max( 1, get_query_var('paged') ),
+                                                'total'     => $jobs->max_num_pages,
+                                                'prev_text' => '',
+                                                'next_text' => ''
+                                            ) );
+                                        echo "</div>";
+                                    endif;
                                 endif;
                             ?>
                         </div>
