@@ -1,19 +1,5 @@
 .startups-jobs{
     margin: 2*$outterGutter 0 0;
-    h2{
-        padding: 0;
-        margin: 0;
-        font-family: $avalonMedium;
-        font-size: 3.6rem;
-        line-height: 1.6;
-        font-style: normal;
-        text-align: left;
-        + p{
-            margin: 0;
-            font-family: $arvo;
-            font-size: 2.2rem;
-        }
-    }
     .form-search{
         display: block;
         max-width: 100%;
@@ -23,6 +9,23 @@
         margin: 0 0 10px;
     }
 }
+
+.job-sidebar-title{
+    padding: 0;
+    margin: 0;
+    font-family: $avalonMedium;
+    font-size: 3.6rem;
+    line-height: 1.6;
+    font-style: normal;
+    text-align: left;
+    + p{
+        margin: 0;
+        font-family: $arvo;
+        font-size: 2.2rem;
+    }
+}
+
+
 .list-jobs{
     flex-wrap: wrap;
 }
@@ -48,19 +51,25 @@
     }
 }
 
-.job-title{
+.job-title, .job-title-alven{
     margin: 0;
-    font-family: $avalonMediumBold;
-    font-size: 2rem;
     letter-spacing: -0.05em;
+    line-height: 1.1;
     color: $darkBlue;
 }
-.job-location{
+
+.job-location, .job-location-alven{
     margin: 0;
     font-family: $avalonMedium;
     font-size: 1.4rem;
-    line-height: 1;
     text-transform: uppercase;
+}
+
+.job-title{
+    font-family: $avalonMediumBold;
+    font-size: 2rem;
+}
+.job-location{
     color: $blue;
 }
 
@@ -69,6 +78,19 @@
 }
 
 .alven-jobs{
+    padding: 4.5em 0;
     margin: 2*$outterGutter 0 0;
     background: $gold;
+    .container{
+        align-items: center;
+    }
+}
+
+.job-alven{
+    max-width: 23%;
+    box-shadow: none;
+}
+.job-title-alven{
+    font-family: $avalonBold;
+    font-size: 2.2rem;
 }
