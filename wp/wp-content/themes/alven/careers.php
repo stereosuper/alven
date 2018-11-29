@@ -128,11 +128,12 @@ get_header();
             <section class='startups-jobs'>
                 <div class='container flex-container'>
                     <div class='col-3 no-padding'>
-                        <h2 class='hn-reset'>Start-up jobs</h2>
+                        <h2 class='job-sidebar-title'>Start-up jobs</h2>
                         <p>Join the alven Family</p>
                         <aside class="fields-area" role="complementary" aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
-                            <form role='search' method='get' action='<?php echo get_permalink(); ?>' class='form-search-job'>
+                            <form role='search' method='get' action='<?php echo get_permalink(); ?>' class='form-search'>
                                 <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
+                                <button type='submit' class='btn-search btn-no-text'>Explore</button>
                                 <label for='search'>type some keywords</label>
                                 <!--<button type='submit' class='btn-search btn-no-text'>Explore</button>-->
                            
@@ -258,28 +259,22 @@ get_header();
             <section class='alven-jobs'>
                 <div class='container flex-container'>
                     <div class='col-3 no-padding'>
-                        <h2 class='hn-reset'>Alven jobs</h2>
+                        <h2 class='job-sidebar-title'>Alven jobs</h2>
                         <p>Join the alven team</p>
                     </div>
                     <div class='col-8 no-padding'>
                         <div class="list-jobs-alven flex-container">
                             <a href="" class="job-alven">
-                                <div>
-                                    <p class="job-title-alven">Business development assistant</p>
-                                    <p class="job-location-alven">Paris, France</p>
-                                </div>
+                                <p class="job-title-alven">Business development assistant</p>
+                                <p class="job-location-alven">Paris, France</p>
                             </a>
                             <a href="" class="job-alven">
-                                <div>
-                                    <p class="job-title-alven">Business development assistant</p>
-                                    <p class="job-location-alven">Paris, France</p>
-                                </div>
+                                <p class="job-title-alven">Business development assistant</p>
+                                <p class="job-location-alven">Paris, France</p>
                             </a>
                             <a href="" class="job-alven">
-                                <div>
-                                    <p class="job-title-alven">Business development assistant</p>
-                                    <p class="job-location-alven">Paris, France</p>
-                                </div>
+                                <p class="job-title-alven">Business development assistant</p>
+                                <p class="job-location-alven">Paris, France</p>
                             </a>
                         </div>
                     </div>
