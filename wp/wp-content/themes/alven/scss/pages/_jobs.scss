@@ -29,8 +29,9 @@
 .job{
     width: calc(50% - #{$innerGutter});
     display: flex;
-    align-items: center;
+    padding: 60px 0 25px;
     border-bottom: 1px solid $greyBorder;
+    align-items: flex-start;
     box-shadow: none;
     &:nth-child(odd){
         margin: 0 $outterGutter 0 0;
@@ -48,11 +49,18 @@
 }
 
 .job-title{
-    font-family: $avalonBold;
+    margin: 0;
+    font-family: $avalonMediumBold;
+    font-size: 2rem;
+    letter-spacing: -0.05em;
     color: $darkBlue;
 }
 .job-location{
+    margin: 0;
     font-family: $avalonMedium;
+    font-size: 1.4rem;
+    line-height: 1;
+    text-transform: uppercase;
     color: $blue;
 }
 
