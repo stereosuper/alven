@@ -489,6 +489,7 @@ add_action( 'init', 'alven_post_type' );
 
 // Create taxonomies
 function alven_taxonomy(){
+    // Startup taxos
     register_taxonomy('field', array('startup'), array(
         'hierarchical' => true,
         'label' => 'Fields',
@@ -499,6 +500,22 @@ function alven_taxonomy(){
         'hierarchical' => true,
         'label' => 'Footprints',
         'singular_label' => 'Footprint',
+        'show_admin_column' => true
+    ));
+    // Jobs taxos
+    register_taxonomy('job_location', array('job'), array(
+        'label'             => 'Location',
+        'singular_label'    => 'Location',
+        'show_admin_column' => true
+    ));
+    register_taxonomy('job_function', array('job'), array(
+        'label'             => 'Function',
+        'singular_label'    => 'Function',
+        'show_admin_column' => true
+    ));
+    register_taxonomy('job_sector', array('job'), array(
+        'label'             => 'Sector',
+        'singular_label'    => 'Sector',
         'show_admin_column' => true
     ));
 }
@@ -533,6 +550,16 @@ function alven_correct_menu_parent_class($classes, $item){
     return $classes;
 }
 add_filter( 'nav_menu_css_class', 'alven_correct_menu_parent_class', 10, 2 );
+
+
+/*-----------------------------------------------------------------------------------*/
+/* Search -> Add some custom vars
+/*-----------------------------------------------------------------------------------*/
+function add_query_vars_filter( $vars ) {
+    array_push($vars, "location", "company", "function", "sector");
+    return $vars;
+}
+add_filter( 'query_vars', 'add_query_vars_filter' );
 
 
 /*-----------------------------------------------------------------------------------*/

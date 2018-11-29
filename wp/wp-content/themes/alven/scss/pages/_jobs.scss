@@ -1,5 +1,5 @@
 .startups-jobs{
-    margin: calc(2*#{$outterGutter}) 0 0;
+    margin: 2*$outterGutter 0 0;
 }
 .list-jobs{
     flex-wrap: wrap;
@@ -19,10 +19,14 @@
                 margin: 0 0 0 $innerGutter;
             }
             img{
-                max-width: 80%;
+                max-width: 70%;
             }
         }
     }
+}
+
+.fields-area{
+    margin: 0 0 4*$outterGutter 0;
 }
 
 .job-title{
@@ -35,10 +39,11 @@
 }
 
 .job-paginate{
-    margin: calc(4*#{$outterGutter}) 0 0 0;
+    margin: 4*$outterGutter 0;
 }
 
 .alven-jobs{
-    margin: calc(2*#{$outterGutter}) 0 0;
+    margin: 2*$outterGutter 0 0;
+    padding: 3*$outterGutter 0;
     background-color: $gold;
 }
