@@ -224,34 +224,6 @@ get_header();
                                 endif;
                             ?>
                         </div>
-                        <?php 
-                            if( $is_details ):
-                                echo 'contenu de loffre';
-                                var_dump(get_field('job_location', get_the_ID()));
-                            else:
-                                echo '<div class="list-jobs flex-container">';
-                                foreach ($jobs_extended as $key => $job) {
-                                    $article = '<a href="'.esc_url( get_permalink( $job->ID ) ).'" class="job">';
-                                        $article .= '<div><img src="'.$job->from['logo'].'" alt="'.$job->from['name'].'"></div>';
-                                        $article .= '<div><p class="job-title">'.$job->post_title.'</p><p class="job-location">'.$job->location.'</p></div>';
-                                    $article .= '</a>';
-                                    echo $article;
-                                }
-                                echo "</div>";
-
-                                echo "<div class='job-paginate align-center'>";
-                                    $big = 999999999; // need an unlikely integer
-                                    echo paginate_links( array(
-                                        'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                                        'format'    => '?paged=%#%',
-                                        'current'   => max( 1, get_query_var('paged') ),
-                                        'total'     => $jobs->max_num_pages,
-                                        'prev_text' => '',
-                                        'next_text' => ''
-                                    ) );
-                                echo "</div>";
-                            endif;
-                        ?>
                         <?php wp_reset_query(); ?>
                     </div>
                 </div>
