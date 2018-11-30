@@ -7,6 +7,39 @@
     }
 }
 
+.jobs-form{
+    margin: 15px 0 0;
+    div{
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .jobs-search{
+        margin: 0 0 30px;
+    }
+    .select{
+        margin: 0 0 10px;
+    }
+    .btn{
+        margin: 10px 0 0;
+    }
+}
+
+.jobs-search{
+    .btn-search{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 1;
+    }
+    label{
+        top: 10px;
+    }
+}
+
 .job-sidebar-title{
     padding: 0;
     margin: 0;

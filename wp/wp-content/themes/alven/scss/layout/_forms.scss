@@ -259,3 +259,40 @@ select{
         text-align: left;
     }
 }
+
+.select{
+    position: relative;
+    margin: 0 0 10px;
+    color: $blue;
+    &:after{
+        @include fontIcon;
+        content: '\e906'; // arrow down
+        position: absolute;
+        top: 17px;
+        right: 10px;
+        font-size: 10px;
+        transition: $transition;
+        color: inherit;
+        pointer-events: none;
+        transform: translate3d(0, 0, 0);
+        text-indent: 0;
+    }
+    &:hover{
+        background: $blue;
+        .no-js &, .is-desktop &{
+            color: #fff;
+        }
+    }
+    > select{
+        width: 100%;
+        padding: 15px 18px 13px;
+        font-size: 1.4rem;
+        letter-spacing: 0.05em;
+        line-height: 1;
+        text-transform: uppercase;
+        color: inherit;
+        border-color: $blue;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+    }
+}

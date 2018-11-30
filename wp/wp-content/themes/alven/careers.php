@@ -149,10 +149,12 @@ get_header();
                     <div class='col-3 no-padding-left'>
                         <h2 class='job-sidebar-title'>Start-up jobs</h2>
                         <p>Join the alven Family</p>
-                        <form role='search' method='get' action='<?php echo get_permalink(); ?>' class='' aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
-                            <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
-                            <button type='submit' class='btn-search btn-no-text'>Explore</button>
-                            <label for='search'>type some keywords</label>
+                        <form role='search' method='get' action='<?php echo get_permalink(); ?>' class='jobs-form' aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
+                            <div class='jobs-search'>
+                                <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
+                                <button type='submit' class='btn-search btn-no-text'>Explore</button>
+                                <label for='search'>Free search</label>
+                            </div>
                            
                             <!-- Locations with number of jobs -->
                             <div class='select'>
