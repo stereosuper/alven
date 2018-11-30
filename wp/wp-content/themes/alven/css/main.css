@@ -3647,19 +3647,25 @@ select::-ms-expand {
 .jobs-search label {
   top: 10px; }
 
-.job-sidebar-title {
+.job-sidebar-title, .job-single-title {
   width: 100%;
   padding: 0;
-  margin: 0;
-  font-family: "avalonmedium", sans-serif;
   font-size: 3.6rem;
   line-height: 1.6;
   font-style: normal;
   text-align: left; }
+
+.job-sidebar-title {
+  margin: 0;
+  font-family: "avalonmedium", sans-serif; }
   .job-sidebar-title + p {
     margin: 0;
     font-family: "Arvo", serif;
     font-size: 2.2rem; }
+
+.job-single-title {
+  margin: 1em 0 0.25em;
+  font-family: "avalon_mediumbold", "avalonmedium", sans-serif; }
 
 .list-jobs {
   flex-wrap: wrap; }
@@ -3683,8 +3689,9 @@ select::-ms-expand {
       padding: 10px; }
       .job > div > div:last-child {
         margin: 0 0 0 10px; }
-      .job > div > div img {
-        max-width: 70%; }
+  .job img {
+    max-width: 70%;
+    max-height: 100px; }
 
 .fields-area {
   margin: 0 0 80px 0; }
@@ -3734,6 +3741,30 @@ select::-ms-expand {
 .job-title-alven {
   font-family: "avalonbold", "avalonmedium", sans-serif;
   font-size: 2.2rem; }
+
+.single-job .title-small {
+  margin: 0; }
+
+.details-job-header {
+  margin: 0 0 6.5em; }
+  .details-job-header > div {
+    width: 50%; }
+  .details-job-header .title-small + p {
+    margin: 0;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em; }
+
+.details-job-main {
+  width: 75%;
+  padding: 0 10px 0 0; }
+
+.details-job-sidebar {
+  width: 25%;
+  padding: 0 0 0 10px; }
+  .details-job-sidebar .btn {
+    width: 100%;
+    margin: 0 0 3em; }
 
 /* Responsive horizontal */
 @media (max-width: 1420px) {

@@ -40,20 +40,26 @@
     }
 }
 
-.job-sidebar-title{
+.job-sidebar-title, .job-single-title{
     width: 100%;
     padding: 0;
-    margin: 0;
-    font-family: $avalonMedium;
     font-size: 3.6rem;
     line-height: 1.6;
     font-style: normal;
     text-align: left;
+}
+.job-sidebar-title{
+    margin: 0;
+    font-family: $avalonMedium;
     + p{
         margin: 0;
         font-family: $arvo;
         font-size: 2.2rem;
     }
+}
+.job-single-title{
+    margin: 1em 0 0.25em;
+    font-family: $avalonMediumBold;
 }
 
 
@@ -82,10 +88,11 @@
             &:last-child{
                 margin: 0 0 0 $innerGutter;
             }
-            img{
-                max-width: 70%;
-            }
         }
+    }
+    img{
+        max-width: 70%;
+        max-height: 100px;
     }
 }
 
@@ -145,4 +152,40 @@
 .job-title-alven{
     font-family: $avalonBold;
     font-size: 2.2rem;
+}
+
+
+.single-job{
+    .title-small{
+        margin: 0;
+    }
+}
+
+.details-job-header{
+    margin: 0 0 6.5em;
+    > div{
+        width: 50%;
+    }
+    .title-small{
+        + p{
+            margin: 0;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    }
+}
+
+.details-job-main{
+    width: 75%;
+    padding: 0 $innerGutter 0 0;
+}
+
+.details-job-sidebar{
+    width: 25%;
+    padding: 0 0 0 $innerGutter;
+    .btn{
+        width: 100%;
+        margin: 0 0 3em;
+    }
 }
