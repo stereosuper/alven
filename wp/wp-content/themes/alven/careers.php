@@ -170,9 +170,7 @@ get_header();
                                         }
                                     ?>
                                 </select>
-                            </div>
-                            <!-- Sartups with number of jobs -->
-                            <div class='select'>
+                            </div><div class='select'>
                                 <select name='company'>
                                     <option value=''>All Companies</option>
                                     <?php
@@ -185,9 +183,7 @@ get_header();
                                         }
                                     ?>
                                 </select>
-                            </div>
-                            <!-- Functions -->
-                            <div class='select'>
+                            </div><div class='select'>
                                 <select name='function'>
                                     <option value=''>All Functions</option>
                                     <?php
@@ -200,9 +196,7 @@ get_header();
                                         }
                                     ?>
                                 </select>
-                            </div>
-                            <!-- Sectors -->
-                            <div class='select'>
+                            </div><div class='select'>
                                 <select name='sector'>
                                     <option value=''>All Sectors</option>
                                     <?php
@@ -216,6 +210,7 @@ get_header();
                                     ?>
                                 </select>
                             </div>
+                            
                             <button type="submit" id="searchsubmit" class="btn">Search</button>
                         </form>
                     </div>
