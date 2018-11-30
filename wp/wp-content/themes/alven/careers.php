@@ -107,10 +107,10 @@ get_header();
                     'tax_query'      => $taxquery
                 );
                 $jobs = new WP_Query( $posts_args );
+                
                 if( $jobs->have_posts() ):
                     $jobs_extended = array_map( 'extend_query' , $jobs->posts );
                 endif;
-
 
             endif;
             
@@ -139,7 +139,7 @@ get_header();
                     <div class='col-3 no-padding-left'>
                         <h2 class='job-sidebar-title'>Start-up jobs</h2>
                         <p>Join the alven Family</p>
-                        <form role='search' method='get' action='<?php echo get_permalink(); ?>' class='form-search' aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
+                        <form role='search' method='get' action='<?php echo get_permalink(); ?>' class='' aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
                             <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
                             <button type='submit' class='btn-search btn-no-text'>Explore</button>
                             <label for='search'>type some keywords</label>
@@ -204,7 +204,6 @@ get_header();
                                     ?>
                                 </select>
                             </div>
-
                             <button type="submit" id="searchsubmit" class="btn">Search</button>
                         </form>
                     </div>
@@ -215,26 +214,30 @@ get_header();
                                 var_dump(get_field('job_location', get_the_ID()));
                             else:
                                 echo '<div class="list-jobs flex-container">';
-                                foreach ($jobs_extended as $key => $job) {
-                                    $article = '<a href="'.esc_url( get_permalink( $job->ID ) ).'" class="job no-padding">';
-                                    $article .= '<div class="align-center"><img src="'.$job->from['logo'].'" alt="'.$job->from['name'].'"></div>';
-                                    $article .= '<div><p class="job-title">'.$job->post_title.'</p><p class="job-location">'.$job->location.'</p></div>';
-                                    $article .= '</a>';
-                                    echo $article;
-                                }
-                                echo "</div>";
+                                if( !empty($jobs_extended) ):
+                                    foreach ($jobs_extended as $key => $job) {
+                                        $article = '<a href="'.esc_url( get_permalink( $job->ID ) ).'" class="job no-padding">';
+                                        $article .= '<div class="align-center"><img src="'.$job->from['logo'].'" alt="'.$job->from['name'].'"></div>';
+                                        $article .= '<div><p class="job-title">'.$job->post_title.'</p><p class="job-location">'.$job->location.'</p></div>';
+                                        $article .= '</a>';
+                                        echo $article;
+                                    }
+                                    echo "</div>";
 
-                                echo "<div class='job-paginate align-center'>";
-                                $big = 999999999; // need an unlikely integer
-                                echo paginate_links( array(
-                                    'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                                    'format'    => '?paged=%#%',
-                                    'current'   => max( 1, get_query_var('paged') ),
-                                    'total'     => $jobs->max_num_pages,
-                                    'prev_text' => '',
-                                    'next_text' => ''
-                                ) );
-                                echo "</div>";
+                                    echo "<div class='job-paginate align-center'>";
+                                    $big = 999999999; // need an unlikely integer
+                                    echo paginate_links( array(
+                                        'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                                        'format'    => '?paged=%#%',
+                                        'current'   => max( 1, get_query_var('paged') ),
+                                        'total'     => $jobs->max_num_pages,
+                                        'prev_text' => '',
+                                        'next_text' => ''
+                                    ) );
+                                    echo "</div>";
+                                else:
+                                    echo '<p>'.__('Aucun post ne correspond à cette recherche.','alven').'</p>';
+                                endif;
                             endif;
                         ?>
                         <?php wp_reset_query(); ?>
