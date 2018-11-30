@@ -5,10 +5,11 @@ Template Name: Careers
 
 $params   = array( 'location', 'company', 'function', 'sector' );
 $taxquery = array( 'relation'   => 'AND' );
+$metquery = array();
 
 function extend_query( $j ){
     // Set startup datas to job datas
-    $sid = get_field('job_startup', $j->ID);
+    $sid = get_field('job_company', $j->ID);
     $j->from = array(
         'name' => get_the_title( $sid ),
         'logo' => get_the_post_thumbnail_url( $sid ),
@@ -37,8 +38,9 @@ function get_meta_values( $key = '', $type = 'post', $status = 'publish' ) {
 
 function extend_datas( $s, $k ){
     $extended = array(
-        'name'  => get_the_title( $k ),
+        'id'    => $k,
         'slug'  => get_post_field( 'post_name', $k ),
+        'name'  => get_the_title( $k ),
         'count' => $s
     );
     return $extended;
@@ -47,11 +49,17 @@ function extend_datas( $s, $k ){
 function checkParams(){
     global $params;
     global $taxquery;
+    global $metquery;
 
     foreach ($params as $key => $param) {
         if( get_query_var($param) ):
             $params[$param] = get_query_var($param);
-            array_push($taxquery, array( 'taxonomy' => 'job_'.$param, 'field' => 'slug', 'terms' => $params[$param]));
+            var_dump($param);
+            if( $param !== 'company' ):
+                array_push($taxquery, array( 'taxonomy' => 'job_'.$param, 'field' => 'slug', 'terms' => $params[$param]));
+            else:
+                array_push($metquery, array( 'key' => 'job_'.$param, 'value' => $params[$param], 'compare' => '='));
+            endif;            
         else:
             $params[$param] = '';
         endif;
@@ -91,7 +99,7 @@ get_header();
                 ) );
 
                 // Get startups
-                $startups = get_meta_values('job_startup', 'job');
+                $startups = get_meta_values('job_company', 'job');
                 if( !empty($startups) ){
                     $startups_filtered = array_count_values( $startups );
                     $startups_extended = array_map( 'extend_datas', $startups_filtered, array_keys( $startups_filtered ) );
@@ -104,10 +112,12 @@ get_header();
                     'post_type'      => 'job',
                     'posts_per_page' =>  4,
                     'paged'          => $paged,
+                    'meta_query'     => $metquery,
                     'tax_query'      => $taxquery
                 );
+                var_dump( $posts_args );
                 $jobs = new WP_Query( $posts_args );
-                
+
                 if( $jobs->have_posts() ):
                     $jobs_extended = array_map( 'extend_query' , $jobs->posts );
                 endif;
@@ -165,8 +175,8 @@ get_header();
                                     <option value=''>All Companies</option>
                                     <?php
                                         foreach ($startups_extended as $key => $startup) {
-                                            $sos = $startup['slug'] === $params['company'] ? 'selected' : '';
-                                            $so  = '<option value="'.$startup['slug'].'" '.$sos.'>';
+                                            $sos = $startup['id'] == $params['company'] ? 'selected' : '';
+                                            $so  = '<option value="'.$startup['id'].'" '.$sos.'>';
                                             $so .= $startup['name'].'&nbsp;('.$startup['count'].')';
                                             $so .= '</option>';
                                             echo $so;
