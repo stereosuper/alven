@@ -18,7 +18,7 @@ function extend_query( $j ){
     return $j;
 }
 
-// function below origin : https://wordpress.stackexchange.com/questions/9394/getting-all-values-for-a-custom-field-key-cross-post
+// Origin of the function below : https://wordpress.stackexchange.com/questions/9394/getting-all-values-for-a-custom-field-key-cross-post
 function get_meta_values( $key = '', $type = 'post', $status = 'publish' ) {
     global $wpdb;
 
@@ -54,7 +54,6 @@ function checkParams(){
     foreach ($params as $key => $param) {
         if( get_query_var($param) ):
             $params[$param] = get_query_var($param);
-            var_dump($param);
             if( $param !== 'company' ):
                 array_push($taxquery, array( 'taxonomy' => 'job_'.$param, 'field' => 'slug', 'terms' => $params[$param]));
             else:
@@ -113,9 +112,9 @@ get_header();
                     'posts_per_page' =>  4,
                     'paged'          => $paged,
                     'meta_query'     => $metquery,
-                    'tax_query'      => $taxquery
+                    'tax_query'      => $taxquery,
+                    's'              => sanitize_text_field( get_query_var('search') )
                 );
-                var_dump( $posts_args );
                 $jobs = new WP_Query( $posts_args );
 
                 if( $jobs->have_posts() ):
@@ -149,9 +148,10 @@ get_header();
                     <div class='col-3 no-padding-left'>
                         <h2 class='job-sidebar-title'>Start-up jobs</h2>
                         <p>Join the alven Family</p>
+
                         <form role='search' method='get' action='<?php echo get_permalink(); ?>' class='jobs-form' aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
                             <div class='jobs-search'>
-                                <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
+                                <input type='search' name='search' value='<?php the_search_query(); ?>' id='search'>
                                 <button type='submit' class='btn-search btn-no-text'>Explore</button>
                                 <label for='search'>Free search</label>
                             </div>

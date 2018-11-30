@@ -556,7 +556,7 @@ add_filter( 'nav_menu_css_class', 'alven_correct_menu_parent_class', 10, 2 );
 /* Search -> Add some custom vars
 /*-----------------------------------------------------------------------------------*/
 function add_query_vars_filter( $vars ) {
-    array_push($vars, "location", "company", "function", "sector");
+    array_push($vars, "location", "company", "function", "sector", "search");
     return $vars;
 }
 add_filter( 'query_vars', 'add_query_vars_filter' );
