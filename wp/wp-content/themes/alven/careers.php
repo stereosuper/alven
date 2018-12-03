@@ -7,6 +7,19 @@ $params   = array( 'location', 'company', 'function', 'sector' );
 $taxquery = array( 'relation'   => 'AND' );
 $metquery = array();
 
+// Get page carreer url and return it
+function formredir( $s ){
+    if( $s ):
+        $page = get_pages(array(
+            'meta_key' => '_wp_page_template',
+            'meta_value' => 'careers.php'
+        ));
+        return get_permalink( $page[0]->ID );
+    else:
+        return get_permalink();
+    endif;
+}
+
 function extend_query( $j ){
     // Set startup datas to job datas
     $sid = get_field('job_company', $j->ID);
@@ -87,6 +100,8 @@ get_header();
         
         <?php
             $is_details = is_singular( 'job' );
+
+            $action = formredir( $is_details );
 
             if( $is_details ):
 
@@ -169,7 +184,7 @@ get_header();
                         <h2 class='job-sidebar-title'>Start-up jobs</h2>
                         <p>Join the alven Family</p>
 
-                        <form role='search' method='get' action='<?php echo get_permalink(); ?>' class='jobs-form' aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
+                        <form role='search' method='get' action='<?php echo $action; ?>' class='jobs-form' aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
                             <div class='jobs-search'>
                                 <input type='search' name='search' value='<?php the_search_query(); ?>' id='search'>
                                 <button type='submit' class='btn-search btn-no-text'>Explore</button>
