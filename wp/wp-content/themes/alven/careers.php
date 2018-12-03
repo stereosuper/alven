@@ -7,6 +7,40 @@ $params   = array( 'location', 'company', 'function', 'sector' );
 $taxquery = array( 'relation'   => 'AND' );
 $metquery = array();
 
+
+function populate_form( $d ){
+    $action = formredir( $d );
+    // Get locations
+    $locations = get_terms( array(
+        'taxonomy'   => 'job_location',
+        'hide_empty' => false
+    ) );
+    // Get functions
+    $functions = get_terms( array(
+        'taxonomy'   => 'job_function',
+        'hide_empty' => false
+    ) );           
+    // Get sectors
+    $sectors = get_terms( array(
+        'taxonomy'   => 'job_sector',
+        'hide_empty' => false
+    ) );        
+    // Get startups
+    $startups = get_meta_values('job_company', 'job');
+    if( !empty($startups) ){
+        $startups_filtered = array_count_values( $startups );
+        $startups_extended = array_map( 'extend_datas', $startups_filtered, array_keys( $startups_filtered ) );
+    }
+
+    return array(
+        'action'    => $action,
+        'locations' => $locations,
+        'functions' => $functions,
+        'sectors'   => $sectors,
+        'startups'  => $startups_extended 
+    );
+}
+
 // Get page carreer url and return it
 function formredir( $s ){
     if( $s ):
@@ -100,11 +134,11 @@ get_header();
         
         <?php
             $is_details = is_singular( 'job' );
+            $form = populate_form( $is_details );
 
-            $action = formredir( $is_details );
+            check_params();
 
             if( $is_details ):
-
                 $current_id = get_the_ID();
 
                 $details       = get_field('job_details', $current_id);
@@ -112,33 +146,6 @@ get_header();
                 $company_datas = extend_post( get_field('job_company', $current_id) );
 
             else:
-                check_params();
-
-                // Get locations
-                $locations = get_terms( array(
-                    'taxonomy'   => 'job_location',
-                    'hide_empty' => false
-                ) );
-
-                // Get functions
-                $functions = get_terms( array(
-                    'taxonomy'   => 'job_function',
-                    'hide_empty' => false
-                ) );
-
-                // Get sectors
-                $sectors = get_terms( array(
-                    'taxonomy'   => 'job_sector',
-                    'hide_empty' => false
-                ) );
-
-                // Get startups
-                $startups = get_meta_values('job_company', 'job');
-                if( !empty($startups) ){
-                    $startups_filtered = array_count_values( $startups );
-                    $startups_extended = array_map( 'extend_datas', $startups_filtered, array_keys( $startups_filtered ) );
-                }
-
                 // Get posts
                 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
@@ -184,7 +191,7 @@ get_header();
                         <h2 class='job-sidebar-title'>Start-up jobs</h2>
                         <p>Join the alven Family</p>
 
-                        <form role='search' method='get' action='<?php echo $action; ?>' class='jobs-form' aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
+                        <form role='search' method='get' action='<?php echo $form['action']; ?>' class='jobs-form' aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
                             <div class='jobs-search'>
                                 <input type='search' name='search' value='<?php the_search_query(); ?>' id='search'>
                                 <button type='submit' class='btn-search btn-no-text'>Explore</button>
@@ -196,7 +203,7 @@ get_header();
                                 <select name='location'>
                                     <option value=''>All Locations</option>
                                     <?php
-                                        foreach ($locations as $key => $location) {
+                                        foreach ($form['locations'] as $key => $location) {
                                             $los = $location->slug === $params['location'] ? 'selected' : '';
                                             $lo  = '<option value="'.$location->slug.'" '.$los.'>';
                                             $lo .= $location->name.'&nbsp;('.$location->count.')';
@@ -209,7 +216,7 @@ get_header();
                                 <select name='company'>
                                     <option value=''>All Companies</option>
                                     <?php
-                                        foreach ($startups_extended as $key => $startup) {
+                                        foreach ($form['startups'] as $key => $startup) {
                                             $sos = $startup['id'] == $params['company'] ? 'selected' : '';
                                             $so  = '<option value="'.$startup['id'].'" '.$sos.'>';
                                             $so .= $startup['name'].'&nbsp;('.$startup['count'].')';
@@ -222,7 +229,7 @@ get_header();
                                 <select name='function'>
                                     <option value=''>All Functions</option>
                                     <?php
-                                        foreach ($functions as $key => $function) {
+                                        foreach ($form['functions'] as $key => $function) {
                                             $fos = $function->slug === $params['function'] ? 'selected' : '';
                                             $fo  = '<option value="'.$function->slug.'" '.$fos.'>';
                                             $fo .= $function->name.'&nbsp;('.$function->count.')';
@@ -235,7 +242,7 @@ get_header();
                                 <select name='sector'>
                                     <option value=''>All Sectors</option>
                                     <?php
-                                        foreach ($sectors as $key => $sector) {
+                                        foreach ($form['sectors'] as $key => $sector) {
                                             $seos = $sector->slug === $params['sector'] ? 'selected' : '';
                                             $seo  = '<option value="'.$sector->slug.'" '.$seos.'>';
                                             $seo .= $sector->name.'&nbsp;('.$sector->count.')';
