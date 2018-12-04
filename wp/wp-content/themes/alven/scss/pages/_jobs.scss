@@ -89,9 +89,9 @@
     }
     > div {
         padding: $innerGutter;
-        flex: 1 0 0px;
-        &:last-child {
-            margin: 0 0 0 $innerGutter;
+        flex: 1 0 50%;
+        &:nth-child(1) {
+            flex: 1 1 40%;
         }
         > div {
             flex: 1 0 0px;

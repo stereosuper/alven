@@ -3688,9 +3688,9 @@ select::-ms-expand {
     margin: 0 20px 0 0; }
   .job > div {
     padding: 10px;
-    flex: 1 0 0px; }
-    .job > div:last-child {
-      margin: 0 0 0 10px; }
+    flex: 1 0 50%; }
+    .job > div:nth-child(1) {
+      flex: 1 1 40%; }
     .job > div > div {
       flex: 1 0 0px;
       padding: 10px; }
