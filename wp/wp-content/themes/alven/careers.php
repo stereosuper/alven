@@ -126,6 +126,29 @@ function extend_post( $id ){
     return $company_datas;
 }
 
+// Get a list of jobs available in workable
+function get_jobs(){
+    $workable_datas = null;
+    $subdomain = 'alven'; 
+    $token     = '74069b76972b9edc000610fd9cd1f2f9945483d3425e7483467d0faa6f43680b';
+    $workable_args = array(
+        'headers' => array(
+            'Content-Type: application/json',
+            'Authorization' => 'Bearer ' . $token
+        ),
+    );
+
+    // ?state=published
+    $workable_response = wp_remote_get( 'https://'.$subdomain.'.workable.com/spi/v3/jobs', $workable_args );
+    $workable_response_code = wp_remote_retrieve_response_code( $workable_response );
+
+    if( $workable_response_code == 200 ):
+        $workable_datas_filtered = json_decode( $workable_response['body'], true );
+        $workable_datas = $workable_datas_filtered['jobs'];
+    endif;
+
+    return $workable_datas;
+}
 
 get_header();
 
@@ -146,12 +169,17 @@ get_header();
                 $company_datas = extend_post( get_field('job_company', $current_id) );
 
             else:
-                // Get posts
+                require_once('includes/form-job.php');
+
+                // Get jobs from workable
+                $jobs_alven = get_jobs();
+
+                // Get jobs from worpdress
                 $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
                 $posts_args = array(
                     'post_type'      => 'job',
-                    'posts_per_page' =>  4,
+                    'posts_per_page' =>  6,
                     'paged'          => $paged,
                     'meta_query'     => $metquery,
                     'tax_query'      => $taxquery,
@@ -327,12 +355,13 @@ get_header();
                                     echo "<div class='job-paginate align-center'>";
                                     $big = 999999999; // need an unlikely integer
                                     echo paginate_links( array(
-                                        'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                                        //'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                                        'base'      => preg_replace('/\?.*/', '/', get_pagenum_link(1)) . '%_%',
                                         'format'    => '?paged=%#%',
                                         'current'   => max( 1, get_query_var('paged') ),
                                         'total'     => $jobs->max_num_pages,
                                         'prev_text' => '',
-                                        'next_text' => ''
+                                        'next_text' => '',
                                     ) );
                                     echo "</div>";
                                 else:
@@ -345,33 +374,59 @@ get_header();
                 </div>
             </section>
 
-            <section class='alven-jobs'>
-                <div class='container flex-container'>
-                    <div class='col-3 no-padding-left'>
-                        <h2 class='job-sidebar-title'>Alven jobs</h2>
-                        <p>Join the alven team</p>
-                    </div>
+            <?php if( $jobs_alven && !empty( $jobs_alven ) ): ?>
+                <section class='alven-jobs'>
+                    <div class='container flex-container'>
+                        <div class='col-3 no-padding-left'>
+                            <h2 class='job-sidebar-title'>Alven jobs</h2>
+                            <p>Join the alven team</p>
+                        </div>
 
-                    <div class='col-8 no-padding-right'>
-                        <div class="list-jobs-alven flex-container">
-                            <a href="" class="job-alven">
-                                <p class="job-title-alven">Business development assistant</p>
-                                <p class="job-location-alven">Paris, France</p>
-                            </a>
-                            <a href="" class="job-alven">
-                                <p class="job-title-alven">Business development assistant</p>
-                                <p class="job-location-alven">Paris, France</p>
-                            </a>
-                            <a href="" class="job-alven">
-                                <p class="job-title-alven">Business development assistant</p>
-                                <p class="job-location-alven">Paris, France</p>
-                            </a>
+                        <div class='col-8 no-padding-right'>
+                            <div class="list-jobs-alven flex-container">
+                                <?php 
+                                    foreach ($jobs_alven as $key => $job_alven) {
+                                       $job_alven_link  = '<a href="'.$job_alven['url'].'" class="job-alven">';
+                                       $job_alven_link .= '<p class="job-title-alven">'.$job_alven['title'].'</p>';
+                                       // Line below do the trick also
+                                       // $job_alven_location = ($job_alven['location']['city'] && $job_alven['location']['country'] ? $job_alven['location']['city'] . ',&nbsp;' . $job_alven['location']['country'] : ($job_alven['location']['city'] ? $job_alven['location']['city'] : $job_alven['location']['country']));
+                                       $job_alven_location = join(',&nbsp;', array_filter([$job_alven['location']['city'], $job_alven['location']['country']]));
+                                       $job_alven_link .= '<p class="job-location-alven">'.$job_alven_location.'</p>';
+                                       $job_alven_link .= '</a>';
+                                       echo $job_alven_link;
+                                    }
+                                ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            <?php endif; ?>
 
             <section class=''>
+                <h2>Direct application</h2>
+                <div class='container flex-container'>
+                    <div class='col-3 no-padding-left'>
+                        Lorem ipsum
+                    </div>
+                    <div class='col-8 no-padding-right'>
+                        <form action='' method='post' enctype='multipart/form-data' class=''>
+                        <?php //if($errorFirstname || $errorLastname || $errorEmail) echo "invalid"; ?>
+                            <div>
+                                <input type='text' name='firstname_job' id='firstname_job' required class='form-elt <?php if($errorFirstname_job) echo "invalid"; ?>' value='<?php echo $firstname_job; ?>'>
+                                <label for='firstname_job'>Your first name</label>
+                            </div>
+                            <div>
+                                <input type='text' name='lastname_job' id='lastname_job' required class='form-elt <?php if($errorLastname_job) echo "invalid"; ?>' value='<?php echo $lastname_job; ?>'>
+                                <label for='lastname_job'>Your last name</label>
+                            </div>
+                            <div>
+                                <input type='email' name='email_job' id='email_job' required class='form-elt <?php if($errorEmail_job) echo "invalid"; ?>' value='<?php echo $email_job; ?>'>
+                                <label for='email_job'>Your email</label>
+                            </div>
+                            <button type='submit' name='directappsubmit' class='btn-invert'>Confirm</button>
+                        </form>
+                    </div>
+                </div>
             </section>
         </main>
 
