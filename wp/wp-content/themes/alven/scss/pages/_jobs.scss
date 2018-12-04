@@ -1,33 +1,44 @@
-.startups-jobs{
-    margin: 2*$outterGutter 0 0;
-    .form-search{
+.page-template-careers {
+    .content-header {
+        h1 {
+            margin: 125px auto;
+        }
+        &.has-img {
+            padding: 107px 0 25px;
+        }
+    }
+}
+
+.startups-jobs {
+    margin: 2 * $outterGutter 0 0;
+    .form-search {
         display: block;
         max-width: 100%;
         margin: 30px 0;
     }
 }
 
-.jobs-form{
+.jobs-form {
     margin: 15px 0 0;
-    div{
+    div {
         display: block;
         width: 100%;
         padding: 0;
         margin: 0;
     }
-    .jobs-search{
+    .jobs-search {
         margin: 0 0 30px;
     }
-    .select{
+    .select {
         margin: 0 0 10px;
     }
-    .btn{
+    .btn {
         margin: 10px 0 0;
     }
 }
 
-.jobs-search{
-    .btn-search{
+.jobs-search {
+    .btn-search {
         position: absolute;
         top: 0;
         right: 0;
@@ -35,12 +46,13 @@
         margin: auto;
         z-index: 1;
     }
-    label{
+    label {
         top: 10px;
     }
 }
 
-.job-sidebar-title, .job-single-title{
+.job-sidebar-title,
+.job-single-title {
     width: 100%;
     padding: 0;
     font-size: 3.6rem;
@@ -48,126 +60,119 @@
     font-style: normal;
     text-align: left;
 }
-.job-sidebar-title{
+.job-sidebar-title {
     margin: 0;
     font-family: $avalonMedium;
-    + p{
+    + p {
         margin: 0;
         font-family: $arvo;
         font-size: 2.2rem;
     }
 }
-.job-single-title{
+.job-single-title {
     margin: 1em 0 0.25em;
     font-family: $avalonMediumBold;
 }
 
-
-.list-jobs{
+.list-jobs {
     flex-wrap: wrap;
 }
-.job{
+.job {
     width: calc(50% - #{$innerGutter});
     display: flex;
     padding: 60px 0 25px;
     border-bottom: 1px solid $greyBorder;
     align-items: flex-start;
     box-shadow: none;
-    &:nth-child(odd){
+    &:nth-child(odd) {
         margin: 0 $outterGutter 0 0;
     }
-    > div{
+    > div {
         padding: $innerGutter;
         flex: 1 0 0px;
-        &:last-child{
+        &:last-child {
             margin: 0 0 0 $innerGutter;
         }
-        > div{
+        > div {
             flex: 1 0 0px;
             padding: $innerGutter;
-            &:last-child{
+            &:last-child {
                 margin: 0 0 0 $innerGutter;
             }
         }
     }
-    img{
+    img {
         max-width: 70%;
         max-height: 100px;
     }
 }
 
-.fields-area{
-    margin: 0 0 4*$outterGutter 0;
+.fields-area {
+    margin: 0 0 4 * $outterGutter 0;
 }
 
-.job-title{
+.job-title {
     font-family: $avalonBold;
 }
-.job-title, .job-title-alven{
+.job-title,
+.job-title-alven {
     margin: 0;
     letter-spacing: -0.05em;
     line-height: 1.1;
     color: $darkBlue;
 }
 
-.job-location, .job-location-alven{
+.job-location,
+.job-location-alven {
     margin: 0;
     font-family: $avalonMedium;
     font-size: 1.4rem;
     text-transform: uppercase;
 }
 
-.job-title{
+.job-title {
     font-family: $avalonMediumBold;
     font-size: 2rem;
 }
-.job-location{
+.job-location {
     color: $blue;
 }
 
-.job-paginate{
-    margin: 4*$outterGutter 0;
+.job-paginate {
+    margin: 4 * $outterGutter 0;
 }
 
-.alven-jobs{
-    margin: 2*$outterGutter 0 0;
-    padding: 3*$outterGutter 0;
-    background-color: $gold;
-    margin: 4*$outterGutter 0 0 0;
-}
-
-.alven-jobs{
+.alven-jobs {
     padding: 4.5em 0;
-    margin: 2*$outterGutter 0 0;
+    margin: 2 * $outterGutter 0 0;
     background: $gold;
-    .container{
+    .container {
         align-items: center;
     }
 }
 
-.job-alven{
+.job-alven {
     max-width: 23%;
     box-shadow: none;
 }
-.job-title-alven{
+.job-title-alven {
     font-family: $avalonBold;
     font-size: 2.2rem;
 }
 
-
-.single-job{
-    .title-small{
+.single-job {
+    .title-small {
         margin: 0;
     }
 }
 
-.details-job-header{
+.details-job-header {
     margin: 0 0 6.5em;
-    > div{
+    > div {
         width: 50%;
     }
-    .title-small{
-        + p{
+    .title-small {
+        + p {
             margin: 0;
             font-size: 1.4rem;
             text-transform: uppercase;
@@ -176,15 +181,15 @@
     }
 }
 
-.details-job-main{
+.details-job-main {
     width: 75%;
     padding: 0 $innerGutter 0 0;
 }
 
-.details-job-sidebar{
+.details-job-sidebar {
     width: 25%;
     padding: 0 0 0 $innerGutter;
-    .btn{
+    .btn {
         width: 100%;
         margin: 0 0 3em;
     }

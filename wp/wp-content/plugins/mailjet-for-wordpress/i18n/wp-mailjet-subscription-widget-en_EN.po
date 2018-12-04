@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
+"Language: en_US\n"
 "X-Generator: Poedit 1.8.8\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -22,7 +22,7 @@ msgstr "Subscription confirmation email sent. Please check your inbox and confir
 
 #: mailjet-widget.php
 msgid "Confirm your mailing list subscription"
-msgstr "Confirm your mailing list subscription"
+msgstr "Please confirm your subscription"
 
 #: mailjet-widget.php
 msgid "You may copy/paste this link into your browser:"
@@ -58,15 +58,15 @@ msgstr "Subscription Confirmation"
 
 #: mailjet-widget.php
 msgid "Please Confirm Your Subscription To"
-msgstr "Please Confirm Your Subscription To"
+msgstr "To receive newsletters from: %s, please confirm your subscription by clicking the following button."
 
 #: mailjet-widget.php
 msgid "Click here to confirm"
-msgstr "Click here to confirm"
+msgstr "Yes, subscribe me to this list"
 
 #: mailjet-widget.php
 msgid "Did not ask to subscribe to this list? Or maybe you have changed your mind? Then simply ignore this email and you will not be subscribed"
-msgstr "Did not ask to subscribe to this list? Or maybe you have changed your mind? Then simply ignore this email and you will not be subscribed"
+msgstr "If you received this email by mistake or don\\'t wish to subscribe anymore, simply ignore this email."
 
 #: mailjet-widget.php
 msgid "Thanks,"

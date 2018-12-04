@@ -3,13 +3,17 @@
 Contributors: mailjet
 Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
 Requires at least: 3.3.0
-Tested up to: 4.8
-Stable tag: 4.1.19
+Tested up to: 4.9
+Stable tag: 4.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Use Mailjet to create, send and track beautiful and engaging marketing and transactional emails directly from within your WordPress admin. 
 
+== What's new ==
+* Now it is possible to subscribe all existing Wordpress users to a selected Mailjet contact list
+* The user role is added to Mailjet as a contact property, so you can filter and target marketing emails to the proper group
+* New feature to subscribe comment authors to a selected Mailjet contact list provides a second channel for collection of subscribers
 
 == Description ==
 
@@ -45,7 +49,7 @@ Mailjet offers user interfaces, documentation and 24/7 customer support in 4 lan
 2. Go to Extensions > Add and send `mailjet-for-wordpress.zip`.
 3. Activate the Mailjet extension through the 'Plugins' menu in WordPress.
 
-You must have cURL extension enabled.
+You must have cURL extension enabled. PHP 5.3 or later version is required.
 
 ## Frequently Asked Questions
 
@@ -85,6 +89,70 @@ Need help? Our multilingual support team is here to answer your questions in any
 4. Get instant insight on your campaign's performance with detailed statistics
 
 == Changelog ==
+
+= 4.3.0 =
+* Update the confirmation email template for English, French, German and Spanish
+* Add new filter 'mailjet_subscription_widget_email_params' that enable the users to replace the email confirmation message parameters
+* Add new filter 'mailjet_confirmation_email_filename' that enable the users to replace the email confirmation template
+* Add new field 'From name' in Mailjet General Settings
+* Add event delegation that allow widget to work if it is loaded via AJAX
+
+= 4.2.16 =
+* Update the confirmation email template
+* Add new filter 'mailjet_subscription_widget_email_params' that enable the users to replace the email confirmation message parameters
+* Add new filter 'mailjet_confirmation_email_filename' that enable the users to replace the email confirmation template
+* Add new field 'From name' in Mailjet General Settings
+* Add event delegation that allow widget to work if it is loaded via AJAX
+
+= 4.2.15 =
+* Remove changing plugins locale globally
+
+= 4.2.14 =
+* Update tracking parameter
+
+= 4.2.13 =
+* Added support for de_DE_formal locale
+
+= 4.2.12 =
+* Translation update
+
+= 4.2.11 =
+* Updated 'Tested up to' version to include WordPress 4.9
+
+= 4.2.10 =
+* Translations update
+
+= 4.2.9 =
+* Fix strtotime() function when format is dd/mm/YYYY
+
+= 4.2.8 =
+* Added conversion to timestamp for date time contact properties before send them to the API
+
+= 4.2.7 =
+* Subscription widget added validation for contact properties of date type
+
+= 4.2.6 =
+* Added new translations
+
+= 4.2.5 =
+* Replace site_url with home_url for subscription confirmation links
+
+= 4.2.4 =
+* Fix widget subscription issue
+
+= 4.2.3 =
+* Replace short array definition usage with long one for backward compatibility
+
+= 4.2.2 =
+* Rename some function to avoid conflict with 3rd party ones
+
+= 4.2.1 =
+* Updated widget connection over SSL
+
+= 4.2.0 =
+* Added Initial Wordpress user synchronization to Mailjet
+* Added Wordpress user role as a contact property and synced to Mailjet
+* Changes on Mailjet plugin configuration page
 
 = 4.1.19 =
 * Updated text description, icon, screenshots and style
