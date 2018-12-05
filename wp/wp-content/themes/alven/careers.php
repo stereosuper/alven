@@ -195,7 +195,6 @@ get_header();
 
             endif;
             
-            
             $hasImg = false;
             if(has_post_thumbnail()){
                 $hasImg = true;
@@ -415,7 +414,7 @@ get_header();
                     <h2>Direct application</h2>
                     <div class='container flex-container'>
                         <div class='col-3 no-padding-left'>
-                            Lorem ipsum
+                            <?php the_field('career_directapp_desc'); ?>
                         </div>
                         <div class='col-8 no-padding-right'>
                             <?php if($status_job === 'success'): ?>
