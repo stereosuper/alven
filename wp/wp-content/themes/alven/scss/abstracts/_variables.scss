@@ -1,13 +1,20 @@
 // Variables //
 
-
 // Grid
 
 $outterGutter: 20px;
 $innerGutter: 10px;
-$col: 100/12*1%;
-$colSmall: 100/10*1%;
+$col: 100/12 * 1%;
+$colSmall: 100/10 * 1%;
 
+// Responsive
+
+$desktop-large: "1420px";
+$desktop: "1150px";
+$desktop-small: "979px";
+$tablet: "767px";
+$phone: "540px";
+$phone-small: "420px";
 
 // Colors
 
@@ -19,18 +26,16 @@ $greyMedium: #636a6b;
 $greyLight: #ccd1d2;
 $greyBorder: #e5e8e8;
 
-
 // Transitions
 
 $transitionFunction: cubic-bezier(0.75, 0, 0.125, 1);
-$transition: .25s $transitionFunction;
-
+$transition: 0.25s $transitionFunction;
 
 // Fonts
 
-$arvo: 'Arvo', serif;
+$arvo: "Arvo", serif;
 
-$avalonMedium: 'avalonmedium', sans-serif;
-$avalonMediumOblique: 'avalonmedium_oblique', $avalonMedium;
-$avalonMediumBold: 'avalon_mediumbold', $avalonMedium;
-$avalonBold: 'avalonbold', $avalonMedium;
+$avalonMedium: "avalonmedium", sans-serif;
+$avalonMediumOblique: "avalonmedium_oblique", $avalonMedium;
+$avalonMediumBold: "avalon_mediumbold", $avalonMedium;
+$avalonBold: "avalonbold", $avalonMedium;

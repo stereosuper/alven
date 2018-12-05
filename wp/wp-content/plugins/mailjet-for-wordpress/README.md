@@ -3,17 +3,20 @@
 Contributors: mailjet
 Tags: email, marketing, signup, newsletter, widget, smtp, mailjet
 Requires at least: 3.3.0
-Tested up to: 4.8
-Stable tag: 4.1.19
+Tested up to: 4.9
+Stable tag: 4.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Use Mailjet to create, send and track beautiful and engaging marketing and transactional emails directly from within your WordPress admin. 
 
+== What's new ==
+* The plugin features a redesigned subscription confirmation email template
+* Now it is possible to use filters to customize the texts inside the subscription confirmation email or replace it with your own template file.
 
 == Description ==
 
-Mailjet’s official plugin on WordPress gives you  access to:
+Mailjet's official plugin on WordPress gives you access to:
 
 * Easy Email Management: 
 Create and manage all of your marketing and transactional email campaigns directly from your WordPress Admin. 
@@ -22,19 +25,19 @@ Create and manage all of your marketing and transactional email campaigns direct
 Create and customize contact form widgets to allow your website visitors to subscribe to your newsletters.
 
 * Automated Contact Synchronization: 
-Automatically synchronize your WordPress contacts into their own separate Mailjet email lists. With ongoing synchronization, you never have to think about contact management again. 
+Automatically synchronize your WordPress contacts into their own separate Mailjet email lists. The user role is added to Mailjet as a contact property, so you can filter and target marketing emails to the proper group. Comment authors can be added to a selected Mailjet contact list too as a second channel for collection of subscribers. With ongoing synchronization, you never have to think about contact management again. 
 
 * Campaign Builder Tool: 
-Use our drag and drop email editor or HTML builder to create beautiful and engaging emails - directly from your WordPress Admin.
+Use our drag and drop email editor or HTML builder to create beautiful and engaging emails - directly from your WordPress admin.
 
 * World Class Deliverability: 
-Hit your subscribers’ inboxes every time with our global deliverability and routing infrastructure
+Hit your subscribers' inboxes every time with our global deliverability and routing infrastructure
 
 * Insight and analytics: 
 Access real-time statistics on your campaigns showing opens, clicks, geographies, average time to click and more to optimize your email performance. 
 
 * Data Compliance: 
-Mailjet is EU-data compliant, meaning that it guarantees an optimal level of email data privacy. 
+Mailjet is GDPR compliant and ISO 27001 certified, meaning that it guarantees an optimal level of email data privacy and security. 
 
 * International UI and Support: 
 Mailjet offers user interfaces, documentation and 24/7 customer support in 4 languages (English, Spanish, French and German).
@@ -45,7 +48,7 @@ Mailjet offers user interfaces, documentation and 24/7 customer support in 4 lan
 2. Go to Extensions > Add and send `mailjet-for-wordpress.zip`.
 3. Activate the Mailjet extension through the 'Plugins' menu in WordPress.
 
-You must have cURL extension enabled.
+You must have cURL extension enabled. PHP 5.3 or later version is required.
 
 ## Frequently Asked Questions
 
@@ -53,10 +56,10 @@ You must have cURL extension enabled.
 [Mailjet](http://www.mailjet.com?aff=wordpressmj) is an all-in-one solution to send, track and deliver both marketing and transactional emails. Its cloud-based infrastructure is unique and highly scalable with a proprietary technology that optimizes email deliverability. Mailjet can be accessed either via an easy-to-use online drag-and-drop interface or via APIs that allow developers to integrate its features within their online app or service, or its sophisticated SMTP relay. 
 
 = Why use Mailjet on Wordpress? =
-Because you don’t have time to build a global leading email infrastructure and have a product or service to build and grow
+Because you don't have time to build a global leading email infrastructure and have a product or service to build and grow
 Because you want to compose responsive Newsletters that engage your users and boost your traffic or revenue without having to code
 Because you want the latest in email tracking technology that shows you which users open and click on your newsletters, when, on what device, on which links, etc.
-Because you want to contact a Support Helpdesk that works when you do whether you’re a morning person or a night owl. 
+Because you want to contact a Support Helpdesk that works when you do whether you're a morning person or a night owl. 
 Because you want to easily subscribe new users to your contact lists and not have to worry about keeping them in sync
 Because you want to make sure your emails get delivered to the inbox!
 
@@ -75,7 +78,32 @@ Synchronization is automatic, that's the beauty of this plugin! It doesn't matte
 
 = In which languages is this plugin available? =
 The Mailjet Plugin is available in English, Spanish, French and German. 
-Need help? Our multilingual support team is here to answer your questions in any of these languages, any day of the week, at any time via our [online helpdesk](https://www.mailjet.com/support). 
+Need help? Our multilingual support team is here to answer your questions in any of these languages, any day of the week, at any time via our [online helpdesk](https://www.mailjet.com/support).
+
+= How to use filters to customize the subscription confirmation email template =
+Add the following code to your template functions.php file. Uncomment the messages that you would like to replace.
+<pre><code>
+add_filter( 'mailjet_subscription_widget_email_params', 'updateMailjetSubscriptionEmailParameters' );
+function example_callback($emailData) {
+    // $emailData['__EMAIL_TITLE__'] = 'Please confirm your subscription';
+    // $emailData['__EMAIL_HEADER__'] = 'To receive newsletters from __WP_URL__ please confirm your subscription by clicking the following button:';
+    // $emailData['__CLICK_HERE__'] = 'Yes, subscribe me to this list';
+    // $emailData['__COPY_PASTE_LINK__'] = 'You may copy/paste this link into your browser:';
+    // $emailData['__IGNORE__'] = 'If you received this email by mistake or don't wish to subscribe anymore, simply ignore this message.';
+    // $emailData['__THANKS__'] = 'Thanks,';
+    // $emailData['__FROM_NAME__'] = 'The Mailjet Team';
+    return $emailData;
+}</code></pre>
+
+= How to replace the email confirmation template with my own file =
+You need to have a php file with your custom template uploaded to your WordPress server. Then add the following code to your template functions.php file.
+<pre><code>
+add_filter( 'mailjet_confirmation_email_filename', 'getMailjetSubscriptionEmailTemplate' );
+function getMailjetSubscriptionEmailTemplate($templatePath) {
+
+    return /path/to/my-template.php;
+}
+</code></pre>
 
 == Screenshots ==
 
@@ -85,6 +113,70 @@ Need help? Our multilingual support team is here to answer your questions in any
 4. Get instant insight on your campaign's performance with detailed statistics
 
 == Changelog ==
+
+= 4.3.0 =
+* Update the confirmation email template for English, French, German and Spanish
+* Add new filter 'mailjet_subscription_widget_email_params' that enable the users to replace the email confirmation message parameters
+* Add new filter 'mailjet_confirmation_email_filename' that enable the users to replace the email confirmation template
+* Add new field 'From name' in Mailjet General Settings
+* Add event delegation that allow widget to work if it is loaded via AJAX
+
+= 4.2.16 =
+* Update the confirmation email template
+* Add new filter 'mailjet_subscription_widget_email_params' that enable the users to replace the email confirmation message parameters
+* Add new filter 'mailjet_confirmation_email_filename' that enable the users to replace the email confirmation template
+* Add new field 'From name' in Mailjet General Settings
+* Add event delegation that allow widget to work if it is loaded via AJAX
+
+= 4.2.15 =
+* Remove changing plugins locale globally
+
+= 4.2.14 =
+* Update tracking parameter
+
+= 4.2.13 =
+* Added support for de_DE_formal locale 
+
+= 4.2.12 =
+* Translation update
+
+= 4.2.11 =
+* Updated 'Tested up to' version to include WordPress 4.9
+
+= 4.2.10 =
+* Translations update
+
+= 4.2.9 =
+* Fix strtotime() function when format is dd/mm/YYYY
+
+= 4.2.8 =
+* Added conversion to timestamp for date time contact properties before send them to the API
+
+= 4.2.7 =
+* Subscription widget added validation for contact properties of date type
+
+= 4.2.6 =
+* Added new translations 
+
+= 4.2.5 =
+* Replace site_url with home_url for subscription confirmation links 
+
+= 4.2.4 =
+* Fix widget subscription issue 
+
+= 4.2.3 =
+* Replace short array definition usage with long one for backward compatibility 
+
+= 4.2.2 =
+* Rename some function to avoid conflict with 3rd party ones
+
+= 4.2.1 =
+* Updated widget connection over SSL
+
+= 4.2.0 =
+* Added Initial Wordpress user synchronization to Mailjet
+* Added Wordpress user role as a contact property and synced to Mailjet
+* Changes on Mailjet plugin configuration page
 
 = 4.1.19 =
 * Updated text description, icon, screenshots and style
