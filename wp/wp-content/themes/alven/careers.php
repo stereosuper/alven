@@ -348,7 +348,12 @@ get_header();
                                     foreach ($jobs_extended as $key => $job) {
                                         $article = '<a href="'.esc_url( get_permalink( $job->ID ) ).'" class="job no-padding">';
                                         $article .= '<div class="align-center"><img src="'.$job->from['logo'].'" alt="'.$job->from['name'].'"></div>';
-                                        $article .= '<div><p class="job-title">'.$job->post_title.'</p><p class="job-location">'.$job->location[0]->name.'</p></div>';
+                                        $article .= '<div><p class="job-title">'.$job->post_title.'</p>';
+                                        if( $job->location ):
+                                            $article .= '<p class="job-location">'.$job->location[0]->name.'</p></div>';
+                                        else:
+                                            $article .= '</div>';
+                                        endif;
                                         $article .= '</a>';
                                         echo $article;
                                     }
