@@ -77,6 +77,7 @@
 .list-jobs {
     flex-wrap: wrap;
 }
+
 .job {
     width: calc(50% - #{$innerGutter});
     display: flex;
@@ -209,6 +210,25 @@
 }
 
 @media (max-width: $desktop) {
+    .job-sidebar-title {
+        font-size: 3.2rem;
+        & + p {
+            font-size: 1.8rem;
+        }
+    }
+    .job {
+        > div {
+            &:nth-child(1) {
+                flex: 1 1 35%;
+            }
+        }
+    }
+    .job-title {
+        font-size: 1.5rem;
+    }
+    .job-location {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: $desktop-small) {
@@ -255,6 +275,11 @@
         }
         &:nth-child(2n) {
             margin: $innerGutter 0;
+        }
+    }
+    .job {
+        img {
+            max-height: 75px;
         }
     }
 }

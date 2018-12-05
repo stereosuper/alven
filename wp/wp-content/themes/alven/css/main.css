@@ -3776,6 +3776,18 @@ select::-ms-expand {
     width: 100%;
     margin: 0 0 3em; }
 
+@media (max-width: 1150px) {
+  .job-sidebar-title {
+    font-size: 3.2rem; }
+    .job-sidebar-title + p {
+      font-size: 1.8rem; }
+  .job > div:nth-child(1) {
+    flex: 1 1 35%; }
+  .job-title {
+    font-size: 1.5rem; }
+  .job-location {
+    font-size: 1.2rem; } }
+
 @media (max-width: 979px) {
   .alven-jobs > .flex-container {
     flex-direction: column; }
@@ -3807,7 +3819,9 @@ select::-ms-expand {
     .job-alven:nth-child(2n + 1) {
       margin: 10px 0; }
     .job-alven:nth-child(2n) {
-      margin: 10px 0; } }
+      margin: 10px 0; }
+  .job img {
+    max-height: 75px; } }
 
 /* Responsive horizontal */
 @media (max-width: 1420px) {

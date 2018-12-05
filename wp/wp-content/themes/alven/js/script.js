@@ -162,7 +162,11 @@ $(function(){
     // header animation on scroll + filters animation on scroll + readIndicator
     function setHeaderScroll(myScroll, scrollDir){
         if(mainContent.length && contentHeader.length && !htmlTag.hasClass('menu-open')){
-            myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
+            if (mainContent.hasClass('content-career')) {
+                header.addClass('fixed')
+            } else {
+                myScroll > mainContent.offset().top - headerHeight - 40 ? header.addClass('fixed') : header.removeClass('fixed');
+            }
             if(header.hasClass('fixed')){
                 scrollDir < 0 ? header.addClass('on') : header.removeClass('on');
             }
