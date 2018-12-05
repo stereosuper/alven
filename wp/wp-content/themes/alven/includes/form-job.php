@@ -1,20 +1,24 @@
 <?php
 
+if( !function_exists( 'wp_handle_upload' ) ){
+    require_once( ABSPATH . 'wp-admin/includes/file.php' );
+}
+
 $status_job         = false;
 $errorFirstname_job = '';
 $errorLastname_job  = '';
 $errorEmail_job     = '';
-$errorMsg_job       = '';
+$errorDocument_job  = '';
 $errorSend_job      = '';
 
 $firstname_job = isset($_POST['firstname_job']) ? strip_tags(stripslashes($_POST['firstname_job'])) : '';
 $lastname_job  = isset($_POST['lastname_job']) ? strip_tags(stripslashes($_POST['lastname_job'])) : '';
 $email_job     = isset($_POST['email_job']) ? strip_tags(stripslashes($_POST['email_job'])) : '';
+$document_job  = isset($_FILES['document_job']) ? $_FILES['document_job'] : '';
 $spamUrl_job   = isset($_POST['url_job']) ? strip_tags(stripslashes($_POST['url_job'])) : '';
 
-var_dump( $_POST['directappsubmit'] );
 if( isset( $_POST['directappsubmit'] ) ){
-    var_dump( 'pass' );
+
     if( empty($firstname_job) ){
         $status_job = 'error';
         $errorFirstname_job = true;
@@ -33,6 +37,24 @@ if( isset( $_POST['directappsubmit'] ) ){
         $errorEmail_job = true;
     }
 
+
+    if( !empty($document_job['name']) ){
+        $allowedMimes = array(
+            'pdf'  => 'application/pdf',
+            'doc'  => 'application/msword',
+            'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'rtf'  => 'application/rtf'
+        );
+        $document_type = wp_check_filetype(basename($document_job['name']), $allowedMimes);
+
+        if( empty( $document_type['ext'] ) ){
+            $status_job = 'error';
+            $errorDocument_job = true;
+            //$errorSend_job = 'Sorry, your document couldn\'t be send: the uploaded file extension isn\'t valid.';
+        }
+    }
+
+
     if( $status_job === 'error' ){
         $errorSend_job = 'Sorry, your message counldn\'t be send, the form contains errors. Please check the red fields.';
     }
@@ -41,13 +63,15 @@ if( isset( $_POST['directappsubmit'] ) ){
 
         if( empty( $spamUrl_job ) ){
 
-            $send = array(
-                    "firstname" => "Jj", 
-                    "lastname" => "Botha", 
-                    "email" => "jj_botha@fakemail.com"
+            $candidate = array(
+                'firstname'  => $firstname_job, 
+                'lastname'   => $lastname_job, 
+                'email'      => $email_job,
+                'resume'     => array(
+                    'name' => $document_job['name'],
+                    'data' => chunk_split( base64_encode( file_get_contents( $document_job['tmp_name'] ) ) ) 
+                )
             );
-
-            var_dump( json_encode( $send ) );
 
             $workable_datas = null;
             $subdomain = 'alven'; 
@@ -60,33 +84,19 @@ if( isset( $_POST['directappsubmit'] ) ){
                     'Accept: application/json'
                 ),
                 'body'    => array(
-                    'candidate' => json_encode( $send )
+                    'candidate' => $candidate
                 )
-                    /*'data' => '{"candidate": { 
-                            "firstname": "Jj", 
-                            "lastname": "Botha", 
-                            "email": "jj_botha@fakemail.com"
-                        } 
-                    }'*/
-                
             );
 
             // ?state=published
             $workable_response = wp_remote_post( 'https://'.$subdomain.'.workable.com/spi/v3/jobs/'.$shortcode.'/candidates', $workable_args );
             $workable_response_code = wp_remote_retrieve_response_code( $workable_response );
-var_dump( $workable_response );
+
             if( $workable_response_code == 201 ):
                 $status_job = 'success';
             else:
                 $status_job = 'error';
             endif;
-
-            /*if($sent_job){
-                $status_job = 'success';
-            }else{
-                $status_job = 'error';
-                $errorSend_job = 'Sorry, an error occured and you message couldn\'t be send. Please try again later!';
-            }*/
 
         }else{
             $status_job = 'success';

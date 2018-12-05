@@ -418,31 +418,32 @@ get_header();
                     </div>
                     <div class='col-8 no-padding-right'>
                         <?php if($status_job === 'success'): ?>
-                            <p class='form-success'>Your message has been sent!<br> Thank you, we will be back to you shortly.</p>
+                            <p class='form-success'><?php _e('Your message has been sent!<br> Thank you, we will be back to you shortly.', 'alven'); ?></p>
                         <?php else: ?>
                             <?php if( $errorSend_job ): ?>
                                 <p class='form-error'><?php echo $errorSend_job; ?></p>
                             <?php endif; ?>
-                            <form action='<?php the_permalink(); ?>' method='post' enctype='multipart/form-data' class=''>
+                            <form action='<?php the_permalink(); ?>' method='post' class='' enctype='multipart/form-data' autocomplete='off'>
                                 <fieldset>
-                                    <legend class='active'>Please <span>Introduce yourself</span></legend>
+                                    <legend class='active'><?php _e('Please', 'alven'); ?><span><?php _e('Introduce yourself', 'alven'); ?></span></legend>
                                     <section class='form-section <?php if($errorFirstname || $errorLastname || $errorEmail) echo "invalid"; ?>'>
                                         <div>
                                             <input type='text' name='firstname_job' id='firstname_job' required class='form-elt <?php if($errorFirstname_job) echo "invalid"; ?>' value='<?php echo $firstname_job; ?>'>
-                                            <label for='firstname_job'>Your first name</label>
+                                            <label for='firstname_job'><?php _e('Your first name', 'alven'); ?></label>
                                         </div>
                                         <div>
                                             <input type='text' name='lastname_job' id='lastname_job' required class='form-elt <?php if($errorLastname_job) echo "invalid"; ?>' value='<?php echo $lastname_job; ?>'>
-                                            <label for='lastname_job'>Your last name</label>
+                                            <label for='lastname_job'><?php _e('Your last name', 'alven'); ?></label>
                                         </div>
                                         <div>
                                             <input type='email' name='email_job' id='email_job' required class='form-elt <?php if($errorEmail_job) echo "invalid"; ?>' value='<?php echo $email_job; ?>'>
-                                            <label for='email_job'>Your email</label>
+                                            <label for='email_job'><?php _e('Your email', 'alven'); ?></label>
                                         </div>
-                                        <!--<div>
-                                            <input type='file' name='document_job' id='document_job' required class='form-elt <?php if($errorDocument_job) echo "invalid"; ?>' value='<?php echo $document_job; ?>'>
-                                            <label for='email_job'>Your document</label>
-                                        </div>-->
+                                        <div class='full has-desc'>
+                                            <input type='file' name='document_job' id='document_job' required class='form-elt <?php if($errorDocument_job) echo "invalid"; ?>'>
+                                            <label for='document_job'>Your document</label>
+                                            <span class='form-desc'>.pdf, .doc, .docx, .rtf</span>
+                                        </div>
                                         <div class='hidden'>
                                             <input type='url' name='url_job' id='url_job' value='<?php echo $spamUrl_job; ?>'>
                                             <label for='url_job'>Leave this field empty please</label>
