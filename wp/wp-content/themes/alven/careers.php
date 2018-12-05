@@ -55,8 +55,10 @@ function formredir( $s ){
 }
 
 function extend_query( $j ){
+    // Set location
+    $j->location = get_the_terms($j->ID, 'job_location');
     // Set startup datas to job datas
-    $sid = get_field('job_company', $j->ID);
+    $sid     = get_field('job_company', $j->ID);
     $j->from = array(
         'name' => get_the_title( $sid ),
         'logo' => get_the_post_thumbnail_url( $sid ),
@@ -346,7 +348,7 @@ get_header();
                                     foreach ($jobs_extended as $key => $job) {
                                         $article = '<a href="'.esc_url( get_permalink( $job->ID ) ).'" class="job no-padding">';
                                         $article .= '<div class="align-center"><img src="'.$job->from['logo'].'" alt="'.$job->from['name'].'"></div>';
-                                        $article .= '<div><p class="job-title">'.$job->post_title.'</p><p class="job-location">'.$job->location.'</p></div>';
+                                        $article .= '<div><p class="job-title">'.$job->post_title.'</p><p class="job-location">'.$job->location[0]->name.'</p></div>';
                                         $article .= '</a>';
                                         echo $article;
                                     }
@@ -386,6 +388,7 @@ get_header();
                             <div class="list-jobs-alven flex-container">
                                 <?php 
                                     foreach ($jobs_alven as $key => $job_alven) {
+                                      //var_dump($job_alven);
                                        $job_alven_link  = '<a href="'.$job_alven['url'].'" class="job-alven">';
                                        $job_alven_link .= '<p class="job-title-alven">'.$job_alven['title'].'</p>';
                                        // Line below do the trick also
@@ -409,22 +412,41 @@ get_header();
                         Lorem ipsum
                     </div>
                     <div class='col-8 no-padding-right'>
-                        <form action='' method='post' enctype='multipart/form-data' class=''>
-                        <?php //if($errorFirstname || $errorLastname || $errorEmail) echo "invalid"; ?>
-                            <div>
-                                <input type='text' name='firstname_job' id='firstname_job' required class='form-elt <?php if($errorFirstname_job) echo "invalid"; ?>' value='<?php echo $firstname_job; ?>'>
-                                <label for='firstname_job'>Your first name</label>
-                            </div>
-                            <div>
-                                <input type='text' name='lastname_job' id='lastname_job' required class='form-elt <?php if($errorLastname_job) echo "invalid"; ?>' value='<?php echo $lastname_job; ?>'>
-                                <label for='lastname_job'>Your last name</label>
-                            </div>
-                            <div>
-                                <input type='email' name='email_job' id='email_job' required class='form-elt <?php if($errorEmail_job) echo "invalid"; ?>' value='<?php echo $email_job; ?>'>
-                                <label for='email_job'>Your email</label>
-                            </div>
-                            <button type='submit' name='directappsubmit' class='btn-invert'>Confirm</button>
-                        </form>
+                        <?php if($status_job === 'success'): ?>
+                            <p class='form-success'>Your message has been sent!<br> Thank you, we will be back to you shortly.</p>
+                        <?php else: ?>
+                            <?php if( $errorSend_job ): ?>
+                                <p class='form-error'><?php echo $errorSend_job; ?></p>
+                            <?php endif; ?>
+                            <form action='<?php the_permalink(); ?>' method='post' enctype='multipart/form-data' class=''>
+                                <fieldset>
+                                    <legend class='active'>Please <span>Introduce yourself</span></legend>
+                                    <section class='form-section <?php if($errorFirstname || $errorLastname || $errorEmail) echo "invalid"; ?>'>
+                                        <div>
+                                            <input type='text' name='firstname_job' id='firstname_job' required class='form-elt <?php if($errorFirstname_job) echo "invalid"; ?>' value='<?php echo $firstname_job; ?>'>
+                                            <label for='firstname_job'>Your first name</label>
+                                        </div>
+                                        <div>
+                                            <input type='text' name='lastname_job' id='lastname_job' required class='form-elt <?php if($errorLastname_job) echo "invalid"; ?>' value='<?php echo $lastname_job; ?>'>
+                                            <label for='lastname_job'>Your last name</label>
+                                        </div>
+                                        <div>
+                                            <input type='email' name='email_job' id='email_job' required class='form-elt <?php if($errorEmail_job) echo "invalid"; ?>' value='<?php echo $email_job; ?>'>
+                                            <label for='email_job'>Your email</label>
+                                        </div>
+                                        <!--<div>
+                                            <input type='file' name='document_job' id='document_job' required class='form-elt <?php if($errorDocument_job) echo "invalid"; ?>' value='<?php echo $document_job; ?>'>
+                                            <label for='email_job'>Your document</label>
+                                        </div>-->
+                                        <div class='hidden'>
+                                            <input type='url' name='url_job' id='url_job' value='<?php echo $spamUrl_job; ?>'>
+                                            <label for='url_job'>Leave this field empty please</label>
+                                        </div>
+                                    </section>
+                                </fieldset>
+                                <button type='submit' name='directappsubmit' class='btn-invert'>Confirm</button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 </div>
             </section>
