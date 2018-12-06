@@ -975,3 +975,12 @@ function get_jobs_from_wrkbl(){
 
     return $workable_datas;
 }
+
+function get_url_with_careers_params( $u, $p ){
+    return add_query_arg( array(
+        'location' => $p['location'],
+        'company'  => $p['company'],
+        'function' => $p['function'],
+        'sector'   => $p['sector'],
+    ), $u );
+}
