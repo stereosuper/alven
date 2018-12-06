@@ -54,17 +54,30 @@ function formredir( $s ){
     endif;
 }
 
-function extend_query( $j ){
-    // Set location
-    $j->location = get_the_terms($j->ID, 'job_location');
-    // Set startup datas to job datas
-    $sid     = get_field('job_company', $j->ID);
-    $j->from = array(
-        'name' => get_the_title( $sid ),
-        'logo' => get_the_post_thumbnail_url( $sid ),
-        //...
-    );
-    return $j;
+// Add datas to the main response
+// @params :
+// $jobs    : job to extend (object)
+// $datas   : add startups datas (boolean)
+function extend_query( $jobs, $datas ){
+    foreach ($jobs as $key => $job) {
+
+        if( $datas['location'] ):
+            // Set location
+            $job->location = get_the_terms($job->ID, 'job_location');
+        endif;
+        
+        if( $datas['startup'] ):
+            // Set startup datas to job datas
+            $sid     = get_field('job_company', $job->ID);
+            $job->from = array(
+                'name' => get_the_title( $sid ),
+                'logo' => get_the_post_thumbnail_url( $sid ),
+                //...
+            );
+        endif;
+    }
+
+    return $jobs;
 }
 
 // Origin of the function below : https://wordpress.stackexchange.com/questions/9394/getting-all-values-for-a-custom-field-key-cross-post
@@ -153,7 +166,6 @@ function get_jobs(){
 }
 
 function get_posts_filtered( $is_details = FALSE, $metquery, $taxquery ){
-
     if( !$is_details ):
         $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
     endif;
@@ -168,12 +180,7 @@ function get_posts_filtered( $is_details = FALSE, $metquery, $taxquery ){
     );
     $jobs = new WP_Query( $posts_args );
 
-    /*if( $jobs->have_posts() && !$is_details ):
-        $jobs = array_map( 'extend_query' , $jobs->posts );
-   endif;*/
-
    return $jobs;
-
 }
 
 
@@ -294,10 +301,10 @@ get_header();
                             </form>
                             <?php if( $is_details ): ?>
                                 <div class='related-jobs'>
+                                    <P><?php _e('Related job offers', 'alven') ?></p>
                                     <?php
-                                        var_dump( $jobs );
-                                        if( !empty( $jobs ) ):
-                                            foreach ($jobs as $key => $job) {
+                                        if( $jobs->have_posts() ):
+                                            foreach ( extend_query($jobs->posts, array( 'location' => true, 'startup' => false ) ) as $key => $job) {
                                                 $article = '<a href="'.esc_url( get_permalink( $job->ID ) ).'" class="job no-padding">';
                                                 $article .= '<p class="job-title">'.$job->post_title.'</p>';
                                                 if( $job->location ):
@@ -371,7 +378,7 @@ get_header();
                                     echo '<div class="list-jobs flex-container">';
                                     if( $jobs->have_posts() ):
 
-                                        foreach (array_map( 'extend_query' , $jobs->posts ) as $key => $job) {
+                                        foreach ( extend_query($jobs->posts, array( 'location' => true, 'startup' => true ) ) as $key => $job) {
                                             
                                             $url = add_query_arg( array(
                                                     'location' => $params['location'],
