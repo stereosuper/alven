@@ -2,26 +2,20 @@
 
 if ($jobs->have_posts()):
 
-    foreach (extend_query($jobs->posts, array('location' => true, 'startup' => true)) as $key => $job) {
-        $job_link_with_params = add_query_arg( array(
-            'location' => $params['location'],
-            'company'  => $params['company'],
-            'function' => $params['function'],
-            'sector'   => $params['sector'],
-        ), esc_url( get_permalink($job->ID) ) );
+    echo '<div class="flex-container list-jobs">';
+        foreach (extend_query($jobs->posts, array('location' => true, 'startup' => true)) as $key => $job) {
+            $article = '<a href="' . get_url_with_careers_params( esc_url( get_permalink($job->ID) ), $params ) . '" class="job no-padding">';
+            $article .= '<div class="align-center"><img src="' . $job->from['logo'] . '" alt="' . $job->from['name'] . '"></div>';
+            $article .= '<div><p class="job-title">' . $job->post_title . '</p>';
+            if ($job->location):
+                $article .= '<p class="job-location">' . $job->location[0]->name . '</p></div>';
+            else:
+                $article .= '</div>';
+            endif;
+            $article .= '</a>';
 
-        $article = '<a href="' . $job_link_with_params . '" class="job no-padding">';
-        $article .= '<div class="align-center"><img src="' . $job->from['logo'] . '" alt="' . $job->from['name'] . '"></div>';
-        $article .= '<div><p class="job-title">' . $job->post_title . '</p>';
-        if ($job->location):
-            $article .= '<p class="job-location">' . $job->location[0]->name . '</p></div>';
-        else:
-            $article .= '</div>';
-        endif;
-        $article .= '</a>';
-
-        echo $article;
-    }
+            echo $article;
+        }
     echo "</div>";
 
     echo "<div class='job-paginate align-center'>";

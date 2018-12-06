@@ -32,9 +32,6 @@ get_header();
             // Main variables
             $is_details = is_singular( 'job' );
 
-            // Classes variables
-            $container_class = array( 'flex-container' );
-
             // Intialize datas for single and list jobs template
             $form = get_form_datas( $is_details );
             populate_params();
@@ -48,20 +45,12 @@ get_header();
                 $details       = get_field('job_details', $current_id);
                 $urlapply      = get_field('job_link', $current_id);
                 $company_datas = extend_post( get_field('job_company', $current_id) );
-
-                // Update classes
-                array_push( $container_class, 'details-job');
             else:
                 require_once('includes/form-job.php');
 
                 // Get jobs from workable
                 $jobs_alven = get_jobs_from_wrkbl();
-
-                // Update classes
-                array_push( $container_class, 'list-jobs');
             endif;
-            
-
 
             $hasImg = false;
             if(has_post_thumbnail()){
@@ -106,7 +95,7 @@ get_header();
                                                 echo $article;
                                             }
 
-                                            echo '<a href="'.get_url_with_careers_params( $form['action'], $params ).'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
+                                            echo '<a href="'. get_url_with_careers_params( $form['action'], $params ) .'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
                                         endif;
                                     ?>
                                 </div>
@@ -114,13 +103,11 @@ get_header();
                         </div>
                         <div class='col-8 no-padding-right'>
                             <?php 
-                                echo '<div class="'. join( " ", $container_class) .'">';
-                                    if( $is_details ):
-                                        require_once('includes/job-details.php');
-                                    else:
-                                        require_once('includes/jobs-list.php');
-                                    endif;
-                                echo "</div>";
+                                if( $is_details ):
+                                    require_once('includes/job-details.php');
+                                else:
+                                    require_once('includes/jobs-list.php');
+                                endif;
                                 wp_reset_query();
                             ?>
                         </div>
@@ -128,6 +115,8 @@ get_header();
                 </section>
                 <?php if( !$is_details ):
                     require_once('includes/jobs-workable.php');
+                else:
+                    require_once('includes/jobs-list-random.php');
                 endif; ?> 
             </div>
         </main>
