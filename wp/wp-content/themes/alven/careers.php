@@ -95,7 +95,7 @@ function extend_datas( $s, $k ){
     return $extended;
 }
 
-function check_params(){
+function populate_params(){
     global $params;
     global $taxquery;
     global $metquery;
@@ -152,6 +152,31 @@ function get_jobs(){
     return $workable_datas;
 }
 
+function get_posts_filtered( $is_details = FALSE, $metquery, $taxquery ){
+
+    if( !$is_details ):
+        $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+    endif;
+
+    $posts_args = array(
+        'post_type'      => 'job',
+        'posts_per_page' =>  4,
+        'paged'          => $paged,
+        'meta_query'     => $metquery,
+        'tax_query'      => $taxquery,
+        's'              => sanitize_text_field( get_query_var('search') )
+    );
+    $jobs = new WP_Query( $posts_args );
+
+    /*if( $jobs->have_posts() && !$is_details ):
+        $jobs = array_map( 'extend_query' , $jobs->posts );
+   endif;*/
+
+   return $jobs;
+
+}
+
+
 get_header();
 
     if ( have_posts() ) : the_post(); ?>
@@ -159,9 +184,10 @@ get_header();
         
         <?php
             $is_details = is_singular( 'job' );
-            $form = populate_form( $is_details );
 
-            check_params();
+            $form = populate_form( $is_details );
+            populate_params();
+            $jobs = get_posts_filtered( $is_details, $metquery, $taxquery );
 
             if( $is_details ):
                 $current_id = get_the_ID();
@@ -169,30 +195,11 @@ get_header();
                 $details       = get_field('job_details', $current_id);
                 $urlapply      = get_field('job_link', $current_id);
                 $company_datas = extend_post( get_field('job_company', $current_id) );
-
             else:
                 require_once('includes/form-job.php');
 
                 // Get jobs from workable
                 $jobs_alven = get_jobs();
-
-                // Get jobs from worpdress
-                $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-
-                $posts_args = array(
-                    'post_type'      => 'job',
-                    'posts_per_page' =>  6,
-                    'paged'          => $paged,
-                    'meta_query'     => $metquery,
-                    'tax_query'      => $taxquery,
-                    's'              => sanitize_text_field( get_query_var('search') )
-                );
-                $jobs = new WP_Query( $posts_args );
-
-                if( $jobs->have_posts() ):
-                    $jobs_extended = array_map( 'extend_query' , $jobs->posts );
-                endif;
-
             endif;
             
             $hasImg = false;
@@ -285,6 +292,24 @@ get_header();
                                 
                                 <button type="submit" id="searchsubmit" class="btn">Search</button>
                             </form>
+                            <?php if( $is_details ): ?>
+                                <div class='related-jobs'>
+                                    <?php
+                                        var_dump( $jobs );
+                                        if( !empty( $jobs ) ):
+                                            foreach ($jobs as $key => $job) {
+                                                $article = '<a href="'.esc_url( get_permalink( $job->ID ) ).'" class="job no-padding">';
+                                                $article .= '<p class="job-title">'.$job->post_title.'</p>';
+                                                if( $job->location ):
+                                                    $article .= '<p class="job-location">'.$job->location[0]->name.'</p>';
+                                                endif;
+                                                $article .= '</a>';
+                                                echo $article;
+                                            }
+                                        endif;
+                                    ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class='col-8 no-padding-right'>
                             <?php 
@@ -344,9 +369,18 @@ get_header();
                                     echo '</div>';
                                 else:
                                     echo '<div class="list-jobs flex-container">';
-                                    if( !empty($jobs_extended) ):
-                                        foreach ($jobs_extended as $key => $job) {
-                                            $article = '<a href="'.esc_url( get_permalink( $job->ID ) ).'" class="job no-padding">';
+                                    if( $jobs->have_posts() ):
+
+                                        foreach (array_map( 'extend_query' , $jobs->posts ) as $key => $job) {
+                                            
+                                            $url = add_query_arg( array(
+                                                    'location' => $params['location'],
+                                                    'company'  => $params['company'],
+                                                    'function' => $params['function'],
+                                                    'sector'   => $params['sector']
+                                            ), esc_url( get_permalink( $job->ID ) ) );
+
+                                            $article = '<a href="'.$url.'" class="job no-padding">';
                                             $article .= '<div class="align-center"><img src="'.$job->from['logo'].'" alt="'.$job->from['name'].'"></div>';
                                             $article .= '<div><p class="job-title">'.$job->post_title.'</p>';
                                             if( $job->location ):
@@ -393,15 +427,14 @@ get_header();
                                 <div class="list-jobs-alven flex-container">
                                     <?php 
                                         foreach ($jobs_alven as $key => $job_alven) {
-                                        //var_dump($job_alven);
-                                        $job_alven_link  = '<a href="'.$job_alven['url'].'" class="job-alven">';
-                                        $job_alven_link .= '<p class="job-title-alven">'.$job_alven['title'].'</p>';
-                                        // Line below do the trick also
-                                        // $job_alven_location = ($job_alven['location']['city'] && $job_alven['location']['country'] ? $job_alven['location']['city'] . ',&nbsp;' . $job_alven['location']['country'] : ($job_alven['location']['city'] ? $job_alven['location']['city'] : $job_alven['location']['country']));
-                                        $job_alven_location = join(',&nbsp;', array_filter([$job_alven['location']['city'], $job_alven['location']['country']]));
-                                        $job_alven_link .= '<p class="job-location-alven">'.$job_alven_location.'</p>';
-                                        $job_alven_link .= '</a>';
-                                        echo $job_alven_link;
+                                            $job_alven_link  = '<a href="'.$job_alven['url'].'" class="job-alven">';
+                                            $job_alven_link .= '<p class="job-title-alven">'.$job_alven['title'].'</p>';
+                                            // Line below do the trick also
+                                            // $job_alven_location = ($job_alven['location']['city'] && $job_alven['location']['country'] ? $job_alven['location']['city'] . ',&nbsp;' . $job_alven['location']['country'] : ($job_alven['location']['city'] ? $job_alven['location']['city'] : $job_alven['location']['country']));
+                                            $job_alven_location = join(',&nbsp;', array_filter([$job_alven['location']['city'], $job_alven['location']['country']]));
+                                            $job_alven_link .= '<p class="job-location-alven">'.$job_alven_location.'</p>';
+                                            $job_alven_link .= '</a>';
+                                            echo $job_alven_link;
                                         }
                                     ?>
                                 </div>
