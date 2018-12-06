@@ -2,6 +2,10 @@
 
 define( 'ALVEN_VERSION', 1.0 );
 
+// WORKABLE
+define( 'WRKBL_SUBDOMAIN', 'alven' );
+define( 'WRKBL_TOKEN', '74069b76972b9edc000610fd9cd1f2f9945483d3425e7483467d0faa6f43680b' );
+
 if(function_exists('get_field')){
     define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );
     define( 'CONTACT_ID', url_to_postid(get_field('pageContact', 'options')) );
@@ -809,3 +813,165 @@ function alven_portfolio_ajax()
 }
 add_action('wp_ajax_nopriv_alven_portfolio_ajax', 'alven_portfolio_ajax');
 add_action('wp_ajax_alven_portfolio_ajax', 'alven_portfolio_ajax');
+
+
+/*-----------------------------------------------------------------------------------*/
+/* CAREERS FUNCTIONS ASSOCIATED
+/*-----------------------------------------------------------------------------------*/
+// Main query of the careers template : available for single and list
+function get_posts_filtered( $is_details = FALSE, $metquery, $taxquery ){
+    if( !$is_details ):
+        $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+    endif;
+
+    $posts_args = array(
+        'post_type'      => 'job',
+        'posts_per_page' =>  4,
+        'paged'          => $paged,
+        'meta_query'     => $metquery,
+        'tax_query'      => $taxquery,
+        's'              => sanitize_text_field( get_query_var('search') )
+    );
+    $jobs = new WP_Query( $posts_args );
+
+   return $jobs;
+}
+
+function get_form_datas( $d ){
+    $action = get_current_template_url( $d, 'careers.php' );
+    
+    // Get locations
+    $locations = get_terms( array(
+        'taxonomy'   => 'job_location',
+        'hide_empty' => false
+    ) );
+    // Get functions
+    $functions = get_terms( array(
+        'taxonomy'   => 'job_function',
+        'hide_empty' => false
+    ) );           
+    // Get sectors
+    $sectors = get_terms( array(
+        'taxonomy'   => 'job_sector',
+        'hide_empty' => false
+    ) );        
+    // Get startups
+    $startups = get_meta_values('job_company', 'job');
+    if( !empty($startups) ){
+        $startups_filtered = array_count_values( $startups );
+        $startups_extended = array_map( 'extend_metas_response', $startups_filtered, array_keys( $startups_filtered ) );
+    }
+
+    return array(
+        'action'    => $action,
+        'locations' => $locations,
+        'functions' => $functions,
+        'sectors'   => $sectors,
+        'startups'  => $startups_extended 
+    );
+}
+
+// Functions below that "extends" allow to "extend" the function get_meta_values()
+// This is specific usage for careers template
+function extend_metas_response( $s, $k ){
+    $extended = array(
+        'id'    => $k,
+        'slug'  => get_post_field( 'post_name', $k ),
+        'name'  => get_the_title( $k ),
+        'count' => $s
+    );
+    return $extended;
+}
+function extend_post( $id ){
+    $company_datas = null;
+    
+    if( $id ):
+        $company_datas = array(
+            'name'     => get_the_title( $id ),
+            'logo_url' => get_the_post_thumbnail_url( $id ),
+            'sectors'  => wp_get_post_terms( $id, 'field' )
+        );
+    endif;
+
+    return $company_datas;
+}
+
+// Get page carreer url and return it
+function get_current_template_url( $s, $t ){
+    if( $s ):
+        $page = get_pages(array(
+            'meta_key' => '_wp_page_template',
+            'meta_value' => $t
+        ));
+        return get_permalink( $page[0]->ID );
+    else:
+        return get_permalink();
+    endif;
+}
+
+// Allow to get all and only specific metas values from a CPT without querying the post
+// Origin of the function below : https://wordpress.stackexchange.com/questions/9394/getting-all-values-for-a-custom-field-key-cross-post
+function get_meta_values( $key = '', $type = 'post', $status = 'publish' ) {
+    global $wpdb;
+
+    if( empty( $key ) )
+        return;
+
+    $r = $wpdb->get_col( $wpdb->prepare( "
+        SELECT pm.meta_value FROM {$wpdb->postmeta} pm
+        LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+        WHERE pm.meta_key = '%s' 
+        AND p.post_status = '%s' 
+        AND p.post_type = '%s'
+    ", $key, $status, $type ) );
+
+    return $r;
+}
+
+// Add datas to the main response of WP_QUERY
+// @params :
+// $jobs    : job to extend (object)
+// $datas   : add startups datas (boolean)
+function extend_query( $jobs, $datas ){
+    foreach ($jobs as $key => $job) {
+
+        if( $datas['location'] ):
+            // Set location
+            $job->location = get_the_terms($job->ID, 'job_location');
+        endif;
+        
+        if( $datas['startup'] ):
+            // Set startup datas to job datas
+            $sid     = get_field('job_company', $job->ID);
+            $job->from = array(
+                'name' => get_the_title( $sid ),
+                'logo' => get_the_post_thumbnail_url( $sid ),
+                //...
+            );
+        endif;
+    }
+
+    return $jobs;
+}
+
+// Get a list of jobs available in workable
+function get_jobs_from_wrkbl(){
+    $workable_datas = null;
+    $workable_args = array(
+        'headers' => array(
+            'Content-Type: application/json',
+            'Authorization' => 'Bearer ' . WRKBL_TOKEN
+        ),
+    );
+
+    // ?state=published
+    $workable_response = wp_remote_get( 'https://'. WRKBL_SUBDOMAIN .'.workable.com/spi/v3/jobs', $workable_args );
+    $workable_response_code = wp_remote_retrieve_response_code( $workable_response );
+
+    if( $workable_response_code == 200 ):
+        $workable_datas_filtered = json_decode( $workable_response['body'], true );
+        $workable_datas = $workable_datas_filtered['jobs'];
+    endif;
+
+    return $workable_datas;
+}
