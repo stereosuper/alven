@@ -820,18 +820,20 @@ add_action('wp_ajax_alven_portfolio_ajax', 'alven_portfolio_ajax');
 /*-----------------------------------------------------------------------------------*/
 // Main query of the careers template : available for single and list
 function get_posts_filtered( $is_details = FALSE, $metquery, $taxquery ){
-    if( !$is_details ):
-        $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-    endif;
 
     $posts_args = array(
         'post_type'      => 'job',
         'posts_per_page' =>  4,
-        'paged'          => $paged,
         'meta_query'     => $metquery,
         'tax_query'      => $taxquery,
         's'              => sanitize_text_field( get_query_var('search') )
     );
+
+    if( !$is_details ):
+        $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+        $posts_args['paged'] = $paged;
+    endif;
+
     $jobs = new WP_Query( $posts_args );
 
    return $jobs;
@@ -857,7 +859,7 @@ function get_form_datas( $d ){
     ) );        
     // Get startups
     $startups = get_meta_values('job_company', 'job');
-    if( !empty($startups) ){
+    if( !empty( $startups ) ){
         $startups_filtered = array_count_values( $startups );
         $startups_extended = array_map( 'extend_metas_response', $startups_filtered, array_keys( $startups_filtered ) );
     }
