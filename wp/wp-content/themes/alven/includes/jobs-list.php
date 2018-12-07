@@ -1,6 +1,6 @@
 <?php
 
-if ($jobs->have_posts()):
+if ( $jobs->have_posts() ):
 
     echo '<div class="flex-container list-jobs">';
         foreach (extend_query($jobs->posts, array('location' => true, 'startup' => true)) as $key => $job) {

@@ -37,7 +37,6 @@ if( isset( $_POST['directappsubmit'] ) ){
         $errorEmail_job = true;
     }
 
-
     if( !empty($document_job['name']) ){
         $allowedMimes = array(
             'pdf'  => 'application/pdf',
@@ -53,7 +52,6 @@ if( isset( $_POST['directappsubmit'] ) ){
             //$errorSend_job = 'Sorry, your document couldn\'t be send: the uploaded file extension isn\'t valid.';
         }
     }
-
 
     if( $status_job === 'error' ){
         $errorSend_job = 'Sorry, your message counldn\'t be send, the form contains errors. Please check the red fields.';

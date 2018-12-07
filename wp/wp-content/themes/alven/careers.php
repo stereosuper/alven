@@ -78,28 +78,30 @@ get_header();
                             <h2 class='job-sidebar-title'>Start-up jobs</h2>
                             <p>Join the alven Family</p>
                             <?php require_once('includes/form-filtered-job.php'); ?>
-                            <?php if( $is_details ): ?>
+                            <?php if( $is_details && $jobs->have_posts() ):
+                                // check if the only post is the current one
+                                if( !( count( $jobs->posts ) === 1 && $jobs->post->ID === get_the_ID() ) ):
+                                ?>
                                 <div class='related-jobs'>
-                                    <P><?php _e('Related job offers', 'alven') ?></p>
+                                    <p><?php _e('Related job offers', 'alven') ?></p>
                                     <?php
-                                        if( $jobs->have_posts() ):
-                                            foreach ( extend_query($jobs->posts, array( 'location' => true, 'startup' => false ) ) as $key => $job) {
-                                                
-                                                $article = '<a href="'. get_url_with_careers_params( esc_url( get_permalink( $job->ID ) ), $params ) .'" class="job no-padding">';
-                                                $article .= '<p class="job-title">'.$job->post_title.'</p>';
-                                                if( $job->location ):
-                                                    $article .= '<p class="job-location">'.$job->location[0]->name.'</p>';
-                                                endif;
-                                                $article .= '</a>';
+                                        foreach ( extend_query($jobs->posts, array( 'location' => true, 'startup' => false ) ) as $key => $job) {
+                                            if( $job->ID !== get_the_ID() ):
+                                                    $article = '<a href="'. get_url_with_careers_params( esc_url( get_permalink( $job->ID ) ), $params ) .'" class="job no-padding">';
+                                                    $article .= '<p class="job-title">'.$job->post_title.'</p>';
+                                                    if( $job->location ):
+                                                        $article .= '<p class="job-location">'.$job->location[0]->name.'</p>';
+                                                    endif;
+                                                    $article .= '</a>';
 
-                                                echo $article;
-                                            }
-
-                                            echo '<a href="'. get_url_with_careers_params( $form['action'], $params ) .'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
-                                        endif;
+                                                    echo $article;
+                                            endif;
+                                        }
+                                        echo '<a href="'. get_url_with_careers_params( $form['action'], $params ) .'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
                                     ?>
                                 </div>
-                            <?php endif; ?>
+                                <?php endif;
+                            endif; ?>
                         </div>
                         <div class='col-8 no-padding-right'>
                             <?php 
