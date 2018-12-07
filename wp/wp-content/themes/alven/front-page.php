@@ -22,7 +22,7 @@ get_header(); ?>
                     </li><li>
                         <a href='<?php echo home_url('#who-we-are'); ?>' class='btn-arrow'><span><?php the_field('titleHeaderTeam'); ?></span> Who we are</a>
                     </li><li>
-                        <a href='<?php the_field('urlPageCareer'); ?>' class='btn-arrow'><span><?php the_field('titleHeaderCareers'); ?></span> Who we are</a>
+                        <a href='<?php the_field('urlPageCareer'); ?>' class='btn-arrow'><span><?php the_field('titleHeaderCareers'); ?></span><?php _e('Join the Alven Family','alven'); ?></a>
                     </li>
                 </ul>
             </div>

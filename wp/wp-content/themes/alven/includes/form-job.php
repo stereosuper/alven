@@ -38,6 +38,9 @@ if( isset( $_POST['directappsubmit'] ) ){
     }
 
     if( !empty($document_job['name']) ){
+
+        var_dump($document_job);
+
         $allowedMimes = array(
             'pdf'  => 'application/pdf',
             'doc'  => 'application/msword',
@@ -91,7 +94,6 @@ if( isset( $_POST['directappsubmit'] ) ){
                 $status_job = 'success';
             else:
                 $workable_datas_application = json_decode( $workable_response['body'], true );
-                //var_dump( $workable_datas_application );
                 $status_job    = 'error';
                 $errorSend_job = $workable_datas_application['error'];
             endif;
