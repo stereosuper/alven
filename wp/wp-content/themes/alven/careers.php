@@ -76,8 +76,8 @@ get_header();
                 <section class='startups-jobs'>
                     <div class='container flex-container'>
                         <div class='col-3 no-padding-left'>
-                            <h2 class='job-sidebar-title'>Start-up jobs</h2>
-                            <p>Join the alven Family</p>
+                            <h2 class='job-sidebar-title'><?php _e('Start-up jobs','alven'); ?></h2>
+                            <p><?php _e('Join the alven Family','alven'); ?></p>
                             <?php require_once('includes/form-filtered-job.php'); ?>
                             <?php if( $is_details && $jobs->have_posts() ):
                                 // check if the only post is the current one

@@ -32,5 +32,5 @@ if ( $jobs->have_posts() ):
     echo "</div>";
 
 else:
-    echo '<p>' . __('Aucun post ne correspond à cette recherche.', 'alven') . '</p>';
+    echo '<p>' . __('There are no jobs available at the moment.', 'alven') . '</p>';
 endif;
