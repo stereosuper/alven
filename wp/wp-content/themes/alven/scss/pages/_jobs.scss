@@ -48,6 +48,37 @@
     }
 }
 
+.company-search {
+    .related-jobs {
+        margin-top: 6rem;
+        &:first-of-type {
+            color: $greyLight;
+            text-transform: uppercase;
+            margin-bottom: $outterGutter;
+        }
+        .related-jobs-links {
+            a {
+                display: block;
+                padding-bottom: $outterGutter;
+                margin-bottom: $outterGutter;
+                .job-title {
+                    text-transform: none;
+                }
+            }
+        }
+        > a {
+            &:last-child {
+                display: inline-flex;
+                color: $blue;
+                padding-bottom: 0;
+                text-transform: none;
+                font-style: italic;
+                font-family: $arvo;
+            }
+        }
+    }
+}
+
 .jobs-form {
     margin: 15px 0 0;
     div {
@@ -221,15 +252,20 @@
 
 .details-job-header {
     margin: 0 0 6.5em;
-    > div {
-        width: 50%;
-    }
     .title-small {
         + p {
             margin: 0;
             font-size: 1.4rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+    }
+    .company-info-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        > div {
+            width: 50%;
         }
     }
 }
@@ -265,30 +301,34 @@
         .title-small {
             margin-bottom: $outterGutter;
         }
-        figure {
-            padding: $outterGutter * 2;
-            margin: 0 0 $outterGutter;
-            border: 1px solid $greyBorder;
+    }
+}
+
+.company-image {
+    padding: $outterGutter * 2;
+    margin: 0 0 $outterGutter;
+    border: 1px solid $greyBorder;
+}
+
+.company-sector {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    li {
+        margin: 0 $innerGutter / 2 0 0;
+        padding: 0 $innerGutter 0 0;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        &::before {
+            top: 0;
+            background-color: transparent;
         }
-        ul {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 0;
-            margin: 0;
-            li {
-                margin: 0 $innerGutter / 2 0 0;
-                padding: 0 $innerGutter 0 0;
-                &::before {
-                    top: 0;
-                    background-color: transparent;
-                }
-                &:not(:last-child) {
-                    &::after {
-                        content: "/";
-                        position: absolute;
-                        right: 0;
-                    }
-                }
+        &:not(:last-child) {
+            &::after {
+                content: "/";
+                position: absolute;
+                right: 0;
             }
         }
     }
@@ -348,27 +388,95 @@
             margin-right: 0;
         }
     }
+    .company-search {
+        .related-jobs {
+            .related-jobs-links {
+                display: flex;
+                flex-wrap: wrap;
+                a {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    flex-basis: calc(50% - #{$outterGutter / 2});
+                    &:nth-child(odd) {
+                        margin-right: $outterGutter;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: $tablet) {
+    #main {
+        padding: 0 0 5px;
+    }
+    .content-main {
+        padding-top: $outterGutter;
+    }
+    .company-search {
+        display: none;
+    }
     .single-job {
         .title-small {
             display: none;
         }
     }
+    .related-jobs {
+        display: none;
+    }
     .details-job-main {
         width: 100%;
-        .company-image,
-        .company-sector {
+        .company-image {
             display: block;
+        }
+        .company-sector {
+            display: flex;
+        }
+    }
+    .startups-jobs {
+        margin-top: 0;
+        .flex-container {
+            &.details-job-header {
+                flex-wrap: nowrap;
+                .company-image {
+                    flex: 1 0 30%;
+                    margin: 0 $outterGutter * 2 0 0;
+                }
+            }
         }
     }
     .details-job-header {
-        width: min-content;
+        position: relative;
+        padding: 0 0 $outterGutter;
+        margin: 0;
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            border-bottom: 1px solid $greyBorder;
+        }
+        .company-info-wrapper {
+            flex-direction: column-reverse;
+            justify-content: center;
+            div,
+            .company-sector {
+                margin-bottom: $innerGutter;
+                &:first-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
     .details-job-sidebar {
         position: fixed;
+        width: calc(100% - #{$outterGutter * 2});
+        max-width: #{$phone};
+        left: 50%;
         bottom: $innerGutter;
+        padding: 0;
+        transform: translateX(-50%);
         .btn {
             display: block;
             margin-bottom: 0;

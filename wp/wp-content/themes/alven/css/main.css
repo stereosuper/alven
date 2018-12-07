@@ -3631,6 +3631,26 @@ select::-ms-expand {
     max-width: 100%;
     margin: 30px 0; }
 
+.company-search .related-jobs {
+  margin-top: 6rem; }
+  .company-search .related-jobs:first-of-type {
+    color: #ccd1d2;
+    text-transform: uppercase;
+    margin-bottom: 20px; }
+  .company-search .related-jobs .related-jobs-links a {
+    display: block;
+    padding-bottom: 20px;
+    margin-bottom: 20px; }
+    .company-search .related-jobs .related-jobs-links a .job-title {
+      text-transform: none; }
+  .company-search .related-jobs > a:last-child {
+    display: inline-flex;
+    color: #23afa9;
+    padding-bottom: 0;
+    text-transform: none;
+    font-style: italic;
+    font-family: "Arvo", serif; }
+
 .jobs-form {
   margin: 15px 0 0; }
   .jobs-form div {
@@ -3796,13 +3816,17 @@ select::-ms-expand {
 
 .details-job-header {
   margin: 0 0 6.5em; }
-  .details-job-header > div {
-    width: 50%; }
   .details-job-header .title-small + p {
     margin: 0;
     font-size: 1.4rem;
     text-transform: uppercase;
     letter-spacing: 0.05em; }
+  .details-job-header .company-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; }
+    .details-job-header .company-info-wrapper > div {
+      width: 50%; }
 
 .details-job-main {
   width: 75%;
@@ -3853,25 +3877,29 @@ select::-ms-expand {
       width: 30px; }
     .details-job-sidebar .company-info .title-small {
       margin-bottom: 20px; }
-    .details-job-sidebar .company-info figure {
-      padding: 40px;
-      margin: 0 0 20px;
-      border: 1px solid #e5e8e8; }
-    .details-job-sidebar .company-info ul {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 0;
-      margin: 0; }
-      .details-job-sidebar .company-info ul li {
-        margin: 0 5px 0 0;
-        padding: 0 10px 0 0; }
-        .details-job-sidebar .company-info ul li::before {
-          top: 0;
-          background-color: transparent; }
-        .details-job-sidebar .company-info ul li:not(:last-child)::after {
-          content: "/";
-          position: absolute;
-          right: 0; }
+
+.company-image {
+  padding: 40px;
+  margin: 0 0 20px;
+  border: 1px solid #e5e8e8; }
+
+.company-sector {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0; }
+  .company-sector li {
+    margin: 0 5px 0 0;
+    padding: 0 10px 0 0;
+    text-transform: uppercase;
+    font-size: 1.4rem; }
+    .company-sector li::before {
+      top: 0;
+      background-color: transparent; }
+    .company-sector li:not(:last-child)::after {
+      content: "/";
+      position: absolute;
+      right: 0; }
 
 @media (max-width: 1150px) {
   .job-sidebar-title {
@@ -3904,21 +3932,69 @@ select::-ms-expand {
       margin-left: 0; }
     .job-alven:nth-child(2n) {
       margin: 10px 20px;
-      margin-right: 0; } }
+      margin-right: 0; }
+  .company-search .related-jobs .related-jobs-links {
+    display: flex;
+    flex-wrap: wrap; }
+    .company-search .related-jobs .related-jobs-links a {
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: calc(50% - 10px); }
+      .company-search .related-jobs .related-jobs-links a:nth-child(odd) {
+        margin-right: 20px; } }
 
 @media (max-width: 767px) {
+  #main {
+    padding: 0 0 5px; }
+  .content-main {
+    padding-top: 20px; }
+  .company-search {
+    display: none; }
   .single-job .title-small {
+    display: none; }
+  .related-jobs {
     display: none; }
   .details-job-main {
     width: 100%; }
-    .details-job-main .company-image,
-    .details-job-main .company-sector {
+    .details-job-main .company-image {
       display: block; }
+    .details-job-main .company-sector {
+      display: flex; }
+  .startups-jobs {
+    margin-top: 0; }
+    .startups-jobs .flex-container.details-job-header {
+      flex-wrap: nowrap; }
+      .startups-jobs .flex-container.details-job-header .company-image {
+        flex: 1 0 30%;
+        margin: 0 40px 0 0; }
   .details-job-header {
-    width: min-content; }
+    position: relative;
+    padding: 0 0 20px;
+    margin: 0; }
+    .details-job-header::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      border-bottom: 1px solid #e5e8e8; }
+    .details-job-header .company-info-wrapper {
+      flex-direction: column-reverse;
+      justify-content: center; }
+      .details-job-header .company-info-wrapper div,
+      .details-job-header .company-info-wrapper .company-sector {
+        margin-bottom: 10px; }
+        .details-job-header .company-info-wrapper div:first-child,
+        .details-job-header .company-info-wrapper .company-sector:first-child {
+          margin-bottom: 0; }
   .details-job-sidebar {
     position: fixed;
-    bottom: 10px; }
+    width: calc(100% - 40px);
+    max-width: 540px;
+    left: 50%;
+    bottom: 10px;
+    padding: 0;
+    transform: translateX(-50%); }
     .details-job-sidebar .btn {
       display: block;
       margin-bottom: 0; }
