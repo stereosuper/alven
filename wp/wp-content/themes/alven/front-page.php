@@ -21,6 +21,8 @@ get_header(); ?>
                         <a href='<?php echo get_permalink(PORTFOLIO_ID); ?>' class='btn-arrow'><span><?php the_field('titleHeaderPortfolio'); ?></span> Portfolio</a>
                     </li><li>
                         <a href='<?php echo home_url('#who-we-are'); ?>' class='btn-arrow'><span><?php the_field('titleHeaderTeam'); ?></span> Who we are</a>
+                    </li><li>
+                        <a href='<?php the_field('urlPageCareer'); ?>' class='btn-arrow'><span><?php the_field('titleHeaderCareers'); ?></span> Who we are</a>
                     </li>
                 </ul>
             </div>
