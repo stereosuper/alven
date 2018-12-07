@@ -68,6 +68,7 @@ get_header();
                     <?php the_post_thumbnail(); ?>
                 </div>
             <?php } ?>
+            <div class="separator"></div>
         </div>
 
         <main role='main' id='main'>
