@@ -24,31 +24,31 @@ echo '<div class="flex-container details-job">';
         if ($details):
             if ($details['job_details_about']):
                 $details_section .= '<div class="js-job-details-tab">';
-                $details_section .= '<h2 class="job-single-title">' . __('About', 'alven') . '&nbsp' . $company_datas['name'] . '</h2>';
+                $details_section .= '<h2 class="job-single-title">' . __('About', 'alven') . '&nbsp' . $company_datas['name'] . '<i class="icon-arrow-tip"></i></h2>';
                 $details_section .= $details['job_details_about'];
                 $details_section .= '</div>';
             endif;
             if ($details['job_details_desc']):
                 $details_section .= '<div class="js-job-details-tab">';
-                $details_section .= '<h2 class="job-single-title">' . __('Job description', 'alven') . '</h2>';
+                $details_section .= '<h2 class="job-single-title">' . __('Job description', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
                 $details_section .= $details['job_details_desc'];
                 $details_section .= '</div>';
             endif;
             if ($details['job_details_profil']):
                 $details_section .= '<div class="js-job-details-tab">';
-                $details_section .= '<h2 class="job-single-title">' . __('Profile', 'alven') . '</h2>';
+                $details_section .= '<h2 class="job-single-title">' . __('Profile', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
                 $details_section .= $details['job_details_profil'];
                 $details_section .= '</div>';
             endif;
             if ($details['job_details_why']):
                 $details_section .= '<div class="js-job-details-tab">';
-                $details_section .= '<h2 class="job-single-title">' . __('Why you should join us', 'alven') . '</h2>';
+                $details_section .= '<h2 class="job-single-title">' . __('Why you should join us', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
                 $details_section .= $details['job_details_why'];
                 $details_section .= '</div>';
             endif;
             if ($details['job_details_process']):
                 $details_section .= '<div class="js-job-details-tab">';
-                $details_section .= '<h2 class="job-single-title">' . __('Hiring Process', 'alven') . '</h2>';
+                $details_section .= '<h2 class="job-single-title">' . __('Hiring Process', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
                 $details_section .= $details['job_details_process'];
                 $details_section .= '</div>';
             endif;

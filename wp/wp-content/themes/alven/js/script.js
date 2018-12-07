@@ -1341,16 +1341,14 @@ $(function(){
             if (window.innerWidth > 767) {
                 if (tabs.css('maxHeight') != 'max-content') {
                     tabs.css({ maxHeight: 'max-content' });
+                    tabs.removeClass('active');
                 }
             } else {
                 tabs.each(function (index, tab) {
                     var jQueryTab = $(tab);
                     var height = jQueryTab.find('.job-single-title').outerHeight(true);
                     var currentMaxHeight = parseFloat(jQueryTab.css('maxHeight').replace('px', ''));
-					console.log("​currentMaxHeight", currentMaxHeight)
                     if (currentMaxHeight != height) {
-						console.log("​jQueryTab.css('maxHeight')", jQueryTab.css('maxHeight'))
-                        
                         jQueryTab.css({ maxHeight: height });
                     }
                 });

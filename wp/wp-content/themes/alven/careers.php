@@ -68,11 +68,11 @@ get_header();
                     <?php the_post_thumbnail(); ?>
                 </div>
             <?php } ?>
-            <div class="separator"></div>
         </div>
 
         <main role='main' id='main'>
             <div class="content-main content-career" id="mainContent">
+                <div class="separator"></div>
                 <section class='startups-jobs'>
                     <div class='container flex-container'>
                         <div class='col-3 no-padding-left company-search'>
