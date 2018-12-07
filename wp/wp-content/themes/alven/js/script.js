@@ -1189,6 +1189,7 @@ $(function(){
                     openFormError($(this));
                 }
             });
+            $('.form-wrkbl-to-open').css({'display': 'block', 'opacity': 1});
         }
 
         btnForm.on('click', function(e){

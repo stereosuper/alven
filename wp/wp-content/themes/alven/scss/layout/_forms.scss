@@ -23,9 +23,22 @@ form{
                 margin: 0 5% 5px 0;
             }
         }
+        &.margin-bottom-large{
+            margin-bottom: 50px;
+        }
         label{
             left: 25px;
             right: 25px;
+        }
+    }
+    .form-section-inline{
+        display: flex;
+        div{
+            display: block;
+            width: auto;
+            &:last-child{
+                flex-grow: 2;
+            }
         }
     }
 }
@@ -294,5 +307,17 @@ select{
         border-color: $blue;
         -moz-appearance: none;
         -webkit-appearance: none;
+    }
+}
+
+
+@media (max-width: $phone) {
+    form{
+        .form-section-inline{
+            flex-wrap: wrap;
+            > div{
+                width: 100%;
+            }
+        }
     }
 }

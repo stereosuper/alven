@@ -5,6 +5,8 @@ define( 'ALVEN_VERSION', 1.1 );
 // WORKABLE
 define( 'WRKBL_SUBDOMAIN', 'alven' );
 define( 'WRKBL_TOKEN', '74069b76972b9edc000610fd9cd1f2f9945483d3425e7483467d0faa6f43680b' );
+define( 'WRKBL_APPLICATION', 'E0D70C0FF7' );
+// END WORKABLE
 
 if(function_exists('get_field')){
     define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );

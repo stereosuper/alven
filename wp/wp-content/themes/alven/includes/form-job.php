@@ -49,11 +49,11 @@ if( isset( $_POST['directappsubmit'] ) ){
         if( empty( $document_type['ext'] ) ){
             $status_job = 'error';
             $errorDocument_job = true;
-            //$errorSend_job = 'Sorry, your document couldn\'t be send: the uploaded file extension isn\'t valid.';
+            $errorSend_job = 'Sorry, your document couldn\'t be send: the uploaded file extension isn\'t valid.';
         }
     }
 
-    if( $status_job === 'error' ){
+    if( $status_job === 'error' && empty( $errorSend_job ) ){
         $errorSend_job = 'Sorry, your message counldn\'t be send, the form contains errors. Please check the red fields.';
     }
 
@@ -72,13 +72,10 @@ if( isset( $_POST['directappsubmit'] ) ){
             );
 
             $workable_datas = null;
-            $subdomain = 'alven'; 
-            $token     = '74069b76972b9edc000610fd9cd1f2f9945483d3425e7483467d0faa6f43680b';
-            $shortcode = 'E0D70C0FF7';
             $workable_args = array(
                 'headers' => array(
                     'Content-Type: application/json',
-                    'Authorization' => 'Bearer ' . $token,
+                    'Authorization' => 'Bearer ' . WRKBL_TOKEN,
                     'Accept: application/json'
                 ),
                 'body'    => array(
@@ -87,13 +84,16 @@ if( isset( $_POST['directappsubmit'] ) ){
             );
 
             // ?state=published
-            $workable_response = wp_remote_post( 'https://'.$subdomain.'.workable.com/spi/v3/jobs/'.$shortcode.'/candidates', $workable_args );
+            $workable_response = wp_remote_post( 'https://'. WRKBL_SUBDOMAIN .'.workable.com/spi/v3/jobs/'. WRKBL_APPLICATION .'/candidates', $workable_args );
             $workable_response_code = wp_remote_retrieve_response_code( $workable_response );
 
             if( $workable_response_code == 201 ):
                 $status_job = 'success';
             else:
-                $status_job = 'error';
+                $workable_datas_application = json_decode( $workable_response['body'], true );
+                //var_dump( $workable_datas_application );
+                $status_job    = 'error';
+                $errorSend_job = $workable_datas_application['error'];
             endif;
 
         }else{

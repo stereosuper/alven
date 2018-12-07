@@ -348,6 +348,17 @@
             margin-right: 0;
         }
     }
+    .workable-form-application{
+        .flex-container{
+            flex-wrap: wrap;
+            > div{
+                width: 100%;
+                &:first-child{
+                    margin-bottom: 50px;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: $tablet) {

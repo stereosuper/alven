@@ -731,9 +731,19 @@ form div {
       max-width: 55%; }
   form div.has-desc input, form div.has-desc button {
     margin: 0 5% 5px 0; }
+  form div.margin-bottom-large {
+    margin-bottom: 50px; }
   form div label {
     left: 25px;
     right: 25px; }
+
+form .form-section-inline {
+  display: flex; }
+  form .form-section-inline div {
+    display: block;
+    width: auto; }
+    form .form-section-inline div:last-child {
+      flex-grow: 2; }
 
 fieldset {
   margin: 50px 0 0; }
@@ -955,6 +965,12 @@ select::-ms-expand {
     border-color: #23afa9;
     -moz-appearance: none;
     -webkit-appearance: none; }
+
+@media (max-width: 540px) {
+  form .form-section-inline {
+    flex-wrap: wrap; }
+    form .form-section-inline > div {
+      width: 100%; } }
 
 /* Header */
 #header {
@@ -3904,7 +3920,13 @@ select::-ms-expand {
       margin-left: 0; }
     .job-alven:nth-child(2n) {
       margin: 10px 20px;
-      margin-right: 0; } }
+      margin-right: 0; }
+  .workable-form-application .flex-container {
+    flex-wrap: wrap; }
+    .workable-form-application .flex-container > div {
+      width: 100%; }
+      .workable-form-application .flex-container > div:first-child {
+        margin-bottom: 50px; } }
 
 @media (max-width: 767px) {
   .single-job .title-small {

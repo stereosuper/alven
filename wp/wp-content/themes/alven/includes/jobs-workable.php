@@ -26,23 +26,24 @@
     </section>
 <?php endif;?>
 
-    <section class=''>
-        <h2>Direct application</h2>
+    <section class='workable-form-application'>
+        <h2><?php _e('Direct application','alven'); ?></h2>
+        <div class="separator"></div>
         <div class='container flex-container'>
             <div class='col-3 no-padding-left'>
                 <?php the_field('career_directapp_desc');?>
             </div>
-        <div class='col-8 no-padding-right'>
+            <div class='col-8 no-padding-right'>
             <?php if ($status_job === 'success'): ?>
                 <p class='form-success'><?php _e('Your message has been sent!<br> Thank you, we will be back to you shortly.', 'alven');?></p>
             <?php else: ?>
                 <?php if ($errorSend_job): ?>
                     <p class='form-error'><?php echo $errorSend_job; ?></p>
                 <?php endif;?>
-                <form action='<?php the_permalink();?>' method='post' class='' enctype='multipart/form-data' autocomplete='off'>
+                <form action='<?php the_permalink();?>' method='post' class='form-to-open form-wrkbl-to-open' enctype='multipart/form-data' autocomplete='off'>
                     <fieldset>
                         <legend class='active'><?php _e('Please', 'alven');?><span><?php _e('Introduce yourself', 'alven');?></span></legend>
-                        <section class='form-section <?php if ($errorFirstname || $errorLastname || $errorEmail) { echo "invalid"; } ?>'>
+                        <section class='form-section form-section-inline <?php if ( $errorFirstname_job || $errorLastname_job || $errorEmail_job ) { echo "invalid"; } ?>'>
                             <div>
                                 <input type='text' name='firstname_job' id='firstname_job' required class='form-elt <?php if ($errorFirstname_job) { echo "invalid"; } ?>' value='<?php echo $firstname_job; ?>'>
                                 <label for='firstname_job'><?php _e('Your first name', 'alven');?></label>
@@ -55,18 +56,23 @@
                                 <input type='email' name='email_job' id='email_job' required class='form-elt <?php if ($errorEmail_job) { echo "invalid"; } ?>' value='<?php echo $email_job; ?>'>
                                 <label for='email_job'><?php _e('Your email', 'alven');?></label>
                             </div>
-                            <div class='full has-desc'>
+                        </section>
+                    </fieldset>
+                    <fieldset>
+                        <legend><?php _e('Send us','alven'); ?><span><?php _e('Your document (CV, recommandations...)','alven'); ?></span></legend>
+                        <section class='form-section'>
+                            <div class='full has-desc margin-bottom-large'>
                                 <input type='file' name='document_job' id='document_job' required class='form-elt <?php if ($errorDocument_job) { echo "invalid"; } ?>'>
-                                <label for='document_job'>Your document</label>
-                                <span class='form-desc'>.pdf, .doc, .docx, .rtf</span>
+                                <label for='document_job'><?php _e('Upload your file','alven'); ?></label>
+                                <span class='form-desc'><?php _e('.pdf, .doc, .docx, .rtf','alven'); ?></span>
                             </div>
                             <div class='hidden'>
                                 <input type='url' name='url_job' id='url_job' value='<?php echo $spamUrl_job; ?>'>
-                                <label for='url_job'>Leave this field empty please</label>
+                                <label for='url_job'><?php _e('Leave this field empty please','alven'); ?></label>
                             </div>
                         </section>
                     </fieldset>
-                    <button type='submit' name='directappsubmit' class='btn-invert'>Confirm</button>
+                    <button type='submit' name='directappsubmit' class='btn-invert margin-top-large'><?php _e('Confirm','alven'); ?></button>
                 </form>
             <?php endif;?>
         </div>
