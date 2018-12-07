@@ -75,7 +75,7 @@ get_header();
             <div class="content-main content-career" id="mainContent">
                 <section class='startups-jobs'>
                     <div class='container flex-container'>
-                        <div class='col-3 no-padding-left'>
+                        <div class='col-3 no-padding-left company-search'>
                             <h2 class='job-sidebar-title'><?php _e('Start-up jobs','alven'); ?></h2>
                             <p><?php _e('Join the alven Family','alven'); ?></p>
                             <?php require_once('includes/form-filtered-job.php'); ?>
@@ -85,6 +85,7 @@ get_header();
                                 ?>
                                 <div class='related-jobs'>
                                     <p><?php _e('Related job offers', 'alven') ?></p>
+                                    <div class="related-jobs-links">
                                     <?php
                                         foreach ( extend_query($jobs->posts, array( 'location' => true, 'startup' => false ) ) as $key => $job) {
                                             if( $job->ID !== get_the_ID() ):
@@ -98,6 +99,9 @@ get_header();
                                                     echo $article;
                                             endif;
                                         }
+                                        ?>
+                                        </div>
+                                        <?php 
                                         echo '<a href="'. get_url_with_careers_params( $form['action'], $params ) .'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
                                     ?>
                                 </div>
