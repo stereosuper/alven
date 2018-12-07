@@ -89,7 +89,7 @@ get_header();
                                     <?php
                                         foreach ( extend_query($jobs->posts, array( 'location' => true, 'startup' => false ) ) as $key => $job) {
                                             if( $job->ID !== get_the_ID() ):
-                                                    $article = '<a href="'. get_url_with_careers_params( esc_url( get_permalink( $job->ID ) ), $params ) .'" class="job no-padding">';
+                                                    $article = '<a href="'. get_url_with_careers_params( esc_url( get_permalink( $job->ID ) ), $params ) .'" class="no-padding">';
                                                     $article .= '<p class="job-title">'.$job->post_title.'</p>';
                                                     if( $job->location ):
                                                         $article .= '<p class="job-location">'.$job->location[0]->name.'</p>';
@@ -102,7 +102,7 @@ get_header();
                                         ?>
                                         </div>
                                         <?php 
-                                        echo '<a href="'. get_url_with_careers_params( $form['action'], $params ) .'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
+                                        echo '<a class="btn-arrow" href="'. get_url_with_careers_params( $form['action'], $params ) .'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
                                     ?>
                                 </div>
                                 <?php endif;

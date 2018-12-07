@@ -3649,7 +3649,7 @@ select::-ms-expand {
 
 .company-search .related-jobs {
   margin-top: 6rem; }
-  .company-search .related-jobs:first-of-type {
+  .company-search .related-jobs > p:first-of-type {
     color: #ccd1d2;
     text-transform: uppercase;
     margin-bottom: 20px; }
@@ -3955,15 +3955,17 @@ select::-ms-expand {
       width: 100%; }
       .workable-form-application .flex-container > div:first-child {
         margin-bottom: 50px; }
-  .company-search .related-jobs .related-jobs-links {
-    display: flex;
-    flex-wrap: wrap; }
-    .company-search .related-jobs .related-jobs-links a {
-      flex-grow: 0;
-      flex-shrink: 0;
-      flex-basis: calc(50% - 10px); }
-      .company-search .related-jobs .related-jobs-links a:nth-child(odd) {
-        margin-right: 20px; } }
+  .company-search .related-jobs {
+    margin: 6rem 0; }
+    .company-search .related-jobs .related-jobs-links {
+      display: flex;
+      flex-wrap: wrap; }
+      .company-search .related-jobs .related-jobs-links a {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: calc(50% - 10px); }
+        .company-search .related-jobs .related-jobs-links a:nth-child(odd) {
+          margin-right: 20px; } }
 
 @media (max-width: 767px) {
   #main {
@@ -4021,7 +4023,12 @@ select::-ms-expand {
       display: block;
       margin-bottom: 0; }
     .details-job-sidebar .company-info {
-      display: none; } }
+      display: none; }
+  .job-details-main-content div {
+    max-height: calc(5.76rem + 3.6rem + 0.9rem);
+    overflow: hidden;
+    transition: max-height 0.25s cubic-bezier(0.75, 0, 0.125, 1);
+    will-change: max-height; } }
 
 @media (max-width: 540px) {
   .list-jobs-alven {
