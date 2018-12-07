@@ -192,6 +192,31 @@ $(function(){
         }
     }
 
+    (function singleJobTabHandler() {
+        if (body.hasClass('single-job')) {
+            var tabs = $('.js-job-details-tab');
+            if (tabs.length) {
+                tabs.on('click', 'h2', function tabState() {
+                    if (window.innerWidth <= 767) {
+                        var tab = $(this).parent();
+                        var height = 0;
+    
+                        if (tab.hasClass('active')) {
+                            height = $(this).outerHeight(true);
+                        } else {
+                            tab.children().each(function eachTabChild(index, child) {
+                                height += $(child).outerHeight(true);
+                            });
+                        }
+                        
+                        tab.css({ maxHeight: height });
+                        tab.toggleClass('active');
+                    }
+                });
+            }
+        }
+    })();
+
     // add a current class to an anchor if we are on the targeted section
     function setAnchorLink(myScroll){
         var current = mainMenu.find('.anchor');
@@ -1310,6 +1335,27 @@ $(function(){
         docHeight = $(document).height();
         windowHeight = $(window).height();
         windowWidth = window.outerWidth;
+
+        var tabs = $('.js-job-details-tab');
+        if (tabs.length) {
+            if (window.innerWidth > 767) {
+                if (tabs.css('maxHeight') != 'max-content') {
+                    tabs.css({ maxHeight: 'max-content' });
+                }
+            } else {
+                tabs.each(function (index, tab) {
+                    var jQueryTab = $(tab);
+                    var height = jQueryTab.find('.job-single-title').outerHeight(true);
+                    var currentMaxHeight = parseFloat(jQueryTab.css('maxHeight').replace('px', ''));
+					console.log("​currentMaxHeight", currentMaxHeight)
+                    if (currentMaxHeight != height) {
+						console.log("​jQueryTab.css('maxHeight')", jQueryTab.css('maxHeight'))
+                        
+                        jQueryTab.css({ maxHeight: height });
+                    }
+                });
+            }
+        }
 
         if(windowWidth > 979){
             htmlTag.removeClass('menu-open');
