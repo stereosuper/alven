@@ -3621,6 +3621,9 @@ select::-ms-expand {
 .page-template-careers .content-header.has-img {
   padding: 107px 0 25px; }
 
+.page-template-careers .content-header .separator {
+  display: none; }
+
 .startups-jobs {
   margin: 40px 0 0; }
   .startups-jobs .form-search {
@@ -3755,6 +3758,42 @@ select::-ms-expand {
 .single-job .title-small {
   margin: 0; }
 
+.single-job h1 {
+  color: #003240;
+  font-size: 5rem;
+  margin: 7.5rem auto; }
+
+.single-job .content-header {
+  background: none; }
+  .single-job .content-header .separator {
+    position: relative;
+    border-bottom: 1px solid #e5e8e8; }
+    .single-job .content-header .separator:before, .single-job .content-header .separator:after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto; }
+    .single-job .content-header .separator:after {
+      font-family: 'icomoon' !important;
+      speak: none;
+      font-style: normal;
+      font-weight: 400;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      content: "\e90a";
+      width: 22px;
+      height: 15px;
+      bottom: -8px;
+      font-size: 15px;
+      color: #23afa9; }
+    .single-job .content-header .separator:before {
+      content: "";
+      width: 35px;
+      height: 1px;
+      background: #fff;
+      bottom: -1px; }
+
 .details-job-header {
   margin: 0 0 6.5em; }
   .details-job-header > div {
@@ -3768,6 +3807,9 @@ select::-ms-expand {
 .details-job-main {
   width: 75%;
   padding: 0 10px 0 0; }
+  .details-job-main .company-image,
+  .details-job-main .company-sector {
+    display: none; }
 
 .details-job-sidebar {
   width: 25%;
@@ -3775,6 +3817,61 @@ select::-ms-expand {
   .details-job-sidebar .btn {
     width: 100%;
     margin: 0 0 3em; }
+  .details-job-sidebar .company-info {
+    position: relative;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #e5e8e8; }
+    .details-job-sidebar .company-info:before, .details-job-sidebar .company-info:after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto; }
+    .details-job-sidebar .company-info:after {
+      font-family: 'icomoon' !important;
+      speak: none;
+      font-style: normal;
+      font-weight: 400;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      content: "\e90a";
+      width: 22px;
+      height: 15px;
+      bottom: -8px;
+      font-size: 15px;
+      color: #23afa9; }
+    .details-job-sidebar .company-info:before {
+      content: "";
+      width: 35px;
+      height: 1px;
+      background: #fff;
+      bottom: -1px; }
+    .details-job-sidebar .company-info:before, .details-job-sidebar .company-info:after {
+      right: auto;
+      margin: 0; }
+    .details-job-sidebar .company-info:before {
+      width: 30px; }
+    .details-job-sidebar .company-info .title-small {
+      margin-bottom: 20px; }
+    .details-job-sidebar .company-info figure {
+      padding: 40px;
+      margin: 0 0 20px;
+      border: 1px solid #e5e8e8; }
+    .details-job-sidebar .company-info ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0; }
+      .details-job-sidebar .company-info ul li {
+        margin: 0 5px 0 0;
+        padding: 0 10px 0 0; }
+        .details-job-sidebar .company-info ul li::before {
+          top: 0;
+          background-color: transparent; }
+        .details-job-sidebar .company-info ul li:not(:last-child)::after {
+          content: "/";
+          position: absolute;
+          right: 0; }
 
 @media (max-width: 1150px) {
   .job-sidebar-title {
@@ -3808,6 +3905,25 @@ select::-ms-expand {
     .job-alven:nth-child(2n) {
       margin: 10px 20px;
       margin-right: 0; } }
+
+@media (max-width: 767px) {
+  .single-job .title-small {
+    display: none; }
+  .details-job-main {
+    width: 100%; }
+    .details-job-main .company-image,
+    .details-job-main .company-sector {
+      display: block; }
+  .details-job-header {
+    width: min-content; }
+  .details-job-sidebar {
+    position: fixed;
+    bottom: 10px; }
+    .details-job-sidebar .btn {
+      display: block;
+      margin-bottom: 0; }
+    .details-job-sidebar .company-info {
+      display: none; } }
 
 @media (max-width: 540px) {
   .list-jobs-alven {

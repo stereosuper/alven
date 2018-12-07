@@ -1,3 +1,30 @@
+@mixin separator() {
+    border-bottom: 1px solid $greyBorder;
+    &:before,
+    &:after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    &:after {
+        @include fontIcon();
+        content: "\e90a";
+        width: 22px;
+        height: 15px;
+        bottom: -8px;
+        font-size: 15px;
+        color: $blue;
+    }
+    &:before {
+        content: "";
+        width: 35px;
+        height: 1px;
+        background: #fff;
+        bottom: -1px;
+    }
+}
+
 .page-template-careers {
     .content-header {
         h1 {
@@ -5,6 +32,9 @@
         }
         &.has-img {
             padding: 107px 0 25px;
+        }
+        .separator {
+            display: none;
         }
     }
 }
@@ -175,6 +205,18 @@
     .title-small {
         margin: 0;
     }
+    h1 {
+        color: $darkBlue;
+        font-size: 5rem;
+        margin: 7.5rem auto;
+    }
+    .content-header {
+        background: none;
+        .separator {
+            position: relative;
+            @include separator();
+        }
+    }
 }
 
 .details-job-header {
@@ -195,6 +237,10 @@
 .details-job-main {
     width: 75%;
     padding: 0 $innerGutter 0 0;
+    .company-image,
+    .company-sector {
+        display: none;
+    }
 }
 
 .details-job-sidebar {
@@ -203,6 +249,48 @@
     .btn {
         width: 100%;
         margin: 0 0 3em;
+    }
+    .company-info {
+        position: relative;
+        padding-bottom: $outterGutter * 2;
+        @include separator();
+        &:before,
+        &:after {
+            right: auto;
+            margin: 0;
+        }
+        &:before {
+            width: 30px;
+        }
+        .title-small {
+            margin-bottom: $outterGutter;
+        }
+        figure {
+            padding: $outterGutter * 2;
+            margin: 0 0 $outterGutter;
+            border: 1px solid $greyBorder;
+        }
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+            li {
+                margin: 0 $innerGutter / 2 0 0;
+                padding: 0 $innerGutter 0 0;
+                &::before {
+                    top: 0;
+                    background-color: transparent;
+                }
+                &:not(:last-child) {
+                    &::after {
+                        content: "/";
+                        position: absolute;
+                        right: 0;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -258,6 +346,35 @@
         &:nth-child(2n) {
             margin: $innerGutter $outterGutter;
             margin-right: 0;
+        }
+    }
+}
+
+@media (max-width: $tablet) {
+    .single-job {
+        .title-small {
+            display: none;
+        }
+    }
+    .details-job-main {
+        width: 100%;
+        .company-image,
+        .company-sector {
+            display: block;
+        }
+    }
+    .details-job-header {
+        width: min-content;
+    }
+    .details-job-sidebar {
+        position: fixed;
+        bottom: $innerGutter;
+        .btn {
+            display: block;
+            margin-bottom: 0;
+        }
+        .company-info {
+            display: none;
         }
     }
 }
