@@ -18594,36 +18594,6 @@
 		"sC": 1,
 		"tS": 0
 		},
-	"\/wp\/wp-content\/themes\/alven\/js\/script-min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/wp\/wp-content\/themes\/alven\/js\/script-min.min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/wp\/wp-content\/themes\/alven\/js\/script.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/wp\/wp-content\/themes\/alven\/js\/script.min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/wp\/wp-content\/themes\/alven\/js\/script.min.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/wp\/wp-content\/themes\/alven\/js\/script.min.min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
 	"\/wp\/wp-content\/themes\/alven\/js\/scrollmagic-debug.js": {
 		"ft": 64,
 		"ma": 0,
