@@ -901,6 +901,9 @@ function extend_post( $id ){
 }
 
 // Get page carreer url and return it
+// Params :
+// $s : is page details ? (boolean)
+// $t : template name (string)
 function get_current_template_url( $s, $t ){
     if( $s ):
         $page = get_pages(array(

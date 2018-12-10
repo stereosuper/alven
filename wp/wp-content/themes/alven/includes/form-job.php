@@ -39,7 +39,7 @@ if( isset( $_POST['directappsubmit'] ) ){
 
     if( !empty($document_job['name']) ){
 
-        var_dump($document_job);
+        //var_dump($document_job);
 
         $allowedMimes = array(
             'pdf'  => 'application/pdf',
@@ -59,8 +59,7 @@ if( isset( $_POST['directappsubmit'] ) ){
     if( $status_job === 'error' && empty( $errorSend_job ) ){
         $errorSend_job = 'Sorry, your message counldn\'t be send, the form contains errors. Please check the red fields.';
     }
-    var_dump( $document_type );
-    $status_job = 'error';
+
     if( !$status_job ){
 
         if( empty( $spamUrl_job ) ){
@@ -69,11 +68,10 @@ if( isset( $_POST['directappsubmit'] ) ){
                 'firstname'  => $firstname_job, 
                 'lastname'   => $lastname_job, 
                 'email'      => $email_job,
-                'resume_url' => $document_job['tmp_name']
-                /*'resume'     => array(
+                'resume'     => array(
                     'name' => $document_job['name'],
                     'data' => chunk_split( base64_encode( file_get_contents( $document_job['tmp_name'] ) ) ) 
-                )*/
+                )
             );
 
             $workable_datas = null;

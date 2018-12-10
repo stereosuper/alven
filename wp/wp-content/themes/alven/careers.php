@@ -61,8 +61,11 @@ get_header();
 
         <div class='content-header <?php if( $hasImg ){ echo 'has-img '; } ?>' id='contentHeader'>
             <div class='container align-center'>
+                <?php if( $is_details ):
+                    echo '<a href="'. get_current_template_url( $is_details, 'careers.php' ) .'" title="'. __('Back to results','alven') .'">'. __('Back to results','alven') .'</a>';
+                endif; ?>
                 <h1><?php the_title(); ?></h1>
-                <p><?php _e('Join the alven Family','alven'); ?></p>
+                <p><?php _e('Join the Alven Family','alven'); ?></p>
             </div>
             <?php if( $hasImg ){ ?>
                 <div class='img' style='background-image:url(<?php echo $imgUrl; ?>);'>
@@ -78,7 +81,7 @@ get_header();
                     <div class='container flex-container'>
                         <div class='col-3 no-padding-left company-search'>
                             <h2 class='job-sidebar-title'><?php _e('Start-up jobs','alven'); ?></h2>
-                            <p><?php _e('Join the alven Family','alven'); ?></p>
+                            <p><?php _e('Join the Alven Family','alven'); ?></p>
                             <?php require_once('includes/form-filtered-job.php'); ?>
                             <?php if( $is_details && $jobs->have_posts() ):
                                 // check if the only post is the current one

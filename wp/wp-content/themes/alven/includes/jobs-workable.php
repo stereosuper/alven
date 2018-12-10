@@ -3,7 +3,7 @@
         <div class='container flex-container'>
             <div class='col-3 no-padding-left'>
                 <h2 class='job-sidebar-title'><?php _e('Alven jobs', 'alven')?></h2>
-                <p><?php _e('Join the alven team', 'alven')?></p>
+                <p><?php _e('Join the Alven team', 'alven')?></p>
             </div>
 
             <div class='col-8 no-padding-right'>
