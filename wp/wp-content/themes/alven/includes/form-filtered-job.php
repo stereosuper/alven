@@ -1,8 +1,8 @@
 <form role='search' method='get' action='<?php echo $form['action']; ?>' class='jobs-form' aria-label="<?php esc_attr_e( 'Careers filters', 'alven' ); ?>">
                                 <div class='jobs-search'>
                                     <input type='search' name='search' value='<?php the_search_query(); ?>' id='search'>
-                                    <button type='submit' class='btn-search btn-no-text'>Explore</button>
                                     <label for='search'>Free search</label>
+                                    <button type='submit' class='btn-search btn-no-text'>Explore</button>
                                 </div>
                             
                                 <!-- Locations with number of jobs -->
