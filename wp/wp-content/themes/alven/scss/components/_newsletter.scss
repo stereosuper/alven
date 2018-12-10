@@ -27,7 +27,7 @@
         margin: 0;
     }
     /*form{
-        padding-left: $outterGutter;
+        padding-left: $outerGutter;
     }
     fieldset{
         width: 62.35%;
@@ -40,7 +40,7 @@
     }
     fieldset{
         display: inline-block;
-        padding: 0 $outterGutter 0 0;
+        padding: 0 $outerGutter 0 0;
         position: relative;
         vertical-align: bottom;
         margin: 0;
@@ -72,7 +72,7 @@
 .subscribe-form{
     display: inline-block;
     width: $col*5;
-    padding: 0 $innerGutter 0 $outterGutter;
+    padding: 0 $innerGutter 0 $outerGutter;
     position: relative;
     label{
         left: 35px;
@@ -80,7 +80,7 @@
     input{
         &[type=text], &[type=email]{
             width: 62.35%;
-            margin: 0 $outterGutter 0 0;
+            margin: 0 $outerGutter 0 0;
         }
         &[type=submit]{
             width: auto;

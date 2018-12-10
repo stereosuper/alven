@@ -217,13 +217,6 @@ $(function(){
                 });
             }
         }
-
-        if (body.hasClass('page-template-careers') || body.hasClass('single-job')) {
-            var detailsJobSidebar = document.getElementsByClassName('js-details-job-sidebar')[0];
-            var header = $('#header');
-            var headerHeight = header.outerHeight();
-            collant(detailsJobSidebar, headerHeight);
-        }
     })();
 
     // add a current class to an anchor if we are on the targeted section
@@ -1340,6 +1333,24 @@ $(function(){
         }
     });
 
+    function collantCareers() {
+        var body = $('body');
+        if (body.hasClass('page-template-careers') || body.hasClass('single-job')) {
+            var header = $('#header');
+            var headerHeight = header.outerHeight();
+        
+            var detailsJobSidebar = document.getElementsByClassName('js-details-job-sidebar')[0];
+            var companySearchWrapper = document.getElementsByClassName('js-company-search-wrapper')[0];
+
+            collant(detailsJobSidebar, headerHeight, {
+                minimumWidth: 979,
+            });
+            collant(companySearchWrapper, headerHeight, {
+                minimumWidth: 979,
+            });
+        }
+    };
+
     $(window).on('resize', function(){
         docHeight = $(document).height();
         windowHeight = $(window).height();
@@ -1416,81 +1427,83 @@ $(function(){
                 setGallery($(this), $(window).width());
             });
         }
+
+        collantCareers();
     });
 
-});
-
-
-$(window).on('load', function(){
-    var main = $('#main');
-    var contentHeader = $('#contentHeader');
-    //var fadePage = $('#fadePage');
-    var galleries = $('.gallery');
-    var postSidebar = $('#postSidebar');
-    var tweensHeader = [];
-    var windowWidth = window.outerWidth;
-
-    var line = $('.wrapper-video path');
-
-    line.each(function(index) {
-        tweensHeader[index] = new TweenMax.from(this, 0.1 , { opacity:0, x: 0});
-    });
-
-    tlHeader.play();
-    tlHeaderDone = true;
-    tweensHeader.forEach(function(element, index){
-        tlHeader.add(element);
-    });
-
-    var tlBtween = tlHeader.tweenFromTo(0, tlHeader.duration(), {ease:Power4.easeOut});
-
-
-    // TweenMax.staggerTo(line, 0.3, {ease:Expo.easeOut, autoAlpha: 0}, 0.03);
-
-    function animTxt(splitText){
-        splitText.split({type:'words'});
-        TweenMax.staggerFrom(splitText.words, 0.3, {ease:Expo.easeInOut, opacity:0, y:100}, 0.03);
-    }
-
-    var video = $('#video');
-    var source = video.find('source');
-
-    if( video.length && windowWidth > 979 ){
-        source.attr('src', source.data('src'));
-        video[0].load();
-        video[0].play();
-    }
-
-    if(contentHeader.length){
-        if(contentHeader.find('h1').length){
-            if($('body').hasClass('home')){
-                TweenMax.fromTo(contentHeader.find('h1'), 0.3, {opacity: 0, y: 100}, {opacity: 1, y: 0, delay: 1});
-            }else{
-                TweenMax.fromTo(contentHeader.find('h1'), 0.3, {opacity: 0, y: 100}, {opacity: 1, y: 0});
-            }
-            
-            // var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
-            // contentHeader.find('h1').css('opacity', 1);
-            // animTxt(splitText);
-        }
-        if(main.length){
-            main.css('marginTop', Math.floor(contentHeader.outerHeight()));
-        }
-    }
-
-    // if(fadePage.length){
-    //     TweenMax.to(fadePage, 0.2, {opacity: 1});
-    // }
-
-    if(postSidebar.length){
-        postSidebarTop = postSidebar.offset().top;
-        postSidebarWidth = postSidebar.innerWidth();
-    }
-
-    if(galleries.length){
-        galleries.each(function(){
-            setGallery($(this), $(window).width());
+    $(window).on('load', function(){
+        var main = $('#main');
+        var contentHeader = $('#contentHeader');
+        //var fadePage = $('#fadePage');
+        var galleries = $('.gallery');
+        var postSidebar = $('#postSidebar');
+        var tweensHeader = [];
+        var windowWidth = window.outerWidth;
+    
+        var line = $('.wrapper-video path');
+    
+        line.each(function(index) {
+            tweensHeader[index] = new TweenMax.from(this, 0.1 , { opacity:0, x: 0});
         });
-    }
+    
+        tlHeader.play();
+        tlHeaderDone = true;
+        tweensHeader.forEach(function(element, index){
+            tlHeader.add(element);
+        });
+    
+        var tlBtween = tlHeader.tweenFromTo(0, tlHeader.duration(), {ease:Power4.easeOut});
+    
+    
+        // TweenMax.staggerTo(line, 0.3, {ease:Expo.easeOut, autoAlpha: 0}, 0.03);
+    
+        function animTxt(splitText){
+            splitText.split({type:'words'});
+            TweenMax.staggerFrom(splitText.words, 0.3, {ease:Expo.easeInOut, opacity:0, y:100}, 0.03);
+        }
+    
+        var video = $('#video');
+        var source = video.find('source');
+    
+        if( video.length && windowWidth > 979 ){
+            source.attr('src', source.data('src'));
+            video[0].load();
+            video[0].play();
+        }
+    
+        if(contentHeader.length){
+            if(contentHeader.find('h1').length){
+                if($('body').hasClass('home')){
+                    TweenMax.fromTo(contentHeader.find('h1'), 0.3, {opacity: 0, y: 100}, {opacity: 1, y: 0, delay: 1});
+                }else{
+                    TweenMax.fromTo(contentHeader.find('h1'), 0.3, {opacity: 0, y: 100}, {opacity: 1, y: 0});
+                }
+                
+                // var splitText = new SplitText(contentHeader.find('h1'), {type:'words'});
+                // contentHeader.find('h1').css('opacity', 1);
+                // animTxt(splitText);
+            }
+            if(main.length){
+                main.css('marginTop', Math.floor(contentHeader.outerHeight()));
+            }
+        }
+    
+        // if(fadePage.length){
+        //     TweenMax.to(fadePage, 0.2, {opacity: 1});
+        // }
+    
+        if(postSidebar.length){
+            postSidebarTop = postSidebar.offset().top;
+            postSidebarWidth = postSidebar.innerWidth();
+        }
+    
+        if(galleries.length){
+            galleries.each(function(){
+                setGallery($(this), $(window).width());
+            });
+        }
+    
+        collantCareers();
+    });
 });
 
