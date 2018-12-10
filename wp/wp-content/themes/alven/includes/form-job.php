@@ -9,13 +9,15 @@ $errorFirstname_job = '';
 $errorLastname_job  = '';
 $errorEmail_job     = '';
 $errorDocument_job  = '';
+$errorUrl_job       = '';
 $errorSend_job      = '';
 
 $firstname_job = isset($_POST['firstname_job']) ? strip_tags(stripslashes($_POST['firstname_job'])) : '';
 $lastname_job  = isset($_POST['lastname_job']) ? strip_tags(stripslashes($_POST['lastname_job'])) : '';
 $email_job     = isset($_POST['email_job']) ? strip_tags(stripslashes($_POST['email_job'])) : '';
 $document_job  = isset($_FILES['document_job']) ? $_FILES['document_job'] : '';
-$spamUrl_job   = isset($_POST['url_job']) ? strip_tags(stripslashes($_POST['url_job'])) : '';
+$url_job       = isset($_POST['url_job']) ? strip_tags(stripslashes($_POST['url_job'])) : '';
+$spamUrl_job   = isset($_POST['spam_job']) ? strip_tags(stripslashes($_POST['spam_job'])) : '';
 
 if( isset( $_POST['directappsubmit'] ) ){
 

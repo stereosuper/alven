@@ -66,9 +66,15 @@
                                 <label for='document_job'><?php _e('Upload your file','alven'); ?></label>
                                 <span class='form-desc'><?php _e('.pdf, .doc, .docx, .rtf','alven'); ?></span>
                             </div>
+                            <div class='full has-desc'>
+                                <input type='url' name='url_job' id='url_job' class='form-elt <?php if($errorUrl_job) echo "invalid"; ?>'>
+                                <label for='url_job' value='<?php echo $url_job; ?>'>
+                                    <?php _e('Insert here a link to your linkedin page (or other)','alven'); ?>
+                                </label>
+                            </div>
                             <div class='hidden'>
-                                <input type='url' name='url_job' id='url_job' value='<?php echo $spamUrl_job; ?>'>
-                                <label for='url_job'><?php _e('Leave this field empty please','alven'); ?></label>
+                                <input type='url' name='spam_job' id='spam_job' value='<?php echo $spamUrl_job; ?>'>
+                                <label for='spam_job'><?php _e('Leave this field empty please','alven'); ?></label>
                             </div>
                         </section>
                     </fieldset>
