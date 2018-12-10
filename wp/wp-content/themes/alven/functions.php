@@ -825,7 +825,7 @@ function get_posts_filtered( $is_details = FALSE, $metquery, $taxquery ){
 
     $posts_args = array(
         'post_type'      => 'job',
-        'posts_per_page' =>  4,
+        'posts_per_page' =>  6,
         'meta_query'     => $metquery,
         'tax_query'      => $taxquery,
         's'              => sanitize_text_field( get_query_var('search') )
