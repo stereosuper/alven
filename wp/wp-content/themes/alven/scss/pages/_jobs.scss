@@ -37,6 +37,18 @@
     }
 }
 
+.wrapper-collant{
+    position: relative;
+}
+
+.collant{
+    position: fixed !important;
+}
+
+.collant-stuck{
+    position: absolute;
+}
+
 .content-main {
     border-bottom: none;
 }

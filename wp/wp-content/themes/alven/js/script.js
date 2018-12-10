@@ -192,7 +192,9 @@ $(function(){
         }
     }
 
-    (function singleJobTabHandler() {
+    (function careersTemplateHandler() {
+
+        // Single job tab handler
         if (body.hasClass('single-job')) {
             var tabs = $('.js-job-details-tab');
             if (tabs.length) {
@@ -214,6 +216,13 @@ $(function(){
                     }
                 });
             }
+        }
+
+        if (body.hasClass('page-template-careers') || body.hasClass('single-job')) {
+            var detailsJobSidebar = document.getElementsByClassName('js-details-job-sidebar')[0];
+            var header = $('#header');
+            var headerHeight = header.outerHeight();
+            collant(detailsJobSidebar, headerHeight);
         }
     })();
 
