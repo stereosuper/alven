@@ -44,7 +44,7 @@
 .page-template-careers {
     .content-main {
         border-bottom: none;
-        .separator {
+        > .separator {
             display: none;
         }
     }
@@ -399,6 +399,19 @@
     }
 }
 
+.workable-form-application {
+    h2 {
+        @include avalonBold(5.5rem);
+        margin-top: 110px;
+        margin-bottom: 75px;
+    }
+    .separator {
+        position: relative;
+        @include separator();
+        margin-bottom: 100px;
+    }
+}
+
 @media (max-width: $desktop-large) {
 }
 
@@ -637,6 +650,11 @@
             }
         }
     }
+    .workable-form-application {
+        h2 {
+            font-size: 3.6rem;
+        }
+    }
 }
 
 @media (max-width: $phone) {
@@ -688,6 +706,11 @@
             div {
                 margin-top: $innerGutter;
             }
+        }
+    }
+    .workable-form-application {
+        h2 {
+            font-size: 2.2rem;
         }
     }
 }
