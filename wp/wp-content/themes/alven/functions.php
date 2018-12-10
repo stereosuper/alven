@@ -891,6 +891,7 @@ function extend_post( $id ){
     
     if( $id ):
         $company_datas = array(
+            'permalink'=> get_the_permalink( $id ),
             'name'     => get_the_title( $id ),
             'logo_url' => get_the_post_thumbnail_url( $id ),
             'sectors'  => wp_get_post_terms( $id, 'field' )
