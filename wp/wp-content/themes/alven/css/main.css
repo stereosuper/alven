@@ -3254,7 +3254,7 @@ select::-ms-expand {
   background: #fde98f;
   color: #003240;
   /*form{
-        padding-left: $outterGutter;
+        padding-left: $outerGutter;
     }
     fieldset{
         width: 62.35%;
@@ -3881,6 +3881,9 @@ select::-ms-expand {
   .details-job-sidebar .btn {
     width: 100%;
     margin: 0 0 3em; }
+  .details-job-sidebar .collant {
+    width: calc(1420px / 12 * 8 * 0.25 - 20px);
+    margin-right: 20px; }
   .details-job-sidebar .company-info {
     position: relative;
     padding-bottom: 40px;
@@ -3919,9 +3922,13 @@ select::-ms-expand {
       margin-bottom: 20px; }
 
 .company-image {
-  padding: 40px;
+  display: block;
   margin: 0 0 20px;
-  border: 1px solid #e5e8e8; }
+  box-shadow: none; }
+  .company-image figure {
+    padding: 40px;
+    margin: 0;
+    border: 1px solid #e5e8e8; }
 
 .company-sector {
   display: flex;
@@ -4027,6 +4034,14 @@ select::-ms-expand {
     background: #fff;
     bottom: -1px; }
 
+.company-search {
+  position: relative; }
+  .company-search .company-search-wrapper.collant {
+    width: calc(355px - 10px);
+    padding-right: 10px; }
+  .company-search .company-search-wrapper.collant-stuck {
+    margin-right: 10px; }
+
 @media (max-width: 1150px) {
   .job-sidebar-title {
     font-size: 3.2rem; }
@@ -4106,11 +4121,13 @@ select::-ms-expand {
       flex-wrap: nowrap; }
       .startups-jobs .flex-container.details-job-header .company-image {
         flex: 1 0 30%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 40px 0 0;
-        padding: 10px; }
+        margin: 0 40px 0 0; }
+        .startups-jobs .flex-container.details-job-header .company-image figure {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          padding: 10px; }
   .details-job-header {
     position: relative;
     width: calc(100% + 20px * 2 + 10px * 2);

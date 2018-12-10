@@ -81,37 +81,39 @@ get_header();
                 <section class='startups-jobs'>
                     <div class='container flex-container'>
                         <div class='col-3 no-padding-left company-search wrapper-collant'>
-                            <h2 class='job-sidebar-title'><?php _e('Start-up jobs','alven'); ?></h2>
-                            <p><?php _e('Join the Alven Family','alven'); ?></p>
-                            <?php require_once('includes/form-filtered-job.php'); ?>
-                            <?php if( $is_details && $jobs->have_posts() ):
-                                // check if the only post is the current one
-                                if( !( count( $jobs->posts ) === 1 && $jobs->post->ID === get_the_ID() ) ):
-                                ?>
-                                <div class='related-jobs'>
-                                    <p><?php _e('Related job offers', 'alven') ?></p>
-                                    <div class="related-jobs-links">
-                                    <?php
-                                        foreach ( extend_query($jobs->posts, array( 'location' => true, 'startup' => false ) ) as $key => $job) {
-                                            if( $job->ID !== get_the_ID() ):
-                                                    $article = '<a href="'. get_url_with_careers_params( esc_url( get_permalink( $job->ID ) ), $params ) .'" class="no-padding">';
-                                                    $article .= '<p class="job-title">'.$job->post_title.'</p>';
-                                                    if( $job->location ):
-                                                        $article .= '<p class="job-location">'.$job->location[0]->name.'</p>';
-                                                    endif;
-                                                    $article .= '</a>';
-
-                                                    echo $article;
-                                            endif;
-                                        }
-                                        ?>
-                                        </div>
-                                        <?php 
-                                        echo '<a class="btn-arrow" href="'. get_url_with_careers_params( $form['action'], $params ) .'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
+                            <div class="company-search-wrapper js-company-search-wrapper">
+                                <h2 class='job-sidebar-title'><?php _e('Start-up jobs','alven'); ?></h2>
+                                <p><?php _e('Join the Alven Family','alven'); ?></p>
+                                <?php require_once('includes/form-filtered-job.php'); ?>
+                                <?php if( $is_details && $jobs->have_posts() ):
+                                    // check if the only post is the current one
+                                    if( !( count( $jobs->posts ) === 1 && $jobs->post->ID === get_the_ID() ) ):
                                     ?>
-                                </div>
-                                <?php endif;
-                            endif; ?>
+                                    <div class='related-jobs'>
+                                        <p><?php _e('Related job offers', 'alven') ?></p>
+                                        <div class="related-jobs-links">
+                                        <?php
+                                            foreach ( extend_query($jobs->posts, array( 'location' => true, 'startup' => false ) ) as $key => $job) {
+                                                if( $job->ID !== get_the_ID() ):
+                                                        $article = '<a href="'. get_url_with_careers_params( esc_url( get_permalink( $job->ID ) ), $params ) .'" class="no-padding">';
+                                                        $article .= '<p class="job-title">'.$job->post_title.'</p>';
+                                                        if( $job->location ):
+                                                            $article .= '<p class="job-location">'.$job->location[0]->name.'</p>';
+                                                        endif;
+                                                        $article .= '</a>';
+
+                                                        echo $article;
+                                                endif;
+                                            }
+                                            ?>
+                                            </div>
+                                            <?php 
+                                            echo '<a class="btn-arrow" href="'. get_url_with_careers_params( $form['action'], $params ) .'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
+                                        ?>
+                                    </div>
+                                    <?php endif;
+                                endif; ?>
+                            </div>
                         </div>
                         <div class='col-8 no-padding-right'>
                             <?php 

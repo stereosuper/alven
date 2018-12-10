@@ -3,7 +3,7 @@
 echo '<div class="flex-container details-job">';
     echo '<div class="details-job-main">';
         $details_header = '<header class="flex-container details-job-header">';
-            $details_header .= '<a href="'. $company_datas['permalink'] .'" title="'. $company_datas['permalink'] .'"><figure class="company-image">';
+            $details_header .= '<a class="company-image" href="'. $company_datas['permalink'] .'" title="'. $company_datas['permalink'] .'"><figure>';
                 $details_header .= '<img src="' . $company_datas['logo_url'] . '" alt="' . $company_datas['name'] . '">';
             $details_header .= '</figure></a>';
             $details_header .= '<div class="company-info-wrapper">';
@@ -64,7 +64,7 @@ echo '<div class="flex-container details-job">';
             endif;
             $job_company = '<div class="company-info">';
                 $job_company .= '<p class="title-small">' . __('The company', 'alven') . '</p>';
-                $job_company .= '<a href="'. $company_datas['permalink'] .'" title="'. $company_datas['permalink'] .'"><figure class="company-image">';
+                $job_company .= '<a class="company-image" href="'. $company_datas['permalink'] .'" title="'. $company_datas['permalink'] .'"><figure>';
                     $job_company .= '<img src="' . $company_datas['logo_url'] . '" alt="' . $company_datas['name'] . '">';
                 $job_company .= '</figure></a>';
                 $job_company .= '<p class="title-small">' . __('Sectors', 'alven') . '</p>';
