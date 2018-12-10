@@ -3,7 +3,7 @@
 echo '<div class="flex-container details-job">';
     echo '<div class="details-job-main">';
         $details_header = '<header class="flex-container details-job-header">';
-            $details_header .= '<a class="company-image" href="'. $company_datas['permalink'] .'" title="'. $company_datas['permalink'] .'"><figure>';
+            $details_header .= '<a class="company-image" href="'. $company_datas['permalink'] .'" title="'. $company_datas['name'] .'"><figure>';
                 $details_header .= '<img src="' . $company_datas['logo_url'] . '" alt="' . $company_datas['name'] . '">';
             $details_header .= '</figure></a>';
             $details_header .= '<div class="company-info-wrapper">';
