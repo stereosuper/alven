@@ -40,9 +40,6 @@ if( isset( $_POST['directappsubmit'] ) ){
     }
 
     if( !empty($document_job['name']) ){
-
-        //var_dump($document_job);
-
         $allowedMimes = array(
             'pdf'  => 'application/pdf',
             'doc'  => 'application/msword',
@@ -57,6 +54,13 @@ if( isset( $_POST['directappsubmit'] ) ){
             $errorSend_job = 'Sorry, your document couldn\'t be send: the uploaded file extension isn\'t valid.';
         }
     }
+
+    if( !empty( $url_job ) && !filter_var( $url_job, FILTER_VALIDATE_URL) ){
+        $status_job = 'error';
+        $errorUrl_job = true;
+    }
+
+
 
     if( $status_job === 'error' && empty( $errorSend_job ) ){
         $errorSend_job = 'Sorry, your message counldn\'t be send, the form contains errors. Please check the red fields.';
@@ -75,6 +79,10 @@ if( isset( $_POST['directappsubmit'] ) ){
                     'data' => chunk_split( base64_encode( file_get_contents( $document_job['tmp_name'] ) ) ) 
                 )
             );
+
+            if( !empty( $url_job ) ):
+                $candidate['domain'] = $url_job;
+            endif;
 
             $workable_datas = null;
             $workable_args = array(
