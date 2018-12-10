@@ -758,6 +758,8 @@ function alven_scripts(){
     // footer
     wp_enqueue_script( 'isMobile', get_template_directory_uri() . '/js/isMobile.min.js', array(), null, true );
 
+    wp_enqueue_script( 'collant', get_template_directory_uri() . '/js/collant.js', array(), null, true );
+
     wp_deregister_script('jquery');
     wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.0.0.min.js', array(), null, true );
     wp_enqueue_script( 'jquery-address', get_template_directory_uri() . '/js/jquery.address-1.6.min.js', array('jquery'), null, true );
