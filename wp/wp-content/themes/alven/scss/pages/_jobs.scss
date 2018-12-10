@@ -531,15 +531,17 @@
     }
     .details-job-header {
         position: relative;
-        padding: 0 0 $outterGutter;
+        width: calc(100% + #{$outterGutter} * 2 + #{$innerGutter} * 2);
+        padding: 0 #{$outterGutter + $innerGutter} $outterGutter;
         margin: 0;
+        margin-left: -#{$outterGutter + $innerGutter};
+        border-bottom: 1px solid $greyBorder;
         &::after {
             content: "";
             display: block;
             position: absolute;
             width: 100%;
             bottom: 0;
-            border-bottom: 1px solid $greyBorder;
         }
         .company-info-wrapper {
             flex-direction: column-reverse;
@@ -571,7 +573,10 @@
     }
     .job-details-main-content {
         div {
+            width: calc(100% + #{$outterGutter} * 2 + #{$innerGutter} * 2);
             max-height: calc(6rem + 3.6rem);
+            padding: 0 #{$outterGutter + $innerGutter};
+            margin-left: -#{$outterGutter + $innerGutter};
             border-bottom: 1px solid $greyBorder;
             overflow: hidden;
             transition: max-height $transition;

@@ -4062,15 +4062,17 @@ select::-ms-expand {
         padding: 10px; }
   .details-job-header {
     position: relative;
-    padding: 0 0 20px;
-    margin: 0; }
+    width: calc(100% + 20px * 2 + 10px * 2);
+    padding: 0 30px 20px;
+    margin: 0;
+    margin-left: -30px;
+    border-bottom: 1px solid #e5e8e8; }
     .details-job-header::after {
       content: "";
       display: block;
       position: absolute;
       width: 100%;
-      bottom: 0;
-      border-bottom: 1px solid #e5e8e8; }
+      bottom: 0; }
     .details-job-header .company-info-wrapper {
       flex-direction: column-reverse;
       justify-content: center; }
@@ -4094,7 +4096,10 @@ select::-ms-expand {
     .details-job-sidebar .company-info {
       display: none; }
   .job-details-main-content div {
+    width: calc(100% + 20px * 2 + 10px * 2);
     max-height: calc(6rem + 3.6rem);
+    padding: 0 30px;
+    margin-left: -30px;
     border-bottom: 1px solid #e5e8e8;
     overflow: hidden;
     transition: max-height 0.25s cubic-bezier(0.75, 0, 0.125, 1);
