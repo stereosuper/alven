@@ -8,6 +8,7 @@ function setBtn(btn){
     return '<span class="before">' + txt + '</span><span class="after">' + txt +'</span>';
 }
 
+
 var dragGallery = false;
 function setGallery(gallery, windowWidth){
     var imgs = gallery.find('div'), width = 0,
