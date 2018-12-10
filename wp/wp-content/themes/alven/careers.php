@@ -62,6 +62,7 @@ get_header();
         <div class='content-header <?php if( $hasImg ){ echo 'has-img '; } ?>' id='contentHeader'>
             <div class='container align-center'>
                 <h1><?php the_title(); ?></h1>
+                <p><?php _e('Join the alven Family','alven'); ?></p>
             </div>
             <?php if( $hasImg ){ ?>
                 <div class='img' style='background-image:url(<?php echo $imgUrl; ?>);'>
