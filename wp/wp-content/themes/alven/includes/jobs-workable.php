@@ -32,7 +32,6 @@
         <div class='container flex-container'>
             <div class='col-3 no-padding-left'>
                 <?php the_field('career_directapp_desc');?>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dignissim nisl venenatis ipsum lacinia scelerisque. Sed ut dolor congue leo rutrum fermentum. Vestibulum porta est elit. Cras dictum bibendum lacinia. Nunc ultricies odio ac magna ultrices lacinia. Sed venenatis lobortis nisl ut sollicitudin. Ut bibendum leo a porttitor cursus.</p>
             </div>
             <div class='col-8 no-padding-right'>
             <?php if ($status_job === 'success'): ?>
