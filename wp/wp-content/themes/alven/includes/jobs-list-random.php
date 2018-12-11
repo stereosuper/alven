@@ -13,7 +13,7 @@ function get_jobs_random(){
 $jobs_random = get_jobs_random();
 
 if ( $jobs_random->have_posts() ):
-    echo '<div class="list-random-jobs">';
+    echo '<div class="list-random-jobs js-list-random-jobs">';
     echo '<div class="container flex-container">';
         foreach (extend_query($jobs_random->posts, array('location' => true, 'startup' => true)) as $key => $job) {
             $article = '<a href="' . get_url_with_careers_params( esc_url( get_permalink($job->ID) ), $params ) . '" class="no-padding">';

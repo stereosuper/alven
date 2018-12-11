@@ -2,7 +2,7 @@
 
 if ( $jobs->have_posts() ):
 
-    echo '<div class="flex-container list-jobs">';
+    echo '<div class="flex-container list-jobs js-list-jobs">';
         foreach (extend_query($jobs->posts, array('location' => true, 'startup' => true)) as $key => $job) {
             $article = '<a href="' . get_url_with_careers_params( esc_url( get_permalink($job->ID) ), $params ) . '" class="job no-padding">';
             $article .= '<div class="align-center"><img src="' . $job->from['logo'] . '" alt="' . $job->from['name'] . '"></div>';

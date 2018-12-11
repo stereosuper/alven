@@ -194,6 +194,26 @@ $(function(){
     }
 
     (function careersTemplateHandler() {
+        // Scroll reveal handler
+        if (body.hasClass('page-template-careers') || body.hasClass('single-job')) {
+
+            // Use scroll magic handle setScrollElmts
+            var jobs = $('.js-list-jobs').find('a');
+            var singleCompanyInfo = $('.js-details-job-sidebar').find('.company-info');
+            var randomJobs = $('.js-list-random-jobs').find('a');
+
+            if (jobs.length) {
+                setScrollElmts(jobs);
+            }
+            
+            if (singleCompanyInfo.length) {
+                setScrollElmts(singleCompanyInfo);
+            }
+
+            if (randomJobs.length) {
+                setScrollElmts(randomJobs);
+            }
+        }
 
         // Single job tab handler
         if (body.hasClass('single-job')) {
@@ -1343,14 +1363,16 @@ $(function(){
             var detailsJobSidebar = document.getElementsByClassName('js-details-job-sidebar')[0];
             var companySearchWrapper = document.getElementsByClassName('js-company-search-wrapper')[0];
 
-            collant(detailsJobSidebar, headerHeight, {
-                minimumWidth: 979,
-                updateHeightOnScroll: true,
-            });
-            collant(companySearchWrapper, headerHeight, {
-                minimumWidth: 979,
-                updateHeightOnScroll: true,
-            });
+
+            // TODO: Fix collant
+            // collant(detailsJobSidebar, headerHeight, {
+            //     minimumWidth: 979,
+            //     updateHeightOnScroll: true,
+            // });
+            // collant(companySearchWrapper, headerHeight, {
+            //     minimumWidth: 979,
+            //     updateHeightOnScroll: true,
+            // });
         }
     };
 
