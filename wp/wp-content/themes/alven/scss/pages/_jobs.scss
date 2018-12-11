@@ -272,6 +272,13 @@
 }
 
 .single-job {
+    ul {
+        padding: 0;
+        margin-top: 0;
+        li {
+            margin-left: 0;
+        }
+    }
     .content-main {
         .separator {
             position: absolute;
