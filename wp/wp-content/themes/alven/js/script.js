@@ -993,7 +993,9 @@ $(function(){
     if(mainContent.length){
         if(mainContent.find('img').length){
             var imgs = mainContent.find('img').not('.no-scroll');
-            setScrollElmts(imgs);
+            if (!body.hasClass('page-template-careers') && !body.hasClass('single-job')) {
+                setScrollElmts(imgs);
+            }
         }
         if(mainContent.find('.special-cat').length){
             setScrollElmts(mainContent.find('.special-cat'));
@@ -1376,7 +1378,6 @@ $(function(){
             var companySearchWrapper = document.getElementsByClassName('js-company-search-wrapper')[0];
 
 
-            // TODO: Fix collant
             collant(companySearchWrapper, headerHeight, {
                 minimumWidth: 979,
                 updateHeightOnScroll: true,
