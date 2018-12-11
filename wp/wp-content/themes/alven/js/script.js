@@ -1365,14 +1365,14 @@ $(function(){
 
 
             // TODO: Fix collant
-            // collant(detailsJobSidebar, headerHeight, {
-            //     minimumWidth: 979,
-            //     updateHeightOnScroll: true,
-            // });
-            // collant(companySearchWrapper, headerHeight, {
-            //     minimumWidth: 979,
-            //     updateHeightOnScroll: true,
-            // });
+            collant(companySearchWrapper, headerHeight, {
+                minimumWidth: 979,
+                updateHeightOnScroll: true,
+            });
+            collant(detailsJobSidebar, headerHeight, {
+                minimumWidth: 767,
+                updateHeightOnScroll: true,
+            });
         }
     };
 
@@ -1452,8 +1452,6 @@ $(function(){
                 setGallery($(this), $(window).width());
             });
         }
-
-        collantCareers();
     });
 
     $(window).on('load', function(){

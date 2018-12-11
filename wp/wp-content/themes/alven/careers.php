@@ -80,8 +80,8 @@ var_dump($is_details);
                 <div class="separator"></div>
                 <section class='startups-jobs'>
                     <div class='container flex-container'>
-                        <div class='col-3 no-padding-left company-search wrapper-collant'>
-                            <div class="company-search-wrapper js-company-search-wrapper">
+                        <div class='col-3 no-padding-left company-search wrapper-collant'  data-collant='2'>
+                            <div class="company-search-wrapper js-company-search-wrapper" data-collant='2'>
                                 <h2 class='job-sidebar-title'><?php _e('Start-up jobs','alven'); ?></h2>
                                 <p><?php _e('Join the Alven Family','alven'); ?></p>
                                 <?php require_once('includes/form-filtered-job.php'); ?>
@@ -115,7 +115,7 @@ var_dump($is_details);
                                 endif; ?>
                             </div>
                         </div>
-                        <div class='col-8 no-padding-right'>
+                        <div class='col-8 no-padding-right wrapper-collant' data-collant='3'>
                             <?php 
                                 if( $is_details ):
                                     require_once('includes/job-details.php');

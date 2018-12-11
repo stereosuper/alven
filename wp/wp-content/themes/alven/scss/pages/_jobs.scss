@@ -376,6 +376,7 @@
     }
     .collant {
         width: calc(1420px / 12 * 8 * 0.25 - #{$innerGutter * 2});
+        // width: calc((1420px - 40px) * 16.66666 / 100);
         margin-right: $outerGutter;
     }
     .company-info {

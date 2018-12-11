@@ -57,10 +57,10 @@ echo '<div class="flex-container details-job">';
         echo $details_section;
     echo '</div>';
 
-    echo '<div class="details-job-sidebar wrapper-collant">';
-        echo '<div class="js-details-job-sidebar">';
+    echo '<div class="details-job-sidebar wrapper-collant" data-collant="1">';
+        echo '<div class="js-details-job-sidebar" data-collant="1">';
             if ($urlapply):
-                echo '<a href="' . $urlapply . '" alt="' . __('Apply', 'alven') . '" tarrget="_blank" rel="noopener noreferrer" class="btn">' . __('Apply', 'alven') . '</a>';
+                echo '<a data-collant="3" href="' . $urlapply . '" alt="' . __('Apply', 'alven') . '" tarrget="_blank" rel="noopener noreferrer" class="btn js-apply-btn">' . __('Apply', 'alven') . '</a>';
             endif;
             $job_company = '<div class="company-info">';
                 $job_company .= '<p class="title-small">' . __('The company', 'alven') . '</p>';
