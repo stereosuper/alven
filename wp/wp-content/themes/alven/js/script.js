@@ -222,8 +222,18 @@ $(function(){
                 tabs.on('click', 'h2', function tabState() {
                     if (window.innerWidth <= 767) {
                         var tab = $(this).parent();
+                        var currentIndex = tab.index();
+                        
                         var height = 0;
-    
+
+                        tabs.each(function resetEachTab(index, tabToReset) {
+                            if (index !== currentIndex) {
+                                var jTabToReset = $(tabToReset);
+                                jTabToReset.css({ maxHeight: jTabToReset.find('h2').outerHeight(true) });
+                                jTabToReset.removeClass('active');
+                            }
+                        });
+
                         if (tab.hasClass('active')) {
                             height = $(this).outerHeight(true);
                         } else {
@@ -233,6 +243,7 @@ $(function(){
                         }
                         
                         tab.css({ maxHeight: height });
+
                         tab.toggleClass('active');
                     }
                 });
@@ -1343,6 +1354,7 @@ $(function(){
             //     tlHeader.pause().play();
             //     tlHeaderDone = true;
             // }
+            
         }
 
         if(postSidebar.length && mainContent.length && !isMobile.any){

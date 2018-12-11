@@ -273,7 +273,8 @@
         height: 21px;
         margin: 0;
         white-space: nowrap;
-        overflow: hidden;
+        // HACK: Magnifying glass transform
+        // overflow: hidden;
         text-indent: -99em;
         box-shadow: none;
         &:after{
