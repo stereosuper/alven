@@ -3793,7 +3793,7 @@ select::-ms-expand {
   margin: 40px 0 0;
   background: #fde98f; }
   .alven-jobs .container {
-    align-items: center; }
+    align-items: flex-start; }
 
 .list-jobs-alven {
   flex-wrap: wrap; }
@@ -3854,6 +3854,28 @@ select::-ms-expand {
   background: none; }
   .single-job .content-header p {
     display: none; }
+  .single-job .content-header a {
+    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    color: #23afa9;
+    font-style: italic;
+    font-family: "Arvo", serif;
+    font-size: 1.6rem;
+    transform: translate(0, -50%); }
+    .single-job .content-header a::before {
+      right: auto;
+      left: -25px; }
+    .single-job .content-header a::after {
+      right: auto;
+      left: -26px;
+      bottom: 5px;
+      transform: translate3d(0, 0, 0) rotateZ(180deg); }
+    .single-job .content-header a:hover::before {
+      transform: translate3d(-7px, 0, 0); }
+    .single-job .content-header a:hover::after {
+      transform: translate3d(-7px, 0, 0) rotateZ(180deg); }
 
 .single-job .startups-jobs {
   margin-bottom: 130px; }
@@ -4060,6 +4082,12 @@ select::-ms-expand {
     font-size: 1.2rem; } }
 
 @media (max-width: 979px) {
+  .single-job .content-header a {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    margin-bottom: 20px; }
   .alven-jobs > .flex-container {
     flex-direction: column; }
     .alven-jobs > .flex-container div {

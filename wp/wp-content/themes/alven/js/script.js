@@ -1345,9 +1345,11 @@ $(function(){
 
             collant(detailsJobSidebar, headerHeight, {
                 minimumWidth: 979,
+                updateHeightOnScroll: true,
             });
             collant(companySearchWrapper, headerHeight, {
                 minimumWidth: 979,
+                updateHeightOnScroll: true,
             });
         }
     };
