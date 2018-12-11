@@ -3810,6 +3810,12 @@ select::-ms-expand {
   font-family: "avalonbold", "avalonmedium", sans-serif;
   font-size: 2.2rem; }
 
+.single-job ul {
+  padding: 0;
+  margin-top: 0; }
+  .single-job ul li {
+    margin-left: 0; }
+
 .single-job .content-main .separator {
   position: absolute;
   width: 100%;
