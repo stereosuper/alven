@@ -3029,7 +3029,6 @@ select::-ms-expand {
     height: 21px;
     margin: 0;
     white-space: nowrap;
-    overflow: hidden;
     text-indent: -99em;
     box-shadow: none; }
     .btn-search.btn-no-text:after {
