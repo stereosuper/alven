@@ -986,6 +986,27 @@ function get_jobs_from_wrkbl(){
     return $workable_datas;
 }
 
+// Get a job from workable by his shortcode
+function get_job_from_wrkbl( $s ){
+    $workable_datas = null;
+    $workable_args = array(
+        'headers' => array(
+            'Content-Type: application/json',
+            'Authorization' => 'Bearer ' . WRKBL_TOKEN
+        ),
+    );
+
+    // ?state=published
+    $workable_response = wp_remote_get( 'https://'. WRKBL_SUBDOMAIN .'.workable.com/spi/v3/jobs/' . $s, $workable_args );
+    $workable_response_code = wp_remote_retrieve_response_code( $workable_response );
+
+    if( $workable_response_code == 200 ):
+        $workable_datas = json_decode( $workable_response['body'], true );
+    endif;
+
+    return $workable_datas;
+}
+
 function get_url_with_careers_params( $u, $p ){
     return add_query_arg( array(
         'location' => $p['location'],
@@ -1000,3 +1021,15 @@ function get_url_with_wrkbl_params( $u, $p ){
         'shortcode' => $p
     ), $u );
 }
+
+function simulate_single_job_class( $classes ){
+    if( is_page_template('careers.php') && !empty( get_query_var( 'shortcode' ) ) ):
+        foreach ( $classes as $key => $value ) {
+            if ( $value == 'page-template-careers' ) unset( $classes[ $key ] );
+        }
+        $classes[] = 'single-job';
+    endif;
+
+    return $classes;
+}
+add_filter('body_class', 'simulate_single_job_class');

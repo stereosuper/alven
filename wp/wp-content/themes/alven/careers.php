@@ -30,17 +30,24 @@ get_header();
     if ( have_posts() ) : the_post(); ?>
         <?php
             // Main variables
-            $is_details = is_singular( 'job' ) || ( get_query_var( 'shortcode' ) && ( !empty( get_query_var( 'shortcode' ) ) ) );
-var_dump($is_details);
-            // Intialize datas for single and list jobs template
-            $form = get_form_datas( $is_details );
-            populate_params();
-            $jobs = get_posts_filtered( $is_details, $metquery, $taxquery );
+            $shortcode  = get_query_var( 'shortcode' );
+            $is_details = is_singular( 'job' ) || (  $shortcode && ( !empty( $shortcode ) ) );
+            $is_details_wrkbl = empty( $shortcode ) ? false : true;
+            
+            // Intialize datas for single and list jobs template EXCEPT if it is a single job from WORKABLE
+            if( $is_details_wrkbl ):
+
+                $job_alven = get_job_from_wrkbl( $shortcode );
+            else:
+                $form = get_form_datas( $is_details );
+                populate_params();
+                $jobs = get_posts_filtered( $is_details, $metquery, $taxquery );
+            endif;
 
 
             // Initalize datas in regards of template
             if( $is_details ):
-                $current_id = get_the_ID();
+                $current_id    = get_the_ID();
 
                 $details       = get_field('job_details', $current_id);
                 $urlapply      = get_field('job_link', $current_id);
@@ -53,7 +60,7 @@ var_dump($is_details);
             endif;
 
             $hasImg = false;
-            if(has_post_thumbnail()){
+            if( !$is_details && has_post_thumbnail() ){
                 $hasImg = true;
                 $imgUrl = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0];
             }
@@ -61,14 +68,14 @@ var_dump($is_details);
 
         <div class='content-header <?php if( $hasImg ){ echo 'has-img '; } ?>' id='contentHeader'>
             <div class='container align-center'>
-                <h1><?php the_title(); ?></h1>
+                <?php echo sprintf('<h1>%s</h1>', $is_details_wrkbl ? $job_alven['title'] : get_the_title()) ?>
                 <p><?php _e('Join the Alven Family','alven'); ?></p>
                 <?php if( $is_details ):
                     $backlink = esc_url( get_current_template_url( $is_details, 'careers.php' ) );
                     echo '<a class="btn-arrow" href="'. get_url_with_careers_params( $backlink, $params ) .'" title="'. __('Back to results','alven') .'">'. __('Back to results','alven') .'</a>';
                 endif; ?>
             </div>
-            <?php if( $hasImg ){ ?>
+            <?php if( !$is_details && $hasImg ){ ?>
                 <div class='img' style='background-image:url(<?php echo $imgUrl; ?>);'>
                     <?php the_post_thumbnail(); ?>
                 </div>
@@ -84,35 +91,38 @@ var_dump($is_details);
                             <div class="company-search-wrapper js-company-search-wrapper">
                                 <h2 class='job-sidebar-title'><?php _e('Start-up jobs','alven'); ?></h2>
                                 <p><?php _e('Join the Alven Family','alven'); ?></p>
-                                <?php require_once('includes/form-filtered-job.php'); ?>
-                                <?php if( $is_details && $jobs->have_posts() ):
-                                    // check if the only post is the current one
-                                    if( !( count( $jobs->posts ) === 1 && $jobs->post->ID === get_the_ID() ) ):
-                                    ?>
-                                    <div class='related-jobs'>
-                                        <p><?php _e('Related job offers', 'alven') ?></p>
-                                        <div class="related-jobs-links">
-                                        <?php
-                                            foreach ( extend_query($jobs->posts, array( 'location' => true, 'startup' => false ) ) as $key => $job) {
-                                                if( $job->ID !== get_the_ID() ):
-                                                        $article = '<a href="'. get_url_with_careers_params( esc_url( get_permalink( $job->ID ) ), $params ) .'" class="no-padding">';
-                                                        $article .= '<p class="job-title">'.$job->post_title.'</p>';
-                                                        if( $job->location ):
-                                                            $article .= '<p class="job-location">'.$job->location[0]->name.'</p>';
-                                                        endif;
-                                                        $article .= '</a>';
+                                <?php
+                                    if( !$is_details_wrkbl ):
+                                        require_once('includes/form-filtered-job.php');
+                                        if( $is_details && $jobs->have_posts() ):
+                                            // check if the only post is the current one
+                                            if( !( count( $jobs->posts ) === 1 && $jobs->post->ID === get_the_ID() ) ): ?>
+                                                <div class='related-jobs'>
+                                                    <p><?php _e('Related job offers', 'alven') ?></p>
+                                                    <div class="related-jobs-links">
+                                                    <?php
+                                                        foreach ( extend_query($jobs->posts, array( 'location' => true, 'startup' => false ) ) as $key => $job) {
+                                                            if( $job->ID !== get_the_ID() ):
+                                                                    $article = '<a href="'. get_url_with_careers_params( esc_url( get_permalink( $job->ID ) ), $params ) .'" class="no-padding">';
+                                                                    $article .= '<p class="job-title">'.$job->post_title.'</p>';
+                                                                    if( $job->location ):
+                                                                        $article .= '<p class="job-location">'.$job->location[0]->name.'</p>';
+                                                                    endif;
+                                                                    $article .= '</a>';
 
-                                                        echo $article;
-                                                endif;
-                                            }
-                                            ?>
-                                            </div>
-                                            <?php 
-                                            echo '<a class="btn-arrow" href="'. get_url_with_careers_params( $form['action'], $params ) .'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
-                                        ?>
-                                    </div>
-                                    <?php endif;
-                                endif; ?>
+                                                                    echo $article;
+                                                            endif;
+                                                        }
+                                                        ?>
+                                                        </div>
+                                                        <?php 
+                                                        echo '<a class="btn-arrow" href="'. get_url_with_careers_params( $form['action'], $params ) .'" title="'.__('All related job offers').'">'.__('All related job offers').'</a>';
+                                                    ?>
+                                                </div>
+                                            <?php endif;
+                                        endif; // end if is details and query have posts
+                                    endif; // end if is details job from workable
+                                ?>
                             </div>
                         </div>
                         <div class='col-8 no-padding-right'>
@@ -130,7 +140,9 @@ var_dump($is_details);
                 <?php if( !$is_details ):
                     require_once('includes/jobs-workable.php');
                 else:
-                    require_once('includes/jobs-list-random.php');
+                    if( !$is_details_wrkbl ):
+                        require_once('includes/jobs-list-random.php');
+                    endif;
                 endif; ?> 
             </div>
         </main>

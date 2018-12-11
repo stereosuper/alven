@@ -2,7 +2,7 @@
     <section class='alven-jobs'>
         <div class='container flex-container'>
             <div class='col-3 no-padding-left'>
-                <h2 class='job-sidebar-title'><?php _e('Alven obs', 'alven')?></h2>
+                <h2 class='job-sidebar-title'><?php _e('Alven jobs', 'alven')?></h2>
                 <p><?php _e('Join the Alven Team', 'alven')?></p>
             </div>
 
