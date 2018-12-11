@@ -61,12 +61,12 @@ var_dump($is_details);
 
         <div class='content-header <?php if( $hasImg ){ echo 'has-img '; } ?>' id='contentHeader'>
             <div class='container align-center'>
-                <?php if( $is_details ):
-                    $backlink = esc_url( get_current_template_url( $is_details, 'careers.php' ) );
-                    echo '<a href="'. get_url_with_careers_params( $backlink, $params ) .'" title="'. __('Back to results','alven') .'">'. __('Back to results','alven') .'</a>';
-                endif; ?>
                 <h1><?php the_title(); ?></h1>
                 <p><?php _e('Join the Alven Family','alven'); ?></p>
+                <?php if( $is_details ):
+                    $backlink = esc_url( get_current_template_url( $is_details, 'careers.php' ) );
+                    echo '<a class="btn-arrow" href="'. get_url_with_careers_params( $backlink, $params ) .'" title="'. __('Back to results','alven') .'">'. __('Back to results','alven') .'</a>';
+                endif; ?>
             </div>
             <?php if( $hasImg ){ ?>
                 <div class='img' style='background-image:url(<?php echo $imgUrl; ?>);'>
