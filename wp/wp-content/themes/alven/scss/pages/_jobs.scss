@@ -272,7 +272,8 @@
 }
 
 .single-job {
-    ul {
+    ul,
+    ol {
         padding: 0;
         margin-top: 0;
         li {
@@ -736,19 +737,16 @@
             }
             figure {
                 flex: 0 0 25%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 position: relative;
-                padding: 0;
+                padding: $innerGutter;
                 &::before {
                     content: "";
                     display: block;
-                    width: 100%;
+                    width: 0px;
                     padding-bottom: 83%;
-                }
-                img {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    height: 100%;
                 }
             }
             div {
@@ -768,6 +766,9 @@
             @include separator();
             margin-bottom: 5rem;
         }
+    }
+    .job-paginate {
+        margin: $outerGutter * 2 0;
     }
 }
 

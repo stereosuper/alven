@@ -729,7 +729,8 @@ form div {
     width: 100%; }
     form div.full input {
       max-width: 55%; }
-  form div.has-desc input, form div.has-desc button {
+  form div.has-desc input,
+  form div.has-desc button {
     margin: 0 5% 5px 0; }
   form div.margin-bottom-large {
     margin-bottom: 50px; }
@@ -771,11 +772,15 @@ legend {
       opacity: 1; }
     .js legend.active {
       cursor: default; }
-  legend.active, .no-js legend {
+  legend.active,
+  .no-js legend {
     opacity: 1; }
-    legend.active:before, legend.active:after, .no-js legend:before, .no-js legend:after {
+    legend.active:before, legend.active:after,
+    .no-js legend:before,
+    .no-js legend:after {
       position: absolute; }
-    legend.active:after, .no-js legend:after {
+    legend.active:after,
+    .no-js legend:after {
       font-family: 'icomoon' !important;
       speak: none;
       font-style: normal;
@@ -788,16 +793,19 @@ legend {
       height: 15px;
       font-size: 15px;
       color: #23afa9; }
-    legend.active:before, .no-js legend:before {
+    legend.active:before,
+    .no-js legend:before {
       content: '';
       width: 35px;
       height: 2px;
       background: #fff; }
-    legend.active:after, .no-js legend:after {
+    legend.active:after,
+    .no-js legend:after {
       left: -27px;
       bottom: -8px;
       font-size: 14px; }
-    legend.active:before, .no-js legend:before {
+    legend.active:before,
+    .no-js legend:before {
       left: -34px;
       bottom: -1px; }
 
@@ -826,12 +834,19 @@ label {
   .js label {
     opacity: 0; }
 
-input, textarea, select, button {
+input,
+textarea,
+select,
+button {
   transition: 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
-  input:focus, textarea:focus, select:focus, button:focus {
+  input:focus,
+  textarea:focus,
+  select:focus,
+  button:focus {
     outline: 0; }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 5px 15px;
   position: relative;
@@ -839,29 +854,43 @@ input, textarea {
   font-family: "Arvo", serif;
   font-size: 16px;
   color: #003240; }
-  input:-webkit-autofill, textarea:-webkit-autofill {
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
     box-shadow: 0 0 0 1000px #fff inset; }
-  input:hover, textarea:hover {
+  input:hover,
+  textarea:hover {
     opacity: 0.7; }
-    input:hover + label, textarea:hover + label {
+    input:hover + label,
+    textarea:hover + label {
       opacity: 0.7; }
-  input:focus, textarea:focus {
+  input:focus,
+  textarea:focus {
     opacity: 1; }
-    input:focus + label, textarea:focus + label {
+    input:focus + label,
+    textarea:focus + label {
       opacity: 1; }
-  input.filled:valid, textarea.filled:valid {
+  input.filled:valid,
+  textarea.filled:valid {
     border-color: #23afa9; }
-    input.filled:valid + label, textarea.filled:valid + label {
+    input.filled:valid + label,
+    textarea.filled:valid + label {
       color: #23afa9; }
-  input.filled:invalid, input.filled.invalid, textarea.filled:invalid, textarea.filled.invalid {
+  input.filled:invalid, input.filled.invalid,
+  textarea.filled:invalid,
+  textarea.filled.invalid {
     border-color: #f06850; }
-    input.filled:invalid + label, input.filled.invalid + label, textarea.filled:invalid + label, textarea.filled.invalid + label {
+    input.filled:invalid + label, input.filled.invalid + label,
+    textarea.filled:invalid + label,
+    textarea.filled.invalid + label {
       color: #f06850; }
-  input.invalid, textarea.invalid {
+  input.invalid,
+  textarea.invalid {
     border-color: #f06850; }
-    input.invalid + label, textarea.invalid + label {
+    input.invalid + label,
+    textarea.invalid + label {
       color: #f06850; }
-  input:invalid, textarea:invalid {
+  input:invalid,
+  textarea:invalid {
     box-shadow: none; }
 
 textarea {
@@ -875,13 +904,13 @@ textarea {
 input {
   border: 0;
   border-bottom: 1px solid #003240; }
-  input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+  input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
     display: none; }
-  input[type=file] {
+  input[type="file"] {
     padding: 0;
     border: 0;
     cursor: pointer; }
-    input[type=file] + label {
+    input[type="file"] + label {
       opacity: 0 !important; }
   .js input:focus + label {
     transform: translate3d(0, -180%, 0); }
@@ -890,7 +919,7 @@ input {
 
 button {
   color: #003240; }
-  button[type=submit] {
+  button[type="submit"] {
     margin-top: 25px;
     margin-left: 10px; }
 
@@ -940,7 +969,7 @@ select::-ms-expand {
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    content: '\e906';
+    content: "\e906";
     position: absolute;
     top: 17px;
     right: 10px;
@@ -952,7 +981,8 @@ select::-ms-expand {
     text-indent: 0; }
   .select:hover {
     background: #23afa9; }
-    .no-js .select:hover, .is-desktop .select:hover {
+    .no-js .select:hover,
+    .is-desktop .select:hover {
       color: #fff; }
   .select > select {
     width: 100%;
@@ -962,7 +992,7 @@ select::-ms-expand {
     line-height: 1;
     text-transform: uppercase;
     color: inherit;
-    border-color: #23afa9;
+    border: 1px solid #23afa9;
     -moz-appearance: none;
     -webkit-appearance: none; }
 
@@ -3810,10 +3840,12 @@ select::-ms-expand {
   font-family: "avalonbold", "avalonmedium", sans-serif;
   font-size: 2.2rem; }
 
-.single-job ul {
+.single-job ul,
+.single-job ol {
   padding: 0;
   margin-top: 0; }
-  .single-job ul li {
+  .single-job ul li,
+  .single-job ol li {
     margin-left: 0; }
 
 .single-job .content-main .separator {
@@ -4240,18 +4272,16 @@ select::-ms-expand {
       padding-top: 0; }
     .list-random-jobs a figure {
       flex: 0 0 25%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: relative;
-      padding: 0; }
+      padding: 10px; }
       .list-random-jobs a figure::before {
         content: "";
         display: block;
-        width: 100%;
+        width: 0px;
         padding-bottom: 83%; }
-      .list-random-jobs a figure img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%; }
     .list-random-jobs a div {
       flex: 0 0 calc(75% - 40px);
       margin-top: 20px; }
@@ -4287,7 +4317,9 @@ select::-ms-expand {
       width: 35px;
       height: 1px;
       background: #fff;
-      bottom: -1px; } }
+      bottom: -1px; }
+  .job-paginate {
+    margin: 40px 0; } }
 
 @media (max-width: 540px) {
   .single-job h1 {
