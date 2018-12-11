@@ -1,56 +1,57 @@
 /* Forms */
 
-form{
-    div{
+form {
+    div {
         display: inline-block;
         width: 50%;
         position: relative;
         vertical-align: top;
         padding: 0 $innerGutter;
         margin: 40px 0 0;
-        &.large{
+        &.large {
             width: 280px;
             max-width: 100%;
         }
-        &.full{
+        &.full {
             width: 100%;
-            input{
+            input {
                 max-width: 55%;
             }
         }
-        &.has-desc{
-            input, button{
+        &.has-desc {
+            input,
+            button {
                 margin: 0 5% 5px 0;
             }
         }
-        &.margin-bottom-large{
+        &.margin-bottom-large {
             margin-bottom: 50px;
         }
-        label{
+        label {
             left: 25px;
             right: 25px;
         }
     }
-    .form-section-inline{
+    .form-section-inline {
         display: flex;
-        div{
+        div {
             display: block;
             width: auto;
-            &:last-child{
+            &:last-child {
                 flex-grow: 2;
             }
         }
     }
 }
 
-fieldset{
+fieldset {
     margin: 50px 0 0;
-    &:first-of-type{
+    &:first-of-type {
         margin: 0;
     }
 }
 
-legend{
+legend {
     display: block;
     width: 100%;
     width: calc(100% - 20px);
@@ -62,44 +63,45 @@ legend{
     line-height: 1.3;
     opacity: 0.5;
     transition: $transition;
-    span{
+    span {
         display: block;
         font-family: $avalonMediumBold;
     }
-    .js &{
+    .js & {
         cursor: pointer;
-        &:hover{
+        &:hover {
             opacity: 1;
         }
-        &.active{
+        &.active {
             cursor: default;
         }
     }
-    &.active, .no-js &{
+    &.active,
+    .no-js & {
         opacity: 1;
 
         @include pseudoCross();
-        &:after{
+        &:after {
             left: -27px;
             bottom: -8px;
             font-size: 14px;
         }
-        &:before{
+        &:before {
             left: -34px;
             bottom: -1px;
         }
     }
 }
-.form-title{
+.form-title {
     display: block;
     margin: 20px 0 25px $innerGutter;
     font-size: 1.8rem;
-    + div{
+    + div {
         margin-top: 0;
     }
 }
 
-label{
+label {
     position: absolute;
     top: 7px;
     left: 15px;
@@ -112,22 +114,26 @@ label{
     cursor: text;
     transform: translate3d(0, 0, 0);
     transition: $transition;
-    .no-js &{
+    .no-js & {
         transform: translate3d(0, -180%, 0);
     }
-    .js &{
+    .js & {
         opacity: 0;
     }
 }
 
-input, textarea, select, button{
-  	transition: $transition;
-  	&:focus{
-      	outline: 0;
-  	}
+input,
+textarea,
+select,
+button {
+    transition: $transition;
+    &:focus {
+        outline: 0;
+    }
 }
 
-input, textarea{
+input,
+textarea {
     width: 100%;
     padding: 5px 15px;
     position: relative;
@@ -135,109 +141,111 @@ input, textarea{
     font-family: $arvo;
     font-size: 16px;
     color: $darkBlue;
-  	&:-webkit-autofill{
-      	box-shadow: 0 0 0 1000px #fff inset;
-  	}
-    &:hover{
+    &:-webkit-autofill {
+        box-shadow: 0 0 0 1000px #fff inset;
+    }
+    &:hover {
         opacity: 0.7;
-        + label{
+        + label {
             opacity: 0.7;
         }
     }
-    &:focus{
+    &:focus {
         opacity: 1;
-        + label{
+        + label {
             opacity: 1;
         }
     }
-    &.filled{
-        &:valid{
+    &.filled {
+        &:valid {
             border-color: $blue;
-            + label{
+            + label {
                 color: $blue;
             }
         }
-        &:invalid, &.invalid{
+        &:invalid,
+        &.invalid {
             border-color: #f06850;
-            + label{
+            + label {
                 color: #f06850;
             }
         }
     }
-    &.invalid{
+    &.invalid {
         border-color: #f06850;
-        + label{
+        + label {
             color: #f06850;
         }
     }
-    &:invalid{
+    &:invalid {
         box-shadow: none; // remove default invalid styles on FF
     }
 }
 
-textarea{
+textarea {
     height: 150px;
     border: 1px solid $darkBlue;
-    &:focus{
-        + label{
-            .js &{
+    &:focus {
+        + label {
+            .js & {
                 opacity: 0 !important; //override js
             }
         }
     }
-    &.filled{
-        + label{
+    &.filled {
+        + label {
             opacity: 0 !important; //override js
         }
     }
 }
 
-input{
+input {
     border: 0;
     border-bottom: 1px solid $darkBlue;
-    &[type=search]{
-        &::-webkit-search-cancel-button, &::-webkit-search-decoration{
+    &[type="search"] {
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-decoration {
             display: none;
         }
     }
-    &[type=file]{
+    &[type="file"] {
         padding: 0;
         border: 0;
         cursor: pointer;
-        + label{
+        + label {
             opacity: 0 !important;
         }
     }
-    &:focus{
-        + label{
-            .js &{
+    &:focus {
+        + label {
+            .js & {
                 transform: translate3d(0, -180%, 0);
             }
         }
     }
-    &.filled{
-        + label{
+    &.filled {
+        + label {
             transform: translate3d(0, -180%, 0);
         }
     }
 }
 
-button{
+button {
     color: $darkBlue;
-    &[type=submit]{
+    &[type="submit"] {
         margin-top: 25px;
         margin-left: $innerGutter;
     }
 }
 
-select{
+select {
     // hide the arrow on edge + ie
-    &::-ms-expand{
+    &::-ms-expand {
         display: none;
     }
 }
 
-.form-desc{
+.form-desc {
     display: inline-block;
     max-width: 40%;
     vertical-align: top;
@@ -247,20 +255,20 @@ select{
     line-height: 1.4;
 }
 
-.form-success{
+.form-success {
     color: $blue;
 }
-.form-error{
+.form-error {
     color: #f06850;
 }
 
-.form-search{
+.form-search {
     display: inline-block;
     max-width: 300px;
     position: relative;
     margin: 50px 0;
     vertical-align: middle;
-    .btn-search{
+    .btn-search {
         position: absolute;
         top: 7px;
         right: 0;
@@ -268,18 +276,18 @@ select{
         margin-left: 0;
         z-index: 2;
     }
-    label{
+    label {
         text-align: left;
     }
 }
 
-.select{
+.select {
     position: relative;
     margin: 0 0 10px;
     color: $blue;
-    &:after{
+    &:after {
         @include fontIcon;
-        content: '\e906'; // arrow down
+        content: "\e906"; // arrow down
         position: absolute;
         top: 17px;
         right: 10px;
@@ -290,13 +298,14 @@ select{
         transform: translate3d(0, 0, 0);
         text-indent: 0;
     }
-    &:hover{
+    &:hover {
         background: $blue;
-        .no-js &, .is-desktop &{
+        .no-js &,
+        .is-desktop & {
             color: #fff;
         }
     }
-    > select{
+    > select {
         width: 100%;
         padding: 15px 18px 13px;
         font-size: 1.4rem;
@@ -304,18 +313,17 @@ select{
         line-height: 1;
         text-transform: uppercase;
         color: inherit;
-        border-color: $blue;
+        border: 1px solid $blue;
         -moz-appearance: none;
         -webkit-appearance: none;
     }
 }
 
-
 @media (max-width: $phone) {
-    form{
-        .form-section-inline{
+    form {
+        .form-section-inline {
             flex-wrap: wrap;
-            > div{
+            > div {
                 width: 100%;
             }
         }

@@ -37,6 +37,17 @@
     }
 }
 
+.js {
+    .page-template-careers,
+    .single-job {
+        .content-main {
+            img:not(.no-scroll) {
+                opacity: 1;
+            }
+        }
+    }
+}
+
 .wrapper-collant {
     position: relative;
 }
@@ -173,6 +184,11 @@
 
 .list-jobs {
     flex-wrap: wrap;
+    a {
+        min-height: 175px;
+        box-sizing: border-box;
+        padding: 25px 0;
+    }
 }
 
 .job {
@@ -245,7 +261,6 @@
 
 .alven-jobs {
     padding: 4.5em 0;
-    margin: 2 * $outerGutter 0 0;
     background: $gold;
     .container {
         align-items: flex-start;
@@ -272,7 +287,8 @@
 }
 
 .single-job {
-    ul {
+    ul,
+    ol {
         padding: 0;
         margin-top: 0;
         li {
@@ -375,6 +391,7 @@
     }
     .collant {
         width: calc(1420px / 12 * 8 * 0.25 - #{$innerGutter * 2});
+        // width: calc((1420px - 40px) * 16.66666 / 100);
         margin-right: $outerGutter;
     }
     .company-info {
@@ -511,6 +528,11 @@
     .job-location {
         font-size: 1.2rem;
     }
+    .list-jobs {
+        a {
+            min-height: 125px;
+        }
+    }
 }
 
 @media (max-width: $desktop-small) {
@@ -584,6 +606,14 @@
     .job {
         &:nth-child(-n + 2) {
             padding: 60px 0 25px;
+        }
+    }
+    .list-jobs {
+        a {
+            min-height: 100px;
+            img {
+                max-width: 180px;
+            }
         }
     }
     .workable-form-application {
@@ -691,6 +721,14 @@
             padding: 15px 0;
         }
     }
+    .list-jobs {
+        a {
+            justify-content: flex-end;
+            img {
+                max-width: 125px;
+            }
+        }
+    }
     .job-details-main-content {
         div {
             width: calc(100% + #{$outerGutter} * 2 + #{$innerGutter} * 2);
@@ -736,19 +774,16 @@
             }
             figure {
                 flex: 0 0 25%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 position: relative;
-                padding: 0;
+                padding: $innerGutter;
                 &::before {
                     content: "";
                     display: block;
-                    width: 100%;
+                    width: 0px;
                     padding-bottom: 83%;
-                }
-                img {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    height: 100%;
                 }
             }
             div {
@@ -768,6 +803,9 @@
             @include separator();
             margin-bottom: 5rem;
         }
+    }
+    .job-paginate {
+        margin: $outerGutter * 2 0;
     }
 }
 

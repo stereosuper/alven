@@ -1,1 +1,311 @@
-!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define("collant",[],e):"object"==typeof exports?exports.collant=e():t.collant=e()}("undefined"!=typeof self?self:this,function(){return function(t){var e={};function o(n){if(e[n])return e[n].exports;var a=e[n]={i:n,l:!1,exports:{}};return t[n].call(a.exports,a,a.exports,o),a.l=!0,a.exports}return o.m=t,o.c=e,o.d=function(t,e,n){o.o(t,e)||Object.defineProperty(t,e,{configurable:!1,enumerable:!0,get:n})},o.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return o.d(e,"a",e),e},o.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},o.p="",o(o.s=0)}([function(t,e,o){"use strict";var n=o(1),a=o(2);t.exports=function(t,e){var o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},i=o.unit,s=void 0===i?"px":i,l=o.updateHeightOnScroll,r=void 0!==l&&l,c=o.wrapper,d=void 0===c||c,u=o.minimumWidth,p=void 0!==u&&u,f=o.bottom,m=void 0!==f&&f;if(void 0!==t&&null!=t){var w=void 0,v=void 0,y=void 0,h=void 0,x=void 0,g=window.innerHeight,b=window.outerWidth,F=window.pageYOffset||document.documentElement.scrollTop,L=void 0,P=function(){g=window.innerHeight,b=window.outerWidth,"vh"===s?(v=t.offsetHeight,w=g/(100/e)-v/2):w=e},q=function(){F=window.pageYOffset||document.documentElement.scrollTop,r&&t.classList.contains("collant")&&(t.dataset.height=t.offsetHeight),m?(F+g>=parseFloat(t.dataset.offsetBottom,10)+w?(t.classList.remove("collant"),t.style.bottom=parseFloat(t.dataset.initialPos,10)+"px"):(t.classList.add("collant"),t.style.bottom=w+"px"),p&&h&&(t.classList.remove("collant","collant-stuck"),t.style.top="",t.style.bottom=parseFloat(t.dataset.initialPos,10)+"px")):(y="auto"===t.dataset.initialPos?0:parseFloat(t.dataset.initialPos,10),F>=parseFloat(t.dataset.offsetTop,10)-w+y?(t.classList.add("collant"),t.style.top=w+"px",F+w+parseFloat(t.dataset.height,10)>=parseFloat(t.dataset.offsetBottom,10)?(t.classList.remove("collant"),t.classList.add("collant-stuck"),t.style.top="auto",t.style.bottom="0"):(t.classList.add("collant"),t.classList.remove("collant-stuck"),t.style.top=w+"px",t.style.bottom="")):(t.classList.remove("collant"),t.style.top=parseFloat(t.dataset.initialPos,10)+"px"),p&&h&&(t.classList.remove("collant","collant-stuck"),t.style.top=parseFloat(t.dataset.initialPos,10)+"px",t.style.bottom=""))},H=function(){x=L.getBoundingClientRect(),h=p&&b<=p,t.dataset.offsetTop=d?x.top+F:0,t.dataset.offsetBottom=x.top+F+L.offsetHeight,t.dataset.height=t.offsetHeight},T=function(){P(),H(),q()};L=t.dataset.collant?document.querySelector('.wrapper-collant[data-collant="'+t.dataset.collant+'"]'):document.querySelector(".wrapper-collant"),H(),t.dataset.initialPos=m?getComputedStyle(t).bottom:getComputedStyle(t).top,P(),q(),document.addEventListener("scroll",n(function(){a(q)},10),!1),window.addEventListener("resize",n(function(){a(T)},10))}}},function(t,e,o){"use strict";t.exports=function(t,e){var o,n;return function(){var a=this,i=+new Date,s=arguments;o&&i<o+e?(clearTimeout(n),n=setTimeout(function(){o=i,t.apply(a,s)},e)):(o=i,t.apply(a,s))}}},function(t,e,o){"use strict";t.exports=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(t){window.setTimeout(t,1e3/60)}}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+    if (typeof exports === 'object' && typeof module === 'object')
+        module.exports = factory();
+    else if (typeof define === 'function' && define.amd)
+        define("collant", [], factory);
+    else if (typeof exports === 'object')
+        exports["collant"] = factory();
+    else
+        root["collant"] = factory();
+})(typeof self !== 'undefined' ? self : this, function () {
+    return /******/ (function (modules) { // webpackBootstrap
+        /******/ // The module cache
+        /******/
+        var installedModules = {};
+        /******/
+        /******/ // The require function
+        /******/
+        function __webpack_require__(moduleId) {
+            /******/
+            /******/ // Check if module is in cache
+            /******/
+            if (installedModules[moduleId]) {
+                /******/
+                return installedModules[moduleId].exports;
+                /******/
+            }
+            /******/ // Create a new module (and put it into the cache)
+            /******/
+            var module = installedModules[moduleId] = {
+                /******/
+                i: moduleId,
+                /******/
+                l: false,
+                /******/
+                exports: {}
+                /******/
+            };
+            /******/
+            /******/ // Execute the module function
+            /******/
+            modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+            /******/
+            /******/ // Flag the module as loaded
+            /******/
+            module.l = true;
+            /******/
+            /******/ // Return the exports of the module
+            /******/
+            return module.exports;
+            /******/
+        }
+        /******/
+        /******/
+        /******/ // expose the modules object (__webpack_modules__)
+        /******/
+        __webpack_require__.m = modules;
+        /******/
+        /******/ // expose the module cache
+        /******/
+        __webpack_require__.c = installedModules;
+        /******/
+        /******/ // define getter function for harmony exports
+        /******/
+        __webpack_require__.d = function (exports, name, getter) {
+            /******/
+            if (!__webpack_require__.o(exports, name)) {
+                /******/
+                Object.defineProperty(exports, name, {
+                    /******/
+                    configurable: false,
+                    /******/
+                    enumerable: true,
+                    /******/
+                    get: getter
+                    /******/
+                });
+                /******/
+            }
+            /******/
+        };
+        /******/
+        /******/ // getDefaultExport function for compatibility with non-harmony modules
+        /******/
+        __webpack_require__.n = function (module) {
+            /******/
+            var getter = module && module.__esModule ?
+                /******/
+                function getDefault() {
+                    return module['default'];
+                } :
+                /******/
+                function getModuleExports() {
+                    return module;
+                };
+            /******/
+            __webpack_require__.d(getter, 'a', getter);
+            /******/
+            return getter;
+            /******/
+        };
+        /******/
+        /******/ // Object.prototype.hasOwnProperty.call
+        /******/
+        __webpack_require__.o = function (object, property) {
+            return Object.prototype.hasOwnProperty.call(object, property);
+        };
+        /******/
+        /******/ // __webpack_public_path__
+        /******/
+        __webpack_require__.p = "";
+        /******/
+        /******/ // Load entry module and return exports
+        /******/
+        return __webpack_require__(__webpack_require__.s = 0);
+        /******/
+    })
+    /************************************************************************/
+    /******/
+    ([
+        /* 0 */
+        /***/
+        (function (module, exports, __webpack_require__) {
+
+            "use strict";
+
+
+            var throttle = __webpack_require__(1);
+            var requestAnimFrame = __webpack_require__(2);
+
+            module.exports = function (stickyElt, givenPosition) {
+                var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+                    _ref$unit = _ref.unit,
+                    unit = _ref$unit === undefined ? 'px' : _ref$unit,
+                    _ref$updateHeightOnSc = _ref.updateHeightOnScroll,
+                    updateHeightOnScroll = _ref$updateHeightOnSc === undefined ? false : _ref$updateHeightOnSc,
+                    _ref$wrapper = _ref.wrapper,
+                    wrapper = _ref$wrapper === undefined ? true : _ref$wrapper,
+                    _ref$minimumWidth = _ref.minimumWidth,
+                    minimumWidth = _ref$minimumWidth === undefined ? false : _ref$minimumWidth,
+                    _ref$maximumWidth = _ref.maximumWidth,
+                    maximumWidth = _ref$maximumWidth === undefined ? false : _ref$maximumWidth,
+                    _ref$bottom = _ref.bottom,
+                    bottom = _ref$bottom === undefined ? false : _ref$bottom;
+            
+                    
+
+                if (typeof stickyElt == 'undefined' || stickyElt == null) return;
+
+                var position = void 0,
+                    eltHeight = void 0,
+                    posTop = void 0,
+                    belowWidth = void 0,
+                    aboveWidth = void 0,
+                    offset = void 0;
+                var windowHeight = window.innerHeight;
+                var windowWidth = window.outerWidth;
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var wrapperSticky = void 0;
+                
+
+                var checkWindowHeight = function checkWindowHeight() {
+                    windowHeight = window.innerHeight;
+                    windowWidth = window.outerWidth;
+
+                    if (unit === 'vh') {
+                        eltHeight = stickyElt.offsetHeight;
+                        position = windowHeight / (100 / givenPosition) - eltHeight / 2;
+                    } else {
+                        position = givenPosition;
+                    }
+                };
+
+                var scrollHandler = function scrollHandler() {
+                    
+                    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                    if (updateHeightOnScroll && stickyElt.classList.contains('collant')) stickyElt.setAttribute('data-height', stickyElt.offsetHeight);
+
+                    if (bottom) {
+
+                        if (scrollTop + windowHeight >= parseFloat(stickyElt.getAttribute('data-offsetbottom'), 10) + position) {
+                            stickyElt.classList.remove('collant');
+                            stickyElt.style.bottom = parseFloat(stickyElt.getAttribute('data-initialpos'), 10) + 'px';
+                        } else {
+                            stickyElt.classList.add('collant');
+                            stickyElt.style.bottom = position + 'px';
+                        }
+
+                        if ((minimumWidth && belowWidth) || (maximumWidth && aboveWidth)) {
+                            stickyElt.classList.remove('collant', 'collant-stuck');
+                            stickyElt.style.top = '';
+                            stickyElt.style.bottom = parseFloat(stickyElt.getAttribute('data-initialpos'), 10) + 'px';
+                        }
+                    } else {
+
+                        posTop = stickyElt.getAttribute('data-initialpos') === 'auto' ? 0 : parseFloat(stickyElt.getAttribute('data-initialpos'), 10);
+
+                        if (scrollTop >= parseFloat(stickyElt.getAttribute('data-offsettop'), 10) - position + posTop) {
+                            stickyElt.classList.add('collant');
+                            stickyElt.style.top = position + 'px';
+
+                            if (scrollTop + position + parseFloat(stickyElt.getAttribute('data-height'), 10) >= parseFloat(stickyElt.getAttribute('data-offsetbottom'), 10)) {
+                                stickyElt.classList.remove('collant');
+                                stickyElt.classList.add('collant-stuck');
+                                stickyElt.style.top = 'auto';
+                                stickyElt.style.bottom = '0';
+                            } else {
+                                stickyElt.classList.add('collant');
+                                stickyElt.classList.remove('collant-stuck');
+                                stickyElt.style.top = position + 'px';
+                                stickyElt.style.bottom = '';
+                            }
+                        } else {
+                            stickyElt.classList.remove('collant');
+                            stickyElt.style.top = parseFloat(stickyElt.getAttribute('data-initialpos'), 10) + 'px';
+                        }
+
+                        if ((minimumWidth && belowWidth) || (maximumWidth && aboveWidth)) {
+                            stickyElt.classList.remove('collant', 'collant-stuck');
+                            stickyElt.style.top = parseFloat(stickyElt.getAttribute('data-initialpos'), 10) + 'px';
+                            stickyElt.style.bottom = '';
+                        }
+                    }
+                };
+
+                var setDatas = function setDatas() {
+                    offset = wrapperSticky.getBoundingClientRect();
+                    belowWidth = minimumWidth && windowWidth <= minimumWidth;
+                    aboveWidth = maximumWidth && windowWidth >= maximumWidth;
+
+                    stickyElt.setAttribute('data-offsettop', wrapper ? offset.top + scrollTop : 0);
+                    stickyElt.setAttribute('data-offsetbottom', offset.top + scrollTop + wrapperSticky.offsetHeight);
+                    stickyElt.setAttribute('data-height', stickyElt.offsetHeight);
+                };
+
+                var resizeHandler = function resizeHandler() {
+                    stickyElt.classList.remove('collant', 'collant-stuck');
+                    stickyElt.style.top = bottom ? '' : parseFloat(stickyElt.getAttribute('data-initialpos'), 10) + 'px';
+                    stickyElt.style.bottom = bottom ? parseFloat(stickyElt.getAttribute('data-initialpos'), 10) + 'px' : '';
+                    
+                    checkWindowHeight();
+                    setDatas();
+                    scrollHandler();
+                };
+
+                wrapperSticky = stickyElt.getAttribute('data-collant') ? document.querySelector('.wrapper-collant[data-collant="' + stickyElt.getAttribute('data-collant') + '"]') : document.querySelector('.wrapper-collant');
+
+                setDatas();
+                stickyElt.setAttribute('data-initialpos', bottom ? getComputedStyle(stickyElt)['bottom'] : getComputedStyle(stickyElt)['top']);
+
+                checkWindowHeight();
+                scrollHandler();
+
+                document.addEventListener('scroll', throttle(function () {
+                    requestAnimFrame(scrollHandler);
+                }, 10), false);
+
+                window.addEventListener('resize', throttle(function () {
+                    requestAnimFrame(resizeHandler);
+                }, 10));
+            };
+
+            /***/
+        }),
+        /* 1 */
+        /***/
+        (function (module, exports, __webpack_require__) {
+
+            "use strict";
+
+
+            module.exports = function (callback, delay) {
+                var last, timer;
+                return function () {
+                    var context = this,
+                        now = +new Date(),
+                        args = arguments;
+                    if (last && now < last + delay) {
+                        // le délai n'est pas écoulé on reset le timer
+                        clearTimeout(timer);
+                        timer = setTimeout(function () {
+                            last = now;
+                            callback.apply(context, args);
+                        }, delay);
+                    } else {
+                        last = now;
+                        callback.apply(context, args);
+                    }
+                };
+            };
+
+            /***/
+        }),
+        /* 2 */
+        /***/
+        (function (module, exports, __webpack_require__) {
+
+            "use strict";
+
+
+            module.exports = function () {
+                return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+            }();
+
+            /***/
+        })
+        /******/
+    ]);
+});

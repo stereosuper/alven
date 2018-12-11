@@ -36,14 +36,12 @@ get_header();
             
             // Intialize datas for single and list jobs template EXCEPT if it is a single job from WORKABLE
             if( $is_details_wrkbl ):
-
                 $job_alven = get_job_from_wrkbl( $shortcode );
             else:
                 $form = get_form_datas( $is_details );
                 populate_params();
                 $jobs = get_posts_filtered( $is_details, $metquery, $taxquery );
             endif;
-
 
             // Initalize datas in regards of template
             if( $is_details ):
@@ -87,8 +85,8 @@ get_header();
                 <div class="separator"></div>
                 <section class='startups-jobs'>
                     <div class='container flex-container'>
-                        <div class='col-3 no-padding-left company-search wrapper-collant'>
-                            <div class="company-search-wrapper js-company-search-wrapper">
+                        <div class='col-3 no-padding-left company-search wrapper-collant'  data-collant='2'>
+                            <div class="company-search-wrapper js-company-search-wrapper" data-collant='2'>
                                 <h2 class='job-sidebar-title'><?php _e('Start-up jobs','alven'); ?></h2>
                                 <p><?php _e('Join the Alven Family','alven'); ?></p>
                                 <?php
@@ -125,7 +123,7 @@ get_header();
                                 ?>
                             </div>
                         </div>
-                        <div class='col-8 no-padding-right'>
+                        <div class='col-8 no-padding-right wrapper-collant' data-collant='3'>
                             <?php 
                                 if( $is_details ):
                                     require_once('includes/job-details.php');

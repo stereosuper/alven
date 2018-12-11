@@ -222,8 +222,18 @@ $(function(){
                 tabs.on('click', 'h2', function tabState() {
                     if (window.innerWidth <= 767) {
                         var tab = $(this).parent();
+                        var currentIndex = tab.index();
+                        
                         var height = 0;
-    
+
+                        tabs.each(function resetEachTab(index, tabToReset) {
+                            if (index !== currentIndex) {
+                                var jTabToReset = $(tabToReset);
+                                jTabToReset.css({ maxHeight: jTabToReset.find('h2').outerHeight(true) });
+                                jTabToReset.removeClass('active');
+                            }
+                        });
+
                         if (tab.hasClass('active')) {
                             height = $(this).outerHeight(true);
                         } else {
@@ -233,6 +243,7 @@ $(function(){
                         }
                         
                         tab.css({ maxHeight: height });
+
                         tab.toggleClass('active');
                     }
                 });
@@ -982,7 +993,9 @@ $(function(){
     if(mainContent.length){
         if(mainContent.find('img').length){
             var imgs = mainContent.find('img').not('.no-scroll');
-            setScrollElmts(imgs);
+            if (!body.hasClass('page-template-careers') && !body.hasClass('single-job')) {
+                setScrollElmts(imgs);
+            }
         }
         if(mainContent.find('.special-cat').length){
             setScrollElmts(mainContent.find('.special-cat'));
@@ -1343,6 +1356,7 @@ $(function(){
             //     tlHeader.pause().play();
             //     tlHeaderDone = true;
             // }
+            
         }
 
         if(postSidebar.length && mainContent.length && !isMobile.any){
@@ -1364,15 +1378,14 @@ $(function(){
             var companySearchWrapper = document.getElementsByClassName('js-company-search-wrapper')[0];
 
 
-            // TODO: Fix collant
-            // collant(detailsJobSidebar, headerHeight, {
-            //     minimumWidth: 979,
-            //     updateHeightOnScroll: true,
-            // });
-            // collant(companySearchWrapper, headerHeight, {
-            //     minimumWidth: 979,
-            //     updateHeightOnScroll: true,
-            // });
+            collant(companySearchWrapper, headerHeight, {
+                minimumWidth: 979,
+                updateHeightOnScroll: true,
+            });
+            collant(detailsJobSidebar, headerHeight, {
+                minimumWidth: 767,
+                updateHeightOnScroll: true,
+            });
         }
     };
 
@@ -1452,8 +1465,6 @@ $(function(){
                 setGallery($(this), $(window).width());
             });
         }
-
-        collantCareers();
     });
 
     $(window).on('load', function(){
