@@ -1,4 +1,4 @@
-<?php if ($jobs_alven && !empty($jobs_alven)): ?>
+<?php if ( $jobs_alven && !empty( $jobs_alven ) ): ?>
     <section class='alven-jobs'>
         <div class='container flex-container'>
             <div class='col-3 no-padding-left'>
@@ -10,7 +10,7 @@
                 <div class="list-jobs-alven flex-container">
                     <?php
                     foreach ($jobs_alven as $key => $job_alven) {
-                        $job_alven_link = '<a href="' . $job_alven['url'] . '" class="job-alven">';
+                        $job_alven_link = '<a href="' . get_url_with_wrkbl_params( $is_details, $job_alven['shortcode'] ) . '" class="job-alven">';
                         $job_alven_link .= '<p class="job-title-alven">' . $job_alven['title'] . '</p>';
                         // Line below do the trick also
                         // $job_alven_location = ($job_alven['location']['city'] && $job_alven['location']['country'] ? $job_alven['location']['city'] . ',&nbsp;' . $job_alven['location']['country'] : ($job_alven['location']['city'] ? $job_alven['location']['city'] : $job_alven['location']['country']));
@@ -61,15 +61,15 @@
                     <fieldset>
                         <legend><?php _e('Send us','alven'); ?><span><?php _e('Your document (CV, recommandations...)','alven'); ?></span></legend>
                         <section class='form-section'>
-                            <div class='full has-desc margin-bottom-large'>
+                            <div class='full has-desc'>
                                 <input type='file' name='document_job' id='document_job' required class='form-elt <?php if ($errorDocument_job) { echo "invalid"; } ?>'>
                                 <label for='document_job'><?php _e('Upload your file','alven'); ?></label>
                                 <span class='form-desc'><?php _e('.pdf, .doc, .docx, .rtf','alven'); ?></span>
                             </div>
-                            <div class='full has-desc'>
-                                <input type='url' name='url_job' id='url_job' class='form-elt <?php if($errorUrl_job) echo "invalid"; ?>'>
-                                <label for='url_job' value='<?php echo $url_job; ?>'>
-                                    <?php _e('Insert here a link to your linkedin page (or other)','alven'); ?>
+                            <div class='full margin-bottom-large'>
+                                <textarea name='summary_job' id='summary_job' required class='form-elt'><?php echo $summary_job; ?></textarea>
+                                <label for='summary_job' value='<?php echo $summary_job; ?>'>
+                                    <?php _e('Insert here a link to your linkedin page or a small description','alven'); ?>
                                 </label>
                             </div>
                             <div class='hidden'>

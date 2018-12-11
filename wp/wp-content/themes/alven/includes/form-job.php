@@ -9,14 +9,13 @@ $errorFirstname_job = '';
 $errorLastname_job  = '';
 $errorEmail_job     = '';
 $errorDocument_job  = '';
-$errorUrl_job       = '';
 $errorSend_job      = '';
 
 $firstname_job = isset($_POST['firstname_job']) ? strip_tags(stripslashes($_POST['firstname_job'])) : '';
 $lastname_job  = isset($_POST['lastname_job']) ? strip_tags(stripslashes($_POST['lastname_job'])) : '';
 $email_job     = isset($_POST['email_job']) ? strip_tags(stripslashes($_POST['email_job'])) : '';
 $document_job  = isset($_FILES['document_job']) ? $_FILES['document_job'] : '';
-$url_job       = isset($_POST['url_job']) ? strip_tags(stripslashes($_POST['url_job'])) : '';
+$summary_job   = isset($_POST['summary_job']) ? strip_tags(stripslashes($_POST['summary_job'])) : '';
 $spamUrl_job   = isset($_POST['spam_job']) ? strip_tags(stripslashes($_POST['spam_job'])) : '';
 
 if( isset( $_POST['directappsubmit'] ) ){
@@ -55,12 +54,6 @@ if( isset( $_POST['directappsubmit'] ) ){
         }
     }
 
-    if( !empty( $url_job ) && !filter_var( $url_job, FILTER_VALIDATE_URL) ){
-        $status_job = 'error';
-        $errorUrl_job = true;
-    }
-
-
 
     if( $status_job === 'error' && empty( $errorSend_job ) ){
         $errorSend_job = 'Sorry, your message counldn\'t be send, the form contains errors. Please check the red fields.';
@@ -74,18 +67,15 @@ if( isset( $_POST['directappsubmit'] ) ){
                 'firstname'  => $firstname_job, 
                 'lastname'   => $lastname_job, 
                 'email'      => $email_job,
+                'summary'    => $summary_job,
                 'resume'     => array(
                     'name' => $document_job['name'],
                     'data' => chunk_split( base64_encode( file_get_contents( $document_job['tmp_name'] ) ) ) 
                 )
             );
 
-            if( !empty( $url_job ) ):
-                $candidate['domain'] = $url_job;
-            endif;
-
             $workable_datas = null;
-            $workable_args = array(
+            $workable_args  = array(
                 'headers' => array(
                     'Content-Type: application/json',
                     'Authorization' => 'Bearer ' . WRKBL_TOKEN,

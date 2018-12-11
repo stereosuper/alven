@@ -30,8 +30,8 @@ get_header();
     if ( have_posts() ) : the_post(); ?>
         <?php
             // Main variables
-            $is_details = is_singular( 'job' );
-
+            $is_details = is_singular( 'job' ) || ( get_query_var( 'shortcode' ) && ( !empty( get_query_var( 'shortcode' ) ) ) );
+var_dump($is_details);
             // Intialize datas for single and list jobs template
             $form = get_form_datas( $is_details );
             populate_params();

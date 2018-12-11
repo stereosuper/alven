@@ -5,7 +5,7 @@ define( 'ALVEN_VERSION', 1.2 );
 // WORKABLE
 define( 'WRKBL_SUBDOMAIN', 'alven' );
 define( 'WRKBL_TOKEN', '74069b76972b9edc000610fd9cd1f2f9945483d3425e7483467d0faa6f43680b' );
-define( 'WRKBL_APPLICATION', 'alven' );
+define( 'WRKBL_APPLICATION', 'E0D70C0FF7' );
 // END WORKABLE
 
 if(function_exists('get_field')){
@@ -562,7 +562,7 @@ add_filter( 'nav_menu_css_class', 'alven_correct_menu_parent_class', 10, 2 );
 /* Search -> Add some custom vars
 /*-----------------------------------------------------------------------------------*/
 function add_query_vars_filter( $vars ) {
-    array_push($vars, "location", "company", "function", "sector", "search");
+    array_push($vars, "shortcode", "location", "company", "function", "sector", "search");
     return $vars;
 }
 add_filter( 'query_vars', 'add_query_vars_filter' );
@@ -992,5 +992,11 @@ function get_url_with_careers_params( $u, $p ){
         'company'  => $p['company'],
         'function' => $p['function'],
         'sector'   => $p['sector'],
+    ), $u );
+}
+
+function get_url_with_wrkbl_params( $u, $p ){
+    return add_query_arg( array(
+        'shortcode' => $p
     ), $u );
 }
