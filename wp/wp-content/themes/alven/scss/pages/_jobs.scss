@@ -184,19 +184,15 @@
 
 .list-jobs {
     flex-wrap: wrap;
-    a {
-        min-height: 175px;
-        box-sizing: border-box;
-        padding: 25px 0;
-    }
 }
 
 .job {
-    width: calc(50% - #{$innerGutter});
     display: flex;
-    padding: 60px 0 25px;
-    border-bottom: 1px solid $greyBorder;
     align-items: flex-start;
+    width: calc(50% - #{$innerGutter});
+    min-height: 175px;
+    padding: 25px 0;
+    border-bottom: 1px solid $greyBorder;
     box-shadow: none;
     &:nth-child(-n + 2) {
         padding-top: 0;
@@ -206,9 +202,10 @@
     }
     > div {
         padding: $innerGutter;
-        flex: 1 0 50%;
+        flex: 1 1 50%;
         &:nth-child(1) {
-            flex: 1 1 40%;
+            flex: 0 0 auto;
+            width: 180px;
         }
         > div {
             flex: 1 0 0px;
@@ -256,7 +253,7 @@
 }
 
 .job-paginate {
-    margin: 4 * $outerGutter 0;
+    margin: 3 * $outerGutter 0;
 }
 
 .alven-jobs {
@@ -465,16 +462,17 @@
         justify-content: space-between;
         box-shadow: none;
         figure {
-            flex: 0 0 40%;
+            flex: 0 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 175px;
             padding: $outerGutter;
             margin: 0 $outerGutter 0 0;
             border: 1px solid $greyBorder;
         }
         div {
-            flex: 0 0 calc(60% - #{$outerGutter * 2});
+            flex: 1 1 auto;
         }
     }
 }
@@ -506,6 +504,13 @@
 }
 
 @media (max-width: $desktop-large) {
+    .list-random-jobs {
+        a {
+            figure {
+                width: 150px;
+            }
+        }
+    }
 }
 
 @media (max-width: $desktop) {
@@ -516,9 +521,10 @@
         }
     }
     .job {
+        min-height: 125px;
         > div {
             &:nth-child(1) {
-                flex: 1 1 35%;
+                width: 150px;
             }
         }
     }
@@ -528,9 +534,11 @@
     .job-location {
         font-size: 1.2rem;
     }
-    .list-jobs {
+    .list-random-jobs {
         a {
-            min-height: 125px;
+            figure {
+                width: 125px;
+            }
         }
     }
 }
@@ -603,16 +611,15 @@
             }
         }
     }
-    .job {
-        &:nth-child(-n + 2) {
-            padding: 60px 0 25px;
-        }
-    }
     .list-jobs {
-        a {
-            min-height: 100px;
-            img {
-                max-width: 180px;
+        margin-top: $outerGutter * 2;
+    }
+    .job {
+        min-height: 100px;
+        > div {
+            &:first-child {
+                flex: 0 0 auto;
+                width: 175px;
             }
         }
     }
@@ -621,6 +628,14 @@
             font-size: 4.4rem;
             margin-top: 75px;
             margin-bottom: 60px;
+        }
+    }
+    .list-random-jobs {
+        a {
+            figure {
+                width: 100px;
+                padding: $innerGutter;
+            }
         }
     }
 }
@@ -717,15 +732,16 @@
         }
     }
     .job {
+        justify-content: flex-end;
+        &:nth-child(odd) {
+            margin: 0;
+        }
         &:nth-child(-n + 2) {
             padding: 15px 0;
         }
-    }
-    .list-jobs {
-        a {
-            justify-content: flex-end;
-            img {
-                max-width: 125px;
+        > div {
+            &:first-child {
+                width: 180px;
             }
         }
     }
@@ -744,6 +760,7 @@
                 position: relative;
                 margin: 3rem 0;
                 padding-right: calc(#{$outerGutter * 2} + 1rem);
+                font-size: 2.4rem;
             }
             .icon-arrow-tip {
                 display: block;
@@ -773,12 +790,12 @@
                 padding-top: 0;
             }
             figure {
-                flex: 0 0 25%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 position: relative;
-                padding: $innerGutter;
+                width: 175px;
+                padding: $outerGutter;
                 &::before {
                     content: "";
                     display: block;
@@ -787,8 +804,13 @@
                 }
             }
             div {
-                flex: 0 0 calc(75% - #{$outerGutter * 2});
                 margin-top: $outerGutter;
+                .job-title {
+                    font-size: 2rem;
+                }
+                .job-location {
+                    font-size: 1.4rem;
+                }
             }
         }
     }
@@ -842,8 +864,10 @@
         }
     }
     .job {
-        img {
-            max-height: 75px;
+        > div {
+            &:first-child  {
+                max-height: 75px;
+            }
         }
     }
     .job-details-main-content {
@@ -871,11 +895,23 @@
     .list-random-jobs {
         a {
             figure {
-                flex: 0 0 33%;
+                width: 125px;
             }
             div {
-                flex: 0 0 calc(66% - #{$outerGutter * 2});
                 margin-top: 0;
+                .job-title {
+                    font-size: 1.5rem;
+                }
+                .job-location {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+    .job {
+        > div {
+            &:first-child {
+                width: 135px;
             }
         }
     }

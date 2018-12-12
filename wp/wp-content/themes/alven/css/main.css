@@ -3765,17 +3765,14 @@ select::-ms-expand {
 
 .list-jobs {
   flex-wrap: wrap; }
-  .list-jobs a {
-    min-height: 175px;
-    box-sizing: border-box;
-    padding: 25px 0; }
 
 .job {
-  width: calc(50% - 10px);
   display: flex;
-  padding: 60px 0 25px;
-  border-bottom: 1px solid #e5e8e8;
   align-items: flex-start;
+  width: calc(50% - 10px);
+  min-height: 175px;
+  padding: 25px 0;
+  border-bottom: 1px solid #e5e8e8;
   box-shadow: none; }
   .job:nth-child(-n + 2) {
     padding-top: 0; }
@@ -3783,9 +3780,10 @@ select::-ms-expand {
     margin: 0 20px 0 0; }
   .job > div {
     padding: 10px;
-    flex: 1 0 50%; }
+    flex: 1 1 50%; }
     .job > div:nth-child(1) {
-      flex: 1 1 40%; }
+      flex: 0 0 auto;
+      width: 180px; }
     .job > div > div {
       flex: 1 0 0px;
       padding: 10px; }
@@ -3823,7 +3821,7 @@ select::-ms-expand {
   color: #23afa9; }
 
 .job-paginate {
-  margin: 80px 0; }
+  margin: 60px 0; }
 
 .alven-jobs {
   padding: 4.5em 0;
@@ -4057,15 +4055,16 @@ select::-ms-expand {
     justify-content: space-between;
     box-shadow: none; }
     .list-random-jobs a figure {
-      flex: 0 0 40%;
+      flex: 0 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 175px;
       padding: 20px;
       margin: 0 20px 0 0;
       border: 1px solid #e5e8e8; }
     .list-random-jobs a div {
-      flex: 0 0 calc(60% - 40px); }
+      flex: 1 1 auto; }
 
 .workable-form-application h2 {
   font-family: "avalonbold", "avalonmedium", sans-serif;
@@ -4113,19 +4112,25 @@ select::-ms-expand {
   .company-search .company-search-wrapper.collant-stuck {
     margin-right: 10px; }
 
+@media (max-width: 1420px) {
+  .list-random-jobs a figure {
+    width: 150px; } }
+
 @media (max-width: 1150px) {
   .job-sidebar-title {
     font-size: 3.2rem; }
     .job-sidebar-title + p {
       font-size: 1.8rem; }
-  .job > div:nth-child(1) {
-    flex: 1 1 35%; }
+  .job {
+    min-height: 125px; }
+    .job > div:nth-child(1) {
+      width: 150px; }
   .job-title {
     font-size: 1.5rem; }
   .job-location {
     font-size: 1.2rem; }
-  .list-jobs a {
-    min-height: 125px; } }
+  .list-random-jobs a figure {
+    width: 125px; } }
 
 @media (max-width: 979px) {
   .single-job .content-header a {
@@ -4170,16 +4175,20 @@ select::-ms-expand {
         flex-basis: calc(50% - 10px); }
         .company-search .related-jobs .related-jobs-links a:nth-child(odd) {
           margin-right: 20px; }
-  .job:nth-child(-n + 2) {
-    padding: 60px 0 25px; }
-  .list-jobs a {
+  .list-jobs {
+    margin-top: 40px; }
+  .job {
     min-height: 100px; }
-    .list-jobs a img {
-      max-width: 180px; }
+    .job > div:first-child {
+      flex: 0 0 auto;
+      width: 175px; }
   .workable-form-application h2 {
     font-size: 4.4rem;
     margin-top: 75px;
-    margin-bottom: 60px; } }
+    margin-bottom: 60px; }
+  .list-random-jobs a figure {
+    width: 100px;
+    padding: 10px; } }
 
 @media (max-width: 767px) {
   #main {
@@ -4248,12 +4257,14 @@ select::-ms-expand {
       margin-bottom: 0; }
     .details-job-sidebar .company-info {
       display: none; }
-  .job:nth-child(-n + 2) {
-    padding: 15px 0; }
-  .list-jobs a {
+  .job {
     justify-content: flex-end; }
-    .list-jobs a img {
-      max-width: 125px; }
+    .job:nth-child(odd) {
+      margin: 0; }
+    .job:nth-child(-n + 2) {
+      padding: 15px 0; }
+    .job > div:first-child {
+      width: 180px; }
   .job-details-main-content div {
     width: calc(100% + 20px * 2 + 10px * 2);
     max-height: calc(6rem + 3.6rem);
@@ -4267,7 +4278,8 @@ select::-ms-expand {
       cursor: pointer;
       position: relative;
       margin: 3rem 0;
-      padding-right: calc(40px + 1rem); }
+      padding-right: calc(40px + 1rem);
+      font-size: 2.4rem; }
     .job-details-main-content div .icon-arrow-tip {
       display: block;
       position: absolute;
@@ -4287,20 +4299,23 @@ select::-ms-expand {
     .list-random-jobs a:first-child {
       padding-top: 0; }
     .list-random-jobs a figure {
-      flex: 0 0 25%;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
-      padding: 10px; }
+      width: 175px;
+      padding: 20px; }
       .list-random-jobs a figure::before {
         content: "";
         display: block;
         width: 0px;
         padding-bottom: 83%; }
     .list-random-jobs a div {
-      flex: 0 0 calc(75% - 40px);
       margin-top: 20px; }
+      .list-random-jobs a div .job-title {
+        font-size: 2rem; }
+      .list-random-jobs a div .job-location {
+        font-size: 1.4rem; }
   .workable-form-application h2 {
     font-size: 3.6rem;
     margin-top: 5rem;
@@ -4358,7 +4373,7 @@ select::-ms-expand {
       margin: 10px 0; }
     .job-alven:nth-child(2n) {
       margin: 10px 0; }
-  .job img {
+  .job > div:first-child  {
     max-height: 75px; }
   .job-details-main-content div h2 {
     font-size: 2.2rem; }
@@ -4369,10 +4384,15 @@ select::-ms-expand {
 
 @media (max-width: 420px) {
   .list-random-jobs a figure {
-    flex: 0 0 33%; }
+    width: 125px; }
   .list-random-jobs a div {
-    flex: 0 0 calc(66% - 40px);
-    margin-top: 0; } }
+    margin-top: 0; }
+    .list-random-jobs a div .job-title {
+      font-size: 1.5rem; }
+    .list-random-jobs a div .job-location {
+      font-size: 1.2rem; }
+  .job > div:first-child {
+    width: 135px; } }
 
 /* Responsive horizontal */
 @media (max-width: 1420px) {
