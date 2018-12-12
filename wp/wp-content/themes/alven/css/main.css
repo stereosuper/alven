@@ -4108,17 +4108,19 @@ select::-ms-expand {
     background: #fff;
     bottom: -1px; }
 
-.company-search {
-  position: relative; }
-  .company-search .company-search-wrapper.collant {
-    width: calc(355px - 10px);
-    padding-right: 10px; }
-  .company-search .company-search-wrapper.collant-stuck {
-    margin-right: 10px; }
+.company-search .company-search-wrapper.collant {
+  width: calc(355px - 10px); }
+
+.company-search .company-search-wrapper.collant-stuck {
+  width: calc(100% - 10px); }
 
 @media (max-width: 1420px) {
   .list-random-jobs a figure {
-    width: 150px; } }
+    width: 150px; }
+  .details-job-sidebar .collant {
+    width: calc(100% / 12 * 8 * 0.25 - 20px); }
+  .company-search .company-search-wrapper.collant {
+    width: calc(25% - 20px); } }
 
 @media (max-width: 1150px) {
   .job-sidebar-title {
@@ -4192,7 +4194,9 @@ select::-ms-expand {
     margin-bottom: 60px; }
   .list-random-jobs a figure {
     width: 100px;
-    padding: 10px; } }
+    padding: 10px; }
+  .details-job-sidebar .collant {
+    width: calc(100% * 0.25 - 20px); } }
 
 @media (max-width: 767px) {
   #main {
