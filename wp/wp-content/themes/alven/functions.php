@@ -1,6 +1,6 @@
 <?php
 
-define( 'ALVEN_VERSION', 1.2 );
+define( 'ALVEN_VERSION', 1.3 );
 
 // WORKABLE
 define( 'WRKBL_SUBDOMAIN', 'alven' );
