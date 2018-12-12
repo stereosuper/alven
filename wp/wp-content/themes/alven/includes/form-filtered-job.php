@@ -2,7 +2,7 @@
                                 <div class='jobs-search'>
                                     <input type='search' name='search' value='<?php the_search_query(); ?>' id='search'>
                                     <label for='search'>Free search</label>
-                                    <button type='submit' class='btn-search btn-no-text'>Explore</button>
+                                    <button type='submit' class='btn-search btn-no-text'></button>
                                 </div>
                             
                                 <!-- Locations with number of jobs -->
