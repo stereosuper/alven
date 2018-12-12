@@ -1381,6 +1381,7 @@ $(function(){
             collant(companySearchWrapper, headerHeight, {
                 minimumWidth: 979,
                 updateHeightOnScroll: true,
+                offsetBottom: 200,
             });
             collant(detailsJobSidebar, headerHeight, {
                 minimumWidth: 767,

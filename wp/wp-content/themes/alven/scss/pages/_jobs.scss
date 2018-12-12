@@ -491,14 +491,12 @@
 }
 
 .company-search {
-    position: relative;
     .company-search-wrapper {
         &.collant {
-            width: calc(#{1420 * 0.25}px - #{$outerGutter / 2});
-            padding-right: $innerGutter;
+            width: calc(#{1420 / 12 * 3}px - #{$outerGutter / 2});
         }
         &.collant-stuck {
-            margin-right: $innerGutter;
+            width: calc(100% - #{$innerGutter});
         }
     }
 }
@@ -508,6 +506,18 @@
         a {
             figure {
                 width: 150px;
+            }
+        }
+    }
+    .details-job-sidebar {
+        .collant {
+            width: calc(100% / 12 * 8 * 0.25 - #{$innerGutter * 2});
+        }
+    }
+    .company-search {
+        .company-search-wrapper {
+            &.collant {
+                width: calc(25% - #{$outerGutter});
             }
         }
     }
@@ -636,6 +646,11 @@
                 width: 100px;
                 padding: $innerGutter;
             }
+        }
+    }
+    .details-job-sidebar {
+        .collant {
+            width: calc(100% * 0.25 - #{$innerGutter * 2});
         }
     }
 }
