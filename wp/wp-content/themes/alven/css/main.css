@@ -4108,11 +4108,17 @@ select::-ms-expand {
     background: #fff;
     bottom: -1px; }
 
+.single-job .company-search {
+  height: 100%; }
+
+.page-template-careers .company-search {
+  height: calc(100% - 20px); }
+
 .company-search .company-search-wrapper.collant {
-  width: calc(355px - 10px); }
+  width: calc(355px - 20px); }
 
 .company-search .company-search-wrapper.collant-stuck {
-  width: calc(100% - 10px); }
+  width: 100%; }
 
 @media (max-width: 1420px) {
   .list-random-jobs a figure {

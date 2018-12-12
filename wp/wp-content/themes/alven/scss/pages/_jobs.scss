@@ -490,13 +490,25 @@
     }
 }
 
+.single-job {
+    .company-search {
+        height: 100%;
+    }
+}
+
+.page-template-careers {
+    .company-search {
+        height: calc(100% - #{$outerGutter});
+    }
+}
+
 .company-search {
     .company-search-wrapper {
         &.collant {
-            width: calc(#{1420 / 12 * 3}px - #{$outerGutter / 2});
+            width: calc(#{1420 / 12 * 3}px - #{$outerGutter});
         }
         &.collant-stuck {
-            width: calc(100% - #{$innerGutter});
+            width: 100%;
         }
     }
 }
