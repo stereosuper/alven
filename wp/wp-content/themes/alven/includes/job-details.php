@@ -39,9 +39,11 @@ if( !$is_details_wrkbl ):
         endif;
     endif;
 
-    $job_company_logo  = '<a class="company-image" href="'. $job_startup['startup_link'] .'" target="_blank" rel="noopener noreferer" title="'. __('Lien vers ','alven') . $job_startup['startup_datas']['name'] .'"><figure>';
+    $job_company_logo = $job_startup['startup_link'] ? '<a class="company-image" href="'. $job_startup['startup_link'] .'" target="_blank" rel="noopener noreferer" title="'. __('Lien vers ','alven') . $job_startup['startup_datas']['name'] .'">' : '<div class="company-image">';
+    $job_company_logo .= '<figure>';
     $job_company_logo .= '<img src="' . $job_startup['startup_datas']['logo_url'] . '" alt="' . $job_startup['startup_datas']['name'] . '">';
-    $job_company_logo .= '</figure></a>';
+    $job_company_logo .= '</figure>';
+    $job_company_logo .= $job_startup['startup_link'] ? '</a>' : '</div>';
 
     $job_company_link = $job_startup['urlapply'];
 else:
