@@ -2,45 +2,46 @@
 
 // DATAS
 if( !$is_details_wrkbl ):
-    $location = 'Paris';
-    $type     = 'Permanent Contract';
+    //var_dump($job_startup);
+    $location = $job_startup['location'][0]->name;
+    $type     = $job_startup['type'][0]->name;
 
     $content  = '';
-    if ( $details ):
-        if ($details['job_details_about']):
+    if ( $job_startup['details'] ):
+        if ( $job_startup['details']['job_details_about'] ):
             $content .= '<div class="js-job-details-tab">';
-            $content .= '<h2 class="job-single-title">' . __('About', 'alven') . '&nbsp' . $company_datas['name'] . '<i class="icon-arrow-tip"></i></h2>';
-            $content .= $details['job_details_about'];
+            $content .= '<h2 class="job-single-title">' . __('About', 'alven') . '&nbsp' . $job_startup['startup_datas']['name'] . '<i class="icon-arrow-tip"></i></h2>';
+            $content .= $job_startup['details']['job_details_about'];
             $content .= '</div>';
         endif;
-        if ($details['job_details_desc']):
+        if ( $job_startup['details']['job_details_desc'] ):
             $content .= '<div class="js-job-details-tab">';
             $content .= '<h2 class="job-single-title">' . __('Job description', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
-            $content .= $details['job_details_desc'];
+            $content .= $job_startup['details']['job_details_desc'];
             $content .= '</div>';
         endif;
-        if ($details['job_details_profil']):
+        if ( $job_startup['details']['job_details_profil'] ):
             $content .= '<div class="js-job-details-tab">';
             $content .= '<h2 class="job-single-title">' . __('Profile', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
-            $content .= $details['job_details_profil'];
+            $content .= $job_startup['details']['job_details_profil'];
             $content .= '</div>';
         endif;
-        if ($details['job_details_why']):
+        if ( $job_startup['details']['job_details_why'] ):
             $content .= '<div class="js-job-details-tab">';
             $content .= '<h2 class="job-single-title">' . __('Why you should join us', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
-            $content .= $details['job_details_why'];
+            $content .= $job_startup['details']['job_details_why'];
             $content .= '</div>';
         endif;
-        if ($details['job_details_process']):
+        if ( $job_startup['details']['job_details_process'] ):
             $content .= '<div class="js-job-details-tab">';
             $content .= '<h2 class="job-single-title">' . __('Hiring Process', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
-            $content .= $details['job_details_process'];
+            $content .= $job_startup['details']['job_details_process'];
             $content .= '</div>';
         endif;
     endif;
 
-    $job_company_logo  = '<a class="company-image" href="'. $company_datas['permalink'] .'" title="'. $company_datas['permalink'] .'"><figure>';
-    $job_company_logo .= '<img src="' . $company_datas['logo_url'] . '" alt="' . $company_datas['name'] . '">';
+    $job_company_logo  = '<a class="company-image" href="'. $job_startup['startup_link'] .'" target="_blank" rel="noopener noreferer" title="'. __('Lien vers ','alven') . $job_startup['startup_datas']['name'] .'"><figure>';
+    $job_company_logo .= '<img src="' . $job_startup['startup_datas']['logo_url'] . '" alt="' . $job_startup['startup_datas']['name'] . '">';
     $job_company_logo .= '</figure></a>';
 
 
@@ -61,13 +62,13 @@ endif;
 echo '<div class="flex-container details-job">';
     echo '<div class="details-job-main">';
         $details_header = '<header class="flex-container details-job-header">';
-            $details_header .= '<a class="company-image" href="'. $company_datas['permalink'] .'" title="'. $company_datas['name'] .'"><figure>';
-                $details_header .= '<img src="' . $company_datas['logo_url'] . '" alt="' . $company_datas['name'] . '">';
+            $details_header .= '<a class="company-image" href="'. $job_startup['startup_datas']['permalink'] .'" title="'. $job_startup['startup_datas']['name'] .'"><figure>';
+                $details_header .= '<img src="' . $job_startup['startup_datas']['logo_url'] . '" alt="' . $job_startup['startup_datas']['name'] . '">';
             $details_header .= '</figure></a>';
             $details_header .= '<div class="company-info-wrapper">';
                 $details_header .= '<div><p class="title-small">' . __('Job Type', 'alven') . '</p><p>'. $type .'</p></div>';
                 $details_header .= '<div><p class="title-small">' . __('Location', 'alven') . '</p><p>'. $location .'</p></div>';
-                if (!empty($company_datas['sectors'])):
+                if (!empty( $job_startup['startup_datas']['sectors'] )):
                     $details_header .= '<ul class="company-sector">';
                     foreach ($company_datas['sectors'] as $key => $value) {
                         $details_header .= '<li>' . $value->name . '</li>';
@@ -94,9 +95,9 @@ echo '<div class="flex-container details-job">';
                 $job_company .= $job_company_logo;
                 if( !$is_details_wrkbl ):
                     $job_company .= '<p class="title-small">' . __('Sectors', 'alven') . '</p>';
-                    if (!empty($company_datas['sectors'])):
+                    if ( !empty( $job_startup['startup_datas']['sectors'] ) ):
                         $job_company .= '<ul class="company-sector">';
-                        foreach ($company_datas['sectors'] as $key => $value) {
+                        foreach ($job_startup['startup_datas']['sectors'] as $key => $value) {
                             $job_company .= '<li>' . $value->name . '</li>';
                         }
                         $job_company .= '</ul>';

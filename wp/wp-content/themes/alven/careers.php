@@ -46,14 +46,9 @@ get_header();
             // Initalize datas in regards of template
             if( $is_details ):
                 $current_id    = get_the_ID();
-
-                $details       = get_field('job_details', $current_id);
-                $urlapply      = get_field('job_link', $current_id);
-                $company_datas = extend_post( get_field('job_company', $current_id) );
+                $job_startup   = get_job_from_wp( $current_id );
             else:
                 require_once('includes/form-job.php');
-
-                // Get jobs from workable
                 $jobs_alven = get_jobs_from_wrkbl();
             endif;
 

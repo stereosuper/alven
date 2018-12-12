@@ -6,6 +6,7 @@ define( 'ALVEN_VERSION', 1.2 );
 define( 'WRKBL_SUBDOMAIN', 'alven' );
 define( 'WRKBL_TOKEN', '74069b76972b9edc000610fd9cd1f2f9945483d3425e7483467d0faa6f43680b' );
 define( 'WRKBL_APPLICATION', 'E0D70C0FF7' );
+define( 'WRKBL_INTERNALCODE', 'IA');
 // END WORKABLE
 
 if(function_exists('get_field')){
@@ -509,6 +510,11 @@ function alven_taxonomy(){
         'show_admin_column' => true
     ));
     // Jobs taxos
+    register_taxonomy('job_type', array('job'), array(
+        'label'             => 'Type',
+        'singular_label'    => 'Type',
+        'show_admin_column' => true
+    ));
     register_taxonomy('job_location', array('job'), array(
         'label'             => 'Location',
         'singular_label'    => 'Location',
@@ -964,6 +970,23 @@ function extend_query( $jobs, $datas ){
     return $jobs;
 }
 
+// Check if a job from workable is internal by his code
+function is_internal($job){
+    return $job['code'] === WRKBL_INTERNALCODE;
+}
+
+// Get job from wordpress
+function get_job_from_wp( $id ){
+    return array(
+        'type'          => get_the_terms($id, 'job_type'),
+        'location'      => get_the_terms($id, 'job_location'),
+        'details'       => get_field('job_details', $id),
+        'urlapply'      => get_field('job_link', $id),
+        'startup_datas' => extend_post( get_field('job_company', $id) ),
+        'startup_link'  => get_field('job_company_link', $id),
+    );
+}
+
 // Get a list of jobs available in workable
 function get_jobs_from_wrkbl(){
     $workable_datas = null;
@@ -980,7 +1003,7 @@ function get_jobs_from_wrkbl(){
 
     if( $workable_response_code == 200 ):
         $workable_datas_filtered = json_decode( $workable_response['body'], true );
-        $workable_datas = $workable_datas_filtered['jobs'];
+        $workable_datas = array_filter( $workable_datas_filtered['jobs'], 'is_internal');
     endif;
 
     return $workable_datas;
