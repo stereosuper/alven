@@ -1050,9 +1050,23 @@ function simulate_single_job_class( $classes ){
         foreach ( $classes as $key => $value ) {
             if ( $value == 'page-template-careers' ) unset( $classes[ $key ] );
         }
+        $classes[] = 'single';
         $classes[] = 'single-job';
     endif;
 
     return $classes;
 }
 add_filter('body_class', 'simulate_single_job_class');
+
+// Fix 'current_page_parent' on main menu for single CPT 'job'
+function careers_nav_classes( $classes, $item ) {
+    if( is_singular( 'job' ) ):
+        $classes = array_diff( $classes, array( 'current_page_parent' ) );
+        if( $item->title === 'Careers' ):
+            $classes[] = 'current_page_parent';
+        endif;
+    endif;
+
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'careers_nav_classes', 10, 2 );
