@@ -190,7 +190,7 @@
     display: flex;
     align-items: flex-start;
     width: calc(50% - #{$innerGutter});
-    min-height: 175px;
+    min-height: 157px;
     padding: 25px 0;
     border-bottom: 1px solid $greyBorder;
     box-shadow: none;
@@ -676,7 +676,8 @@
             &.details-job-header {
                 flex-wrap: nowrap;
                 .company-image {
-                    flex: 1 0 30%;
+                    flex: 0 0 auto;
+                    width: 175px;
                     margin: 0 $outerGutter * 2 0 0;
                     figure {
                         display: flex;
@@ -684,6 +685,12 @@
                         align-items: center;
                         margin: 0;
                         padding: $innerGutter;
+                        &::before {
+                            content: "";
+                            display: block;
+                            width: 0;
+                            padding-bottom: 92%;
+                        }
                     }
                 }
             }
@@ -849,6 +856,15 @@
             margin-bottom: 6rem;
         }
     }
+    .startups-jobs {
+        .flex-container {
+            &.details-job-header {
+                .company-image {
+                    width: 150px;
+                }
+            }
+        }
+    }
     .list-jobs-alven {
         flex-direction: column;
         flex-wrap: nowrap;
@@ -912,6 +928,15 @@
         > div {
             &:first-child {
                 width: 135px;
+            }
+        }
+    }
+    .startups-jobs {
+        .flex-container {
+            &.details-job-header {
+                .company-image {
+                    width: 125px;
+                }
             }
         }
     }
