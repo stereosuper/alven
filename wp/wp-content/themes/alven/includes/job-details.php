@@ -71,7 +71,7 @@ echo '<div class="flex-container details-job">';
                 $details_header .= '<div><p class="title-small">' . __('Location', 'alven') . '</p><p>'. $location .'</p></div>';
                 if (!empty( $job_startup['startup_datas']['sectors'] )):
                     $details_header .= '<ul class="company-sector">';
-                    foreach ($company_datas['sectors'] as $key => $value) {
+                    foreach ($job_startup['startup_datas']['sectors'] as $key => $value) {
                         $details_header .= '<li>' . $value->name . '</li>';
                     }
                     $details_header .= '</ul>';
