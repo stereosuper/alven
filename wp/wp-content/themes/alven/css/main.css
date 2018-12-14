@@ -3834,7 +3834,8 @@ select::-ms-expand {
     align-items: flex-start; }
 
 .list-jobs-alven {
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  justify-content: flex-start; }
 
 .job-alven {
   max-width: calc(33% - 13.3333333333px);
