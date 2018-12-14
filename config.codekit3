@@ -70746,8 +70746,14 @@
 "projectAttributes": {
 	"creationDate": 520350358,
 	"displayValue": "alven",
+<<<<<<< HEAD
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "\/wp\/apple-touch-icon.png"
+=======
+	"displayValueWasSetByUser": 1,
+	"iconImageName": "/wp/apple-touch-icon.png",
+	"iconImageWasSetByUser": 0
+>>>>>>> 0def41fef6814e4a75ac305c30595ed61ae51179
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,

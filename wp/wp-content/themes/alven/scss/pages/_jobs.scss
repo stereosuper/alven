@@ -85,7 +85,7 @@
 }
 
 .startups-jobs {
-    margin: 2 * $outerGutter 0 0;
+    margin: 2 * $outerGutter 0 3 * $outerGutter;
     .form-search {
         display: block;
         max-width: 100%;
@@ -253,7 +253,7 @@
 }
 
 .job-paginate {
-    margin: 3 * $outerGutter 0;
+    margin: 3 * $outerGutter 0 0;
 }
 
 .alven-jobs {
@@ -499,6 +499,7 @@
 .page-template-careers {
     .company-search {
         height: calc(100% - #{$outerGutter});
+        min-height: 472px;
     }
 }
 
@@ -616,6 +617,13 @@
             }
         }
     }
+    .page-template-careers {
+        .company-search {
+            height: auto;
+            min-height: auto;
+            margin-bottom: $outerGutter * 2;
+        }
+    }
     .company-search {
         .related-jobs {
             margin: 6rem 0;
@@ -632,9 +640,6 @@
                 }
             }
         }
-    }
-    .list-jobs {
-        margin-top: $outerGutter * 2;
     }
     .job {
         min-height: 100px;
@@ -697,8 +702,15 @@
             display: flex;
         }
     }
+    .no-jobs {
+        margin: $outerGutter 0 0;
+    }
+    .list-jobs {
+        margin-top: $outerGutter * 2;
+    }
     .startups-jobs {
         margin-top: 0;
+        margin-bottom: 2 * $outerGutter;
         .flex-container {
             &.details-job-header {
                 flex-wrap: nowrap;
@@ -861,7 +873,7 @@
         }
     }
     .job-paginate {
-        margin: $outerGutter * 2 0;
+        margin: $outerGutter * 2 0 0;
     }
 }
 
