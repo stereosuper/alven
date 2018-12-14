@@ -38,7 +38,7 @@ if( isset( $_POST['directappsubmit'] ) ){
         $errorEmail_job = true;
     }
 
-    if( !empty($document_job['name']) ){
+    if( !empty( $document_job['name'] ) ){
         $allowedMimes = array(
             'pdf'  => 'application/pdf',
             'doc'  => 'application/msword',
@@ -54,6 +54,10 @@ if( isset( $_POST['directappsubmit'] ) ){
         }
     }
 
+    if( empty( $document_job['name'] ) && empty( $summary_job ) ){
+        $status_job = 'error';
+        $errorSend_job = 'Sorry, your message counldn\'t be send. You need to add a document OR a short description at least.';
+    }
 
     if( $status_job === 'error' && empty( $errorSend_job ) ){
         $errorSend_job = 'Sorry, your message counldn\'t be send, the form contains errors. Please check the red fields.';
@@ -66,13 +70,19 @@ if( isset( $_POST['directappsubmit'] ) ){
             $candidate = array(
                 'firstname'  => $firstname_job, 
                 'lastname'   => $lastname_job, 
-                'email'      => $email_job,
-                'summary'    => $summary_job,
-                'resume'     => array(
+                'email'      => $email_job
+            );
+
+            if( !empty( $document_job['name'] ) ){
+                $candidate['resume'] = array(
                     'name' => $document_job['name'],
                     'data' => chunk_split( base64_encode( file_get_contents( $document_job['tmp_name'] ) ) ) 
-                )
-            );
+                );
+            }
+
+            if( !empty( $summary_job ) ){
+                $candidate['summary'] = $summary_job;
+            }
 
             $workable_datas = null;
             $workable_args  = array(

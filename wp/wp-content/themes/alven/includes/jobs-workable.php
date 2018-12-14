@@ -62,12 +62,12 @@
                         <legend><?php _e('Send us','alven'); ?><span><?php _e('Your document (CV, recommandations...)','alven'); ?></span></legend>
                         <section class='form-section'>
                             <div class='full has-desc'>
-                                <input type='file' name='document_job' id='document_job' required class='form-elt <?php if ($errorDocument_job) { echo "invalid"; } ?>'>
+                                <input type='file' name='document_job' id='document_job' class='form-elt <?php if ($errorDocument_job) { echo "invalid"; } ?>'>
                                 <label for='document_job'><?php _e('Upload your file','alven'); ?></label>
                                 <span class='form-desc'><?php _e('.pdf, .doc, .docx, .rtf','alven'); ?></span>
                             </div>
                             <div class='full margin-bottom-large'>
-                                <textarea name='summary_job' id='summary_job' required class='form-elt'><?php echo $summary_job; ?></textarea>
+                                <textarea name='summary_job' id='summary_job' class='form-elt'><?php echo $summary_job; ?></textarea>
                                 <label for='summary_job' value='<?php echo $summary_job; ?>'>
                                     <?php _e('Insert here a link to your linkedin page or a small description','alven'); ?>
                                 </label>
