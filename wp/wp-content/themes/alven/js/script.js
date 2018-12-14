@@ -103,6 +103,9 @@ $(function(){
 
     var docHeight = $(document).height(), windowHeight = $(window).height(), windowWidth = window.outerWidth, windowWidthOnReady = windowWidth;
 
+    var windowWidthSave = windowWidth;
+    var windowHeightSave = windowHeight;
+
     var controller = new ScrollMagic.Controller(), lastScrollTop = 0, myScroll = $(document).scrollTop(), scrollDir = 0;
 
     var htmlTag = $('html'), body = $('body');
@@ -1396,7 +1399,7 @@ $(function(){
         windowWidth = window.outerWidth;
 
         var tabs = $('.js-job-details-tab');
-        if (tabs.length) {
+        if (tabs.length && windowWidthSave !== windowWidth) {
             if (window.innerWidth > 767) {
                 if (tabs.css('maxHeight') != 'max-content') {
                     tabs.css({ maxHeight: 'max-content' });
@@ -1409,6 +1412,7 @@ $(function(){
                     var currentMaxHeight = parseFloat(jQueryTab.css('maxHeight').replace('px', ''));
                     if (currentMaxHeight != height) {
                         jQueryTab.css({ maxHeight: height });
+                        $(tab).removeClass('active');
                     }
                 });
             }
@@ -1466,6 +1470,9 @@ $(function(){
                 setGallery($(this), $(window).width());
             });
         }
+
+        windowWidthSave = windowWidth;
+        windowHeightSave = windowHeight;
     });
 
     $(window).on('load', function(){
