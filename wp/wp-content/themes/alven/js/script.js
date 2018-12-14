@@ -197,6 +197,19 @@ $(function(){
     }
 
     (function careersTemplateHandler() {
+
+        function setScrollCareers(elmts) {
+            TweenMax.set(elmts, {opacity: 0});
+
+            elmts.each(function(i){
+                new ScrollMagic.Scene({ triggerElement: elmts[i] })
+                    .triggerHook(0.9)
+                    .setTween( TweenMax.to($(this), 0.25, {opacity: 1}) )
+                    //.addIndicators()
+                    .addTo(controller);
+            });
+        }
+
         // Scroll reveal handler
         if (body.hasClass('page-template-careers') || body.hasClass('single-job')) {
 
@@ -206,16 +219,17 @@ $(function(){
             var randomJobs = $('.js-list-random-jobs').find('a');
 
             if (jobs.length) {
-                setScrollElmts(jobs);
+                setScrollCareers(jobs);
             }
             
             if (singleCompanyInfo.length) {
-                setScrollElmts(singleCompanyInfo);
+                setScrollCareers(singleCompanyInfo);
             }
 
             if (randomJobs.length) {
-                setScrollElmts(randomJobs);
+                setScrollCareers(randomJobs);
             }
+
         }
 
         // Single job tab handler

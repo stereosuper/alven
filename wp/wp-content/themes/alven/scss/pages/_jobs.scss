@@ -879,6 +879,13 @@
 }
 
 @media (max-width: $phone) {
+    .page-template-careers {
+        .content-header {
+            h1 {
+                margin: 75px auto;
+            }
+        }
+    }
     .single-job {
         h1 {
             font-size: 2.4rem;

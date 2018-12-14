@@ -4382,6 +4382,8 @@ select::-ms-expand {
     margin: 40px 0 0; } }
 
 @media (max-width: 540px) {
+  .page-template-careers .content-header h1 {
+    margin: 75px auto; }
   .single-job h1 {
     font-size: 2.4rem;
     margin: 2rem auto; }
