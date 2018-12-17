@@ -465,7 +465,7 @@ function alven_post_type(){
         ),
         'public' => true,
         'menu_icon' => 'dashicons-businessman',
-        'supports' => array('title', 'editor', 'thumbnail', 'revisions')
+        'supports' => array('title', 'thumbnail', 'revisions')
     ));
     register_post_type('team', array(
         'label' => 'Team members',
