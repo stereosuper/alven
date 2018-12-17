@@ -261,6 +261,21 @@ $(function(){
                         
                         tab.css({ maxHeight: height });
 
+
+                        var duration = tab.css('transition-duration');
+                        var delay = 0;
+                        if (duration.indexOf('ms') !== -1) {
+                            delay += parseInt(duration.replace('ms'), 10);
+                        } else {
+                            delay += parseFloat(duration.replace('s')) * 1000;
+                        }
+
+                        setTimeout(function() {
+                            var offset = tab.offset().top - header.outerHeight();
+                            TweenMax.to(window, 0.5, { scrollTo:{ y: offset }, ease: Cubic.easeOut});
+                        }, delay);
+
+                        
                         tab.toggleClass('active');
                     }
                 });
