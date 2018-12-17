@@ -201,7 +201,8 @@
         padding-top: 0;
     }
     &:nth-child(odd) {
-        margin: 0 $outerGutter 0 0;
+        // -1px for edge (sometimes perfect calculation results in a flex-wrap)
+        margin: 0 $outerGutter - 1px 0 0;
     }
     > div {
         padding: $innerGutter;
