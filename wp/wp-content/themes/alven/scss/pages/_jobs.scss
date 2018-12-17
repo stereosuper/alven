@@ -139,6 +139,9 @@
     }
     .select {
         margin: 0 0 10px;
+        option {
+            color: $blue;
+        }
     }
     .btn {
         margin: 10px 0 0;
@@ -271,7 +274,9 @@
 
 .job-alven {
     max-width: calc(33% - #{$outerGutter / 3 * 2});
-    flex: 1 0 calc(33% - #{$outerGutter / 3 * 2});
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: calc(33% - #{$outerGutter / 3 * 2});
     box-shadow: none;
     margin: $innerGutter $outerGutter $innerGutter 0;
     &:nth-child(3n) {
@@ -458,7 +463,9 @@
     padding-top: 5rem;
     @include separator("top");
     a {
-        flex: 0 0 calc(33% - #{$outerGutter / 3 * 2});
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: calc(33% - #{$outerGutter / 3 * 2});
         display: flex;
         justify-content: space-between;
         box-shadow: none;
@@ -471,6 +478,9 @@
             padding: $outerGutter;
             margin: 0 $outerGutter 0 0;
             border: 1px solid $greyBorder;
+            img {
+                min-width: 1px;
+            }
         }
         div {
             flex: 1 1 auto;
@@ -731,6 +741,9 @@
                             width: 0;
                             padding-bottom: 92%;
                         }
+                        img {
+                            min-width: 1px;
+                        }
                     }
                 }
             }
@@ -831,6 +844,7 @@
             flex-direction: column;
         }
         a {
+            flex-basis: auto;
             padding: $outerGutter 0;
             border-bottom: 1px solid $greyBorder;
             &:first-child {

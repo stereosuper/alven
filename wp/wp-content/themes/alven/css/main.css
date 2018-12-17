@@ -3732,6 +3732,8 @@ select::-ms-expand {
     margin: 30px 0; }
   .jobs-form .select {
     margin: 0 0 10px; }
+    .jobs-form .select option {
+      color: #23afa9; }
   .jobs-form .btn {
     margin: 10px 0 0; }
 
@@ -3839,7 +3841,9 @@ select::-ms-expand {
 
 .job-alven {
   max-width: calc(33% - 13.3333333333px);
-  flex: 1 0 calc(33% - 13.3333333333px);
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: calc(33% - 13.3333333333px);
   box-shadow: none;
   margin: 10px 20px 10px 0; }
   .job-alven:nth-child(3n) {
@@ -4055,7 +4059,9 @@ select::-ms-expand {
     background: #fff;
     top: -1px; }
   .list-random-jobs a {
-    flex: 0 0 calc(33% - 13.3333333333px);
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(33% - 13.3333333333px);
     display: flex;
     justify-content: space-between;
     box-shadow: none; }
@@ -4068,6 +4074,8 @@ select::-ms-expand {
       padding: 20px;
       margin: 0 20px 0 0;
       border: 1px solid #e5e8e8; }
+      .list-random-jobs a figure img {
+        min-width: 1px; }
     .list-random-jobs a div {
       flex: 1 1 auto; }
 
@@ -4251,6 +4259,8 @@ select::-ms-expand {
             display: block;
             width: 0;
             padding-bottom: 92%; }
+          .startups-jobs .flex-container.details-job-header .company-image figure img {
+            min-width: 1px; }
   .details-job-header {
     position: relative;
     width: calc(100% + 20px * 2 + 10px * 2);
@@ -4323,6 +4333,7 @@ select::-ms-expand {
   .list-random-jobs .flex-container {
     flex-direction: column; }
   .list-random-jobs a {
+    flex-basis: auto;
     padding: 20px 0;
     border-bottom: 1px solid #e5e8e8; }
     .list-random-jobs a:first-child {
