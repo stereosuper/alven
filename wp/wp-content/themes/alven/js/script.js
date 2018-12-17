@@ -1489,7 +1489,7 @@ $(function(){
         windowHeightSave = windowHeight;
     });
 
-    $(window).on('load', function(){
+    function loadHandler() {
         var main = $('#main');
         var contentHeader = $('#contentHeader');
         //var fadePage = $('#fadePage');
@@ -1528,7 +1528,7 @@ $(function(){
             video[0].load();
             video[0].play();
         }
-    
+
         if(contentHeader.length){
             if(contentHeader.find('h1').length){
                 if($('body').hasClass('home')){
@@ -1562,6 +1562,10 @@ $(function(){
         }
     
         collantCareers();
-    });
+    }
+
+    document.readyState === 'complete'
+        ? loadHandler()
+        : $(window).on('load', loadHandler);
 });
 
