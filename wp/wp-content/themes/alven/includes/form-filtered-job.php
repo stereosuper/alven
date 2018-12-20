@@ -13,7 +13,8 @@
                                             foreach ($form['locations'] as $key => $location) {
                                                 $los = $location->slug === $params['location'] ? 'selected' : '';
                                                 $lo  = '<option value="'.$location->slug.'" '.$los.'>';
-                                                $lo .= $location->name.'&nbsp;('.$location->count.')';
+                                                // $lo .= $location->name.'&nbsp;('.$location->count.')';
+                                                $lo .= $location->name;
                                                 $lo .= '</option>';
                                                 echo $lo;
                                             }
@@ -26,7 +27,8 @@
                                             foreach ($form['startups'] as $key => $startup) {
                                                 $sos = $startup['id'] == $params['company'] ? 'selected' : '';
                                                 $so  = '<option value="'.$startup['id'].'" '.$sos.'>';
-                                                $so .= $startup['name'].'&nbsp;('.$startup['count'].')';
+                                                //$so .= $startup['name'].'&nbsp;('.$startup['count'].')';
+                                                $so .= $startup['name'];
                                                 $so .= '</option>';
                                                 echo $so;
                                             }
@@ -39,7 +41,8 @@
                                             foreach ($form['functions'] as $key => $function) {
                                                 $fos = $function->slug === $params['function'] ? 'selected' : '';
                                                 $fo  = '<option value="'.$function->slug.'" '.$fos.'>';
-                                                $fo .= $function->name.'&nbsp;('.$function->count.')';
+                                                // $fo .= $function->name.'&nbsp;('.$function->count.')';
+                                                $fo .= $function->name;
                                                 $fo .= '</option>';
                                                 echo $fo;
                                             }
@@ -52,7 +55,8 @@
                                             foreach ($form['sectors'] as $key => $sector) {
                                                 $seos = $sector->slug === $params['sector'] ? 'selected' : '';
                                                 $seo  = '<option value="'.$sector->slug.'" '.$seos.'>';
-                                                $seo .= $sector->name.'&nbsp;('.$sector->count.')';
+                                                //$seo .= $sector->name.'&nbsp;('.$sector->count.')';
+                                                $seo .= $sector->name;
                                                 $seo .= '</option>';
                                                 echo $seo;
                                             }
