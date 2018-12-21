@@ -4026,7 +4026,7 @@ select::-ms-expand {
       position: absolute;
       right: 0; }
 
-.job-details-main-content div .icon-arrow-tip {
+.job-details-main-content .job-details-tab .icon-arrow-tip {
   display: none; }
 
 .list-random-jobs {
@@ -4304,7 +4304,7 @@ select::-ms-expand {
       padding: 15px 0; }
     .job > div:first-child {
       width: 180px; }
-  .job-details-main-content div {
+  .job-details-main-content .job-details-tab {
     width: calc(100% + 20px * 2 + 10px * 2);
     max-height: calc(6rem + 3.6rem);
     padding: 0 30px;
@@ -4313,13 +4313,13 @@ select::-ms-expand {
     overflow: hidden;
     transition: max-height 0.25s cubic-bezier(0.75, 0, 0.125, 1);
     will-change: max-height; }
-    .job-details-main-content div h2 {
+    .job-details-main-content .job-details-tab h2 {
       cursor: pointer;
       position: relative;
       margin: 3rem 0;
       padding-right: calc(40px + 1rem);
       font-size: 2.4rem; }
-    .job-details-main-content div .icon-arrow-tip {
+    .job-details-main-content .job-details-tab .icon-arrow-tip {
       display: block;
       position: absolute;
       top: 50%;
@@ -4328,7 +4328,7 @@ select::-ms-expand {
       color: #23afa9;
       transform: translate(0, -50%) rotateZ(90deg);
       transition: transform 0.25s cubic-bezier(0.75, 0, 0.125, 1); }
-    .job-details-main-content div.active .icon-arrow-tip {
+    .job-details-main-content .job-details-tab.active .icon-arrow-tip {
       transform: translate(0, -50%) rotateZ(-90deg); }
   .list-random-jobs .flex-container {
     flex-direction: column; }
@@ -4419,7 +4419,7 @@ select::-ms-expand {
       margin: 10px 0; }
   .job > div:first-child  {
     max-height: 75px; }
-  .job-details-main-content div h2 {
+  .job-details-main-content .job-details-tab h2 {
     font-size: 2.2rem; }
   .list-random-jobs a div {
     margin-top: 10px; }

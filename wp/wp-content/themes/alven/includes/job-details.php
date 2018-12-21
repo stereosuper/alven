@@ -8,31 +8,31 @@ if( !$is_details_wrkbl ):
     $content  = '';
     if ( $job_startup['details'] ):
         if ( $job_startup['details']['job_details_about'] ):
-            $content .= '<div class="js-job-details-tab">';
+            $content .= '<div class="job-details-tab js-job-details-tab">';
             $content .= '<h2 class="job-single-title">' . __('About', 'alven') . '&nbsp' . $job_startup['startup_datas']['name'] . '<i class="icon-arrow-tip"></i></h2>';
             $content .= $job_startup['details']['job_details_about'];
             $content .= '</div>';
         endif;
         if ( $job_startup['details']['job_details_desc'] ):
-            $content .= '<div class="js-job-details-tab">';
+            $content .= '<div class="job-details-tab js-job-details-tab">';
             $content .= '<h2 class="job-single-title">' . __('Job description', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
             $content .= $job_startup['details']['job_details_desc'];
             $content .= '</div>';
         endif;
         if ( $job_startup['details']['job_details_profil'] ):
-            $content .= '<div class="js-job-details-tab">';
+            $content .= '<div class="job-details-tab js-job-details-tab">';
             $content .= '<h2 class="job-single-title">' . __('Profile', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
             $content .= $job_startup['details']['job_details_profil'];
             $content .= '</div>';
         endif;
         if ( $job_startup['details']['job_details_why'] ):
-            $content .= '<div class="js-job-details-tab">';
+            $content .= '<div class="job-details-tab js-job-details-tab">';
             $content .= '<h2 class="job-single-title">' . __('Why you should join us', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
             $content .= $job_startup['details']['job_details_why'];
             $content .= '</div>';
         endif;
         if ( $job_startup['details']['job_details_process'] ):
-            $content .= '<div class="js-job-details-tab">';
+            $content .= '<div class="job-details-tab js-job-details-tab">';
             $content .= '<h2 class="job-single-title">' . __('Hiring Process', 'alven') . '<i class="icon-arrow-tip"></i></h2>';
             $content .= $job_startup['details']['job_details_process'];
             $content .= '</div>';
