@@ -495,6 +495,12 @@ ul li {
     top: 11px;
     border-radius: 50%; }
 
+ul ul {
+  margin: 12px 0 12px 15px; }
+  ul ul li:before {
+    width: 5px;
+    height: 1px; }
+
 ol {
   counter-reset: counter; }
   ol li {
@@ -3857,6 +3863,9 @@ select::-ms-expand {
 .single-job ol {
   padding: 0;
   margin-top: 0; }
+  .single-job ul ul,
+  .single-job ol ul {
+    margin-top: 12px; }
   .single-job ul li,
   .single-job ol li {
     margin-left: 0; }

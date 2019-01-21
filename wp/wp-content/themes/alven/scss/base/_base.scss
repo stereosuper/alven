@@ -167,6 +167,15 @@ ul{
             border-radius: 50%;
         }
     }
+    ul{
+        margin: 12px 0 12px 15px;
+        li{
+            &:before{
+                width: 5px;
+                height: 1px;
+            }
+        }
+    }
 }
 ol{
     counter-reset: counter;
