@@ -157,7 +157,7 @@ li{
     }
 }
 ul{
-    li{
+    > li{
         padding: 0 0 0 8px;
         &:before{
             background: $blue;
@@ -167,8 +167,10 @@ ul{
             border-radius: 50%;
         }
     }
-    ul{
+    ul, ol{
         margin: 12px 0 12px 15px;
+    }
+    ul{
         li{
             &:before{
                 width: 5px;
@@ -179,7 +181,7 @@ ul{
 }
 ol{
     counter-reset: counter;
-    li{
+    > li{
         padding: 0 0 0 15px;
         counter-increment: counter;
         &:before{
@@ -190,6 +192,9 @@ ol{
             font-size: 12px;
             color: $blue;
         }
+    }
+    ul, ol{
+        margin: 12px 0 12px 15px;
     }
 }
 
