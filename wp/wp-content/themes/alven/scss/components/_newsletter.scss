@@ -74,22 +74,24 @@
     width: $col*5;
     padding: 0 $innerGutter 0 $outerGutter;
     position: relative;
+    vertical-align: middle;
     label{
         left: 35px;
     }
     input{
         &[type=text], &[type=email]{
-            width: 62.35%;
-            margin: 0 $outerGutter 0 0;
+            width: 99%;
         }
         &[type=submit]{
             width: auto;
         }
     }
-    + .response{
-        width: $col*6;
-        padding: 5px $innerGutter 0 25px;
-        float: right;
+}
+
+.mailjet_widget_form_message{
+    display: block;
+    width: 66%;
+        padding: 10px;
         font-size: 1.2rem;
         line-height: 1.2;
         color: $blue;
@@ -100,5 +102,9 @@
             line-height: 1.2;
             color: $blue;
         }
-    }
+}
+
+.mailjet-widget-form-group{
+    width: 66%;
+    margin: 0 !important;
 }

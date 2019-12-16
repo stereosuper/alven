@@ -270,7 +270,7 @@ get_header(); ?>
                                         <label for='email'>Your email</label>
                                     </fieldset><button type='submit' class='btn-invert'>Signup</button>
                                 </form>-->
-                                <?php dynamic_sidebar( 'newsletter' ); ?>
+                                <div class='subscribe-form'><?php dynamic_sidebar( 'newsletter' ); ?></div>
                             </div>
                         </div>
                     </div>

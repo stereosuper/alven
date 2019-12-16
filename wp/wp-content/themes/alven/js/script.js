@@ -1357,11 +1357,11 @@ $(function(){
 
 
 
-    var newsletter = $('.subscribe-form');
+    var newsletter = $('#mjForm');
     if(newsletter.length){
-        newsletter.find('#email').attr('type', 'email').attr('placeholder', '').attr('required', true).after('<label for="email" style="opacity:1">Your email</label>');
+        newsletter.find('#mailjet_widget_email').attr('placeholder', '').after('<label for="email" style="opacity:1">Your email</label>');
         newsletter.append('<button type="submit" name="submit" class="btn-invert">Signup</button>');
-        newsletter.find('.mailjet-subscribe').remove();
+        newsletter.find('input[type=submit]').remove();
         newsletter.find('button').html(setBtn(newsletter.find('button')));
     }
 
