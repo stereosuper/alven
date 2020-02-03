@@ -1,24 +1,27 @@
 /******* GÉNÉRAL *******/
 
-::-moz-selection{
-    background: $darkBlue;
-    color: #fff;
-    text-shadow: none;
-}
-::selection{
+::-moz-selection {
     background: $darkBlue;
     color: #fff;
     text-shadow: none;
 }
 
-html{
-    font-size: 62.5%; /* sets the base font to 10px for easier math */
-    &.menu-open{
+::selection {
+    background: $darkBlue;
+    color: #fff;
+    text-shadow: none;
+}
+
+html {
+    font-size: 62.5%;
+
+    /* sets the base font to 10px for easier math */
+    &.menu-open {
         overflow: hidden;
     }
 }
 
-body{
+body {
     @include avalonMedium(1.6em);
     line-height: 1.6;
     color: $darkBlue;
@@ -27,16 +30,24 @@ body{
     text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 400;
     color: $darkBlue;
 }
 
-h1, h3, h5, h6{
+h1,
+h3,
+h5,
+h6 {
     @include avalonBold(5.5rem);
 }
 
-h1{
+h1 {
     width: $col*6;
     margin: 11vh auto 14vh;
     letter-spacing: -0.04em;
@@ -44,7 +55,7 @@ h1{
     color: #fff;
 }
 
-h2{
+h2 {
     width: $col*8;
     padding: 0 $innerGutter;
     margin: 2.5em auto 2.75em;
@@ -53,7 +64,8 @@ h2{
     font-style: italic;
     line-height: 1.2;
     text-align: center;
-    &.hn-reset{
+
+    &.hn-reset {
         width: auto;
         margin: 0;
         padding: 0;
@@ -66,54 +78,59 @@ h2{
     }
 }
 
-h3{
+h3 {
     font-size: 2.4rem;
     line-height: 1;
     margin: 2.1em 0 1.6em;
-    a{
+
+    a {
         box-shadow: none;
     }
 }
 
-h4{
+h4 {
     font-family: $avalonMediumBold;
     margin: 1.33em 0;
     line-height: 1;
     letter-spacing: -0.02em;
-    a{
+
+    a {
         box-shadow: none;
     }
 }
 
-h5{
+h5 {
     font-size: 1.8rem;
     margin: 1.67em 0;
 }
 
-h6{
+h6 {
     font-size: 1.6rem;
     margin: 2.33em 0;
 }
 
-p{
+p {
     margin: 0 0 1.4em;
 }
 
-b, strong{
+b,
+strong {
     font-family: $avalonMediumBold;
     font-weight: 400;
 }
 
-i, em{
+i,
+em {
     font-family: $avalonMediumOblique;
     font-style: normal;
 }
 
-blockquote{
+blockquote {
     padding: 0 50px;
     margin: 3.5em $colSmall*2 4em;
     text-align: right;
-    p{
+
+    p {
         margin-top: 0;
         font-family: $avalonBold;
         font-size: 2rem;
@@ -121,19 +138,24 @@ blockquote{
         letter-spacing: -0.02em;
         line-height: 1.1;
         color: $blue;
-        &:before{
+
+        &:before {
             content: '« ';
         }
-        &:after{
+
+        &:after {
             content: ' »';
         }
     }
-    footer{
+
+    footer {
         display: inline-block;
-        &:before{
+
+        &:before {
             content: '- ';
         }
-        span{
+
+        span {
             display: block;
             font-family: $arvo;
             font-style: italic;
@@ -142,24 +164,29 @@ blockquote{
     }
 }
 
-ol, ul{
+ol,
+ul {
     padding: 0 0 0 30px;
     margin: 1.9em 0 2.5em;
     list-style: none;
 }
-li{
+
+li {
     position: relative;
     margin: 0 20px;
-    &:before{
+
+    &:before {
         content: '';
         position: absolute;
         left: 0;
     }
 }
-ul{
-    > li{
+
+ul {
+    >li {
         padding: 0 0 0 8px;
-        &:before{
+
+        &:before {
             background: $blue;
             width: 3px;
             height: 3px;
@@ -167,24 +194,30 @@ ul{
             border-radius: 50%;
         }
     }
-    ul, ol{
+
+    ul,
+    ol {
         margin: 12px 0 12px 15px;
     }
-    ul{
-        li{
-            &:before{
+
+    ul {
+        li {
+            &:before {
                 width: 5px;
                 height: 1px;
             }
         }
     }
 }
-ol{
+
+ol {
     counter-reset: counter;
-    > li{
+
+    >li {
         padding: 0 0 0 15px;
         counter-increment: counter;
-        &:before{
+
+        &:before {
             content: counter(counter)'.';
             top: 5px;
             font-family: $arvo;
@@ -193,61 +226,72 @@ ol{
             color: $blue;
         }
     }
-    ul, ol{
+
+    ul,
+    ol {
         margin: 12px 0 12px 15px;
     }
 }
 
-img{
+img {
     max-width: 100%;
     height: auto;
-    &.alignnone, &.aligncenter{
+
+    &.alignnone,
+    &.aligncenter {
         display: block;
         margin: 3.7em auto 4.4em;
     }
-    &.alignleft{
+
+    &.alignleft {
         float: left;
         margin: 2.8em 4em 3.8em 0;
     }
-    &.alignright{
+
+    &.alignright {
         float: right;
         margin: 2.8em 0 3.8em 4em;
     }
 }
 
-figure{
+figure {
     max-width: 100%;
     margin: 2.5em 0;
     text-align: center;
-    &.aligncenter{
+
+    &.aligncenter {
         margin: 2.5em auto;
     }
 }
-figcaption{
+
+figcaption {
     margin: 10px 0 0;
     font-family: $arvo;
     font-style: italic;
     font-size: 1.4rem;
 }
 
-code, pre{
+code,
+pre {
     display: block;
     padding: 10px 15px;
     margin: 1em 0;
     background: $darkBlue;
 }
 
-time, .subtitle{
+time,
+.subtitle {
     font-family: $avalonMedium;
     font-size: 1.8rem;
     text-transform: uppercase;
     color: $darkBlue;
 }
-time{
+
+time {
     color: $blue;
 }
 
-hr{
+hr {
     border: 0;
     height: 1px;
     max-width: 250px;
@@ -255,7 +299,7 @@ hr{
     background: $greyBorder;
 }
 
-sup{
+sup {
     position: relative;
     top: -0.5em;
     font-size: 75%;
@@ -263,32 +307,39 @@ sup{
     vertical-align: baseline;
 }
 
-table{
+table {
     display: block;
     margin: 2em 0;
 }
-td{
+
+td {
     padding: 0 0 10px;
 }
 
 
 /******* LIENS / BOUTONS *******/
 
-a{
+a {
     //box-shadow: inset 0 -2px 0 0 #fff, inset 0 -3px 0 0 currentColor;
     box-shadow: 0 1px 0 0 currentColor;
     color: inherit;
     text-decoration: none;
     transition: $transition;
-    &:focus, &:hover{
-        .no-js &, .is-desktop &{
+
+    &:focus,
+    &:hover {
+
+        .no-js &,
+        .is-desktop & {
             opacity: 0.6;
         }
     }
-    &:focus{
+
+    &:focus {
         outline: 0;
     }
-    &:active{
+
+    &:active {
         color: #000;
         opacity: 1;
     }
@@ -297,47 +348,62 @@ a{
 
 /******* CLASSES GENERALES  *******/
 
-.hidden{
+.hidden {
     display: none !important;
 }
 
-.clearfix{
+.visually-hidden {
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    position: absolute !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+}
+
+.clearfix {
     @include clearfix;
 }
 
-.align-center{
+.align-center {
     text-align: center;
 }
-.align-left{
+
+.align-left {
     text-align: left;
 }
-.align-right{
+
+.align-right {
     text-align: right;
 }
 
-.title-small{
+.title-small {
     font-family: $avalonBold;
     font-size: 1.25rem;
     text-transform: uppercase;
     color: $greyLight;
 }
 
-.overflow-hidden{
+.overflow-hidden {
     overflow: hidden;
     position: relative;
 }
 
-.img-fit{
+.img-fit {
     &.compat-object-fit {
         background-size: cover;
         background-position: 50% 50%;
-        img { // hide image if object fit is not supported - opacity to 0 for the link area
+
+        img {
+            // hide image if object fit is not supported - opacity to 0 for the link area
             opacity: 0;
         }
     }
 }
 
-#fadePage{
+#fadePage {
     overflow: hidden;
     // .js &{
     //     opacity: 0;

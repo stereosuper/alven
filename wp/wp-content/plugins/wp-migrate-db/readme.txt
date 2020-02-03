@@ -1,83 +1,183 @@
-=== WP Migrate DB ===
+=== WP Migrate DB - WordPress Migration Made Easy ===
 Contributors: bradt, deliciousbrains
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5VPMGLLK94XJC
-Tags: migrate, migration, export, data dump, backup, database, mysql
+Tags: Export WordPress, Migrate WordPress, WordPress database plugin, WordPress migration plugin, WP Migrate DB
 Requires at least: 3.6
-Tested up to: 4.8
-Stable tag: 0.9.2
-License: GPLv2
+Tested up to: 5.2
+Requires PHP: 5.4
+Stable tag: 1.0.11
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Migrates your database by running find & replace on URLs and file paths, handling serialized data, and saving an SQL file.
+Make WordPress migration easy. Migrate your database at the click of a button with full support for serialized data.
 
 == Description ==
 
-https://www.youtube.com/watch?v=m8oScnEK5y0
+WP Migrate DB takes the hassle out of moving your WordPress site.
 
-WP Migrate DB exports your database as a MySQL data dump (much like phpMyAdmin), does a find and replace on URLs and file paths, handles serialized data, then allows you to save it to your computer as an SQL file. To complete the migration, you need to use a database management tool (e.g. phpMyAdmin) to import the SQL file to your database, replacing your existing database. It is perfect for developers who need to migrate fresh data from the production site to their local install, or migrate their locally developed site to a staging or production server.
+https://www.youtube.com/watch?v=8u_kX5d78Bs
 
-WP Migrate DB handles serialized data (both arrays and objects) by unserializing the data and going through it, identifying strings and running a find & replace on them. Once it has gone through all the data, it serializes it again and sticks it back in the database.
+WP Migrate DB is a WordPress migration plugin that makes exporting and migrating your database easy, fast, and straightforward.
+
+Each migration takes shape in the form of an easy to follow three-step process.
+
+1. Find and replace the data you want directly within the WP Migrate DB interface.
+2. Export the SQL.
+3. Import into your new database using a tool such as phpMyAdmin
+
+Simple, right? We believe that WordPress database migration doesn't have to be overly technical or opaque. Instead, WP Migrate DB was created with the sole aim of making WordPress site migration easy.
+
+WP Migrate DB fully supports serialized data and arrays and can find and replace content within serialized arrays. What does this mean for you? It means it's far easier to migrate your database, and there's no risk of data corruption.
+
+WP Migrate DB  handles serialized data by unserializing the data and going through it, identifying strings and running a find & replace on them. Once it has gone through all the data, it serializes it again and sticks it back in the database.
 
 Example: <code>s:5:"hello"</code> becomes <code>s:11:"hello world"</code>
 
-**PRO Version with Email Support and More Features**
+You're also able to run in-place find and replace, which lets you find and replace on the current database (without migration).
 
-* Push and pull your databases
-* Find & replace that handles serialized data
-* Backups
-* Export your database
-* Select which tables to migrate
-* Filter out post types
-* Exclude useless data
-* Save migration profiles
-* Phenomenal email support
-* Stress tested on massive databases
-* Solid security
-* [Media Files addon](https://deliciousbrains.com/wp-migrate-db-pro/doc/media-files-addon/?utm_source=wordpress.org&utm_medium=web&utm_content=desc&utm_campaign=freeplugin)
-* [CLI addon](https://deliciousbrains.com/wp-migrate-db-pro/doc/cli-addon/?utm_source=wordpress.org&utm_medium=web&utm_content=desc&utm_campaign=freeplugin)
-* [Multisite Tools addon](https://deliciousbrains.com/wp-migrate-db-pro/doc/multisite-tools-addon/?utm_source=wordpress.org&utm_medium=web&utm_content=desc&utm_campaign=freeplugin)
+== Testimonials - WordPress Experts Love Us ==
+We've made an impact since launching the first version of WP Migrate DB with over 300,000 active installs, and hundreds of 5* reviews on WordPress.org. WP Migrate DB is, in our opinion, the best WordPress migration plugin. Don't just take our word for it though:
 
-See the video below or [visit the web site](http://deliciousbrains.com/wp-migrate-db-pro/?utm_source=wordpress.org&utm_medium=web&utm_content=desc&utm_campaign=freeplugin) to learn more about the pro version.
+*WP Migrate DB Pro might be the most amazing thing that has happened in a really long time in the #WordPress world* - Pippin Williamson - Founder, Sandhills Development.
 
-https://www.youtube.com/watch?v=fHFcH4bCzmU
+*Today, I give continued thanks to @dliciousbrains for migrate db pro and the ease at which it offers migrations from dev-to-and-from-staging* - Tom Mcfarlin - Senior Backend Engineer, WebDevStudios.
 
-== Installation ==
+*How did I ever survive without WP Migrate DB Pro before? #winning* - Jenny Beaumont - Senior Project Manager, Human Made.
 
-1. Use WordPress' built-in installer
-2. Access the "Migrate DB" menu option under Tools (or under Settings on multsite intallations)
+== Tell me more ==
 
-== Frequently Asked Questions ==
+**What about if you want to migrate your site entirely, including files and media?**
 
-= Why wouldn't I just use WordPress' built-in XML export/import to migrate my site? =
+[With the Pro version of WP Migrate DB](https://deliciousbrains.com/wp-migrate-db-pro/upgrade/?utm_campaign=WP%2BMigrate%2BDB%2BPro%2BUpgrade&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting), you can migrate an entire WordPress site quickly and easily. Take the time spent migrating a website from hours upon hours to minutes.
 
-WP Migrate DB will migrate your entire WordPress database, WordPress' built-in tools will not. For more details, please see our blog post, [WordPress XML Export/Import vs. WP Migrate DB Pro](https://deliciousbrains.com/wordpress-xml-export-import-vs-wp-migrate-db-pro/?utm_source=wordpress.org&utm_medium=web&utm_content=faq&utm_campaign=freeplugin).
+[I'm sold! Show me Pro](https://deliciousbrains.com/wp-migrate-db-pro/pricing/?utm_campaign=WP%2BMigrate%2BDB%2BPro&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting)
 
-= Will you migrate my site for me? =
+**What's this about Pro?**
 
-Sorry, but we do not offer site migration services at the moment.
+Glad you asked! WP Migrate DB Pro is the perfect accompaniment to any WordPress developer's toolbox. Here's what you get over free:
 
-= Does the plugin support multisite? =
+* Priority email support
+* Push and pull databases from one environment to the other
+* Push and pull media libraries from one site to another
+* Push and pull theme and plugin files from one site to another
+* Advanced multisite features like pushing a subsite to single site install.
+* Command-line support (Use WP-CLI with WP Migrate DB)
+* Backup your data before starting the migration.
+* Targeted WordPress database migration. Select which tables to migrate and exclude post types from migrations.
 
-Yes, but the [Multisite Tools addon](https://deliciousbrains.com/wp-migrate-db-pro/doc/multisite-tools-addon/?utm_source=wordpress.org&utm_medium=web&utm_content=faq&utm_campaign=freeplugin) for the [pro version](http://deliciousbrains.com/wp-migrate-db-pro/?utm_source=wordpress.org&utm_medium=web&utm_content=faq&utm_campaign=freeplugin) does a lot more with multisite like migrating a subsite as a single-site install.
+And that's just the tip of the iceberg, we're always working on adding value to WP Migrate DB Pro!
 
-= Does the plugin migrate files as well? =
+Find out about the [incredible value that WP Migrate DB Pro brings on our website](https://deliciousbrains.com/wp-migrate-db-pro/upgrade/?utm_campaign=WP%2BMigrate%2BDB%2BPro%2BUpgrade&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting), or watch the video below.
 
-No, it only operates on the database. The pro version's [Media Files addon](https://deliciousbrains.com/wp-migrate-db-pro/doc/media-files-addon/?utm_source=wordpress.org&utm_medium=web&utm_content=faq&utm_campaign=freeplugin) allows you to migrate media files.
+https://www.youtube.com/watch?v=8u_kX5d78Bs
 
-= Why do I end up with a wp-login.php download instead of the exported SQL file? =
+== Frequently Asked Questions  ==
 
-It is likely you have a download manager plugin or extension installed in your web browser. You will need to disable it for the SQL download to work properly.
+= Do I have to set up my WordPress migration manually each time? =
 
-= Does the plugin handle serialized data? =
+No! WP Migrate DB includes what are called "Migration profiles." These profiles allow you to save your WordPress migration settings to make the process as fast as possible.
 
-Yep, it will run a find &amp; replace on your serialized data and migrate it without corrupting it. See [our documentation](https://deliciousbrains.com/wp-migrate-db-pro/doc/serialized-data/?utm_source=wordpress.org&utm_medium=web&utm_content=faq&utm_campaign=freeplugin) for details.
+= Is WP Migrate DB compatible with WordPress multisite? =
 
-= What are the requirements? =
+The free version of WP Migrate DB is compatible with WordPress Multisite, however, if you [upgrade to Pro](https://deliciousbrains.com/wp-migrate-db-pro/upgrade/?utm_campaign=WP%2BMigrate%2BDB%2BPro%2BUpgrade&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting), the power is turned up to 11. Pro includes full support for importing a single site into a Multisite network, and you can also export a subsite into a single site.
 
-They are the same as the [requirements for WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/pricing/?utm_source=wordpress.org&utm_medium=web&utm_content=faq&utm_campaign=freeplugin#requirements).
+= I have a ton of spam comments on my site, can I exclude those from the migration? =
 
-= Do you offer email support? =
+You sure can! WP Migrate DB allows you to exclude spam comments from any WordPress migration in a click.
 
-If you upgrade to [WP Migrate DB Pro](http://deliciousbrains.com/wp-migrate-db-pro/?utm_source=wordpress.org&utm_medium=web&utm_content=faq&utm_campaign=freeplugin), we will gladly provide you with email support. We take pride in delivering exceptional customer support. We do not provide email support for the free version.
+= What if a plugin corrupts my WordPress migration? =
+
+Don't worry! Since WP Migrate DB 1.0 and above, all plugins are put into compatibility mode, which essentially prevents them from loading for migration requests only.
+
+Plugins can be whitelisted to run while the migration is running from a straightforward to use admin interface.
+
+= Can I migrate my entire WordPress website with this? =
+
+Yes! Just purchase the Developer license or better, and you'll be able to push and pull your media, plugins, and themes in addition to your database in a couple of clicks.
+
+= Question: What format is my WordPress database exported in? =
+
+When you run the migration, your WordPress database is export in SQL, you then save the file to your desktop and can import that via another database tool such as phpMyAdmin.
+
+= I've always been told exporting my WordPress database is difficult, what makes this different? =
+
+WP Migrate DB comes with everything you need and nothing you don't. With a friendly, easy-to-use user interface, being able to export WordPress database files reliably has never been easier.
+
+= Can I use WP Migrate DB to move to new web hosting? =
+
+Yup! You can easily export your database and import your database into your new web hosting account using a tool like phpMyAdmin or similar. Want even more power? [Upgrade to Pro](https://deliciousbrains.com/wp-migrate-db-pro/upgrade/?utm_campaign=WP%2BMigrate%2BDB%2BPro%2BUpgrade&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting) and simply push or pull all your media and theme/plugin files as well.
+
+= What exactly does push/pull databases mean? =
+
+If you're using a staging website and have a live website hosted somewhere else (like a good developer who follows best practices) then you'll make updates locally and then make those changes live.
+
+However, your database will be out of sync between the two, at some point you'll be missing important data!
+
+[WP Migrate DB Pro makes this easy](https://deliciousbrains.com/wp-migrate-db-pro/upgrade/?utm_campaign=WP%2BMigrate%2BDB%2BPro%2BUpgrade&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting). You can pull a database from live to staging, make your changes, and then push back to the live site with a click. Remember, though, this functionality is only available in WP Migrate DB Pro.
+
+= What about serialized data? Will my data remain intact? =
+
+WP Migrate DB fully supports the finding and replacement of serialized data. Simply input the data you want to find, and the data you want to replace it with and let WP Migrate DB handle the rest.
+
+= Will you migrate my WordPress website for me? =
+
+We don't offer WordPress migration services at this time, but you might want to give [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/upgrade/?utm_campaign=WP%2BMigrate%2BDB%2BPro%2BUpgrade&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting) a try. It's a WordPress migration plugin with everything you need to migrate to a new host quickly and easily. And if you find it too difficult, we have a 100% No-Risk 60-Day Money Back Guarantee so you can easily get a refund.
+
+= Can I use the command line (WP-CLI)? =
+
+Yes, WP Migrate DB includes an `export` and `find-replace` command. With the [WP Migrate DB Pro Developer license](https://deliciousbrains.com/wp-migrate-db-pro/upgrade/?utm_campaign=WP%2BMigrate%2BDB%2BPro%2BUpgrade&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting) or better you get the CLI addon which includes an additional six commands: `push`, `pull`, `profiles`, `profile`, `setting`, and `import`. Check out [our documentation](https://deliciousbrains.com/wp-migrate-db-pro/doc/wp-cli-command/?utm_campaign=support%2Bdocs&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting) for more information on our WP-CLI commands.
+
+= Can I migrate to a new domain? =
+
+WP Migrate DB is perfect for migrating to a new domain! You can use the built-in find and replace functionality to find your old site URL (domain name) in your database content and replace it with your new one.
+
+= What are the steps to migrate my site with WP Migrate DB? =
+
+Assuming you're using the free version, simply install the plugin. Fill in the URL(s) you'd like found and what to replace them with, and export your WordPress database, which will download an SQL file. Now access your MySQL (or MariaDB!) database using your preferred tool (like phpMyAdmin or SequelPro), import the SQL file, and you're good to go.
+
+= Why is WP Migrate DB better than Updraft, Duplicator, and Search Replace DB? =
+
+Ok, so maybe we're biased, but if you've used other tools, you'll know they can be complex to set up, and challenging to use. Not to mention, they may not work every time.
+
+Let's look at a popular find and replace script for serialized data called Search Replace DB, with this you have to upload the script, run it manually and it doesn't have a backup option or email support.
+
+A quick comparison with Updraft Plus—while Updraft Plus provides a lot of functionality, it's primarily a backup plugin with a premium option for migrating your website. Compare that to WP Migrate DB -- the site migration tool used and recommended by professional WordPress developers.
+
+*The Themes and Plugins add-on for WP Migrate DB Pro from @dliciousbrains is pure genius. So many use cases I didn't think of when they released it. Mainly: 1) Staging sites 2) Plugin support Saves me time every week.* - Clifton Griffin, Development Lead at Objectiv
+
+Finally, Duplicator is a migration plugin that does things very differently from WP Migrate DB. Duplicator creates a zip file of your database and files that must be manually transferred (via FTP/SFTP) to your site's new location. This package must then be unzipped and an installer script run. These operations are all much more taxing on server resources than what WP Migrate DB does and lot less smooth than WP Migrate DB Pro.
+
+= Can I clone WordPress, or duplicate WordPress using WP Migrate DB? =
+
+You can! While cloning a WordPress site can be difficult, WP Migrate DB makes it a breeze. The same goes if you want to duplicate WordPress, which is a different way of saying the same thing. Here's a quick step by step guide.
+
+**Step 1:** Install the plugin on the WordPress install you want to clone WordPress to.
+**Step 2:** Fill in the find and replace fields within WP Migrate DB.
+**Step 3:** Export the database.
+**Step 4:** Import the database into your new site.
+
+And it's as simple as that, your data has been cloned onto the new site, ready to go. Pssst… If you have [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/upgrade/?utm_campaign=WP%2BMigrate%2BDB%2BPro%2BUpgrade&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting), it's even easier to clone your entire website, including all your media, themes, and plugins.
+
+= Is FTP a thing of the past? =
+
+If you use [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/upgrade/?utm_campaign=WP%2BMigrate%2BDB%2BPro%2BUpgrade&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting), no longer do you need to use those old clunky FTP clients. Instead, you can push and pull your plugin, theme, and media files in a click. It couldn't be simpler.
+
+= Will this work with my hosting provider? =
+
+WP Migrate DB works perfectly with all web hosting providers and even your localhost install! It's never been easier to migrate your website to a new server, update your domain, or make changes between local and staging.
+
+= How about backing up my database? =
+
+[WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/upgrade/?utm_campaign=WP%2BMigrate%2BDB%2BPro%2BUpgrade&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting) performs a database backup before exporting your SQL. However, if you're using WP Migrate DB free, we'd recommend using a plugin or making backups through your web hosting control panel before migrating your site.
+
+= What support is provided? =
+
+Limited free support is provided, and we offer dedicated priority email support for our WP Migrate DB Pro users.
+
+= Where can I find out about the pricing of WP Migrate DB Pro? =
+
+Find out all relevant [pricing information over on our official site](https://deliciousbrains.com/wp-migrate-db-pro/pricing/?utm_campaign=WP%2BMigrate%2BDB%2BPro&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting).
+
 
 == Screenshots ==
 
@@ -86,6 +186,56 @@ If you upgrade to [WP Migrate DB Pro](http://deliciousbrains.com/wp-migrate-db-p
 3. Saving the exported database
 
 == Changelog ==
+
+= WP Migrate DB 1.0.11 - 2019-04-30  =
+* Bug fix: `WP_Filesystem` initialized on all wp-admin pages
+
+= WP Migrate DB 1.0.10 - 2019-02-12  =
+* Improvement: Compatibility with MySQL 8
+* Improvement: UI Updates
+
+= WP Migrate DB 1.0.9 - 2019-01-29  =
+* Bug fix: Bit fields with a value of NULL are handled incorrectly
+* Improvement: Major refactor to remove third-party dependency injection container
+
+= WP Migrate DB 1.0.8 - 2018-11-29  =
+* Bug fix: WordPress filesystem class not correctly loaded and causes 500 error
+* Improvement: Remove deprecated PHP code making PHP 7+ compatibility checks pass
+
+= WP Migrate DB 1.0.7 - 2018-11-21  =
+* Bug fix: WP Migrate DB Anonymization plugin no longer functions
+* Bug fix: 500 errors occur when another plugin is installed that includes Composer
+* Improvement: Add Theme & Plugin Files Addon to addons list
+* Improvement: Remove un-needed template files
+
+= WP Migrate DB 1.0.6 - 2018-11-19  =
+* New: Increased PHP version requirement from PHP 5.2+ to PHP 5.4+
+* Improvement: Major reorganization of the PHP code into better classes and a better folder structure
+
+= WP Migrate DB 1.0.5 - 2018-11-09  =
+* New: Updated YouTube video in migration progress modal
+* Bug fix: Duplicate JavaScript causes console error
+
+= WP Migrate DB 1.0.4 - 2018-09-13  =
+* Bug fix: Overall progress bar spins when font-awesome loaded
+
+= WP Migrate DB 1.0.3 - 2018-09-10  =
+* Bug fix: Usage of static keyword errors in PHP 5.2.4
+
+= WP Migrate DB 1.0.2 - 2017-10-25 =
+* Bug fix: Some plugins causing "Invalid nonce" errors when using compatibility mode
+* Bug fix: Error for invalid permissions for Exports not displaying
+
+= WP Migrate DB 1.0.1 - 2017-09-14 =
+* Bug Fix: Parse error on PHP 5.2
+* Bug Fix: Row not set for `wpmdb_replace_custom_data` filter
+
+= WP Migrate DB 1.0 - 2017-08-11 =
+* New: Plugins and themes are disabled by default for HTTP requests made by WP Migrate DB Pro for better performance and compatibility
+* Improvement: Page is reloaded automatically after migrations that alter the wp_options, wp_users, and wp_usermeta tables
+* Improvement: Additional constants added to the diagnostic log for better debugging by our support team
+* Improvement: Compatibility mode directory permission errors are now dismissable and fewer notices are displayed
+* Bug Fix: Find & Replace not operating on `wp_site` and `wp_blogs` tables on multisite
 
 = WP Migrate DB 0.9.2 - 2016-12-16 =
 
@@ -99,7 +249,7 @@ If you upgrade to [WP Migrate DB Pro](http://deliciousbrains.com/wp-migrate-db-p
 = WP Migrate DB 0.9 - 2016-10-20 =
 
 * New: In-place Find &amp; Replace functionality added - a find and replace can now be run on a site's own database
-* New: CLI [find-replace](https://deliciousbrains.com/wp-migrate-db-pro/doc/cli-find-replace-subcommand/) subcommand added
+* New: CLI [find-replace](https://deliciousbrains.com/wp-migrate-db-pro/doc/cli-find-replace-subcommand/?utm_campaign=changelogs&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting&utm_content=MDB09) subcommand added
 * Improvement: Removed `font-family` declarations from stylesheets
 * Improvement: Truncate WP Migrate DB Pro diagnostic log to always be < 1MB, to help with memory exhaustion errors
 * Improvement: Added help tooltips for the default find and replace fields
@@ -138,7 +288,7 @@ If you upgrade to [WP Migrate DB Pro](http://deliciousbrains.com/wp-migrate-db-p
 
 = WP Migrate DB 0.7 - 2015-06-12 =
 
-* New: [WP-CLI export subcommand](https://deliciousbrains.com/wp-migrate-db-pro/doc/cli-export-subcommand/)
+* New: [WP-CLI export subcommand](https://deliciousbrains.com/wp-migrate-db-pro/doc/cli-export-subcommand/?utm_campaign=changelogs&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting&utm_content=MDB07)
 * New: Quick copy find textbox value to replace textbox by clicking arrow icon in between (hat tip Jonathan Perlman)
 * New: Added filters to hook into find & replace routine and deal with encoded data ([example](https://github.com/deliciousbrains/wp-migrate-db-pro-tweaks/blob/master/wp-migrate-db-pro-tweaks.php#L316-L413))
 * Improvement: Greatly reduced data passed through each HTTP request for better security and reliability
@@ -213,7 +363,7 @@ If you upgrade to [WP Migrate DB Pro](http://deliciousbrains.com/wp-migrate-db-p
 * Bug fix: [Find & replace is case-sensitive but shouldn't](https://github.com/bradt/wp-migrate-db/issues/13)
 
 = WP Migrate DB 0.4.4 - 2013-05-19 =
-* [Pro version has arrived!](http://deliciousbrains.com/wp-migrate-db-pro/?utm_source=wordpress.org&utm_medium=web&utm_content=changelog&utm_campaign=freeplugin) Added some info to the sidebar.
+* [Pro version has arrived!](http://deliciousbrains.com/wp-migrate-db-pro/?utm_campaign=changelogs&utm_source=wordpress.org&utm_medium=free%2Bplugin%2Blisting&utm_content=MDB044) Added some info to the sidebar.
 * Updated required version to WordPress 3.0+
 * Bug fix: [Does not handle serialized objects](https://github.com/bradt/wp-migrate-db/issues/11)
 * Bug fix: [Admin menu disappears when DISALLOW_FILE_MODS is true](https://github.com/bradt/wp-migrate-db/issues/8)

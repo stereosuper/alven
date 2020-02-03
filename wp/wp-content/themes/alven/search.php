@@ -13,7 +13,7 @@
                 <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search'>
                     <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
                     <label for='search'>type some keywords</label>
-                    <button type='submit' class='btn-search btn-no-text'>Explore</button>
+                    <button type='submit' class='btn-search btn-no-text'><span class='visually-hidden'>Explore</span></button>
                 </form>
             </div>
         </div>

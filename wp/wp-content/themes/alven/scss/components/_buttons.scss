@@ -1,29 +1,42 @@
 /* Buttons */
 
-.btn, .btn-invert, .btn-arrow, .next, .prev{
+.btn,
+.btn-invert,
+.btn-arrow,
+.next,
+.prev {
     position: relative;
     font-family: $avalonBold;
     line-height: 1;
     color: $darkBlue;
-    &.btn-left{
-        &:before{
+
+    &.btn-left {
+        &:before {
             transform-origin: 0% 50%;
         }
-        &:after{
+
+        &:after {
             content: '\e909';
         }
-        &:hover, &:focus{
-            .no-js &, .is-desktop &{
-                &:after{
+
+        &:hover,
+        &:focus {
+
+            .no-js &,
+            .is-desktop & {
+                &:after {
                     transform: translate3d(-7px, 0, 0);
                 }
-                &:before{
+
+                &:before {
                     transform: translate3d(-7px, 0, 0) scaleX(0.85);
                 }
             }
         }
     }
-    &:before, &:after{
+
+    &:before,
+    &:after {
         @include fontIcon();
 
         position: absolute;
@@ -31,7 +44,8 @@
         transition: transform $transition;
         transform: translate3d(0, 0, 0);
     }
-    &:before{
+
+    &:before {
         content: '\e908';
         font-size: 10px;
         height: 10px;
@@ -39,41 +53,53 @@
         right: -25px;
         transform-origin: 100% 50%;
     }
-    &:after{
+
+    &:after {
         content: '\e907';
         height: 10px;
         font-size: 10px;
         right: -26px;
         bottom: 4px;
     }
-    &:hover, &:focus{
-        .no-js &, .is-desktop &{
-            &:after{
+
+    &:hover,
+    &:focus {
+
+        .no-js &,
+        .is-desktop & {
+            &:after {
                 transform: translate3d(7px, 0, 0);
             }
-            &:before{
+
+            &:before {
                 transform: translate3d(7px, 0, 0) scaleX(0.85);
             }
         }
     }
 }
 
-.prev{
-    &:after{
+.prev {
+    &:after {
         left: -28px;
         right: auto;
         transform: translate3d(0, -1px, 0) rotate(180deg);
     }
-    &:before{
+
+    &:before {
         right: auto;
         left: -25px;
     }
-    &:hover, &:focus{
-        .no-js &, .is-desktop &{
-            &:after{
+
+    &:hover,
+    &:focus {
+
+        .no-js &,
+        .is-desktop & {
+            &:after {
                 transform: translate3d(-7px, -1px, 0) rotate(180deg);
             }
-            &:before{
+
+            &:before {
                 transform: translate3d(-7px, 0, 0) scaleX(0.85);
             }
         }
@@ -81,137 +107,174 @@
 }
 
 
-.btn, .btn-invert{
+.btn,
+.btn-invert {
     display: inline-block;
     border: 1px solid $darkBlue;
     box-shadow: none;
     overflow: hidden;
-    &:before{
+
+    &:before {
         top: 0;
         bottom: 0;
         z-index: 1;
     }
-    &:after{
+
+    &:after {
         top: 0;
         bottom: 0;
     }
-    span{
+
+    span {
         display: block;
         transition: $transition;
     }
-    .after{
+
+    .after {
         position: absolute;
         top: 42px;
         left: 17px;
         opacity: 0;
     }
-    &:hover, &:focus{
-        .no-js &, .is-desktop &{
+
+    &:hover,
+    &:focus {
+
+        .no-js &,
+        .is-desktop & {
             opacity: 1;
         }
-        .is-desktop &{
-            .after{
+
+        .is-desktop & {
+            .after {
                 opacity: 1;
             }
-            .before{
+
+            .before {
                 opacity: 0;
             }
         }
     }
-    &:active{
+
+    &:active {
         opacity: 0.7;
     }
 }
-.btn{
+
+.btn {
     padding: 21px 47px 19px 17px;
     color: $gold;
     background: $darkBlue;
-    &.btn-left{
+
+    &.btn-left {
         padding: 21px 17px 19px 47px;
-        &:before{
+
+        &:before {
             right: auto;
             left: 20px;
         }
-        &:after{
+
+        &:after {
             right: auto;
             left: 19px;
         }
-        .after{
+
+        .after {
             right: auto;
             left: 47px;
         }
     }
+
     // .theme-magazine &, .theme-portfolio &, .theme-we &{
     //     color: #fff;
     // }
-    &:before{
+    &:before {
         right: 20px;
     }
-    &:after{
+
+    &:after {
         right: 19px;
     }
-    .before{
+
+    .before {
         color: $gold;
     }
-    .after{
+
+    .after {
         right: 47px;
         color: $darkBlue;
     }
-    &:hover, &:focus{
+
+    &:hover,
+    &:focus {
         color: $darkBlue;
-        .no-js &, .is-desktop &{
+
+        .no-js &,
+        .is-desktop & {
             background: #fff;
         }
-        .is-desktop &{
-            span{
+
+        .is-desktop & {
+            span {
                 transform: translate3d(0, -21px, 0);
             }
         }
     }
-    &:active{
+
+    &:active {
         color: #fff;
     }
 }
-.btn-invert{
+
+.btn-invert {
     color: $darkBlue;
     border-color: $darkBlue;
 
     padding: 13px 35px 11px 17px;
     background: transparent;
-    &:before{
+
+    &:before {
         right: 10px;
     }
-    &:after{
+
+    &:after {
         right: 9px;
     }
-    .before{
+
+    .before {
         color: $darkBlue;
     }
-    .after{
+
+    .after {
         top: 26px;
         right: 35px;
         color: $gold;
     }
-    &:hover, &:focus{
+
+    &:hover,
+    &:focus {
         background: $darkBlue;
-        .no-js &, .is-desktop &{
+
+        .no-js &,
+        .is-desktop & {
             color: $gold;
         }
-        .is-desktop &{
-            span{
+
+        .is-desktop & {
+            span {
                 transform: translate3d(0, -13px, 0);
             }
         }
     }
 }
 
-.btn-arrow{
+.btn-arrow {
     font-family: $arvo;
     font-style: italic;
     color: $blue;
 }
 
-.mailjet-subscribe{
+.mailjet-subscribe {
     display: inline-block;
     border: 1px solid;
     padding: 13px 17px 11px;
@@ -225,20 +288,25 @@
     overflow: hidden;
     color: $darkBlue;
     background: transparent;
-    &:hover, &:focus{
-        .no-js &, .is-desktop &{
+
+    &:hover,
+    &:focus {
+
+        .no-js &,
+        .is-desktop & {
             background: $darkBlue;
             border-color: $darkBlue;
             color: $gold;
             opacity: 1;
         }
-        .no-js &{
+
+        .no-js & {
             background: $darkBlue;
         }
     }
 }
 
-.btn-search{
+.btn-search {
     border: 0;
     position: relative;
     margin: 0 34px 0 0;
@@ -247,7 +315,8 @@
     line-height: 1;
     text-transform: uppercase;
     box-shadow: 0 1px 0 0 currentColor;
-    &:after{
+
+    &:after {
         @include fontIcon();
 
         content: '\e902';
@@ -261,30 +330,35 @@
         font-size: 20px;
         transition: transform $transition;
     }
-    &:hover, &:focus{
-        .no-js &, .is-desktop &{
-            &:after{
+
+    &:hover,
+    &:focus {
+
+        .no-js &,
+        .is-desktop & {
+            &:after {
                 transform: rotate(-70deg) scale(1.1);
             }
         }
     }
-    &.btn-no-text{
+
+    &.btn-no-text {
         width: 21px;
         height: 21px;
         margin: 0;
         white-space: nowrap;
         // HACK: Magnifying glass transform
         // overflow: hidden;
-        text-indent: -99em;
         box-shadow: none;
-        &:after{
+
+        &:after {
             text-indent: 0;
             right: 0;
         }
     }
 }
 
-.btn-cat{
+.btn-cat {
     display: inline-block;
     padding: 4px 7px 2px;
     font-family: $avalonMedium;
@@ -294,13 +368,14 @@
     background: $darkBlue;
     color: #fff;
     box-shadow: none;
-    &:active{
+
+    &:active {
         background: $blue;
         color: #fff !important;
     }
 }
 
-.btn-arrow-only{
+.btn-arrow-only {
     display: block;
     position: relative;
     width: 57px;
@@ -311,7 +386,9 @@
     color: $darkBlue;
     @include btnNoTextBefore();
     box-shadow: none;
-    &:before, &:after{
+
+    &:before,
+    &:after {
         @include fontIcon();
 
         text-indent: 0;
@@ -320,7 +397,8 @@
         transition: transform $transition;
         transform: translate3d(0, 0, 0);
     }
-    &:before{
+
+    &:before {
         content: '\e908';
         height: 10px;
         right: 19px;
@@ -328,7 +406,8 @@
         font-size: 10px;
         margin: -5px 0 0 0;
     }
-    &:after{
+
+    &:after {
         content: '\e907';
         height: 10px;
         left: auto;
@@ -337,30 +416,40 @@
         margin: -5px 0 0 0;
         transform-origin: 50% 50%;
     }
-    &.left{
-        &:before{
+
+    &.left {
+        &:before {
             right: auto;
             left: 19px;
         }
-        &:after{
+
+        &:after {
             content: '\e909';
             left: 18px;
             right: auto;
         }
     }
-    &:hover, &:focus{
-        .no-js &, .is-desktop &{
+
+    &:hover,
+    &:focus {
+
+        .no-js &,
+        .is-desktop & {
             background-color: $darkBlue;
             color: $gold;
             opacity: 1;
-            &:before, &:after{
+
+            &:before,
+            &:after {
                 transform: translate3d(7px, 0, 0);
             }
-            &.left{
-                &:before{
+
+            &.left {
+                &:before {
                     transform: translate3d(-7px, 0, 0);
                 }
-                &:after{
+
+                &:after {
                     transform: translate3d(-7px, 0, 0);
                 }
             }
@@ -368,7 +457,7 @@
     }
 }
 
-.btn-cross{
+.btn-cross {
     display: inline-block;
     vertical-align: top;
     position: relative;
@@ -380,7 +469,9 @@
     text-transform: uppercase;
     color: $darkBlue;
     padding: 1px 25px 1px 0;
-    &:before, &:after{
+
+    &:before,
+    &:after {
         content: '';
         display: block;
         position: absolute;
@@ -391,15 +482,17 @@
         right: 0;
         will-change: transform;
     }
-    &:before{
+
+    &:before {
         transform: rotate(45deg);
     }
-    &:after{
+
+    &:after {
         transform: rotate(-45deg);
     }
 }
 
-.btn-close{
+.btn-close {
     position: relative;
     padding: 0 34px 0 0;
     font-family: $avalonBold;
@@ -409,10 +502,13 @@
     text-transform: uppercase;
     color: #fff;
     box-shadow: none;
-    span{
+
+    span {
         box-shadow: 0 1px 0 0 currentColor;
     }
-    &:before, &:after{
+
+    &:before,
+    &:after {
         content: '';
         position: absolute;
         width: 22px;
@@ -422,26 +518,35 @@
         background: #fff;
         transition: $transition;
     }
-    &:before{
+
+    &:before {
         transform: translate3d(0, 0, 0) rotate(45deg);
     }
-    &:after{
+
+    &:after {
         transform: translate3d(0, 0, 0) rotate(-45deg);
     }
-    &:hover, &:focus{
-        .no-js &, .is-desktop &{
+
+    &:hover,
+    &:focus {
+
+        .no-js &,
+        .is-desktop & {
             opacity: 0.6;
-            &:before{
+
+            &:before {
                 transform: translate3d(0, 0, 0) rotate(135deg) scale(1.1);
             }
-            &:after{
+
+            &:after {
                 transform: translate3d(0, 0, 0) rotate(45deg) scale(1.1);
             }
         }
     }
 }
 
-.btn-store, .btn-play{
+.btn-store,
+.btn-play {
     display: inline-block;
     width: 134px;
     height: 40px;
@@ -451,9 +556,11 @@
     box-shadow: none;
     overflow: hidden;
 }
-.btn-store{
+
+.btn-store {
     background-image: url(../layoutImg/app-store.png);
 }
-.btn-play{
+
+.btn-play {
     background-image: url(../layoutImg/google-play.png);
 }

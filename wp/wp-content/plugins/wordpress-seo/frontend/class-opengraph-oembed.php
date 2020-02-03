@@ -6,16 +6,17 @@
  */
 
 /**
- * Class WPSEO_OpenGraph_OEmbed
+ * Class WPSEO_OpenGraph_OEmbed.
  */
 class WPSEO_OpenGraph_OEmbed implements WPSEO_WordPress_Integration {
+
 	/**
 	 * Registers the hooks.
 	 */
 	public function register_hooks() {
 		// Check to make sure opengraph is enabled before adding filter.
 		if ( WPSEO_Options::get( 'opengraph' ) ) {
-			add_filter( 'oembed_response_data', array( $this, 'set_oembed_data' ), 10, 2 );
+			add_filter( 'oembed_response_data', [ $this, 'set_oembed_data' ], 10, 2 );
 		}
 	}
 
@@ -28,7 +29,7 @@ class WPSEO_OpenGraph_OEmbed implements WPSEO_WordPress_Integration {
 	 * @param array   $data The oEmbed data.
 	 * @param WP_Post $post The current Post object.
 	 *
-	 * @see https://developer.wordpress.org/reference/hooks/oembed_response_data/ for hook info
+	 * @link https://developer.wordpress.org/reference/hooks/oembed_response_data/ for hook info.
 	 *
 	 * @return array $filter_data - An array of oEmbed data with modified values where appropriate.
 	 */

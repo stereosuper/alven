@@ -77,7 +77,7 @@ $table_prefix  = 'alv_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 define('WP_POST_REVISIONS', 5);
 define('EMPTY_TRASH_DAYS', 10);

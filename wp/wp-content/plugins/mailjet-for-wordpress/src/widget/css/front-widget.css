@@ -1,0 +1,31 @@
+.mailjet_widget_front_container {
+
+}
+
+#mailjet-widget-title-wrap {
+    display: inline;
+    font-size: 12px;
+}
+
+.mj_form_property{
+    
+}
+
+.mailjet-widget-form-group {
+    margin-bottom: 10px;
+}
+
+.mailjet-widget-label {
+    margin-bottom: 20px;
+    font-weight: 500;
+    display: inline;
+    cursor: pointer;
+}
+
+#mjForm{
+    
+}
+
+#mailjet_widget_email{
+    
+}

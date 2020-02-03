@@ -3,26 +3,26 @@ Contributors: nsp-code, tdgu
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, posts order, sort, post sort, posts sort, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 4.8
-Stable tag: 1.9.3.3
+Tested up to: 5.3
+Stable tag: 1.9.4.2
 
 Post Order and custom Post Type Objects (custom post types) using a Drag and Drop Sortable JavaScript AJAX interface or default WordPress dashboard. 
 
 == Description ==
 
-<strong>Over 2.5 MILLIONS DOWNLOADS and near PERFECT rating out of 200 REVIEWS</strong>. <br />
+<strong>Over 3.2 MILLIONS DOWNLOADS and near PERFECT rating out of 200 REVIEWS</strong>. <br />
 A powerful plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable JavaScript capability. 
 
 The order can be customized within **default WordPress post type archive list page** or **a separate Re-Order interface** which display all objects.
-It allow to reorder the posts for any custom post types you defined, including the default Posts. Also you can display the posts within admin interface sorted per your new sort. Post Order has never been easier.
+It allows to reorder the posts for any custom post types you defined, including the default Posts. Also you can display the posts within admin interface sorted per your new sort. Post Order has never been easier.
 
 = Usage =
-This was built considering for everyone to be able to use no matter the WordPress experience, so it's very easy:
+This was built considering everyone to be able to use the sorting, no matter the WordPress experience:
 
 * Install the plugin through the Install Plugins interface or by uploading the `post-types-order` folder to your `/wp-content/plugins/` directory.
 * Activate the Post Order plugin.
 * A new setting page will be created within Settings > Post Types Order, you should check with that, and make a first options save. 
-* Using the AutoSort option as ON you don't need to worry about any code changes, the plugin will do the post order update on fly. 
+* Using the <strong>AutoSort option as ON</strong> you don't need to worry about any code changes, the <strong>plugin will apply the customized post order</strong> on fly. 
 * Use the Re-Order interface which appear to every custom post type (non-hierarchical) to change the post order to a new one.
 * If prefer sort apply through the code, include 'orderby' =>'menu_order' within custom query arguments, more details at http://www.nsp-code.com/sample-code-on-how-to-apply-the-sort-for-post-types-order-plugin/
 
@@ -44,7 +44,7 @@ If for some reason the post order does not update on your front side, you either
 1. Upload `post-types-order` folder to your `/wp-content/plugins/` directory.
 2. Activate the plugin from Admin > Plugins menu.
 3. Once activated you should check with Settings > Post Types Order 
-4. Use Re-Order link which appear into each post type section to make your sort.
+4. Use Re-Order link which appear into each post type section or use default WordPress interface to make your sorting.
 
 
 == Screenshots ==
@@ -60,11 +60,12 @@ Feel free to contact us at electronice_delphi@yahoo.com
 
 = I have no PHP knowledge at all, i will still be able to use this plugin? =
 
-Absolutely you can! Unlike many other plugins, you don't have to do any code changes to make your post order to change accordingly to custom defined post order. There is an option to autoupdate the WordPress queries so the posts order will be returned in the required order. Anyway this can be turned off (Autosort) to allow customized code usage.
+Absolutely, you can! 
+Unlike many other plugins, you don't have to do any code changes to make your post order to change accordingly to custom defined post order. There is an option to autoupdate the WordPress queries so the posts order will be returned in the required order. Anyway this can be turned off (Autosort) to allow customized code usage.
 
 = How to manually apply the sort on queries =
 
-Include a 'orderby' => 'menu_order' property within your custom query.
+Include a 'orderby' => 'menu_order' property within your custom query arguments.
 
 = What kind of posts/pages this plugin allow me to sort? =
 
@@ -80,11 +81,11 @@ All ideas are welcome and i put them on my list to be implemented into the new v
 
 = Can i make certain queries to ignore the custom sort when Autosort is turned On? =
 
-This can be done by including the ignore_custom_sort within custom query arguments. An example can be found at http://www.nsp-code.com/advanced-post-types-order-api/sample-usage/
+This can be done by including the ignore_custom_sort within custom query arguments. An example can be found at <a target="_blank" href="http://www.nsp-code.com/advanced-post-types-order-api/sample-usage/">http://www.nsp-code.com/advanced-post-types-order-api/sample-usage/</a>
 
 = How can i force sort apply for certain queries when Autosort is turned On? =
 
-A filter can be used to achieve that pto/posts_orderby. An example can be found at http://www.nsp-code.com/ignore-sort-apply-for-certain-query-on-post-types-order/
+A filter can be used to achieve that pto/posts_orderby. An example can be found at <a target="_blank" href="http://www.nsp-code.com/ignore-sort-apply-for-certain-query-on-post-types-order/">http://www.nsp-code.com/ignore-sort-apply-for-certain-query-on-post-types-order/</a>
 
 = I still need more features like front sorting interface, shortcodes, filters, conditionals, advanced queries, taxonomy/ category sorting etc =
 
@@ -92,6 +93,28 @@ Consider upgrading to our advanced version of this plugin at a very resonable pr
 
 
 == Change Log ==
+
+= 1.9.4.2 =
+  - Compatibility tag update for WordPress 5.3
+
+= 1.9.4.1 =
+  - Ignore the Events Calendar posts
+  - Filter typo fix
+
+= 1.9.3.9 =
+  - Ignore sorting when doing Search and there's a search key-phrase specified.
+  - Ignore sorting when doing Search within admin dashboard
+  - Removed Google Social as it produced some JavaScript errors
+  - WordPress 4.9.7 tag update 
+
+= 1.9.3.6 =
+  - Clear LiteSpeed Cache on order update to reflect on front side
+  - WordPress 4.9.1 tag update 
+
+= 1.9.3.5 =
+  - Fix: updated capability from switch_theme to manage_options within 'Minimum Level to use this plugin' option
+  - Default admin capability changed from install_plugins to manage_options to prevent DISALLOW_FILE_MODS issue. https://wordpress.org/support/topic/plugin-breaks-when-disallow_file_mods-is-set-to-true/
+  - Prepare plugin for Composer package
 
 = 1.9.3.3 =
   - Plugin option to include query argument ASC / DESC

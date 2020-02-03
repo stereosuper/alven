@@ -12,11 +12,13 @@ get_header(); ?>
         <section class='content-header-transparent' id='ajaxDisappear'>
             <h2 class='section-title'><?php the_field('title'); ?></h2>
             <strong class='subtitle'><?php the_field('subtitle'); ?></strong>
-            <div class='container'>
-                <div class='section-header'>
-                    <p><?php the_field('text'); ?></p>
+            <?php if (get_field('text')){ ?>
+                <div class='container'>
+                    <div class='section-header'>
+                        <p><?php the_field('text'); ?></p>
+                    </div>
                 </div>
-            </div>
+            <?php } ?>
         </section>
 
         <main role='main' id='main'>
@@ -122,7 +124,7 @@ get_header(); ?>
                     <div id='ctaPortfolio'>
                         <a href='#contact-us'>
                             <span>
-                                Could this be you&nbsp;?
+                                Could you be next?
                                 <span class='btn-invert'>Send your pitch</span>
                             </span>
                         </a>

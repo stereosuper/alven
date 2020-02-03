@@ -16,13 +16,13 @@ get_header(); ?>
             <div class='container'>
                 <h1><?php the_field('title'); ?></h1><ul class='menu-home'>
                     <li>
-                        <a href='<?php echo get_permalink( get_option('page_for_posts' ) ); ?>' class='btn-arrow'><span><?php the_field('titleHeaderMag'); ?></span> Magazine</a>
+                        <a href='<?php echo get_permalink( get_option('page_for_posts' ) ); ?>' class='btn-arrow'><span class='txt-big'><?php the_field('titleHeaderMag'); ?></span></a>
                     </li><li>
-                        <a href='<?php echo get_permalink(PORTFOLIO_ID); ?>' class='btn-arrow'><span><?php the_field('titleHeaderPortfolio'); ?></span> Portfolio</a>
+                        <a href='<?php echo get_permalink(PORTFOLIO_ID); ?>' class='btn-arrow'><span class='txt-big'><?php the_field('titleHeaderPortfolio'); ?></span></a>
                     </li><li>
-                        <a href='<?php echo home_url('#who-we-are'); ?>' class='btn-arrow'><span><?php the_field('titleHeaderTeam'); ?></span> Who we are</a>
+                        <a href='<?php echo home_url('#who-we-are'); ?>' class='btn-arrow'><span class='txt-big'><?php the_field('titleHeaderTeam'); ?></span></a>
                     </li><li>
-                        <a href='<?php the_field('urlPageCareer'); ?>' class='btn-arrow'><span><?php the_field('titleHeaderCareers'); ?></span><?php _e('Join the Alven Family','alven'); ?></a>
+                        <a href='<?php the_field('urlPageCareer'); ?>' class='btn-arrow'><span class='txt-big'><?php the_field('titleHeaderCareers'); ?></span><span class='txt-small'><?php _e('Join the Alven Family','alven'); ?></span></a>
                     </li>
                 </ul>
             </div>
@@ -157,7 +157,7 @@ get_header(); ?>
                         <div class='section-header'>
                             <p><?php the_field('text', get_option('page_for_posts' )); ?></p>
 
-                            <a href='<?php echo get_permalink( get_option('page_for_posts' ) ); ?>' class='btn'>Read Alven magazine</a>
+                            <a href='<?php echo get_permalink( get_option('page_for_posts' ) ); ?>' class='btn'>See all</a>
                         </div>
                     </div>
 
@@ -254,38 +254,19 @@ get_header(); ?>
                         </section>
 
                     <?php endif; wp_reset_query(); ?>
-
-                    <div class='newsletter'>
-                        <div class='container'>
-                            <div class='grid'>
-                                <div class='col-6 newsletter-title'>
-                                    <h3>
-                                        <?php the_field('newsletterTitle'); ?>
-                                    </h3><p>
-                                        <?php the_field('newsletterText'); ?>
-                                    </p>
-                                </div><!--<form method='post' action='' class='col-5'>
-                                    <fieldset>
-                                        <input type='email' name='email' id='email' required>
-                                        <label for='email'>Your email</label>
-                                    </fieldset><button type='submit' class='btn-invert'>Signup</button>
-                                </form>-->
-                                <div class='subscribe-form'><?php dynamic_sidebar( 'newsletter' ); ?></div>
-                            </div>
-                        </div>
-                    </div>
                 </section>
 
 
                 <section class='theme-portfolio'>
-                    <h2 class='section-title'><?php the_field('title', PORTFOLIO_ID); ?></h2>
+                    <h2 class='section-title'><?php the_field('portfolioTitle'); ?></h2>
                     <strong class='subtitle'><?php the_field('portfolioSubtitle'); ?></strong>
-                    <div class='container'>
-                        <div class='section-header'>
-                            <p><?php the_field('text', PORTFOLIO_ID); ?></p>
+                    <?php if (get_field('portfolioText')){ ?>
+                        <div class='container'>
+                            <div class='section-header'>
+                                <p><?php the_field('portfolioText'); ?></p>
+                            </div>
                         </div>
-                    </div>
-
+                    <?php } ?>
                     <?php
                         // $startups = new WP_Query(array('post_type' => 'startup', 'posts_per_page' => 19, 'orderby' => 'menu_order', 'order' => 'ASC'));
 
@@ -368,7 +349,7 @@ get_header(); ?>
                         <div id='ctaPortfolio'>
                             <a href='#contact-us'>
                                 <span>
-                                    Could this be you&nbsp;?
+                                    Could you be next?
                                     <span class='btn-invert'>Send your pitch</span>
                                 </span>
                             </a>

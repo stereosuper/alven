@@ -283,7 +283,7 @@ if ( ! class_exists( 'EWWWIO_Background_Process' ) ) {
 		protected function is_queue_active( $queue_id ) {
 			global $wpdb;
 			$process_lock_transient = '_transient_' . $this->identifier . '_process_lock';
-			if ( $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM $wpdb->options WHERE option_name LIKE %s", $process_lock_transient ) ) == $queue_id ) {
+			if ( $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM $wpdb->options WHERE option_name LIKE %s", $process_lock_transient ) ) === $queue_id ) {
 				ewwwio_debug_message( "queue $queue_id is running" );
 				return true;
 			}
@@ -436,19 +436,21 @@ if ( ! class_exists( 'EWWWIO_Background_Process' ) ) {
 		 * @return int
 		 */
 		protected function get_memory_limit() {
+			if ( ! function_exists( 'wp_convert_hr_to_bytes' ) ) {
+				return 128 * MB_IN_BYTES;
+			}
 			if ( function_exists( 'ini_get' ) ) {
 				$memory_limit = ini_get( 'memory_limit' );
 			} else {
 				// Sensible default.
 				$memory_limit = '128M';
 			}
-
-			if ( ! $memory_limit || -1 === intval( $memory_limit ) ) {
+			if ( ! $memory_limit || -1 === (int) $memory_limit ) {
 				// Unlimited, set to 32GB.
-				$memory_limit = '32000M';
+				$memory_limit = '32G';
 			}
 
-			return intval( $memory_limit ) * 1024 * 1024;
+			return wp_convert_hr_to_bytes( $memory_limit );
 		}
 
 		/**
