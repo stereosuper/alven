@@ -1,15 +1,17 @@
 /* Portfolio */
 
-.portfolio-list{
+.portfolio-list {
     position: relative;
-    margin: 250px 0 0;
+    margin: 200px 0 0;
     z-index: 1;
     background: $darkBlue;
     backface-visibility: hidden;
-    .no-js &{
+
+    .no-js & {
         margin-bottom: 50px;
     }
-    &:before{
+
+    &:before {
         content: '';
         height: 150px;
         position: absolute;
@@ -18,34 +20,40 @@
         right: 0;
         z-index: -1;
         background: #fff;
-        .no-js &{
+
+        .no-js & {
             display: none;
         }
     }
-    .txt{
+
+    .txt {
         display: inline-block;
         vertical-align: middle;
         position: relative;
         z-index: 1;
         font-family: $avalonBold;
     }
-    .grid{
+
+    .grid {
         padding: $innerGutter 0;
-        &.is-hovered{
-            .po-item{
-                &:after{
+
+        &.is-hovered {
+            .po-item {
+                &:after {
                     opacity: 0.5;
                     visibility: visible;
                 }
-                &.link-hovered{
-                    &:after{
+
+                &.link-hovered {
+                    &:after {
                         opacity: 0;
                         visibility: hidden;
                     }
 
                 }
-                &.cta{
-                    &:after{
+
+                &.cta {
+                    &:after {
                         opacity: 0;
                         visibility: hidden;
                     }
@@ -53,12 +61,15 @@
             }
         }
     }
-    ul{
-        .js &{
+
+    ul {
+        .js & {
             display: none;
         }
     }
-    li, .po-item{
+
+    li,
+    .po-item {
         padding: $innerGutter;
         overflow: hidden;
         font-family: $avalonMedium;
@@ -68,7 +79,8 @@
         text-align: center;
         backface-visibility: hidden;
         transform-style: preserve-3d;
-        &:before{
+
+        &:before {
             display: block;
             width: auto;
             height: auto;
@@ -76,19 +88,23 @@
             position: static;
             background: none !important;
         }
-        &.transfered{
-            &:after{
+
+        &.transfered {
+            &:after {
                 background-color: $darkBlue;
             }
-            a{
+
+            a {
                 background-color: $blue;
                 border-color: $blue;
                 color: #fff;
                 transition: none;
-                &:after{
+
+                &:after {
                     display: none;
                 }
-                .content-transfered{
+
+                .content-transfered {
                     position: absolute;
                     top: 50%;
                     left: 0;
@@ -97,7 +113,8 @@
                     height: 100%;
                     display: inline-block;
                     vertical-align: top;
-                    > span{
+
+                    >span {
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -106,29 +123,37 @@
                         height: 16%;
                         max-width: 58%;
                         line-height: 1;
-                        &:first-child, &:last-child{
+
+                        &:first-child,
+                        &:last-child {
                             height: 42%;
                         }
-                        &:nth-child(2){
+
+                        &:nth-child(2) {
                             padding: 0 10px;
                             max-width: none;
                         }
-                        &.txt-container{
+
+                        &.txt-container {
                             max-width: 95%;
                         }
                     }
-                    &.no-by{
-                        > span{
-                            &:first-child{
+
+                    &.no-by {
+                        >span {
+                            &:first-child {
                                 height: 70%;
                             }
-                            &:last-child{
+
+                            &:last-child {
                                 height: 30%;
                             }
                         }
                     }
                 }
-                svg, img{
+
+                svg,
+                img {
                     position: relative;
                     transform: translate3d(0, 0, 0);
                     top: auto;
@@ -144,42 +169,73 @@
                     display: inline-block;
                     vertical-align: middle;
                 }
-                &.off{
-                    path, polygon, rect, ellipse, circle, line, polyline{
+
+                &.off {
+
+                    path,
+                    polygon,
+                    rect,
+                    ellipse,
+                    circle,
+                    line,
+                    polyline {
                         fill: #fff;
                     }
                 }
-                .hover{
+
+                .hover {
                     opacity: 1;
                     transform: translate3d(0, 0, 0);
                     transition: none;
-                    svg, img{
+
+                    svg,
+                    img {
                         position: relative;
                         transform: translate3d(0, 0, 0);
                         top: auto;
                         left: auto;
                         transition-delay: 0s;
                     }
-                    path, polygon, rect, ellipse, circle, line, polyline{
+
+                    path,
+                    polygon,
+                    rect,
+                    ellipse,
+                    circle,
+                    line,
+                    polyline {
                         transition-delay: 0s;
                     }
                 }
-                &:hover, &:focus, &.on{
+
+                &:hover,
+                &:focus,
+                &.on {
                     //border: 1px solid $greyBorder;
                     border-color: $greyBorder;
                     background: #fff;
                     color: $darkBlue;
-                    path, polygon, rect, ellipse, circle, line, polyline{
+
+                    path,
+                    polygon,
+                    rect,
+                    ellipse,
+                    circle,
+                    line,
+                    polyline {
                         transition: fill 0.4s linear;
                         transition-delay: 0s;
                     }
-                    svg, img{
+
+                    svg,
+                    img {
                         transform: translate3d(0, 0, 0) scale(1) rotate(0.1deg);
                     }
                 }
             }
         }
-        a{
+
+        a {
             border: 1px solid $greyBorder;
             position: absolute;
             top: $innerGutter;
@@ -192,14 +248,16 @@
             transition-delay: 0.3s;
             backface-visibility: hidden;
             transform-style: preserve-3d;
-            &:before{
+
+            &:before {
                 content: '';
                 display: inline-block;
                 width: 0;
                 height: 100%;
                 vertical-align: middle;
             }
-            &:after{
+
+            &:after {
                 content: '';
                 display: block;
                 width: auto;
@@ -217,104 +275,156 @@
                 backface-visibility: hidden;
                 transform-style: preserve-3d;
             }
-            &:hover, &:focus{
+
+            &:hover,
+            &:focus {
                 border-color: $blue;
-                &:after{
+
+                &:after {
                     transform: scale(0.96, 0.94) rotate(0.1deg);
                 }
             }
-            &:hover, &:focus, &.on{
+
+            &:hover,
+            &:focus,
+            &.on {
                 opacity: 1;
                 transition: border-color 0s cubic-bezier(0.420, 0.000, 0.580, 1.000);
-                &:after{
+
+                &:after {
                     transition: transform 0.65s cubic-bezier(0.000, 0.855, 0.345, 1.000);
                     transition-delay: 0s;
                 }
-                svg, img{
+
+                svg,
+                img {
                     transform: translate3d(-50%, -50%, 0) scale(1) rotate(0.1deg);
                     transition: transform 0.2s cubic-bezier(0.455, 0.030, 0.515, 0.955);
                     transition-delay: 0.10s;
                     backface-visibility: hidden;
                     transform-style: preserve-3d;
                 }
-                path, polygon, rect, ellipse, circle, line, polyline{
+
+                path,
+                polygon,
+                rect,
+                ellipse,
+                circle,
+                line,
+                polyline {
                     transition: fill 0.4s linear;
                     transition-delay: 0.25s;
                 }
             }
-            &.on{
-                &:hover, &:focus{
+
+            &.on {
+
+                &:hover,
+                &:focus {
                     border-color: $greyBorder;
-                    &:after{
+
+                    &:after {
                         transform: scale(1, 1) rotate(0.1deg);
                     }
                 }
-                img, svg{
+
+                img,
+                svg {
                     transform: translate3d(-50%, -50%, 0) scale(0.95) rotate(0.1deg);
                 }
-                path, polygon, rect, ellipse, circle, line, polyline{
+
+                path,
+                polygon,
+                rect,
+                ellipse,
+                circle,
+                line,
+                polyline {
                     transition: fill 0.2s linear;
                 }
             }
-            &.off{
-                path, polygon, rect, ellipse, circle, line, polyline{
+
+            &.off {
+
+                path,
+                polygon,
+                rect,
+                ellipse,
+                circle,
+                line,
+                polyline {
                     fill: $darkBlue;
                 }
             }
         }
     }
-    .po-item{
+
+    .po-item {
         padding: $innerGutter 0;
         position: relative;
-        &:before{
+
+        &:before {
             content: '';
         }
-        &.cta{
+
+        &.cta {
             font-family: $avalonMediumBold;
             font-size: 2rem;
             line-height: 1;
             text-transform: none;
             color: #fff;
-            a{
+
+            a {
                 background: none;
                 box-shadow: none;
                 border: none;
 
-                &:after{
+                &:after {
                     display: none;
                 }
-                > span{
+
+                >span {
                     display: inline-block;
                     vertical-align: middle;
                     max-width: 97%;
                 }
             }
-            .btn-invert{
+
+            .btn-invert {
                 color: $gold;
                 border-color: $gold;
                 margin-top: 15px;
                 opacity: 1 !important;
                 transition: 0.45s $transitionFunction;
-                .before{
+
+                .before {
                     color: $gold;
                 }
-                .after{
+
+                .after {
                     color: $darkBlue;
                 }
-                &:hover, &:focus{
+
+                &:hover,
+                &:focus {
                     background: $gold;
-                    .no-js &, .is-desktop &{
+
+                    .no-js &,
+                    .is-desktop & {
                         color: $darkBlue;
                     }
                 }
             }
         }
-        a{
+
+        a {
             left: 0;
             right: 0;
         }
     }
-    svg, img{
+
+    svg,
+    img {
         display: inline-block;
         width: auto;
         height: auto;
@@ -328,11 +438,19 @@
         transition-delay: 0s;
         z-index: 1;
     }
-    path, polygon, rect, ellipse, circle, line, polyline{
+
+    path,
+    polygon,
+    rect,
+    ellipse,
+    circle,
+    line,
+    polyline {
         transition: fill 0.3s linear;
         transition-delay: 0s;
     }
-    .hover{
+
+    .hover {
         display: block;
         position: absolute;
         bottom: 16px;
@@ -347,43 +465,50 @@
             margin: 5px auto 0;
         }*/
     }
-    .po-item-col{
-        &:first-child{
+
+    .po-item-col {
+        &:first-child {
             //transform: translate3d(0, 17%, 0);
             transform: translate3d(0, 55px, 0);
         }
-        &:nth-child(2){
+
+        &:nth-child(2) {
             //transform: translate3d(0, -10%, 0);
             transform: translate3d(0, -70px, 0);
         }
-        &:nth-child(3){
+
+        &:nth-child(3) {
             //transform: translate3d(0, -14%, 0);
             transform: translate3d(0, -100px, 0);
         }
-        &:nth-child(4){
+
+        &:nth-child(4) {
             //transform: translate3d(0, -4.5%, 0);
             transform: translate3d(0, -35px, 0);
         }
-        &:nth-child(5){
+
+        &:nth-child(5) {
             //transform: translate3d(0, 4%, 0);
             transform: translate3d(0, 20px, 0);
         }
-        &:nth-child(6){
+
+        &:nth-child(6) {
             //transform: translate3d(0, -10%, 0);
             transform: translate3d(0, -55px, 0);
         }
     }
-    + .container{
+
+    +.container {
         position: relative;
         z-index: 1;
     }
 }
 
-#ctaPortfolio{
+#ctaPortfolio {
     display: none;
 }
 
-.portfolio-filters{
+.portfolio-filters {
     width: 100%;
     padding: 10px 0;
     border-bottom: 1px solid $greyLight;
@@ -394,29 +519,35 @@
     text-align: center;
     backface-visibility: hidden;
     transition: transform $transition;
-    .no-js &{
+
+    .no-js & {
         display: none;
     }
-    &.fixed{
+
+    &.fixed {
         position: fixed;
         top: 97px;
-        &.on{
+
+        &.on {
             transform: translate3d(0, -85px, 0);
         }
     }
-    &.single-on{
-        + .content-main{
-            .portfolio-list{
+
+    &.single-on {
+        +.content-main {
+            .portfolio-list {
                 margin-top: 150px;
             }
         }
     }
-    .dropdown{
+
+    .dropdown {
         display: inline-block;
         vertical-align: top;
         margin: 10px;
-        > li{
-            &:first-child{
+
+        >li {
+            &:first-child {
                 text-indent: 0;
                 padding: 15px 26px 13px 15px;
             }
@@ -424,7 +555,7 @@
     }
 }
 
-.portfolio-header{
+.portfolio-header {
     padding: 230px 0 30px;
     margin: 0 0 50px;
     font-family: $avalonBold;
@@ -433,16 +564,19 @@
     letter-spacing: 0.03em;
     background: $darkBlue;
     color: #fff;
-    .container{
+
+    .container {
         position: relative;
     }
-    h1{
+
+    h1 {
         height: 0;
         padding-bottom: 25%;
         position: relative;
         margin: 10px;
         background: #fff;
-        img{
+
+        img {
             max-width: 80%;
             max-height: 60%;
             height: auto !important;
@@ -454,25 +588,31 @@
             right: 0;
         }
     }
-    div{
-        &.col-3{
+
+    div {
+        &.col-3 {
             margin-left: $col;
         }
     }
-    .title-small{
+
+    .title-small {
         display: block;
         margin: 0 0 10px;
         font-style: normal;
         //color: #586c70;
     }
-    .header-block-term{
+
+    .header-block-term {
         min-height: 50px;
         margin: 10px 0 0;
     }
-    .header-block-history, .header-block-keywords{
+
+    .header-block-history,
+    .header-block-keywords {
         min-height: 215px;
     }
-    .header-block-keywords{
+
+    .header-block-keywords {
         margin: 60px 0 0;
         font-family: $arvo;
         font-style: italic;
@@ -480,22 +620,31 @@
         text-transform: none;
         color: #759095;
     }
-    .header-block-btn{
+
+    .header-block-btn {
         min-height: 85px;
-        .title-small{
+
+        .title-small {
             margin: 0 0 25px;
         }
-        .btn-invert{
+
+        .btn-invert {
             color: $gold;
             border-color: $gold;
-            .before{
+
+            .before {
                 color: $gold;
             }
-            .after{
+
+            .after {
                 color: $darkBlue;
             }
-            .is-desktop &, .no-js &{
-                &:hover, &:focus{
+
+            .is-desktop &,
+            .no-js & {
+
+                &:hover,
+                &:focus {
                     background: $gold;
                     border-color: $gold;
                     color: $darkBlue;
@@ -503,52 +652,71 @@
             }
         }
     }
-    .btn-store{
+
+    .btn-store {
         margin: 0 5px 0 0;
     }
-    .btn-close{
+
+    .btn-close {
         position: absolute;
         top: 10px;
         right: 20px;
         color: $gold;
-        &:before, &:after{
+
+        &:before,
+        &:after {
             background: $gold;
         }
     }
 }
 
-@media all and (-ms-high-contrast:none){
-    .portfolio-header h1 img { width: 80% } /* IE10 */
-    *::-ms-backdrop, .portfolio-header h1 img { width: 80% } /* IE11 */
+@media all and (-ms-high-contrast:none) {
+    .portfolio-header h1 img {
+        width: 80%
+    }
+
+    /* IE10 */
+    *::-ms-backdrop,
+    .portfolio-header h1 img {
+        width: 80%
+    }
+
+    /* IE11 */
 }
 
-.related-portfolio{
+.related-portfolio {
     padding: 0 0 35px;
     border-bottom: 1px solid $greyBorder;
     margin: -20px 0 50px;
-    .container-small{
+
+    .container-small {
         padding: 0;
     }
-    &-list{
+
+    &-list {
         position: relative;
         margin: 0 10%;
 
         @include pseudoCross;
-        &:after{
+
+        &:after {
             top: -58px;
             left: 1px;
         }
-        &:before{
+
+        &:before {
             top: -51px;
             left: -7px;
         }
     }
-    .title-small{
+
+    .title-small {
         position: absolute;
         top: -80px;
         left: 28px;
     }
-    .post-small{
+
+    .post-small {
         display: inline-block;
         width: 25%;
         padding-left: $innerGutter;
@@ -558,14 +726,16 @@
         position: relative;
         vertical-align: top;
         margin-top: 20px;
-        &:after{
+
+        &:after {
             content: '';
             display: block;
             height: 1px;
             margin: 20px 0 0;
             background: $greyBorder;
         }
-        h4{
+
+        h4 {
             margin-top: 15px;
         }
     }
