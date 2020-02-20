@@ -10,7 +10,7 @@
                 <?php if($errorSend){ ?>
                     <p class='form-error'><?php echo $errorSend; ?></p>
                 <?php } ?>
-                <form action='<?php the_permalink(); ?>#contact' method='post' enctype='multipart/form-data' class='align-left form-to-open <?php if($status === "error") echo "form-open-error"; ?>'>
+                <!--<form action='<?php the_permalink(); ?>#contact' method='post' enctype='multipart/form-data' class='align-left form-to-open <?php if($status === "error") echo "form-open-error"; ?>'>
                     <fieldset>
                         <legend class='active'>Please <span>Introduce yourself</span></legend>
                         <section class='form-section <?php if($errorFirstname || $errorLastname || $errorEmail) echo "invalid"; ?>'>
@@ -57,7 +57,19 @@
                         </section>
                     </fieldset>
                     <button type='submit' name='submitpitch' class='btn-invert'>Confirm</button>
-                </form>
+                </form>-->
+                <div class='align-left form-to-open <?php if($status === "error") echo "form-open-error"; ?>'>
+                    <!--[if lte IE 8]>
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                    <![endif]-->
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+                    <script>
+                    hbspt.forms.create({
+                        portalId: "6748671",
+                        formId: "7cd7a16c-fedd-47d3-981b-805f519cfe6c"
+                    });
+                    </script>
+                </div>
             <?php } ?>
         </div><div class='col-4 interactive-block'>
             <h3><?php the_field('generalTitle', CONTACT_ID); ?></h3>
