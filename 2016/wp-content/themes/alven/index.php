@@ -28,7 +28,6 @@
         <?php endif; ?>
     <?php wp_reset_postdata(); ?>
 
-
     <?php if ( have_posts() ) : ?>
 
         <main role='main' id='main'>
