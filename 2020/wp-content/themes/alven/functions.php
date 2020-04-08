@@ -1,9 +1,14 @@
 <?php
 
-define( 'ALVEN_VERSION', 1.0 );
+define( 'ALVEN_VERSION', 2.0 );
 
 // require_once(WPMU_PLUGIN_DIR . '/class-tgm-plugin-activation.php');
 
+if(function_exists('get_field')){
+    define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );
+    define( 'CONTACT_ID', url_to_postid(get_field('pageContact', 'options')) );
+    //define( 'WE_ID', url_to_postid(get_field('pageWe', 'options')) );
+}
 
 /*-----------------------------------------------------------------------------------*/
 /* General
@@ -25,12 +30,6 @@ add_theme_support( 'title-tag' );
 
 // Admin bar
 show_admin_bar(false);
-
-// Disable Tags
-function alven_unregister_tags(){
-    unregister_taxonomy_for_object_type('post_tag', 'post');
-}
-add_action( 'init', 'alven_unregister_tags' );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -70,12 +69,14 @@ add_filter( 'login_errors', 'alven_login_errors' );
 /*-----------------------------------------------------------------------------------*/
 // Remove some useless admin stuff
 function alven_remove_submenus() {
-  $page = remove_submenu_page( 'themes.php', 'themes.php' );
-  remove_menu_page( 'edit-comments.php' );
+    remove_submenu_page( 'themes.php', 'themes.php' );
+    remove_submenu_page( 'widgets.php', 'widgets.php' );
+    remove_menu_page( 'edit-comments.php' );
 }
 add_action( 'admin_menu', 'alven_remove_submenus', 999 );
 function alven_remove_top_menus( $wp_admin_bar ){
     $wp_admin_bar->remove_node( 'wp-logo' );
+    $wp_admin_bar->remove_node( 'comments' );
 }
 add_action( 'admin_bar_menu', 'alven_remove_top_menus', 999 );
 
@@ -142,8 +143,6 @@ function alven_mce_before_init( $styles ){
     $styles['style_formats'] = json_encode( $style_formats );
     // Remove h1 and code
     $styles['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
-    // Let only the colors you want
-    $styles['textcolor_map'] = '[' . "'000000', 'Noir', '565656', 'Texte'" . ']';
     return $styles;
 }
 add_filter( 'tiny_mce_before_init', 'alven_mce_before_init' );
@@ -164,7 +163,7 @@ add_filter( 'menu_order', 'alven_menu_order' );
 /*-----------------------------------------------------------------------------------*/
 /* Menus
 /*-----------------------------------------------------------------------------------*/
-register_nav_menus( array('primary' => 'Primary Menu') );
+register_nav_menus( array('primary' => 'Primary Menu', 'secondary' => 'Secondary Menu') );
 
 // Cleanup WP Menu html
 function alven_css_attributes_filter($var){
@@ -174,64 +173,252 @@ add_filter( 'nav_menu_css_class', 'alven_css_attributes_filter' );
 
 
 /*-----------------------------------------------------------------------------------*/
-/* Sidebar & Widgets
+/* Posts
 /*-----------------------------------------------------------------------------------*/
-function alven_register_sidebars(){
-	register_sidebar( array(
-		'id' => 'sidebar',
-		'name' => 'Sidebar',
-		'description' => 'Take it on the side...',
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
-		'empty_title'=> ''
-	) );
+// custom excerpt
+function alven_custom_excerpt_length($length){
+    return 35;
 }
-add_action( 'widgets_init', 'alven_register_sidebars' );
+add_filter( 'excerpt_length', 'alven_custom_excerpt_length', 999 );
 
-// Deregister default widgets
-function alven_unregister_default_widgets(){
-    unregister_widget('WP_Widget_Pages');
-    unregister_widget('WP_Widget_Calendar');
-    unregister_widget('WP_Widget_Archives');
-    unregister_widget('WP_Widget_Links');
-    unregister_widget('WP_Widget_Meta');
-    unregister_widget('WP_Widget_Search');
-    unregister_widget('WP_Widget_Text');
-    unregister_widget('WP_Widget_Categories');
-    unregister_widget('WP_Widget_Recent_Posts');
-    unregister_widget('WP_Widget_Recent_Comments');
-    unregister_widget('WP_Widget_RSS');
-    unregister_widget('WP_Widget_Tag_Cloud');
-    unregister_widget('WP_Nav_Menu_Widget');
+function alven_excerpt_more($more){
+    return '...';
 }
-add_action( 'widgets_init', 'alven_unregister_default_widgets' );
+add_filter( 'excerpt_more', 'alven_excerpt_more' );
+
+// cut get_the_content
+function alven_cut_content($text){
+    $text = wpautop($text);
+    $length = 100;
+    if(strlen($text) < $length+10){
+        return $text;
+    }
+    $visible = substr($text, 0, strpos($text, ' ', $length)) . ' …';
+    return balanceTags($visible, true);
+}
+
+// add image specific sizes
+function alven_thumbnail_sizes(){
+    add_image_size( 'team-thumb', 210, 277, true );
+}
+add_action( 'after_setup_theme', 'alven_thumbnail_sizes' );
+
+// related posts
+function alven_related_posts($currentId){
+    $relatedPosts = array();
+    $countPosts = 0;
+    $notInIds = array($currentId);
+
+    $tags = wp_get_post_tags($currentId);
+    if($tags){
+        $tagIds = array();
+        foreach($tags as $tag){
+            $tagIds[] = $tag->term_id;
+        }
+
+        $relatedPosts = get_posts( array(
+            'post_type' => 'post',
+            'tag__in' => $tagIds,
+            'post__not_in' => $notInIds,
+            'posts_per_page'=> 2
+        ) );
+        $countPosts = count($relatedPosts);
+    }
+
+    if($countPosts < 2){
+        foreach($relatedPosts as $related){
+            $notInIds[] = $related->ID;
+        }
+
+        $cats = get_the_category($currentId)[0];
+        if($cats){
+            $catsPosts = get_posts( array(
+                'post_type' => 'post',
+                'tax_query' => array( array(
+                    'taxonomy' => 'category',
+                    'field' => 'slug',
+                    'terms' => $cats->slug
+                ) ),
+                'post__not_in' => $notInIds,
+                'posts_per_page' => 2 - $countPosts
+            ) );
+
+            if(count($catsPosts) > 0){
+                foreach($catsPosts as $catsPost){
+                    $notInIds[] = $catsPost->ID;
+                }
+                $relatedPosts[] = $catsPosts[0];
+                $countPosts = count($relatedPosts);
+            }
+        }
+
+        if($countPosts < 2){
+            $otherPosts = get_posts( array(
+                'post_type' => 'post',
+                'post__not_in' => $notInIds,
+                'posts_per_page'=> 3 - $countPosts
+            ) );
+
+            if(count($otherPosts) > 0){
+                foreach($otherPosts as $prev){
+                    $notInIds[] = $prev->ID;
+                }
+                $relatedPosts[] = $otherPosts[0];
+            }
+        }
+    }
+
+    return $relatedPosts;
+}
+
+// return inline svg or img
+function alven_get_svg($id){
+    $icon = wp_get_attachment_thumb_url($id);
+    if(strpos( $icon, '.svg' )){
+        $icon = str_replace( site_url(), '', $icon);
+        $img = file_get_contents(ABSPATH . $icon);
+    }else{
+        $img = get_the_post_thumbnail('medium', array('class' => 'no-scroll'));
+    }
+    return $img;
+}
 
 
 /*-----------------------------------------------------------------------------------*/
 /* Post types
 /*-----------------------------------------------------------------------------------*/
-// function alven_post_type(){
-//     register_post_type( 'resource', array(
-//         'label' => 'Resources',
-//         'singular_label' => 'Resource',
-//         'public' => true,
-//         'menu_icon' => 'dashicons-portfolio',
-//         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
-//     ));
-// }
-// add_action( 'init', 'alven_post_type' );
+function alven_post_type(){
+    register_post_type('startup', array(
+        'label' => 'Startups',
+        'labels' => array(
+            'singular_name' => 'Startup',
+            'menu_name' => 'Portfolio'
+        ),
+        'public' => true,
+        'menu_icon' => 'dashicons-portfolio',
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
+        'taxonomies' => array('post_tag')
+    ));
+    register_post_type('job', array(
+        'label' => 'Jobs',
+        'labels' => array(
+            'singular_name' => 'Job',
+            'menu_name' => 'Jobs'
+        ),
+        'public' => true,
+        'menu_icon' => 'dashicons-businessman',
+        'supports' => array('title', 'thumbnail', 'revisions')
+    ));
+    register_post_type('team', array(
+        'label' => 'Team members',
+        'labels' => array(
+            'singular_name' => 'Team member',
+            'menu_name' => 'Team'
+        ),
+        'public' => true,
+        'publicly_queryable' => false,
+        'query_var' => false,
+        'menu_icon' => 'dashicons-groups',
+        'supports' => array('title', 'editor', 'thumbnail', 'revisions')
+    ));
+    register_post_type('quote', array(
+        'label' => 'Quotes',
+        'labels' => array(
+            'singular_name' => 'Quote',
+            'menu_name' => 'Quotes'
+        ),
+        'public' => true,
+        'publicly_queryable' => false,
+        'query_var' => false,
+        'menu_icon' => 'dashicons-format-quote',
+        'supports' => array('title', 'thumbnail', 'revisions')
+    ));
+}
+add_action( 'init', 'alven_post_type' );
 
-// function alven_taxonomies(){
-//     register_taxonomy( 'resource_cat', array('resource'), array(
-//         'label' => 'Categories',
-//         'singular_label' => 'Category',
-//         'hierarchical' => true,
-//         'show_admin_column' => true
-//     ) );
-// }
-// add_action( 'init', 'alven_taxonomies' );
+// Create taxonomies
+function alven_taxonomy(){
+    // Startup taxos
+    register_taxonomy('field', array('startup'), array(
+        'hierarchical' => true,
+        'label' => 'Fields',
+        'singular_label' => 'Field',
+        'show_admin_column' => true
+    ));
+    register_taxonomy('footprint', array('startup'), array(
+        'hierarchical' => true,
+        'label' => 'Footprints',
+        'singular_label' => 'Footprint',
+        'show_admin_column' => true
+    ));
+    // Jobs taxos
+    register_taxonomy('job_type', array('job'), array(
+        'label'             => 'Type',
+        'singular_label'    => 'Type',
+        'show_admin_column' => true
+    ));
+    register_taxonomy('job_location', array('job'), array(
+        'label'             => 'Location',
+        'singular_label'    => 'Location',
+        'show_admin_column' => true
+    ));
+    register_taxonomy('job_function', array('job'), array(
+        'label'             => 'Function',
+        'singular_label'    => 'Function',
+        'show_admin_column' => true
+    ));
+    register_taxonomy('job_sector', array('job'), array(
+        'label'             => 'Sector',
+        'singular_label'    => 'Sector',
+        'show_admin_column' => true
+    ));
+}
+add_action( 'init', 'alven_taxonomy' );
+
+
+/*-----------------------------------------------------------------------------------*/
+/* Search -> Add some custom vars
+/*-----------------------------------------------------------------------------------*/
+function add_query_vars_filter( $vars ) {
+    array_push($vars, "shortcode", "location", "company", "function", "sector", "search");
+    return $vars;
+}
+add_filter( 'query_vars', 'add_query_vars_filter' );
+
+
+/*-----------------------------------------------------------------------------------*/
+/* Search -> Include search results in taxonomies
+/*-----------------------------------------------------------------------------------*/
+function alven_search_where($where){
+    global $wpdb;
+
+    if(is_search() && !is_admin()){
+        $where .= " OR (t.name LIKE '%".get_search_query()."%' AND {$wpdb->posts}.post_status = 'publish') AND {$wpdb->posts}.post_type IN ('post', 'startup')";
+    }
+    return $where;
+}
+add_filter( 'posts_where', 'alven_search_where' );
+
+function alven_search_join($join){
+    global $wpdb;
+    if(is_search() && !is_admin()){
+        $join .= "LEFT JOIN {$wpdb->term_relationships} tr ON {$wpdb->posts}.ID = tr.object_id INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_taxonomy_id=tr.term_taxonomy_id INNER JOIN {$wpdb->terms} t ON t.term_id = tt.term_id";
+    }
+    return $join;
+}
+add_filter( 'posts_join', 'alven_search_join' );
+
+function alven_search_groupby($groupby){
+    global $wpdb;
+
+    $groupby_id = "{$wpdb->posts}.ID";
+    if(!is_search() || strpos($groupby, $groupby_id) !== false) return $groupby;
+
+    if(!strlen(trim($groupby))) return $groupby_id;
+
+    return $groupby.", ".$groupby_id;
+}
+add_filter( 'posts_groupby', 'alven_search_groupby' );
 
 
 /*-----------------------------------------------------------------------------------*/
