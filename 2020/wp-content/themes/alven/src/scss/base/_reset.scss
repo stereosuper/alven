@@ -88,11 +88,6 @@ abbr[title] {
     text-decoration: underline dotted;
 }
 
-b,
-strong {
-    font-weight: inherit;
-}
-
 code,
 kbd,
 pre,
@@ -128,6 +123,10 @@ svg:not(:root) {
 fieldset,
 legend {
     border: 0;
+}
+
+fieldset {
+    min-width: 0;
 }
 
 legend {

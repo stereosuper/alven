@@ -65,15 +65,6 @@ p {
     margin: 1em 0;
 }
 
-b,
-strong {
-    font-weight: 500;
-}
-
-i,
-em {
-}
-
 blockquote {
     margin: 1em 40px;
 }
@@ -104,44 +95,9 @@ ol {
     }
 }
 
-// COMBAK: Remove if not used
-dt,
-dd {
-    display: inline;
-    margin: 0;
-}
-dt {
-    &::after {
-        content: ': ';
-    }
-}
-dd {
-    + dt {
-        &::before {
-            content: '\A';
-            white-space: pre;
-        }
-    }
-    + dd {
-        &::before {
-            content: ', ';
-            margin: 0 0 0 -0.25em;
-        }
-    }
-}
-
 img {
     max-width: 100%;
     height: auto;
-}
-
-// COMBAK: Remove if not used
-code,
-pre {
-    display: block;
-    padding: 10px 15px;
-    margin: 1em 0;
-    background: grey;
 }
 
 // COMBAK: Remove if not used
@@ -151,6 +107,10 @@ hr {
     border: 0;
     margin: 3em auto 5em;
     background: $black;
+}
+
+svg {
+    max-width: 100%;
 }
 
 /******* LIENS / BOUTONS *******/
