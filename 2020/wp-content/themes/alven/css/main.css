@@ -66,9 +66,6 @@ abbr[title] {
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted; }
-b,
-strong {
-  font-weight: inherit; }
 code,
 kbd,
 pre,
@@ -92,6 +89,8 @@ svg:not(:root) {
 fieldset,
 legend {
   border: 0; }
+fieldset {
+  min-width: 0; }
 legend {
   white-space: normal;
   color: inherit;
@@ -246,33 +245,17 @@ ol > li::before {
 ol ol {
     padding: 0 0 0 25px;
     margin: 1em 0; }
-dt,
-dd {
-  display: inline;
-  margin: 0; }
-dt::after {
-  content: ': '; }
-dd + dt::before {
-  content: '\A';
-  white-space: pre; }
-dd + dd::before {
-  content: ', ';
-  margin: 0 0 0 -0.25em; }
 img {
   max-width: 100%;
   height: auto; }
-code,
-pre {
-  display: block;
-  padding: 10px 15px;
-  margin: 1em 0;
-  background: grey; }
 hr {
   height: 1px;
   max-width: 250px;
   border: 0;
   margin: 3em auto 5em;
   background: #000; }
+svg {
+  max-width: 100%; }
 /******* LIENS / BOUTONS *******/
 a {
   color: inherit; }
@@ -375,4 +358,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?85efd6b083ba540795da079b64c49487*/
+/*# sourceMappingURL=main.css.map?c3c1608961da79af6627c8c0b66eae9f*/
