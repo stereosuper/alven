@@ -345,6 +345,52 @@ button {
 .burger {
   display: none; }
 /* Footer */
+.portfolio-wrapper {
+  display: flex; }
+.portfolio-filters {
+  width: 25%; }
+.portfolio-content {
+  width: 75%; }
+.portfolio {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  line-height: 1; }
+.portfolio > li {
+    width: 25%;
+    padding: 10px; }
+.portfolio a {
+    display: block;
+    height: 0;
+    padding: 0 0 83%;
+    position: relative; }
+.portfolio a > svg {
+      height: 50%;
+      margin: auto; }
+.portfolio a > svg,
+  .portfolio .content-transfered {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; }
+.portfolio svg {
+    width: 55%; }
+.portfolio span {
+    width: 100%; }
+.portfolio .content-transfered {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 0; }
+.portfolio .content-transfered span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 25%; }
+.portfolio .content-transfered svg {
+      height: 100%; }
 /* Home specific style */
 /******* PRINT *******/
 @media print {
@@ -365,4 +411,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?7adca1b47f6017380e1ccd8327f7e6e9*/
+/*# sourceMappingURL=main.css.map?481cd379cb7fc0c446f81cb9b5041f2d*/

@@ -1,0 +1,62 @@
+.portfolio-wrapper {
+    display: flex;
+}
+
+.portfolio-filters {
+    width: 25%;
+}
+
+.portfolio-content {
+    width: 75%;
+}
+
+.portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    line-height: 1;
+    > li {
+        width: 25%;
+        padding: 10px;
+    }
+    a {
+        display: block;
+        height: 0;
+        padding: 0 0 83%;
+        position: relative;
+        > svg {
+            height: 50%;
+            margin: auto;
+        }
+    }
+    a > svg,
+    .content-transfered {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    svg {
+        width: 55%;
+    }
+    span {
+        width: 100%;
+    }
+    .content-transfered {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 25px 0;
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 25%;
+        }
+        svg {
+            height: 100%;
+        }
+    }
+}
