@@ -299,7 +299,7 @@ function alven_post_type(){
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
         'taxonomies' => array('post_tag')
     ));
-    register_post_type('job', array(
+    /*register_post_type('job', array(
         'label' => 'Jobs',
         'labels' => array(
             'singular_name' => 'Job',
@@ -308,7 +308,7 @@ function alven_post_type(){
         'public' => true,
         'menu_icon' => 'dashicons-businessman',
         'supports' => array('title', 'thumbnail', 'revisions')
-    ));
+    ));*/
     register_post_type('team', array(
         'label' => 'Team members',
         'labels' => array(
@@ -320,18 +320,6 @@ function alven_post_type(){
         'query_var' => false,
         'menu_icon' => 'dashicons-groups',
         'supports' => array('title', 'editor', 'thumbnail', 'revisions')
-    ));
-    register_post_type('quote', array(
-        'label' => 'Quotes',
-        'labels' => array(
-            'singular_name' => 'Quote',
-            'menu_name' => 'Quotes'
-        ),
-        'public' => true,
-        'publicly_queryable' => false,
-        'query_var' => false,
-        'menu_icon' => 'dashicons-format-quote',
-        'supports' => array('title', 'thumbnail', 'revisions')
     ));
 }
 add_action( 'init', 'alven_post_type' );
@@ -345,14 +333,14 @@ function alven_taxonomy(){
         'singular_label' => 'Field',
         'show_admin_column' => true
     ));
-    register_taxonomy('footprint', array('startup'), array(
+    /*register_taxonomy('footprint', array('startup'), array(
         'hierarchical' => true,
         'label' => 'Footprints',
         'singular_label' => 'Footprint',
         'show_admin_column' => true
-    ));
+    ));*/
     // Jobs taxos
-    register_taxonomy('job_type', array('job'), array(
+    /*register_taxonomy('job_type', array('job'), array(
         'label'             => 'Type',
         'singular_label'    => 'Type',
         'show_admin_column' => true
@@ -371,7 +359,7 @@ function alven_taxonomy(){
         'label'             => 'Sector',
         'singular_label'    => 'Sector',
         'show_admin_column' => true
-    ));
+    ));*/
 }
 add_action( 'init', 'alven_taxonomy' );
 
