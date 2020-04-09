@@ -23,10 +23,28 @@
         display: block;
         height: 0;
         padding: 0 0 83%;
+        border: 1px solid;
         position: relative;
+        background: $primary;
+        transition: $transition;
         > svg {
             height: 50%;
             margin: auto;
+        }
+        &:not(:hover) {
+            path,
+            polygon,
+            rect,
+            ellipse,
+            circle,
+            line,
+            polyline {
+                fill: #fff;
+            }
+        }
+        &:hover,
+        &:focus {
+            background: #fff !important;
         }
     }
     a > svg,

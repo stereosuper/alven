@@ -363,10 +363,23 @@ button {
     display: block;
     height: 0;
     padding: 0 0 83%;
-    position: relative; }
+    border: 1px solid;
+    position: relative;
+    background: #003240;
+    transition: 0.3s ease-in-out; }
 .portfolio a > svg {
       height: 50%;
       margin: auto; }
+.portfolio a:not(:hover) path,
+    .portfolio a:not(:hover) polygon,
+    .portfolio a:not(:hover) rect,
+    .portfolio a:not(:hover) ellipse,
+    .portfolio a:not(:hover) circle,
+    .portfolio a:not(:hover) line,
+    .portfolio a:not(:hover) polyline {
+      fill: #fff; }
+.portfolio a:hover, .portfolio a:focus {
+      background: #fff !important; }
 .portfolio a > svg,
   .portfolio .content-transfered {
     position: absolute;
@@ -411,4 +424,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?481cd379cb7fc0c446f81cb9b5041f2d*/
+/*# sourceMappingURL=main.css.map?6e27797cdea8a3cbc843993cb391d50a*/

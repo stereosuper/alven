@@ -50,10 +50,11 @@ get_header(); ?>
                                             $fieldList .= $field->slug.',';
                                         }
                                     }
+                                    $color = get_field('color') ?: '#003240';
                                 ?>
-                                <?php if(get_field('investment') !== 'past'){ ?>
+                                <?php if( get_field('investment') !== 'past' ){ ?>
                                     <li>
-                                        <a href='<?php the_permalink(); ?>' class='ajax-load off' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>'>
+                                        <a href='<?php the_permalink(); ?>' class='ajax-load off' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' style='background-color: <?php echo $color; ?>; border-color: <?php echo $color; ?>'>
                                             <?php if( has_post_thumbnail() ){
                                                 echo alven_get_svg(get_post_thumbnail_id());
                                             }else{ ?>
