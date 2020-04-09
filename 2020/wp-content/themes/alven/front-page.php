@@ -18,8 +18,10 @@ get_header(); ?>
 
             <?php
                 $stickies = array_reverse( get_option( 'sticky_posts' ) );
+                $sticky = 0;
                 if( $stickies ):
                     $post = $stickies[0];
+                    $ticky = $post;
                     setup_postdata($post);
             ?>
                 <div class='spotlight-post'>
