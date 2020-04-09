@@ -18,7 +18,7 @@ html {
 }
 
 body {
-    font: #{$text-size-mobile * 0.1}em / 1.5 sans-serif;
+    font: #{$text-size-mobile * 0.1}em / 1.5 $century;
     color: $txt;
     font-kerning: normal;
     -webkit-font-smoothing: antialiased;

@@ -1,1 +1,20 @@
 /* Header */
+
+.header-content,
+.menu-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.menu-main {
+}
+
+.burger {
+    display: none;
+}

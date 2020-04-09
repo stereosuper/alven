@@ -190,7 +190,7 @@ html {
   /* sets the base font to 10px for easier math */
   background: #fff; }
 body {
-  font: 1.3em/1.5 sans-serif;
+  font: 1.2em/1.5 Century Gothic, CenturyGothic, AppleGothic, sans-serif;
   color: #000;
   font-feature-settings: "kern";
   -webkit-font-kerning: normal;
@@ -280,7 +280,7 @@ a:active {
   transition: none !important; }
 @media (min-width: 580px) {
   body {
-    font-size: 1.5rem; }
+    font-size: 1.8rem; }
   .wysiwyg h1,
   .h1 {
     font-size: 4rem; }
@@ -303,8 +303,8 @@ a:active {
 .wrapper {
   overflow-x: hidden; }
 .container {
-  max-width: 1400px;
-  padding: 0 35px;
+  max-width: 1940px;
+  padding: 0 30px;
   margin: 0 auto; }
 /* Placeholders */
 html.no-scroll {
@@ -334,6 +334,16 @@ select::-ms-expand {
 button {
   border: 0; }
 /* Header */
+.header-content,
+.menu-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+.header-content {
+  padding-top: 15px;
+  padding-bottom: 15px; }
+.burger {
+  display: none; }
 /* Footer */
 /* Home specific style */
 /******* PRINT *******/
@@ -355,4 +365,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?e13378ebe09fdf9825f32d1d50648d10*/
+/*# sourceMappingURL=main.css.map?7adca1b47f6017380e1ccd8327f7e6e9*/
