@@ -1,5 +1,11 @@
 /* Header */
 
+.header {
+    .sub-menu {
+        display: none;
+    }
+}
+
 .header-content,
 .menu-main {
     display: flex;

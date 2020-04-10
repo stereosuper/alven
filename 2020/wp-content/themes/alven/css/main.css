@@ -334,6 +334,8 @@ select::-ms-expand {
 button {
   border: 0; }
 /* Header */
+.header .sub-menu {
+  display: none; }
 .header-content,
 .menu-main {
   display: flex;
@@ -424,4 +426,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?6e27797cdea8a3cbc843993cb391d50a*/
+/*# sourceMappingURL=main.css.map?591a042cce614f8eaee29cfdf1501740*/
