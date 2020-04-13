@@ -1,6 +1,10 @@
 /* Header */
 
 .header {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    background: $primary;
+    color: #fff;
     .sub-menu {
         display: none;
     }
@@ -18,9 +22,33 @@
     padding-bottom: 15px;
 }
 
+.logo {
+    width: 50px;
+    svg {
+        fill: #fff;
+    }
+}
+
 .menu-main {
+    margin: 0;
+    font-weight: 900;
+    li {
+        margin: 0 6px;
+    }
+    a {
+        padding: 0 26px;
+    }
 }
 
 .burger {
     display: none;
+}
+
+.title-wrapper {
+    display: flex;
+    height: 205px;
+    align-items: center;
+    justify-content: center;
+    background: $primary;
+    color: #fff;
 }

@@ -18,7 +18,7 @@ html {
 }
 
 body {
-    font: #{$text-size-mobile * 0.1}em / 1.5 $century;
+    font: 1.4em / 1.5 $century;
     color: $txt;
     font-kerning: normal;
     -webkit-font-smoothing: antialiased;
@@ -118,6 +118,7 @@ svg {
 button,
 input {
     @extend %outline;
+    color: inherit;
 }
 
 a {
@@ -163,12 +164,10 @@ a {
 }
 
 @media (min-width: $phone) {
-    body {
-        font-size: #{$text-size-desktop * 0.1}rem;
-    }
+    h1,
     .wysiwyg h1,
     .h1 {
-        font-size: 4rem;
+        font-size: 4.4rem;
     }
     .wysiwyg h2,
     .h2 {
