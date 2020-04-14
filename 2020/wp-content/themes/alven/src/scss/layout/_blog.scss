@@ -1,0 +1,25 @@
+.spotlight-post {
+    display: flex;
+    align-items: center;
+    margin: 60px 0 0;
+    > div {
+        width: 50%;
+    }
+    .txt {
+        padding: 0 0 0 $col;
+    }
+}
+
+.home-posts {
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 0 0;
+    > div {
+        width: 30%;
+    }
+}
+
+.post {
+    display: flex;
+    align-items: center;
+}

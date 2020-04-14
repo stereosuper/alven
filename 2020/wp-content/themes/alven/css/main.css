@@ -221,6 +221,9 @@ body {
 .h6 {
   font-size: 1.8rem;
   margin: 2.33em 0; }
+.title-home {
+  text-transform: uppercase;
+  text-align: center; }
 p {
   margin: 1em 0; }
 blockquote {
@@ -305,8 +308,8 @@ a:active {
 .wrapper {
   overflow-x: hidden; }
 .container {
-  max-width: 1000px;
-  padding: 0 30px;
+  max-width: 1004px;
+  padding: 0 32px;
   margin: 0 auto; }
 /* Placeholders */
 html.no-scroll {
@@ -341,8 +344,6 @@ button {
   text-transform: uppercase;
   background: #003240;
   color: #fff; }
-.header .sub-menu {
-    display: none; }
 .header-content,
 .menu-main {
   display: flex;
@@ -362,6 +363,8 @@ button {
     margin: 0 6px; }
 .menu-main a {
     padding: 0 26px; }
+.menu-main .sub-menu {
+    display: none; }
 .burger {
   display: none; }
 .title-wrapper {
@@ -372,6 +375,39 @@ button {
   background: #003240;
   color: #fff; }
 /* Footer */
+.footer {
+  padding: 45px 0 25px;
+  background: #003240;
+  color: #fff; }
+.footer-top,
+.menu-footer {
+  display: flex;
+  align-items: flex-start; }
+.footer-top {
+  justify-content: space-between; }
+.menu-footer {
+  margin: 0 -16px;
+  font-size: 0.8rem;
+  text-transform: uppercase; }
+.menu-footer > li {
+    margin: 0 16px; }
+.menu-footer > li > a {
+      font-size: 1rem;
+      font-weight: 900; }
+.menu-footer .sub-menu {
+    margin: 10px 0 0;
+    padding: 0; }
+.address {
+  font-size: 1rem; }
+.menu-secondary {
+  display: flex;
+  padding: 25px 0 0;
+  margin: 40px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: center;
+  justify-content: center; }
+.menu-secondary li {
+    margin: 0 50px; }
 .portfolio-wrapper {
   display: flex; }
 .portfolio-filters {
@@ -431,6 +467,28 @@ button {
       height: 25%; }
 .portfolio .content-transfered svg {
       height: 100%; }
+.spotlight-post {
+  display: flex;
+  align-items: center;
+  margin: 60px 0 0; }
+.spotlight-post > div {
+    width: 50%; }
+.spotlight-post .txt {
+    padding: 0 0 0 8.33333%; }
+.home-posts {
+  display: flex;
+  justify-content: space-between;
+  margin: 60px 0 0; }
+.home-posts > div {
+    width: 30%; }
+.post {
+  display: flex;
+  align-items: center; }
+.contact-wrapper {
+  text-align: center; }
+.contact {
+  display: flex;
+  justify-content: space-around; }
 /* Home specific style */
 /******* PRINT *******/
 @media print {
@@ -451,4 +509,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?cf0b0eb2b9c702c651f837e93d7979b9*/
+/*# sourceMappingURL=main.css.map?f3aa16376aaf925dc5e176c2480d1149*/

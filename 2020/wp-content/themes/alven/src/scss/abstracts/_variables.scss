@@ -10,12 +10,13 @@ $primary: #003240;
 $century: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
 
 // Grids variables 📐
-$gutter: 15px;
+$gutter: 16px;
 $line-height: 22px;
+$col: 100% / 12;
 
 // Mediaqueries 📱
 // Horizontal sizes
-$desktop: 1000px;
+$desktop: 940px + $gutter * 4;
 $desktop-small: 960px;
 $tablet: 768px;
 $phone: 580px;

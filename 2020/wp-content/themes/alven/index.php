@@ -31,16 +31,12 @@
 				$sticky = $post;
                 setup_postdata($post);
         ?>
-            <div class='main-spotlight-post'>
+            <div class='spotlight-post'>
                 <div class='img'>
                     <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
                 </div>
 				<div class='txt'>
                     <h3><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
-                    <div class='post-meta-spotlight'>
-                        <?php the_category( ', ' ); ?> -
-                        <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
-                    </div>
                     <?php the_excerpt(); ?>
                     <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
                 </div>
@@ -54,18 +50,10 @@
             <?php while ( $queryPost->have_posts() ) : $queryPost->the_post(); ?>
                 <div class='post'>
                     <div class='img'>
-                        <?php if( has_post_thumbnail() ){
-                            the_post_thumbnail();
-                        }else{ ?>
-                            <div class='special-cat'><div class='cat-default'><div></div></div></div>
-                        <?php } ?>
+                        <?php if( has_post_thumbnail() ){ the_post_thumbnail(); } ?>
                     </div>
 					<div class='txt'>
                         <h3><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
-                        <div class='post-meta'>
-                            <?php the_category( ', ' ); ?> -
-                            <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
-                        </div>
                         <?php the_excerpt(); ?>
                         <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
                     </div>

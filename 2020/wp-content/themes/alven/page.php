@@ -1,19 +1,16 @@
 <?php get_header(); ?>
 
-<div class='title-wrapper'>
-	<div class='container'>
-		<h1><?php the_title(); ?></h1>
+<?php if ( have_posts() ) : the_post(); ?>
+	<div class='title-wrapper'>
+		<div class='container'>
+			<h1><?php the_title(); ?></h1>
+		</div>
 	</div>
-</div>
 
-<div class='container'>
-
-	<?php if ( have_posts() ) : the_post(); ?>
-
+	<div class='container'>
 		<?php the_content(); ?>
+	</div>
 	
-	<?php endif; ?>
-
-</div>
+<?php endif; ?>
 
 <?php get_footer(); ?>

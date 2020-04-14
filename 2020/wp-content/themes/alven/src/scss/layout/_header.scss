@@ -5,9 +5,6 @@
     text-transform: uppercase;
     background: $primary;
     color: #fff;
-    .sub-menu {
-        display: none;
-    }
 }
 
 .header-content,
@@ -37,6 +34,9 @@
     }
     a {
         padding: 0 26px;
+    }
+    .sub-menu {
+        display: none;
     }
 }
 

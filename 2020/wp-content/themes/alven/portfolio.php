@@ -9,11 +9,11 @@ get_header(); ?>
 
     <?php if ( have_posts() ) : the_post(); ?>
 
-        <section>
+        <div class='title-wrapper'>
             <div class='container'>
-                <h1><?php the_field('title'); ?></h1>
+                <h1><?php the_title(); ?></h1>
             </div>
-        </section>
+        </div>
 
         <div class="container">
 
@@ -95,7 +95,7 @@ get_header(); ?>
                 </div>
             </section>
 
-            <section>
+            <section class='contact-wrapper'>
                 <h2><?php echo get_the_title(CONTACT_ID); ?></h2>
                 <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
                 <?php require_once('includes/contact.php'); ?>

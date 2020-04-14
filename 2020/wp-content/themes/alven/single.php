@@ -68,10 +68,7 @@
                                     </div>
                                 <?php } ?>
                                 <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
-                                <div class='post-meta'>
-                                    <?php the_category( ', ' ); ?> -
-                                    <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
-                                </div>
+                                <?php the_excerpt(); ?>
                                 <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
                             </li>
 						<?php } wp_reset_postdata(); ?>
@@ -79,24 +76,6 @@
                 </aside>
 			<?php } ?>
         </div>
-
-		<?php if( $related ){ ?>
-            <div class='related'>
-				<span class='title-small'>Related startups</span>
-                <?php foreach($related as $post){ setup_postdata($post); ?>
-                    <div>
-                        <?php if(has_post_thumbnail()){ ?>
-                            <div class='img'>
-                                <a href='<?php the_permalink(); ?>'>
-                                    <?php the_post_thumbnail('medium', array('class' => 'no-scroll')); ?>
-                                </a>
-                            </div>
-                        <?php } ?>
-                    	<a href='<?php the_permalink(); ?>' class='btn-arrow'><?php the_title(); ?></a>
-                    </div>
-                <?php } ?>
-            </div>
-        <?php wp_reset_postdata(); } ?>
 
         <?php
             $lastPosts = new WP_Query(array(
@@ -109,42 +88,12 @@
             <footer class='read-also-posts'>
                 <?php while($lastPosts->have_posts()): $lastPosts->the_post(); ?>
                     <div>
-                        <a href='<?php the_permalink(); ?>' class='img'><?php the_post_thumbnail('large'); ?></a>
                         <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
-                        <div class='post-meta'>
-                            <?php the_category( ', ' ); ?> -
-                            <time datetime='<?php echo get_the_date('Y-m-d'); ?>'><?php echo get_the_date(); ?></time>
-                        </div>
+                        <?php the_excerpt(); ?>
                     	<a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
                     </div>
                 <?php endwhile; wp_reset_query(); ?>
             </footer>
-        <?php endif; ?>
-
-		<?php
-            $spotlightPosts = new WP_Query(array(
-                'post__not_in' => array($post->ID),
-                'posts_per_page'=> 6
-            ));
-
-            if($spotlightPosts->have_posts()):
-        ?>
-
-            <div>
-                <?php while($spotlightPosts->have_posts()): $spotlightPosts->the_post(); ?>
-					<div class='spotlight-post'>
-                        <div class='content'>
-                            <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
-                            <?php
-                                echo alven_cut_content(get_the_content());
-                                $btn = get_field('readMoreLink') ? get_field('readMoreLink') : 'Read more';
-                            ?>
-                            <a href='<?php the_permalink(); ?>' class='btn-arrow'><?php echo $btn; ?></a>
-                        </div>
-                	</div>
-				<?php endwhile; ?>
-            </div>
-
         <?php endif; ?>
 
 	<?php else : ?>
