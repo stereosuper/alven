@@ -2,8 +2,16 @@
 
 .footer {
     padding: 45px 0 25px;
+    margin: 110px 0 0;
     background: $primary;
     color: #fff;
+    a {
+        font-weight: 400;
+        color: inherit;
+    }
+    ul {
+        list-style: none;
+    }
 }
 
 .footer-top,
@@ -18,13 +26,16 @@
 
 .menu-footer {
     margin: 0 $gutter * -1;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
     > li {
         margin: 0 $gutter;
         > a {
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 900;
+        }
+        li {
+            margin: 0 0 5px;
         }
     }
     .sub-menu {
@@ -34,7 +45,7 @@
 }
 
 .address {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .menu-secondary {
@@ -44,7 +55,11 @@
     border-top: 1px solid rgba(#fff, 0.1);
     align-items: center;
     justify-content: center;
+    font-size: 1rem;
     li {
         margin: 0 50px;
+    }
+    a {
+        text-decoration: underline;
     }
 }

@@ -30,7 +30,7 @@ get_header(); ?>
                     </div><div class='txt'>
                         <h3><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
                         <?php the_excerpt(); ?>
-                        <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
+                        <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
                     </div>
                 </div>
             <?php wp_reset_postdata(); endif; ?>
@@ -48,7 +48,7 @@ get_header(); ?>
                         <div>
                             <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
                             <?php the_excerpt(); ?>
-                            <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
+                            <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
                         </div>
                     <?php endwhile; ?>
                 </div>

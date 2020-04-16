@@ -1,1 +1,16 @@
 /* Buttons */
+
+.btn {
+    padding: 0.5em 1.3em;
+    border: 2px solid $secondary;
+    font-size: 1.6rem;
+    border-radius: 4px;
+    background: $secondary;
+    color: #fff;
+    &:hover,
+    &:focus {
+        background: #fff;
+        color: $secondary;
+        border-color: $secondary;
+    }
+}

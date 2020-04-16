@@ -3,8 +3,11 @@
 // Colors 🎨
 $black: #000;
 $white: #fff;
-$txt: #000;
 $primary: #003240;
+$txt: $primary;
+$secondary: #3aafa9;
+$tertiary: #fff0a1;
+$quaternary: #a2d5ac;
 
 // Fonts ✍
 $century: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
@@ -16,7 +19,7 @@ $col: 100% / 12;
 
 // Mediaqueries 📱
 // Horizontal sizes
-$desktop: 940px + $gutter * 4;
+$desktop: 1200px + $gutter * 4;
 $desktop-small: 960px;
 $tablet: 768px;
 $phone: 580px;

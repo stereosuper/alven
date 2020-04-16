@@ -7,7 +7,7 @@
 		</div>
 	</div>
 
-	<div class='container'>
+	<div class='container wysiwyg'>
 		<?php the_content(); ?>
 	</div>
 	
