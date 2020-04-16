@@ -1,1 +1,33 @@
 /* Home specific style */
+
+.philo {
+    padding: 85px 0;
+    text-align: center;
+    background: $grey;
+    .title-maj {
+        margin-top: 0;
+    }
+    strong {
+        color: $secondary;
+    }
+}
+
+.philo-content {
+    width: $col * 6;
+    margin: 0 auto;
+}
+
+.philo-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    list-style: none;
+    text-transform: uppercase;
+    li {
+        margin: 0 $gutter * 2;
+    }
+    a {
+        color: inherit;
+    }
+}

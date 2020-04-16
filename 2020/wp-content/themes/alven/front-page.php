@@ -14,7 +14,7 @@ get_header(); ?>
         </div>
         
         <section class="container">
-            <h2 class='title-home'><?php the_field('title', get_option('page_for_posts' )); ?></h2>
+            <h2 class='title-maj'><?php the_field('title', get_option('page_for_posts' )); ?></h2>
 
             <?php
                 $stickies = array_reverse( get_option( 'sticky_posts' ) );
@@ -28,7 +28,8 @@ get_header(); ?>
                     <div class='img'>
                         <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
                     </div><div class='txt'>
-                        <h3><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
+                        <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
+                        <h3 class="h2"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
                         <?php the_excerpt(); ?>
                         <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
                     </div>
@@ -46,23 +47,64 @@ get_header(); ?>
                 <div class='home-posts'>
                     <?php while ( $queryPost->have_posts() ) : $queryPost->the_post(); ?>
                         <div>
-                            <h4><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
+                            <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
+                            <h4 class="h6"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
                             <?php the_excerpt(); ?>
                             <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
                         </div>
                     <?php endwhile; ?>
                 </div>
+                <div class="home-posts-link">
+                    <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="link">See all</a>
+                </div>
             <?php endif; wp_reset_query(); ?>
         </section>
 
-        <section class="container">
-            <h2 class='title-home'><?php the_field('whoTitle'); ?></h2>
+        <section class="philo">
+            <div class="container">
+                <div class="philo-content">
+                    <h2 class='title-maj'><?php the_field('philoTitle'); ?></h2>
+                    <?php the_field('philoText'); ?>
+                    <?php
+                        $link1 = get_field('philoLink1');
+                        $link2 = get_field('philoLink2');
+                        $link3 = get_field('philoLink3');
+
+                        if( $link1 || $link2 || $link3 ) :
+                    ?>
+                        <ul class="philo-list">
+                            <?php if( $link1 ) : ?>
+                                <li>
+                                    <a href="<?php echo $link1['url']; ?>"><?php echo $link1['title']; ?></a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if( $link2 ) : ?>
+                                <li>
+                                    <a href="<?php echo $link2['url']; ?>"><?php echo $link2['title']; ?></a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if( $link3 ) : ?>
+                                <li>
+                                    <a href="<?php echo $link3['url']; ?>"><?php echo $link3['title']; ?></a>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+            </div>
         </section>
 
-        <section class="container contact-wrapper">
-            <h2 class='title-home'><?php echo get_the_title(CONTACT_ID); ?></h2>
-            <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
-            <?php require_once('includes/contact.php'); ?>
+        <section class="container">
+            <h2 class='title-maj'><?php the_field('whoTitle'); ?></h2>
+            <?php the_field('whoText'); ?>
+        </section>
+
+        <section class="contact-wrapper">
+            <div class="container">
+                <h2 class='title-maj'><?php echo get_the_title(CONTACT_ID); ?></h2>
+                <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
+                <?php require_once('includes/contact.php'); ?>
+            </div>
         </section>
 
     <?php endif; ?>

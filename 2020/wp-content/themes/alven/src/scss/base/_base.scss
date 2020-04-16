@@ -29,6 +29,20 @@ h1 {
     font-size: 4rem;
 }
 
+h2,
+h3,
+h4,
+h5,
+h6 {
+    > a {
+        color: inherit;
+        &:hover,
+        &:focus {
+            color: $secondary;
+        }
+    }
+}
+
 .wysiwyg h2,
 .h2,
 .wysiwyg h3,
@@ -38,12 +52,14 @@ h1 {
 .wysiwyg h5,
 .h5,
 .wysiwyg h6,
-.h6 {
+.h6,
+.title-maj {
     margin: 1.5em 0 1em;
 }
 
 .wysiwyg h2,
-.h2 {
+.h2,
+.title-home {
     font-size: 2.4rem;
 }
 
@@ -67,7 +83,7 @@ h1 {
     font-size: 1.4rem;
 }
 
-.title-home {
+.title-maj {
     text-transform: uppercase;
     text-align: center;
 }
@@ -179,7 +195,8 @@ a {
     }
 
     .wysiwyg h2,
-    .h2 {
+    .h2,
+    .title-home {
         font-size: 2.8rem;
     }
 

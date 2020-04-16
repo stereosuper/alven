@@ -1,9 +1,10 @@
 /* Buttons */
 
 .btn {
+    display: inline-block;
     padding: 0.5em 1.3em;
     border: 2px solid $secondary;
-    font-size: 1.6rem;
+    font-size: 0.95em;
     border-radius: 4px;
     background: $secondary;
     color: #fff;
@@ -13,4 +14,9 @@
         color: $secondary;
         border-color: $secondary;
     }
+}
+
+.link {
+    text-decoration: underline;
+    color: $primary;
 }

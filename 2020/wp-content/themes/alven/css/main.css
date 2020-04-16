@@ -199,6 +199,22 @@ body {
   -moz-osx-font-smoothing: grayscale; }
 h1 {
   font-size: 4rem; }
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a {
+  color: inherit; }
+h2 > a:hover, h2 > a:focus,
+  h3 > a:hover,
+  h3 > a:focus,
+  h4 > a:hover,
+  h4 > a:focus,
+  h5 > a:hover,
+  h5 > a:focus,
+  h6 > a:hover,
+  h6 > a:focus {
+    color: #3aafa9; }
 .wysiwyg h2,
 .h2,
 .wysiwyg h3,
@@ -208,10 +224,12 @@ h1 {
 .wysiwyg h5,
 .h5,
 .wysiwyg h6,
-.h6 {
+.h6,
+.title-maj {
   margin: 1.5em 0 1em; }
 .wysiwyg h2,
-.h2 {
+.h2,
+.title-home {
   font-size: 2.4rem; }
 .wysiwyg h3,
 .h3 {
@@ -225,7 +243,7 @@ h1 {
 .wysiwyg h6,
 .h6 {
   font-size: 1.4rem; }
-.title-home {
+.title-maj {
   text-transform: uppercase;
   text-align: center; }
 p {
@@ -294,7 +312,8 @@ a:active {
   h1 {
     font-size: 5.6rem; }
   .wysiwyg h2,
-  .h2 {
+  .h2,
+  .title-home {
     font-size: 2.8rem; }
   .wysiwyg h3,
   .h3 {
@@ -325,9 +344,10 @@ input:focus, a:focus {
   outline: thin dashed #000; }
 /* Buttons */
 .btn {
+  display: inline-block;
   padding: 0.5em 1.3em;
   border: 2px solid #3aafa9;
-  font-size: 1.6rem;
+  font-size: 0.95em;
   border-radius: 4px;
   background: #3aafa9;
   color: #fff; }
@@ -335,6 +355,9 @@ input:focus, a:focus {
     background: #fff;
     color: #3aafa9;
     border-color: #3aafa9; }
+.link {
+  text-decoration: underline;
+  color: #003240; }
 /* Forms */
 input:focus,
 textarea:focus,
@@ -397,6 +420,8 @@ button {
   margin: 110px 0 0;
   background: #003240;
   color: #fff; }
+.home .footer {
+    margin-top: 0; }
 .footer a {
     font-weight: 400;
     color: inherit; }
@@ -498,7 +523,7 @@ button {
 .spotlight-post {
   display: flex;
   align-items: center;
-  margin: 60px 0 0; }
+  margin: 65px 0 0; }
 .spotlight-post > div {
     width: 50%; }
 .spotlight-post .txt {
@@ -506,18 +531,53 @@ button {
 .home-posts {
   display: flex;
   justify-content: space-between;
-  margin: 60px 0 0; }
+  margin: 65px 0 0;
+  font-size: 1.2rem; }
 .home-posts > div {
-    width: 30%; }
+    width: 27%; }
+.home-posts-link {
+  margin: 60px 0 85px;
+  text-align: center; }
 .post {
   display: flex;
   align-items: center; }
+.date {
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #3aafa9; }
+.date + .h2,
+  .date + .h6 {
+    margin-top: 0; }
 .contact-wrapper {
-  text-align: center; }
+  text-align: center;
+  background: #f6f7f8; }
 .contact {
   display: flex;
   justify-content: space-around; }
 /* Home specific style */
+.philo {
+  padding: 85px 0;
+  text-align: center;
+  background: #f6f7f8; }
+.philo .title-maj {
+    margin-top: 0; }
+.philo strong {
+    color: #3aafa9; }
+.philo-content {
+  width: 50%;
+  margin: 0 auto; }
+.philo-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  list-style: none;
+  text-transform: uppercase; }
+.philo-list li {
+    margin: 0 32px; }
+.philo-list a {
+    color: inherit; }
 /******* PRINT *******/
 @media print {
   *, *:before {
@@ -537,4 +597,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?f9d37a7faddb8e37ee71403aefb33196*/
+/*# sourceMappingURL=main.css.map?bc7fb9b8689fdd31f0a98913834debd2*/

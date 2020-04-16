@@ -177,7 +177,7 @@ add_filter( 'nav_menu_css_class', 'alven_css_attributes_filter' );
 /*-----------------------------------------------------------------------------------*/
 // custom excerpt
 function alven_custom_excerpt_length($length){
-    return 35;
+    return 22;
 }
 add_filter( 'excerpt_length', 'alven_custom_excerpt_length', 999 );
 
