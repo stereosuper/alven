@@ -249,7 +249,23 @@ h2 > a:hover, h2 > a:focus,
 p {
   margin: 1.8em 0; }
 blockquote {
-  margin: 1em 40px; }
+  padding: 95px 0;
+  position: relative;
+  margin: 0;
+  z-index: 1;
+  text-align: center; }
+blockquote > p {
+    width: 58.33333%;
+    margin: 0 auto; }
+blockquote:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(-50vw + 600px);
+    right: calc(-50vw + 600px);
+    bottom: 0;
+    z-index: -1;
+    background: #f6f7f8; }
 ol,
 ul {
   padding: 0;
@@ -298,14 +314,16 @@ a:active {
   text-align: left; }
 .align-right {
   text-align: right; }
-.inline-b {
-  display: inline-block;
-  vertical-align: middle;
-  transform: translateY(-0.1em); }
-.full-width {
-  width: 100%; }
 .no-transition {
   transition: none !important; }
+.wysiwyg .small {
+  width: 58.33333%;
+  margin-left: auto;
+  margin-right: auto; }
+.wp-block-media-text {
+  margin: 100px 0; }
+.wp-block-buttons {
+  margin: 35px 0 85px; }
 @media (min-width: 580px) {
   body {
     font-size: 1.7rem; }
@@ -343,7 +361,8 @@ button:focus,
 input:focus, a:focus {
   outline: thin dashed #000; }
 /* Buttons */
-.btn {
+.btn,
+.wp-block-button__link {
   display: inline-block;
   padding: 0.5em 1.3em;
   border: 2px solid #3aafa9;
@@ -351,7 +370,9 @@ input:focus, a:focus {
   border-radius: 4px;
   background: #3aafa9;
   color: #fff; }
-.btn:hover, .btn:focus {
+.btn:hover, .btn:focus,
+  .wp-block-button__link:hover,
+  .wp-block-button__link:focus {
     background: #fff;
     color: #3aafa9;
     border-color: #3aafa9; }
@@ -597,4 +618,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?bc7fb9b8689fdd31f0a98913834debd2*/
+/*# sourceMappingURL=main.css.map?3cabd10ace4014dc245b4707925dc0da*/

@@ -93,7 +93,25 @@ p {
 }
 
 blockquote {
-    margin: 1em 40px;
+    padding: 95px 0;
+    position: relative;
+    margin: 0;
+    z-index: 1;
+    text-align: center;
+    > p {
+        width: $col * 7;
+        margin: 0 auto;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc(-50vw + #{$desktop/2 - $gutter * 2});
+        right: calc(-50vw + #{$desktop/2 - $gutter * 2});
+        bottom: 0;
+        z-index: -1;
+        background: $grey;
+    }
 }
 
 ol,
@@ -171,18 +189,24 @@ a {
     text-align: right;
 }
 
-.inline-b {
-    display: inline-block;
-    vertical-align: middle;
-    transform: translateY(-0.1em);
-}
-
-.full-width {
-    width: 100%;
-}
-
 .no-transition {
     transition: none !important;
+}
+
+.wysiwyg {
+    .small {
+        width: $col * 7;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.wp-block-media-text {
+    margin: 100px 0;
+}
+
+.wp-block-buttons {
+    margin: 35px 0 85px;
 }
 
 @media (min-width: $phone) {

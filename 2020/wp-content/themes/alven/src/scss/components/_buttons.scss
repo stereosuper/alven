@@ -1,6 +1,7 @@
 /* Buttons */
 
-.btn {
+.btn,
+.wp-block-button__link {
     display: inline-block;
     padding: 0.5em 1.3em;
     border: 2px solid $secondary;
