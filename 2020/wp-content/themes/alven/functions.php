@@ -159,6 +159,10 @@ function alven_menu_order( $menu_ord ){
 add_filter( 'custom_menu_order', 'alven_menu_order' );
 add_filter( 'menu_order', 'alven_menu_order' );
 
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();
+}
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Menus
