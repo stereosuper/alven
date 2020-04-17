@@ -10,7 +10,7 @@
                             $linkedin = get_field('linkedin', 'options');
                             if( $twitter || $linkedin ) :
                         ?>
-                            <ul>
+                            <ul class='share'>
                                 <li><a href="<?php echo $twitter; ?>" target="_blank" rel="noopener noreferrer nofollow">Twitter</a></li>
                                 <li><a href="<?php echo $linkedin; ?>" target="_blank" rel="noopener noreferrer nofollow">LinkedIn</a></li>
                             </ul>

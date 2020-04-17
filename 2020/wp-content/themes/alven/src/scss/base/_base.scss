@@ -41,6 +41,9 @@ h6 {
             color: $secondary;
         }
     }
+    > p {
+        margin: 0;
+    }
 }
 
 .wysiwyg h2,
@@ -86,6 +89,11 @@ h6 {
 .title-maj {
     text-transform: uppercase;
     text-align: center;
+}
+
+.title-small {
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 p {
@@ -191,6 +199,10 @@ a {
 
 .no-transition {
     transition: none !important;
+}
+
+.blue {
+    color: $secondary;
 }
 
 .wysiwyg {

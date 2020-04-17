@@ -1,23 +1,18 @@
 <?php get_header(); ?>
 
+<div class='title-wrapper'>
+	<div class='container'>
+		<h1><?php single_post_title(); ?></h1>
+	</div>
+</div>
+
 <div class='container'>
 
-	<h1><?php single_post_title(); ?></h1>
-
-	<div class='filters'>
-        <ul class='filters-cat'>
-            <li <?php if(intval(get_option( 'page_for_posts' )) === get_queried_object()->ID) echo "class='current-cat'"; ?>>
-                <a href='<?php echo get_permalink(get_option( 'page_for_posts' )); ?>'>All</a>
-            </li>
-            <?php wp_list_categories(array('title_li' => '', 'current_category' => get_query_var('cat'))); ?>
-        </ul>
-        <span class='title-small'>or</span>
-        <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search'>
-            <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
-            <label for='search'>type some keywords</label>
-        	<button type='submit' class='btn-search btn-no-text'><span class='visually-hidden'>Explore</span></button>
-        </form>
-	</div>
+	<form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search'>
+        <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
+        <label for='search'>type some keywords</label>
+        <button type='submit' class='btn-search btn-no-text'><span class='visually-hidden'>Explore</span></button>
+    </form>
 
 	<?php if ( have_posts() ) : ?>
 
@@ -36,9 +31,10 @@
                     <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
                 </div>
 				<div class='txt'>
-                    <h3><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
+                    <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
+                    <h2 class="h2"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h2>
                     <?php the_excerpt(); ?>
-                    <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
+                    <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
                 </div>
             </div>
         <?php wp_reset_postdata(); endif; ?>
@@ -53,9 +49,10 @@
                         <?php if( has_post_thumbnail() ){ the_post_thumbnail(); } ?>
                     </div>
 					<div class='txt'>
-                        <h3><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
+                        <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
+                        <h2 class="h6"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h2>
                         <?php the_excerpt(); ?>
-                        <a href='<?php the_permalink(); ?>' class='btn-arrow'>Read</a>
+                        <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
                     </div>
                 </div>
             <?php endwhile; ?>

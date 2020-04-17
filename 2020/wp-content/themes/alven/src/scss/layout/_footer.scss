@@ -5,7 +5,8 @@
     margin: 110px 0 0;
     background: $primary;
     color: #fff;
-    .home & {
+    .home &,
+    .single-post & {
         margin-top: 0;
     }
     a {
