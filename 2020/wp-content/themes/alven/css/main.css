@@ -268,8 +268,8 @@ blockquote:before, blockquote:after {
     position: absolute; }
 blockquote:after {
     top: 0;
-    left: -32px;
-    right: -32px;
+    left: -50vw;
+    right: -50vw;
     bottom: 0;
     z-index: -1;
     background: #f6f7f8; }
@@ -357,8 +357,8 @@ a:active {
     content: '';
     position: absolute;
     top: 0;
-    left: -32px;
-    right: -32px;
+    left: -50vw;
+    right: -50vw;
     bottom: 0;
     z-index: -1;
     background: #fff0a1; }
@@ -402,11 +402,11 @@ a:active {
     z-index: 1;
     text-align: center; }
     blockquote > p {
-      width: 58.33333%;
+      width: 70%;
       margin: 0 auto; } }
 @media (min-width: 960px) {
   .wysiwyg .small {
-    width: 58.33333%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto; }
   .wp-block-media-text {
@@ -415,7 +415,7 @@ a:active {
       display: inline;
       display: initial; }
     .wp-block-media-text.has-media-on-the-right .wp-block-media-text__content {
-      padding: 0 16.66667% 0 0;
+      padding: 0 20% 0 0;
       text-align: right; }
     .wp-block-media-text .wp-block-media-text__media {
       display: flex;
@@ -425,15 +425,8 @@ a:active {
         width: auto;
         max-width: 50vw; }
     .wp-block-media-text .wp-block-media-text__content {
-      padding: 0 0 0 16.66667%;
+      padding: 0 0 0 20%;
       text-align: left; } }
-@media (min-width: 1264px) {
-  blockquote:after {
-    left: calc(-50vw + 600px);
-    right: calc(-50vw + 600px); }
-  .wp-block-media-text::after {
-    left: calc(-50vw + 600px);
-    right: calc(-50vw + 600px); } }
 /* Grid */
 .wrapper {
   overflow-x: hidden; }
@@ -441,8 +434,9 @@ a:active {
   max-width: 1264px;
   padding: 0 32px;
   margin: 0 auto; }
-.content {
-  margin: 0 8.33333%; }
+@media (min-width: 960px) {
+  .content {
+    margin: 0 8.33333%; } }
 /* Placeholders */
 html.no-scroll {
   position: fixed;
@@ -675,8 +669,8 @@ button {
     content: '';
     position: absolute;
     top: 0;
-    left: calc(-50vw + 600px);
-    right: calc(-50vw + 600px);
+    left: -50vw;
+    right: -50vw;
     bottom: 0;
     z-index: -1;
     background: #f6f7f8; }
@@ -756,4 +750,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?11a2c24c139083d79a0d21925888e31f*/
+/*# sourceMappingURL=main.css.map?3205ae3a0304633a87c2e4797785e51e*/

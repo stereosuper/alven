@@ -10,6 +10,8 @@
     margin: 0 auto;
 }
 
-.content {
-    margin: 0 $col;
+@media (min-width: $desktop-small) {
+    .content {
+        margin: 0 $col;
+    }
 }

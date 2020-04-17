@@ -113,8 +113,8 @@ blockquote {
     }
     &:after {
         top: 0;
-        left: $gutter * -2;
-        right: $gutter * -2;
+        left: -50vw;
+        right: -50vw;
         bottom: 0;
         z-index: -1;
         background: $grey;
@@ -246,8 +246,8 @@ a {
         content: '';
         position: absolute;
         top: 0;
-        left: $gutter * -2;
-        right: $gutter * -2;
+        left: -50vw;
+        right: -50vw;
         bottom: 0;
         z-index: -1;
         background: $tertiary;
@@ -314,7 +314,7 @@ a {
         z-index: 1;
         text-align: center;
         > p {
-            width: $col * 7;
+            width: $col-content * 7;
             margin: 0 auto;
         }
     }
@@ -323,7 +323,7 @@ a {
 @media (min-width: $desktop-small) {
     .wysiwyg {
         .small {
-            width: $col * 7;
+            width: $col-content * 7;
             margin-left: auto;
             margin-right: auto;
         }
@@ -336,7 +336,7 @@ a {
                 display: initial;
             }
             .wp-block-media-text__content {
-                padding: 0 $col * 2 0 0;
+                padding: 0 $col-content * 2 0 0;
                 text-align: right;
             }
         }
@@ -350,24 +350,8 @@ a {
             }
         }
         .wp-block-media-text__content {
-            padding: 0 0 0 $col * 2;
+            padding: 0 0 0 $col-content * 2;
             text-align: left;
-        }
-    }
-}
-
-@media (min-width: $desktop) {
-    blockquote {
-        &:after {
-            left: calc(-50vw + #{$desktop/2 - $gutter * 2});
-            right: calc(-50vw + #{$desktop/2 - $gutter * 2});
-        }
-    }
-
-    .wp-block-media-text {
-        &::after {
-            left: calc(-50vw + #{$desktop/2 - $gutter * 2});
-            right: calc(-50vw + #{$desktop/2 - $gutter * 2});
         }
     }
 }

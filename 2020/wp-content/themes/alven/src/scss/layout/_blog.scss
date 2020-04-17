@@ -52,8 +52,8 @@
             content: '';
             position: absolute;
             top: 0;
-            left: calc(-50vw + #{$desktop/2 - $gutter * 2});
-            right: calc(-50vw + #{$desktop/2 - $gutter * 2});
+            left: -50vw;
+            right: -50vw;
             bottom: 0;
             z-index: -1;
             background: $grey;
