@@ -852,6 +852,16 @@ button {
     margin-top: 0; }
 .form-to-open {
   display: none; }
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center; }
+.team-list > div {
+    width: 20%; }
+.team-member span {
+  display: block; }
+.team-desc {
+  display: none; }
 /* Home specific style */
 .philo {
   padding: 85px 0;
@@ -909,4 +919,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?f703442beff14484d4444ae8de5a5fba*/
+/*# sourceMappingURL=main.css.map?66332270758c5a59a29e70245c12b580*/

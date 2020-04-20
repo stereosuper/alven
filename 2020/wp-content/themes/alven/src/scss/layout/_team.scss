@@ -1,0 +1,18 @@
+.team-list {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    > div {
+        width: 20%;
+    }
+}
+
+.team-member {
+    span {
+        display: block;
+    }
+}
+
+.team-desc {
+    display: none;
+}
