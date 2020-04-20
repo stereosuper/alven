@@ -297,6 +297,9 @@ blockquote:after {
     bottom: 0;
     z-index: -1;
     background: #f6f7f8; }
+.post-content blockquote:after {
+      left: -16px;
+      right: -16px; }
 blockquote:before {
     width: 136px;
     height: 91px;
@@ -387,12 +390,17 @@ a:active {
     bottom: 0;
     z-index: -1;
     background: #fff0a1; }
+.post-content .wp-block-media-text::after {
+      left: -16px;
+      right: -16px; }
 .wp-block-media-text.has-media-on-the-right {
     color: #fff; }
 .wp-block-media-text.has-media-on-the-right::after {
       background: #3aafa9; }
 .wp-block-media-text .wp-block-media-text__media {
     margin: 0 -32px; }
+.post-content .wp-block-media-text .wp-block-media-text__media {
+      margin: 0 -16px; }
 .wp-block-media-text .wp-block-media-text__content {
     padding: 5px 0;
     text-align: center; }
@@ -449,6 +457,8 @@ a:active {
       .wp-block-media-text .wp-block-media-text__media > img {
         width: auto;
         max-width: 50vw; }
+        .post-content .wp-block-media-text .wp-block-media-text__media > img {
+          max-width: calc(100% + 16px); }
     .wp-block-media-text .wp-block-media-text__content {
       padding: 0 0 0 20%;
       text-align: left; } }
@@ -822,4 +832,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?fda3c72d33dd72694f82327006c6537a*/
+/*# sourceMappingURL=main.css.map?25a3e0cba2cf3f0498558a8ba14df495*/

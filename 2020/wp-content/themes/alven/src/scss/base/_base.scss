@@ -129,6 +129,10 @@ blockquote {
         bottom: 0;
         z-index: -1;
         background: $grey;
+        .post-content & {
+            left: -$gutter;
+            right: -$gutter;
+        }
     }
     &:before {
         width: 136px;
@@ -263,6 +267,10 @@ a {
         bottom: 0;
         z-index: -1;
         background: $tertiary;
+        .post-content & {
+            left: -$gutter;
+            right: -$gutter;
+        }
     }
     &.has-media-on-the-right {
         color: #fff;
@@ -272,6 +280,9 @@ a {
     }
     .wp-block-media-text__media {
         margin: 0 $gutter * -2;
+        .post-content & {
+            margin: 0 $gutter * -1;
+        }
     }
     .wp-block-media-text__content {
         padding: 5px 0;
@@ -359,6 +370,9 @@ a {
             > img {
                 width: auto;
                 max-width: 50vw;
+                .post-content & {
+                    max-width: calc(100% + #{$gutter});
+                }
             }
         }
         .wp-block-media-text__content {
