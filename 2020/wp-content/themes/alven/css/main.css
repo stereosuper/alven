@@ -685,19 +685,14 @@ button {
   margin: 60px 0 85px;
   text-align: center; }
 .read-also-posts {
-  padding: 80px;
+  padding: 80px 0;
   font-size: 1.2rem;
   background: #f6f7f8; }
-.read-also-posts .container {
-    display: flex;
-    justify-content: space-between; }
 .read-also-posts .container > div {
-      width: 27%; }
+    margin: 0 0 60px; }
 .post {
-  display: flex;
   padding: 50px 0;
   position: relative;
-  align-items: center;
   font-size: 1.2rem;
   z-index: 1; }
 .post:nth-of-type(even):after {
@@ -710,10 +705,7 @@ button {
     z-index: -1;
     background: #f6f7f8; }
 .post .img {
-    width: 25%;
-    margin: 0 8.33333%; }
-.post .txt {
-    width: 58.33333%; }
+    margin: 0 0 50px; }
 .date {
   display: block;
   margin: 0 0 5px;
@@ -725,27 +717,50 @@ button {
   .date + .h6 {
     margin-top: 0; }
 .post-wrapper {
-  display: flex;
   padding: 30px 0 60px; }
 .post-content > *:first-child {
   margin-top: 0; }
-.post-sidebar {
-  width: 25%;
-  margin: 0 0 0 8.33333%;
-  flex-shrink: 0; }
 .post-sidebar ul {
-    margin: 30px 0 0;
-    font-size: 1.2rem;
-    list-style: none; }
+  margin: 30px 0 0;
+  font-size: 1.2rem;
+  list-style: none; }
 .post-sidebar li {
-    margin: 0 0 50px; }
+  margin: 0 0 50px; }
 .post-sidebar .date {
-    margin-top: 25px; }
+  margin-top: 25px; }
 .post-sidebar .h6 {
-    margin: 0 0 10px; }
+  margin: 0 0 10px; }
 .post-sidebar p {
-    margin-top: 0; }
+  margin-top: 0; }
+@media (min-width: 768px) {
+  .post {
+    display: flex;
+    align-items: center; }
+    .post .img {
+      width: 33.33333%;
+      margin: 0 8.33333% 0 0; }
+    .post .txt {
+      width: 58.33333%; }
+  .post-wrapper {
+    display: flex; }
+  .post-sidebar {
+    width: 25%;
+    margin: 0 0 0 8.33333%;
+    flex-shrink: 0; }
+  .read-also-posts .container {
+    display: flex;
+    justify-content: space-between; }
+    .read-also-posts .container > div {
+      width: 30%;
+      margin: 0; } }
 @media (min-width: 960px) {
+  .post .img {
+    width: 25%;
+    margin: 0 8.33333%; }
+  .read-also-posts {
+    padding: 80px; }
+    .read-also-posts .container > div {
+      width: 27%; }
   .spotlight-post {
     display: flex;
     align-items: center; }
@@ -832,4 +847,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?25a3e0cba2cf3f0498558a8ba14df495*/
+/*# sourceMappingURL=main.css.map?065e4d718c2a2427bd782e1a216b0f19*/

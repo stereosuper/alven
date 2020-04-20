@@ -20,23 +20,19 @@
 }
 
 .read-also-posts {
-    padding: 80px;
+    padding: 80px 0;
     font-size: 1.2rem;
     background: $grey;
     .container {
-        display: flex;
-        justify-content: space-between;
         > div {
-            width: 27%;
+            margin: 0 0 60px;
         }
     }
 }
 
 .post {
-    display: flex;
     padding: 50px 0;
     position: relative;
-    align-items: center;
     font-size: 1.2rem;
     z-index: 1;
     &:nth-of-type(even) {
@@ -52,11 +48,7 @@
         }
     }
     .img {
-        width: $col * 3;
-        margin: 0 $col;
-    }
-    .txt {
-        width: $col * 7;
+        margin: 0 0 50px;
     }
 }
 
@@ -74,7 +66,6 @@
 }
 
 .post-wrapper {
-    display: flex;
     padding: 30px 0 60px;
 }
 
@@ -85,9 +76,6 @@
 }
 
 .post-sidebar {
-    width: $col * 3;
-    margin: 0 0 0 $col;
-    flex-shrink: 0;
     ul {
         margin: 30px 0 0;
         font-size: 1.2rem;
@@ -107,7 +95,58 @@
     }
 }
 
+@media (min-width: $tablet) {
+    .post {
+        display: flex;
+        align-items: center;
+        .img {
+            width: $col * 4;
+            margin: 0 $col 0 0;
+        }
+        .txt {
+            width: $col * 7;
+        }
+    }
+
+    .post-wrapper {
+        display: flex;
+    }
+
+    .post-sidebar {
+        width: $col * 3;
+        margin: 0 0 0 $col;
+        flex-shrink: 0;
+    }
+
+    .read-also-posts {
+        .container {
+            display: flex;
+            justify-content: space-between;
+            > div {
+                width: 30%;
+                margin: 0;
+            }
+        }
+    }
+}
+
 @media (min-width: $desktop-small) {
+    .post {
+        .img {
+            width: $col * 3;
+            margin: 0 $col;
+        }
+    }
+
+    .read-also-posts {
+        padding: 80px;
+        .container {
+            > div {
+                width: 27%;
+            }
+        }
+    }
+
     .spotlight-post {
         display: flex;
         align-items: center;
