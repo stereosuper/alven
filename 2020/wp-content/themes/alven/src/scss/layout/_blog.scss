@@ -61,6 +61,8 @@
 }
 
 .date {
+    display: block;
+    margin: 0 0 5px;
     font-size: 1.3rem;
     font-weight: 900;
     text-transform: uppercase;
@@ -93,6 +95,15 @@
     }
     li {
         margin: 0 0 50px;
+    }
+    .date {
+        margin-top: 25px;
+    }
+    .h6 {
+        margin: 0 0 10px;
+    }
+    p {
+        margin-top: 0;
     }
 }
 

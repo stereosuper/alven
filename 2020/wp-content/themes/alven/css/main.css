@@ -541,11 +541,15 @@ button {
   display: none; }
 .title-wrapper {
   display: flex;
-  height: 205px;
+  min-height: 270px;
+  padding: 50px 0;
   margin: 0 0 110px;
   align-items: center;
   justify-content: center;
-  background: #003240;
+  background-color: #003240;
+  background-size: cover;
+  background-position: 50% 50%;
+  text-align: center;
   color: #fff; }
 /* Footer */
 .footer {
@@ -701,6 +705,8 @@ button {
 .post .txt {
     width: 58.33333%; }
 .date {
+  display: block;
+  margin: 0 0 5px;
   font-size: 1.3rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -723,6 +729,12 @@ button {
     list-style: none; }
 .post-sidebar li {
     margin: 0 0 50px; }
+.post-sidebar .date {
+    margin-top: 25px; }
+.post-sidebar .h6 {
+    margin: 0 0 10px; }
+.post-sidebar p {
+    margin-top: 0; }
 @media (min-width: 960px) {
   .spotlight-post {
     display: flex;
@@ -810,4 +822,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?3a9a984dae0aefa9ae3278662ff9217e*/
+/*# sourceMappingURL=main.css.map?fda3c72d33dd72694f82327006c6537a*/
