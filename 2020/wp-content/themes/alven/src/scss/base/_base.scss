@@ -26,7 +26,13 @@ body {
 }
 
 h1 {
+    font-family: $roboto;
     font-size: 3rem;
+    font-weight: 400;
+    > strong {
+        display: block;
+        font-family: $century;
+    }
 }
 
 h2,
