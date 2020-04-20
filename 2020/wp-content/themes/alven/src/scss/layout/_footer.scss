@@ -6,7 +6,8 @@
     background: $primary;
     color: #fff;
     .home &,
-    .single-post & {
+    .single-post &,
+    .page-template-portfolio & {
         margin-top: 0;
     }
     a {

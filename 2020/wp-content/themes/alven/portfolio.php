@@ -19,20 +19,34 @@ get_header(); ?>
 
             <div class='portfolio-wrapper'>
                 <aside class='portfolio-filters'>
-                    <ul class='dropdown' data-filter='investment'>
-                        <li data-investment='all' class='actif'>All companies</li>
-                        <li data-investment='present'><?php the_field('present', 'options'); ?></li>
-                        <li data-investment='past'><?php the_field('past', 'options'); ?></li>
-                    </ul>
-                    <ul class='dropdown' data-filter='field'>
-                        <li data-field='all' class='actif'>All fields</li>
-                        <?php
-                            $fields = get_terms(array('taxonomy' => 'field'));
-                            foreach($fields as $field){
-                                echo '<li data-field="'.$field->slug.'">'.$field->name.'</li>';
-                            }
-                        ?>
-                    </ul>
+                    <div>
+                        <ul data-filter='investment'>
+                            <li>
+                                <button data-investment='present'><?php the_field('present', 'options'); ?></button>
+                            </li>
+                            <li>
+                                <button data-investment='past'><?php the_field('past', 'options'); ?></button>
+                            </li>
+                        </ul>
+                        <ul data-filter='location'>
+                            <?php
+                                $locs = get_terms(array('taxonomy' => 'location'));
+                                foreach($locs as $loc){
+                                    echo '<li><button data-field="'.$loc->slug.'">'.$loc->name.'</button></li>';
+                                }
+                            ?>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class='portfolio-fields' data-filter='field'>
+                            <?php
+                                $fields = get_terms(array('taxonomy' => 'field'));
+                                foreach($fields as $field){
+                                    echo '<li><button data-field="'.$field->slug.'">'.$field->name.'</button></li>';
+                                }
+                            ?>
+                        </ul>
+                    </div>
                 </aside>
 
                 <div class='portfolio-content'>
@@ -97,8 +111,8 @@ get_header(); ?>
         </div>
 
         <section class='contact-wrapper'>
-            <h2><?php echo get_the_title(CONTACT_ID); ?></h2>
-            <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
+            <h2 class='title-home'><?php echo get_the_title(CONTACT_ID); ?></h2>
+            <p class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></p>
             <?php require_once('includes/contact.php'); ?>
         </section>
 

@@ -1,37 +1,87 @@
 .portfolio-wrapper {
-    display: flex;
+    padding: 0 0 100px;
 }
 
 .portfolio-filters {
-    width: 25%;
+    display: flex;
+    margin: 0 $gutter/-2;
+    font-weight: 900;
+    ul {
+        list-style: none;
+    }
+    li {
+        margin: 0 $gutter/2 15px;
+    }
+    button {
+        &:hover,
+        &:focus,
+        &.on {
+            color: $secondary;
+        }
+    }
+}
+
+.portfolio-fields {
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .portfolio-content {
-    width: 75%;
+    margin: 0 -10px;
 }
 
 .portfolio {
     display: flex;
     flex-wrap: wrap;
+    margin: 0;
     text-align: center;
     line-height: 1;
     list-style: none;
     > li {
-        width: 25%;
+        width: 33%;
         padding: 10px;
         margin: 0;
+    }
+    .transfered {
+        a {
+            &:after {
+                content: none;
+            }
+        }
     }
     a {
         display: block;
         height: 0;
         padding: 0 0 83%;
-        border: 1px solid;
+        border: 2px solid $primary;
         position: relative;
+        z-index: 1;
         background: $primary;
-        transition: $transition;
+        color: $tertiary;
+        &:after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: #fff;
+            opacity: 0.2;
+            transition: $transition;
+        }
         > svg {
             height: 50%;
             margin: auto;
+        }
+        path,
+        polygon,
+        rect,
+        ellipse,
+        circle,
+        line,
+        polyline {
+            transition: $transition;
         }
         &:not(:hover) {
             path,
@@ -47,6 +97,9 @@
         &:hover,
         &:focus {
             background: #fff !important;
+            &:after {
+                opacity: 0;
+            }
         }
     }
     a > svg,
@@ -77,6 +130,45 @@
         }
         svg {
             height: 100%;
+        }
+    }
+}
+
+@media (min-width: $tablet) {
+    .portfolio-filters {
+        display: block;
+        margin: 0;
+        ul {
+            margin: 10px 0 40px;
+        }
+        li {
+            margin: 0 0 15px;
+        }
+    }
+
+    .portfolio-fields {
+        display: initial;
+    }
+
+    .portfolio-wrapper {
+        display: flex;
+        padding: 0 0 150px;
+    }
+
+    .portfolio-filters {
+        width: 25%;
+    }
+
+    .portfolio-content {
+        width: 75%;
+        margin: 0;
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .portfolio {
+        > li {
+            width: 25%;
         }
     }
 }

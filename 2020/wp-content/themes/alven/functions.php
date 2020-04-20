@@ -337,6 +337,12 @@ function alven_taxonomy(){
         'singular_label' => 'Field',
         'show_admin_column' => true
     ));
+    register_taxonomy('location', array('startup'), array(
+        'hierarchical' => true,
+        'label' => 'Locations',
+        'singular_label' => 'Location',
+        'show_admin_column' => true
+    ));
     /*register_taxonomy('footprint', array('startup'), array(
         'hierarchical' => true,
         'label' => 'Footprints',
