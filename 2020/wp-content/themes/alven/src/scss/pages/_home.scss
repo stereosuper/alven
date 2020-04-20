@@ -31,3 +31,26 @@
         color: inherit;
     }
 }
+
+.team-wrapper {
+    padding: 75px 0 95px;
+}
+
+.team {
+    display: flex;
+    margin: 75px 0 0;
+    align-items: center;
+    > div {
+        width: 50%;
+    }
+    .txt {
+        padding: 0 0 0 $col;
+    }
+    .img {
+        display: flex;
+        justify-content: flex-end;
+    }
+    img {
+        max-width: 50vw;
+    }
+}

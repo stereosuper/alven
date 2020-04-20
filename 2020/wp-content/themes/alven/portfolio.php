@@ -15,10 +15,10 @@ get_header(); ?>
             </div>
         </div>
 
-        <div class="container">
+        <section class="container">
 
-            <section class='portfolio-wrapper'>
-                <aside class='portfolio-filters' id='portfolioFilters'>
+            <div class='portfolio-wrapper'>
+                <aside class='portfolio-filters'>
                     <ul class='dropdown' data-filter='investment'>
                         <li data-investment='all' class='actif'>All companies</li>
                         <li data-investment='present'><?php the_field('present', 'options'); ?></li>
@@ -93,15 +93,14 @@ get_header(); ?>
                         </ul>
                     <?php endif; wp_reset_query(); ?>
                 </div>
-            </section>
-
-            <section class='contact-wrapper'>
-                <h2><?php echo get_the_title(CONTACT_ID); ?></h2>
-                <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
-                <?php require_once('includes/contact.php'); ?>
-            </section>
-
+            </div>
         </div>
+
+        <section class='contact-wrapper'>
+            <h2><?php echo get_the_title(CONTACT_ID); ?></h2>
+            <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
+            <?php require_once('includes/contact.php'); ?>
+        </section>
 
     <?php endif; ?>
 

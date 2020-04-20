@@ -249,12 +249,15 @@ h6 > p {
 .wysiwyg h6,
 .h6 {
   font-size: 1.4rem; }
-.title-maj {
+.title-maj,
+.title-home {
   text-transform: uppercase;
   text-align: center; }
 .title-small {
   font-weight: 900;
   text-transform: uppercase; }
+.subtitle {
+  margin-top: 0; }
 p {
   margin: 1.8em 0; }
 blockquote {
@@ -307,7 +310,8 @@ svg {
 /******* LIENS / BOUTONS *******/
 button,
 input {
-  color: inherit; }
+  color: inherit;
+  transition: 0.3s ease-in-out; }
 a {
   font-weight: 900;
   text-decoration: none;
@@ -449,7 +453,7 @@ input:focus, a:focus {
 .btn,
 .wp-block-button__link {
   display: inline-block;
-  padding: 0.5em 1.3em;
+  padding: 0.5em 2.5em;
   border: 2px solid #3aafa9;
   font-size: 0.95em;
   border-radius: 4px;
@@ -630,15 +634,9 @@ button {
 .portfolio .content-transfered svg {
       height: 100%; }
 .spotlight-post {
-  display: flex;
-  align-items: center;
   margin: 65px 0 0; }
 .blog .spotlight-post {
     margin-bottom: 60px; }
-.spotlight-post > div {
-    width: 50%; }
-.spotlight-post .txt {
-    padding: 0 0 0 8.33333%; }
 .home-posts {
   display: flex;
   justify-content: space-between;
@@ -702,12 +700,36 @@ button {
     list-style: none; }
 .post-sidebar li {
     margin: 0 0 50px; }
+@media (min-width: 960px) {
+  .spotlight-post {
+    display: flex;
+    align-items: center; }
+    .spotlight-post > div {
+      width: 50%; }
+    .spotlight-post .txt {
+      padding: 0 0 0 8.33333%; }
+    .spotlight-post .img {
+      display: flex;
+      justify-content: flex-end; }
+    .spotlight-post img {
+      max-width: 50vw; } }
 .contact-wrapper {
+  padding: 75px 0 95px;
   text-align: center;
   background: #f6f7f8; }
 .contact {
   display: flex;
   justify-content: space-around; }
+.contact > div {
+    width: 34%;
+    padding: 50px 60px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 1px 86px 0 rgba(199, 199, 199, 0.4); }
+.contact .title-maj {
+    margin-top: 0; }
+.form-to-open {
+  display: none; }
 /* Home specific style */
 .philo {
   padding: 85px 0;
@@ -731,6 +753,21 @@ button {
     margin: 0 32px; }
 .philo-list a {
     color: inherit; }
+.team-wrapper {
+  padding: 75px 0 95px; }
+.team {
+  display: flex;
+  margin: 75px 0 0;
+  align-items: center; }
+.team > div {
+    width: 50%; }
+.team .txt {
+    padding: 0 0 0 8.33333%; }
+.team .img {
+    display: flex;
+    justify-content: flex-end; }
+.team img {
+    max-width: 50vw; }
 /******* PRINT *******/
 @media print {
   *, *:before {
@@ -750,4 +787,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?3205ae3a0304633a87c2e4797785e51e*/
+/*# sourceMappingURL=main.css.map?9963a6d2903aaee3cb0985fdfd3e6b0c*/

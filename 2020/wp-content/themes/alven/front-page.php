@@ -14,7 +14,7 @@ get_header(); ?>
         </div>
         
         <section class="container">
-            <h2 class='title-maj'><?php the_field('title', get_option('page_for_posts' )); ?></h2>
+            <h2 class='title-home'><?php the_field('title', get_option('page_for_posts' )); ?></h2>
 
             <?php
                 $stickies = array_reverse( get_option( 'sticky_posts' ) );
@@ -63,7 +63,7 @@ get_header(); ?>
         <section class="philo">
             <div class="container">
                 <div class="philo-content">
-                    <h2 class='title-maj'><?php the_field('philoTitle'); ?></h2>
+                    <h2 class='title-home'><?php the_field('philoTitle'); ?></h2>
                     <?php the_field('philoText'); ?>
                     <?php
                         $link1 = get_field('philoLink1');
@@ -94,15 +94,22 @@ get_header(); ?>
             </div>
         </section>
 
-        <section class="container">
-            <h2 class='title-maj'><?php the_field('whoTitle'); ?></h2>
-            <?php the_field('whoText'); ?>
+        <section class="container team-wrapper">
+            <h2 class='title-home'><?php the_field('whoTitle'); ?></h2>
+            <div class='team'>
+                <div class='img'>
+                    <?php echo wp_get_attachment_image(get_field('whoImg'), 'large'); ?>
+                </div>
+                <div class='txt'>
+                    <?php the_field('whoText'); ?>
+                </div>
+            </div>
         </section>
 
         <section class="contact-wrapper">
             <div class="container">
-                <h2 class='title-maj'><?php echo get_the_title(CONTACT_ID); ?></h2>
-                <strong class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></strong>
+                <h2 class='title-home'><?php echo get_the_title(CONTACT_ID); ?></h2>
+                <p class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></p>
                 <?php require_once('includes/contact.php'); ?>
             </div>
         </section>

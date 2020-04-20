@@ -86,7 +86,8 @@ h6 {
     font-size: 1.4rem;
 }
 
-.title-maj {
+.title-maj,
+.title-home {
     text-transform: uppercase;
     text-align: center;
 }
@@ -94,6 +95,10 @@ h6 {
 .title-small {
     font-weight: 900;
     text-transform: uppercase;
+}
+
+.subtitle {
+    margin-top: 0;
 }
 
 p {
@@ -167,6 +172,7 @@ svg {
 button,
 input {
     color: inherit;
+    transition: $transition;
     @extend %outline;
 }
 

@@ -1,15 +1,7 @@
 .spotlight-post {
-    display: flex;
-    align-items: center;
     margin: 65px 0 0;
     .blog & {
         margin-bottom: 60px;
-    }
-    > div {
-        width: 50%;
-    }
-    .txt {
-        padding: 0 0 0 $col;
     }
 }
 
@@ -101,5 +93,25 @@
     }
     li {
         margin: 0 0 50px;
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .spotlight-post {
+        display: flex;
+        align-items: center;
+        > div {
+            width: 50%;
+        }
+        .txt {
+            padding: 0 0 0 $col;
+        }
+        .img {
+            display: flex;
+            justify-content: flex-end;
+        }
+        img {
+            max-width: 50vw;
+        }
     }
 }

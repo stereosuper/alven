@@ -1,6 +1,6 @@
 <div class='container contact'>
     <div>
-        <h3><?php the_field('pitchTitle', CONTACT_ID); ?></h3>
+        <h3 class='title-maj'><?php the_field('pitchTitle', CONTACT_ID); ?></h3>
         <?php the_field('pitchText', CONTACT_ID); ?>
         <?php if($status === 'success'){ ?>
             <p class='form-success'>Your pitch has been sent!<br> Thank you, we will be back to you shortly.</p>
@@ -22,7 +22,7 @@
     </div>
 
     <div>
-        <h3><?php the_field('generalTitle', CONTACT_ID); ?></h3>
+        <h3 class='title-maj'><?php the_field('generalTitle', CONTACT_ID); ?></h3>
         <?php the_field('generalText', CONTACT_ID); ?>
         <?php if($status2 === 'success'){ ?>
             <p class='form-success'>Your message has been sent!<br> Thank you, we will be back to you shortly.</p>
