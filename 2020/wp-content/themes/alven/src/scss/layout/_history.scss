@@ -1,0 +1,75 @@
+.history-wrapper {
+    padding: 95px 0 150px;
+    text-align: center;
+    background: $grey;
+    .h2 {
+        margin-top: 0;
+    }
+}
+
+.periods {
+    display: flex;
+    margin: 0 $col;
+    justify-content: space-around;
+    list-style: none;
+    font-family: $roboto;
+    font-weight: 900;
+    button {
+        &:hover,
+        &:focus {
+            color: $secondary;
+        }
+    }
+}
+
+.history {
+    position: relative;
+    margin: 85px 0 0;
+    overflow: hidden;
+    list-style: none;
+    text-align: left;
+    &:after {
+        content: '';
+        width: 1px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background: $secondary;
+    }
+}
+
+.history-date {
+    width: $col * 5;
+    padding: 40px 55px;
+    margin: 65px 0 0;
+    background: #fff;
+    &:first-of-type {
+        margin: 0;
+    }
+    &:nth-of-type(even) {
+        float: left;
+    }
+    &:nth-of-type(odd) {
+        float: right;
+    }
+    &.green {
+        background: #e3f2e6;
+    }
+    &.blue {
+        background: #d6eeed;
+    }
+    &.yellow {
+        background: #fff7d0;
+    }
+    h3 {
+        font-family: $roboto;
+        font-size: 2.7rem;
+        font-weight: 900;
+    }
+    p {
+        margin-bottom: 0;
+    }
+}

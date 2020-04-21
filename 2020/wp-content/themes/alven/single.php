@@ -34,7 +34,7 @@
                         <p class='post-medium'><a href='<?php the_field('medium'); ?>' target='_blank'>Comment on Medium</a></p>
                     <?php } ?>
 
-                    <div class='blue'>
+                    <div class='secondary'>
                         <span class='title-small'>Share</span>
                         <ul class='share'>
                             <li>

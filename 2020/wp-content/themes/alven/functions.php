@@ -325,6 +325,18 @@ function alven_post_type(){
         'menu_icon' => 'dashicons-groups',
         'supports' => array('title', 'editor', 'thumbnail', 'revisions')
     ));
+    register_post_type('date', array(
+        'label' => 'Dates',
+        'labels' => array(
+            'singular_name' => 'Date',
+            'menu_name' => 'History'
+        ),
+        'public' => true,
+        'publicly_queryable' => false,
+        'query_var' => false,
+        'menu_icon' => 'dashicons-groups',
+        'supports' => array('title', 'editor', 'thumbnail', 'revisions')
+    ));
 }
 add_action( 'init', 'alven_post_type' );
 
@@ -341,6 +353,12 @@ function alven_taxonomy(){
         'hierarchical' => true,
         'label' => 'Locations',
         'singular_label' => 'Location',
+        'show_admin_column' => true
+    ));
+    register_taxonomy('period', array('date'), array(
+        'hierarchical' => true,
+        'label' => 'Periods',
+        'singular_label' => 'Period',
         'show_admin_column' => true
     ));
     /*register_taxonomy('footprint', array('startup'), array(

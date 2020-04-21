@@ -391,7 +391,7 @@ a:active {
   text-align: right; }
 .no-transition {
   transition: none !important; }
-.blue {
+.secondary {
   color: #3aafa9; }
 .wp-block-buttons {
   margin: 35px 0 85px; }
@@ -420,15 +420,16 @@ a:active {
     left: -50vw;
     right: -50vw;
     bottom: 0;
-    z-index: -1;
-    background: #fff0a1; }
+    z-index: -1; }
 .post-content .wp-block-media-text::after {
       left: -16px;
       right: -16px; }
 .wp-block-media-text.has-media-on-the-right {
     color: #fff; }
-.wp-block-media-text.has-media-on-the-right::after {
-      background: #3aafa9; }
+.wp-block-media-text.yellow::after {
+    background: #fff0a1; }
+.wp-block-media-text.blue::after {
+    background: #3aafa9; }
 .wp-block-media-text .wp-block-media-text__media {
     margin: 0 -32px; }
 .post-content .wp-block-media-text .wp-block-media-text__media {
@@ -639,7 +640,8 @@ textarea {
   color: #fff; }
 .home .footer,
   .single-post .footer,
-  .page-template-portfolio .footer {
+  .page-template-portfolio .footer,
+  .page-template-about .footer {
     margin-top: 0; }
 .footer a {
     font-weight: 400;
@@ -948,6 +950,60 @@ textarea {
 @media (min-width: 960px) {
   .team-list > div {
     width: 20%; } }
+.history-wrapper {
+  padding: 95px 0 150px;
+  text-align: center;
+  background: #f6f7f8; }
+.history-wrapper .h2 {
+    margin-top: 0; }
+.periods {
+  display: flex;
+  margin: 0 8.33333%;
+  justify-content: space-around;
+  list-style: none;
+  font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
+  font-weight: 900; }
+.periods button:hover, .periods button:focus {
+    color: #3aafa9; }
+.history {
+  position: relative;
+  margin: 85px 0 0;
+  overflow: hidden;
+  list-style: none;
+  text-align: left; }
+.history:after {
+    content: '';
+    width: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: #3aafa9; }
+.history-date {
+  width: 41.66667%;
+  padding: 40px 55px;
+  margin: 65px 0 0;
+  background: #fff; }
+.history-date:first-of-type {
+    margin: 0; }
+.history-date:nth-of-type(even) {
+    float: left; }
+.history-date:nth-of-type(odd) {
+    float: right; }
+.history-date.green {
+    background: #e3f2e6; }
+.history-date.blue {
+    background: #d6eeed; }
+.history-date.yellow {
+    background: #fff7d0; }
+.history-date h3 {
+    font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
+    font-size: 2.7rem;
+    font-weight: 900; }
+.history-date p {
+    margin-bottom: 0; }
 /* Home specific style */
 .philo {
   padding: 85px 0;
@@ -1005,4 +1061,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?3056f5a23ed189a7a94360fa684e62b2*/
+/*# sourceMappingURL=main.css.map?3dcffa1ed4e9712598c141879153e0c3*/

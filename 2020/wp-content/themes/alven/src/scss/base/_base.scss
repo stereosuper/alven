@@ -223,7 +223,7 @@ a {
     transition: none !important;
 }
 
-.blue {
+.secondary {
     color: $secondary;
 }
 
@@ -264,7 +264,6 @@ a {
         right: -50vw;
         bottom: 0;
         z-index: -1;
-        background: $tertiary;
         .post-content & {
             left: -$gutter;
             right: -$gutter;
@@ -272,6 +271,13 @@ a {
     }
     &.has-media-on-the-right {
         color: #fff;
+    }
+    &.yellow {
+        &::after {
+            background: $tertiary;
+        }
+    }
+    &.blue {
         &::after {
             background: $secondary;
         }
