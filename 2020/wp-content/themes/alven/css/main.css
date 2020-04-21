@@ -177,21 +177,49 @@ sup {
   line-height: 0;
   vertical-align: baseline; }
 @font-face {
+  font-family: 'Century Gothic';
+  src: local("Century Gothic"), local("CenturyGothic"), local("AppleGothic"), url(/wp-content/themes/alven/fonts/centurygoth-bold.woff2) format("woff2"), url(/wp-content/themes/alven/fonts/centurygoth-bold.woff) format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  unicode-range: U+000-5FF; }
+@font-face {
+  font-family: 'Century Gothic';
+  src: url(/wp-content/themes/alven/fonts/centurygoth-bold.woff2) format("woff2"), url(/wp-content/themes/alven/fonts/centurygoth-bold.woff) format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 900;
+  unicode-range: U+000-5FF; }
+@font-face {
+  font-family: 'Century Gothic';
+  src: url(/wp-content/themes/alven/fonts/centurygoth-it.woff2) format("woff2"), url(/wp-content/themes/alven/fonts/centurygoth-it.woff) format("woff");
+  font-display: swap;
+  font-style: italic;
+  font-weight: 400;
+  unicode-range: U+000-5FF; }
+@font-face {
+  font-family: 'Century Gothic';
+  src: url(/wp-content/themes/alven/fonts/centurygoth-bold-it.woff2) format("woff2"), url(/wp-content/themes/alven/fonts/centurygoth-bold-it.woff) format("woff");
+  font-display: swap;
+  font-style: italic;
+  font-weight: 900;
+  unicode-range: U+000-5FF; }
+@font-face {
   font-family: 'Roboto Slab';
   src: local("Roboto Slab"), url(/wp-content/themes/alven/fonts/robotoslab.woff2) format("woff2"), url(/wp-content/themes/alven/fonts/robotoslab.woff) format("woff");
   font-display: swap;
   font-style: normal;
+  font-variant: normal;
   font-weight: 400;
-  unicode-range: U+000-5FF;
-  /* Latin glyphs */ }
+  unicode-range: U+000-5FF; }
 @font-face {
   font-family: 'Roboto Slab';
   src: local("Roboto Slab"), url(/wp-content/themes/alven/fonts/robotoslab-bold.woff2) format("woff2"), url(/wp-content/themes/alven/fonts/robotoslab-bold.woff) format("woff");
   font-display: swap;
   font-style: normal;
   font-weight: 900;
-  unicode-range: U+000-5FF;
-  /* Latin glyphs */ }
+  unicode-range: U+000-5FF; }
 /******* GÉNÉRAL *******/
 ::-moz-selection {
   background: rgba(0, 0, 0, 0.99);
@@ -206,7 +234,7 @@ html {
   /* sets the base font to 10px for easier math */
   background: #fff; }
 body {
-  font: 1.4em/1.5 Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  font: 1.4em/1.5 CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
   color: #003240;
   font-feature-settings: "kern";
   -webkit-font-kerning: normal;
@@ -214,34 +242,40 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 h1 {
-  font-family: "Roboto Slab", Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
   font-size: 3rem;
   font-weight: 400; }
 h1 > strong {
     display: block;
-    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif; }
+    font-family: CenturyGothic, AppleGothic, "Century Gothic", sans-serif; }
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 900; }
 h2 > a,
-h3 > a,
-h4 > a,
-h5 > a,
-h6 > a {
-  color: inherit; }
+  h3 > a,
+  h4 > a,
+  h5 > a,
+  h6 > a {
+    color: inherit; }
 h2 > a:hover, h2 > a:focus,
-  h3 > a:hover,
-  h3 > a:focus,
-  h4 > a:hover,
-  h4 > a:focus,
-  h5 > a:hover,
-  h5 > a:focus,
-  h6 > a:hover,
-  h6 > a:focus {
-    color: #3aafa9; }
+    h3 > a:hover,
+    h3 > a:focus,
+    h4 > a:hover,
+    h4 > a:focus,
+    h5 > a:hover,
+    h5 > a:focus,
+    h6 > a:hover,
+    h6 > a:focus {
+      color: #3aafa9; }
 h2 > p,
-h3 > p,
-h4 > p,
-h5 > p,
-h6 > p {
-  margin: 0; }
+  h3 > p,
+  h4 > p,
+  h5 > p,
+  h6 > p {
+    margin: 0; }
 .wysiwyg h2,
 .h2,
 .wysiwyg h3,
@@ -486,7 +520,7 @@ input:focus, a:focus {
   display: inline-block;
   padding: 0.5em 2.5em;
   border: 2px solid #3aafa9;
-  font-family: "Roboto Slab", Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
   font-weight: 900;
   font-size: 0.95em;
   border-radius: 4px;
@@ -855,6 +889,7 @@ button {
 .team-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   text-align: center; }
 .team-list > div {
     width: 20%; }
@@ -919,4 +954,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?66332270758c5a59a29e70245c12b580*/
+/*# sourceMappingURL=main.css.map?21b900a6a1d5bbd2e26cd7b7f664778c*/

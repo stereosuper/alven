@@ -1,6 +1,7 @@
 .team-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
     > div {
         width: 20%;

@@ -21,7 +21,7 @@ get_header(); ?>
                 $sticky = 0;
                 if( $stickies ):
                     $post = $stickies[0];
-                    $ticky = $post;
+                    $sticky = $post;
                     setup_postdata($post);
             ?>
                 <div class='spotlight-post'>
