@@ -10,10 +10,13 @@
 .periods {
     display: flex;
     margin: 0 $col;
-    justify-content: space-around;
+    justify-content: center;
     list-style: none;
     font-family: $roboto;
     font-weight: 900;
+    > li {
+        margin: 0 5.5%;
+    }
     button {
         &:hover,
         &:focus {
@@ -26,17 +29,18 @@
     position: relative;
     margin: 85px 0 0;
     overflow: hidden;
+    font-size: 1.2rem;
     list-style: none;
     text-align: left;
     &:after {
         content: '';
         width: 1px;
         position: absolute;
-        top: 0;
+        top: 35px;
         left: 0;
         right: 0;
-        bottom: 0;
-        margin: auto;
+        bottom: 35px;
+        margin: 0 auto;
         background: $secondary;
     }
 }
@@ -44,16 +48,72 @@
 .history-date {
     width: $col * 5;
     padding: 40px 55px;
+    position: relative;
     margin: 65px 0 0;
+    z-index: 1;
     background: #fff;
-    &:first-of-type {
-        margin: 0;
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        margin: auto;
+        border-radius: 50%;
+    }
+    &:before {
+        width: 50px;
+        height: 50px;
+        background: #d6eeed;
+    }
+    &:after {
+        width: 22px;
+        height: 22px;
+        margin: auto 14px;
+        border: solid 5px #81ccc8;
+        background: $secondary;
     }
     &:nth-of-type(even) {
         float: left;
+        &:before,
+        &:after {
+            bottom: -20%;
+            right: -25%;
+        }
     }
     &:nth-of-type(odd) {
         float: right;
+        &:before,
+        &:after {
+            bottom: 45%;
+            left: -25%;
+        }
+    }
+    &:first-of-type {
+        margin: 0;
+        &::before,
+        &::after {
+            top: 35px;
+            bottom: auto;
+        }
+        &:before {
+            margin: 0;
+        }
+        &:after {
+            margin: 14px;
+        }
+    }
+    &:last-of-type {
+        &::before,
+        &::after {
+            top: auto;
+            bottom: 35px;
+        }
+        &:before {
+            margin: 0;
+        }
+        &:after {
+            margin: 14px;
+        }
     }
     &.green {
         background: #e3f2e6;

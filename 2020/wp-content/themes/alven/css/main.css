@@ -959,39 +959,80 @@ textarea {
 .periods {
   display: flex;
   margin: 0 8.33333%;
-  justify-content: space-around;
+  justify-content: center;
   list-style: none;
   font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
   font-weight: 900; }
+.periods > li {
+    margin: 0 5.5%; }
 .periods button:hover, .periods button:focus {
     color: #3aafa9; }
 .history {
   position: relative;
   margin: 85px 0 0;
   overflow: hidden;
+  font-size: 1.2rem;
   list-style: none;
   text-align: left; }
 .history:after {
     content: '';
     width: 1px;
     position: absolute;
-    top: 0;
+    top: 35px;
     left: 0;
     right: 0;
-    bottom: 0;
-    margin: auto;
+    bottom: 35px;
+    margin: 0 auto;
     background: #3aafa9; }
 .history-date {
   width: 41.66667%;
   padding: 40px 55px;
+  position: relative;
   margin: 65px 0 0;
+  z-index: 1;
   background: #fff; }
-.history-date:first-of-type {
-    margin: 0; }
+.history-date:before, .history-date:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    margin: auto;
+    border-radius: 50%; }
+.history-date:before {
+    width: 50px;
+    height: 50px;
+    background: #d6eeed; }
+.history-date:after {
+    width: 22px;
+    height: 22px;
+    margin: auto 14px;
+    border: solid 5px #81ccc8;
+    background: #3aafa9; }
 .history-date:nth-of-type(even) {
     float: left; }
+.history-date:nth-of-type(even):before, .history-date:nth-of-type(even):after {
+      bottom: -20%;
+      right: -25%; }
 .history-date:nth-of-type(odd) {
     float: right; }
+.history-date:nth-of-type(odd):before, .history-date:nth-of-type(odd):after {
+      bottom: 45%;
+      left: -25%; }
+.history-date:first-of-type {
+    margin: 0; }
+.history-date:first-of-type::before, .history-date:first-of-type::after {
+      top: 35px;
+      bottom: auto; }
+.history-date:first-of-type:before {
+      margin: 0; }
+.history-date:first-of-type:after {
+      margin: 14px; }
+.history-date:last-of-type::before, .history-date:last-of-type::after {
+    top: auto;
+    bottom: 35px; }
+.history-date:last-of-type:before {
+    margin: 0; }
+.history-date:last-of-type:after {
+    margin: 14px; }
 .history-date.green {
     background: #e3f2e6; }
 .history-date.blue {
@@ -1061,4 +1102,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?3dcffa1ed4e9712598c141879153e0c3*/
+/*# sourceMappingURL=main.css.map?a51f8cc24eb00e467c5ab598fad8f2d8*/
