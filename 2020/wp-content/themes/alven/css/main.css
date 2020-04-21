@@ -366,10 +366,6 @@ hr {
 svg {
   max-width: 100%; }
 /******* LIENS / BOUTONS *******/
-button,
-input {
-  color: inherit;
-  transition: 0.3s ease-in-out; }
 a {
   font-weight: 900;
   text-decoration: none;
@@ -385,6 +381,8 @@ a:active {
   content: '';
   display: table;
   clear: both; }
+.hidden {
+  display: none; }
 .align-center {
   text-align: center; }
 .align-left {
@@ -511,8 +509,7 @@ html.no-scroll {
   position: fixed;
   left: 0;
   right: 0; }
-button:focus,
-input:focus, a:focus {
+a:focus {
   outline: thin dashed #000; }
 /* Buttons */
 .btn,
@@ -536,23 +533,59 @@ input:focus, a:focus {
   text-decoration: underline;
   color: #003240; }
 /* Forms */
+form {
+  font-size: 1.6rem;
+  text-align: center; }
+input,
+textarea,
+select,
+button {
+  border: 0;
+  color: inherit;
+  transition: 0.3s ease-in-out; }
 input:focus,
-textarea:focus,
-select:focus,
-button:focus {
-  outline: 0; }
+  textarea:focus,
+  select:focus,
+  button:focus {
+    outline: 0; }
+input,
+textarea {
+  width: 100%;
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 4px;
+  background: #f6f7f8; }
 input:-webkit-autofill,
-textarea:-webkit-autofill {
-  box-shadow: 0 0 0 1000px #fff inset; }
+  textarea:-webkit-autofill {
+    box-shadow: 0 0 0 1000px #fff inset; }
 input:invalid,
-textarea:invalid {
-  box-shadow: none; }
+  textarea:invalid {
+    box-shadow: none; }
 input[type='search']::-webkit-search-cancel-button, input[type='search']::-webkit-search-decoration {
   display: none; }
-select::-ms-expand {
-  display: none; }
-button {
-  border: 0; }
+textarea {
+  height: 170px; }
+/*select {
+    // hide the arrow on edge + ie
+    &::-ms-expand {
+        display: none;
+    }
+}*/
+.field-wrapper {
+  display: flex;
+  justify-content: space-between; }
+.field-wrapper .field {
+    width: 48%; }
+.field {
+  position: relative;
+  margin: 0 0 20px;
+  text-align: left; }
+.field label {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    pointer-events: none;
+    color: #3aafa9; }
 /* Header */
 .header {
   padding: 25px 0;
@@ -972,4 +1005,4 @@ button {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?39deb8f4b49f1b1c9f6aa389ee39b75d*/
+/*# sourceMappingURL=main.css.map?3056f5a23ed189a7a94360fa684e62b2*/

@@ -180,13 +180,6 @@ svg {
 
 /******* LIENS / BOUTONS *******/
 
-button,
-input {
-    color: inherit;
-    transition: $transition;
-    @extend %outline;
-}
-
 a {
     font-weight: 900;
     text-decoration: none;
@@ -210,6 +203,10 @@ a {
         display: table;
         clear: both;
     }
+}
+
+.hidden {
+    display: none;
 }
 
 .align-center {
