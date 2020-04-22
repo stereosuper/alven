@@ -9,11 +9,37 @@ get_header(); ?>
 
     <?php if ( have_posts() ) : the_post(); ?>
 
-        <div class='container'>
-            <h1><?php the_field('title'); ?></h1>
-        </div>
+        <section class="slider">
+            <?php
+                $startups = get_posts(
+                    array(
+                        'post_type' => 'startup',
+                        'posts_per_page' => 8,
+                        'meta_key' => 'front',
+                        'meta_value' => true,
+                        'order' => 'rand'
+                    )
+                );
+                foreach( $startups as $startup ) :
+            ?>
+                <div class="slide" style="background-image:url(<?php the_field('img', $startup->ID); ?>)">
+                    <div class='slide-content container'>
+                        <a href='<?php echo get_the_permalink($startup->ID); ?>'>
+                            <div class='img'>
+                                <?php echo alven_get_svg(get_post_thumbnail_id($startup->ID)); ?>
+                            </div>
+                            <p class='baseline'>
+                                <?php the_field('baseline', $startup->ID); ?>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </section>
         
         <section class="container">
+            <h1 class='main-title-home'><?php the_field('title'); ?></h1>
+
             <h2 class='title-home'><?php the_field('title', get_option('page_for_posts' )); ?></h2>
 
             <?php

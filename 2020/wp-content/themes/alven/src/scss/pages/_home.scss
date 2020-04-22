@@ -1,5 +1,15 @@
 /* Home specific style */
 
+.main-title-home {
+    font-size: 3.8rem;
+    line-height: 1.2;
+    color: #fff;
+    transform: translate3d(0, -220px, 0);
+    > strong {
+        font-size: 5.3rem;
+    }
+}
+
 .philo {
     padding: 85px 0;
     text-align: center;
