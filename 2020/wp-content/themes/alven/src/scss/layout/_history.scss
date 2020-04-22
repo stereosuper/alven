@@ -27,11 +27,6 @@
 
 .history {
     position: relative;
-    margin: 85px 0 0;
-    overflow: hidden;
-    font-size: 1.2rem;
-    list-style: none;
-    text-align: left;
     &:after {
         content: '';
         width: 1px;
@@ -45,13 +40,21 @@
     }
 }
 
+.dates {
+    margin: 85px 0 0;
+    font-size: 1.2rem;
+    list-style: none;
+    text-align: left;
+}
+
 .history-date {
+    display: flex;
     width: $col * 5;
-    padding: 40px 55px;
     position: relative;
     margin: 65px 0 0;
     z-index: 1;
     background: #fff;
+    box-shadow: 0 1px 36px 0 rgba(#000, 0.06);
     &:before,
     &:after {
         content: '';
@@ -79,6 +82,19 @@
             bottom: -20%;
             right: -25%;
         }
+        &.has-icon {
+            .txt {
+                padding-left: 0;
+            }
+        }
+        .txt {
+            &:after {
+                right: -12px;
+                bottom: -20%;
+                border-width: 8px 0 8px 12px;
+                border-left-color: #fff;
+            }
+        }
     }
     &:nth-of-type(odd) {
         float: right;
@@ -86,6 +102,22 @@
         &:after {
             bottom: 45%;
             left: -25%;
+        }
+        &.has-icon {
+            .txt {
+                padding-right: 0;
+            }
+            .img {
+                order: 2;
+            }
+        }
+        .txt {
+            &:after {
+                left: -12px;
+                bottom: 45%;
+                border-width: 8px 12px 8px 0;
+                border-right-color: #fff;
+            }
         }
     }
     &:first-of-type {
@@ -101,6 +133,11 @@
         &:after {
             margin: 14px;
         }
+        .txt {
+            &:after {
+                top: -15px;
+            }
+        }
     }
     &:last-of-type {
         &::before,
@@ -114,15 +151,88 @@
         &:after {
             margin: 14px;
         }
+        .txt {
+            &:after {
+                top: auto;
+                bottom: 51px;
+            }
+        }
     }
     &.green {
         background: #e3f2e6;
+        &:nth-of-type(even) {
+            .txt {
+                &:after {
+                    border-left-color: #e3f2e6;
+                }
+            }
+        }
+        &:nth-of-type(odd) {
+            .txt {
+                &:after {
+                    border-right-color: #e3f2e6;
+                }
+            }
+        }
     }
     &.blue {
         background: #d6eeed;
+        &:nth-of-type(even) {
+            .txt {
+                &:after {
+                    border-left-color: #d6eeed;
+                }
+            }
+        }
+        &:nth-of-type(odd) {
+            .txt {
+                &:after {
+                    border-right-color: #d6eeed;
+                }
+            }
+        }
     }
     &.yellow {
         background: #fff7d0;
+        &:nth-of-type(even) {
+            .txt {
+                &:after {
+                    border-left-color: #fff7d0;
+                }
+            }
+        }
+        &:nth-of-type(odd) {
+            .txt {
+                &:after {
+                    border-right-color: #fff7d0;
+                }
+            }
+        }
+    }
+    .img {
+        display: flex;
+        width: 40%;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+    .txt {
+        padding: 40px 50px;
+        &:after {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: -5px;
+            margin: auto;
+            border-style: solid;
+            border-color: transparent;
+        }
+    }
+    img {
+        max-width: 50%;
     }
     h3 {
         font-family: $roboto;

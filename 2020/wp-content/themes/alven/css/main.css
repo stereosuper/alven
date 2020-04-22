@@ -533,6 +533,9 @@ a:focus {
 .link {
   text-decoration: underline;
   color: #003240; }
+.link-roboto {
+  font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
+  text-decoration: underline; }
 /* Forms */
 form {
   font-size: 1.6rem;
@@ -968,12 +971,7 @@ textarea {
 .periods button:hover, .periods button:focus {
     color: #3aafa9; }
 .history {
-  position: relative;
-  margin: 85px 0 0;
-  overflow: hidden;
-  font-size: 1.2rem;
-  list-style: none;
-  text-align: left; }
+  position: relative; }
 .history:after {
     content: '';
     width: 1px;
@@ -984,13 +982,19 @@ textarea {
     bottom: 35px;
     margin: 0 auto;
     background: #3aafa9; }
+.dates {
+  margin: 85px 0 0;
+  font-size: 1.2rem;
+  list-style: none;
+  text-align: left; }
 .history-date {
+  display: flex;
   width: 41.66667%;
-  padding: 40px 55px;
   position: relative;
   margin: 65px 0 0;
   z-index: 1;
-  background: #fff; }
+  background: #fff;
+  box-shadow: 0 1px 36px 0 rgba(0, 0, 0, 0.06); }
 .history-date:before, .history-date:after {
     content: '';
     position: absolute;
@@ -1012,11 +1016,27 @@ textarea {
 .history-date:nth-of-type(even):before, .history-date:nth-of-type(even):after {
       bottom: -20%;
       right: -25%; }
+.history-date:nth-of-type(even).has-icon .txt {
+      padding-left: 0; }
+.history-date:nth-of-type(even) .txt:after {
+      right: -12px;
+      bottom: -20%;
+      border-width: 8px 0 8px 12px;
+      border-left-color: #fff; }
 .history-date:nth-of-type(odd) {
     float: right; }
 .history-date:nth-of-type(odd):before, .history-date:nth-of-type(odd):after {
       bottom: 45%;
       left: -25%; }
+.history-date:nth-of-type(odd).has-icon .txt {
+      padding-right: 0; }
+.history-date:nth-of-type(odd).has-icon .img {
+      order: 2; }
+.history-date:nth-of-type(odd) .txt:after {
+      left: -12px;
+      bottom: 45%;
+      border-width: 8px 12px 8px 0;
+      border-right-color: #fff; }
 .history-date:first-of-type {
     margin: 0; }
 .history-date:first-of-type::before, .history-date:first-of-type::after {
@@ -1026,6 +1046,8 @@ textarea {
       margin: 0; }
 .history-date:first-of-type:after {
       margin: 14px; }
+.history-date:first-of-type .txt:after {
+      top: -15px; }
 .history-date:last-of-type::before, .history-date:last-of-type::after {
     top: auto;
     bottom: 35px; }
@@ -1033,12 +1055,48 @@ textarea {
     margin: 0; }
 .history-date:last-of-type:after {
     margin: 14px; }
+.history-date:last-of-type .txt:after {
+    top: auto;
+    bottom: 51px; }
 .history-date.green {
     background: #e3f2e6; }
+.history-date.green:nth-of-type(even) .txt:after {
+      border-left-color: #e3f2e6; }
+.history-date.green:nth-of-type(odd) .txt:after {
+      border-right-color: #e3f2e6; }
 .history-date.blue {
     background: #d6eeed; }
+.history-date.blue:nth-of-type(even) .txt:after {
+      border-left-color: #d6eeed; }
+.history-date.blue:nth-of-type(odd) .txt:after {
+      border-right-color: #d6eeed; }
 .history-date.yellow {
     background: #fff7d0; }
+.history-date.yellow:nth-of-type(even) .txt:after {
+      border-left-color: #fff7d0; }
+.history-date.yellow:nth-of-type(odd) .txt:after {
+      border-right-color: #fff7d0; }
+.history-date .img {
+    display: flex;
+    width: 40%;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: 50% 50%; }
+.history-date .txt {
+    padding: 40px 50px; }
+.history-date .txt:after {
+      content: '';
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: -5px;
+      margin: auto;
+      border-style: solid;
+      border-color: transparent; }
+.history-date img {
+    max-width: 50%; }
 .history-date h3 {
     font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
     font-size: 2.7rem;
@@ -1102,4 +1160,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?a51f8cc24eb00e467c5ab598fad8f2d8*/
+/*# sourceMappingURL=main.css.map?b767da723cc38a71e320ce0b13e1906f*/
