@@ -1115,11 +1115,53 @@ textarea {
     .history-date:last-of-type .txt:after {
       top: auto;
       bottom: 51px; } }
-.slide {
+.slider {
   height: 70vh;
   max-height: 540px;
   min-height: 300px;
+  position: relative;
+  margin: 0 0 85px; }
+.slider-title {
+  display: flex;
   padding: 0 0 50px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  align-items: flex-end; }
+.slider-title > div {
+    max-width: 50%; }
+.slider-nav {
+  display: flex;
+  margin: 30px 0 0;
+  list-style: none;
+  color: #fff; }
+.slider-nav > li {
+    height: 6px;
+    margin: 0 15px 0 0; }
+.slider-nav button {
+    width: 6px;
+    height: 6px;
+    border: 1px solid transparent;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #fff; }
+.slider-nav button.on {
+      transform: scale(2);
+      border-color: #fff0a1;
+      background: transparent;
+      pointer-events: none; }
+.slider-nav button:hover, .slider-nav button:focus {
+      transform: scale(1.5);
+      background: #fff0a1; }
+.slide {
+  padding: 0 0 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-size: cover;
   background-position: 50% 50%; }
 .slide-content {
@@ -1128,6 +1170,9 @@ textarea {
   align-items: flex-end;
   justify-content: flex-end;
   line-height: 1.2; }
+.slide-content svg {
+    min-width: 100px;
+    min-height: 30px; }
 .slide-content path,
   .slide-content polygon,
   .slide-content rect,
@@ -1152,8 +1197,7 @@ textarea {
 .main-title-home {
   font-size: 3.8rem;
   line-height: 1.2;
-  color: #fff;
-  transform: translate3d(0, -220px, 0); }
+  color: #fff; }
 .main-title-home > strong {
     font-size: 5.3rem; }
 .philo {
@@ -1212,4 +1256,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?eb6bd1a50659b917549fa991cd15e358*/
+/*# sourceMappingURL=main.css.map?7420c36e12c31df8f47147123e4bab93*/

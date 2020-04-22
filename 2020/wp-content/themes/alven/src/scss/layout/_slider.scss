@@ -1,8 +1,62 @@
-.slide {
+.slider {
     height: 70vh;
     max-height: 540px;
     min-height: 300px;
+    position: relative;
+    margin: 0 0 85px;
+}
+
+.slider-title {
+    display: flex;
     padding: 0 0 50px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    align-items: flex-end;
+    > div {
+        max-width: 50%;
+    }
+}
+
+.slider-nav {
+    display: flex;
+    margin: 30px 0 0;
+    list-style: none;
+    color: #fff;
+    > li {
+        height: 6px;
+        margin: 0 15px 0 0;
+    }
+    button {
+        width: 6px;
+        height: 6px;
+        border: 1px solid transparent;
+        overflow: hidden;
+        border-radius: 50%;
+        background: #fff;
+        &.on {
+            transform: scale(2);
+            border-color: $tertiary;
+            background: transparent;
+            pointer-events: none;
+        }
+        &:hover,
+        &:focus {
+            transform: scale(1.5);
+            background: $tertiary;
+        }
+    }
+}
+
+.slide {
+    padding: 0 0 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-size: cover;
     background-position: 50% 50%;
 }
@@ -13,6 +67,10 @@
     align-items: flex-end;
     justify-content: flex-end;
     line-height: 1.2;
+    svg {
+        min-width: 100px;
+        min-height: 30px;
+    }
     path,
     polygon,
     rect,

@@ -21,6 +21,7 @@ get_header(); ?>
                     )
                 );
                 foreach( $startups as $startup ) :
+                    $baseline = get_field('baseline', $startup->ID);
             ?>
                 <div class="slide" style="background-image:url(<?php the_field('img', $startup->ID); ?>)">
                     <div class='slide-content container'>
@@ -28,18 +29,32 @@ get_header(); ?>
                             <div class='img'>
                                 <?php echo alven_get_svg(get_post_thumbnail_id($startup->ID)); ?>
                             </div>
-                            <p class='baseline'>
-                                <?php the_field('baseline', $startup->ID); ?>
-                            </p>
+                            <?php if( $baseline ) : ?>
+                                <p class='baseline'>
+                                    <?php echo $baseline; ?>
+                                </p>
+                            <?php endif; ?>
                         </a>
                     </div>
                 </div>
             <?php endforeach; ?>
+            <div class="slider-title container">
+                <div>
+                    <h1 class='main-title-home'><?php the_field('title'); ?></h1>
+                    <ul class='slider-nav'>
+                        <?php $i = 0; foreach( $startups as $startup ) : ?>
+                            <li>
+                                <button <?php if( $i == 0 ) echo 'class="on"'; ?>>
+                                    <?php echo $startup->post_title; ?>
+                                </button>
+                            </li>
+                        <?php $i++; endforeach; ?>
+                    </ul>
+                </div>
+            </div>
         </section>
         
         <section class="container">
-            <h1 class='main-title-home'><?php the_field('title'); ?></h1>
-
             <h2 class='title-home'><?php the_field('title', get_option('page_for_posts' )); ?></h2>
 
             <?php
