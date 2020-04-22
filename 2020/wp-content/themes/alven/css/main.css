@@ -808,6 +808,8 @@ textarea {
   margin: 65px 0 0; }
 .blog .spotlight-post {
     margin-bottom: 60px; }
+.spotlight-post .img {
+    margin: 0 0 20px; }
 .home-posts {
   display: flex;
   justify-content: space-between;
@@ -904,7 +906,8 @@ textarea {
       padding: 0 0 0 8.33333%; }
     .spotlight-post .img {
       display: flex;
-      justify-content: flex-end; }
+      justify-content: flex-end;
+      margin: 0; }
     .spotlight-post img {
       max-width: 50vw; } }
 .contact-wrapper {
@@ -1256,4 +1259,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?7420c36e12c31df8f47147123e4bab93*/
+/*# sourceMappingURL=main.css.map?80fdae50b320590d9e690784e170d4f4*/
