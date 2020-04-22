@@ -33,9 +33,7 @@
         position: absolute;
         top: 35px;
         left: 0;
-        right: 0;
         bottom: 35px;
-        margin: 0 auto;
         background: $secondary;
     }
 }
@@ -49,9 +47,8 @@
 
 .history-date {
     display: flex;
-    width: $col * 5;
     position: relative;
-    margin: 65px 0 0;
+    margin: 0 0 25px 45px;
     z-index: 1;
     background: #fff;
     box-shadow: 0 1px 36px 0 rgba(#000, 0.06);
@@ -60,7 +57,9 @@
         content: '';
         position: absolute;
         top: 0;
-        margin: auto;
+        bottom: 0;
+        left: -70px;
+        margin: auto 0;
         border-radius: 50%;
     }
     &:before {
@@ -74,89 +73,6 @@
         margin: auto 14px;
         border: solid 5px #81ccc8;
         background: $secondary;
-    }
-    &:nth-of-type(even) {
-        float: left;
-        &:before,
-        &:after {
-            bottom: -20%;
-            right: -25%;
-        }
-        &.has-icon {
-            .txt {
-                padding-left: 0;
-            }
-        }
-        .txt {
-            &:after {
-                right: -12px;
-                bottom: -20%;
-                border-width: 8px 0 8px 12px;
-                border-left-color: #fff;
-            }
-        }
-    }
-    &:nth-of-type(odd) {
-        float: right;
-        &:before,
-        &:after {
-            bottom: 45%;
-            left: -25%;
-        }
-        &.has-icon {
-            .txt {
-                padding-right: 0;
-            }
-            .img {
-                order: 2;
-            }
-        }
-        .txt {
-            &:after {
-                left: -12px;
-                bottom: 45%;
-                border-width: 8px 12px 8px 0;
-                border-right-color: #fff;
-            }
-        }
-    }
-    &:first-of-type {
-        margin: 0;
-        &::before,
-        &::after {
-            top: 35px;
-            bottom: auto;
-        }
-        &:before {
-            margin: 0;
-        }
-        &:after {
-            margin: 14px;
-        }
-        .txt {
-            &:after {
-                top: -15px;
-            }
-        }
-    }
-    &:last-of-type {
-        &::before,
-        &::after {
-            top: auto;
-            bottom: 35px;
-        }
-        &:before {
-            margin: 0;
-        }
-        &:after {
-            margin: 14px;
-        }
-        .txt {
-            &:after {
-                top: auto;
-                bottom: 51px;
-            }
-        }
     }
     &.green {
         background: #e3f2e6;
@@ -210,13 +126,7 @@
         }
     }
     .img {
-        display: flex;
-        width: 40%;
-        flex-shrink: 0;
-        justify-content: center;
-        align-items: center;
-        background-size: cover;
-        background-position: 50% 50%;
+        display: none;
     }
     .txt {
         padding: 40px 50px;
@@ -241,5 +151,121 @@
     }
     p {
         margin-bottom: 0;
+    }
+}
+
+@media (min-width: $phone) {
+    .history-date {
+        .img {
+            display: flex;
+            width: 40%;
+            flex-shrink: 0;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .history {
+        &:after {
+            right: 0;
+            margin: 0 auto;
+        }
+    }
+
+    .history-date {
+        width: $col * 5;
+        margin: 65px 0 0;
+        &::before,
+        &::after {
+            bottom: auto;
+            left: auto;
+        }
+        &:nth-of-type(even) {
+            float: left;
+            &:before,
+            &:after {
+                bottom: -20%;
+                right: -25%;
+            }
+            &.has-icon {
+                .txt {
+                    padding-left: 0;
+                }
+            }
+            .txt {
+                &:after {
+                    right: -12px;
+                    bottom: -20%;
+                    border-width: 8px 0 8px 12px;
+                    border-left-color: #fff;
+                }
+            }
+        }
+        &:nth-of-type(odd) {
+            float: right;
+            &:before,
+            &:after {
+                bottom: 45%;
+                left: -25%;
+            }
+            &.has-icon {
+                .txt {
+                    padding-right: 0;
+                }
+                .img {
+                    order: 2;
+                }
+            }
+            .txt {
+                &:after {
+                    left: -12px;
+                    bottom: 45%;
+                    border-width: 8px 12px 8px 0;
+                    border-right-color: #fff;
+                }
+            }
+        }
+        &:first-of-type {
+            margin: 0;
+            &::before,
+            &::after {
+                top: 35px;
+                bottom: auto;
+            }
+            &:before {
+                margin: 0;
+            }
+            &:after {
+                margin: 14px;
+            }
+            .txt {
+                &:after {
+                    top: -15px;
+                }
+            }
+        }
+        &:last-of-type {
+            &::before,
+            &::after {
+                top: auto;
+                bottom: 35px;
+            }
+            &:before {
+                margin: 0;
+            }
+            &:after {
+                margin: 14px;
+            }
+            .txt {
+                &:after {
+                    top: auto;
+                    bottom: 51px;
+                }
+            }
+        }
     }
 }
