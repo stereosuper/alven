@@ -13413,6 +13413,12 @@ var map = {
 	"./DynamicExample.js": [
 		"./wp-content/themes/alven/src/js/components/DynamicExample.js",
 		"DynamicExample"
+	],
+	"./header": [
+		"./wp-content/themes/alven/src/js/components/header.js"
+	],
+	"./header.js": [
+		"./wp-content/themes/alven/src/js/components/header.js"
 	]
 };
 function webpackAsyncContext(req) {
@@ -13425,7 +13431,7 @@ function webpackAsyncContext(req) {
 	}
 
 	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[1]).then(function() {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
 		return __webpack_require__(id);
 	});
 }
@@ -13434,6 +13440,44 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 };
 webpackAsyncContext.id = "./wp-content/themes/alven/src/js/components lazy recursive ^\\.\\/.*$";
 module.exports = webpackAsyncContext;
+
+/***/ }),
+
+/***/ "./wp-content/themes/alven/src/js/components/header.js":
+/*!*************************************************************!*\
+  !*** ./wp-content/themes/alven/src/js/components/header.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const header = () => {
+    const burger = document.getElementById('burger');
+    const close = document.getElementById('close');
+    const nav = document.getElementById('nav');
+
+    if (!burger || !nav || !close) return;
+
+    burger.addEventListener(
+        'click',
+        () => {
+            nav.classList.add('on');
+        },
+        false
+    );
+
+    close.addEventListener(
+        'click',
+        () => {
+            nav.classList.remove('on');
+        },
+        false
+    );
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (header);
+
 
 /***/ }),
 
@@ -13451,6 +13495,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/polyfill */ "./node_modules/@babel/polyfill/lib/index.js");
 /* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_polyfill__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @stereorepo/sac */ "./node_modules/@stereorepo/sac/src/index.js");
+/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/header */ "./wp-content/themes/alven/src/js/components/header.js");
 // ⚠️ Do not remove the line below or your scss won't work anymore
 
 
@@ -13460,6 +13505,7 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 // To learn how to use Sac
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
+
 
 
 // ⚠️ DO NOT REMOVE ⚠️
@@ -13489,6 +13535,7 @@ const preloadCallback = () => {
 
 const loadCallback = () => {
     // All actions needed after page load (like click events for example)
+    Object(_components_header__WEBPACK_IMPORTED_MODULE_3__["default"])();
 };
 
 const animationsCallback = () => {
@@ -13522,4 +13569,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?5172387a5113b1d8cadaee03134aa2fc
+//# sourceMappingURL=main.js.map?9203e9f90afdd84139f8b3a05d451dbb

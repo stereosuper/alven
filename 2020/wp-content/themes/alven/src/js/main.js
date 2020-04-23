@@ -8,6 +8,7 @@ import '@babel/polyfill';
 // To learn how to use Sac
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
 import { bodyRouter, useSacVanilla, useSuperLoad } from '@stereorepo/sac';
+import header from './components/header';
 
 // ⚠️ DO NOT REMOVE ⚠️
 // This function allow you to use dynamic imports with webpack
@@ -36,6 +37,7 @@ const preloadCallback = () => {
 
 const loadCallback = () => {
     // All actions needed after page load (like click events for example)
+    header();
 };
 
 const animationsCallback = () => {
