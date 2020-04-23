@@ -1272,7 +1272,7 @@ textarea {
   margin: 0 0 85px; }
 .slider-title {
   display: flex;
-  padding: 0 0 50px;
+  padding-bottom: 50px;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -1409,4 +1409,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?d260de10dd45305d67fe63ca92e116af*/
+/*# sourceMappingURL=main.css.map?aaca9351fb023a2fda06d105e11eb02e*/
