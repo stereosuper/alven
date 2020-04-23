@@ -52,9 +52,13 @@
 					</nav>
 
 					<form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search form-search-header'>
-						<input type='search' name='s' value='' id='search-header'>
-						<label for='search-header'>searching</label>
-						<button type='submit' class='btn-search'><span>Explore Alven</span></button>
+						<div class='field-search'>
+							<input type='search' name='s' value='' id='search-header'>
+							<label for='search-header'>searching</label>
+						</div>
+						<button type='submit' class='btn-search'>
+							<svg class="icon"><use xlink:href="#icon-glass"></use></svg>
+						</button>
 					</form>
 				</div>
 			</header>

@@ -3,7 +3,6 @@
 .header {
     padding: 25px 0;
     font-size: 1.3rem;
-    text-transform: uppercase;
     background: $primary;
     color: #fff;
     a {
@@ -30,6 +29,7 @@
 
 .menu-main {
     margin: 0;
+    text-transform: uppercase;
     li {
         margin: 0 6px;
     }

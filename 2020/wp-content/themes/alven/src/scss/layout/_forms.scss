@@ -81,3 +81,43 @@ textarea {
         color: $secondary;
     }
 }
+
+.form-search {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    input {
+        padding: 0;
+        border-bottom: 1px solid #fff;
+        border-radius: 0;
+        background: none;
+    }
+}
+
+.field-search {
+    position: relative;
+    label {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.btn-search {
+    padding: 0 0 0 12px;
+    position: relative;
+    margin: 0 0 0 12px;
+    &:after {
+        content: '';
+        width: 1px;
+        position: absolute;
+        top: 4px;
+        left: 0;
+        bottom: 0;
+        background: #fff;
+    }
+    .icon {
+        width: 15px;
+        height: 15px;
+    }
+}
