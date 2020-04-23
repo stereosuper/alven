@@ -515,8 +515,6 @@ html.no-scroll {
   position: fixed;
   left: 0;
   right: 0; }
-a:focus {
-  outline: thin dashed #000; }
 /* Buttons */
 .btn,
 .wp-block-button__link {
@@ -1411,4 +1409,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?5cbcf2a646c369928c91e4ce08d01c02*/
+/*# sourceMappingURL=main.css.map?d260de10dd45305d67fe63ca92e116af*/

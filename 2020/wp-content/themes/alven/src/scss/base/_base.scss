@@ -185,7 +185,6 @@ a {
     text-decoration: none;
     transition: $transition;
     color: $secondary;
-    @extend %outline;
     &:hover,
     &:focus {
         color: $quaternary;
