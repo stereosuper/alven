@@ -4,6 +4,10 @@
     overflow-x: hidden;
 }
 
+.main {
+    padding: 95px 0 0;
+}
+
 .container {
     max-width: $desktop;
     padding: 0 $gutter * 2;

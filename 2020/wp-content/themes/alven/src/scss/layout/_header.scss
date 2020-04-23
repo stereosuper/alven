@@ -1,7 +1,11 @@
 /* Header */
 
 .header {
+    width: 100%;
     padding: 25px 0;
+    position: absolute;
+    top: 0;
+    z-index: 100;
     font-size: 1.3rem;
     background: $primary;
     color: #fff;
@@ -13,8 +17,7 @@
     }
 }
 
-.header-content,
-.menu-main {
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,27 +25,58 @@
 
 .logo {
     width: 65px;
+    position: relative;
+    z-index: 10;
     svg {
         fill: #fff;
     }
 }
 
+.nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: $primary;
+    transform: translate3d(0, -100%, 0);
+    &.on {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 .menu-main {
+    padding: 110px 0 30px;
     margin: 0;
     text-transform: uppercase;
+    text-align: center;
+}
+
+.sub-menu {
+    padding: 0;
+    margin: 5px 0 0;
     li {
-        margin: 0 6px;
+        margin: 0 0 5px;
     }
     a {
-        padding: 0 26px;
-    }
-    .sub-menu {
-        display: none;
+        font-weight: 400;
     }
 }
 
 .burger {
-    display: none;
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 38px;
+    right: $gutter * 2;
+    .icon {
+        width: 18px;
+        height: 18px;
+    }
 }
 
 .title-wrapper {
@@ -62,5 +96,38 @@
 @media (min-width: $tablet) {
     .title-wrapper {
         margin: 0 0 110px;
+    }
+}
+
+@media (min-width: $desktop) {
+    .header {
+        position: fixed;
+    }
+
+    .nav {
+        position: static;
+        transform: none;
+    }
+
+    .menu-main {
+        display: flex;
+        padding: 0;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        li {
+            margin: 0 6px;
+        }
+        a {
+            padding: 0 26px;
+        }
+        .sub-menu {
+            display: none;
+        }
+    }
+
+    .burger,
+    .close {
+        display: none;
     }
 }

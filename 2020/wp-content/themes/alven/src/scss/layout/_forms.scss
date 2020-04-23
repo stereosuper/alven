@@ -89,19 +89,7 @@ textarea {
 }
 
 .form-search-header {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    input {
-        padding: 0;
-        border-bottom: 1px solid #fff;
-        border-radius: 0;
-        background: none;
-    }
-    label {
-        top: 0;
-        left: 0;
-    }
+    display: none;
 }
 
 .form-search {
@@ -153,5 +141,23 @@ textarea {
     .icon {
         width: 15px;
         height: 15px;
+    }
+}
+
+@media (min-width: $desktop) {
+    .form-search-header {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        input {
+            padding: 0;
+            border-bottom: 1px solid #fff;
+            border-radius: 0;
+            background: none;
+        }
+        label {
+            top: 0;
+            left: 0;
+        }
     }
 }

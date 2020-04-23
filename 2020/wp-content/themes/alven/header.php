@@ -45,10 +45,15 @@
 						</svg>
 					</a>
 
-					<button class='burger' id='burger'><span>Menu</span></button>
+					<button class='burger' id='burger' role="button">
+						<svg class="icon"><use xlink:href="#icon-burger"></use></svg>
+					</button>
 
-					<nav role='navigation'>
+					<nav role='navigation' class='nav'>
 						<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => 'menu-main')); ?>
+						<button class='close' id='close' role="button">
+							<svg class="icon"><use xlink:href="#icon-cross"></use></svg>
+						</button>
 					</nav>
 
 					<form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search-header'>
