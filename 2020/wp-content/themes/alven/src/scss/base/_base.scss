@@ -223,6 +223,10 @@ a {
     transition: none !important;
 }
 
+.icon {
+    fill: currentColor;
+}
+
 .secondary {
     color: $secondary;
 }

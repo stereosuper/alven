@@ -38,9 +38,14 @@
                         <span class='title-small'>Share</span>
                         <ul class='share'>
                             <li>
-                                <a href='http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>' class='icon-linkedin' rel='nofollow' target='_blank'>Linkedin</a>
-                            </li><li>
-                                <a href='http://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>&via=alvencap' class='icon-twitter' rel='nofollow' target='_blank'>Twitter</a>
+                                <a href='http://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>&via=alvencap' class='icon-twitter' rel='nofollow' target='_blank'>
+                                    <svg class="icon"><use xlink:href="#icon-twitter"></use></svg>    
+                                </a>
+                            </li>
+                            <li>
+                                <a href='http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>' class='icon-linkedin' rel='nofollow' target='_blank'>
+                                    <svg class="icon"><use xlink:href="#icon-linkedin"></use></svg>
+                                </a>
                             </li>
                         </ul>
                     </div>

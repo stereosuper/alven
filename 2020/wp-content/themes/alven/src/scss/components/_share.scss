@@ -1,0 +1,16 @@
+.share {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+    > li {
+        margin: 0 $gutter 0 0;
+    }
+    a {
+        color: inherit;
+    }
+    .icon {
+        width: 16px;
+        height: 15px;
+    }
+}

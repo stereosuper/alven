@@ -391,6 +391,8 @@ a:active {
   text-align: right; }
 .no-transition {
   transition: none !important; }
+.icon {
+  fill: currentColor; }
 .secondary {
   color: #3aafa9; }
 .wp-block-buttons {
@@ -536,6 +538,18 @@ a:focus {
 .link-roboto {
   font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
   text-decoration: underline; }
+.share {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  list-style: none; }
+.share > li {
+    margin: 0 16px 0 0; }
+.share a {
+    color: inherit; }
+.share .icon {
+    width: 16px;
+    height: 15px; }
 /* Forms */
 form {
   font-size: 1.6rem;
@@ -1286,4 +1300,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?9f1b7677ff2f3fa075bb199618c0f099*/
+/*# sourceMappingURL=main.css.map?1d04dec5a5683a6aa3f84b456186e759*/
