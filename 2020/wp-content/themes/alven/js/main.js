@@ -13419,6 +13419,12 @@ var map = {
 	],
 	"./header.js": [
 		"./wp-content/themes/alven/src/js/components/header.js"
+	],
+	"./slider": [
+		"./wp-content/themes/alven/src/js/components/slider.js"
+	],
+	"./slider.js": [
+		"./wp-content/themes/alven/src/js/components/slider.js"
 	]
 };
 function webpackAsyncContext(req) {
@@ -13481,6 +13487,49 @@ const header = () => {
 
 /***/ }),
 
+/***/ "./wp-content/themes/alven/src/js/components/slider.js":
+/*!*************************************************************!*\
+  !*** ./wp-content/themes/alven/src/js/components/slider.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const slider = () => {
+    const slider = document.getElementById('slider');
+    const nav = document.getElementById('slider-nav');
+
+    if (!slider || !nav) return;
+
+    const slides = slider.querySelectorAll('.slide');
+    const btns = nav.querySelectorAll('button');
+
+    btns.forEach(btn => {
+        btn.addEventListener(
+            'click',
+            () => {
+                slides.forEach(slide => {
+                    slide.classList.remove('on');
+                });
+                slider.querySelector('[data-startup="' + btn.dataset.slide + '"').classList.add('on');
+
+                btns.forEach(elt => {
+                    elt.classList.remove('on');
+                });
+                btn.classList.add('on');
+                btn.blur();
+            },
+            false
+        );
+    });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (slider);
+
+
+/***/ }),
+
 /***/ "./wp-content/themes/alven/src/js/main.js":
 /*!************************************************!*\
   !*** ./wp-content/themes/alven/src/js/main.js ***!
@@ -13496,6 +13545,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_polyfill__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @stereorepo/sac */ "./node_modules/@stereorepo/sac/src/index.js");
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/header */ "./wp-content/themes/alven/src/js/components/header.js");
+/* harmony import */ var _components_slider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/slider */ "./wp-content/themes/alven/src/js/components/slider.js");
 // ⚠️ Do not remove the line below or your scss won't work anymore
 
 
@@ -13505,6 +13555,7 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 // To learn how to use Sac
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
+
 
 
 
@@ -13540,6 +13591,7 @@ const loadCallback = () => {
 
 const animationsCallback = () => {
     // Animations shouldn't be render blocking... so they'll be called last
+    Object(_components_slider__WEBPACK_IMPORTED_MODULE_4__["default"])();
 };
 
 // Init sac superComponents
@@ -13569,4 +13621,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?9203e9f90afdd84139f8b3a05d451dbb
+//# sourceMappingURL=main.js.map?324138e72866ec31526a3b561a78edbb

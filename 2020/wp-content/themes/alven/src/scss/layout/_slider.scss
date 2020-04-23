@@ -59,6 +59,11 @@
     bottom: 0;
     background-size: cover;
     background-position: 50% 50%;
+    opacity: 0;
+    transition: $transition;
+    &.on {
+        opacity: 1;
+    }
 }
 
 .slide-content {

@@ -9,6 +9,7 @@ import '@babel/polyfill';
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
 import { bodyRouter, useSacVanilla, useSuperLoad } from '@stereorepo/sac';
 import header from './components/header';
+import slider from './components/slider';
 
 // ⚠️ DO NOT REMOVE ⚠️
 // This function allow you to use dynamic imports with webpack
@@ -42,6 +43,7 @@ const loadCallback = () => {
 
 const animationsCallback = () => {
     // Animations shouldn't be render blocking... so they'll be called last
+    slider();
 };
 
 // Init sac superComponents

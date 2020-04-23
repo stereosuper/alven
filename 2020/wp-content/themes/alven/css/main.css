@@ -1314,7 +1314,11 @@ textarea {
   right: 0;
   bottom: 0;
   background-size: cover;
-  background-position: 50% 50%; }
+  background-position: 50% 50%;
+  opacity: 0;
+  transition: 0.3s ease-in-out; }
+.slide.on {
+    opacity: 1; }
 .slide-content {
   display: flex;
   height: 100%;
@@ -1407,4 +1411,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?504a8da2b8d2435099c46daa02a60908*/
+/*# sourceMappingURL=main.css.map?5cbcf2a646c369928c91e4ce08d01c02*/

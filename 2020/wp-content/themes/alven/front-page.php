@@ -9,7 +9,7 @@ get_header(); ?>
 
     <?php if ( have_posts() ) : the_post(); ?>
 
-        <section class="slider">
+        <section class="slider" id="slider">
             <?php
                 $startups = get_posts(
                     array(
@@ -20,10 +20,11 @@ get_header(); ?>
                         'order' => 'rand'
                     )
                 );
+                $i = 0;
                 foreach( $startups as $startup ) :
                     $baseline = get_field('baseline', $startup->ID);
             ?>
-                <div class="slide" style="background-image:url(<?php the_field('img', $startup->ID); ?>)">
+                <div class="slide <?php if($i == 0) echo 'on'; ?>" style="background-image:url(<?php the_field('img', $startup->ID); ?>)" data-startup="<?php echo $startup->ID; ?>">
                     <div class='slide-content container'>
                         <a href='<?php echo get_the_permalink($startup->ID); ?>'>
                             <div class='img'>
@@ -37,14 +38,14 @@ get_header(); ?>
                         </a>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php $i++; endforeach; ?>
             <div class="slider-title container">
                 <div>
                     <h1 class='main-title-home'><?php the_field('title'); ?></h1>
-                    <ul class='slider-nav'>
+                    <ul class='slider-nav' id='slider-nav'>
                         <?php $i = 0; foreach( $startups as $startup ) : ?>
                             <li>
-                                <button <?php if( $i == 0 ) echo 'class="on"'; ?>>
+                                <button <?php if( $i == 0 ) echo 'class="on"'; ?> data-slide="<?php echo $startup->ID; ?>">
                                     <?php echo $startup->post_title; ?>
                                 </button>
                             </li>
