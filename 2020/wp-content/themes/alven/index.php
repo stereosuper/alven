@@ -8,11 +8,17 @@
 
 <div class='container'>
 
-	<form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search'>
-        <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
-        <label for='search'>type some keywords</label>
-        <button type='submit' class='btn-search btn-no-text'><span class='visually-hidden'>Explore</span></button>
-    </form>
+    <div class="form-search-wrapper">
+        <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search'>
+            <div class='field-search'>
+                <input type='search' name='s' value='<?php the_search_query(); ?>' id='search'>
+                <label for='search'>search</label>
+            </div>
+            <button type='submit' class='btn-search'>
+                <svg class="icon"><use xlink:href="#icon-glass-bold"></use></svg>
+            </button>
+        </form>
+    </div>
 
 	<?php if ( have_posts() ) : ?>
 

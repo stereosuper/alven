@@ -51,7 +51,7 @@
 						<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => 'menu-main')); ?>
 					</nav>
 
-					<form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search form-search-header'>
+					<form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search-header'>
 						<div class='field-search'>
 							<input type='search' name='s' value='' id='search-header'>
 							<label for='search-header'>searching</label>

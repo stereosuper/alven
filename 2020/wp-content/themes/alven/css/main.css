@@ -392,7 +392,8 @@ a:active {
 .no-transition {
   transition: none !important; }
 .icon {
-  fill: currentColor; }
+  fill: currentColor;
+  stroke: currentColor; }
 .secondary {
   color: #3aafa9; }
 .wp-block-buttons {
@@ -604,21 +605,46 @@ textarea {
     left: 15px;
     pointer-events: none;
     color: #3aafa9; }
-.form-search {
+.form-search-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 60px; }
+.form-search-header {
   display: flex;
   align-items: center;
   text-align: left; }
-.form-search input {
+.form-search-header input {
     padding: 0;
     border-bottom: 1px solid #fff;
     border-radius: 0;
     background: none; }
+.form-search-header label {
+    top: 0;
+    left: 0; }
+.form-search {
+  max-width: 285px;
+  position: relative;
+  text-align: left; }
+.form-search input {
+    padding: 10px 40px 10px 20px;
+    border: 2px solid #003240;
+    border-radius: 0;
+    background: none; }
+.form-search label {
+    top: 12px;
+    left: 22px;
+    font-weight: 900; }
+.form-search .btn-search {
+    position: absolute;
+    top: 10px;
+    right: 20px; }
+.form-search .btn-search .icon {
+      width: 12px;
+      height: 12px; }
 .field-search {
   position: relative; }
 .field-search label {
-    position: absolute;
-    top: 0;
-    left: 0; }
+    position: absolute; }
 .btn-search {
   padding: 0 0 0 12px;
   position: relative;
@@ -1330,4 +1356,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?05c042df2cda6436f568180d1f6150af*/
+/*# sourceMappingURL=main.css.map?8b7fb99ef0a7a45cb99c356656264ca1*/

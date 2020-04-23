@@ -82,7 +82,13 @@ textarea {
     }
 }
 
-.form-search {
+.form-search-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 60px;
+}
+
+.form-search-header {
     display: flex;
     align-items: center;
     text-align: left;
@@ -92,14 +98,42 @@ textarea {
         border-radius: 0;
         background: none;
     }
+    label {
+        top: 0;
+        left: 0;
+    }
+}
+
+.form-search {
+    max-width: 285px;
+    position: relative;
+    text-align: left;
+    input {
+        padding: 10px 40px 10px 20px;
+        border: 2px solid $primary;
+        border-radius: 0;
+        background: none;
+    }
+    label {
+        top: 12px;
+        left: 22px;
+        font-weight: 900;
+    }
+    .btn-search {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        .icon {
+            width: 12px;
+            height: 12px;
+        }
+    }
 }
 
 .field-search {
     position: relative;
     label {
         position: absolute;
-        top: 0;
-        left: 0;
     }
 }
 
