@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./wp-content/themes/alven/src/js/components/startup.js"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAA;;AAEA;;AAEe,sEAAO,EAAC","file":"startup.js","sourcesContent":["const startup = () => {\n\n};\n\nexport default startup;\n"],"sourceRoot":""}

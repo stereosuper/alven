@@ -438,6 +438,92 @@ add_filter( 'posts_groupby', 'alven_search_groupby' );
 
 
 /*-----------------------------------------------------------------------------------*/
+/* AJAX
+/*-----------------------------------------------------------------------------------*/
+
+/**
+ * Retourne la première page utilisant le template donné
+ *
+ * @param type $template_name
+ * @return type
+ */
+function sushi_get_page_by_template($template_name) {
+    $posts_args = array(
+        'numberposts'     => 1,
+        'meta_key'        => '_wp_page_template',
+        'meta_value'      => $template_name,
+        'post_type'       => 'page',
+    );
+    $posts = get_posts($posts_args);
+    if (is_array($posts) && isset($posts[0])) {
+        return $posts[0];
+    }
+}
+
+
+/**
+ * Retourne le permalien de la première page utilisant le template donné
+ *
+ * @param type $template_name
+ * @return type
+ */
+function sushi_get_page_url_by_template($template_name) {
+    $page = sushi_get_page_by_template($template_name);
+    return get_permalink($page->ID);
+}
+
+function alven_get_startup_permalink($post) {
+    $name = basename(get_permalink($post));
+
+    $portfolio_url = sushi_get_page_url_by_template('portfolio.php');
+    if ($portfolio_url) {
+        $protocol = (stripos($_SERVER['SERVER_PROTOCOL'], 'https') === true) ? 'https://' : 'http://';
+        $url = $portfolio_url.'#'.$name;
+    }
+
+    return $url;
+}
+
+// Src : http://stackoverflow.com/questions/6768793/get-the-full-url-in-php
+function url_origin( $s, $use_forwarded_host = false ){
+    $ssl      = ( ! empty( $s['HTTPS'] ) && $s['HTTPS'] == 'on' );
+    $sp       = strtolower( $s['SERVER_PROTOCOL'] );
+    $protocol = substr( $sp, 0, strpos( $sp, '/' ) ) . ( ( $ssl ) ? 's' : '' );
+    $port     = $s['SERVER_PORT'];
+    $port     = ( ( ! $ssl && $port=='80' ) || ( $ssl && $port=='443' ) ) ? '' : ':'.$port;
+    $host     = ( $use_forwarded_host && isset( $s['HTTP_X_FORWARDED_HOST'] ) ) ? $s['HTTP_X_FORWARDED_HOST'] : ( isset( $s['HTTP_HOST'] ) ? $s['HTTP_HOST'] : null );
+    $host     = isset( $host ) ? $host : $s['SERVER_NAME'] . $port;
+    return $protocol . '://' . $host;
+}
+
+function full_url( $s, $use_forwarded_host = false ){
+    return url_origin( $s, $use_forwarded_host ) . $s['REQUEST_URI'];
+}
+
+/*
+ * Traite la requête ajax
+ */
+function alven_portfolio_ajax(){
+    if(!$_GET['name']) wp_die();
+
+    $args = array(
+        'name' => $_GET['name'],
+        'post_type' => 'startup',
+    );
+
+    query_posts($args);
+
+    the_post();
+
+    get_template_part('ajax/single', 'startup');
+
+    wp_die();
+}
+add_action('wp_ajax_nopriv_alven_portfolio_ajax', 'alven_portfolio_ajax');
+add_action('wp_ajax_alven_portfolio_ajax', 'alven_portfolio_ajax');
+
+
+/*-----------------------------------------------------------------------------------*/
 /* Enqueue Styles and Scripts
 /*-----------------------------------------------------------------------------------*/
 function alven_scripts(){
@@ -447,6 +533,9 @@ function alven_scripts(){
 	// footer
 	wp_deregister_script('jquery');
 	wp_enqueue_script( 'alven-scripts', get_template_directory_uri() . '/js/main.js', array(), ALVEN_VERSION, true );
+    wp_localize_script('alven-scripts', 'alven_ajax', array(
+        'ajax_url' => admin_url('admin-ajax.php')
+    ));
 
     wp_deregister_script( 'wp-embed' );
 }

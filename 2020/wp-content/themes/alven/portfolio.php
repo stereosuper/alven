@@ -15,8 +15,11 @@ get_header(); ?>
             </div>
         </div>
 
-        <section class="container">
+        <section class='portfolio-detail'>
+            <div class='container' id='startup'></div>
+        </section>
 
+        <section class="container">
             <div class='portfolio-wrapper'>
                 <aside class='portfolio-filters'>
                     <div>
@@ -51,6 +54,7 @@ get_header(); ?>
 
                 <div class='portfolio-content'>
                     <?php
+                        $portfolioUrl = get_the_permalink();
                         $startups = new WP_Query(array('post_type' => 'startup', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC'));
                         if($startups->have_posts()):
                     ?>
@@ -68,7 +72,7 @@ get_header(); ?>
                                 ?>
                                 <?php if( get_field('investment') !== 'past' ){ ?>
                                     <li>
-                                        <a href='<?php the_permalink(); ?>' class='ajax-load off' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' style='background-color: <?php echo $color; ?>; border-color: <?php echo $color; ?>'>
+                                        <a href='<?php echo '#' . basename(get_permalink()); ?>' class='ajax-load off' data-name='<?php echo basename(get_permalink()); ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' style='background-color: <?php echo $color; ?>; border-color: <?php echo $color; ?>'>
                                             <?php if( has_post_thumbnail() ){
                                                 echo alven_get_svg(get_post_thumbnail_id());
                                             }else{ ?>
@@ -78,7 +82,7 @@ get_header(); ?>
                                     </li>
                                 <?php } else{ ?>
                                     <li class='transfered'>
-                                        <a href='<?php the_permalink(); ?>' class='ajax-load off' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>'>
+                                        <a href='<?php echo '#' . basename(get_permalink()); ?>' class='ajax-load off' data-name='<?php echo basename(get_permalink()); ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>'>
                                             <span class='content-transfered <?php if(!get_field('acquiredBy')){ echo 'no-by'; } ?>'>
                                                 <span <?php if(!has_post_thumbnail()){ echo "class='txt-container'"; } ?>>
                                                     <?php if(has_post_thumbnail()){

@@ -13425,6 +13425,12 @@ var map = {
 	],
 	"./slider.js": [
 		"./wp-content/themes/alven/src/js/components/slider.js"
+	],
+	"./startup": [
+		"./wp-content/themes/alven/src/js/components/startup.js"
+	],
+	"./startup.js": [
+		"./wp-content/themes/alven/src/js/components/startup.js"
 	]
 };
 function webpackAsyncContext(req) {
@@ -13530,6 +13536,73 @@ const slider = () => {
 
 /***/ }),
 
+/***/ "./wp-content/themes/alven/src/js/components/startup.js":
+/*!**************************************************************!*\
+  !*** ./wp-content/themes/alven/src/js/components/startup.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const startup = () => {
+    const portfolio = document.getElementById('portfolio');
+
+    if (!portfolio) return;
+
+    const wrapper = document.getElementById('startup');
+    const links = portfolio.querySelectorAll('.ajax-load');
+
+    const openStartup = (html, href, name) => {
+        wrapper.innerHTML = html;
+
+        wrapper.querySelector('#close').addEventListener(
+            'click',
+            () => {
+                wrapper.innerHTML = '';
+            },
+            false
+        );
+
+        history.pushState(
+            {
+                id: name
+            },
+            '',
+            href
+        );
+    };
+
+    const loadUrl = (href, name) => {
+        fetch(alven_ajax.ajax_url + '?action=alven_portfolio_ajax&name=' + name, {
+            method: 'POST'
+        })
+            .then(response => response.text())
+            .then(html => openStartup(html, href, name))
+            .catch(ex => console.error('Error', ex.message));
+    };
+
+    links.forEach(link => {
+        link.addEventListener(
+            'click',
+            e => {
+                e.preventDefault();
+                loadUrl(link.href, link.dataset.name);
+            },
+            false
+        );
+    });
+
+    if (window.location.pathname === '/portfolio/' && window.location.hash) {
+        loadUrl(window.location.href, window.location.hash.replace('#', ''));
+    }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (startup);
+
+
+/***/ }),
+
 /***/ "./wp-content/themes/alven/src/js/main.js":
 /*!************************************************!*\
   !*** ./wp-content/themes/alven/src/js/main.js ***!
@@ -13546,6 +13619,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @stereorepo/sac */ "./node_modules/@stereorepo/sac/src/index.js");
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/header */ "./wp-content/themes/alven/src/js/components/header.js");
 /* harmony import */ var _components_slider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/slider */ "./wp-content/themes/alven/src/js/components/slider.js");
+/* harmony import */ var _components_startup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/startup */ "./wp-content/themes/alven/src/js/components/startup.js");
 // ⚠️ Do not remove the line below or your scss won't work anymore
 
 
@@ -13555,6 +13629,7 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 // To learn how to use Sac
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
+
 
 
 
@@ -13592,6 +13667,7 @@ const loadCallback = () => {
 const animationsCallback = () => {
     // Animations shouldn't be render blocking... so they'll be called last
     Object(_components_slider__WEBPACK_IMPORTED_MODULE_4__["default"])();
+    Object(_components_startup__WEBPACK_IMPORTED_MODULE_5__["default"])();
 };
 
 // Init sac superComponents
@@ -13621,4 +13697,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?324138e72866ec31526a3b561a78edbb
+//# sourceMappingURL=main.js.map?2d946b94cff68c04b43ef556f49c2302
