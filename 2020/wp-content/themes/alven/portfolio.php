@@ -20,20 +20,30 @@ get_header(); ?>
         <section class="container">
             <div class='portfolio-wrapper'>
                 <aside class='portfolio-filters' id='portfolio-filters'>
+                     <form role='search' method='get' action='#' class='form-search' id='form-startup'>
+                        <div class='field-search'>
+                            <input type='search' name='startup' value='' id='search-startup'>
+                            <label for='search'>search</label>
+                        </div>
+                        <button type='submit' class='btn-search'>
+                            <svg class="icon"><use xlink:href="#icon-glass-bold"></use></svg>
+                        </button>
+                    </form>
+
                     <div>
                         <ul>
                             <li>
-                                <button data-filter='investment' data-investment='present'><?php the_field('present', 'options'); ?></button>
+                                <button class='btn-filter' data-filter='investment' data-investment='present'><?php the_field('present', 'options'); ?></button>
                             </li>
                             <li>
-                                <button data-filter='investment' data-investment='past'><?php the_field('past', 'options'); ?></button>
+                                <button class='btn-filter' data-filter='investment' data-investment='past'><?php the_field('past', 'options'); ?></button>
                             </li>
                         </ul>
                         <ul>
                             <?php
                                 $locs = get_terms(array('taxonomy' => 'location'));
                                 foreach($locs as $loc){
-                                    echo '<li><button data-filter="location" data-location="'.$loc->slug.'">'.$loc->name.'</button></li>';
+                                    echo '<li><button class="btn-filter" data-filter="location" data-location="'.$loc->slug.'">'.$loc->name.'</button></li>';
                                 }
                             ?>
                         </ul>
@@ -43,7 +53,7 @@ get_header(); ?>
                             <?php
                                 $fields = get_terms(array('taxonomy' => 'field'));
                                 foreach($fields as $field){
-                                    echo '<li><button data-filter="field" data-field="'.$field->slug.'">'.$field->name.'</button></li>';
+                                    echo '<li><button class="btn-filter" data-filter="field" data-field="'.$field->slug.'">'.$field->name.'</button></li>';
                                 }
                             ?>
                         </ul>
@@ -76,10 +86,11 @@ get_header(); ?>
                                     }
 
                                     $color = get_field('color') ?: '#003240';
+                                    $name = basename(get_permalink());
                                 ?>
                                 <?php if( get_field('investment') !== 'past' ){ ?>
-                                    <li data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-location='<?php echo $locList; ?>'>
-                                        <a href='<?php echo '#' . basename(get_permalink()); ?>' class='ajax-load off' data-name='<?php echo basename(get_permalink()); ?>' style='background-color: <?php echo $color; ?>; border-color: <?php echo $color; ?>'>
+                                    <li data-name='<?php echo $name; ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-location='<?php echo $locList; ?>'>
+                                        <a href='<?php echo '#' . $name; ?>' class='ajax-load' data-name='<?php echo $name; ?>' style='background-color: <?php echo $color; ?>; border-color: <?php echo $color; ?>'>
                                             <?php if( has_post_thumbnail() ){
                                                 echo alven_get_svg(get_post_thumbnail_id());
                                             }else{ ?>
@@ -88,8 +99,8 @@ get_header(); ?>
                                         </a>
                                     </li>
                                 <?php } else{ ?>
-                                    <li class='transfered' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-location='<?php echo $locList; ?>'>
-                                        <a href='<?php echo '#' . basename(get_permalink()); ?>' class='ajax-load off' data-name='<?php echo basename(get_permalink()); ?>'>
+                                    <li class='transfered' data-name='<?php echo $name; ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-location='<?php echo $locList; ?>'>
+                                        <a href='<?php echo '#' . $name; ?>' class='ajax-load' data-name='<?php echo $name; ?>'>
                                             <span class='content-transfered <?php if(!get_field('acquiredBy')){ echo 'no-by'; } ?>'>
                                                 <span <?php if(!has_post_thumbnail()){ echo "class='txt-container'"; } ?>>
                                                     <?php if(has_post_thumbnail()){

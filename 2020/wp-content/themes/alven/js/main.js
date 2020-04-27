@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"portfolio":"portfolio","slider":"slider","startup":"startup"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","slider":"slider","startup":"startup"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -13412,13 +13412,21 @@ var map = {
 	"./header.js": [
 		"./wp-content/themes/alven/src/js/components/header.js"
 	],
-	"./portfolio": [
-		"./wp-content/themes/alven/src/js/components/portfolio.js",
-		"portfolio"
+	"./portfolio-filters": [
+		"./wp-content/themes/alven/src/js/components/portfolio-filters.js",
+		"portfolio-filters"
 	],
-	"./portfolio.js": [
-		"./wp-content/themes/alven/src/js/components/portfolio.js",
-		"portfolio"
+	"./portfolio-filters.js": [
+		"./wp-content/themes/alven/src/js/components/portfolio-filters.js",
+		"portfolio-filters"
+	],
+	"./portfolio-search": [
+		"./wp-content/themes/alven/src/js/components/portfolio-search.js",
+		"portfolio-search"
+	],
+	"./portfolio-search.js": [
+		"./wp-content/themes/alven/src/js/components/portfolio-search.js",
+		"portfolio-search"
 	],
 	"./slider": [
 		"./wp-content/themes/alven/src/js/components/slider.js",
@@ -13536,7 +13544,8 @@ const dynamicLoading = ({ name }) => async () => {
 // Dynamic imports
 // The dynamicLoading function will search for the component DynamicExample in ./js/components folder
 const startup = dynamicLoading({ name: 'startup' });
-const portfolio = dynamicLoading({ name: 'portfolio' });
+const portfolioFilters = dynamicLoading({ name: 'portfolio-filters' });
+const portfolioSearch = dynamicLoading({ name: 'portfolio-search' });
 const slider = dynamicLoading({ name: 'slider' });
 
 // Initialization functions
@@ -13555,7 +13564,11 @@ const preloadCallback = () => {
     });
     Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
         identifier: '.page-template-portfolio',
-        callback: portfolio
+        callback: portfolioSearch
+    });
+    Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
+        identifier: '.page-template-portfolio',
+        callback: portfolioFilters
     });
 };
 
@@ -13595,4 +13608,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?de0c03fe19b1617d8776b9a3a006856c
+//# sourceMappingURL=main.js.map?6e33237555d9ff87779baa57616c066b

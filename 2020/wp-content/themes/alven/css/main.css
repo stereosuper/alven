@@ -859,6 +859,9 @@ textarea {
     margin: 0 8px 15px; }
 .portfolio-filters button:hover, .portfolio-filters button:focus, .portfolio-filters button.on {
     color: #3aafa9; }
+.portfolio-filters .form-search {
+    width: 66%;
+    margin: 10px 0 50px; }
 .portfolio-fields {
   display: flex;
   flex-wrap: nowrap; }
@@ -1464,4 +1467,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?7a55faac19c94624610035ef1637f20d*/
+/*# sourceMappingURL=main.css.map?1b59a9ae73e017fdbae206521c950968*/
