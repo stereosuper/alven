@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","slider":"slider","startup":"startup"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"history":"history","portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","slider":"slider","startup":"startup"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -13412,6 +13412,14 @@ var map = {
 	"./header.js": [
 		"./wp-content/themes/alven/src/js/components/header.js"
 	],
+	"./history": [
+		"./wp-content/themes/alven/src/js/components/history.js",
+		"history"
+	],
+	"./history.js": [
+		"./wp-content/themes/alven/src/js/components/history.js",
+		"history"
+	],
 	"./portfolio-filters": [
 		"./wp-content/themes/alven/src/js/components/portfolio-filters.js",
 		"portfolio-filters"
@@ -13543,10 +13551,11 @@ const dynamicLoading = ({ name }) => async () => {
 
 // Dynamic imports
 // The dynamicLoading function will search for the component DynamicExample in ./js/components folder
+const slider = dynamicLoading({ name: 'slider' });
 const startup = dynamicLoading({ name: 'startup' });
 const portfolioFilters = dynamicLoading({ name: 'portfolio-filters' });
 const portfolioSearch = dynamicLoading({ name: 'portfolio-search' });
-const slider = dynamicLoading({ name: 'slider' });
+const history = dynamicLoading({ name: 'history' });
 
 // Initialization functions
 const preloadCallback = () => {
@@ -13569,6 +13578,10 @@ const preloadCallback = () => {
     Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
         identifier: '.page-template-portfolio',
         callback: portfolioFilters
+    });
+    Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
+        identifier: '.page-template-about',
+        callback: history
     });
 };
 
@@ -13608,4 +13621,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?6e33237555d9ff87779baa57616c066b
+//# sourceMappingURL=main.js.map?48a027eb7aaa2cf475d610102afbb145

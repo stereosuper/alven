@@ -21,10 +21,11 @@ const dynamicLoading = ({ name }) => async () => {
 
 // Dynamic imports
 // The dynamicLoading function will search for the component DynamicExample in ./js/components folder
+const slider = dynamicLoading({ name: 'slider' });
 const startup = dynamicLoading({ name: 'startup' });
 const portfolioFilters = dynamicLoading({ name: 'portfolio-filters' });
 const portfolioSearch = dynamicLoading({ name: 'portfolio-search' });
-const slider = dynamicLoading({ name: 'slider' });
+const history = dynamicLoading({ name: 'history' });
 
 // Initialization functions
 const preloadCallback = () => {
@@ -47,6 +48,10 @@ const preloadCallback = () => {
     bodyRouter({
         identifier: '.page-template-portfolio',
         callback: portfolioFilters
+    });
+    bodyRouter({
+        identifier: '.page-template-about',
+        callback: history
     });
 };
 
