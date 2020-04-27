@@ -13,17 +13,18 @@ const startup = () => {
             'click',
             () => {
                 wrapper.innerHTML = '';
+                history.pushState(
+                    {
+                        id: 'portfolio'
+                    },
+                    '',
+                    window.location.origin + window.location.pathname
+                );
             },
             false
         );
 
-        history.pushState(
-            {
-                id: name
-            },
-            '',
-            href
-        );
+        history.pushState({ id: name }, '', href);
     };
 
     const loadUrl = (href, name) => {

@@ -1,14 +1,19 @@
 /* Buttons */
 
 .btn,
+.btn-invert,
 .wp-block-button__link {
     display: inline-block;
     padding: 0.5em 2.5em;
-    border: 2px solid $secondary;
     font-family: $roboto;
     font-weight: 900;
     font-size: 0.95em;
     border-radius: 4px;
+}
+
+.btn,
+.wp-block-button__link {
+    border: 2px solid $secondary;
     background: $secondary;
     color: #fff;
     &:hover,
@@ -16,6 +21,18 @@
         background: #fff;
         color: $secondary;
         border-color: $secondary;
+    }
+}
+
+.btn-invert {
+    border: 2px solid $tertiary;
+    background: $tertiary;
+    color: $primary;
+    &:hover,
+    &:focus {
+        background: transparent;
+        color: $tertiary;
+        border-color: $tertiary;
     }
 }
 

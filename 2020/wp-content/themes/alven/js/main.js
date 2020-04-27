@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"DynamicExample":"DynamicExample"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"portfolio":"portfolio","slider":"slider","startup":"startup"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -13406,31 +13406,35 @@ try {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./DynamicExample": [
-		"./wp-content/themes/alven/src/js/components/DynamicExample.js",
-		"DynamicExample"
-	],
-	"./DynamicExample.js": [
-		"./wp-content/themes/alven/src/js/components/DynamicExample.js",
-		"DynamicExample"
-	],
 	"./header": [
 		"./wp-content/themes/alven/src/js/components/header.js"
 	],
 	"./header.js": [
 		"./wp-content/themes/alven/src/js/components/header.js"
 	],
+	"./portfolio": [
+		"./wp-content/themes/alven/src/js/components/portfolio.js",
+		"portfolio"
+	],
+	"./portfolio.js": [
+		"./wp-content/themes/alven/src/js/components/portfolio.js",
+		"portfolio"
+	],
 	"./slider": [
-		"./wp-content/themes/alven/src/js/components/slider.js"
+		"./wp-content/themes/alven/src/js/components/slider.js",
+		"slider"
 	],
 	"./slider.js": [
-		"./wp-content/themes/alven/src/js/components/slider.js"
+		"./wp-content/themes/alven/src/js/components/slider.js",
+		"slider"
 	],
 	"./startup": [
-		"./wp-content/themes/alven/src/js/components/startup.js"
+		"./wp-content/themes/alven/src/js/components/startup.js",
+		"startup"
 	],
 	"./startup.js": [
-		"./wp-content/themes/alven/src/js/components/startup.js"
+		"./wp-content/themes/alven/src/js/components/startup.js",
+		"startup"
 	]
 };
 function webpackAsyncContext(req) {
@@ -13493,116 +13497,6 @@ const header = () => {
 
 /***/ }),
 
-/***/ "./wp-content/themes/alven/src/js/components/slider.js":
-/*!*************************************************************!*\
-  !*** ./wp-content/themes/alven/src/js/components/slider.js ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-const slider = () => {
-    const slider = document.getElementById('slider');
-    const nav = document.getElementById('slider-nav');
-
-    if (!slider || !nav) return;
-
-    const slides = slider.querySelectorAll('.slide');
-    const btns = nav.querySelectorAll('button');
-
-    btns.forEach(btn => {
-        btn.addEventListener(
-            'click',
-            () => {
-                slides.forEach(slide => {
-                    slide.classList.remove('on');
-                });
-                slider.querySelector('[data-startup="' + btn.dataset.slide + '"').classList.add('on');
-
-                btns.forEach(elt => {
-                    elt.classList.remove('on');
-                });
-                btn.classList.add('on');
-                btn.blur();
-            },
-            false
-        );
-    });
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (slider);
-
-
-/***/ }),
-
-/***/ "./wp-content/themes/alven/src/js/components/startup.js":
-/*!**************************************************************!*\
-  !*** ./wp-content/themes/alven/src/js/components/startup.js ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-const startup = () => {
-    const portfolio = document.getElementById('portfolio');
-
-    if (!portfolio) return;
-
-    const wrapper = document.getElementById('startup');
-    const links = portfolio.querySelectorAll('.ajax-load');
-
-    const openStartup = (html, href, name) => {
-        wrapper.innerHTML = html;
-
-        wrapper.querySelector('#close').addEventListener(
-            'click',
-            () => {
-                wrapper.innerHTML = '';
-            },
-            false
-        );
-
-        history.pushState(
-            {
-                id: name
-            },
-            '',
-            href
-        );
-    };
-
-    const loadUrl = (href, name) => {
-        fetch(alven_ajax.ajax_url + '?action=alven_portfolio_ajax&name=' + name, {
-            method: 'POST'
-        })
-            .then(response => response.text())
-            .then(html => openStartup(html, href, name))
-            .catch(ex => console.error('Error', ex.message));
-    };
-
-    links.forEach(link => {
-        link.addEventListener(
-            'click',
-            e => {
-                e.preventDefault();
-                loadUrl(link.href, link.dataset.name);
-            },
-            false
-        );
-    });
-
-    if (window.location.pathname === '/portfolio/' && window.location.hash) {
-        loadUrl(window.location.href, window.location.hash.replace('#', ''));
-    }
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (startup);
-
-
-/***/ }),
-
 /***/ "./wp-content/themes/alven/src/js/main.js":
 /*!************************************************!*\
   !*** ./wp-content/themes/alven/src/js/main.js ***!
@@ -13618,8 +13512,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_polyfill__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @stereorepo/sac */ "./node_modules/@stereorepo/sac/src/index.js");
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/header */ "./wp-content/themes/alven/src/js/components/header.js");
-/* harmony import */ var _components_slider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/slider */ "./wp-content/themes/alven/src/js/components/slider.js");
-/* harmony import */ var _components_startup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/startup */ "./wp-content/themes/alven/src/js/components/startup.js");
 // ⚠️ Do not remove the line below or your scss won't work anymore
 
 
@@ -13629,8 +13521,6 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 // To learn how to use Sac
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
-
-
 
 
 
@@ -13645,7 +13535,9 @@ const dynamicLoading = ({ name }) => async () => {
 
 // Dynamic imports
 // The dynamicLoading function will search for the component DynamicExample in ./js/components folder
-const dynamicImportsExample = dynamicLoading({ name: 'DynamicExample' });
+const startup = dynamicLoading({ name: 'startup' });
+const portfolio = dynamicLoading({ name: 'portfolio' });
+const slider = dynamicLoading({ name: 'slider' });
 
 // Initialization functions
 const preloadCallback = () => {
@@ -13654,8 +13546,16 @@ const preloadCallback = () => {
     // Example of component called only on the /test route
     // Assuming the .test class is applied on html or body tag
     Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
-        identifier: '.test',
-        callback: dynamicImportsExample
+        identifier: '.home',
+        callback: slider
+    });
+    Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
+        identifier: '.page-template-portfolio',
+        callback: startup
+    });
+    Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
+        identifier: '.page-template-portfolio',
+        callback: portfolio
     });
 };
 
@@ -13666,8 +13566,6 @@ const loadCallback = () => {
 
 const animationsCallback = () => {
     // Animations shouldn't be render blocking... so they'll be called last
-    Object(_components_slider__WEBPACK_IMPORTED_MODULE_4__["default"])();
-    Object(_components_startup__WEBPACK_IMPORTED_MODULE_5__["default"])();
 };
 
 // Init sac superComponents
@@ -13697,4 +13595,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?2d946b94cff68c04b43ef556f49c2302
+//# sourceMappingURL=main.js.map?de0c03fe19b1617d8776b9a3a006856c

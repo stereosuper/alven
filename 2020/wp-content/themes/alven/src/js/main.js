@@ -9,8 +9,6 @@ import '@babel/polyfill';
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
 import { bodyRouter, useSacVanilla, useSuperLoad } from '@stereorepo/sac';
 import header from './components/header';
-import slider from './components/slider';
-import startup from './components/startup';
 
 // ⚠️ DO NOT REMOVE ⚠️
 // This function allow you to use dynamic imports with webpack
@@ -23,7 +21,9 @@ const dynamicLoading = ({ name }) => async () => {
 
 // Dynamic imports
 // The dynamicLoading function will search for the component DynamicExample in ./js/components folder
-const dynamicImportsExample = dynamicLoading({ name: 'DynamicExample' });
+const startup = dynamicLoading({ name: 'startup' });
+const portfolio = dynamicLoading({ name: 'portfolio' });
+const slider = dynamicLoading({ name: 'slider' });
 
 // Initialization functions
 const preloadCallback = () => {
@@ -32,8 +32,16 @@ const preloadCallback = () => {
     // Example of component called only on the /test route
     // Assuming the .test class is applied on html or body tag
     bodyRouter({
-        identifier: '.test',
-        callback: dynamicImportsExample
+        identifier: '.home',
+        callback: slider
+    });
+    bodyRouter({
+        identifier: '.page-template-portfolio',
+        callback: startup
+    });
+    bodyRouter({
+        identifier: '.page-template-portfolio',
+        callback: portfolio
     });
 };
 
@@ -44,8 +52,6 @@ const loadCallback = () => {
 
 const animationsCallback = () => {
     // Animations shouldn't be render blocking... so they'll be called last
-    slider();
-    startup();
 };
 
 // Init sac superComponents

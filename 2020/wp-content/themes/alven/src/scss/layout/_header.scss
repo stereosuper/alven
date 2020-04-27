@@ -87,10 +87,14 @@
     align-items: center;
     justify-content: center;
     background-color: $primary;
+    background-image: url(../../img/bg.png);
     background-size: cover;
     background-position: 50% 50%;
     text-align: center;
     color: #fff;
+    .page-template-portfolio & {
+        margin: 0;
+    }
 }
 
 @media (min-width: $tablet) {

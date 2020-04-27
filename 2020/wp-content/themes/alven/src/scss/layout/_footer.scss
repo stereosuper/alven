@@ -15,6 +15,10 @@
     a {
         font-weight: 400;
         color: inherit;
+        &:hover,
+        &:focus {
+            opacity: 0.7;
+        }
     }
     ul {
         list-style: none;
