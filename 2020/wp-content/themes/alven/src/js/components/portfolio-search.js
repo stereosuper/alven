@@ -9,7 +9,7 @@ const portfolio = () => {
 
     const filter = () => {
         links.forEach(link => {
-            link.dataset.name.includes(input.value) ? link.classList.remove('off') : link.classList.add('off');
+            link.dataset.name.includes(input.value) ? link.classList.remove('s-off') : link.classList.add('s-off');
         });
     };
 

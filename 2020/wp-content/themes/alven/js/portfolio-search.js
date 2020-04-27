@@ -20,7 +20,7 @@ const portfolio = () => {
 
     const filter = () => {
         links.forEach(link => {
-            link.dataset.name.includes(input.value) ? link.classList.remove('off') : link.classList.add('off');
+            link.dataset.name.includes(input.value) ? link.classList.remove('s-off') : link.classList.add('s-off');
         });
     };
 
@@ -41,4 +41,4 @@ const portfolio = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=portfolio-search.js.map?92a45643b3ac040f32a1ba4b91a1a9ef
+//# sourceMappingURL=portfolio-search.js.map?12f43aee87acafbee347bee8919993d1

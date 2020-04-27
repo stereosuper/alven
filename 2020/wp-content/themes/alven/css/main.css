@@ -880,6 +880,8 @@ textarea {
     margin: 0; }
 .portfolio > li.off {
       display: none; }
+.portfolio > li.s-off {
+      display: none; }
 .portfolio .transfered a:after {
     content: none; }
 .portfolio a {
@@ -1467,4 +1469,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?1b59a9ae73e017fdbae206521c950968*/
+/*# sourceMappingURL=main.css.map?bf1a7ba3ed62abef4064cd287c77dce1*/
