@@ -4,10 +4,11 @@
     justify-content: center;
     margin: 0 -12px;
     text-align: center;
-    > div {
-        width: 50%;
-        padding: 0 12px 60px;
-    }
+}
+
+.member {
+    width: 50%;
+    padding: 0 12px 60px;
 }
 
 .team-member {
@@ -31,18 +32,23 @@
     display: none;
 }
 
+.wrapper-desc {
+    width: 100%;
+    padding-bottom: 85px;
+    .team-desc {
+        display: block;
+        padding: 0 $col * 2;
+    }
+}
+
 @media (min-width: $phone) {
-    .team-list {
-        > div {
-            width: 33.33%;
-        }
+    .member {
+        width: 33.33%;
     }
 }
 
 @media (min-width: $desktop-small) {
-    .team-list {
-        > div {
-            width: 20%;
-        }
+    .member {
+        width: 20%;
     }
 }

@@ -1139,9 +1139,9 @@ textarea {
   justify-content: center;
   margin: 0 -12px;
   text-align: center; }
-.team-list > div {
-    width: 50%;
-    padding: 0 12px 60px; }
+.member {
+  width: 50%;
+  padding: 0 12px 60px; }
 .team-member {
   font-weight: 900;
   letter-spacing: 0.03em; }
@@ -1156,11 +1156,17 @@ textarea {
     color: #3aafa9; }
 .team-desc {
   display: none; }
+.wrapper-desc {
+  width: 100%;
+  padding-bottom: 85px; }
+.wrapper-desc .team-desc {
+    display: block;
+    padding: 0 16.66667%; }
 @media (min-width: 580px) {
-  .team-list > div {
+  .member {
     width: 33.33%; } }
 @media (min-width: 960px) {
-  .team-list > div {
+  .member {
     width: 20%; } }
 .history-wrapper {
   padding: 95px 0 150px;
@@ -1479,4 +1485,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?a55d57634a198cc633cb2e9bd45503b8*/
+/*# sourceMappingURL=main.css.map?9b5674ba9a9770c80a303c5d69451502*/

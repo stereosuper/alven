@@ -17,12 +17,9 @@ get_header(); ?>
             if($team->have_posts()):
         ?>
             <div class='container-small container-team'>
-                <button>Previous profile</button>
-				<button>Next profile</button>
-				<button>Close</button>
-                <div class='team-list'>
+                <div class='team-list' id='team'>
 					<?php while($team->have_posts()): $team->the_post(); ?>
-						<div>
+						<div class='member'>
                             <button class='team-member'>
                             	<?php the_post_thumbnail('large'); ?>
                                 <span class='name'><?php the_title(); ?></span>
@@ -46,7 +43,9 @@ get_header(); ?>
 											</li>
 										<?php } ?>
                                     </ul>
-                                <?php } ?>
+								<?php } ?>
+								<button>Previous profile</button>
+								<button>Next profile</button>
                             </div>
 						</div>
 					<?php endwhile; ?>

@@ -20,19 +20,22 @@ const dynamicLoading = ({ name }) => async () => {
 // ⚠️ DO NOT REMOVE ⚠️
 
 // Dynamic imports
-// The dynamicLoading function will search for the component DynamicExample in ./js/components folder
 const slider = dynamicLoading({ name: 'slider' });
 const startup = dynamicLoading({ name: 'startup' });
 const portfolioFilters = dynamicLoading({ name: 'portfolio-filters' });
 const portfolioSearch = dynamicLoading({ name: 'portfolio-search' });
 const history = dynamicLoading({ name: 'history' });
+const team = dynamicLoading({ name: 'team' });
 
 // Initialization functions
 const preloadCallback = () => {
     // All actions needed at page load
+};
 
-    // Example of component called only on the /test route
-    // Assuming the .test class is applied on html or body tag
+const loadCallback = () => {
+    // All actions needed after page load (like click events for example)
+    header();
+
     bodyRouter({
         identifier: '.home',
         callback: slider
@@ -53,11 +56,10 @@ const preloadCallback = () => {
         identifier: '.page-template-about',
         callback: history
     });
-};
-
-const loadCallback = () => {
-    // All actions needed after page load (like click events for example)
-    header();
+    bodyRouter({
+        identifier: '.page-template-team',
+        callback: team
+    });
 };
 
 const animationsCallback = () => {

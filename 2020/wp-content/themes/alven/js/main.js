@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"history":"history","portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","slider":"slider","startup":"startup"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"history":"history","portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","slider":"slider","startup":"startup","team":"team"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -13451,6 +13451,14 @@ var map = {
 	"./startup.js": [
 		"./wp-content/themes/alven/src/js/components/startup.js",
 		"startup"
+	],
+	"./team": [
+		"./wp-content/themes/alven/src/js/components/team.js",
+		"team"
+	],
+	"./team.js": [
+		"./wp-content/themes/alven/src/js/components/team.js",
+		"team"
 	]
 };
 function webpackAsyncContext(req) {
@@ -13550,19 +13558,22 @@ const dynamicLoading = ({ name }) => async () => {
 // ⚠️ DO NOT REMOVE ⚠️
 
 // Dynamic imports
-// The dynamicLoading function will search for the component DynamicExample in ./js/components folder
 const slider = dynamicLoading({ name: 'slider' });
 const startup = dynamicLoading({ name: 'startup' });
 const portfolioFilters = dynamicLoading({ name: 'portfolio-filters' });
 const portfolioSearch = dynamicLoading({ name: 'portfolio-search' });
 const history = dynamicLoading({ name: 'history' });
+const team = dynamicLoading({ name: 'team' });
 
 // Initialization functions
 const preloadCallback = () => {
     // All actions needed at page load
+};
 
-    // Example of component called only on the /test route
-    // Assuming the .test class is applied on html or body tag
+const loadCallback = () => {
+    // All actions needed after page load (like click events for example)
+    Object(_components_header__WEBPACK_IMPORTED_MODULE_3__["default"])();
+
     Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
         identifier: '.home',
         callback: slider
@@ -13583,11 +13594,10 @@ const preloadCallback = () => {
         identifier: '.page-template-about',
         callback: history
     });
-};
-
-const loadCallback = () => {
-    // All actions needed after page load (like click events for example)
-    Object(_components_header__WEBPACK_IMPORTED_MODULE_3__["default"])();
+    Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
+        identifier: '.page-template-team',
+        callback: team
+    });
 };
 
 const animationsCallback = () => {
@@ -13621,4 +13631,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?48a027eb7aaa2cf475d610102afbb145
+//# sourceMappingURL=main.js.map?52bfe71f8850401c37b2890aecaa50ec
