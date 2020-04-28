@@ -31,9 +31,6 @@ textarea {
     border: 0;
     border-radius: 4px;
     background: $grey;
-    &:-webkit-autofill {
-        box-shadow: 0 0 0 1000px #fff inset;
-    }
     &:invalid {
         // FF red borders
         box-shadow: none;
@@ -61,6 +58,12 @@ textarea {
     }
 }*/
 
+.form-elt {
+    &.invalid {
+        background: rgba(red, 0.2);
+    }
+}
+
 .field-wrapper {
     display: flex;
     justify-content: space-between;
@@ -79,6 +82,9 @@ textarea {
         left: 15px;
         pointer-events: none;
         color: $secondary;
+        &.off {
+            display: none;
+        }
     }
 }
 

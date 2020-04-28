@@ -1,6 +1,6 @@
 <?php
 
-if(!function_exists( 'wp_handle_upload' )){
+/*if(!function_exists( 'wp_handle_upload' )){
     require_once( ABSPATH . 'wp-admin/includes/file.php' );
 }
 
@@ -9,11 +9,11 @@ function wpse_183245_upload_dir( $dirs ){
     $dirs['path'] = $dirs['basedir'] . '/pitch';
     $dirs['url'] = $dirs['baseurl'] . '/pitch';
     return $dirs;
-}
+}*/
 
 
 $mailtoContact = get_field('mailList', 'option');
-$mailtoPitch = get_field('mailListPitch', 'option');
+/*$mailtoPitch = get_field('mailListPitch', 'option');
 
 $status = '';
 $errorFirstname = '';
@@ -141,8 +141,7 @@ if(isset($_POST['submitpitch'])){
     }
 
     //echo $status . $errorSend;
-}
-
+}*/
 
 
 $status2 = '';
@@ -176,9 +175,7 @@ if(isset($_POST['submitcontact'])){
     if(empty($email2)){
         $status2 = 'error';
         $errorEmail2 = true;
-    }
-
-    if(!preg_match('/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i', $email2)){
+    }else if(!filter_var(sanitize_email($email2), FILTER_VALIDATE_EMAIL)){
         $status2 = 'error';
         $errorEmail2 = true;
     }

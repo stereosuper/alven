@@ -57,7 +57,7 @@
 					</nav>
 
 					<form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search-header'>
-						<div class='field-search'>
+						<div class='field-search js-field'>
 							<input type='search' name='s' value='' id='search-header'>
 							<label for='search-header'>searching</label>
 						</div>

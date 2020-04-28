@@ -13406,6 +13406,18 @@ try {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./contact": [
+		"./wp-content/themes/alven/src/js/components/contact.js"
+	],
+	"./contact.js": [
+		"./wp-content/themes/alven/src/js/components/contact.js"
+	],
+	"./forms": [
+		"./wp-content/themes/alven/src/js/components/forms.js"
+	],
+	"./forms.js": [
+		"./wp-content/themes/alven/src/js/components/forms.js"
+	],
 	"./header": [
 		"./wp-content/themes/alven/src/js/components/header.js"
 	],
@@ -13483,6 +13495,89 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
+/***/ "./wp-content/themes/alven/src/js/components/contact.js":
+/*!**************************************************************!*\
+  !*** ./wp-content/themes/alven/src/js/components/contact.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const contact = () => {
+    const contact = document.getElementById('contact');
+
+    if (!contact) return;
+
+    const forms = contact.querySelectorAll('.form-to-open');
+    let form;
+
+    contact.querySelectorAll('.open-form').forEach(btn => {
+        form = btn.parentNode.querySelector('.form-to-open');
+
+        if (form.classList.contains('form-open-error')) {
+            form.classList.add('on');
+            form.parentNode.querySelector('.open-form').classList.add('off');
+        }
+
+        btn.addEventListener(
+            'click',
+            () => {
+                forms.forEach(form => {
+                    form.classList.remove('on');
+                    form.parentNode.querySelector('.open-form').classList.remove('off');
+                });
+                form.classList.add('on');
+                btn.classList.add('off');
+            },
+            false
+        );
+    });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (contact);
+
+
+/***/ }),
+
+/***/ "./wp-content/themes/alven/src/js/components/forms.js":
+/*!************************************************************!*\
+  !*** ./wp-content/themes/alven/src/js/components/forms.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const forms = () => {
+    const fields = document.querySelectorAll('.js-field');
+
+    if (!fields.length) return;
+
+    fields.forEach(field => {
+        field.addEventListener(
+            'focusin',
+            () => {
+                field.querySelector('label').classList.add('off');
+            },
+            false
+        );
+
+        field.addEventListener(
+            'focusout',
+            () => {
+                if (!field.querySelector('.form-elt').value) field.querySelector('label').classList.remove('off');
+            },
+            false
+        );
+    });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (forms);
+
+
+/***/ }),
+
 /***/ "./wp-content/themes/alven/src/js/components/header.js":
 /*!*************************************************************!*\
   !*** ./wp-content/themes/alven/src/js/components/header.js ***!
@@ -13536,6 +13631,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_polyfill__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @stereorepo/sac */ "./node_modules/@stereorepo/sac/src/index.js");
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/header */ "./wp-content/themes/alven/src/js/components/header.js");
+/* harmony import */ var _components_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/forms */ "./wp-content/themes/alven/src/js/components/forms.js");
+/* harmony import */ var _components_contact__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/contact */ "./wp-content/themes/alven/src/js/components/contact.js");
 // ⚠️ Do not remove the line below or your scss won't work anymore
 
 
@@ -13545,6 +13642,8 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 // To learn how to use Sac
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
+
+
 
 
 
@@ -13573,6 +13672,7 @@ const preloadCallback = () => {
 const loadCallback = () => {
     // All actions needed after page load (like click events for example)
     Object(_components_header__WEBPACK_IMPORTED_MODULE_3__["default"])();
+    Object(_components_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
 
     Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
         identifier: '.home',
@@ -13598,6 +13698,8 @@ const loadCallback = () => {
         identifier: '.page-template-team',
         callback: team
     });
+
+    Object(_components_contact__WEBPACK_IMPORTED_MODULE_5__["default"])();
 };
 
 const animationsCallback = () => {
@@ -13632,4 +13734,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?140f6e3ee273c5650ca86cbcc406436a
+//# sourceMappingURL=main.js.map?8a5bcda96d5c367e4a8df75d2d2abec5

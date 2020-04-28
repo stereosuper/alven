@@ -585,9 +585,6 @@ textarea {
   border: 0;
   border-radius: 4px;
   background: #f6f7f8; }
-input:-webkit-autofill,
-  textarea:-webkit-autofill {
-    box-shadow: 0 0 0 1000px #fff inset; }
 input:invalid,
   textarea:invalid {
     box-shadow: none; }
@@ -601,6 +598,8 @@ textarea {
         display: none;
     }
 }*/
+.form-elt.invalid {
+  background: rgba(255, 0, 0, 0.2); }
 .field-wrapper {
   display: flex;
   justify-content: space-between; }
@@ -616,6 +615,8 @@ textarea {
     left: 15px;
     pointer-events: none;
     color: #3aafa9; }
+.field label.off {
+      display: none; }
 .form-search-wrapper {
   display: flex;
   justify-content: flex-end;
@@ -1153,19 +1154,39 @@ textarea {
   padding: 75px 0 95px;
   text-align: center;
   background: #f6f7f8; }
-.contact {
-  display: flex;
-  justify-content: space-around; }
 .contact > div {
-    width: 34%;
-    padding: 50px 60px;
-    border-radius: 4px;
-    background: #fff;
-    box-shadow: 0 1px 86px 0 rgba(199, 199, 199, 0.4); }
+  max-width: 700px;
+  padding: 50px 45px;
+  margin: 0 auto 25px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 1px 86px 0 rgba(199, 199, 199, 0.4); }
 .contact .title-maj {
-    margin-top: 0; }
+  margin-top: 0; }
+.contact .title-maj + p {
+    max-width: 300px;
+    min-height: 50px;
+    margin-left: auto;
+    margin-right: auto; }
+.open-form.off {
+  display: none; }
 .form-to-open {
   display: none; }
+.form-to-open.on {
+    display: block; }
+.form-success {
+  margin: -7px 0 0; }
+@media (min-width: 960px) {
+  .contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; }
+    .contact > div {
+      width: calc(50% - 8px);
+      margin: 0; } }
+@media (min-width: 1264px) {
+  .contact {
+    padding: 0 8.33333%; } }
 .team-list {
   display: flex;
   flex-wrap: wrap;
@@ -1548,4 +1569,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?c2449676bad2424446f1a35c7c23b817*/
+/*# sourceMappingURL=main.css.map?26348a80c961d4f54c4b5521337ce6b6*/

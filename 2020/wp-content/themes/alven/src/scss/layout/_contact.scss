@@ -5,20 +5,56 @@
 }
 
 .contact {
-    display: flex;
-    justify-content: space-around;
     > div {
-        width: 34%;
-        padding: 50px 60px;
+        max-width: 700px;
+        padding: 50px 45px;
+        margin: 0 auto 25px;
         border-radius: 4px;
         background: #fff;
         box-shadow: 0 1px 86px 0 rgba(#c7c7c7, 0.4);
     }
     .title-maj {
         margin-top: 0;
+        + p {
+            max-width: 300px;
+            min-height: 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+.open-form {
+    &.off {
+        display: none;
     }
 }
 
 .form-to-open {
     display: none;
+    &.on {
+        display: block;
+    }
+}
+
+.form-success {
+    margin: -7px 0 0;
+}
+
+@media (min-width: $desktop-small) {
+    .contact {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        > div {
+            width: calc(50% - #{$gutter/2});
+            margin: 0;
+        }
+    }
+}
+
+@media (min-width: $desktop) {
+    .contact {
+        padding: 0 $col;
+    }
 }

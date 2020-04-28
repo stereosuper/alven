@@ -9,6 +9,8 @@ import '@babel/polyfill';
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
 import { bodyRouter, useSacVanilla, useSuperLoad, useSuperWindow } from '@stereorepo/sac';
 import header from './components/header';
+import forms from './components/forms';
+import contact from './components/contact';
 
 // ⚠️ DO NOT REMOVE ⚠️
 // This function allow you to use dynamic imports with webpack
@@ -35,6 +37,7 @@ const preloadCallback = () => {
 const loadCallback = () => {
     // All actions needed after page load (like click events for example)
     header();
+    forms();
 
     bodyRouter({
         identifier: '.home',
@@ -60,6 +63,8 @@ const loadCallback = () => {
         identifier: '.page-template-team',
         callback: team
     });
+
+    contact();
 };
 
 const animationsCallback = () => {
