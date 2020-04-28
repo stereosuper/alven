@@ -851,6 +851,7 @@ textarea {
   padding: 0 0 100px; }
 .portfolio-filters {
   display: flex;
+  flex-wrap: wrap;
   margin: 0 -8px;
   font-weight: 900; }
 .portfolio-filters ul {
@@ -858,11 +859,15 @@ textarea {
 .portfolio-filters li {
     margin: 0 8px 5px; }
 .portfolio-filters .form-search {
-    width: 66%;
-    margin: 10px 0 50px; }
+    width: 100%;
+    max-width: none;
+    margin: 10px 0 25px; }
+.portfolio-filters-main {
+  width: 33.33%; }
+.portfolio-filters-secondary {
+  width: 66.66%; }
 .btn-filter {
-  padding: 5px 30px 5px 20px;
-  border-left: 5px solid transparent;
+  padding: 5px 0;
   position: relative; }
 .btn-filter:hover, .btn-filter:focus, .btn-filter.on {
     color: #3aafa9; }
@@ -1013,6 +1018,12 @@ textarea {
       margin: 10px 0 40px; }
     .portfolio-filters li {
       margin: 0 0 15px; }
+  .portfolio-filters-main,
+  .portfolio-filters-secondary {
+    width: 100%; }
+  .btn-filter {
+    padding: 5px 30px 5px 20px;
+    border-left: 5px solid transparent; }
   .portfolio-fields {
     display: inline;
     display: initial; }
@@ -1025,8 +1036,13 @@ textarea {
     width: 75%;
     margin: 0; } }
 @media (min-width: 960px) {
+  .portfolio-filters .form-search {
+    margin-bottom: 50px; }
   .portfolio > li {
     width: 25%; } }
+@media (min-width: 1264px) {
+  .portfolio-filters .form-search {
+    width: 66%; } }
 .spotlight-post {
   margin: 65px 0 0; }
 .blog .spotlight-post {
@@ -1532,4 +1548,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?f875f37d2cf646d90240098b460ae3ec*/
+/*# sourceMappingURL=main.css.map?c2449676bad2424446f1a35c7c23b817*/

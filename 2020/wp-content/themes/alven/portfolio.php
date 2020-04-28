@@ -30,7 +30,7 @@ get_header(); ?>
                         </button>
                     </form>
 
-                    <div>
+                    <div class='portfolio-filters-main'>
                         <ul>
                             <li>
                                 <button class='btn-filter' data-filter='investment' data-investment='present'>
@@ -54,7 +54,7 @@ get_header(); ?>
                             ?>
                         </ul>
                     </div>
-                    <div>
+                    <div class='portfolio-filters-secondary'>
                         <ul class='portfolio-fields'>
                             <?php
                                 $fields = get_terms(array('taxonomy' => 'field'));
