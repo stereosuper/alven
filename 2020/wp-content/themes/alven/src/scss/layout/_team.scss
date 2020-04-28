@@ -4,6 +4,17 @@
     justify-content: center;
     margin: 0 -12px;
     text-align: center;
+    .name,
+    .function {
+        display: block;
+        font-weight: 900;
+    }
+    .name {
+        font-family: $roboto;
+    }
+    .function {
+        color: $secondary;
+    }
 }
 
 .member {
@@ -14,17 +25,30 @@
 .team-member {
     font-weight: 900;
     letter-spacing: 0.03em;
-    span {
-        display: block;
+    &:hover,
+    &:focus,
+    &.off {
+        opacity: 0.7;
     }
     .name {
         padding: 30px 0 0;
-        font-family: $roboto;
         font-size: 1.6rem;
     }
     .function {
         font-size: 1.2rem;
-        color: $secondary;
+    }
+}
+
+.share-team {
+    justify-content: center;
+    > li {
+        margin: 0 10px;
+    }
+    a {
+        &:hover,
+        &:focus {
+            color: $secondary;
+        }
     }
 }
 
@@ -34,10 +58,31 @@
 
 .wrapper-desc {
     width: 100%;
-    padding-bottom: 85px;
+    position: relative;
     .team-desc {
         display: block;
-        padding: 0 $col * 2;
+        padding: 0 $col * 2 85px;
+    }
+    .name {
+        font-size: 3.4rem;
+    }
+    .function {
+        font-size: 2.3rem;
+    }
+}
+
+.team-btn {
+    width: 14px;
+    height: 28px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    &.prev {
+        left: 0;
+    }
+    &.next {
+        right: 0;
     }
 }
 

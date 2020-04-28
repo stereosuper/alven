@@ -28,24 +28,24 @@ get_header(); ?>
 							<div class='team-desc'>
                                 <?php the_content(); ?>
                                 <?php if(get_field('linkedin') || get_field('twitter')){ ?>
-                                	<ul class=''>
+                                	<ul class='share share-team'>
 										<?php if(get_field('linkedin')){ ?>
 											<li>
-                                            	<a href='<?php the_field('linkedin'); ?>' target='_blank'>
-                                                    Linkedin
+                                            	<a href='<?php the_field('linkedin'); ?>' target='_blank' target="_blank" rel="noopener noreferrer">
+                                                    <svg class="icon"><use xlink:href="#icon-linkedin"></use></svg>
                                                 </a>
 											</li>
 										<?php } if(get_field('twitter')){ ?>
 											<li>
-                                                <a href='<?php the_field('twitter'); ?>' target='_blank'>
-                                                    Twitter
+                                                <a href='<?php the_field('twitter'); ?>' target='_blank' target="_blank" rel="noopener noreferrer">
+                                                    <svg class="icon"><use xlink:href="#icon-twitter"></use></svg>
                                             	</a>
 											</li>
 										<?php } ?>
                                     </ul>
 								<?php } ?>
-								<button>Previous profile</button>
-								<button>Next profile</button>
+								<button role="button" class="team-btn prev">Previous profile</button>
+								<button role="button" class="team-btn next">Next profile</button>
                             </div>
 						</div>
 					<?php endwhile; ?>

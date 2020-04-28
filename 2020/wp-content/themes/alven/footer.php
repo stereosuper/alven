@@ -12,12 +12,12 @@
                         ?>
                             <ul class='share'>
                                 <li>
-                                    <a href="<?php echo $twitter; ?>" target="_blank" rel="noopener noreferrer nofollow">
+                                    <a href="<?php echo $twitter; ?>" target="_blank" rel="noopener noreferrer">
                                         <svg class="icon"><use xlink:href="#icon-twitter"></use></svg>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo $linkedin; ?>" target="_blank" rel="noopener noreferrer nofollow">
+                                    <a href="<?php echo $linkedin; ?>" target="_blank" rel="noopener noreferrer">
                                         <svg class="icon"><use xlink:href="#icon-linkedin"></use></svg>
                                     </a>
                                 </li>
