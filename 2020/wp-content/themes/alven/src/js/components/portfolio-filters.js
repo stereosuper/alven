@@ -9,6 +9,17 @@ const portfolio = () => {
     let filterName = '';
 
     const filter = btn => {
+        if (btn.classList.contains('on')) {
+            links.forEach(link => {
+                link.classList.remove('off');
+            });
+
+            btn.classList.remove('on');
+            btn.blur();
+
+            return;
+        }
+
         filterName = btn.dataset.filter;
 
         links.forEach(link => {

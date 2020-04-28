@@ -10,18 +10,38 @@
         list-style: none;
     }
     li {
-        margin: 0 $gutter/2 15px;
-    }
-    button {
-        &:hover,
-        &:focus,
-        &.on {
-            color: $secondary;
-        }
+        margin: 0 $gutter/2 5px;
     }
     .form-search {
         width: 66%;
         margin: 10px 0 50px;
+    }
+}
+
+.btn-filter {
+    padding: 5px 30px 5px 20px;
+    border-left: 5px solid transparent;
+    position: relative;
+    &:hover,
+    &:focus,
+    &.on {
+        color: $secondary;
+    }
+    &.on {
+        border-color: $secondary;
+        .icon {
+            opacity: 1;
+        }
+    }
+    .icon {
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        pointer-events: none;
+        color: $secondary;
+        opacity: 0;
     }
 }
 

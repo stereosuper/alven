@@ -33,17 +33,23 @@ get_header(); ?>
                     <div>
                         <ul>
                             <li>
-                                <button class='btn-filter' data-filter='investment' data-investment='present'><?php the_field('present', 'options'); ?></button>
+                                <button class='btn-filter' data-filter='investment' data-investment='present'>
+                                    <?php the_field('present', 'options'); ?>
+                                    <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
+                                </button>
                             </li>
                             <li>
-                                <button class='btn-filter' data-filter='investment' data-investment='past'><?php the_field('past', 'options'); ?></button>
+                                <button class='btn-filter' data-filter='investment' data-investment='past'>
+                                    <?php the_field('past', 'options'); ?>
+                                    <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
+                                </button>
                             </li>
                         </ul>
                         <ul>
                             <?php
                                 $locs = get_terms(array('taxonomy' => 'location'));
                                 foreach($locs as $loc){
-                                    echo '<li><button class="btn-filter" data-filter="location" data-location="'.$loc->slug.'">'.$loc->name.'</button></li>';
+                                    echo '<li><button class="btn-filter" data-filter="location" data-location="'.$loc->slug.'">'.$loc->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
                                 }
                             ?>
                         </ul>
@@ -53,7 +59,7 @@ get_header(); ?>
                             <?php
                                 $fields = get_terms(array('taxonomy' => 'field'));
                                 foreach($fields as $field){
-                                    echo '<li><button class="btn-filter" data-filter="field" data-field="'.$field->slug.'">'.$field->name.'</button></li>';
+                                    echo '<li><button class="btn-filter" data-filter="field" data-field="'.$field->slug.'">'.$field->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
                                 }
                             ?>
                         </ul>

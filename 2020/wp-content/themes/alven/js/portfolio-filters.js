@@ -20,6 +20,17 @@ const portfolio = () => {
     let filterName = '';
 
     const filter = btn => {
+        if (btn.classList.contains('on')) {
+            links.forEach(link => {
+                link.classList.remove('off');
+            });
+
+            btn.classList.remove('on');
+            btn.blur();
+
+            return;
+        }
+
         filterName = btn.dataset.filter;
 
         links.forEach(link => {
@@ -51,4 +62,4 @@ const portfolio = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=portfolio-filters.js.map?78bf40d028aba85523fea6f865455a88
+//# sourceMappingURL=portfolio-filters.js.map?94ef1d146f46772747eb14edc33b809f

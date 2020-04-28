@@ -856,12 +856,29 @@ textarea {
 .portfolio-filters ul {
     list-style: none; }
 .portfolio-filters li {
-    margin: 0 8px 15px; }
-.portfolio-filters button:hover, .portfolio-filters button:focus, .portfolio-filters button.on {
-    color: #3aafa9; }
+    margin: 0 8px 5px; }
 .portfolio-filters .form-search {
     width: 66%;
     margin: 10px 0 50px; }
+.btn-filter {
+  padding: 5px 30px 5px 20px;
+  border-left: 5px solid transparent;
+  position: relative; }
+.btn-filter:hover, .btn-filter:focus, .btn-filter.on {
+    color: #3aafa9; }
+.btn-filter.on {
+    border-color: #3aafa9; }
+.btn-filter.on .icon {
+      opacity: 1; }
+.btn-filter .icon {
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    color: #3aafa9;
+    opacity: 0; }
 .portfolio-fields {
   display: flex;
   flex-wrap: nowrap; }
@@ -1512,4 +1529,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?fcf99de0c4f7cce34667c1b600b2fd26*/
+/*# sourceMappingURL=main.css.map?ca6db94df660d325a2a4ff6e3350aacf*/
