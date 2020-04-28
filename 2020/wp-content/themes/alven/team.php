@@ -44,8 +44,12 @@ get_header(); ?>
 										<?php } ?>
                                     </ul>
 								<?php } ?>
-								<button role="button" class="team-btn prev">Previous profile</button>
-								<button role="button" class="team-btn next">Next profile</button>
+								<button role="button" class="team-btn prev">
+									<svg class="icon"><use xlink:href="#icon-left"></use></svg>
+								</button>
+								<button role="button" class="team-btn next">
+									<svg class="icon"><use xlink:href="#icon-right"></use></svg>
+								</button>
                             </div>
 						</div>
 					<?php endwhile; ?>
