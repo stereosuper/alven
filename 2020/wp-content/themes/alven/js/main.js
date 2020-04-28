@@ -13607,6 +13607,7 @@ const animationsCallback = () => {
 // Init sac superComponents
 Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["useSacVanilla"])();
 Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["useSuperLoad"])();
+Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["useSuperWindow"])();
 
 // Access superComponents
 window.$stereorepo.superLoad.initializeLoadingShit({
@@ -13631,4 +13632,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?52bfe71f8850401c37b2890aecaa50ec
+//# sourceMappingURL=main.js.map?140f6e3ee273c5650ca86cbcc406436a

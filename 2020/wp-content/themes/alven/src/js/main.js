@@ -7,7 +7,7 @@ import '@babel/polyfill';
 // Imports
 // To learn how to use Sac
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
-import { bodyRouter, useSacVanilla, useSuperLoad } from '@stereorepo/sac';
+import { bodyRouter, useSacVanilla, useSuperLoad, useSuperWindow } from '@stereorepo/sac';
 import header from './components/header';
 
 // ⚠️ DO NOT REMOVE ⚠️
@@ -69,6 +69,7 @@ const animationsCallback = () => {
 // Init sac superComponents
 useSacVanilla();
 useSuperLoad();
+useSuperWindow();
 
 // Access superComponents
 window.$stereorepo.superLoad.initializeLoadingShit({

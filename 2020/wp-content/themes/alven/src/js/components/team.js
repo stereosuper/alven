@@ -6,6 +6,8 @@ const team = () => {
     const members = team.querySelectorAll('.team-member');
     const nbMembers = members.length;
     const desc = document.createElement('div');
+    let wWidth = 0;
+    let row = 5;
     let index = 0;
     let indexPos = 0;
     let parent;
@@ -41,7 +43,7 @@ const team = () => {
         desc.appendChild(parent.querySelector('.team-desc').cloneNode(true));
 
         index = [].indexOf.call(members, member);
-        indexPos = (Math.floor(index / 5) + 1) * 5 - 1;
+        indexPos = (Math.floor(index / row) + 1) * row - 1;
         indexPos = indexPos > nbMembers ? nbMembers - 1 : indexPos;
 
         members[indexPos].parentElement.after(desc);
@@ -64,6 +66,21 @@ const team = () => {
             false
         );
     };
+
+    const resize = () => {
+        wWidth = window.$stereorepo.superWindow.windowWidth;
+        if (wWidth >= 960) {
+            row = 5;
+        } else if (wWidth >= 580) {
+            row = 3;
+        } else {
+            row = 2;
+        }
+    };
+
+    window.$stereorepo.superWindow.initializeWindow();
+    window.$stereorepo.superWindow.addResizeFunction(resize);
+    resize();
 
     desc.className = 'container wrapper-desc';
 
