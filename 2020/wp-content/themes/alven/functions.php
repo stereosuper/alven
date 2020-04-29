@@ -171,7 +171,7 @@ register_nav_menus( array('primary' => 'Primary Menu', 'secondary' => 'Secondary
 
 // Cleanup WP Menu html
 function alven_css_attributes_filter($var){
-    return is_array($var) ? array_intersect($var, array('current-menu-item', 'current_page_parent')) : '';
+    return is_array($var) ? array_intersect($var, array('current-menu-item', 'current_page_parent', 'menu-item-has-children')) : '';
 }
 add_filter( 'nav_menu_css_class', 'alven_css_attributes_filter' );
 

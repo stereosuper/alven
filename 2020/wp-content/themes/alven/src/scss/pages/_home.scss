@@ -21,16 +21,11 @@
     }
 }
 
-.philo-content {
-    width: $col * 6;
-    margin: 0 auto;
-}
-
 .philo-list {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0;
+    margin: 80px 0 0;
     list-style: none;
     text-transform: uppercase;
     li {
@@ -38,6 +33,20 @@
     }
     a {
         color: inherit;
+        &:before {
+            content: '';
+            display: block;
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 35px;
+            border-radius: 50%;
+            background: url(../../img/thesis.png);
+            box-shadow: 0 1px 26px 0 rgba($primary, 0.08);
+        }
+        &:hover,
+        &:focus {
+            color: $secondary;
+        }
     }
 }
 
@@ -61,5 +70,18 @@
     }
     img {
         max-width: 50vw;
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .philo-content {
+        width: $col * 8;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: $desktop) {
+    .philo-content {
+        width: $col * 6;
     }
 }

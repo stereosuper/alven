@@ -669,11 +669,12 @@ textarea {
 @media (min-width: 1264px) {
   .form-search-header {
     display: flex;
+    margin: -5px 0 0;
     align-items: center;
     text-align: left; }
     .form-search-header input {
+      max-width: 80px;
       padding: 0;
-      border-bottom: 1px solid #fff;
       border-radius: 0;
       background: none; }
     .form-search-header label {
@@ -756,11 +757,12 @@ textarea {
 @media (min-width: 768px) {
   .title-wrapper {
     margin: 0 0 110px; } }
-@media (min-width: 1264px) {
+@media (min-width: 960px) {
   .header {
     position: fixed; }
   .nav {
     position: static;
+    margin: 0 0 0 auto;
     transform: none; }
   .menu-main {
     display: flex;
@@ -770,13 +772,17 @@ textarea {
     text-align: left; }
     .menu-main li {
       position: relative;
-      margin: 0 6px; }
+      margin: 0 10px; }
       .menu-main li:hover .sub-menu {
         display: block; }
+      .menu-main li:last-child {
+        margin-right: 0; }
     .menu-main a {
       padding: 0 20px;
       position: relative;
       z-index: 10; }
+    .menu-main .menu-item-has-children a {
+      padding-right: 40px; }
     .menu-main .sub-menu {
       display: none;
       padding: 25px 0 5px;
@@ -806,6 +812,13 @@ textarea {
   .burger,
   .close {
     display: none; } }
+@media (min-width: 1264px) {
+  .nav {
+    margin-right: 30px; }
+  .menu-main li {
+    margin: 0 15px; }
+    .menu-main li:last-child {
+      margin-right: 15px; } }
 /* Footer */
 .footer {
   padding: 45px 0 25px;
@@ -1560,20 +1573,28 @@ textarea {
     margin-top: 0; }
 .philo strong {
     color: #3aafa9; }
-.philo-content {
-  width: 50%;
-  margin: 0 auto; }
 .philo-list {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0;
+  margin: 80px 0 0;
   list-style: none;
   text-transform: uppercase; }
 .philo-list li {
     margin: 0 32px; }
 .philo-list a {
     color: inherit; }
+.philo-list a:before {
+      content: '';
+      display: block;
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 35px;
+      border-radius: 50%;
+      background: url(/wp-content/themes/alven/img/thesis.png);
+      box-shadow: 0 1px 26px 0 rgba(0, 50, 64, 0.08); }
+.philo-list a:hover, .philo-list a:focus {
+      color: #3aafa9; }
 .team-wrapper {
   padding: 75px 0 95px; }
 .team {
@@ -1589,6 +1610,13 @@ textarea {
     justify-content: flex-end; }
 .team img {
     max-width: 50vw; }
+@media (min-width: 960px) {
+  .philo-content {
+    width: 66.66667%;
+    margin: 0 auto; } }
+@media (min-width: 1264px) {
+  .philo-content {
+    width: 50%; } }
 /******* PRINT *******/
 @media print {
   *, *:before {
@@ -1608,4 +1636,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?268363c27feecfdb73b2a4396b0de9bd*/
+/*# sourceMappingURL=main.css.map?4d70216b788073eeb53e6edc0da6dbb9*/
