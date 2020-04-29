@@ -138,10 +138,12 @@ get_header(); ?>
             </div>
         </div>
 
-        <section class='contact-wrapper'>
-            <h2 class='title-home'><?php echo get_the_title(CONTACT_ID); ?></h2>
-            <p class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></p>
-            <?php require_once('includes/contact.php'); ?>
+        <section class="contact-wrapper">
+            <div class="container">
+                <h2 class='title-home'><?php echo get_the_title(CONTACT_ID); ?></h2>
+                <p class='subtitle'><?php the_field('contactSubtitle', CONTACT_ID); ?></p>
+                <?php require_once('includes/contact.php'); ?>
+            </div>
         </section>
 
     <?php endif; ?>
