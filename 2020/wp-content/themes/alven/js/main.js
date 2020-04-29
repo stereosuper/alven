@@ -13510,28 +13510,32 @@ const contact = () => {
     if (!contact) return;
 
     const forms = contact.querySelectorAll('.form-to-open');
-    let form;
 
-    contact.querySelectorAll('.open-form').forEach(btn => {
-        form = btn.parentNode.querySelector('.form-to-open');
+    const handleForm = btn => {
+        const form = btn.parentNode.querySelector('.form-to-open');
 
         if (form.classList.contains('form-open-error')) {
             form.classList.add('on');
-            form.parentNode.querySelector('.open-form').classList.add('off');
+            btn.classList.add('off');
         }
 
         btn.addEventListener(
             'click',
             () => {
-                forms.forEach(form => {
-                    form.classList.remove('on');
-                    form.parentNode.querySelector('.open-form').classList.remove('off');
+                forms.forEach(elt => {
+                    elt.classList.remove('on');
+                    elt.parentNode.querySelector('.open-form').classList.remove('off');
                 });
+
                 form.classList.add('on');
                 btn.classList.add('off');
             },
             false
         );
+    };
+
+    contact.querySelectorAll('.open-form').forEach(btn => {
+        handleForm(btn);
     });
 };
 
@@ -13734,4 +13738,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?8a5bcda96d5c367e4a8df75d2d2abec5
+//# sourceMappingURL=main.js.map?f3f8829b891c36273aaaee1f8f12f456

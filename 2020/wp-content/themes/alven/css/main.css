@@ -646,7 +646,10 @@ textarea {
 .field-search {
   position: relative; }
 .field-search label {
-    position: absolute; }
+    position: absolute;
+    pointer-events: none; }
+.field-search label.off {
+      display: none; }
 .btn-search {
   padding: 0 0 0 12px;
   position: relative;
@@ -1569,4 +1572,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?26348a80c961d4f54c4b5521337ce6b6*/
+/*# sourceMappingURL=main.css.map?b48254f13902e8a596df3e19f3676fbc*/
