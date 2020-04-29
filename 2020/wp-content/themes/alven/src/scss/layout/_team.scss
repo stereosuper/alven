@@ -79,6 +79,9 @@
     bottom: 80px;
     margin: auto;
     color: $secondary;
+    .icon {
+        height: 100%;
+    }
     &:hover,
     &:focus {
         color: $quaternary;
