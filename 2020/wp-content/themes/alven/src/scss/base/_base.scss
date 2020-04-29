@@ -188,6 +188,7 @@ a {
     &:hover,
     &:focus {
         color: $quaternary;
+        outline: none;
     }
     &:active {
         filter: saturate(200%);
