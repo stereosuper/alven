@@ -2,8 +2,13 @@
 
 <div class='container'>
 
-	<h1>404</h1>
-	<p><?php _e('Page not found'); ?></p>
+	<div class='title-wrapper'>
+    	<div class='container'>
+        	<h1>404 - Page not found</h1>
+        </div>
+	</div>
+	
+	<p>Sorry, this page doesn't exist.</p>
 
 </div>
 

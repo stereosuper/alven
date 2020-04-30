@@ -708,6 +708,8 @@ textarea {
   width: 65px;
   position: relative;
   z-index: 10; }
+.logo:hover, .logo:focus {
+    opacity: 0.8; }
 .logo svg {
     fill: #fff; }
 .nav {
@@ -1714,4 +1716,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?ce168be5a3b45446ab10bd5c5051dadd*/
+/*# sourceMappingURL=main.css.map?4a878cca41b7b916bcea419203bb952b*/

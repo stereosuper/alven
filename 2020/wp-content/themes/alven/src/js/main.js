@@ -45,22 +45,21 @@ const loadCallback = () => {
         identifier: '.home',
         callback: slider
     });
+
     bodyRouter({
         identifier: '.page-template-portfolio',
-        callback: startup
+        callback: () => {
+            startup();
+            portfolioSearch();
+            portfolioFilters();
+        }
     });
-    bodyRouter({
-        identifier: '.page-template-portfolio',
-        callback: portfolioSearch
-    });
-    bodyRouter({
-        identifier: '.page-template-portfolio',
-        callback: portfolioFilters
-    });
+
     bodyRouter({
         identifier: '.page-template-about',
         callback: history
     });
+
     bodyRouter({
         identifier: '.page-template-team',
         callback: team

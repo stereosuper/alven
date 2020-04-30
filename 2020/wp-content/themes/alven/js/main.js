@@ -13736,22 +13736,21 @@ const loadCallback = () => {
         identifier: '.home',
         callback: slider
     });
+
     Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
         identifier: '.page-template-portfolio',
-        callback: startup
+        callback: () => {
+            startup();
+            portfolioSearch();
+            portfolioFilters();
+        }
     });
-    Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
-        identifier: '.page-template-portfolio',
-        callback: portfolioSearch
-    });
-    Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
-        identifier: '.page-template-portfolio',
-        callback: portfolioFilters
-    });
+
     Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
         identifier: '.page-template-about',
         callback: history
     });
+
     Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
         identifier: '.page-template-team',
         callback: team
@@ -13792,4 +13791,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?f2a040910df35955892cdf27279aa362
+//# sourceMappingURL=main.js.map?e5a44c8dbe26898ce16c1a66aaf1257f
