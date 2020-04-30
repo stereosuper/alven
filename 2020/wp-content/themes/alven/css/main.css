@@ -792,6 +792,18 @@ textarea {
       padding: 0 20px;
       position: relative;
       z-index: 10; }
+    .menu-main .menu-item-has-children:after {
+      content: '';
+      width: 10px;
+      height: 6px;
+      position: absolute;
+      top: 0;
+      right: 20px;
+      bottom: 0;
+      margin: auto;
+      background: url(/wp-content/themes/alven/img/down.svg) no-repeat;
+      background-size: 100%;
+      pointer-events: none; }
     .menu-main .menu-item-has-children a {
       padding-right: 40px; }
     .menu-main .sub-menu {
@@ -1690,4 +1702,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?44d67290b5c936df5f84d872c3001cdf*/
+/*# sourceMappingURL=main.css.map?2c1c414b2b658093ade2690d8d5ea9a4*/

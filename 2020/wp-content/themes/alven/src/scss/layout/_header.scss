@@ -163,6 +163,19 @@
             z-index: 10;
         }
         .menu-item-has-children {
+            &:after {
+                content: '';
+                width: 10px;
+                height: 6px;
+                position: absolute;
+                top: 0;
+                right: 20px;
+                bottom: 0;
+                margin: auto;
+                background: url(../../img/down.svg) no-repeat;
+                background-size: 100%;
+                pointer-events: none;
+            }
             a {
                 padding-right: 40px;
             }
