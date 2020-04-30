@@ -69,11 +69,27 @@ get_header(); ?>
                 <div class='portfolio-content'>
                     <?php
                         $portfolioUrl = get_the_permalink();
-                        $startups = new WP_Query(array('post_type' => 'startup', 'posts_per_page' => -1, 'orderby' => 'menu_order', 'order' => 'ASC'));
-                        if($startups->have_posts()):
+                        $startupsActive = get_posts(array(
+                            'post_type' => 'startup',
+                            'posts_per_page' => -1,
+                            'orderby' => 'name', 
+                            'order' => 'ASC',
+                            'meta_key' => 'investment',
+                            'meta_value' => 'present',
+                        ));
+                        $startupsPast = get_posts(array(
+                            'post_type' => 'startup',
+                            'posts_per_page' => -1,
+                            'orderby' => 'name', 
+                            'order' => 'ASC',
+                            'meta_key' => 'investment',
+                            'meta_value' => 'past',
+                        ));
+                        $startups = array_merge($startupsActive, $startupsPast);
+                        if($startups):
                     ?>
                         <ul class='portfolio' id='portfolio'>
-                            <?php while($startups->have_posts()): $startups->the_post(); ?>
+                            <?php foreach($startups as $post): setup_postdata($post); ?>
                                 <?php
                                     $fields = get_the_terms($post, 'field');
                                     $fieldList = '';
@@ -131,7 +147,7 @@ get_header(); ?>
                                         </a>
                                     </li>
                                 <?php } ?>
-                            <?php endwhile; ?>
+                            <?php endforeach; ?>
                         </ul>
                     <?php endif; wp_reset_query(); ?>
                 </div>
