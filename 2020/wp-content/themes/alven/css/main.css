@@ -1504,6 +1504,7 @@ textarea {
   bottom: 0;
   top: 0;
   right: 0;
+  z-index: 10;
   align-items: flex-end; }
 .slider-nav {
   display: flex;
@@ -1535,12 +1536,22 @@ textarea {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 1;
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: 50% 0;
   opacity: 0;
   transition: 0.3s ease-in-out; }
 .slide.on {
     opacity: 1; }
+.slide:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient(rgba(0, 50, 64, 0) 0%, #003240 100%); }
 .slide-content {
   display: flex;
   height: 100%;
@@ -1549,7 +1560,9 @@ textarea {
   line-height: 1.2; }
 .slide-content svg {
     min-width: 100px;
-    min-height: 30px; }
+    min-height: 30px;
+    max-width: 120px;
+    max-height: 50px; }
 .slide-content path,
   .slide-content polygon,
   .slide-content rect,
@@ -1571,7 +1584,7 @@ textarea {
     color: #fff; }
 .baseline {
   font-size: 1.4rem; }
-@media (min-width: 580px) {
+@media (min-width: 768px) {
   .baseline {
     font-size: 2.2rem; } }
 @media (min-width: 1264px) {
@@ -1667,4 +1680,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?9e45b4857da31e50e12e66b33d8ff600*/
+/*# sourceMappingURL=main.css.map?ca7dce66711e783818d74d63a299d3e7*/
