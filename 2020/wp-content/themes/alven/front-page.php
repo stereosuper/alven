@@ -11,15 +11,29 @@ get_header(); ?>
 
         <section class="slider" id="slider">
             <?php
-                $startups = get_posts(
+                $mainStartups = get_posts(
                     array(
                         'post_type' => 'startup',
                         'posts_per_page' => 8,
-                        'meta_key' => 'front',
+                        'meta_key' => 'force_front',
                         'meta_value' => true,
-                        'order' => 'rand'
+                        'orderby' => 'rand'
                     )
                 );
+                foreach($mainStartups as $mainStartup){
+                    $forceIds[] = $mainStartup->ID;
+                }
+                $startups = get_posts(
+                    array(
+                        'post_type' => 'startup',
+                        'posts_per_page' => 8 - count($mainStartups),
+                        'meta_key' => 'front',
+                        'meta_value' => true,
+                        'orderby' => 'rand',
+                        'post__not_in' => $forceIds
+                    )
+                );
+                $startups = array_merge($mainStartups, $startups);
                 $i = 0;
                 foreach( $startups as $startup ) :
                     $baseline = get_field('baseline', $startup->ID);
@@ -60,11 +74,16 @@ get_header(); ?>
 
             <?php
                 $stickies = array_reverse( get_option( 'sticky_posts' ) );
-                $sticky = 0;
-                if( $stickies ):
+                
+                if( $stickies ){
                     $post = $stickies[0];
-                    $sticky = $post;
-                    setup_postdata($post);
+                }else{
+                    $stickies = wp_get_recent_posts( array('numberposts' => 1, 'post_status' =>'publish') );
+                    $post = $stickies[0]['ID'];
+                }
+                
+                $sticky = $post;
+                setup_postdata($post);
             ?>
                 <div class='spotlight-post'>
                     <div class='img'>
@@ -76,7 +95,7 @@ get_header(); ?>
                         <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
                     </div>
                 </div>
-            <?php wp_reset_postdata(); endif; ?>
+            <?php wp_reset_postdata(); ?>
 
             <?php
                 $queryPost = new WP_Query( array(

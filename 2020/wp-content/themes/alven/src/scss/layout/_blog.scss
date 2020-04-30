@@ -39,7 +39,7 @@
     z-index: 1;
     font-size: 1.2rem;
     text-align: center;
-    &:nth-of-type(even) {
+    &:nth-of-type(odd) {
         &:after {
             content: '';
             position: absolute;

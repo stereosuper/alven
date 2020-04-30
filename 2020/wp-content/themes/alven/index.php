@@ -23,27 +23,29 @@
 	<?php if ( have_posts() ) : ?>
 
 		<?php
-            $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-
-			$stickies = array_reverse( get_option( 'sticky_posts' ) );
-			$sticky = 0;
-            if( $stickies && $paged === 1 ):
-				$post = $stickies[0];
-				$sticky = $post;
-                setup_postdata($post);
+            $stickies = array_reverse( get_option( 'sticky_posts' ) );
+                
+            if( $stickies ){
+                $post = $stickies[0];
+            }else{
+                $stickies = wp_get_recent_posts( array('numberposts' => 1, 'post_status' =>'publish') );
+                $post = $stickies[0]['ID'];
+            }
+                
+            $sticky = $post;
+            setup_postdata($post);
         ?>
             <div class='spotlight-post'>
                 <div class='img'>
                     <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
-                </div>
-				<div class='txt'>
+                </div><div class='txt'>
                     <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
-                    <h2 class="h2"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h2>
+                    <h3 class="h2"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
                     <?php the_excerpt(); ?>
                     <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
                 </div>
             </div>
-        <?php wp_reset_postdata(); endif; ?>
+        <?php wp_reset_postdata(); ?>
 
         <?php
             $queryPost = new WP_Query(array('post__not_in' => array($sticky), 'paged' => $paged));

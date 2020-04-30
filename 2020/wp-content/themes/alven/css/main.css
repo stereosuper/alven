@@ -1122,7 +1122,7 @@ textarea {
   z-index: 1;
   font-size: 1.2rem;
   text-align: center; }
-.post:nth-of-type(even):after {
+.post:nth-of-type(odd):after {
     content: '';
     position: absolute;
     top: 0;
@@ -1664,4 +1664,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?715bbc75fc540cee233ff73d49b1d1d2*/
+/*# sourceMappingURL=main.css.map?939d73141a0aaff86e4e21b63533a75e*/
