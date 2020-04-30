@@ -96,12 +96,6 @@
     polyline {
         fill: #fff;
     }
-    p {
-        max-width: 280px;
-        padding: 0 0 0 20px;
-        margin: 0 0 0 20px;
-        border-left: 1px solid #fff;
-    }
     a {
         display: flex;
         max-width: 500px;
@@ -112,12 +106,16 @@
 }
 
 .baseline {
+    max-width: 340px;
+    padding: 0 0 0 20px;
+    margin: 0 0 0 20px;
+    border-left: 1px solid #fff;
     font-size: 1.4rem;
 }
 
 @media (min-width: $tablet) {
     .baseline {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 }
 
