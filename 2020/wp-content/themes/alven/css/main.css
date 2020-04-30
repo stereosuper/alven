@@ -1159,6 +1159,9 @@ textarea {
   margin: 0 0 10px; }
 .post-sidebar p {
   margin-top: 0; }
+.pagination {
+  margin-top: 50px;
+  text-align: center; }
 @media (min-width: 768px) {
   .post {
     display: flex;
@@ -1664,4 +1667,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?939d73141a0aaff86e4e21b63533a75e*/
+/*# sourceMappingURL=main.css.map?9e45b4857da31e50e12e66b33d8ff600*/

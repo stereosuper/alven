@@ -99,6 +99,11 @@
     }
 }
 
+.pagination {
+    margin-top: 50px;
+    text-align: center;
+}
+
 @media (min-width: $tablet) {
     .post {
         display: flex;
