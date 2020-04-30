@@ -756,6 +756,10 @@ textarea {
   color: #fff; }
 .page-template-portfolio .title-wrapper {
     margin: 0; }
+.page-template-team .title-wrapper,
+  .page-template-contact .title-wrapper {
+    background-image: url(/wp-content/themes/alven/img/bg-pale.png);
+    color: #003240; }
 .title-wrapper.has-img:after {
     content: '';
     position: absolute;
@@ -1702,4 +1706,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?2c1c414b2b658093ade2690d8d5ea9a4*/
+/*# sourceMappingURL=main.css.map?fd71b660100b0f4bbeec846c39de9f78*/

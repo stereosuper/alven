@@ -108,6 +108,11 @@
     .page-template-portfolio & {
         margin: 0;
     }
+    .page-template-team &,
+    .page-template-contact & {
+        background-image: url(../../img/bg-pale.png);
+        color: $primary;
+    }
     &.has-img {
         &:after {
             content: '';
