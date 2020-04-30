@@ -15,14 +15,11 @@
     top: 0;
     right: 0;
     align-items: flex-end;
-    > div {
-        max-width: 50%;
-    }
 }
 
 .slider-nav {
     display: flex;
-    margin: 30px 0 0;
+    margin: 100px 0 10px;
     list-style: none;
     color: #fff;
     > li {
@@ -86,13 +83,14 @@
         fill: #fff;
     }
     p {
+        max-width: 280px;
         padding: 0 0 0 20px;
         margin: 0 0 0 20px;
         border-left: 1px solid #fff;
     }
     a {
         display: flex;
-        max-width: 50%;
+        max-width: 500px;
         align-items: center;
         font-weight: 400;
         color: #fff;
@@ -100,5 +98,17 @@
 }
 
 .baseline {
-    font-size: 2.2rem;
+    font-size: 1.4rem;
+}
+
+@media (min-width: $phone) {
+    .baseline {
+        font-size: 2.2rem;
+    }
+}
+
+@media (min-width: $desktop) {
+    .slider-nav {
+        margin: 30px 0 0;
+    }
 }

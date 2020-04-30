@@ -1095,18 +1095,18 @@ textarea {
   .portfolio-filters .form-search {
     width: 66%; } }
 .spotlight-post {
-  margin: 65px 0 0; }
+  margin: 65px 0 0;
+  text-align: center; }
 .blog .spotlight-post {
     margin-bottom: 60px; }
 .spotlight-post .img {
     margin: 0 0 20px; }
 .home-posts {
-  display: flex;
-  justify-content: space-between;
   margin: 65px 0 0;
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+  text-align: center; }
 .home-posts > div {
-    width: 27%; }
+    margin: 0 0 50px; }
 .home-posts-link {
   margin: 60px 0 85px;
   text-align: center; }
@@ -1119,8 +1119,9 @@ textarea {
 .post {
   padding: 50px 0;
   position: relative;
+  z-index: 1;
   font-size: 1.2rem;
-  z-index: 1; }
+  text-align: center; }
 .post:nth-of-type(even):after {
     content: '';
     position: absolute;
@@ -1180,16 +1181,19 @@ textarea {
       width: 30%;
       margin: 0; } }
 @media (min-width: 960px) {
-  .post .img {
-    width: 25%;
-    margin: 0 8.33333%; }
+  .post {
+    text-align: left; }
+    .post .img {
+      width: 25%;
+      margin: 0 8.33333%; }
   .read-also-posts {
     padding: 80px; }
     .read-also-posts .container > div {
       width: 27%; }
   .spotlight-post {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    text-align: left; }
     .spotlight-post > div {
       width: 50%; }
     .spotlight-post .txt {
@@ -1199,7 +1203,14 @@ textarea {
       justify-content: flex-end;
       margin: 0; }
     .spotlight-post img {
-      max-width: 50vw; } }
+      max-width: 50vw; }
+  .home-posts {
+    display: flex;
+    justify-content: space-between;
+    text-align: left; }
+    .home-posts > div {
+      width: 27%;
+      margin: 0; } }
 .contact-wrapper {
   padding: 75px 0 95px;
   text-align: center;
@@ -1491,11 +1502,9 @@ textarea {
   top: 0;
   right: 0;
   align-items: flex-end; }
-.slider-title > div {
-    max-width: 50%; }
 .slider-nav {
   display: flex;
-  margin: 30px 0 0;
+  margin: 100px 0 10px;
   list-style: none;
   color: #fff; }
 .slider-nav > li {
@@ -1547,24 +1556,31 @@ textarea {
   .slide-content polyline {
     fill: #fff; }
 .slide-content p {
+    max-width: 280px;
     padding: 0 0 0 20px;
     margin: 0 0 0 20px;
     border-left: 1px solid #fff; }
 .slide-content a {
     display: flex;
-    max-width: 50%;
+    max-width: 500px;
     align-items: center;
     font-weight: 400;
     color: #fff; }
 .baseline {
-  font-size: 2.2rem; }
+  font-size: 1.4rem; }
+@media (min-width: 580px) {
+  .baseline {
+    font-size: 2.2rem; } }
+@media (min-width: 1264px) {
+  .slider-nav {
+    margin: 30px 0 0; } }
 /* Home specific style */
 .main-title-home {
-  font-size: 3.8rem;
+  font-size: 2rem;
   line-height: 1.2;
   color: #fff; }
 .main-title-home > strong {
-    font-size: 5.3rem; }
+    font-size: 3rem; }
 .philo {
   padding: 85px 0;
   text-align: center;
@@ -1574,14 +1590,11 @@ textarea {
 .philo strong {
     color: #3aafa9; }
 .philo-list {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin: 80px 0 0;
   list-style: none;
   text-transform: uppercase; }
 .philo-list li {
-    margin: 0 32px; }
+    margin: 0 0 50px; }
 .philo-list a {
     color: inherit; }
 .philo-list a:before {
@@ -1596,27 +1609,42 @@ textarea {
 .philo-list a:hover, .philo-list a:focus {
       color: #3aafa9; }
 .team-wrapper {
-  padding: 75px 0 95px; }
+  padding-top: 75px;
+  padding-bottom: 95px; }
 .team {
-  display: flex;
   margin: 75px 0 0;
-  align-items: center; }
-.team > div {
-    width: 50%; }
-.team .txt {
-    padding: 0 0 0 8.33333%; }
-.team .img {
+  text-align: center; }
+@media (min-width: 580px) {
+  .main-title-home {
+    font-size: 3.8rem; }
+    .main-title-home > strong {
+      font-size: 5.3rem; }
+  .philo-list {
     display: flex;
-    justify-content: flex-end; }
-.team img {
-    max-width: 50vw; }
+    align-items: flex-start;
+    justify-content: space-between; }
+    .philo-list li {
+      margin: 0 32px; } }
 @media (min-width: 960px) {
   .philo-content {
     width: 66.66667%;
     margin: 0 auto; } }
 @media (min-width: 1264px) {
   .philo-content {
-    width: 50%; } }
+    width: 50%; }
+  .team {
+    display: flex;
+    align-items: center;
+    text-align: left; }
+    .team > div {
+      width: 50%; }
+    .team .txt {
+      padding: 0 0 0 8.33333%; }
+    .team .img {
+      display: flex;
+      justify-content: flex-end; }
+    .team img {
+      max-width: 50vw; } }
 /******* PRINT *******/
 @media print {
   *, *:before {
@@ -1636,4 +1664,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?4d70216b788073eeb53e6edc0da6dbb9*/
+/*# sourceMappingURL=main.css.map?715bbc75fc540cee233ff73d49b1d1d2*/
