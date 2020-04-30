@@ -743,9 +743,11 @@ textarea {
   display: flex;
   min-height: 270px;
   padding: 50px 0;
+  position: relative;
   margin: 0 0 50px;
   align-items: center;
   justify-content: center;
+  z-index: 1;
   background-color: #003240;
   background-image: url(/wp-content/themes/alven/img/bg.png);
   background-size: cover;
@@ -754,6 +756,15 @@ textarea {
   color: #fff; }
 .page-template-portfolio .title-wrapper {
     margin: 0; }
+.title-wrapper.has-img:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient(rgba(0, 50, 64, 0.1) 0%, rgba(0, 50, 64, 0.8) 100%); }
 @media (min-width: 768px) {
   .title-wrapper {
     margin: 0 0 110px; } }
@@ -1680,4 +1691,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?ca7dce66711e783818d74d63a299d3e7*/
+/*# sourceMappingURL=main.css.map?d63f2870f9b78eaf07f9700df0ff609c*/

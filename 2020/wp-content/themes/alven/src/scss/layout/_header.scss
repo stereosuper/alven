@@ -94,9 +94,11 @@
     display: flex;
     min-height: 270px;
     padding: 50px 0;
+    position: relative;
     margin: 0 0 50px;
     align-items: center;
     justify-content: center;
+    z-index: 1;
     background-color: $primary;
     background-image: url(../../img/bg.png);
     background-size: cover;
@@ -105,6 +107,18 @@
     color: #fff;
     .page-template-portfolio & {
         margin: 0;
+    }
+    &.has-img {
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: linear-gradient(rgba($primary, 0.1) 0%, rgba($primary, 0.8) 100%);
+        }
     }
 }
 

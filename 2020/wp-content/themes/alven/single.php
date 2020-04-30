@@ -3,14 +3,14 @@
 <?php if ( have_posts() ) : the_post(); ?>
 
 	<?php
-        $hasImg = false;
-        if(has_post_thumbnail()){
-            $hasImg = true;
+        $hasImg = has_post_thumbnail();
+        
+        if( $hasImg ){
             $imgUrl = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0];
         }
     ?>
 
-    <div class='title-wrapper' style='background-image:url(<?php echo $imgUrl; ?>);'>
+    <div class='title-wrapper <?php if($hasImg) echo "has-img"; ?>' style='background-image:url(<?php echo $imgUrl; ?>);'>
         <div class='container'>
             <h1><?php single_post_title(); ?></h1>
         </div>
