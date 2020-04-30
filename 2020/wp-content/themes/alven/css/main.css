@@ -178,7 +178,7 @@ sup {
   vertical-align: baseline; }
 @font-face {
   font-family: 'Century Gothic';
-  src: local("Century Gothic"), local("CenturyGothic"), local("AppleGothic"), url(/wp-content/themes/alven/fonts/centurygoth-bold.woff2) format("woff2"), url(/wp-content/themes/alven/fonts/centurygoth-bold.woff) format("woff");
+  src: url(/wp-content/themes/alven/fonts/centurygoth.woff2) format("woff2"), url(/wp-content/themes/alven/fonts/centurygoth.woff) format("woff");
   font-display: swap;
   font-style: normal;
   font-variant: normal;
@@ -234,7 +234,7 @@ html {
   /* sets the base font to 10px for easier math */
   background: #fff; }
 body {
-  font: 1.4em/1.5 CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
+  font: 1.4em/1.5 "Century Gothic", sans-serif;
   color: #003240;
   font-feature-settings: "kern";
   -webkit-font-kerning: normal;
@@ -242,12 +242,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 h1 {
-  font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
+  font-family: "Roboto Slab", "Century Gothic", sans-serif;
   font-size: 3rem;
   font-weight: 400; }
 h1 > strong {
     display: block;
-    font-family: CenturyGothic, AppleGothic, "Century Gothic", sans-serif; }
+    font-family: "Century Gothic", sans-serif; }
 h2,
 h3,
 h4,
@@ -522,7 +522,7 @@ html.no-scroll {
 .wp-block-button__link {
   display: inline-block;
   padding: 0.5em 2.5em;
-  font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
+  font-family: "Roboto Slab", "Century Gothic", sans-serif;
   font-weight: 900;
   font-size: 0.95em;
   border-radius: 4px; }
@@ -549,7 +549,7 @@ html.no-scroll {
   text-decoration: underline;
   color: #003240; }
 .link-roboto {
-  font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
+  font-family: "Roboto Slab", "Century Gothic", sans-serif;
   text-decoration: underline; }
 .share {
   display: flex;
@@ -672,14 +672,20 @@ textarea {
     margin: -5px 0 0;
     align-items: center;
     text-align: left; }
+    .form-search-header .field-search {
+      width: 0;
+      overflow: hidden;
+      transition: 0.3s ease-in-out; }
+      .form-search-header .field-search.on {
+        width: 80px; }
     .form-search-header input {
-      max-width: 80px;
+      width: 80px;
       padding: 0;
       border-radius: 0;
       background: none; }
     .form-search-header label {
       top: 0;
-      left: 0; } }
+      right: 0; } }
 /* Header */
 .header {
   width: 100%;
@@ -1291,7 +1297,7 @@ textarea {
     display: block;
     font-weight: 900; }
 .team-list .name {
-    font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif; }
+    font-family: "Roboto Slab", "Century Gothic", sans-serif; }
 .team-list .function {
     color: #3aafa9; }
 .member {
@@ -1358,7 +1364,7 @@ textarea {
   margin: 0 8.33333%;
   justify-content: center;
   list-style: none;
-  font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
+  font-family: "Roboto Slab", "Century Gothic", sans-serif;
   font-weight: 900; }
 .periods > li {
     margin: 0 5.5%; }
@@ -1403,7 +1409,7 @@ textarea {
 .dates .history-date img {
       max-width: 50%; }
 .dates .history-date h3 {
-      font-family: "Roboto Slab", CenturyGothic, AppleGothic, "Century Gothic", sans-serif;
+      font-family: "Roboto Slab", "Century Gothic", sans-serif;
       font-size: 2.7rem;
       font-weight: 900; }
 .dates .history-date p {
@@ -1708,4 +1714,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?8a8fa45053dd2128d55a8dd52d4267bc*/
+/*# sourceMappingURL=main.css.map?ce168be5a3b45446ab10bd5c5051dadd*/

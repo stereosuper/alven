@@ -9,6 +9,7 @@ import '@babel/polyfill';
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
 import { bodyRouter, useSacVanilla, useSuperLoad, useSuperWindow } from '@stereorepo/sac';
 import header from './components/header';
+import search from './components/search';
 import forms from './components/forms';
 import contact from './components/contact';
 
@@ -37,6 +38,7 @@ const preloadCallback = () => {
 const loadCallback = () => {
     // All actions needed after page load (like click events for example)
     header();
+    search();
     forms();
 
     bodyRouter({

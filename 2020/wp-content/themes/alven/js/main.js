@@ -13448,6 +13448,12 @@ var map = {
 		"./wp-content/themes/alven/src/js/components/portfolio-search.js",
 		"portfolio-search"
 	],
+	"./search": [
+		"./wp-content/themes/alven/src/js/components/search.js"
+	],
+	"./search.js": [
+		"./wp-content/themes/alven/src/js/components/search.js"
+	],
 	"./slider": [
 		"./wp-content/themes/alven/src/js/components/slider.js",
 		"slider"
@@ -13620,6 +13626,51 @@ const header = () => {
 
 /***/ }),
 
+/***/ "./wp-content/themes/alven/src/js/components/search.js":
+/*!*************************************************************!*\
+  !*** ./wp-content/themes/alven/src/js/components/search.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const search = () => {
+    const form = document.getElementById('form-search-header');
+
+    if (!form) return;
+
+    const field = form.querySelector('#search-header');
+    const input = field.querySelector('input');
+
+    const openForm = () => {
+        field.classList.add('on');
+    };
+
+    const closeForm = () => {
+        if (!input.value) field.classList.remove('on');
+    };
+
+    form.addEventListener('mouseenter', openForm, false);
+    form.addEventListener('focusin', openForm, false);
+
+    form.addEventListener('mouseleave', closeForm, false);
+    form.addEventListener('focusout', closeForm, false);
+
+    form.addEventListener(
+        'submit',
+        e => {
+            if (!input.value) e.preventDefault();
+        },
+        false
+    );
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (search);
+
+
+/***/ }),
+
 /***/ "./wp-content/themes/alven/src/js/main.js":
 /*!************************************************!*\
   !*** ./wp-content/themes/alven/src/js/main.js ***!
@@ -13635,8 +13686,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_polyfill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_polyfill__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @stereorepo/sac */ "./node_modules/@stereorepo/sac/src/index.js");
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/header */ "./wp-content/themes/alven/src/js/components/header.js");
-/* harmony import */ var _components_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/forms */ "./wp-content/themes/alven/src/js/components/forms.js");
-/* harmony import */ var _components_contact__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/contact */ "./wp-content/themes/alven/src/js/components/contact.js");
+/* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/search */ "./wp-content/themes/alven/src/js/components/search.js");
+/* harmony import */ var _components_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/forms */ "./wp-content/themes/alven/src/js/components/forms.js");
+/* harmony import */ var _components_contact__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/contact */ "./wp-content/themes/alven/src/js/components/contact.js");
 // ⚠️ Do not remove the line below or your scss won't work anymore
 
 
@@ -13646,6 +13698,7 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 // To learn how to use Sac
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
+
 
 
 
@@ -13676,7 +13729,8 @@ const preloadCallback = () => {
 const loadCallback = () => {
     // All actions needed after page load (like click events for example)
     Object(_components_header__WEBPACK_IMPORTED_MODULE_3__["default"])();
-    Object(_components_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
+    Object(_components_search__WEBPACK_IMPORTED_MODULE_4__["default"])();
+    Object(_components_forms__WEBPACK_IMPORTED_MODULE_5__["default"])();
 
     Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
         identifier: '.home',
@@ -13703,7 +13757,7 @@ const loadCallback = () => {
         callback: team
     });
 
-    Object(_components_contact__WEBPACK_IMPORTED_MODULE_5__["default"])();
+    Object(_components_contact__WEBPACK_IMPORTED_MODULE_6__["default"])();
 };
 
 const animationsCallback = () => {
@@ -13738,4 +13792,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?f3f8829b891c36273aaaee1f8f12f456
+//# sourceMappingURL=main.js.map?f2a040910df35955892cdf27279aa362

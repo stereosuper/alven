@@ -1,8 +1,6 @@
 @font-face {
     font-family: 'Century Gothic';
-    src: local('Century Gothic'), local('CenturyGothic'), local('AppleGothic'),
-        url('../../fonts/centurygoth-bold.woff2') format('woff2'),
-        url('../../fonts/centurygoth-bold.woff') format('woff');
+    src: url('../../fonts/centurygoth.woff2') format('woff2'), url('../../fonts/centurygoth.woff') format('woff');
     font-display: swap;
     font-style: normal;
     font-variant: normal;
