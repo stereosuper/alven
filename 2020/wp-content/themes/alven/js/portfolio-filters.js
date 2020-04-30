@@ -19,7 +19,17 @@ const portfolio = () => {
     const links = portfolio.querySelectorAll('li');
     let filterName = '';
 
-    const filter = btn => {
+    const sortPortfolio = btn => {
+        filterName = btn.dataset.filter;
+
+        links.forEach(link => {
+            link.dataset[filterName].split(',').includes(btn.dataset[filterName])
+                ? link.classList.remove('off')
+                : link.classList.add('off');
+        });
+    };
+
+    const handleFilter = btn => {
         if (btn.classList.contains('on')) {
             links.forEach(link => {
                 link.classList.remove('off');
@@ -31,13 +41,7 @@ const portfolio = () => {
             return;
         }
 
-        filterName = btn.dataset.filter;
-
-        links.forEach(link => {
-            link.dataset[filterName].split(',').includes(btn.dataset[filterName])
-                ? link.classList.remove('off')
-                : link.classList.add('off');
-        });
+        sortPortfolio(btn);
 
         btns.forEach(elt => {
             elt.classList.remove('on');
@@ -46,10 +50,14 @@ const portfolio = () => {
     };
 
     btns.forEach(btn => {
+        if (btn.classList.contains('on')) {
+            sortPortfolio(btn);
+        }
+
         btn.addEventListener(
             'click',
             () => {
-                filter(btn);
+                handleFilter(btn);
             },
             false
         );
@@ -62,4 +70,4 @@ const portfolio = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=portfolio-filters.js.map?94ef1d146f46772747eb14edc33b809f
+//# sourceMappingURL=portfolio-filters.js.map?a4f8726ed1b023f170c4dff29c68884d

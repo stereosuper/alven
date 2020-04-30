@@ -21,8 +21,8 @@ get_header(); ?>
             <div class='portfolio-wrapper'>
                 <aside class='portfolio-filters' id='portfolio-filters'>
                      <form role='search' method='get' action='#' class='form-search' id='form-startup'>
-                        <div class='field-search'>
-                            <input type='search' name='startup' value='' id='search-startup'>
+                        <div class='field-search js-field'>
+                            <input type='search' name='startup' value='' id='search-startup' class='form-elt'>
                             <label for='search'>search</label>
                         </div>
                         <button type='submit' class='btn-search'>
@@ -31,15 +31,16 @@ get_header(); ?>
                     </form>
 
                     <div class='portfolio-filters-main'>
+                        <?php $investment = isset($_GET['investment']) ? $_GET['investment'] : ''; ?>
                         <ul>
                             <li>
-                                <button class='btn-filter' data-filter='investment' data-investment='present'>
+                                <button class='btn-filter <?php if($investment === 'present') echo "on"; ?>' data-filter='investment' data-investment='present'>
                                     <?php the_field('present', 'options'); ?>
                                     <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
                                 </button>
                             </li>
                             <li>
-                                <button class='btn-filter' data-filter='investment' data-investment='past'>
+                                <button class='btn-filter <?php if($investment === 'past') echo "on"; ?>' data-filter='investment' data-investment='past'>
                                     <?php the_field('past', 'options'); ?>
                                     <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
                                 </button>
