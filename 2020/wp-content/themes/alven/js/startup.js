@@ -9,6 +9,13 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap_ScrollToPlugin_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollToPlugin.js */ "./node_modules/gsap/ScrollToPlugin.js");
+
+
+
+gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].registerPlugin(gsap_ScrollToPlugin_js__WEBPACK_IMPORTED_MODULE_1__["ScrollToPlugin"]);
+
 const startup = () => {
     const portfolio = document.getElementById('portfolio');
 
@@ -17,28 +24,33 @@ const startup = () => {
     const wrapper = document.getElementById('startup');
     const links = portfolio.querySelectorAll('.ajax-load');
 
-    const openStartup = (html, href, name) => {
-        wrapper.innerHTML = html;
-
-        wrapper.querySelector('#close').addEventListener(
-            'click',
-            () => {
+    const closeStartup = () => {
+        gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(wrapper, 0.5, {
+            height: 0,
+            onComplete: () => {
                 wrapper.innerHTML = '';
-                history.pushState(
-                    {
-                        id: 'portfolio'
-                    },
-                    '',
-                    window.location.origin + window.location.pathname
-                );
-            },
-            false
-        );
+                wrapper.style.height = '';
+            }
+        });
 
-        history.pushState({ id: name }, '', href);
+        history.pushState(
+            {
+                id: 'portfolio'
+            },
+            '',
+            window.location.origin + window.location.pathname
+        );
     };
 
-    const loadUrl = (href, name) => {
+    const openStartup = (html, href, name) => {
+        wrapper.innerHTML = html;
+        gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(window, { duration: 0.8, scrollTo: '#startup' });
+        history.pushState({ id: name }, '', href);
+
+        wrapper.querySelector('#close').addEventListener('click', closeStartup, false);
+    };
+
+    const loadStartup = (href, name) => {
         fetch(alven_ajax.ajax_url + '?action=alven_portfolio_ajax&name=' + name, {
             method: 'POST'
         })
@@ -52,14 +64,14 @@ const startup = () => {
             'click',
             e => {
                 e.preventDefault();
-                loadUrl(link.href, link.dataset.name);
+                loadStartup(link.href, link.dataset.name);
             },
             false
         );
     });
 
     if (window.location.pathname === '/portfolio/' && window.location.hash) {
-        loadUrl(window.location.href, window.location.hash.replace('#', ''));
+        loadStartup(window.location.href, window.location.hash.replace('#', ''));
     }
 };
 
@@ -69,4 +81,4 @@ const startup = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=startup.js.map?e35f13a571432a1e4b082112b0312094
+//# sourceMappingURL=startup.js.map?7d6cf0258824524f0dd1bc7172a1c1e7

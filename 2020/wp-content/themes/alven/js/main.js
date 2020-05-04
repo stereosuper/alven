@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"history":"history","portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","slider":"slider","startup":"startup","team":"team"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"history":"history","portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","slider":"slider","team":"team","vendors~startup":"vendors~startup","startup":"startup"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -13464,10 +13464,12 @@ var map = {
 	],
 	"./startup": [
 		"./wp-content/themes/alven/src/js/components/startup.js",
+		"vendors~startup",
 		"startup"
 	],
 	"./startup.js": [
 		"./wp-content/themes/alven/src/js/components/startup.js",
+		"vendors~startup",
 		"startup"
 	],
 	"./team": [
@@ -13791,4 +13793,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?e5a44c8dbe26898ce16c1a66aaf1257f
+//# sourceMappingURL=main.js.map?f18125bef9855e873941a889eae342cd

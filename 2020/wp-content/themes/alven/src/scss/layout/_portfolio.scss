@@ -173,6 +173,7 @@
 
 .portfolio-detail {
     margin: 0 0 50px;
+    overflow: hidden;
     background: $primary;
     color: #fff;
 }
@@ -180,7 +181,7 @@
 .portfolio-detail-content {
     display: flex;
     align-items: flex-start;
-    padding-top: 100px;
+    padding-top: 120px;
     padding-bottom: 75px;
 }
 
@@ -209,6 +210,7 @@
 }
 
 .portfolio-text {
+    width: $col * 7;
     > p {
         &:first-of-type {
             margin-top: 0;

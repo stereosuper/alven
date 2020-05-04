@@ -1091,12 +1091,13 @@ textarea {
       height: 100%; }
 .portfolio-detail {
   margin: 0 0 50px;
+  overflow: hidden;
   background: #003240;
   color: #fff; }
 .portfolio-detail-content {
   display: flex;
   align-items: flex-start;
-  padding-top: 100px;
+  padding-top: 120px;
   padding-bottom: 75px; }
 .portfolio-header {
   width: 25%;
@@ -1117,8 +1118,10 @@ textarea {
     right: 0;
     bottom: 0;
     margin: auto; }
+.portfolio-text {
+  width: 58.33333%; }
 .portfolio-text > p:first-of-type {
-  margin-top: 0; }
+    margin-top: 0; }
 .portfolio-close {
   width: 8.33333%;
   flex-shrink: 0;
@@ -1752,4 +1755,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?829137cc3d052c82c0a96cb6abaaf3af*/
+/*# sourceMappingURL=main.css.map?6db0151b61e582ee21fc36104aebf837*/

@@ -1,3 +1,8 @@
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
+
+gsap.registerPlugin(ScrollToPlugin);
+
 const startup = () => {
     const portfolio = document.getElementById('portfolio');
 
@@ -6,28 +11,33 @@ const startup = () => {
     const wrapper = document.getElementById('startup');
     const links = portfolio.querySelectorAll('.ajax-load');
 
-    const openStartup = (html, href, name) => {
-        wrapper.innerHTML = html;
-
-        wrapper.querySelector('#close').addEventListener(
-            'click',
-            () => {
+    const closeStartup = () => {
+        gsap.to(wrapper, 0.5, {
+            height: 0,
+            onComplete: () => {
                 wrapper.innerHTML = '';
-                history.pushState(
-                    {
-                        id: 'portfolio'
-                    },
-                    '',
-                    window.location.origin + window.location.pathname
-                );
-            },
-            false
-        );
+                wrapper.style.height = '';
+            }
+        });
 
-        history.pushState({ id: name }, '', href);
+        history.pushState(
+            {
+                id: 'portfolio'
+            },
+            '',
+            window.location.origin + window.location.pathname
+        );
     };
 
-    const loadUrl = (href, name) => {
+    const openStartup = (html, href, name) => {
+        wrapper.innerHTML = html;
+        gsap.to(window, { duration: 0.8, scrollTo: '#startup' });
+        history.pushState({ id: name }, '', href);
+
+        wrapper.querySelector('#close').addEventListener('click', closeStartup, false);
+    };
+
+    const loadStartup = (href, name) => {
         fetch(alven_ajax.ajax_url + '?action=alven_portfolio_ajax&name=' + name, {
             method: 'POST'
         })
@@ -41,14 +51,14 @@ const startup = () => {
             'click',
             e => {
                 e.preventDefault();
-                loadUrl(link.href, link.dataset.name);
+                loadStartup(link.href, link.dataset.name);
             },
             false
         );
     });
 
     if (window.location.pathname === '/portfolio/' && window.location.hash) {
-        loadUrl(window.location.href, window.location.hash.replace('#', ''));
+        loadStartup(window.location.href, window.location.hash.replace('#', ''));
     }
 };
 
