@@ -5,45 +5,45 @@
         </h2>
 
         <div class='header-block-term'>
-                <?php
-                    $terms = get_the_terms( $post->ID , 'field' );
-                    $totalTerms = $terms ? count($terms) : 0;
-                    $countTerm = 0;
-                    if ($terms) {
-                        foreach($terms as $term){
-                            $countTerm ++;
-                            echo $term->name;
-                            if($countTerm < $totalTerms){
-                                echo ' / ';
-                            }
+            <?php
+                $terms = get_the_terms( $post->ID , 'field' );
+                $totalTerms = $terms ? count($terms) : 0;
+                $countTerm = 0;
+                if ($terms) {
+                    foreach($terms as $term){
+                        $countTerm ++;
+                        echo $term->name;
+                        if($countTerm < $totalTerms){
+                            echo ' / ';
                         }
                     }
-                ?>
+                }
+            ?>
+        </div>
+
+        <?php if(get_field('history')){ ?>
+            <div class='header-block-history'>
+                <p class='title'>History</p>
+                <?php the_field('history'); ?>
             </div>
+        <?php } ?>
 
-            <?php if(get_field('history')){ ?>
-                <div class='header-block-history'>
-                    <p class='title'>History</p>
-                    <?php the_field('history'); ?>
-                </div>
-            <?php } ?>
-
-            <?php if(get_field('keywords')){ ?>
-                <div class='header-block-keywords'>
-                    <p class='title'>Keywords</p>
-                    <?php the_field('keywords'); ?>
-                </div>
-            <?php } ?>
+        <?php if(get_field('keywords')){ ?>
+            <div class='header-block-keywords'>
+                <p class='title'>Keywords</p>
+                <?php the_field('keywords'); ?>
+            </div>
+        <?php } ?>
     </div>
 
-        <div class='portfolio-text'>
-            <?php the_content(); ?>
+    <div class='portfolio-text'>
+        <?php the_content(); ?>
 
-            <?php if(get_field('website')){ $site = get_field('websiteDisplay') ? get_field('websiteDisplay') : get_field('website'); ?>
-                <a href='<?php the_field('website'); ?>' class='btn-invert' target='_blank'><?php echo $site; ?></a>
-            <?php } ?>
+        <?php if(get_field('website')){ $site = get_field('websiteDisplay') ? get_field('websiteDisplay') : get_field('website'); ?>
+            <a href='<?php the_field('website'); ?>' class='btn-invert' target='_blank'><?php echo $site; ?></a>
+        <?php } ?>
 
-            <?php if(get_field('appStoreLink') || get_field('googlePlayLink')){ ?>
+        <?php if(get_field('appStoreLink') || get_field('googlePlayLink')){ ?>
             <div class='header-block-btn'>
                 <p class='title'>App</p>
                 <?php if(get_field('appStoreLink')){ ?>
@@ -53,9 +53,12 @@
                 <?php } ?>
             </div>
         <?php } ?>
-        </div>
+    </div>
         
     <div  class='portfolio-close'>
-        <button role='button' id='close'>Close</button>
+        <button role='button' id='close' class="btn-close">
+            <span>Close</span>
+            <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
+        </button>
     </div>
 </div>

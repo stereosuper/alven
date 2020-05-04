@@ -222,10 +222,6 @@
     width: $col;
     flex-shrink: 0;
     text-align: right;
-    button {
-        font-weight: 900;
-        color: $tertiary;
-    }
 }
 
 @media (min-width: $tablet) {

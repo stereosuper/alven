@@ -45,3 +45,20 @@
     font-family: $roboto;
     text-decoration: underline;
 }
+
+.btn-close {
+    display: flex;
+    align-items: flex-end;
+    margin: 3px 0 0;
+    font-weight: 900;
+    line-height: 1;
+    color: $tertiary;
+    > span {
+        text-decoration: underline;
+    }
+    .icon {
+        width: 9px;
+        height: 9px;
+        margin: 0 0 2px 5px;
+    }
+}
