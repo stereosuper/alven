@@ -55,7 +55,7 @@ const team = () => {
 
                 index = [].indexOf.call(members, member);
                 indexPos = (Math.floor(index / row) + 1) * row - 1;
-                indexPos = indexPos > nbMembers ? nbMembers - 1 : indexPos;
+                indexPos = indexPos >= nbMembers ? nbMembers - 1 : indexPos;
 
                 members[indexPos].parentElement.after(desc);
 

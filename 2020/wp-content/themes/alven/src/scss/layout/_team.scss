@@ -63,13 +63,13 @@
     position: relative;
     .team-desc {
         display: block;
-        padding: 0 $col * 2 85px;
+        padding: 0 $gutter * 4 85px;
     }
     .name {
-        font-size: 3.4rem;
+        font-size: 2.3rem;
     }
     .function {
-        font-size: 2.3rem;
+        font-size: 1.8rem;
     }
 }
 
@@ -78,7 +78,7 @@
     height: 28px;
     position: absolute;
     top: 0;
-    bottom: 80px;
+    bottom: 0;
     margin: auto;
     color: $secondary;
     .icon {
@@ -89,16 +89,30 @@
         color: $quaternary;
     }
     &.prev {
-        left: 0;
+        left: $gutter * 2;
     }
     &.next {
-        right: 0;
+        right: $gutter * 2;
     }
 }
 
 @media (min-width: $phone) {
     .member {
         width: 33.33%;
+    }
+}
+
+@media (min-width: $tablet) {
+    .wrapper-desc {
+        .team-desc {
+            padding: 0 $col * 2 85px;
+        }
+        .name {
+            font-size: 3.4rem;
+        }
+        .function {
+            font-size: 2.3rem;
+        }
     }
 }
 

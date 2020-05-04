@@ -1376,17 +1376,17 @@ textarea {
   position: relative; }
 .wrapper-desc .team-desc {
     display: block;
-    padding: 0 16.66667% 85px; }
+    padding: 0 64px 85px; }
 .wrapper-desc .name {
-    font-size: 3.4rem; }
-.wrapper-desc .function {
     font-size: 2.3rem; }
+.wrapper-desc .function {
+    font-size: 1.8rem; }
 .team-btn {
   width: 14px;
   height: 28px;
   position: absolute;
   top: 0;
-  bottom: 80px;
+  bottom: 0;
   margin: auto;
   color: #3aafa9; }
 .team-btn .icon {
@@ -1394,12 +1394,19 @@ textarea {
 .team-btn:hover, .team-btn:focus {
     color: #a2d5ac; }
 .team-btn.prev {
-    left: 0; }
+    left: 32px; }
 .team-btn.next {
-    right: 0; }
+    right: 32px; }
 @media (min-width: 580px) {
   .member {
     width: 33.33%; } }
+@media (min-width: 768px) {
+  .wrapper-desc .team-desc {
+    padding: 0 16.66667% 85px; }
+  .wrapper-desc .name {
+    font-size: 3.4rem; }
+  .wrapper-desc .function {
+    font-size: 2.3rem; } }
 @media (min-width: 960px) {
   .member {
     width: 20%; } }
@@ -1771,4 +1778,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?e7296787d6cda04240bcc61e6fa3ad9a*/
+/*# sourceMappingURL=main.css.map?83628776db7ab75f7d5d45daf005e942*/

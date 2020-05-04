@@ -68,7 +68,7 @@ const team = () => {
 
                 index = [].indexOf.call(members, member);
                 indexPos = (Math.floor(index / row) + 1) * row - 1;
-                indexPos = indexPos > nbMembers ? nbMembers - 1 : indexPos;
+                indexPos = indexPos >= nbMembers ? nbMembers - 1 : indexPos;
 
                 members[indexPos].parentElement.after(desc);
 
@@ -131,4 +131,4 @@ const team = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=team.js.map?0333c4d52e3a37d05931af9965f3b256
+//# sourceMappingURL=team.js.map?ecff01be995f770020bef1d4f98fcd48
