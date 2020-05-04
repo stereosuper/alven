@@ -1647,7 +1647,12 @@ textarea {
   text-transform: uppercase; }
 .philo-list li {
     margin: 0 0 50px; }
+.philo-list li:nth-child(2) a:before {
+      background-image: url(/wp-content/themes/alven/img/manifesto.svg); }
+.philo-list li:nth-child(3) a:before {
+      background-image: url(/wp-content/themes/alven/img/history.svg); }
 .philo-list a {
+    display: block;
     color: inherit; }
 .philo-list a:before {
       content: '';
@@ -1656,10 +1661,11 @@ textarea {
       height: 85px;
       margin: 0 auto 35px;
       border-radius: 50%;
-      background: url(/wp-content/themes/alven/img/thesis.png);
+      background: url(/wp-content/themes/alven/img/thesis.svg) no-repeat;
+      background-size: 100%;
       box-shadow: 0 1px 26px 0 rgba(0, 50, 64, 0.08); }
 .philo-list a:hover, .philo-list a:focus {
-      color: #3aafa9; }
+      opacity: 0.7; }
 .team-wrapper {
   padding-top: 75px;
   padding-bottom: 95px; }
@@ -1716,4 +1722,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?4a878cca41b7b916bcea419203bb952b*/
+/*# sourceMappingURL=main.css.map?488e1870c5bbc1d31694e1c83d1240ed*/

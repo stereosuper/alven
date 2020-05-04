@@ -27,8 +27,23 @@
     text-transform: uppercase;
     li {
         margin: 0 0 50px;
+        &:nth-child(2) {
+            a {
+                &:before {
+                    background-image: url(../../img/manifesto.svg);
+                }
+            }
+        }
+        &:nth-child(3) {
+            a {
+                &:before {
+                    background-image: url(../../img/history.svg);
+                }
+            }
+        }
     }
     a {
+        display: block;
         color: inherit;
         &:before {
             content: '';
@@ -37,12 +52,13 @@
             height: 85px;
             margin: 0 auto 35px;
             border-radius: 50%;
-            background: url(../../img/thesis.png);
+            background: url(../../img/thesis.svg) no-repeat;
+            background-size: 100%;
             box-shadow: 0 1px 26px 0 rgba($primary, 0.08);
         }
         &:hover,
         &:focus {
-            color: $secondary;
+            opacity: 0.7;
         }
     }
 }
