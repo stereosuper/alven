@@ -120,7 +120,7 @@
     .dates {
         .history-date {
             width: $col * 5;
-            min-height: 160px;
+            min-height: 180px;
             margin: 65px 0 0;
             &:before,
             &:after {
@@ -188,9 +188,9 @@
                     .txt {
                         padding-right: 0;
                     }
-                    .img {
-                        order: 2;
-                    }
+                }
+                .img {
+                    order: 2;
                 }
                 .txt {
                     &:after {

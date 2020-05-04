@@ -1480,7 +1480,7 @@ textarea {
     margin: 0 auto; }
   .dates .history-date {
     width: 41.66667%;
-    min-height: 160px;
+    min-height: 180px;
     margin: 65px 0 0; }
     .dates .history-date:before, .dates .history-date:after {
       content: '';
@@ -1527,7 +1527,7 @@ textarea {
         margin-left: -11px; }
       .dates .history-date:nth-of-type(odd).has-icon .txt {
         padding-right: 0; }
-      .dates .history-date:nth-of-type(odd).has-icon .img {
+      .dates .history-date:nth-of-type(odd) .img {
         order: 2; }
       .dates .history-date:nth-of-type(odd) .txt:after {
         left: -12px;
@@ -1767,4 +1767,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?36877e99f70c854c22c5dc58f9d6d0bc*/
+/*# sourceMappingURL=main.css.map?741490a5feffa7582e12cb6c5503b9a2*/
