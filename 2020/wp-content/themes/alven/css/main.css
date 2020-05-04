@@ -553,6 +553,35 @@ html.no-scroll {
 .link-roboto {
   font-family: "Roboto Slab", "Century Gothic", sans-serif;
   text-decoration: underline; }
+.btn-close {
+  display: flex;
+  align-items: flex-end;
+  margin: 3px 0 0;
+  font-weight: 900;
+  line-height: 1;
+  color: #fff0a1; }
+.btn-close > span {
+    text-decoration: underline; }
+.btn-close .icon {
+    width: 9px;
+    height: 9px;
+    margin: 0 0 2px 5px; }
+.btn-filter {
+  padding: 5px 10px 5px 0;
+  position: relative; }
+.btn-filter:hover, .btn-filter:focus, .btn-filter.on {
+    color: #3aafa9; }
+.btn-filter.on .icon {
+    opacity: 1; }
+.btn-filter .icon {
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    color: #3aafa9;
+    opacity: 0; }
 .share {
   display: flex;
   align-items: center;
@@ -574,6 +603,7 @@ textarea,
 select,
 button {
   border: 0;
+  text-align: left;
   color: inherit;
   transition: 0.3s ease-in-out; }
 input:focus,
@@ -982,24 +1012,6 @@ textarea {
   width: 33.33%; }
 .portfolio-filters-secondary {
   width: 66.66%; }
-.btn-filter {
-  padding: 5px 0;
-  position: relative; }
-.btn-filter:hover, .btn-filter:focus, .btn-filter.on {
-    color: #3aafa9; }
-.btn-filter.on {
-    border-color: #3aafa9; }
-.btn-filter.on .icon {
-      opacity: 1; }
-.btn-filter .icon {
-    width: 8px;
-    height: 8px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    pointer-events: none;
-    color: #3aafa9;
-    opacity: 0; }
 .portfolio-fields {
   display: flex;
   flex-wrap: nowrap; }
@@ -1126,9 +1138,6 @@ textarea {
   width: 8.33333%;
   flex-shrink: 0;
   text-align: right; }
-.portfolio-close button {
-    font-weight: 900;
-    color: #fff0a1; }
 @media (min-width: 768px) {
   .portfolio-filters {
     display: block;
@@ -1137,12 +1146,14 @@ textarea {
       margin: 10px 0 40px; }
     .portfolio-filters li {
       margin: 0 0 15px; }
+    .portfolio-filters .btn-filter {
+      padding: 5px 30px 5px 20px;
+      border-left: 5px solid transparent; }
+      .portfolio-filters .btn-filter.on {
+        border-color: #3aafa9; }
   .portfolio-filters-main,
   .portfolio-filters-secondary {
     width: 100%; }
-  .btn-filter {
-    padding: 5px 30px 5px 20px;
-    border-left: 5px solid transparent; }
   .portfolio-fields {
     display: inline;
     display: initial; }
@@ -1403,9 +1414,7 @@ textarea {
   font-weight: 900; }
 .periods > li {
     margin: 0 5.5%; }
-.periods button:hover, .periods button:focus, .periods button.on {
-    color: #3aafa9; }
-.periods button.on {
+.periods .btn-filter.on {
     text-decoration: underline; }
 .history {
   position: relative; }
@@ -1440,13 +1449,15 @@ textarea {
 .dates .history-date .img {
       display: none; }
 .dates .history-date .txt {
+      width: 100%;
       padding: 25px 40px; }
 .dates .history-date img {
       max-width: 50%; }
 .dates .history-date h3 {
       font-family: "Roboto Slab", "Century Gothic", sans-serif;
       font-size: 2.7rem;
-      font-weight: 900; }
+      font-weight: 900;
+      line-height: 1.1; }
 .dates .history-date p {
       margin-bottom: 0; }
 @media (min-width: 580px) {
@@ -1469,6 +1480,7 @@ textarea {
     margin: 0 auto; }
   .dates .history-date {
     width: 41.66667%;
+    min-height: 160px;
     margin: 65px 0 0; }
     .dates .history-date:before, .dates .history-date:after {
       content: '';
@@ -1755,4 +1767,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?6db0151b61e582ee21fc36104aebf837*/
+/*# sourceMappingURL=main.css.map?36877e99f70c854c22c5dc58f9d6d0bc*/

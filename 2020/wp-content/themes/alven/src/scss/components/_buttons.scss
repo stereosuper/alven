@@ -62,3 +62,28 @@
         margin: 0 0 2px 5px;
     }
 }
+
+.btn-filter {
+    padding: 5px 10px 5px 0;
+    position: relative;
+    &:hover,
+    &:focus,
+    &.on {
+        color: $secondary;
+    }
+    &.on {
+        .icon {
+            opacity: 1;
+        }
+    }
+    .icon {
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        pointer-events: none;
+        color: $secondary;
+        opacity: 0;
+    }
+}

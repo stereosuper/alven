@@ -17,6 +17,7 @@ textarea,
 select,
 button {
     border: 0;
+    text-align: left;
     color: inherit;
     transition: $transition;
     &:focus {

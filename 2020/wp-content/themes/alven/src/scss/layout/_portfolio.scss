@@ -27,32 +27,6 @@
     width: 66.66%;
 }
 
-.btn-filter {
-    padding: 5px 0;
-    position: relative;
-    &:hover,
-    &:focus,
-    &.on {
-        color: $secondary;
-    }
-    &.on {
-        border-color: $secondary;
-        .icon {
-            opacity: 1;
-        }
-    }
-    .icon {
-        width: 8px;
-        height: 8px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        pointer-events: none;
-        color: $secondary;
-        opacity: 0;
-    }
-}
-
 .portfolio-fields {
     display: flex;
     flex-wrap: nowrap;
@@ -234,16 +208,18 @@
         li {
             margin: 0 0 15px;
         }
+        .btn-filter {
+            padding: 5px 30px 5px 20px;
+            border-left: 5px solid transparent;
+            &.on {
+                border-color: $secondary;
+            }
+        }
     }
 
     .portfolio-filters-main,
     .portfolio-filters-secondary {
         width: 100%;
-    }
-
-    .btn-filter {
-        padding: 5px 30px 5px 20px;
-        border-left: 5px solid transparent;
     }
 
     .portfolio-fields {

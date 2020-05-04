@@ -18,6 +18,16 @@ const history = () => {
     const btns = filters.querySelectorAll('button');
 
     const filter = btn => {
+        if (btn.classList.contains('on')) {
+            history.querySelectorAll('.dates').forEach(list => {
+                list.classList.remove('off');
+            });
+
+            btn.classList.remove('on');
+
+            return;
+        }
+
         history.querySelectorAll('.dates').forEach(list => {
             list.dataset.period === btn.dataset.field ? list.classList.remove('off') : list.classList.add('off');
         });
@@ -45,4 +55,4 @@ const history = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=history.js.map?255de52ebabf49d0a648a006525971d7
+//# sourceMappingURL=history.js.map?4320f70a53e97d931f906a466657279b

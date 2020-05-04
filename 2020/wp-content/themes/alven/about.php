@@ -19,7 +19,7 @@ get_header(); ?>
 	</div>
 
 	<?php
-		$periods = get_terms(array('taxonomy' => 'period'));
+		$periods = get_terms(array('taxonomy' => 'period', 'orderby' => 'menu_order', 'order' => 'ASC'));
 		if($periods) :
 	?>
 
@@ -28,17 +28,12 @@ get_header(); ?>
 				<h2 class='h2'><?php the_field('history_title'); ?></h2>
 				<ul class='periods' id='periods'>
 					<?php
-						$nbPeriods = count($periods);
 						$i = 0;
 						foreach($periods as $period){
 							$i++;
-							echo '<li><button data-field="'.$period->slug.'"';
-							if($nbPeriods === $i){
-								echo ' class="on"';
-								$lastPeriod = $period->slug;
-							}
-							echo '>'.$period->name.'</button></li>';
+							echo '<li><button class="btn-filter" data-field="'.$period->slug.'">'.$period->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
 						}
+						$periods = array_reverse($periods);
 					?>
 				</ul>
 				<div class='history' id='history'>
@@ -47,6 +42,8 @@ get_header(); ?>
 							$datesQuery = new WP_Query( array(
 								'post_type' => 'date',
 								'posts_per_page' => -1,
+								'orderby' => 'menu_order',
+								'order' => 'ASC',
 								'tax_query' => array(
 									array(
 										'taxonomy' => 'period',
@@ -57,7 +54,7 @@ get_header(); ?>
 							));
 							if( $datesQuery->have_posts() ) :
 						?>
-							<ul class='dates clearfix <?php if( $lastPeriod !== $period->slug ) echo "off"; ?>' data-period='<?php echo $period->slug; ?>'>
+							<ul class='dates clearfix' data-period='<?php echo $period->slug; ?>'>
 								<?php while( $datesQuery->have_posts() ) : $datesQuery->the_post();
 									$cover = get_field('cover');
 									$hasImg = has_post_thumbnail();
