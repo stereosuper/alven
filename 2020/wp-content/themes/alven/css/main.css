@@ -720,7 +720,8 @@ textarea {
   left: 0;
   right: 0;
   background: #003240;
-  transform: translate3d(0, -100%, 0); }
+  transform: translate3d(0, -100%, 0);
+  transition: 0.3s ease-in-out; }
 .nav.on {
     transform: translate3d(0, 0, 0); }
 .menu-main {
@@ -1751,4 +1752,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?ac0227e6e71aca1d69e9cdc455b7d70a*/
+/*# sourceMappingURL=main.css.map?829137cc3d052c82c0a96cb6abaaf3af*/
