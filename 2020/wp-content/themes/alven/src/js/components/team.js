@@ -1,3 +1,8 @@
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
+
+gsap.registerPlugin(ScrollToPlugin);
+
 const team = () => {
     const team = document.getElementById('team');
 
@@ -17,54 +22,65 @@ const team = () => {
     const closeDetail = member => {
         members.forEach(elt => {
             elt.classList.remove('off');
+            elt.classList.remove('on');
         });
-        member.classList.remove('on');
     };
 
     const displayDetail = member => {
-        member.blur();
-        desc.innerHTML = '';
+        if (gsap.isTweening('#desc')) return;
 
-        if (member.classList.contains('on')) {
-            closeDetail(member);
-            return;
-        }
+        gsap.to(desc, 0.3, {
+            opacity: 0,
+            onComplete: () => {
+                member.blur();
+                desc.innerHTML = '';
 
-        members.forEach(elt => {
-            elt.classList.add('off');
+                if (member.classList.contains('on')) {
+                    closeDetail(member);
+                    return;
+                }
+
+                members.forEach(elt => {
+                    elt.classList.add('off');
+                    elt.classList.remove('on');
+                });
+                member.classList.remove('off');
+                member.classList.add('on');
+
+                parent = member.parentElement;
+
+                desc.appendChild(parent.querySelector('.name').cloneNode(true));
+                desc.appendChild(parent.querySelector('.function').cloneNode(true));
+                desc.appendChild(parent.querySelector('.team-desc').cloneNode(true));
+
+                index = [].indexOf.call(members, member);
+                indexPos = (Math.floor(index / row) + 1) * row - 1;
+                indexPos = indexPos > nbMembers ? nbMembers - 1 : indexPos;
+
+                members[indexPos].parentElement.after(desc);
+
+                desc.querySelector('.next').addEventListener(
+                    'click',
+                    () => {
+                        next = members[index + 1] ? members[index + 1] : members[0];
+                        displayDetail(next);
+                    },
+                    false
+                );
+
+                desc.querySelector('.prev').addEventListener(
+                    'click',
+                    () => {
+                        prev = members[index - 1] ? members[index - 1] : members[nbMembers - 1];
+                        displayDetail(prev);
+                    },
+                    false
+                );
+
+                gsap.to(window, { duration: 0.8, scrollTo: '#desc' });
+                gsap.to(desc, 0.3, { opacity: 1 });
+            }
         });
-        member.classList.remove('off');
-        member.classList.add('on');
-
-        parent = member.parentElement;
-
-        desc.appendChild(parent.querySelector('.name').cloneNode(true));
-        desc.appendChild(parent.querySelector('.function').cloneNode(true));
-        desc.appendChild(parent.querySelector('.team-desc').cloneNode(true));
-
-        index = [].indexOf.call(members, member);
-        indexPos = (Math.floor(index / row) + 1) * row - 1;
-        indexPos = indexPos > nbMembers ? nbMembers - 1 : indexPos;
-
-        members[indexPos].parentElement.after(desc);
-
-        desc.querySelector('.next').addEventListener(
-            'click',
-            () => {
-                next = members[index + 1] ? members[index + 1] : members[0];
-                displayDetail(next);
-            },
-            false
-        );
-
-        desc.querySelector('.prev').addEventListener(
-            'click',
-            () => {
-                prev = members[index - 1] ? members[index - 1] : members[nbMembers - 1];
-                displayDetail(prev);
-            },
-            false
-        );
     };
 
     const resize = () => {
@@ -83,6 +99,7 @@ const team = () => {
     resize();
 
     desc.className = 'container wrapper-desc';
+    desc.id = 'desc';
 
     members.forEach(member => {
         member.addEventListener(

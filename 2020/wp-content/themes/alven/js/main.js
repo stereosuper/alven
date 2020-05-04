@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"history":"history","portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","slider":"slider","team":"team","vendors~startup":"vendors~startup","startup":"startup"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"history":"history","portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","slider":"slider","vendors~startup~team":"vendors~startup~team","startup":"startup","team":"team"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -13464,20 +13464,22 @@ var map = {
 	],
 	"./startup": [
 		"./wp-content/themes/alven/src/js/components/startup.js",
-		"vendors~startup",
+		"vendors~startup~team",
 		"startup"
 	],
 	"./startup.js": [
 		"./wp-content/themes/alven/src/js/components/startup.js",
-		"vendors~startup",
+		"vendors~startup~team",
 		"startup"
 	],
 	"./team": [
 		"./wp-content/themes/alven/src/js/components/team.js",
+		"vendors~startup~team",
 		"team"
 	],
 	"./team.js": [
 		"./wp-content/themes/alven/src/js/components/team.js",
+		"vendors~startup~team",
 		"team"
 	]
 };
@@ -13793,4 +13795,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?f18125bef9855e873941a889eae342cd
+//# sourceMappingURL=main.js.map?863cca1c75f26729ac65db809a51062d

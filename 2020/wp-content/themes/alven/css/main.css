@@ -560,6 +560,8 @@ html.no-scroll {
   font-weight: 900;
   line-height: 1;
   color: #fff0a1; }
+.btn-close:hover, .btn-close:focus {
+    color: #fff; }
 .btn-close > span {
     text-decoration: underline; }
 .btn-close .icon {
@@ -1369,6 +1371,8 @@ textarea {
   display: none; }
 .wrapper-desc {
   width: 100%;
+  padding-top: 120px;
+  margin-top: -120px;
   position: relative; }
 .wrapper-desc .team-desc {
     display: block;
@@ -1767,4 +1771,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?741490a5feffa7582e12cb6c5503b9a2*/
+/*# sourceMappingURL=main.css.map?e7296787d6cda04240bcc61e6fa3ad9a*/

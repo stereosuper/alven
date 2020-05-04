@@ -9,6 +9,13 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var gsap_ScrollToPlugin_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap/ScrollToPlugin.js */ "./node_modules/gsap/ScrollToPlugin.js");
+
+
+
+gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].registerPlugin(gsap_ScrollToPlugin_js__WEBPACK_IMPORTED_MODULE_1__["ScrollToPlugin"]);
+
 const team = () => {
     const team = document.getElementById('team');
 
@@ -28,54 +35,65 @@ const team = () => {
     const closeDetail = member => {
         members.forEach(elt => {
             elt.classList.remove('off');
+            elt.classList.remove('on');
         });
-        member.classList.remove('on');
     };
 
     const displayDetail = member => {
-        member.blur();
-        desc.innerHTML = '';
+        if (gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].isTweening('#desc')) return;
 
-        if (member.classList.contains('on')) {
-            closeDetail(member);
-            return;
-        }
+        gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(desc, 0.3, {
+            opacity: 0,
+            onComplete: () => {
+                member.blur();
+                desc.innerHTML = '';
 
-        members.forEach(elt => {
-            elt.classList.add('off');
+                if (member.classList.contains('on')) {
+                    closeDetail(member);
+                    return;
+                }
+
+                members.forEach(elt => {
+                    elt.classList.add('off');
+                    elt.classList.remove('on');
+                });
+                member.classList.remove('off');
+                member.classList.add('on');
+
+                parent = member.parentElement;
+
+                desc.appendChild(parent.querySelector('.name').cloneNode(true));
+                desc.appendChild(parent.querySelector('.function').cloneNode(true));
+                desc.appendChild(parent.querySelector('.team-desc').cloneNode(true));
+
+                index = [].indexOf.call(members, member);
+                indexPos = (Math.floor(index / row) + 1) * row - 1;
+                indexPos = indexPos > nbMembers ? nbMembers - 1 : indexPos;
+
+                members[indexPos].parentElement.after(desc);
+
+                desc.querySelector('.next').addEventListener(
+                    'click',
+                    () => {
+                        next = members[index + 1] ? members[index + 1] : members[0];
+                        displayDetail(next);
+                    },
+                    false
+                );
+
+                desc.querySelector('.prev').addEventListener(
+                    'click',
+                    () => {
+                        prev = members[index - 1] ? members[index - 1] : members[nbMembers - 1];
+                        displayDetail(prev);
+                    },
+                    false
+                );
+
+                gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(window, { duration: 0.8, scrollTo: '#desc' });
+                gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(desc, 0.3, { opacity: 1 });
+            }
         });
-        member.classList.remove('off');
-        member.classList.add('on');
-
-        parent = member.parentElement;
-
-        desc.appendChild(parent.querySelector('.name').cloneNode(true));
-        desc.appendChild(parent.querySelector('.function').cloneNode(true));
-        desc.appendChild(parent.querySelector('.team-desc').cloneNode(true));
-
-        index = [].indexOf.call(members, member);
-        indexPos = (Math.floor(index / row) + 1) * row - 1;
-        indexPos = indexPos > nbMembers ? nbMembers - 1 : indexPos;
-
-        members[indexPos].parentElement.after(desc);
-
-        desc.querySelector('.next').addEventListener(
-            'click',
-            () => {
-                next = members[index + 1] ? members[index + 1] : members[0];
-                displayDetail(next);
-            },
-            false
-        );
-
-        desc.querySelector('.prev').addEventListener(
-            'click',
-            () => {
-                prev = members[index - 1] ? members[index - 1] : members[nbMembers - 1];
-                displayDetail(prev);
-            },
-            false
-        );
     };
 
     const resize = () => {
@@ -94,6 +112,7 @@ const team = () => {
     resize();
 
     desc.className = 'container wrapper-desc';
+    desc.id = 'desc';
 
     members.forEach(member => {
         member.addEventListener(
@@ -112,4 +131,4 @@ const team = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=team.js.map?ff5fff01d93d2a4b6abac96ee823319b
+//# sourceMappingURL=team.js.map?0333c4d52e3a37d05931af9965f3b256

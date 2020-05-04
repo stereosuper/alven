@@ -53,6 +53,10 @@
     font-weight: 900;
     line-height: 1;
     color: $tertiary;
+    &:hover,
+    &:focus {
+        color: #fff;
+    }
     > span {
         text-decoration: underline;
     }
