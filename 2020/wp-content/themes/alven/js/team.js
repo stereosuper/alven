@@ -90,7 +90,7 @@ const team = () => {
                     false
                 );
 
-                gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(window, { duration: 0.8, scrollTo: '#desc' });
+                gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(window, { duration: 0.5, scrollTo: '#desc' });
                 gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(desc, 0.3, { opacity: 1 });
             }
         });
@@ -131,4 +131,4 @@ const team = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=team.js.map?ecff01be995f770020bef1d4f98fcd48
+//# sourceMappingURL=team.js.map?400f45730584670f61d12bbb705b6c33

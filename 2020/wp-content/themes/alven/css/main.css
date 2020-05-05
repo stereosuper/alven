@@ -1352,10 +1352,20 @@ textarea {
   width: 50%;
   padding: 0 12px 60px; }
 .team-member {
+  display: block;
+  width: 100%;
   font-weight: 900;
-  letter-spacing: 0.03em; }
+  letter-spacing: 0.03em;
+  text-align: center; }
 .team-member:hover, .team-member:focus, .team-member.off {
     opacity: 0.7; }
+.team-member .img {
+    width: 100%;
+    padding: 0 0 125%;
+    background-size: cover;
+    background-position: 50% 0;
+    background-color: #003240;
+    background-blend-mode: screen; }
 .team-member .name {
     padding: 30px 0 0;
     font-size: 1.6rem; }
@@ -1778,4 +1788,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?83628776db7ab75f7d5d45daf005e942*/
+/*# sourceMappingURL=main.css.map?fc21ca90690ae85d13bfe8b93865b06b*/

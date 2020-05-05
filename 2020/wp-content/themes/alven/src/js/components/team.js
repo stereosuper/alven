@@ -77,7 +77,7 @@ const team = () => {
                     false
                 );
 
-                gsap.to(window, { duration: 0.8, scrollTo: '#desc' });
+                gsap.to(window, { duration: 0.5, scrollTo: '#desc' });
                 gsap.to(desc, 0.3, { opacity: 1 });
             }
         });

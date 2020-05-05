@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"history":"history","portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","slider":"slider","vendors~startup~team":"vendors~startup~team","startup":"startup","team":"team"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"history":"history","portfolio-filters":"portfolio-filters","portfolio-search":"portfolio-search","vendors~slider~startup~team":"vendors~slider~startup~team","slider":"slider","startup":"startup","team":"team"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -13456,30 +13456,32 @@ var map = {
 	],
 	"./slider": [
 		"./wp-content/themes/alven/src/js/components/slider.js",
+		"vendors~slider~startup~team",
 		"slider"
 	],
 	"./slider.js": [
 		"./wp-content/themes/alven/src/js/components/slider.js",
+		"vendors~slider~startup~team",
 		"slider"
 	],
 	"./startup": [
 		"./wp-content/themes/alven/src/js/components/startup.js",
-		"vendors~startup~team",
+		"vendors~slider~startup~team",
 		"startup"
 	],
 	"./startup.js": [
 		"./wp-content/themes/alven/src/js/components/startup.js",
-		"vendors~startup~team",
+		"vendors~slider~startup~team",
 		"startup"
 	],
 	"./team": [
 		"./wp-content/themes/alven/src/js/components/team.js",
-		"vendors~startup~team",
+		"vendors~slider~startup~team",
 		"team"
 	],
 	"./team.js": [
 		"./wp-content/themes/alven/src/js/components/team.js",
-		"vendors~startup~team",
+		"vendors~slider~startup~team",
 		"team"
 	]
 };
@@ -13795,4 +13797,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?863cca1c75f26729ac65db809a51062d
+//# sourceMappingURL=main.js.map?e262dcc63f6be0954f25a992a3081b24

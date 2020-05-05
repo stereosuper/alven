@@ -21,7 +21,7 @@ get_header(); ?>
 					<?php while($team->have_posts()): $team->the_post(); ?>
 						<div class='member'>
                             <button class='team-member'>
-                            	<?php the_post_thumbnail('large'); ?>
+								<div class='img' style='background-image:url(<?php the_post_thumbnail_url('large'); ?>)'></div>
                                 <span class='name'><?php the_title(); ?></span>
                                 <span class='function'><?php the_field('job'); ?></span>
                             </button>

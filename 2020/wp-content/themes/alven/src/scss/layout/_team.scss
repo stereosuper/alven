@@ -23,12 +23,23 @@
 }
 
 .team-member {
+    display: block;
+    width: 100%;
     font-weight: 900;
     letter-spacing: 0.03em;
+    text-align: center;
     &:hover,
     &:focus,
     &.off {
         opacity: 0.7;
+    }
+    .img {
+        width: 100%;
+        padding: 0 0 125%;
+        background-size: cover;
+        background-position: 50% 0;
+        background-color: $primary;
+        background-blend-mode: screen;
     }
     .name {
         padding: 30px 0 0;
