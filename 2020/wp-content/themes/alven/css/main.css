@@ -1307,7 +1307,7 @@ textarea {
     margin: 0 auto 25px;
     border-radius: 4px;
     background: #fff;
-    box-shadow: 0 1px 86px 0 rgba(199, 199, 199, 0.4); }
+    box-shadow: 0 1px 26px 0 rgba(199, 199, 199, 0.3); }
 .contact .title-maj {
     margin-top: 0; }
 .contact .title-maj + p {
@@ -1791,4 +1791,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?438839d61ce3a19fc7406b8d19c11d0c*/
+/*# sourceMappingURL=main.css.map?981cdd312ffd46f2a1693c02e614e981*/
