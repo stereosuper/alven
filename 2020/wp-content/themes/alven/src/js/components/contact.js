@@ -1,3 +1,8 @@
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
+
+gsap.registerPlugin(ScrollToPlugin);
+
 const contact = () => {
     const contact = document.getElementById('contact');
 
@@ -5,24 +10,36 @@ const contact = () => {
 
     const forms = contact.querySelectorAll('.form-to-open');
 
+    const openForm = (form, btn) => {
+        gsap.to(form, 0.3, { height: form.querySelector('.form').clientHeight, y: -45 });
+
+        forms.forEach(elt => {
+            if (elt.classList.contains('on'))
+                gsap.to(elt, 0.3, {
+                    height: 0,
+                    y: 0,
+                    onComplete: () => {
+                        elt.classList.remove('on');
+                        elt.parentNode.querySelector('.open-form').classList.remove('off');
+                    }
+                });
+        });
+
+        form.classList.add('on');
+        btn.classList.add('off');
+    };
+
     const handleForm = btn => {
         const form = btn.parentNode.querySelector('.form-to-open');
 
         if (form.classList.contains('form-open-error')) {
-            form.classList.add('on');
-            btn.classList.add('off');
+            openForm(form, btn);
         }
 
         btn.addEventListener(
             'click',
             () => {
-                forms.forEach(elt => {
-                    elt.classList.remove('on');
-                    elt.parentNode.querySelector('.open-form').classList.remove('off');
-                });
-
-                form.classList.add('on');
-                btn.classList.add('off');
+                openForm(form, btn);
             },
             false
         );

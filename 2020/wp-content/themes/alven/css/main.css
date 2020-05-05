@@ -1315,12 +1315,15 @@ textarea {
       min-height: 50px;
       margin-left: auto;
       margin-right: auto; }
+.open-form {
+  transition: opacity 0.3s, color 0.3s ease-in-out, border-color 0.3s ease-in-out, background 0.3s ease-in-out; }
 .open-form.off {
-  display: none; }
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s, color 0.3s ease-in-out, border-color 0.3s ease-in-out, background 0.3s ease-in-out; }
 .form-to-open {
-  display: none; }
-.form-to-open.on {
-    display: block; }
+  height: 0;
+  overflow: hidden; }
 .form-success {
   margin: -7px 0 0; }
 @media (min-width: 960px) {
@@ -1788,4 +1791,4 @@ textarea {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?fc21ca90690ae85d13bfe8b93865b06b*/
+/*# sourceMappingURL=main.css.map?438839d61ce3a19fc7406b8d19c11d0c*/

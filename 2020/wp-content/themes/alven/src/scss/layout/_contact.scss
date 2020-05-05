@@ -26,16 +26,17 @@
 }
 
 .open-form {
+    transition: opacity 0.3s, color $transition, border-color $transition, background $transition;
     &.off {
-        display: none;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.1s, color $transition, border-color $transition, background $transition;
     }
 }
 
 .form-to-open {
-    display: none;
-    &.on {
-        display: block;
-    }
+    height: 0;
+    overflow: hidden;
 }
 
 .form-success {
