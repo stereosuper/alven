@@ -8,69 +8,26 @@
 
 <div class='container'>
 
-    <div class="form-search-wrapper">
-        <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search'>
-            <div class='field-search js-field'>
-                <input type='search' name='s' value='<?php the_search_query(); ?>' class='form-elt'>
-                <label class="label" for='search' <?php if( get_search_query() ) echo 'class="off"'; ?>>search</label>
-            </div>
-            <button type='submit' class='btn-search'>
-                <svg class="icon"><use xlink:href="#icon-glass-bold"></use></svg>
-            </button>
-        </form>
-    </div>
+    <?php
+        get_search_form();
+    
+        if ( have_posts() ) : 
 
-	<?php if ( have_posts() ) : ?>
+            include_once('includes/spotlight.php');
 
-		<?php
-            $stickies = array_reverse( get_option( 'sticky_posts' ) );
-                
-            if( $stickies ){
-                $post = $stickies[0];
-            }else{
-                $stickies = wp_get_recent_posts( array('numberposts' => 1, 'post_status' =>'publish') );
-                $post = $stickies[0]['ID'];
-            }
-                
-            $sticky = $post;
-            setup_postdata($post);
-        ?>
-            <div class='spotlight-post'>
-                <div class='img'>
-                    <div>
-                        <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
-                    </div>
-                </div><div class='txt'>
-                    <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
-                    <h3 class="h2"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
-                    <?php the_excerpt(); ?>
-                    <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
-                </div>
-            </div>
-        <?php wp_reset_postdata(); ?>
-
-        <?php
             $queryPost = new WP_Query(array('post__not_in' => array($sticky), 'paged' => $paged));
+            
             if( $queryPost->have_posts() ):
-        ?>
-            <?php while ( $queryPost->have_posts() ) : $queryPost->the_post(); ?>
-                <div class='post'>
-                    <div class='img'>
-                        <?php if( has_post_thumbnail() ){ the_post_thumbnail(); } ?>
-                    </div>
-					<div class='txt'>
-                        <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
-                        <h2 class="h6"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h2>
-                        <?php the_excerpt(); ?>
-                        <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
-                    </div>
-                </div>
-            <?php endwhile; ?>
+                while ( $queryPost->have_posts() ) :
+                    $queryPost->the_post();
+                    get_template_part('includes/post');
+                endwhile;
+            ?>
 
-            <div class='container pagination'>
-                <?php echo paginate_links( array( 'prev_text' => '', 'next_text'  => '' ) ); ?>
-            </div>
-        <?php endif; ?>
+                <div class='container pagination'>
+                    <?php echo paginate_links( array( 'prev_text' => '', 'next_text'  => '' ) ); ?>
+                </div>
+            <?php endif; ?>
 	
 	<?php else : ?>
 				

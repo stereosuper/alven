@@ -14,33 +14,16 @@
 
 <div class='container'>
 
-    <div class="form-search-wrapper">
-        <form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search'>
-            <div class='field-search js-field'>
-                <input type='search' name='s' value='<?php the_search_query(); ?>' id='search' class="form-elt">
-                <label class="label" for='search' <?php if( get_search_query() ) echo 'class="off"'; ?>>search</label>
-            </div>
-            <button type='submit' class='btn-search'>
-                <svg class="icon"><use xlink:href="#icon-glass-bold"></use></svg>
-            </button>
-        </form>
-    </div>
+    <?php get_search_form(); ?>
 
 	<?php if ( have_posts() ) : ?>
 
-		<?php while ( have_posts() ) : the_post(); ?>
-            <div class='post'>
-                <div class='img'>
-                    <?php if( has_post_thumbnail() ){ the_post_thumbnail(); } ?>
-                </div>
-				<div class='txt'>
-                    <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
-                    <h2 class="h6"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h2>
-                    <?php the_excerpt(); ?>
-                    <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
-                </div>
-            </div>
-        <?php endwhile; ?>
+        <?php
+            while ( have_posts() ) :
+                the_post();
+                get_template_part('includes/post');
+            endwhile;
+        ?>
 
         <div class='container pagination'>
             <?php echo paginate_links( array( 'prev_text' => '', 'next_text'  => '' ) ); ?>
