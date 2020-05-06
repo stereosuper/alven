@@ -215,7 +215,7 @@ sup {
   unicode-range: U+000-5FF; }
 @font-face {
   font-family: 'Roboto Slab';
-  src: local("Roboto Slab"), url(/wp-content/themes/alven/fonts/robotoslab-bold.woff2) format("woff2"), url(/wp-content/themes/alven/fonts/robotoslab-bold.woff) format("woff");
+  src: local("Roboto Slab Bold"), url(/wp-content/themes/alven/fonts/robotoslab-bold.woff2) format("woff2"), url(/wp-content/themes/alven/fonts/robotoslab-bold.woff) format("woff");
   font-display: swap;
   font-style: normal;
   font-weight: 900;
@@ -765,7 +765,8 @@ fieldset {
       background: none; }
     .form-search-header .label {
       top: 0;
-      right: 0; } }
+      right: 0;
+      color: #fff; } }
 /* Header */
 .header {
   width: 100%;
@@ -1840,4 +1841,4 @@ fieldset {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?1b0be34d6178803a18fdf80061cad0a6*/
+/*# sourceMappingURL=main.css.map?676ca0ac2896f68a3be3924eda8d7598*/
