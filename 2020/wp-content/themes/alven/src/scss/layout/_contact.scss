@@ -8,7 +8,7 @@
     text-align: center;
     > div {
         max-width: 700px;
-        padding: 50px 45px;
+        padding: 30px 20px;
         margin: 0 auto 25px;
         border-radius: 4px;
         background: #fff;
@@ -41,6 +41,14 @@
 
 .form-success {
     margin: -7px 0 0;
+}
+
+@media (min-width: $phone) {
+    .contact {
+        > div {
+            padding: 50px 45px;
+        }
+    }
 }
 
 @media (min-width: $desktop-small) {

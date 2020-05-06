@@ -2,7 +2,8 @@
 
 .btn,
 .btn-invert,
-.wp-block-button__link {
+.wp-block-button__link,
+.hs-button {
     display: inline-block;
     padding: 0.5em 2.5em;
     font-family: $roboto;
@@ -12,7 +13,8 @@
 }
 
 .btn,
-.wp-block-button__link {
+.wp-block-button__link,
+.hs-button {
     border: 2px solid $secondary;
     background: $secondary;
     color: #fff;
@@ -22,6 +24,10 @@
         color: $secondary;
         border-color: $secondary;
     }
+}
+
+.hs-button {
+    width: auto;
 }
 
 .btn-invert {

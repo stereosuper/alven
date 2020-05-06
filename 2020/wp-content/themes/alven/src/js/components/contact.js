@@ -11,12 +11,13 @@ const contact = () => {
     const forms = contact.querySelectorAll('.form-to-open');
 
     const openForm = (form, btn) => {
-        gsap.to(form, 0.3, { height: form.querySelector('.form').clientHeight, y: -45 });
+        gsap.to(form, 0.3, { minHeight: form.querySelector('.form').clientHeight, height: 'auto', y: -45 });
 
         forms.forEach(elt => {
             if (elt.classList.contains('on'))
                 gsap.to(elt, 0.3, {
                     height: 0,
+                    minHeight: 0,
                     y: 0,
                     onComplete: () => {
                         elt.classList.remove('on');

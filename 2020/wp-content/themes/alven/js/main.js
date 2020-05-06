@@ -19261,12 +19261,13 @@ const contact = () => {
     const forms = contact.querySelectorAll('.form-to-open');
 
     const openForm = (form, btn) => {
-        gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(form, 0.3, { height: form.querySelector('.form').clientHeight, y: -45 });
+        gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(form, 0.3, { minHeight: form.querySelector('.form').clientHeight, height: 'auto', y: -45 });
 
         forms.forEach(elt => {
             if (elt.classList.contains('on'))
                 gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].to(elt, 0.3, {
                     height: 0,
+                    minHeight: 0,
                     y: 0,
                     onComplete: () => {
                         elt.classList.remove('on');
@@ -19320,10 +19321,12 @@ const forms = () => {
     if (!fields.length) return;
 
     fields.forEach(field => {
+        if (field.querySelector('.form-elt').value) field.querySelector('.label').classList.add('off');
+
         field.addEventListener(
             'focusin',
             () => {
-                field.querySelector('label').classList.add('off');
+                field.querySelector('.label').classList.add('off');
             },
             false
         );
@@ -19331,7 +19334,7 @@ const forms = () => {
         field.addEventListener(
             'focusout',
             () => {
-                if (!field.querySelector('.form-elt').value) field.querySelector('label').classList.remove('off');
+                if (!field.querySelector('.form-elt').value) field.querySelector('.label').classList.remove('off');
             },
             false
         );
@@ -19546,4 +19549,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?c0688740dfaab1305072a5b658a4ec76
+//# sourceMappingURL=main.js.map?f4db9859f54eddb3f2e0911198095063

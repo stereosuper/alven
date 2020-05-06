@@ -23,7 +23,7 @@ get_header(); ?>
                      <form role='search' method='get' action='#' class='form-search' id='form-startup'>
                         <div class='field-search js-field'>
                             <input type='search' name='startup' value='' id='search-startup' class='form-elt'>
-                            <label for='search'>search</label>
+                            <label class="label" for='search'>search</label>
                         </div>
                         <button type='submit' class='btn-search'>
                             <svg class="icon"><use xlink:href="#icon-glass-bold"></use></svg>

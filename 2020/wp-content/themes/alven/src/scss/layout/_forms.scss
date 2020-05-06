@@ -23,6 +23,9 @@ button {
     &:focus {
         outline: 0;
     }
+    &.error {
+        background: rgba(red, 0.2);
+    }
 }
 
 input,
@@ -52,12 +55,18 @@ textarea {
     height: 170px;
 }
 
-/*select {
-    // hide the arrow on edge + ie
-    &::-ms-expand {
-        display: none;
-    }
-}*/
+label {
+    color: $secondary;
+}
+
+select {
+    height: 44px;
+    background: $grey;
+}
+
+fieldset {
+    max-width: none !important;
+}
 
 .form-elt {
     &.invalid {
@@ -77,12 +86,11 @@ textarea {
     position: relative;
     margin: 0 0 20px;
     text-align: left;
-    label {
+    .label {
         position: absolute;
         top: 10px;
         left: 15px;
         pointer-events: none;
-        color: $secondary;
         &.off {
             display: none;
         }
@@ -109,7 +117,7 @@ textarea {
         border-radius: 0;
         background: none;
     }
-    label {
+    .label {
         top: 12px;
         left: 22px;
         font-weight: 900;
@@ -127,7 +135,7 @@ textarea {
 
 .field-search {
     position: relative;
-    label {
+    .label {
         position: absolute;
         pointer-events: none;
         &.off {
@@ -155,6 +163,62 @@ textarea {
     }
 }
 
+.hbspt-form {
+    .input {
+        margin-right: 0 !important;
+    }
+}
+
+.inputs-list {
+    display: flex;
+    list-style: none;
+    line-height: 1;
+    > li {
+        margin: 0 20px 10px 1px;
+    }
+}
+
+.hs-form-radio-display {
+    display: flex;
+}
+
+.hs-input {
+    width: 100% !important;
+    &[type='radio'] {
+        width: auto !important;
+        margin: 0 5px 0 0;
+    }
+    &[type='file'] {
+        line-height: 1;
+        padding: 20px 15px;
+        cursor: pointer;
+    }
+}
+
+.hs-form-radio-display {
+    cursor: pointer;
+}
+
+.hs-error-msg {
+    display: block;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    color: rgba(red, 0.6);
+}
+
+.hs-form-radio-display {
+    color: $primary;
+}
+
+.form-columns-2 {
+    > .field {
+        width: 48% !important;
+        &:last-child {
+            float: right !important;
+        }
+    }
+}
+
 @media (min-width: $desktop) {
     .form-search-header {
         display: flex;
@@ -175,7 +239,7 @@ textarea {
             border-radius: 0;
             background: none;
         }
-        label {
+        .label {
             top: 0;
             right: 0;
         }

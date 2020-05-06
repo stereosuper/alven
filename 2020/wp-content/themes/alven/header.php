@@ -59,7 +59,7 @@
 					<form role='search' method='get' action='<?php echo home_url('/'); ?>' class='form-search-header' id='form-search-header'>
 						<div class='field-search js-field' id='search-header'>
 							<input type='search' name='s' value='<?php the_search_query(); ?>' class='form-elt'>
-							<label for='search-header' <?php if( get_search_query() ) echo 'class="off"'; ?>>searching</label>
+							<label class="label" for='search-header' <?php if( get_search_query() ) echo 'class="off"'; ?>>searching</label>
 						</div>
 						<button type='submit' class='btn-search'>
 							<svg class="icon"><use xlink:href="#icon-glass"></use></svg>

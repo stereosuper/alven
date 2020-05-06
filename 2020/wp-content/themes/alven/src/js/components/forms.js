@@ -4,10 +4,12 @@ const forms = () => {
     if (!fields.length) return;
 
     fields.forEach(field => {
+        if (field.querySelector('.form-elt').value) field.querySelector('.label').classList.add('off');
+
         field.addEventListener(
             'focusin',
             () => {
-                field.querySelector('label').classList.add('off');
+                field.querySelector('.label').classList.add('off');
             },
             false
         );
@@ -15,7 +17,7 @@ const forms = () => {
         field.addEventListener(
             'focusout',
             () => {
-                if (!field.querySelector('.form-elt').value) field.querySelector('label').classList.remove('off');
+                if (!field.querySelector('.form-elt').value) field.querySelector('.label').classList.remove('off');
             },
             false
         );
