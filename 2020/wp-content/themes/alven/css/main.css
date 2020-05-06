@@ -1674,7 +1674,7 @@ fieldset {
   align-items: flex-end; }
 .slider-nav {
   display: flex;
-  margin: 100px 0 10px;
+  margin: 20px 0 100px;
   list-style: none;
   color: #fff; }
 .slider-nav > li {
@@ -1752,6 +1752,9 @@ fieldset {
 @media (min-width: 768px) {
   .baseline {
     font-size: 2rem; } }
+@media (min-width: 960px) {
+  .slider-nav {
+    margin: 100px 0 10px; } }
 @media (min-width: 1264px) {
   .slider-nav {
     margin: 30px 0 0; } }
@@ -1851,4 +1854,4 @@ fieldset {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?2e1d53a71732baa1c959f0e16b09aa0f*/
+/*# sourceMappingURL=main.css.map?03bf232940d56e7f7592ca9f3b123810*/

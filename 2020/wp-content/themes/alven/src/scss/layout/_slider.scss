@@ -20,7 +20,7 @@
 
 .slider-nav {
     display: flex;
-    margin: 100px 0 10px;
+    margin: 20px 0 100px;
     list-style: none;
     color: #fff;
     > li {
@@ -116,6 +116,12 @@
 @media (min-width: $tablet) {
     .baseline {
         font-size: 2rem;
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .slider-nav {
+        margin: 100px 0 10px;
     }
 }
 
