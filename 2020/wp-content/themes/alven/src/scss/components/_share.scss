@@ -5,6 +5,9 @@
     list-style: none;
     > li {
         margin: 0 $gutter 0 0;
+        &:last-child {
+            margin: 0;
+        }
     }
     a {
         color: inherit;

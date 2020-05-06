@@ -9,14 +9,10 @@
 
 .periods {
     display: flex;
-    margin: 0 $col;
-    justify-content: center;
+    justify-content: space-around;
     list-style: none;
     font-family: $roboto;
     font-weight: 900;
-    > li {
-        margin: 0 5.5%;
-    }
     .btn-filter {
         &.on {
             text-decoration: underline;
@@ -114,6 +110,14 @@
             left: 0;
             right: 0;
             margin: 0 auto;
+        }
+    }
+
+    .periods {
+        margin: 0 $col;
+        justify-content: center;
+        > li {
+            margin: 0 5.5%;
         }
     }
 
