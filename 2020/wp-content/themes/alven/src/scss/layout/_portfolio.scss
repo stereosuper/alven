@@ -43,7 +43,7 @@
     line-height: 1;
     list-style: none;
     > li {
-        width: 33%;
+        width: 50%;
         padding: 10px;
         margin: 0;
         &.off {
@@ -131,7 +131,7 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        padding: 25px 0;
+        padding: 10px 0;
         span {
             display: flex;
             align-items: center;
@@ -195,6 +195,22 @@
     width: $col;
     flex-shrink: 0;
     text-align: right;
+}
+
+@media (min-width: $phone-small) {
+    .portfolio {
+        > li {
+            width: 33%;
+        }
+    }
+}
+
+@media (min-width: $phone) {
+    .portfolio {
+        .content-transfered {
+            padding: 25px 0;
+        }
+    }
 }
 
 @media (min-width: $tablet) {

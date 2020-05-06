@@ -214,6 +214,9 @@ fieldset {
 .form-columns-2 {
     > .field {
         width: 48% !important;
+        &:first-child {
+            float: left !important;
+        }
         &:last-child {
             float: right !important;
         }
