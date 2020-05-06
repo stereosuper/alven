@@ -37,7 +37,9 @@
         ?>
             <div class='spotlight-post'>
                 <div class='img'>
-                    <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
+                    <div>
+                        <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
+                    </div>
                 </div><div class='txt'>
                     <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
                     <h3 class="h2"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>

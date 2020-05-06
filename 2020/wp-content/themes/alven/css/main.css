@@ -376,9 +376,6 @@ a {
 a:hover, a:focus {
     color: #a2d5ac;
     outline: none; }
-a:active {
-    -webkit-filter: saturate(200%);
-            filter: saturate(200%); }
 /******* CLASSES GENERALES  *******/
 .clearfix::after {
   content: '';
@@ -601,9 +598,12 @@ html.no-scroll {
     margin: 0 16px 0 0; }
 .share a {
     color: inherit; }
+.share a:hover {
+      color: #a2d5ac; }
 .share .icon {
     width: 16px;
-    height: 15px; }
+    height: 15px;
+    transform: translate3d(0, 0, 0); }
 /* Forms */
 form {
   font-size: 1.6rem;
@@ -695,7 +695,8 @@ fieldset {
   position: relative; }
 .field-search .label {
     position: absolute;
-    pointer-events: none; }
+    pointer-events: none;
+    color: #003240; }
 .field-search .label.off {
       display: none; }
 .btn-search {
@@ -1839,4 +1840,4 @@ fieldset {
     page-break-after: avoid; } }
 
 
-/*# sourceMappingURL=main.css.map?a1d6ee9eb170494d6e9f6677a0c25997*/
+/*# sourceMappingURL=main.css.map?1b0be34d6178803a18fdf80061cad0a6*/

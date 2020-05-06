@@ -138,6 +138,7 @@ fieldset {
     .label {
         position: absolute;
         pointer-events: none;
+        color: $primary;
         &.off {
             display: none;
         }

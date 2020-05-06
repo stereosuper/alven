@@ -8,9 +8,13 @@
     }
     a {
         color: inherit;
+        &:hover {
+            color: $quaternary;
+        }
     }
     .icon {
         width: 16px;
         height: 15px;
+        transform: translate3d(0, 0, 0);
     }
 }

@@ -87,7 +87,9 @@ get_header(); ?>
             ?>
                 <div class='spotlight-post'>
                     <div class='img'>
-                        <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
+                        <div>
+                            <?php the_post_thumbnail('full', array('class' => 'no-scroll')); ?>
+                        </div>
                     </div><div class='txt'>
                         <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
                         <h3 class="h2"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h3>
@@ -159,7 +161,9 @@ get_header(); ?>
             <h2 class='title-home'><?php the_field('whoTitle'); ?></h2>
             <div class='team'>
                 <div class='img'>
-                    <?php echo wp_get_attachment_image(get_field('whoImg'), 'large'); ?>
+                    <div>
+                        <?php echo wp_get_attachment_image(get_field('whoImg'), 'large'); ?>
+                    </div>
                 </div>
                 <div class='txt'>
                     <?php the_field('whoText'); ?>
