@@ -69,9 +69,11 @@
 
 .wrapper-desc {
     width: 100%;
-    padding-top: 120px;
-    margin-top: -120px;
-    position: relative;
+    > .container {
+        padding-top: 120px;
+        margin-top: -120px;
+        position: relative;
+    }
     .team-desc {
         display: block;
         padding: 0 $gutter * 4 85px;

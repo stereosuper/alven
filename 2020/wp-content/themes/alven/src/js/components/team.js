@@ -10,6 +10,7 @@ const team = () => {
 
     const members = team.querySelectorAll('.team-member');
     const nbMembers = members.length;
+    const wrapper = document.createElement('div');
     const desc = document.createElement('div');
     let wWidth = 0;
     let row = 5;
@@ -52,12 +53,13 @@ const team = () => {
                 desc.appendChild(parent.querySelector('.name').cloneNode(true));
                 desc.appendChild(parent.querySelector('.function').cloneNode(true));
                 desc.appendChild(parent.querySelector('.team-desc').cloneNode(true));
+                wrapper.appendChild(desc);
 
                 index = [].indexOf.call(members, member);
                 indexPos = (Math.floor(index / row) + 1) * row - 1;
                 indexPos = indexPos >= nbMembers ? nbMembers - 1 : indexPos;
 
-                members[indexPos].parentElement.after(desc);
+                members[indexPos].parentElement.after(wrapper);
 
                 desc.querySelector('.next').addEventListener(
                     'click',
@@ -98,8 +100,10 @@ const team = () => {
     window.$stereorepo.superWindow.addResizeFunction(resize);
     resize();
 
-    desc.className = 'container wrapper-desc';
+    wrapper.className = 'wrapper-desc';
+    desc.className = 'container';
     desc.id = 'desc';
+    wrapper.appendChild(desc);
 
     members.forEach(member => {
         member.addEventListener(
