@@ -23,6 +23,10 @@ body {
     font-kerning: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    &.page-template-manifesto {
+        background: $primary;
+        color: #fff;
+    }
 }
 
 h1 {
