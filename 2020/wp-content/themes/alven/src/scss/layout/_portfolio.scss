@@ -1,3 +1,7 @@
+.portfolio-logos {
+    display: none;
+}
+
 .portfolio-wrapper {
     padding: 0 0 100px;
 }
@@ -206,6 +210,59 @@
 }
 
 @media (min-width: $phone) {
+    .portfolio-logos {
+        display: block;
+        position: relative;
+        height: 40px;
+        margin: 45px 0 -15px;
+        list-style: none;
+        opacity: 0.3;
+        > li {
+            display: none;
+            width: 20%;
+            height: 50px;
+            padding: 0 20px;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            margin: 0;
+            &.on {
+                display: flex;
+            }
+            &.logo-1 {
+                left: 0;
+            }
+            &.logo-2 {
+                left: 20%;
+            }
+            &.logo-3 {
+                left: 40%;
+            }
+            &.logo-4 {
+                left: 60%;
+            }
+            &.logo-5 {
+                left: 80%;
+            }
+        }
+        svg {
+            width: 100%;
+            //min-width: 100px;
+            min-height: 30px;
+            max-width: 120px;
+            max-height: 50px;
+        }
+        path,
+        polygon,
+        rect,
+        ellipse,
+        circle,
+        line,
+        polyline {
+            fill: #fff;
+        }
+    }
+
     .portfolio {
         .content-transfered {
             padding: 25px 0;
@@ -214,6 +271,30 @@
 }
 
 @media (min-width: $tablet) {
+    .portfolio-logos {
+        > li {
+            width: 14.28%;
+            &.logo-2 {
+                left: 14.28%;
+            }
+            &.logo-3 {
+                left: 28.57%;
+            }
+            &.logo-4 {
+                left: 42.87%;
+            }
+            &.logo-5 {
+                left: 57.12%;
+            }
+            &.logo-6 {
+                left: 71.4%;
+            }
+            &.logo-7 {
+                left: 85.68%;
+            }
+        }
+    }
+
     .portfolio-filters {
         display: block;
         margin: 0;
@@ -257,6 +338,36 @@
 }
 
 @media (min-width: $desktop-small) {
+    .portfolio-logos {
+        > li {
+            width: 11.11%;
+            &.logo-2 {
+                left: 11.11%;
+            }
+            &.logo-3 {
+                left: 22.22%;
+            }
+            &.logo-4 {
+                left: 33.33%;
+            }
+            &.logo-5 {
+                left: 44.44%;
+            }
+            &.logo-6 {
+                left: 55.55%;
+            }
+            &.logo-7 {
+                left: 66.66%;
+            }
+            &.logo-8 {
+                left: 77.77%;
+            }
+            &.logo-9 {
+                left: 88.88%;
+            }
+        }
+    }
+
     .portfolio-filters {
         .form-search {
             margin-bottom: 50px;
@@ -271,6 +382,42 @@
 }
 
 @media (min-width: $desktop) {
+    .portfolio-logos {
+        > li {
+            width: 9.09%;
+            &.logo-2 {
+                left: 9.09%;
+            }
+            &.logo-3 {
+                left: 18.18%;
+            }
+            &.logo-4 {
+                left: 27.27%;
+            }
+            &.logo-5 {
+                left: 36.36%;
+            }
+            &.logo-6 {
+                left: 45.45%;
+            }
+            &.logo-7 {
+                left: 54.54%;
+            }
+            &.logo-8 {
+                left: 63.63%;
+            }
+            &.logo-9 {
+                left: 72.72%;
+            }
+            &.logo-10 {
+                left: 81.81%;
+            }
+            &.logo-11 {
+                left: 90.9%;
+            }
+        }
+    }
+
     .portfolio-filters {
         .form-search {
             width: 66%;

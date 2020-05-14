@@ -27,6 +27,7 @@ const slider = dynamicLoading({ name: 'slider' });
 const startup = dynamicLoading({ name: 'startup' });
 const portfolioFilters = dynamicLoading({ name: 'portfolio-filters' });
 const portfolioSearch = dynamicLoading({ name: 'portfolio-search' });
+const portfolioLogos = dynamicLoading({ name: 'portfolio-logos' });
 const history = dynamicLoading({ name: 'history' });
 const team = dynamicLoading({ name: 'team' });
 
@@ -52,6 +53,7 @@ const loadCallback = () => {
             startup();
             portfolioSearch();
             portfolioFilters();
+            portfolioLogos();
         }
     });
 

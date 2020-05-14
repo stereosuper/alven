@@ -12,6 +12,28 @@ get_header(); ?>
         <div class='title-wrapper'>
             <div class='container'>
                 <h1><?php the_title(); ?></h1>
+                <?php
+                    $startups = get_posts(array(
+                        'post_type' => 'startup',
+                        'posts_per_page' => -1,
+                        'orderby' => 'rand', 
+                        'meta_key' => 'displayLogo',
+                        'meta_value' => true,
+                        'orderby' => 'rand'
+                    ));
+                    if($startups):
+                ?>
+                    <ul class="portfolio-logos" id="logos">
+                        <?php $count = 0; foreach($startups as $post): $count ++; ?>
+                            <li class="<?php echo 'logo-' . $count; ?>">
+                                <?php
+                                    setup_postdata($post);
+                                    echo alven_get_svg(get_post_thumbnail_id());
+                                ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
         </div>
 
