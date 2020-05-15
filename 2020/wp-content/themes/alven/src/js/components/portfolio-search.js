@@ -1,3 +1,5 @@
+import { forEach } from '@stereorepo/sac';
+
 const portfolio = () => {
     const portfolio = document.getElementById('portfolio');
     const search = document.getElementById('form-startup');
@@ -8,7 +10,7 @@ const portfolio = () => {
     const links = portfolio.querySelectorAll('li');
 
     const filter = () => {
-        links.forEach(link => {
+        forEach(links, link => {
             link.dataset.name.includes(input.value) ? link.classList.remove('s-off') : link.classList.add('s-off');
         });
     };

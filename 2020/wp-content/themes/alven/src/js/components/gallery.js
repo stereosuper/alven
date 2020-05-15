@@ -3,6 +3,8 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 
 gsap.registerPlugin(ScrollToPlugin);
 
+import { forEach } from '@stereorepo/sac';
+
 const gallery = () => {
     const galleries = document.querySelectorAll('.gallery-wrapper');
 
@@ -32,7 +34,7 @@ const gallery = () => {
         x < 0 ? prev.classList.remove('off') : prev.classList.add('off');
     };
 
-    galleries.forEach(gallery => {
+    forEach(galleries, gallery => {
         gallery.dataset.index = 0;
         gallery.dataset.x = 0;
 

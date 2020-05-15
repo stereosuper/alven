@@ -4,6 +4,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 gsap.registerPlugin(ScrollToPlugin);
 
 import gallery from './gallery';
+import { forEach } from '@stereorepo/sac';
 
 const startup = () => {
     const portfolio = document.getElementById('portfolio');
@@ -50,7 +51,7 @@ const startup = () => {
             .catch(ex => console.error('Error', ex.message));
     };
 
-    links.forEach(link => {
+    forEach(links, link => {
         link.addEventListener(
             'click',
             e => {

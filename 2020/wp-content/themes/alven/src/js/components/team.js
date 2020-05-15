@@ -3,6 +3,8 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 
 gsap.registerPlugin(ScrollToPlugin);
 
+import { forEach } from '@stereorepo/sac';
+
 const team = () => {
     const team = document.getElementById('team');
 
@@ -21,7 +23,7 @@ const team = () => {
     let prev;
 
     const closeDetail = member => {
-        members.forEach(elt => {
+        forEach(members, elt => {
             elt.classList.remove('off');
             elt.classList.remove('on');
         });
@@ -41,7 +43,7 @@ const team = () => {
                     return;
                 }
 
-                members.forEach(elt => {
+                forEach(members, elt => {
                     elt.classList.add('off');
                     elt.classList.remove('on');
                 });
@@ -105,7 +107,7 @@ const team = () => {
     desc.id = 'desc';
     wrapper.appendChild(desc);
 
-    members.forEach(member => {
+    forEach(members, member => {
         member.addEventListener(
             'click',
             () => {

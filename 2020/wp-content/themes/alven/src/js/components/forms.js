@@ -1,9 +1,11 @@
+import { forEach } from '@stereorepo/sac';
+
 const forms = () => {
     const fields = document.querySelectorAll('.js-field');
 
     if (!fields.length) return;
 
-    fields.forEach(field => {
+    forEach(fields, field => {
         if (field.querySelector('.form-elt').value) field.querySelector('.label').classList.add('off');
 
         field.addEventListener(

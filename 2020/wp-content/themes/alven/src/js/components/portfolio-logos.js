@@ -3,6 +3,8 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 
 gsap.registerPlugin(ScrollToPlugin);
 
+import { forEach } from '@stereorepo/sac';
+
 const logos = () => {
     const listLogos = document.getElementById('logos');
 
@@ -51,7 +53,7 @@ const logos = () => {
     };
 
     const setLogos = () => {
-        logos.forEach((logo, i) => {
+        forEach(logos, (logo, i) => {
             if (i < nbDisplayedLogos) {
                 logo.classList.add('on');
                 indexes[i] = i;

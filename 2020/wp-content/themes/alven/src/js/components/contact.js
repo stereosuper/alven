@@ -3,6 +3,8 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 
 gsap.registerPlugin(ScrollToPlugin);
 
+import { forEach } from '@stereorepo/sac';
+
 const contact = () => {
     const contact = document.getElementById('contact');
 
@@ -13,7 +15,7 @@ const contact = () => {
     const openForm = (form, btn) => {
         gsap.to(form, 0.3, { minHeight: form.querySelector('.form').clientHeight, height: 'auto', y: -45 });
 
-        forms.forEach(elt => {
+        forEach(forms, elt => {
             if (elt.classList.contains('on'))
                 gsap.to(elt, 0.3, {
                     height: 0,
@@ -46,7 +48,7 @@ const contact = () => {
         );
     };
 
-    contact.querySelectorAll('.open-form').forEach(btn => {
+    forEach(contact.querySelectorAll('.open-form'), btn => {
         handleForm(btn);
     });
 };

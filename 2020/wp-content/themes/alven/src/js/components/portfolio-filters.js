@@ -1,3 +1,5 @@
+import { forEach } from '@stereorepo/sac';
+
 const portfolio = () => {
     const portfolio = document.getElementById('portfolio');
     const filters = document.getElementById('portfolio-filters');
@@ -11,7 +13,7 @@ const portfolio = () => {
     const sortPortfolio = btn => {
         filterName = btn.dataset.filter;
 
-        links.forEach(link => {
+        forEach(links, link => {
             link.dataset[filterName].split(',').includes(btn.dataset[filterName])
                 ? link.classList.remove('off')
                 : link.classList.add('off');
@@ -20,7 +22,7 @@ const portfolio = () => {
 
     const handleFilter = btn => {
         if (btn.classList.contains('on')) {
-            links.forEach(link => {
+            forEach(links, link => {
                 link.classList.remove('off');
             });
 
@@ -32,13 +34,13 @@ const portfolio = () => {
 
         sortPortfolio(btn);
 
-        btns.forEach(elt => {
+        forEach(btns, elt => {
             elt.classList.remove('on');
         });
         btn.classList.add('on');
     };
 
-    btns.forEach(btn => {
+    forEach(btns, btn => {
         if (btn.classList.contains('on')) {
             sortPortfolio(btn);
         }

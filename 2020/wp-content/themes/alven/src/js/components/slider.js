@@ -3,6 +3,8 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 
 gsap.registerPlugin(ScrollToPlugin);
 
+import { forEach } from '@stereorepo/sac';
+
 const slider = () => {
     const slider = document.getElementById('slider');
     const nav = document.getElementById('slider-nav');
@@ -18,12 +20,12 @@ const slider = () => {
     const slide = btn => {
         slideAutoCall.kill();
 
-        slides.forEach(slide => {
+        forEach(slides, slide => {
             slide.classList.remove('on');
         });
         slider.querySelector('[data-startup="' + btn.dataset.slide + '"').classList.add('on');
 
-        btns.forEach(elt => {
+        forEach(btns, elt => {
             elt.classList.remove('on');
         });
         btn.classList.add('on');
@@ -40,7 +42,7 @@ const slider = () => {
 
     slideAutoCall = gsap.delayedCall(5, slideAuto);
 
-    btns.forEach(btn => {
+    forEach(btns, btn => {
         btn.addEventListener(
             'click',
             () => {

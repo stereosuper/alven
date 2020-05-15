@@ -1,3 +1,5 @@
+import { forEach } from '@stereorepo/sac';
+
 const history = () => {
     const history = document.getElementById('history');
     const filters = document.getElementById('periods');
@@ -8,7 +10,7 @@ const history = () => {
 
     const filter = btn => {
         if (btn.classList.contains('on')) {
-            history.querySelectorAll('.dates').forEach(list => {
+            forEach(history.querySelectorAll('.dates'), list => {
                 list.classList.remove('off');
             });
 
@@ -17,17 +19,17 @@ const history = () => {
             return;
         }
 
-        history.querySelectorAll('.dates').forEach(list => {
+        forEach(history.querySelectorAll('.dates'), list => {
             list.dataset.period === btn.dataset.field ? list.classList.remove('off') : list.classList.add('off');
         });
 
-        btns.forEach(elt => {
+        forEach(btns, elt => {
             elt.classList.remove('on');
         });
         btn.classList.add('on');
     };
 
-    btns.forEach(btn => {
+    forEach(btns, btn => {
         btn.addEventListener(
             'click',
             () => {
