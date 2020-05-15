@@ -12,6 +12,7 @@ import header from './components/header';
 import search from './components/search';
 import forms from './components/forms';
 import contact from './components/contact';
+import gallery from './components/gallery';
 
 // ⚠️ DO NOT REMOVE ⚠️
 // This function allow you to use dynamic imports with webpack
@@ -41,6 +42,7 @@ const loadCallback = () => {
     header();
     search();
     forms();
+    gallery();
 
     bodyRouter({
         identifier: '.home',

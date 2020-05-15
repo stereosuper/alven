@@ -3,6 +3,8 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 
 gsap.registerPlugin(ScrollToPlugin);
 
+import gallery from './gallery';
+
 const startup = () => {
     const portfolio = document.getElementById('portfolio');
 
@@ -35,6 +37,8 @@ const startup = () => {
         history.pushState({ id: name }, '', href);
 
         wrapper.querySelector('#close').addEventListener('click', closeStartup, false);
+
+        gallery();
     };
 
     const loadStartup = (href, name) => {

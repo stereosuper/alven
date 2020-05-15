@@ -289,6 +289,58 @@ function alven_get_svg($id){
 
 
 /*-----------------------------------------------------------------------------------*/
+/* Markup gallery
+/*-----------------------------------------------------------------------------------*/
+function alven_post_gallery($output, $attr){
+    global $post;
+
+    if( isset($attr['orderby']) ){
+        $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+        if( !$attr['orderby'] ) unset( $attr['orderby'] );
+    }
+
+    extract(shortcode_atts(array(
+        'order'      => 'ASC',
+        'orderby'    => 'menu_order ID',
+        'id'         => $post->ID,
+        'itemtag'    => '',
+        'icontag'    => '',
+        'captiontag' => '',
+        'columns'    => 0,
+        'size'       => 'large',
+        'include'    => '',
+        'exclude'    => ''
+    ), $attr));
+
+    $id = intval($id);
+
+    $include = preg_replace( '/[^0-9,]+/', '', $include );
+    $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+    $attachments = array();
+    foreach( $_attachments as $key => $val ){
+        $attachments[$val->ID] = $_attachments[$key];
+    }
+
+    if( empty($attachments) ) return '';
+
+    $output = '<div class="gallery-wrapper"><div class="gallery-container"><div class="gallery">';
+    foreach( $attachments as $id => $attachment ){
+        $caption = get_post( $id )->post_excerpt;
+        $captionOutput = empty($caption) ? '' : '<span class="caption">'.$caption.'</span>';
+        $output .= '<div class="img">' . wp_get_attachment_image($id, $size, false, array('class' => 'no-scroll')) . $captionOutput . '</div>';
+    }
+    $output .= '</div>';
+    $output .= '<button class="prev off" role="button"><svg class="icon"><use xlink:href="#icon-arrow"></use></svg></button>';
+    $output .= '<button class="next" role="button"><svg class="icon"><use xlink:href="#icon-arrow"></use></svg></button>';
+    $output .= '</div></div>';
+
+    return $output;
+}
+add_filter( 'post_gallery', 'alven_post_gallery', 10, 2 );
+
+
+/*-----------------------------------------------------------------------------------*/
 /* Post types
 /*-----------------------------------------------------------------------------------*/
 function alven_post_type(){
