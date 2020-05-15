@@ -131,6 +131,9 @@
             background: linear-gradient(rgba($primary, 0.1) 0%, rgba($primary, 0.8) 100%);
         }
     }
+    .container {
+        margin: 0;
+    }
 }
 
 @media (min-width: $tablet) {
