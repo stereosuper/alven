@@ -51,8 +51,6 @@ const logos = () => {
     };
 
     const setLogos = () => {
-        if (!nbDisplayedLogos) return;
-
         logos.forEach((logo, i) => {
             if (i < nbDisplayedLogos) {
                 logo.classList.add('on');
@@ -95,7 +93,7 @@ const logos = () => {
         } else if (wWidth >= 580) {
             nbDisplayedLogos = 5;
         } else {
-            nbDisplayedLogos = 0;
+            nbDisplayedLogos = 4;
         }
 
         setLogos();

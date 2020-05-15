@@ -1,5 +1,50 @@
 .portfolio-logos {
-    display: none;
+    position: relative;
+    height: 40px;
+    margin: 45px 0 -15px;
+    list-style: none;
+    opacity: 0.3;
+    > li {
+        display: none;
+        width: 25%;
+        height: 50px;
+        padding: 0 15px;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        margin: 0;
+        &.on {
+            display: flex;
+        }
+        &.logo-1 {
+            left: 0;
+        }
+        &.logo-2 {
+            left: 25%;
+        }
+        &.logo-3 {
+            left: 50%;
+        }
+        &.logo-4 {
+            left: 75%;
+        }
+    }
+    svg {
+        width: 100%;
+        //min-width: 100px;
+        min-height: 30px;
+        max-width: 120px;
+        max-height: 50px;
+    }
+    path,
+    polygon,
+    rect,
+    ellipse,
+    circle,
+    line,
+    polyline {
+        fill: #fff;
+    }
 }
 
 .portfolio-wrapper {
@@ -251,27 +296,9 @@
 
 @media (min-width: $phone) {
     .portfolio-logos {
-        display: block;
-        position: relative;
-        height: 40px;
-        margin: 45px 0 -15px;
-        list-style: none;
-        opacity: 0.3;
         > li {
-            display: none;
             width: 20%;
-            height: 50px;
             padding: 0 20px;
-            align-items: center;
-            position: absolute;
-            top: 0;
-            margin: 0;
-            &.on {
-                display: flex;
-            }
-            &.logo-1 {
-                left: 0;
-            }
             &.logo-2 {
                 left: 20%;
             }
@@ -284,22 +311,6 @@
             &.logo-5 {
                 left: 80%;
             }
-        }
-        svg {
-            width: 100%;
-            //min-width: 100px;
-            min-height: 30px;
-            max-width: 120px;
-            max-height: 50px;
-        }
-        path,
-        polygon,
-        rect,
-        ellipse,
-        circle,
-        line,
-        polyline {
-            fill: #fff;
         }
     }
 
