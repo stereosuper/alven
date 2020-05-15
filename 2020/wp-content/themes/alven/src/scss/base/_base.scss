@@ -388,12 +388,11 @@ a {
             }
         }
         .wp-block-media-text__media {
-            display: flex;
-            justify-content: flex-end;
             margin: 0;
             > img {
                 width: auto;
                 max-width: 50vw;
+                float: right;
                 .post-content & {
                     max-width: calc(100% + #{$gutter});
                 }
