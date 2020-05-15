@@ -1,4 +1,9 @@
 <div class='portfolio-detail-content container'>
+    <button role='button' id='close' class="btn-close">
+        <span>Close</span>
+        <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
+    </button>
+
     <aside class='portfolio-header'>
         <h2 class='portfolio-logo'>
             <?php the_post_thumbnail('full'); ?>
@@ -53,10 +58,5 @@
         <?php if(get_field('website')){ $site = get_field('websiteDisplay') ? get_field('websiteDisplay') : get_field('website'); ?>
             <a href='<?php the_field('website'); ?>' class='btn-invert' target='_blank'><?php echo $site; ?></a>
         <?php } ?>
-
-        <button role='button' id='close' class="btn-close">
-            <span>Close</span>
-            <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
-        </button>
     </div>
 </div>
