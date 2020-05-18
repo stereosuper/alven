@@ -10,61 +10,63 @@ get_header(); ?>
     <?php if ( have_posts() ) : the_post(); ?>
 
         <section class="slider" id="slider">
-            <?php
-                $mainStartups = get_posts(
-                    array(
-                        'post_type' => 'startup',
-                        'posts_per_page' => 8,
-                        'meta_key' => 'force_front',
-                        'meta_value' => true,
-                        'orderby' => 'rand'
-                    )
-                );
-                foreach($mainStartups as $mainStartup){
-                    $forceIds[] = $mainStartup->ID;
-                }
-                $startups = get_posts(
-                    array(
-                        'post_type' => 'startup',
-                        'posts_per_page' => 8 - count($mainStartups),
-                        'meta_key' => 'front',
-                        'meta_value' => true,
-                        'orderby' => 'rand',
-                        'post__not_in' => $forceIds
-                    )
-                );
-                $startups = array_merge($mainStartups, $startups);
-                $i = 0;
-                foreach( $startups as $startup ) :
-                    $baseline = get_field('baseline', $startup->ID);
-            ?>
-                <div class="slide <?php if($i == 0) echo 'on'; ?>" style="background-image:url(<?php the_field('img', $startup->ID); ?>)" data-startup="<?php echo $startup->ID; ?>">
-                    <div class='slide-content container'>
-                        <a href='<?php echo get_the_permalink($startup->ID); ?>'>
-                            <div class='img'>
-                                <?php echo alven_get_svg(get_post_thumbnail_id($startup->ID)); ?>
-                            </div>
-                            <?php if( $baseline ) : ?>
-                                <p class='baseline'>
-                                    <?php echo $baseline; ?>
-                                </p>
-                            <?php endif; ?>
-                        </a>
+            <div class="container">
+                <?php
+                    $mainStartups = get_posts(
+                        array(
+                            'post_type' => 'startup',
+                            'posts_per_page' => 8,
+                            'meta_key' => 'force_front',
+                            'meta_value' => true,
+                            'orderby' => 'rand'
+                        )
+                    );
+                    foreach($mainStartups as $mainStartup){
+                        $forceIds[] = $mainStartup->ID;
+                    }
+                    $startups = get_posts(
+                        array(
+                            'post_type' => 'startup',
+                            'posts_per_page' => 8 - count($mainStartups),
+                            'meta_key' => 'front',
+                            'meta_value' => true,
+                            'orderby' => 'rand',
+                            'post__not_in' => $forceIds
+                        )
+                    );
+                    $startups = array_merge($mainStartups, $startups);
+                    $i = 0;
+                    foreach( $startups as $startup ) :
+                        $baseline = get_field('baseline', $startup->ID);
+                ?>
+                    <div class="slide <?php if($i == 0) echo 'on'; ?>" style="background-image:url(<?php the_field('img', $startup->ID); ?>)" data-startup="<?php echo $startup->ID; ?>">
+                        <div class='slide-content container'>
+                            <a href='<?php echo get_the_permalink($startup->ID); ?>'>
+                                <div class='img'>
+                                    <?php echo alven_get_svg(get_post_thumbnail_id($startup->ID)); ?>
+                                </div>
+                                <?php if( $baseline ) : ?>
+                                    <p class='baseline'>
+                                        <?php echo $baseline; ?>
+                                    </p>
+                                <?php endif; ?>
+                            </a>
+                        </div>
                     </div>
-                </div>
-            <?php $i++; endforeach; ?>
-            <div class="slider-title container">
-                <div>
-                    <h1 class='main-title-home'><?php the_field('title'); ?></h1>
-                    <ul class='slider-nav' id='slider-nav'>
-                        <?php $i = 0; foreach( $startups as $startup ) : ?>
-                            <li>
-                                <button <?php if( $i == 0 ) echo 'class="on"'; ?> data-slide="<?php echo $startup->ID; ?>">
-                                    <?php echo $startup->post_title; ?>
-                                </button>
-                            </li>
-                        <?php $i++; endforeach; ?>
-                    </ul>
+                <?php $i++; endforeach; ?>
+                <div class="slider-title">
+                    <div>
+                        <h1 class='main-title-home'><?php the_field('title'); ?></h1>
+                        <ul class='slider-nav' id='slider-nav'>
+                            <?php $i = 0; foreach( $startups as $startup ) : ?>
+                                <li>
+                                    <button <?php if( $i == 0 ) echo 'class="on"'; ?> data-slide="<?php echo $startup->ID; ?>">
+                                        <?php echo $startup->post_title; ?>
+                                    </button>
+                                </li>
+                            <?php $i++; endforeach; ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
