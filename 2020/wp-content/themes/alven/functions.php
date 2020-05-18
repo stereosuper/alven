@@ -355,16 +355,6 @@ function alven_post_type(){
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
         'taxonomies' => array('post_tag')
     ));
-    /*register_post_type('job', array(
-        'label' => 'Jobs',
-        'labels' => array(
-            'singular_name' => 'Job',
-            'menu_name' => 'Jobs'
-        ),
-        'public' => true,
-        'menu_icon' => 'dashicons-businessman',
-        'supports' => array('title', 'thumbnail', 'revisions')
-    ));*/
     register_post_type('team', array(
         'label' => 'Team members',
         'labels' => array(
@@ -386,7 +376,7 @@ function alven_post_type(){
         'public' => true,
         'publicly_queryable' => false,
         'query_var' => false,
-        'menu_icon' => 'dashicons-groups',
+        'menu_icon' => 'dashicons-calendar-alt',
         'supports' => array('title', 'editor', 'thumbnail', 'revisions')
     ));
 }
@@ -413,33 +403,6 @@ function alven_taxonomy(){
         'singular_label' => 'Period',
         'show_admin_column' => true
     ));
-    /*register_taxonomy('footprint', array('startup'), array(
-        'hierarchical' => true,
-        'label' => 'Footprints',
-        'singular_label' => 'Footprint',
-        'show_admin_column' => true
-    ));*/
-    // Jobs taxos
-    /*register_taxonomy('job_type', array('job'), array(
-        'label'             => 'Type',
-        'singular_label'    => 'Type',
-        'show_admin_column' => true
-    ));
-    register_taxonomy('job_location', array('job'), array(
-        'label'             => 'Location',
-        'singular_label'    => 'Location',
-        'show_admin_column' => true
-    ));
-    register_taxonomy('job_function', array('job'), array(
-        'label'             => 'Function',
-        'singular_label'    => 'Function',
-        'show_admin_column' => true
-    ));
-    register_taxonomy('job_sector', array('job'), array(
-        'label'             => 'Sector',
-        'singular_label'    => 'Sector',
-        'show_admin_column' => true
-    ));*/
 }
 add_action( 'init', 'alven_taxonomy' );
 
