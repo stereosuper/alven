@@ -1,3 +1,5 @@
+import './afterPolyfill';
+
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 
