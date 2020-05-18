@@ -1,3 +1,6 @@
+//fetch polyfill
+import 'whatwg-fetch';
+
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 
@@ -43,9 +46,10 @@ const startup = () => {
     };
 
     const loadStartup = (href, name) => {
-        fetch(alven_ajax.ajax_url + '?action=alven_portfolio_ajax&name=' + name, {
-            method: 'POST'
-        })
+        window
+            .fetch(alven_ajax.ajax_url + '?action=alven_portfolio_ajax&name=' + name, {
+                method: 'POST'
+            })
             .then(response => response.text())
             .then(html => openStartup(html, href, name))
             .catch(ex => console.error('Error', ex.message));
