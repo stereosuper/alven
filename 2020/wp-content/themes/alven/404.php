@@ -6,9 +6,11 @@
     </div>
 </div>
 
-<div class='container'>
-	
-	<p>Sorry, this page doesn't exist.</p>
+<div class='container align-center'>
+    
+    <img src='<?php echo get_template_directory_uri(); ?>/img/zebra.jpg' alt=''>
+    <p>Oops, this page was deleted or never existed.</p>
+    <p><a href="./" class='btn'>Go back home</a></p>
 
 </div>
 
