@@ -16,6 +16,7 @@
         "@stereorepo/burger": "^3.2.5",
         "@stereorepo/sac": "^3.2.5",
         "gsap": "^3.2.6",
+        "hammerjs": "^2.0.8",
         "intersection-observer": "^0.7.0",
         "whatwg-fetch": "^3.0.0"
     },

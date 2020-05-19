@@ -3,6 +3,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 
 gsap.registerPlugin(ScrollToPlugin);
 
+import 'hammerjs';
 import { forEach } from '@stereorepo/sac';
 
 const slider = () => {
@@ -15,10 +16,11 @@ const slider = () => {
     const btns = nav.querySelectorAll('button');
     let index = 0;
     let nextBtn;
-    let slideAutoCall;
+    let slideNextCall;
+    const mc = new Hammer(slider);
 
     const slide = btn => {
-        slideAutoCall.kill();
+        slideNextCall.kill();
 
         forEach(slides, slide => {
             slide.classList.remove('on');
@@ -31,16 +33,22 @@ const slider = () => {
         btn.classList.add('on');
         btn.blur();
 
-        slideAutoCall = gsap.delayedCall(5, slideAuto);
+        slideNextCall = gsap.delayedCall(5, slideNext);
     };
 
-    const slideAuto = () => {
+    const slideNext = () => {
         index = [].indexOf.call(btns, nav.querySelector('.on'));
         nextBtn = btns[index + 1] ? btns[index + 1] : btns[0];
         slide(nextBtn);
     };
 
-    slideAutoCall = gsap.delayedCall(5, slideAuto);
+    const slidePrev = () => {
+        index = [].indexOf.call(btns, nav.querySelector('.on'));
+        nextBtn = btns[index - 1] ? btns[index - 1] : btns[btns.length - 1];
+        slide(nextBtn);
+    };
+
+    slideNextCall = gsap.delayedCall(5, slideNext);
 
     forEach(btns, btn => {
         btn.addEventListener(
@@ -50,6 +58,16 @@ const slider = () => {
             },
             false
         );
+    });
+
+    mc.on('swipeleft', () => {
+        slideNextCall.kill();
+        slideNext();
+    });
+
+    mc.on('swiperight', () => {
+        slideNextCall.kill();
+        slidePrev();
     });
 };
 
