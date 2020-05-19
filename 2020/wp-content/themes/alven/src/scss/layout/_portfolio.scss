@@ -54,9 +54,10 @@
 .portfolio-filters {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 $gutter/-2;
+    margin: 0 $gutter/-2 20px;
     font-weight: 900;
     ul {
+        margin: 0;
         list-style: none;
     }
     li {
@@ -66,10 +67,23 @@
         max-width: none;
         margin: 10px 0 25px;
     }
+    .btn-filter {
+        font-weight: 400;
+        &.on {
+            font-weight: 900;
+        }
+    }
 }
 
 .portfolio-filters-main {
     width: 33.33%;
+    ul {
+        &:first-child {
+            .btn-filter {
+                font-weight: 900;
+            }
+        }
+    }
 }
 .portfolio-filters-secondary {
     width: 66.66%;
@@ -353,6 +367,7 @@
         .btn-filter {
             padding: 5px 30px 5px 20px;
             border-left: 5px solid transparent;
+            font-weight: 900;
             &.on {
                 border-color: $secondary;
             }
