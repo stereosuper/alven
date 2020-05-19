@@ -19,7 +19,7 @@
 
 .member {
     width: 50%;
-    padding: 0 12px 60px;
+    padding: 60px 12px 0;
 }
 
 .team-member {
@@ -71,12 +71,12 @@
     width: 100%;
     > .container {
         padding-top: 120px;
-        margin-top: -120px;
+        margin-top: -60px;
         position: relative;
     }
     .team-desc {
         display: block;
-        padding: 0 $gutter * 4 85px;
+        padding: 0 $gutter * 4 25px;
     }
     .name {
         font-size: 2.3rem;
