@@ -53,7 +53,7 @@
     </aside>
 
     <div class='portfolio-text'>
-        <?php the_content(); ?>
+        <div><?php the_content(); ?></div>
 
         <?php if(get_field('website')){ $site = get_field('websiteDisplay') ? get_field('websiteDisplay') : get_field('website'); ?>
             <a href='<?php the_field('website'); ?>' class='btn-invert' target='_blank'><?php echo $site; ?></a>
