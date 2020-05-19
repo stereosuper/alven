@@ -253,10 +253,6 @@
     font-style: italic;
 }
 
-.portfolio-history {
-    margin: 0 0 35px;
-}
-
 .portfolio-btn {
     margin: 0 0 27px;
 }
@@ -283,8 +279,12 @@
     background-image: url(../../img/google-play.png);
 }
 
+.portfolio-keywords {
+    display: none;
+}
+
 .portfolio-text {
-    padding: 50px 0 0;
+    padding: 20px 0 0;
     > p {
         &:first-of-type {
             margin-top: 0;
@@ -459,6 +459,11 @@
 
     .portfolio-logo {
         padding: 0 0 77%;
+    }
+
+    .portfolio-keywords {
+        display: block;
+        margin: 35px 0 0;
     }
 
     .portfolio-text {
