@@ -13,7 +13,11 @@
     
         if ( have_posts() ) : 
 
-            include_once('includes/spotlight.php');
+            if($paged == 0 || $paged == 1){
+                include_once('includes/spotlight.php');
+            }else{
+                $sticky = '';
+            }
 
             $queryPost = new WP_Query(array('post__not_in' => array($sticky), 'paged' => $paged));
             
