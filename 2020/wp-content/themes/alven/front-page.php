@@ -70,35 +70,6 @@ get_header(); ?>
                 </div>
             </div>
         </section>
-        
-        <section class="container">
-            <h2 class='title-home'><?php the_field('title', get_option('page_for_posts' )); ?></h2>
-
-            <?php include_once('includes/spotlight.php'); ?>
-
-            <?php
-                $queryPost = new WP_Query( array(
-                    'post__not_in' => array($sticky),
-                    'posts_per_page' => 3,
-                    'ignore_sticky_posts' => 1
-                ));
-                if($queryPost->have_posts()):
-            ?>
-                <div class='home-posts'>
-                    <?php while ( $queryPost->have_posts() ) : $queryPost->the_post(); ?>
-                        <div>
-                            <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
-                            <h4 class="h6"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
-                            <?php the_excerpt(); ?>
-                            <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
-                        </div>
-                    <?php endwhile; ?>
-                </div>
-                <div class="home-posts-link">
-                    <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="link">See all</a>
-                </div>
-            <?php endif; wp_reset_query(); ?>
-        </section>
 
         <section class="philo">
             <div class="container">
@@ -134,18 +105,49 @@ get_header(); ?>
             </div>
         </section>
 
-        <section class="container team-wrapper">
-            <h2 class='title-home'><?php the_field('whoTitle'); ?></h2>
-            <div class='team'>
-                <div class='img'>
-                    <div>
-                        <?php echo wp_get_attachment_image(get_field('whoImg'), 'large'); ?>
+        <section class="team-wrapper">
+            <div class="container">
+                <h2 class='title-home'><?php the_field('whoTitle'); ?></h2>
+                <div class='team'>
+                    <div class='img'>
+                        <div>
+                            <?php echo wp_get_attachment_image(get_field('whoImg'), 'large'); ?>
+                        </div>
+                    </div>
+                    <div class='txt'>
+                        <?php the_field('whoText'); ?>
                     </div>
                 </div>
-                <div class='txt'>
-                    <?php the_field('whoText'); ?>
-                </div>
             </div>
+        </section>
+        
+        <section class="container">
+            <h2 class='title-home'><?php the_field('title', get_option('page_for_posts' )); ?></h2>
+
+            <?php include_once('includes/spotlight.php'); ?>
+
+            <?php
+                $queryPost = new WP_Query( array(
+                    'post__not_in' => array($sticky),
+                    'posts_per_page' => 3,
+                    'ignore_sticky_posts' => 1
+                ));
+                if($queryPost->have_posts()):
+            ?>
+                <div class='home-posts'>
+                    <?php while ( $queryPost->have_posts() ) : $queryPost->the_post(); ?>
+                        <div>
+                            <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
+                            <h4 class="h6"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
+                            <?php the_excerpt(); ?>
+                            <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
+                <div class="home-posts-link">
+                    <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="link">See all</a>
+                </div>
+            <?php endif; wp_reset_query(); ?>
         </section>
 
         <section class="contact-wrapper">

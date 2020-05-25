@@ -10,9 +10,8 @@
 }
 
 .philo {
-    padding: 85px 0;
+    padding: 0 0 85px;
     text-align: center;
-    background: $grey;
     .title-maj {
         margin-top: 0;
     }
@@ -64,8 +63,9 @@
 }
 
 .team-wrapper {
-    padding-top: 75px;
-    padding-bottom: 95px;
+    padding: 75px 0 95px;
+    margin: 0 0 75px;
+    background: $grey;
 }
 
 .team {
