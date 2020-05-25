@@ -80,7 +80,7 @@ get_header(); ?>
                     <div class='portfolio-filters-secondary'>
                         <ul class='portfolio-fields'>
                             <?php
-                                $fields = get_terms(array('taxonomy' => 'field'));
+                                $fields = get_terms(array('taxonomy' => 'field', 'orderby' => 'term_order'));
                                 foreach($fields as $field){
                                     echo '<li><button class="btn-filter" data-filter="field" data-field="'.$field->slug.'">'.$field->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
                                 }

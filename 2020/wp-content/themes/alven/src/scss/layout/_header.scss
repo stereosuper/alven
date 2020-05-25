@@ -27,6 +27,7 @@
     width: 65px;
     position: relative;
     z-index: 10;
+    transform: translate3d(0, 0, 0);
     &:hover,
     &:focus {
         opacity: 0.8;
