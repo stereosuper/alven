@@ -86,7 +86,8 @@
         align-items: flex-start;
         justify-content: space-between;
         li {
-            margin: 0 $gutter * 2;
+            width: 30%;
+            margin: 0 $gutter;
         }
     }
 }
