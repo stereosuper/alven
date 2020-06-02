@@ -60,3 +60,36 @@
         <?php } ?>
     </div>
 </div>
+
+<?php
+    $related = get_posts(array(
+        'post_type' => 'post',
+        'meta_query' => array(
+            array(
+                'key' => 'startup', // name of custom field
+                'value' => '"' . get_the_ID() . '"',
+                'compare' => 'LIKE'
+            )
+        )
+    ));
+        
+    if( $related ) : ?>
+        <div class='portfolio-related'>
+            <div class='container'>
+                <span class='title-small'>Related articles</span>
+                <div class='portfolio-posts posts'>
+                    <?php foreach($related as $post){ setup_postdata($post); ?>
+                        <div>
+                            <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>
+                            <h4 class="h6"><a href='<?php the_permalink(); ?>'><?php the_title(); ?></a></h4>
+                            <?php the_excerpt(); ?>
+                            <a href='<?php the_permalink(); ?>' class='btn'>Read</a>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+<?php
+    wp_reset_postdata();
+    endif;
+?>

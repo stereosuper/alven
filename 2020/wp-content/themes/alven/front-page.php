@@ -134,7 +134,7 @@ get_header(); ?>
                 ));
                 if($queryPost->have_posts()):
             ?>
-                <div class='home-posts'>
+                <div class='posts home-posts'>
                     <?php while ( $queryPost->have_posts() ) : $queryPost->the_post(); ?>
                         <div>
                             <time datetime='<?php echo get_the_date('Y-m-d'); ?>' class='date'><?php echo get_the_date(); ?></time>

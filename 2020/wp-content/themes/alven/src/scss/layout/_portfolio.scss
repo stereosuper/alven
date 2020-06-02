@@ -285,14 +285,22 @@
 
 .portfolio-text {
     padding: 20px 0 0;
-    > p {
-        &:first-of-type {
-            margin-top: 0;
+    > div {
+        > p {
+            &:first-of-type {
+                margin-top: 0;
+            }
         }
     }
     .btn-invert {
         margin: 50px 0 0;
     }
+}
+
+.portfolio-related {
+    padding: 70px 0 5px;
+    background: #fff;
+    color: $primary;
 }
 
 @media (min-width: $phone-small) {
@@ -472,6 +480,10 @@
         .gallery-wrapper {
             margin-right: calc(#{$col * -2} + #{$gutter});
         }
+    }
+
+    .portfolio-related {
+        padding: 110px 0 0;
     }
 }
 
