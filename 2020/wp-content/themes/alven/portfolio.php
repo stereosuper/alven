@@ -86,6 +86,14 @@ get_header(); ?>
                                 }
                             ?>
                         </ul>
+                        <ul class='portfolio-fields'>
+                            <?php
+                                $fields = get_terms(array('taxonomy' => 'sub-field', 'orderby' => 'term_order'));
+                                foreach($fields as $field){
+                                    echo '<li><button class="btn-filter" data-filter="subfield" data-subfield="'.$field->slug.'">'.$field->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
+                                }
+                            ?>
+                        </ul>
                     </div>
                 </aside>
 
@@ -122,6 +130,14 @@ get_header(); ?>
                                         }
                                     }
 
+                                    $subFields = get_the_terms($post, 'sub-field');
+                                    $subFieldList = '';
+                                    if( $subFields ){
+                                        foreach( $subFields as $subField ){
+                                            $subFieldList .= $subField->slug.',';
+                                        }
+                                    }
+
                                     $locs = get_the_terms($post, 'location');
                                     $locList = '';
                                     if( $locs ){
@@ -134,7 +150,7 @@ get_header(); ?>
                                     $name = basename(get_permalink());
                                 ?>
                                 <?php if( get_field('investment') !== 'past' ){ ?>
-                                    <li data-name='<?php echo $name; ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-location='<?php echo $locList; ?>'>
+                                    <li data-name='<?php echo $name; ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-subfield='<?php echo $subFieldList; ?>' data-location='<?php echo $locList; ?>'>
                                         <a href='<?php echo '#' . $name; ?>' class='ajax-load' data-name='<?php echo $name; ?>' style='background-color: <?php echo $color; ?>; border-color: <?php echo $color; ?>'>
                                             <?php if( has_post_thumbnail() ){
                                                 echo alven_get_svg(get_post_thumbnail_id());
@@ -144,7 +160,7 @@ get_header(); ?>
                                         </a>
                                     </li>
                                 <?php } else{ ?>
-                                    <li class='transfered' data-name='<?php echo $name; ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-location='<?php echo $locList; ?>'>
+                                    <li class='transfered' data-name='<?php echo $name; ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-subfield='<?php echo $subFieldList; ?>' data-location='<?php echo $locList; ?>'>
                                         <a href='<?php echo '#' . $name; ?>' class='ajax-load' data-name='<?php echo $name; ?>'>
                                             <span class='content-transfered <?php if(!get_field('acquiredBy')){ echo 'no-by'; } ?>'>
                                                 <span <?php if(!has_post_thumbnail()){ echo "class='txt-container'"; } ?>>

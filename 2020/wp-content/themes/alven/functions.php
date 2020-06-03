@@ -391,6 +391,12 @@ function alven_taxonomy(){
         'singular_label' => 'Field',
         'show_admin_column' => true
     ));
+    register_taxonomy('sub-field', array('startup'), array(
+        'hierarchical' => true,
+        'label' => 'Sub-fields',
+        'singular_label' => 'Sub-field',
+        'show_admin_column' => true
+    ));
     register_taxonomy('location', array('startup'), array(
         'hierarchical' => true,
         'label' => 'Locations',
