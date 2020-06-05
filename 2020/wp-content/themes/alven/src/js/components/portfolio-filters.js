@@ -8,23 +8,42 @@ const portfolio = () => {
 
     const btns = filters.querySelectorAll('.btn-filter');
     const links = portfolio.querySelectorAll('li');
+    let filterNames = [];
     let filterName = '';
+    let filter = '';
 
-    const sortPortfolio = btn => {
-        filterName = btn.dataset.filter;
-
+    const sortPortfolio = () => {
         forEach(links, link => {
-            link.dataset[filterName].split(',').includes(btn.dataset[filterName])
-                ? link.classList.remove('off')
-                : link.classList.add('off');
+            if (!filterNames.length) {
+                link.classList.remove('off');
+                return;
+            }
+
+            link.classList.add('off');
+
+            forEach(filterNames, filter => {
+                if (!link.dataset[filter.name].split(',').includes(filter.filter)) return;
+                link.classList.remove('off');
+            });
         });
     };
 
+    const addFilter = () => {
+        filterNames.push({ name: filterName, filter: filter });
+        sortPortfolio();
+    };
+
+    const getFilter = btn => {
+        filterName = btn.dataset.filter;
+        filter = btn.dataset[filterName];
+    };
+
     const handleFilter = btn => {
+        getFilter(btn);
+
         if (btn.classList.contains('on')) {
-            forEach(links, link => {
-                link.classList.remove('off');
-            });
+            filterNames = filterNames.filter(x => x.filter !== filter);
+            sortPortfolio();
 
             btn.classList.remove('on');
             btn.blur();
@@ -32,17 +51,14 @@ const portfolio = () => {
             return;
         }
 
-        sortPortfolio(btn);
-
-        forEach(btns, elt => {
-            elt.classList.remove('on');
-        });
+        addFilter();
         btn.classList.add('on');
     };
 
     forEach(btns, btn => {
         if (btn.classList.contains('on')) {
-            sortPortfolio(btn);
+            getFilter(btn);
+            addFilter();
         }
 
         btn.addEventListener(
