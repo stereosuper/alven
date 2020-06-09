@@ -51,9 +51,14 @@ get_header(); ?>
                             <svg class="icon"><use xlink:href="#icon-glass-bold"></use></svg>
                         </button>
                     </form>
-
-                    <div class='portfolio-filters-main'>
-                        <?php $investment = isset($_GET['investment']) ? $_GET['investment'] : ''; ?>
+                    
+                    <p>Filter by: </p>
+                    <?php $investment = isset($_GET['investment']) ? $_GET['investment'] : ''; ?>
+                    <button type="button" class="js-open-filters open-filters" data-type="companies">Companies</button>
+                    <div class="filters-container js-filters" id="companies">
+                        <button type="button" class="close-filters js-close-filters">
+                            <svg class="icon"><use xlink:href="#icon-cross"></use></svg>
+                        </button>
                         <ul>
                             <li>
                                 <button class='btn-filter <?php if($investment === 'present') echo "on"; ?>' data-filter='investment' data-investment='present'>
@@ -68,6 +73,13 @@ get_header(); ?>
                                 </button>
                             </li>
                         </ul>
+                    </div>
+                    
+                    <button type="button" class="js-open-filters open-filters" data-type="location">Location</button>
+                    <div class="filters-container js-filters" id="location">
+                        <button type="button" class="close-filters js-close-filters">
+                            <svg class="icon"><use xlink:href="#icon-cross"></use></svg>
+                        </button>
                         <ul>
                             <?php
                                 $locs = get_terms(array('taxonomy' => 'location'));
@@ -77,8 +89,13 @@ get_header(); ?>
                             ?>
                         </ul>
                     </div>
-                    <div class='portfolio-filters-secondary'>
-                        <ul class='portfolio-fields'>
+                    
+                    <button type="button" class="js-open-filters open-filters" data-type="fields">Fields</button>
+                    <div class="filters-container js-filters" id="fields">
+                        <button type="button" class="close-filters js-close-filters">
+                            <svg class="icon"><use xlink:href="#icon-cross"></use></svg>
+                        </button>
+                        <ul>
                             <?php
                                 $fields = get_terms(array('taxonomy' => 'field', 'orderby' => 'term_order'));
                                 foreach($fields as $field){

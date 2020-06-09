@@ -54,44 +54,72 @@
 .portfolio-filters {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 $gutter/-2 20px;
+    margin: 0 $gutter/-2 40px;
     font-weight: 900;
     ul {
         margin: 0;
         list-style: none;
+        ul {
+            padding: 0;
+        }
     }
     li {
         margin: 0 $gutter/2 5px;
+        li {
+            font-weight: 400;
+        }
     }
     .form-search {
         max-width: none;
         margin: 10px 0 25px;
     }
     .btn-filter {
-        font-weight: 400;
+        padding-left: 10px;
         &.on {
             font-weight: 900;
         }
     }
-}
-
-.portfolio-filters-main {
-    width: 33.33%;
-    ul {
-        &:first-child {
-            .btn-filter {
-                font-weight: 900;
-            }
-        }
+    p {
+        margin: 0 10px 0 0;
+        font-weight: 400;
     }
 }
-.portfolio-filters-secondary {
-    width: 66.66%;
+
+.open-filters {
+    margin: 0 10px;
+    &:hover,
+    &:focus {
+        color: $secondary;
+    }
 }
 
-.portfolio-fields {
-    display: flex;
-    flex-wrap: wrap;
+.filters-container {
+    display: none;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    overflow-y: auto;
+    text-align: center;
+    background: #fff;
+    &.on {
+        display: block;
+    }
+}
+
+.close-filters {
+    margin: 0 0 30px;
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
+    &:hover,
+    &:focus {
+        color: $secondary;
+    }
 }
 
 .portfolio-content {
@@ -101,7 +129,7 @@
 .portfolio {
     display: flex;
     flex-wrap: wrap;
-    margin: 0;
+    margin: 0 -10px;
     text-align: center;
     line-height: 1;
     list-style: none;
@@ -365,15 +393,19 @@
 
     .portfolio-filters {
         display: block;
+        width: 25%;
         margin: 0;
         ul {
-            margin: 10px 0 40px;
+            margin: 10px 0 25px;
             ul {
-                margin: 0;
+                margin: 10px 0 20px 20px;
+                &:empty {
+                    margin: 0;
+                }
             }
         }
         li {
-            margin: 0 0 10px;
+            margin: 0 0 5px;
         }
         .btn-filter {
             padding: 5px 30px 5px 20px;
@@ -383,15 +415,24 @@
                 border-color: $secondary;
             }
         }
+        p {
+            display: none;
+        }
     }
 
-    .portfolio-filters-main,
-    .portfolio-filters-secondary {
-        width: 100%;
-    }
-
-    .portfolio-fields {
+    .filters-container {
         display: block;
+        padding: 0;
+        position: static;
+        text-align: left;
+        &.on {
+            display: block;
+        }
+    }
+
+    .close-filters,
+    .open-filters {
+        display: none;
     }
 
     .portfolio-wrapper {
@@ -399,8 +440,8 @@
         padding: 0 0 150px;
     }
 
-    .portfolio-filters {
-        width: 25%;
+    .portfolio {
+        margin: 0 -10px 0 10px;
     }
 
     .portfolio-content {
@@ -442,7 +483,7 @@
 
     .portfolio-filters {
         .form-search {
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
     }
 

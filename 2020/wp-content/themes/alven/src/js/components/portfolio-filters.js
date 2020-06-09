@@ -1,5 +1,10 @@
 import { forEach } from '@stereorepo/sac';
 
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
+
+gsap.registerPlugin(ScrollToPlugin);
+
 const portfolio = () => {
     const portfolio = document.getElementById('portfolio');
     const filters = document.getElementById('portfolio-filters');
@@ -11,6 +16,11 @@ const portfolio = () => {
     let filterNames = [];
     let filterName = '';
     let filter = '';
+
+    // responsive
+    let filtersWrapper;
+    const btnsFilters = filters.querySelectorAll('.js-open-filters');
+    const closeFilters = filters.querySelectorAll('.js-close-filters');
 
     const sortPortfolio = () => {
         forEach(links, link => {
@@ -65,6 +75,30 @@ const portfolio = () => {
             'click',
             () => {
                 handleFilter(btn);
+            },
+            false
+        );
+    });
+
+    forEach(btnsFilters, btn => {
+        btn.addEventListener(
+            'click',
+            () => {
+                filtersWrapper = document.getElementById(btn.dataset.type);
+                filtersWrapper.classList.add('on');
+                document.getElementsByTagName('html')[0].classList.add('no-scroll');
+            },
+            false
+        );
+    });
+
+    forEach(closeFilters, btn => {
+        btn.addEventListener(
+            'click',
+            () => {
+                btn.parentNode.classList.remove('on');
+                document.getElementsByTagName('html')[0].classList.remove('no-scroll');
+                gsap.set(window, { scrollTo: '#portfolio-filters' });
             },
             false
         );
