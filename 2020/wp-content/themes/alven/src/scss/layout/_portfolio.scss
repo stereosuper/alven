@@ -105,9 +105,7 @@
     overflow-y: auto;
     text-align: center;
     background: #fff;
-    &.on {
-        display: block;
-    }
+    opacity: 0;
 }
 
 .close-filters {
@@ -421,13 +419,11 @@
     }
 
     .filters-container {
-        display: block;
+        display: block !important;
         padding: 0;
         position: static;
         text-align: left;
-        &.on {
-            display: block;
-        }
+        opacity: 1;
     }
 
     .close-filters,

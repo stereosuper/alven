@@ -100,7 +100,8 @@ const portfolio = () => {
             'click',
             () => {
                 filtersWrapper = document.getElementById(btn.dataset.type);
-                filtersWrapper.classList.add('on');
+                gsap.fromTo(filtersWrapper, 0.2, { display: 'block' }, { opacity: 1, y: 0 });
+                gsap.fromTo(filtersWrapper.querySelector('.filters-inner'), 0.25, { y: 50 }, { y: 0, delay: 0.05 });
                 document.getElementsByTagName('html')[0].classList.add('no-scroll');
             },
             false
@@ -111,7 +112,14 @@ const portfolio = () => {
         btn.addEventListener(
             'click',
             () => {
-                btn.parentNode.classList.remove('on');
+                gsap.to(filtersWrapper.querySelector('.filters-inner'), 0.2, { y: 50 });
+                gsap.to(filtersWrapper, 0.2, {
+                    opacity: 0,
+                    delay: 0.1,
+                    onComplete: () => {
+                        gsap.set(filtersWrapper, { display: 'none' });
+                    }
+                });
                 document.getElementsByTagName('html')[0].classList.remove('no-scroll');
                 gsap.set(window, { scrollTo: '#portfolio-filters' });
             },

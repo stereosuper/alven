@@ -56,59 +56,65 @@ get_header(); ?>
                     <?php $investment = isset($_GET['investment']) ? $_GET['investment'] : ''; ?>
                     <button type="button" class="js-open-filters open-filters" data-type="companies">Companies</button>
                     <div class="filters-container js-filters" id="companies">
-                        <button type="button" class="close-filters js-close-filters">
-                            <svg class="icon"><use xlink:href="#icon-cross"></use></svg>
-                        </button>
-                        <ul>
-                            <li>
-                                <button class='btn-filter <?php if($investment === 'present') echo "on"; ?>' data-filter='investment' data-investment='present'>
-                                    <?php the_field('present', 'options'); ?>
-                                    <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
-                                </button>
-                            </li>
-                            <li>
-                                <button class='btn-filter <?php if($investment === 'past') echo "on"; ?>' data-filter='investment' data-investment='past'>
-                                    <?php the_field('past', 'options'); ?>
-                                    <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
-                                </button>
-                            </li>
-                        </ul>
+                        <div class="filters-inner">
+                            <button type="button" class="close-filters js-close-filters">
+                                <svg class="icon"><use xlink:href="#icon-cross"></use></svg>
+                            </button>
+                            <ul>
+                                <li>
+                                    <button class='btn-filter <?php if($investment === 'present') echo "on"; ?>' data-filter='investment' data-investment='present'>
+                                        <?php the_field('present', 'options'); ?>
+                                        <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class='btn-filter <?php if($investment === 'past') echo "on"; ?>' data-filter='investment' data-investment='past'>
+                                        <?php the_field('past', 'options'); ?>
+                                        <svg class="icon"><use xlink:href="#icon-cross-small"></use></svg>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     
                     <button type="button" class="js-open-filters open-filters" data-type="location">Location</button>
                     <div class="filters-container js-filters" id="location">
-                        <button type="button" class="close-filters js-close-filters">
-                            <svg class="icon"><use xlink:href="#icon-cross"></use></svg>
-                        </button>
-                        <ul>
-                            <?php
-                                $locs = get_terms(array('taxonomy' => 'location'));
-                                foreach($locs as $loc){
-                                    echo '<li><button class="btn-filter" data-filter="location" data-location="'.$loc->slug.'">'.$loc->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
-                                }
-                            ?>
-                        </ul>
+                        <div class="filters-inner">
+                            <button type="button" class="close-filters js-close-filters">
+                                <svg class="icon"><use xlink:href="#icon-cross"></use></svg>
+                            </button>
+                            <ul>
+                                <?php
+                                    $locs = get_terms(array('taxonomy' => 'location'));
+                                    foreach($locs as $loc){
+                                        echo '<li><button class="btn-filter" data-filter="location" data-location="'.$loc->slug.'">'.$loc->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
+                                    }
+                                ?>
+                            </ul>
+                        </div>
                     </div>
                     
                     <button type="button" class="js-open-filters open-filters" data-type="fields">Fields</button>
                     <div class="filters-container js-filters" id="fields">
-                        <button type="button" class="close-filters js-close-filters">
-                            <svg class="icon"><use xlink:href="#icon-cross"></use></svg>
-                        </button>
-                        <ul>
-                            <?php
-                                $fields = get_terms(array('taxonomy' => 'field', 'orderby' => 'term_order'));
-                                foreach($fields as $field){
-                                    if( $field->parent ) continue;
-                                    echo '<li><button class="btn-filter" data-filter="field" data-field="'.$field->slug.'">'.$field->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button><ul>';
-                                    foreach($fields as $subfield){
-                                        if( $field->term_id !== $subfield->parent ) continue;
-                                        echo '<li><button class="btn-filter" data-parent="'.$field->slug.'" data-filter="subfield" data-subfield="'.$subfield->slug.'">'.$subfield->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
+                        <div class="filters-inner">
+                            <button type="button" class="close-filters js-close-filters">
+                                <svg class="icon"><use xlink:href="#icon-cross"></use></svg>
+                            </button>
+                            <ul>
+                                <?php
+                                    $fields = get_terms(array('taxonomy' => 'field', 'orderby' => 'term_order'));
+                                    foreach($fields as $field){
+                                        if( $field->parent ) continue;
+                                        echo '<li><button class="btn-filter" data-filter="field" data-field="'.$field->slug.'">'.$field->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button><ul>';
+                                        foreach($fields as $subfield){
+                                            if( $field->term_id !== $subfield->parent ) continue;
+                                            echo '<li><button class="btn-filter" data-parent="'.$field->slug.'" data-filter="subfield" data-subfield="'.$subfield->slug.'">'.$subfield->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
+                                        }
+                                        echo '</ul></li>';
                                     }
-                                    echo '</ul></li>';
-                                }
-                            ?>
-                        </ul>
+                                ?>
+                            </ul>
+                        </div>
                     </div>
                 </aside>
 
