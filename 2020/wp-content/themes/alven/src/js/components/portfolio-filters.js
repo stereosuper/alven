@@ -13,62 +13,76 @@ const portfolio = () => {
 
     const btns = filters.querySelectorAll('.btn-filter');
     const links = portfolio.querySelectorAll('li');
+    const types = ['investment', 'location', 'field', 'subfield'];
     let filterNames = [];
-    let filterName = '';
-    let filter = '';
 
-    // responsive
+    // responsive variables
     let filtersWrapper;
     const btnsFilters = filters.querySelectorAll('.js-open-filters');
     const closeFilters = filters.querySelectorAll('.js-close-filters');
 
     const sortPortfolio = () => {
         forEach(links, link => {
-            if (!filterNames.length) {
-                link.classList.remove('off');
-                return;
-            }
-
-            link.classList.add('off');
-
             forEach(filterNames, filter => {
-                if (!link.dataset[filter.name].split(',').includes(filter.filter)) return;
-                link.classList.remove('off');
+                if (!link.dataset[filter.name].split(',').includes(filter.filter)) link.classList.add('off');
             });
         });
     };
 
-    const addFilter = () => {
-        filterNames.push({ name: filterName, filter: filter });
+    const addFilter = btn => {
+        filterNames.push({ name: btn.dataset.filter, filter: btn.dataset[btn.dataset.filter] });
         sortPortfolio();
     };
 
-    const getFilter = btn => {
-        filterName = btn.dataset.filter;
-        filter = btn.dataset[filterName];
+    const removeFilter = btn => {
+        filterNames = filterNames.filter(x => x.filter !== btn.dataset[btn.dataset.filter]);
+        forEach(links, link => {
+            if (!link.dataset[btn.dataset.filter].split(',').includes(btn.dataset[btn.dataset.filter]))
+                link.classList.remove('off');
+        });
+
+        sortPortfolio();
+
+        btn.classList.remove('on');
+        btn.blur();
+    };
+
+    const handleUniqueFilter = (btn, cat) => {
+        if (btn.dataset.filter !== cat) return;
+
+        forEach(btns, link => {
+            if (
+                (cat === 'field' && link.dataset.filter === 'subfield') ||
+                (cat === 'subfield' && link.dataset.filter === 'field' && btn.dataset.parent !== link.dataset.field)
+            ) {
+                removeFilter(link);
+            }
+
+            if (!link.dataset[cat]) return;
+
+            if (link.dataset[cat] !== btn.dataset[btn.dataset.filter] && link.classList.contains('on')) {
+                removeFilter(link);
+            }
+        });
     };
 
     const handleFilter = btn => {
-        getFilter(btn);
-
         if (btn.classList.contains('on')) {
-            filterNames = filterNames.filter(x => x.filter !== filter);
-            sortPortfolio();
-
-            btn.classList.remove('on');
-            btn.blur();
-
+            removeFilter(btn);
             return;
         }
 
-        addFilter();
+        addFilter(btn);
         btn.classList.add('on');
+
+        forEach(types, type => {
+            handleUniqueFilter(btn, type);
+        });
     };
 
     forEach(btns, btn => {
         if (btn.classList.contains('on')) {
-            getFilter(btn);
-            addFilter();
+            addFilter(btn);
         }
 
         btn.addEventListener(
@@ -80,6 +94,7 @@ const portfolio = () => {
         );
     });
 
+    // responsive
     forEach(btnsFilters, btn => {
         btn.addEventListener(
             'click',

@@ -103,7 +103,7 @@ get_header(); ?>
                                     echo '<li><button class="btn-filter" data-filter="field" data-field="'.$field->slug.'">'.$field->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button><ul>';
                                     foreach($fields as $subfield){
                                         if( $field->term_id !== $subfield->parent ) continue;
-                                        echo '<li><button class="btn-filter" data-filter="field" data-field="'.$subfield->slug.'">'.$subfield->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
+                                        echo '<li><button class="btn-filter" data-parent="'.$field->slug.'" data-filter="subfield" data-subfield="'.$subfield->slug.'">'.$subfield->name.'<svg class="icon"><use xlink:href="#icon-cross-small"></use></svg></button></li>';
                                     }
                                     echo '</ul></li>';
                                 }
@@ -139,9 +139,10 @@ get_header(); ?>
                                 <?php
                                     $fields = get_the_terms($post, 'field');
                                     $fieldList = '';
+                                    $subfieldList = '';
                                     if( $fields ){
                                         foreach( $fields as $field ){
-                                            $fieldList .= $field->slug.',';
+                                            $field->parent ? $subfieldList .= $field->slug.',' : $fieldList .= $field->slug.',';
                                         }
                                     }
 
@@ -157,7 +158,7 @@ get_header(); ?>
                                     $name = basename(get_permalink());
                                 ?>
                                 <?php if( get_field('investment') !== 'past' ){ ?>
-                                    <li data-name='<?php echo $name; ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-location='<?php echo $locList; ?>'>
+                                    <li data-name='<?php echo $name; ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-subfield='<?php echo $subfieldList; ?>' data-location='<?php echo $locList; ?>'>
                                         <a href='<?php echo '#' . $name; ?>' class='ajax-load' data-name='<?php echo $name; ?>' style='background-color: <?php echo $color; ?>; border-color: <?php echo $color; ?>'>
                                             <?php if( has_post_thumbnail() ){
                                                 echo alven_get_svg(get_post_thumbnail_id());
@@ -167,7 +168,7 @@ get_header(); ?>
                                         </a>
                                     </li>
                                 <?php } else{ ?>
-                                    <li class='transfered' data-name='<?php echo $name; ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-location='<?php echo $locList; ?>'>
+                                    <li class='transfered' data-name='<?php echo $name; ?>' data-investment='<?php the_field('investment') ?>' data-field='<?php echo $fieldList; ?>' data-subfield='<?php echo $subfieldList; ?>' data-location='<?php echo $locList; ?>'>
                                         <a href='<?php echo '#' . $name; ?>' class='ajax-load' data-name='<?php echo $name; ?>'>
                                             <span class='content-transfered <?php if(!get_field('acquiredBy')){ echo 'no-by'; } ?>'>
                                                 <span <?php if(!has_post_thumbnail()){ echo "class='txt-container'"; } ?>>
