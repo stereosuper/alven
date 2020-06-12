@@ -78,6 +78,8 @@ const portfolio = () => {
         forEach(types, type => {
             handleUniqueFilter(btn, type);
         });
+
+        gsap.to(window, { duration: 0.5, scrollTo: { y: '#startup', offsetY: 70 } });
     };
 
     forEach(btns, btn => {
