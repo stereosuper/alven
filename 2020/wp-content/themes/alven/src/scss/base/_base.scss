@@ -181,7 +181,12 @@ figcaption {
 }
 
 table {
+    width: auto !important;
     margin: 1.8em 0;
+    font-size: 1.4rem;
+}
+td {
+    padding: 10px 20px;
 }
 
 // COMBAK: Remove if not used
