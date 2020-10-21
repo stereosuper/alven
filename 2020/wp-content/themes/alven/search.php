@@ -14,7 +14,9 @@
 
 <div class='container'>
 
-    <?php get_search_form(); ?>
+    <div class="form-search-wrapper">
+        <?php get_search_form(); ?>
+    </div>
 
 	<?php if ( have_posts() ) : ?>
 
