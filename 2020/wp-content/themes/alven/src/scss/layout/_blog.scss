@@ -119,21 +119,29 @@
 
 .blog-search {
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .blog-filters {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    order: 2;
+    margin: 25px 0 0;
     p {
-        margin: 0 15px 0 0;
+        margin: 0 25px 0 0;
     }
     ul {
         display: flex;
+        flex-wrap: wrap;
         margin: 0;
         list-style: none;
     }
     li {
-        margin: 0 10px;
+        margin: 5px 20px 5px 0;
+        &:last-child {
+            margin-right: 0;
+        }
     }
     a {
         position: relative;
@@ -193,6 +201,11 @@
                 margin: 0;
             }
         }
+    }
+
+    .blog-filters {
+        order: 0;
+        margin: 0;
     }
 }
 
