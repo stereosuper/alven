@@ -243,6 +243,7 @@
             opacity: 0;
             transform: translate3d(0, -200%, 0);
             transition: $transition;
+            will-change: transform;
             .current-menu-item {
                 a {
                     font-weight: 900;

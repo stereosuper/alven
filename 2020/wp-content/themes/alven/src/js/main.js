@@ -13,6 +13,7 @@ import search from './components/search';
 import forms from './components/forms';
 import contact from './components/contact';
 import gallery from './components/gallery';
+import vimeo from './components/vimeo';
 
 // ⚠️ DO NOT REMOVE ⚠️
 // This function allow you to use dynamic imports with webpack
@@ -31,11 +32,12 @@ const portfolioSearch = dynamicLoading({ name: 'portfolio-search' });
 const portfolioLogos = dynamicLoading({ name: 'portfolio-logos' });
 const history = dynamicLoading({ name: 'history' });
 const team = dynamicLoading({ name: 'team' });
+const videos = dynamicLoading({ name: 'videos' });
 
 // Initialization functions
-const preloadCallback = () => {
-    // All actions needed at page load
-};
+// const preloadCallback = () => {
+// All actions needed at page load
+// };
 
 const loadCallback = () => {
     // All actions needed after page load (like click events for example)
@@ -43,10 +45,14 @@ const loadCallback = () => {
     search();
     forms();
     gallery();
+    vimeo.initPlayers();
 
     bodyRouter({
         identifier: '.home',
-        callback: slider
+        callback: () => {
+            slider();
+            videos();
+        }
     });
 
     bodyRouter({
@@ -72,9 +78,9 @@ const loadCallback = () => {
     contact();
 };
 
-const animationsCallback = () => {
-    // Animations shouldn't be render blocking... so they'll be called last
-};
+// const animationsCallback = () => {
+// Animations shouldn't be render blocking... so they'll be called last
+// };
 
 // Init sac superComponents
 useSacVanilla();
@@ -83,8 +89,8 @@ useSuperWindow();
 
 // Access superComponents
 window.$stereorepo.superLoad.initializeLoadingShit({
-    preloadCallback,
+    //preloadCallback,
     loadCallback,
-    animationsCallback,
+    //animationsCallback,
     noTransElementsClass: '.element-without-transition-on-resize'
 });

@@ -24,7 +24,7 @@ const team = () => {
     let next;
     let prev;
 
-    const closeDetail = member => {
+    const closeDetail = () => {
         forEach(members, elt => {
             elt.classList.remove('off');
             elt.classList.remove('on');
@@ -41,7 +41,7 @@ const team = () => {
                 desc.innerHTML = '';
 
                 if (member.classList.contains('on')) {
-                    closeDetail(member);
+                    closeDetail();
                     return;
                 }
 

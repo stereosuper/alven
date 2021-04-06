@@ -1,8 +1,4 @@
 import { gsap } from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
-
-gsap.registerPlugin(ScrollToPlugin);
-
 import 'hammerjs';
 import { forEach } from '@stereorepo/sac';
 
