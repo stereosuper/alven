@@ -6,7 +6,7 @@ const vimeo = {
         const iframe = video.querySelector('iframe');
         const player = iframe ? new Player(iframe) : new Player(video);
 
-        player.ready().then(() => {
+        player.ready().then(() =>
             video.querySelector('.js-cover').addEventListener(
                 'click',
                 e => {
@@ -14,8 +14,13 @@ const vimeo = {
                     player.play();
                 },
                 false
-            );
-        });
+            )
+        );
+    },
+
+    addPlayerAndPlay(video) {
+        const player = new Player(video);
+        player.ready().then(() => player.play());
     },
 
     initPlayers() {

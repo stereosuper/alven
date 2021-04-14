@@ -22132,6 +22132,14 @@ var map = {
 		9,
 		"history"
 	],
+	"./popin": [
+		"./wp-content/themes/alven/src/js/components/popin.js",
+		9
+	],
+	"./popin.js": [
+		"./wp-content/themes/alven/src/js/components/popin.js",
+		9
+	],
 	"./portfolio-filters": [
 		"./wp-content/themes/alven/src/js/components/portfolio-filters.js",
 		9,
@@ -22469,6 +22477,92 @@ const header = () => {
 
 /***/ }),
 
+/***/ "./wp-content/themes/alven/src/js/components/popin.js":
+/*!************************************************************!*\
+  !*** ./wp-content/themes/alven/src/js/components/popin.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vimeo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vimeo */ "./wp-content/themes/alven/src/js/components/vimeo.js");
+/* harmony import */ var _stereorepo_sac__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stereorepo/sac */ "./node_modules/@stereorepo/sac/src/index.js");
+
+
+
+const popin = () => {
+    const btns = document.querySelectorAll('.js-popin');
+
+    if (!btns.length) return;
+
+    let popin;
+    let popinInner;
+    let close;
+
+    // create a popin elt
+    const createPopin = () => {
+        const main = document.getElementById('main');
+        const popinContent = document.createElement('div');
+
+        popin = document.createElement('div');
+        popin.className = 'popin';
+        popin.id = 'popin';
+
+        popinContent.className = 'popin-content';
+
+        popinInner = document.createElement('div');
+
+        close = document.createElement('button');
+        close.className = 'btn-close';
+        close.innerHTML = 'Close';
+
+        main.appendChild(popin);
+        popin.appendChild(popinContent);
+        popinContent.appendChild(close);
+        popinContent.appendChild(popinInner);
+    };
+
+    // add video and open popin
+    const addVideoAndOpenPopin = btn => {
+        const video = document.createElement('div');
+
+        video.dataset.vimeoUrl = btn.dataset.popinVideo;
+        video.className = 'video';
+        popinInner.appendChild(video);
+
+        _vimeo__WEBPACK_IMPORTED_MODULE_0__["default"].addPlayerAndPlay(video);
+        popin.classList.add('on');
+    };
+
+    // close popin
+    const closePopin = () => {
+        popin.classList.remove('on');
+        setTimeout(() => {
+            popinInner.innerHTML = '';
+        }, 300);
+    };
+
+    // create popin elt
+    createPopin();
+
+    // add listeners
+    Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_1__["forEach"])(btns, btn => btn.addEventListener('click', () => addVideoAndOpenPopin(btn), false));
+    close.addEventListener('click', closePopin, false);
+    popin.addEventListener(
+        'click',
+        e => {
+            if (e.target.id === 'popin') closePopin();
+        },
+        'false'
+    );
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (popin);
+
+
+/***/ }),
+
 /***/ "./wp-content/themes/alven/src/js/components/search.js":
 /*!*************************************************************!*\
   !*** ./wp-content/themes/alven/src/js/components/search.js ***!
@@ -22533,7 +22627,7 @@ const vimeo = {
         const iframe = video.querySelector('iframe');
         const player = iframe ? new _vimeo_player__WEBPACK_IMPORTED_MODULE_0__["default"](iframe) : new _vimeo_player__WEBPACK_IMPORTED_MODULE_0__["default"](video);
 
-        player.ready().then(() => {
+        player.ready().then(() =>
             video.querySelector('.js-cover').addEventListener(
                 'click',
                 e => {
@@ -22541,8 +22635,13 @@ const vimeo = {
                     player.play();
                 },
                 false
-            );
-        });
+            )
+        );
+    },
+
+    addPlayerAndPlay(video) {
+        const player = new _vimeo_player__WEBPACK_IMPORTED_MODULE_0__["default"](video);
+        player.ready().then(() => player.play());
     },
 
     initPlayers() {
@@ -22577,6 +22676,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_contact__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/contact */ "./wp-content/themes/alven/src/js/components/contact.js");
 /* harmony import */ var _components_gallery__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/gallery */ "./wp-content/themes/alven/src/js/components/gallery.js");
 /* harmony import */ var _components_vimeo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/vimeo */ "./wp-content/themes/alven/src/js/components/vimeo.js");
+/* harmony import */ var _components_popin__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/popin */ "./wp-content/themes/alven/src/js/components/popin.js");
 // ⚠️ Do not remove the line below or your scss won't work anymore
 
 
@@ -22586,6 +22686,7 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 // To learn how to use Sac
 // SEE: https://github.com/stereosuper/stereorepo/tree/master/packages/sac
+
 
 
 
@@ -22625,6 +22726,7 @@ const loadCallback = () => {
     Object(_components_forms__WEBPACK_IMPORTED_MODULE_5__["default"])();
     Object(_components_gallery__WEBPACK_IMPORTED_MODULE_7__["default"])();
     _components_vimeo__WEBPACK_IMPORTED_MODULE_8__["default"].initPlayers();
+    Object(_components_popin__WEBPACK_IMPORTED_MODULE_9__["default"])();
 
     Object(_stereorepo_sac__WEBPACK_IMPORTED_MODULE_2__["bodyRouter"])({
         identifier: '.home',
@@ -22689,4 +22791,4 @@ window.$stereorepo.superLoad.initializeLoadingShit({
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map?506fda38bda497e3f8cb276820fc19a1
+//# sourceMappingURL=main.js.map?663b37c80b119153490094b177445032

@@ -4,6 +4,9 @@
 	<div class='title-wrapper'>
 		<div class='container'>
 			<h1><?php the_title(); ?></h1>
+			<?php if($subtitle = get_field('subtitle')) : ?>
+				<p><?php echo $subtitle; ?></p>
+			<?php endif; ?>
 		</div>
 	</div>
 

@@ -7,6 +7,9 @@
     .img {
         margin: 0 0 20px;
     }
+    .meta {
+        justify-content: center;
+    }
 }
 
 .posts {
@@ -42,7 +45,7 @@
     padding: 50px 0;
     position: relative;
     z-index: 1;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-align: center;
     &:nth-of-type(odd) {
         &:after {
@@ -58,6 +61,9 @@
     }
     .img {
         margin: 0 0 50px;
+    }
+    .meta {
+        justify-content: center;
     }
 }
 
@@ -173,12 +179,16 @@
     .post {
         display: flex;
         align-items: center;
+        text-align: left;
         .img {
             width: $col * 4;
             margin: 0 $col 0 0;
         }
         .txt {
             width: $col * 7;
+        }
+        .meta {
+            justify-content: initial;
         }
     }
 
@@ -245,6 +255,9 @@
         }
         img {
             max-width: 50vw;
+        }
+        .meta {
+            justify-content: initial;
         }
     }
 

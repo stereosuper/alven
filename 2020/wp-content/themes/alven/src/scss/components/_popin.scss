@@ -1,0 +1,54 @@
+.popin {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    background: rgba(#fff, 0.8);
+    visibility: hidden;
+    opacity: 0;
+    transition: $transition;
+    &.on {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.popin-content {
+    width: 85%;
+    max-width: 1000px;
+    max-height: 85%;
+    position: relative;
+    box-shadow: 3px 3px 36px rgba(#000, 0.22);
+    .btn-close {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: -40px;
+        right: -20px;
+        overflow: hidden;
+        text-indent: -99em;
+        background: url(../../img/close.svg) no-repeat 0 0 / 100%;
+        transition: $transition;
+        &:hover,
+        &:focus {
+            transform: scale(0.9);
+        }
+    }
+}
+
+@media (min-width: $tablet) {
+    .popin-content {
+        .btn-close {
+            width: 40px;
+            height: 40px;
+            top: -45px;
+            right: -45px;
+        }
+    }
+}

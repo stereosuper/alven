@@ -99,7 +99,6 @@
 
 .title-wrapper {
     display: flex;
-    //min-height: 270px;
     max-height: 500px;
     padding: 18vh 0;
     position: relative;
@@ -107,10 +106,7 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
-    background-color: $primary;
-    background-image: url(../../img/bg.png);
-    background-size: cover;
-    background-position: 50% 50%;
+    background: $primary url(../../img/bg.png) no-repeat 50% 50% / cover;
     text-align: center;
     color: #fff;
     .page-template-portfolio & {
@@ -135,6 +131,9 @@
     }
     .container {
         margin: 0;
+    }
+    p {
+        margin: 10px 0 0;
     }
 }
 
@@ -165,24 +164,24 @@
         > li {
             padding-bottom: 45px;
             > a {
-                &:before {
+                &:before,
+                &:after {
                     content: '';
-                    height: 45px;
                     position: absolute;
+                    background: $primary;
+                }
+                &:before {
+                    height: 45px;
                     top: 0;
                     left: 0;
                     right: 0;
-                    background: $primary;
                 }
                 &:after {
-                    content: '';
                     height: 10px;
-                    position: absolute;
                     top: 45px;
                     left: 2px;
                     right: 2px;
                     z-index: -1;
-                    background: $primary;
                 }
             }
         }

@@ -1,0 +1,135 @@
+.alven-vimeo,
+.alven-vimeo-small {
+    position: relative;
+    margin: 0 calc(50% - 50vw);
+    &:after {
+        content: '';
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+        background: $grey;
+    }
+    .video {
+        display: block;
+        width: 100%;
+    }
+}
+
+.alven-vimeo {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    z-index: 1;
+    text-align: center;
+    .text {
+        padding: 10px $gutter * 2 30px;
+    }
+    + .alven-vimeo {
+        margin-top: -40px;
+    }
+}
+
+.alven-vimeo-small {
+    font-size: 1.4rem;
+    &:nth-of-type(odd) {
+        &:after {
+            background: #fff;
+        }
+    }
+    .video-wrapper {
+        width: 100%;
+    }
+    .text {
+        padding: 30px $gutter * 2 15px;
+    }
+}
+.vimeo-small-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .h6 {
+        max-width: 100%;
+        margin: 0 40px 0 0;
+    }
+    > img {
+        max-width: 100px;
+        margin: 10px 0;
+    }
+    + p {
+        margin-top: 1em;
+    }
+}
+
+@media (min-width: $phone) {
+    .alven-vimeo-small {
+        display: flex;
+        .video-wrapper {
+            width: 50%;
+            flex-shrink: 0;
+        }
+        .video {
+            height: 100%;
+        }
+    }
+
+    .vimeo-small-title {
+        .h6 {
+            flex-shrink: 0;
+        }
+    }
+}
+
+@media (min-width: $tablet) {
+    .alven-vimeo {
+        display: flex;
+        margin: 80px 0 80px calc(50% - 50vw);
+        text-align: left;
+        &.alignright {
+            margin: 80px calc(50% - 50vw) 80px 0;
+            &:after {
+                left: auto;
+                right: 0;
+            }
+            .video-wrapper {
+                order: 2;
+            }
+            .text {
+                padding: 30px 60px 30px 0;
+            }
+        }
+        .video-wrapper {
+            width: 50vw;
+            flex-shrink: 0;
+        }
+        .video {
+            height: 100%;
+            min-height: 350px;
+            padding: 0;
+        }
+        .text {
+            padding: 30px 0 30px 60px;
+            align-self: center;
+        }
+        + .alven-vimeo {
+            margin-top: -80px;
+        }
+    }
+
+    .alven-vimeo-small {
+        padding: 40px 0;
+        margin: 0;
+        align-items: center;
+        &:after {
+            left: calc(50% - 50vw);
+        }
+        .video-wrapper {
+            width: $col * 3.5;
+            margin: 0 $col 0 0;
+        }
+        .video {
+            height: auto;
+        }
+    }
+}

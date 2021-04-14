@@ -2,8 +2,6 @@
 
 define( 'ALVEN_VERSION', 2.0 );
 
-// require_once(WPMU_PLUGIN_DIR . '/class-tgm-plugin-activation.php');
-
 if(function_exists('get_field')){
     define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );
     define( 'CONTACT_ID', url_to_postid(get_field('pageContact', 'options')) );
@@ -408,6 +406,64 @@ add_action( 'init', 'alven_taxonomy' );
 
 
 /*-----------------------------------------------------------------------------------*/
+/* Gutenberg blocks
+/*-----------------------------------------------------------------------------------*/
+
+function alven_acf_blocks_init() {
+	
+	if( function_exists('acf_register_block_type') ) {
+		
+		acf_register_block_type(array(
+			'name'				=> 'alven-vimeo',
+			'title'				=> __('Vimeo and Text'),
+			'description'		=> __('A custom block for vimeo videos + text'),
+			'render_template'	=> 'blocks/alven-vimeo/alven-vimeo.php',
+			'category'			=> 'embed',
+			'icon'				=> 'excerpt-view',
+            'mode'              => 'edit',
+			'keywords'			=> array( 'vimeo', 'alven' ),
+		));
+
+        acf_register_block_type(array(
+			'name'				=> 'alven-vimeo-small',
+			'title'				=> __('Vimeo and Text - Small'),
+			'description'		=> __('A custom block for vimeo videos + text'),
+			'render_template'	=> 'blocks/alven-vimeo-small/alven-vimeo-small.php',
+			'category'			=> 'embed',
+			'icon'				=> 'excerpt-view',
+            'mode'              => 'edit',
+			'keywords'			=> array( 'vimeo', 'alven' ),
+		));
+
+        acf_register_block_type(array(
+			'name'				=> 'alven-logos',
+			'title'				=> __('Logos'),
+			'description'		=> __('A custom block for logos + text'),
+			'render_template'	=> 'blocks/alven-logos/alven-logos.php',
+			'category'			=> 'embed',
+			'icon'				=> 'excerpt-view',
+            'mode'              => 'edit',
+			'keywords'			=> array( 'logos', 'alven' ),
+		));
+
+         acf_register_block_type(array(
+			'name'				=> 'alven-text-icons',
+			'title'				=> __('Text + Icon'),
+			'description'		=> __('A custom block for text + icons'),
+			'render_template'	=> 'blocks/alven-text-icons/alven-text-icons.php',
+			'category'			=> 'embed',
+			'icon'				=> 'excerpt-view',
+            'mode'              => 'edit',
+			'keywords'			=> array( 'icons', 'alven' ),
+		));
+
+	}
+}
+
+add_action('init', 'alven_acf_blocks_init');
+
+
+/*-----------------------------------------------------------------------------------*/
 /* Search -> Add some custom vars
 /*-----------------------------------------------------------------------------------*/
 function add_query_vars_filter( $vars ) {
@@ -474,7 +530,6 @@ function sushi_get_page_by_template($template_name) {
         return $posts[0];
     }
 }
-
 
 /**
  * Retourne le permalien de la première page utilisant le template donné
@@ -555,58 +610,5 @@ function alven_scripts(){
     wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_enqueue_scripts', 'alven_scripts' );
-
-
-/*-----------------------------------------------------------------------------------*/
-/* TGMPA
-/*-----------------------------------------------------------------------------------*/
-// function alven_register_required_plugins(){
-// 	$plugins = array(
-//         array(
-//             'name'        => 'Advanced Custom Fields PRO',
-//             'slug'        => 'advanced-custom-fields-pro',
-//             'source'     => get_template_directory_uri() . '/plugins/advanced-custom-fields-pro.zip',
-//             'required'    => true,
-//             'force_activation' => false
-//         ),
-//         array(
-//             'name'        => 'Clean Image Filenames',
-//             'slug'        => 'clean-image-filenames',
-//             'required'    => false,
-//             'force_activation' => false
-//         ),
-//         array(
-//             'name'        => 'EWWW Image Optimizer',
-//             'slug'        => 'ewww-image-optimizer',
-//             'required'    => false,
-//             'force_activation' => false
-//         ),
-
-//         array(
-//             'name'        => 'SecuPress Free — Sécurité WordPress 1.3.3',
-//             'slug'        => 'secupress',
-//             'required'    => false,
-//             'force_activation' => false
-//         ),
-//     );
-    
-// 	$config = array(
-// 		'id'           => 'alven',
-// 		'default_path' => '', 
-// 		'menu'         => 'tgmpa-install-plugins',
-// 		'parent_slug'  => 'themes.php',
-// 		'capability'   => 'edit_theme_options', 
-// 		'has_notices'  => true,
-// 		'dismissable'  => true,
-// 		'dismiss_msg'  => '',
-// 		'is_automatic' => false,
-// 		'message'      => ''
-//     );
-    
-// 	tgmpa( $plugins, $config );
-// }
-// add_action( 'tgmpa_register', 'alven_register_required_plugins' );
-
-
 
 ?>

@@ -14,6 +14,7 @@ import forms from './components/forms';
 import contact from './components/contact';
 import gallery from './components/gallery';
 import vimeo from './components/vimeo';
+import popin from './components/popin';
 
 // ⚠️ DO NOT REMOVE ⚠️
 // This function allow you to use dynamic imports with webpack
@@ -46,6 +47,7 @@ const loadCallback = () => {
     forms();
     gallery();
     vimeo.initPlayers();
+    popin();
 
     bodyRouter({
         identifier: '.home',
