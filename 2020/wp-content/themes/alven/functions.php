@@ -1,6 +1,6 @@
 <?php
 
-define( 'ALVEN_VERSION', 2.0 );
+define( 'ALVEN_VERSION', 2.9 );
 
 if(function_exists('get_field')){
     define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );
@@ -419,7 +419,7 @@ function alven_acf_blocks_init() {
 			'description'		=> __('A custom block for vimeo videos + text'),
 			'render_template'	=> 'blocks/alven-vimeo/alven-vimeo.php',
 			'category'			=> 'embed',
-			'icon'				=> 'excerpt-view',
+			'icon'				=> 'video-alt3',
             'mode'              => 'edit',
 			'keywords'			=> array( 'vimeo', 'alven' ),
 		));
@@ -430,7 +430,7 @@ function alven_acf_blocks_init() {
 			'description'		=> __('A custom block for vimeo videos + text'),
 			'render_template'	=> 'blocks/alven-vimeo-small/alven-vimeo-small.php',
 			'category'			=> 'embed',
-			'icon'				=> 'excerpt-view',
+			'icon'				=> 'video-alt3',
             'mode'              => 'edit',
 			'keywords'			=> array( 'vimeo', 'alven' ),
 		));
@@ -441,7 +441,7 @@ function alven_acf_blocks_init() {
 			'description'		=> __('A custom block for logos + text'),
 			'render_template'	=> 'blocks/alven-logos/alven-logos.php',
 			'category'			=> 'embed',
-			'icon'				=> 'excerpt-view',
+			'icon'				=> 'images-alt',
             'mode'              => 'edit',
 			'keywords'			=> array( 'logos', 'alven' ),
 		));

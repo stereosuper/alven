@@ -15,6 +15,8 @@ import contact from './components/contact';
 import gallery from './components/gallery';
 import vimeo from './components/vimeo';
 import popin from './components/popin';
+import videos from './components/videos';
+import blockLogos from './components/block-logos';
 
 // ⚠️ DO NOT REMOVE ⚠️
 // This function allow you to use dynamic imports with webpack
@@ -33,7 +35,6 @@ const portfolioSearch = dynamicLoading({ name: 'portfolio-search' });
 const portfolioLogos = dynamicLoading({ name: 'portfolio-logos' });
 const history = dynamicLoading({ name: 'history' });
 const team = dynamicLoading({ name: 'team' });
-const videos = dynamicLoading({ name: 'videos' });
 
 // Initialization functions
 // const preloadCallback = () => {
@@ -48,13 +49,11 @@ const loadCallback = () => {
     gallery();
     vimeo.initPlayers();
     popin();
+    blockLogos();
 
     bodyRouter({
         identifier: '.home',
-        callback: () => {
-            slider();
-            videos();
-        }
+        callback: () => slider
     });
 
     bodyRouter({
@@ -77,6 +76,7 @@ const loadCallback = () => {
         callback: team
     });
 
+    videos();
     contact();
 };
 

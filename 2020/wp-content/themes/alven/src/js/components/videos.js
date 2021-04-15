@@ -18,6 +18,8 @@ const videos = () => {
     const prevs = wrapper.querySelectorAll('.js-video-prev');
     const btns = wrapper.querySelectorAll('.js-video-nav');
 
+    let currentPlayer;
+
     // center slider
     const setInitialPos = () => {
         const wWidth = window.innerWidth;
@@ -51,7 +53,8 @@ const videos = () => {
         slides[newSlide].classList.add('on');
 
         // set player
-        vimeo.addPlayer(slides[newSlide].querySelector('.js-vimeo'));
+        vimeo.unloadPlayer(currentPlayer);
+        currentPlayer = vimeo.addPlayer(slides[newSlide].querySelector('.video'));
 
         // set active nav btn
         forEach(btns, btn => btn.classList.remove('on'));
@@ -129,12 +132,13 @@ const videos = () => {
         }
     };
 
-    // center slider and then make it appear
+    // center slider and then make it appear and add first player
     slider.insertBefore(lastSlide.cloneNode(true), slides[0]);
     slider.removeChild(lastSlide);
     btns[0].classList.add('on');
     setInitialPos();
     updateText();
+    currentPlayer = vimeo.addPlayer(slides[0].querySelector('.video'));
 
     // add events
     forEach(nexts, next => next.addEventListener('click', slideNext, false));

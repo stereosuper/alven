@@ -33,7 +33,10 @@
 
 .alven-vimeo-small {
     font-size: 1.4rem;
-    &:nth-of-type(odd) {
+    &:first-of-type {
+        margin-top: 40px;
+    }
+    &:nth-of-type(even) {
         &:after {
             background: #fff;
         }
@@ -123,6 +126,9 @@
         align-items: center;
         &:after {
             left: calc(50% - 50vw);
+        }
+        &:first-of-type {
+            margin-top: 80px;
         }
         .video-wrapper {
             width: $col * 3.5;

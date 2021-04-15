@@ -28,7 +28,8 @@ $text = get_field('text');
 
 if( $url ) :
 ?>
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+<!-- use section to make css :even work for bg colors -->
+<section id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
     <div class="video-wrapper">
         <button data-popin-video="<?php echo $url; ?>" class="js-popin video" type="button">
             <div class="cover-small" style="background-image:url(<?php echo $cover; ?>)"></div>
@@ -47,6 +48,6 @@ if( $url ) :
             <?php echo $text; ?>
         </div>
     <?php endif; ?>
-</div>
+</section>
 
 <?php endif; ?>

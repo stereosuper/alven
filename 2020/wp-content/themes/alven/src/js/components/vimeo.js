@@ -16,11 +16,17 @@ const vimeo = {
                 false
             )
         );
+
+        return player;
     },
 
     addPlayerAndPlay(video) {
         const player = new Player(video);
         player.ready().then(() => player.play());
+    },
+
+    unloadPlayer(player) {
+        player.unload();
     },
 
     initPlayers() {

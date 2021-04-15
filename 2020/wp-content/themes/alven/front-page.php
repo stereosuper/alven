@@ -115,7 +115,7 @@ get_header(); ?>
                         <?php $count = 0; while( have_rows('videos') ) : the_row(); ?>
                             <div class="slide-video <?php if($count === 0) echo "on"; ?>" data-index="<?php echo $count; ?>">
                                 <div class="video-wrapper">
-                                    <div data-vimeo-url="<?php the_sub_field('video'); ?>" class="js-vimeo video">
+                                    <div data-vimeo-url="<?php the_sub_field('video'); ?>" class="video">
                                         <div class="cover js-cover" style="background-image:url(<?php the_sub_field('cover'); ?>)"></div>
                                     </div>
                                 </div>
