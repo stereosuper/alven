@@ -1,6 +1,6 @@
 <?php
 
-define( 'ALVEN_VERSION', 2.91 );
+define( 'ALVEN_VERSION', 2.94 );
 
 if(function_exists('get_field')){
     define( 'PORTFOLIO_ID', url_to_postid(get_field('pagePortfolio', 'options')) );

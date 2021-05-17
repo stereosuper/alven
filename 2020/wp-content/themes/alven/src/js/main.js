@@ -53,7 +53,7 @@ const loadCallback = () => {
 
     bodyRouter({
         identifier: '.home',
-        callback: () => slider
+        callback: slider
     });
 
     bodyRouter({

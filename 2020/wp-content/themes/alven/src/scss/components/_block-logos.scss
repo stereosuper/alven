@@ -38,13 +38,15 @@
     margin: 0;
     .img {
         display: flex;
-        max-width: 60%;
-        height: 40px;
+        max-width: 75%;
+        height: 90px;
         padding: 0 0 10px;
         margin: 0 auto;
         align-items: center;
+        justify-content: center;
     }
     img {
+        width: auto;
         max-height: 100%;
     }
     > p {
