@@ -32,7 +32,7 @@
         height: 6px;
         border: 1px solid transparent;
         overflow: hidden;
-        border-radius: 50%;
+        border-radius: 50% !important;
         background: #fff;
         &.on {
             transform: scale(2);

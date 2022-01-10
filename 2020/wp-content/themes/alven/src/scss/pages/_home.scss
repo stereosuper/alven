@@ -274,6 +274,10 @@
         bottom: 0;
         overflow: hidden;
         text-indent: -99em;
+        &:hover,
+        &:focus {
+            background: none !important;
+        }
     }
     .video-next-big {
         right: 0;
@@ -292,11 +296,11 @@
             width: 12px;
             height: 12px;
             border: 2px solid #fff;
-            border-radius: 50px;
+            border-radius: 50px !important;
             background: $primary;
             &:hover,
             &:focus {
-                background: $secondary;
+                background: $secondary !important;
             }
             &.on {
                 border-color: $secondary;

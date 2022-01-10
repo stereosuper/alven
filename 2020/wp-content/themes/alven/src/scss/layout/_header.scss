@@ -85,6 +85,9 @@
         width: 20px;
         height: 20px;
     }
+    &:hover {
+        background: none !important;
+    }
 }
 
 .close {
@@ -94,6 +97,9 @@
     .icon {
         width: 18px;
         height: 18px;
+    }
+    &:hover {
+        background: none !important;
     }
 }
 
